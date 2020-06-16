@@ -1,0 +1,18 @@
+description: RFC 7807 Problem Details
+content:
+  application/problem+json:
+    schema:
+      $ref: ../schemas/problem.yaml
+    examples:
+      badRequestUpdate:
+        $ref: ../examples/problem/badRequestUpdate.yaml
+      badRequestDelete:
+        $ref: ../examples/problem/badRequestDelete.yaml
+      unauthorized:
+        $ref: ../examples/problem/unauthorized.yaml
+      forbidden:
+        $ref: ../examples/problem/forbidden.yaml
+      notFound:
+        $ref: ../examples/problem/notFound.yaml
+      internalServerError:
+        $ref: ../examples/problem/internalServerError.yaml

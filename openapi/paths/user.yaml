@@ -1,0 +1,28 @@
+get:
+  operationId: userSearch
+  tags: [user]
+  summary: Returns users which match a search term and set of filters.
+  responses:
+#    '200':
+#      $ref: '#/components/responses/userList'
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/cursor.yaml
+#    - $ref: 'common.yaml#/components/parameters/search'
+#    - $ref: 'common.yaml#/components/parameters/filter'
+#    - $ref: 'common.yaml#/components/parameters/properties'
+
+post:
+  operationId: userPost
+  tags: [user]
+  summary: Creates a user
+  responses:
+    '201':
+      description: The user that was created
+#      content:
+#        application/json:
+#          schema:
+#            $ref: '#/components/schemas/user'
+#  requestBody:
+#    $ref: '#/components/requestBodies/user'
