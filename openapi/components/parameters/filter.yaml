@@ -1,0 +1,54 @@
+name:        filter
+in:          query
+description: |
+  A set of filters (if any) which will be used to filter out the list of
+  items that this endpoint returns.
+
+  Generally, the structure of this object will match the structure of
+  the object that the endpoint returns: any object which is like the
+  filter object passed in will be returned in the search.
+
+  Values in the object may either be scalars (the field must equal this
+  value), or objects with a particular key:
+  * equals: the field must equal the value of this key
+  * in: the field must be one of the values of this key
+  * between: the field must be between the two values of this key
+  * lessThan, greaterThan: the field must be one of the values of this key
+
+  Fields of sub-objects may also be used in filters.
+
+  Inspired by https://www.algolia.com/doc/api-reference/api-parameters/filters/
+schema:
+  type: object
+example:
+  # fetch an item whose ID = 5
+  - id: 5
+  # fetch an item whose ID = 5
+  - id:
+      equals: 5
+  # fetch an item whose ID is 1, 3 or 5
+  - id:
+      in: [1, 3, 5]
+  # fetch an item whose ID is less than 17
+  - id:
+      lessThan: 17
+  # fetch an item whose ID is between 1 and 5
+  - id:
+      between: [1, 5]
+  # fetch an item whose role ID is 1
+  - role:
+      id: 1
+  # fetch an item whose role type is staff
+  - role:
+      type: staff
+  # fetch an item whose role type is staff or parent
+  - role:
+      type:
+        in: [staff, parent]
+  # fetch an item whose role type is staff or parent,
+  # and whose ID < 17
+  - role:
+      type:
+        in: [staff, parent]
+    id:
+      lessThan: 17

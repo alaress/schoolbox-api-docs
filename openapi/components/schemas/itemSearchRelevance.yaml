@@ -1,0 +1,13 @@
+title: Item search relevance metadata
+description: |
+  If this item is retrieved as part of a search, this field may contain
+  the item's relevance to the search term.
+type: object
+properties:
+  _relevance:
+    type: number
+    minimum: 0
+    maximum: 1
+    description: |
+      A floating-point number between 0 and 1: the higher the number, the
+      more relevant to the search this item is.

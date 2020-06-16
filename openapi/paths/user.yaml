@@ -3,15 +3,15 @@ get:
   tags: [user]
   summary: Returns users which match a search term and set of filters.
   responses:
-#    '200':
-#      $ref: '#/components/responses/userList'
+    '200':
+      $ref: ../components/responses/userList.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
     - $ref: ../components/parameters/cursor.yaml
-#    - $ref: 'common.yaml#/components/parameters/search'
-#    - $ref: 'common.yaml#/components/parameters/filter'
-#    - $ref: 'common.yaml#/components/parameters/properties'
+    - $ref: ../components/parameters/search.yaml
+    - $ref: ../components/parameters/filter.yaml
+    - $ref: ../components/parameters/properties.yaml
 
 post:
   operationId: userPost

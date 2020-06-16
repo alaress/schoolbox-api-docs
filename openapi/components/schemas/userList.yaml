@@ -1,0 +1,14 @@
+title: User list
+description: A list of users
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    uniqueItems: true
+    items:
+      allOf:
+#        - $ref: '#/components/schemas/user'
+        - $ref: itemSearchRelevance.yaml
+  metadata:
+    $ref: listMetadata.yaml
