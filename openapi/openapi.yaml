@@ -4,6 +4,7 @@ info:
   title: Example.com
   termsOfService: 'https://example.com/terms/'
   contact:
+    name: Example Contact
     email: contact@example.com
     url: 'http://example.com/contact'
   license:
@@ -63,8 +64,6 @@ servers:
 paths:
   '/users/{username}':
     $ref: 'paths/users@{username}.yaml'
-  /echo:
-    $ref: paths/echo.yaml
 components:
   securitySchemes:
     main_auth:
