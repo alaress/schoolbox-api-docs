@@ -1,0 +1,98 @@
+description: |
+  Fields that are only relevant when reading a user's value.
+type: object
+properties:
+  id:
+    $ref: id.yaml
+
+  campus:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: campus.yaml
+
+  role:
+    $ref: role.yaml
+
+  groups:
+    description: |
+      This user's group memberships.
+    type: array
+    uniqueItems: true
+    items:
+      $ref: 'user/groupMembership.yaml#/components/schemas/groupMembership'
+
+  schoolHouse:
+    $ref: schoolHouse.yaml
+
+  residentialHouse:
+    $ref: residentialHouse.yaml
+
+  guardians:
+    description: |
+      This user's guardians. (Only applicable if this user is of role
+      type: student.)
+
+      Guardians are not necessarily the same thing as parents: a guardian
+      is not always the child's parent (e.g. they may be a foster parent
+      or other relative), and a parent is not always the child's guardian
+      (e.g. the family might have separated).
+    type: array
+    uniqueItems: true
+    items:
+      $ref: user.yaml
+    nullable: true
+
+  students:
+    description: |
+      This user's students. (Only applicable if this user is of role type:
+      parent.)
+
+      Students are not necessarily the same thing as children, for the
+      same reason that guardians are not the same thing as parents.
+
+      Generally, the guardian => student relation is symmetrical to the
+      student => guardian relation.
+    type: array
+    uniqueItems: true
+    items:
+      $ref: user.yaml
+    nullable: true
+
+  impersonableUsers:
+    description: |
+      The users whom this user may impersonate within a Schoolbox session.
+
+      This relation is asymmetric: A may impersonate B, but that does not
+      imply that B may impersonate A.
+    type: array
+    uniqueItems: true
+    items:
+      $ref: user.yaml
+    nullable: true
+
+  email:
+    type: string
+    format: email
+    description: |
+      The user's email address for receiving communication from this
+      Schoolbox instance, or its users.
+
+      This may be derived from the user's username and the instance's
+      hostname (see isEmailDerived); if not, it may be set via the
+      altEmail field.
+
+  _links:
+    type: object
+    properties:
+      profile:
+        type: string
+        format: uri-reference
+      avatar:
+        type: string
+        format: uri-reference
+        nullable: true
+required:
+  - id
+readOnly: true

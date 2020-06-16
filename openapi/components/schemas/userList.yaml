@@ -8,7 +8,7 @@ properties:
     uniqueItems: true
     items:
       allOf:
-#        - $ref: '#/components/schemas/user'
+        - $ref: user.yaml
         - $ref: itemSearchRelevance.yaml
   metadata:
     $ref: listMetadata.yaml
