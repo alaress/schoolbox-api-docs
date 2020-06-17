@@ -10,6 +10,6 @@
     "start": "openapi preview-docs",
     "build": "openapi bundle -o dist",
     "test": "openapi validate",
-    "build-static": "npm run build && redoc-cli bundle -o docs/index.html dist/openapi.yaml"
+    "build-static": "npm run build && redoc-cli bundle -o docs/index.html -t docs/preview.html dist/openapi.yaml"
   }
 }
