@@ -77,6 +77,8 @@ paths:
   /user/{id}/groupMembership:
     $ref: 'paths/user@{id}@groupMembership.yaml'
 
+  /user/{id}/groupMembership/{groupId}:
+    $ref: 'paths/user@{id}@groupMembership@{groupId}.yaml'
 
 components:
   securitySchemes:
