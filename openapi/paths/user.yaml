@@ -20,9 +20,9 @@ post:
   responses:
     '201':
       description: The user that was created
-#      content:
-#        application/json:
-#          schema:
-#            $ref: '#/components/schemas/user'
-#  requestBody:
-#    $ref: '#/components/requestBodies/user'
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/user.yaml
+  requestBody:
+    $ref: ../components/requestBodies/user.yaml

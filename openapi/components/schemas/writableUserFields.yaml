@@ -1,0 +1,36 @@
+description: |
+  Fields that are only relevant when writing a user's value.
+type: object
+properties:
+  campus:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: itemRelation.yaml
+
+  role:
+    $ref: itemRelation.yaml
+
+  groups:
+    description: |
+      This user's group memberships.
+    type: array
+    uniqueItems: true
+    items:
+      $ref: user/writableGroupMembership.yaml
+
+  schoolHouse:
+    $ref: itemRelation.yaml
+
+  residentialHouse:
+    $ref: itemRelation.yaml
+
+  impersonableUsers:
+    description: |
+      The users whom this user may impersonate within a Schoolbox session.
+    type: array
+    uniqueItems: true
+    items:
+      $ref: itemRelation.yaml
+writeOnly: true
