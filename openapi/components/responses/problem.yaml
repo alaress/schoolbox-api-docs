@@ -5,14 +5,14 @@ content:
       $ref: ../schemas/problem.yaml
     examples:
       badRequestUpdate:
-        $ref: ../examples/problem/badRequestUpdate.yaml
+        $ref: ../examples/problem-badRequestUpdate.yaml
       badRequestDelete:
-        $ref: ../examples/problem/badRequestDelete.yaml
+        $ref: ../examples/problem-badRequestDelete.yaml
       unauthorized:
-        $ref: ../examples/problem/unauthorized.yaml
+        $ref: ../examples/problem-unauthorized.yaml
       forbidden:
-        $ref: ../examples/problem/forbidden.yaml
+        $ref: ../examples/problem-forbidden.yaml
       notFound:
-        $ref: ../examples/problem/notFound.yaml
+        $ref: ../examples/problem-notFound.yaml
       internalServerError:
-        $ref: ../examples/problem/internalServerError.yaml
+        $ref: ../examples/problem-internalServerError.yaml
