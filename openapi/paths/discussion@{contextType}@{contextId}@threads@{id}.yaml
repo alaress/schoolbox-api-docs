@@ -1,5 +1,6 @@
 get:
   operationId: getThread
+  tags: [discussion]
   summary: Returns a thread
   responses:
     '200':

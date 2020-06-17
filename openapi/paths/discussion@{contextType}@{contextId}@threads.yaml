@@ -1,5 +1,6 @@
 post:
   operationId: createThread
+  tags: [discussion]
   summary: Creates a thread
   responses:
     '200':

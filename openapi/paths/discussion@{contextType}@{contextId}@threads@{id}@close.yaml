@@ -1,5 +1,6 @@
 put:
   operationId: closeThread
+  tags: [discussion]
   summary: Close commenting thread
   responses:
     '200':
@@ -7,10 +8,7 @@ put:
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: '#/components/schemas/thread'
+    $ref: ../components/requestBodies/discussionThread-item.yaml
 parameters:
   - $ref: ../components/parameters/discussion-contextType.yaml
   - $ref: ../components/parameters/discussion-contextId.yaml
