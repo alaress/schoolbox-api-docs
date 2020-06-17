@@ -1,0 +1,14 @@
+post:
+  operationId: createThread
+  summary: Creates a thread
+  responses:
+    '200':
+      $ref: ../components/responses/discussionThread-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/discussionThread-item.yaml
+
+parameters:
+  - $ref: ../components/parameters/discussion-contextType.yaml
+  - $ref: ../components/parameters/discussion-contextId.yaml

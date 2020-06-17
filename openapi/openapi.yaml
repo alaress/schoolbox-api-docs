@@ -89,6 +89,18 @@ paths:
   /discussion/{contextType}/{contextId}/threads/{id}:
     $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}.yaml'
 
+  /discussion/{contextType}/{contextId}/threads:
+    $ref: 'paths/discussion@{contextType}@{contextId}@threads.yaml'
+
+#  /discussion/{contextType}/{contextId}/threads/{id}/comments:
+#    $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@comments.yaml'
+#
+#  /discussion/{contextType}/{contextId}/threads/{id}/open:
+#    $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@open.yaml'
+#
+#  /discussion/{contextType}/{contextId}/threads/{id}/close:
+#    $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@close.yaml'
+
 components:
   securitySchemes:
     main_auth:
