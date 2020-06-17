@@ -2,4 +2,4 @@ description: A list of users
 content:
   application/json:
     schema:
-      $ref: ../../schemas/user/readList.yaml
+      $ref: ../schemas/user-readList.yaml

@@ -1,0 +1,3 @@
+allOf:
+  - $ref: ./user-writableFields.yaml
+  - $ref: ./user-fields.yaml

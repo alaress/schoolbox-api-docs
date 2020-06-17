@@ -2,4 +2,4 @@ description: A user
 content:
   application/json:
     schema:
-      $ref: ../../schemas/user/read.yaml
+      $ref: ../schemas/user-read.yaml

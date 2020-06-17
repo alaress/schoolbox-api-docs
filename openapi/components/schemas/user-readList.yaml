@@ -8,7 +8,7 @@ properties:
     uniqueItems: true
     items:
       allOf:
-        - $ref: read.yaml
-        - $ref: ../itemSearchRelevance.yaml
+        - $ref: ./user-read.yaml
+        - $ref: ./itemSearchRelevance.yaml
   metadata:
-    $ref: ../listMetadata.yaml
+    $ref: ./listMetadata.yaml
