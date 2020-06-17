@@ -2,4 +2,4 @@ title: Writable Group Membership Fields
 type: object
 properties:
   group:
-    $ref: ../itemRelation.yaml
+    $ref: ../../itemRelation.yaml

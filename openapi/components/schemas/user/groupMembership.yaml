@@ -1,3 +1,0 @@
-allOf:
-  - $ref: readableGroupMembershipFields.yaml
-  - $ref: groupMembershipFields.yaml

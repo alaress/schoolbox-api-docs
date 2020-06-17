@@ -18,7 +18,7 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ../user/writableGroupMembership.yaml
+      $ref: ./groupMembership/write.yaml
 
   schoolHouse:
     $ref: ../itemRelation.yaml

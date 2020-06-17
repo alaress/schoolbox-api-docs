@@ -1,5 +1,0 @@
-title: Readable Group Membership Fields
-type: object
-properties:
-  group:
-    $ref: ../group.yaml

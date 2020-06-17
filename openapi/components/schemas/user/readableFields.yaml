@@ -21,7 +21,7 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ../user/groupMembership.yaml
+      $ref: ./groupMembership/read.yaml
 
   schoolHouse:
     $ref: ../schoolHouse.yaml
