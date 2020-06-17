@@ -71,8 +71,8 @@ paths:
   /user:
     $ref: 'paths/user.yaml'
 
-#  /user/{id}:
-#    $ref: 'paths/users@{id}.yaml'
+  /user/{id}:
+    $ref: 'paths/user@{id}.yaml'
 
 components:
   securitySchemes:
