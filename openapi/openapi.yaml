@@ -86,6 +86,9 @@ paths:
   /discussion/{contextType}/{contextId}/comments/{id}/comments:
     $ref: 'paths/discussion@{contextType}@{contextId}@comments@{id}@comments.yaml'
 
+  /discussion/{contextType}/{contextId}/threads/{id}:
+    $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}.yaml'
+
 components:
   securitySchemes:
     main_auth:
