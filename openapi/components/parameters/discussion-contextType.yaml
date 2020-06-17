@@ -1,0 +1,15 @@
+name:        contextType
+in:          path
+description: |
+  The type of item that a thread is associated with.
+
+  Used in conjunction with contextId to find the item with which a thread
+  is associated, and then to determine whether the authenticated user has
+  permission to perform the requested action.
+
+  Currently, only comms is supported, but it is intended that other
+  contexts will be introduced.
+required:    true
+schema:
+  type: string
+  enum: [comms]

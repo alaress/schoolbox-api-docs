@@ -1,0 +1,11 @@
+name:        contextId
+in:          path
+description: |
+  The unique ID of the item that a thread is associated with.
+
+  Used in conjunction with contextType to find the item with which a
+  thread is associated, and then to determine whether the authenticated
+  user has permission to perform the requested action.
+required:    true
+schema:
+  $ref: ../schemas/id.yaml

@@ -80,6 +80,12 @@ paths:
   /user/{id}/groupMembership/{groupId}:
     $ref: 'paths/user@{id}@groupMembership@{groupId}.yaml'
 
+  /discussion/{contextType}/{contextId}/comments/{id}:
+    $ref: 'paths/discussion@{contextType}@{contextId}@comments@{id}.yaml'
+
+  /discussion/{contextType}/{contextId}/comments/{id}/comments:
+    $ref: 'paths/discussion@{contextType}@{contextId}@comments@{id}@comments.yaml'
+
 components:
   securitySchemes:
     main_auth:

@@ -1,0 +1,47 @@
+title: Comment
+description: Common fields for discussion comments
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  thread:
+    $ref: ./discussionThread-read.yaml
+  author:
+    allOf:
+      - $ref: ./user-read.yaml
+    nullable: true
+  content:
+    type: string
+  created:
+    $ref: ./dateTime.yaml
+  updated:
+    $ref: ./dateTime.yaml
+  parent:
+    allOf:
+      - $ref: ./discussionComment-read.yaml
+    description: |
+      The direct parent of this comment, if there is one.
+      If there is none, this comment is a top-level comment within a thread.
+    nullable: true
+  children:
+    allOf:
+      - $ref: ./discussionComment-readList.yaml
+    description: A list of direct children of this comment
+  visibility:
+    description: |
+      Which role types may view this comment? If not set, assume all role
+      types may view it.
+      This is likely to be replaced with a more sophisticated visibility
+      system, which encompasses individual roles, role types, folders,
+      and who knows what else?
+    type: array
+    items:
+      type: string
+      enum:
+        - staff
+        - parent
+        - student
+required:
+  - id
+  - thread
+  - content
