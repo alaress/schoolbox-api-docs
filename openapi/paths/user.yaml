@@ -4,7 +4,7 @@ get:
   summary: Returns users which match a search term and set of filters.
   responses:
     '200':
-      $ref: ../components/responses/userList.yaml
+      $ref: ../components/responses/user/list.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
@@ -19,10 +19,6 @@ post:
   summary: Creates a user
   responses:
     '201':
-      description: The user that was created
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/user.yaml
+      $ref: ../components/responses/user/item.yaml
   requestBody:
-    $ref: ../components/requestBodies/user.yaml
+    $ref: ../components/requestBodies/user/item.yaml

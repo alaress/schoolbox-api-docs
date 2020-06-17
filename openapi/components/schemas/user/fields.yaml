@@ -4,7 +4,7 @@ type: object
 properties:
 
   externalId:
-    $ref: externalId.yaml
+    $ref: ../externalId.yaml
 
   username:
     type: string

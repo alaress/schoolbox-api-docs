@@ -1,0 +1,3 @@
+allOf:
+  - $ref: readableFields.yaml
+  - $ref: fields.yaml

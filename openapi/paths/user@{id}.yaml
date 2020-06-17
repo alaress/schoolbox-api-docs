@@ -4,11 +4,11 @@ put:
   summary: Updates a user
   responses:
     '200':
-      $ref: ../components/responses/user.yaml
+      $ref: ../components/responses/user/item.yaml
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    $ref: ../components/requestBodies/user.yaml
+    $ref: ../components/requestBodies/user/item.yaml
 
 patch:
   operationId: userPatch
@@ -16,11 +16,11 @@ patch:
   summary: Updates a subset of a user's fields
   responses:
     '200':
-      $ref: ../components/responses/user.yaml
+      $ref: ../components/responses/user/item.yaml
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    $ref: ../components/requestBodies/user.yaml
+    $ref: ../components/requestBodies/user/item.yaml
 
 delete:
   operationId: userDelete
@@ -38,7 +38,7 @@ get:
   summary: Returns a user
   responses:
     '200':
-      $ref: ../components/responses/user.yaml
+      $ref: ../components/responses/user/item.yaml
     default:
       $ref: ../components/responses/problem.yaml
 

@@ -7,10 +7,10 @@ properties:
     minItems: 1
     uniqueItems: true
     items:
-      $ref: itemRelation.yaml
+      $ref: ../itemRelation.yaml
 
   role:
-    $ref: itemRelation.yaml
+    $ref: ../itemRelation.yaml
 
   groups:
     description: |
@@ -18,13 +18,13 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: user/writableGroupMembership.yaml
+      $ref: ../user/writableGroupMembership.yaml
 
   schoolHouse:
-    $ref: itemRelation.yaml
+    $ref: ../itemRelation.yaml
 
   residentialHouse:
-    $ref: itemRelation.yaml
+    $ref: ../itemRelation.yaml
 
   impersonableUsers:
     description: |
@@ -32,5 +32,5 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: itemRelation.yaml
+      $ref: ../itemRelation.yaml
 writeOnly: true
