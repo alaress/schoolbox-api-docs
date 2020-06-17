@@ -1,0 +1,5 @@
+description: A single comment
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/discussionComment-read.yaml

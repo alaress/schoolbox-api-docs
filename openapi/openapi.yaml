@@ -92,9 +92,9 @@ paths:
   /discussion/{contextType}/{contextId}/threads:
     $ref: 'paths/discussion@{contextType}@{contextId}@threads.yaml'
 
-#  /discussion/{contextType}/{contextId}/threads/{id}/comments:
-#    $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@comments.yaml'
-#
+  /discussion/{contextType}/{contextId}/threads/{id}/comments:
+    $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@comments.yaml'
+
 #  /discussion/{contextType}/{contextId}/threads/{id}/open:
 #    $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@open.yaml'
 #
