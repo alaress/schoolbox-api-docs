@@ -1,0 +1,5 @@
+description: A group membership
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/userGroupMembership-write.yaml

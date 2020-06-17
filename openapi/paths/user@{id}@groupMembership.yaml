@@ -1,0 +1,30 @@
+get:
+  operationId: userGroupMembershipSearch
+  tags: [user]
+  summary: Returns group memberships for a user.
+  responses:
+    '200':
+      $ref: ../components/responses/userGroupMembership-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/cursor.yaml
+#    - $ref: ../components/parameters/search.yaml
+#    - $ref: ../components/parameters/filter.yaml
+#    - $ref: ../components/parameters/properties.yaml
+
+post:
+  operationId: userGroupMembershipPost
+  tags: [user]
+  summary: Creates a group membership for a user
+  responses:
+    '201':
+      $ref: ../components/responses/userGroupMembership-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/userGroupMembership-item.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
+  - $ref: ../components/parameters/token.yaml
