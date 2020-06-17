@@ -1,0 +1,10 @@
+title: External ID
+type: string
+description: |
+  This user's ID in the school's School Information System (SIS).
+
+  This value is used to query the SIS for data that is stored in the SIS,
+  in particular:
+  * relationships with other users
+  * class enrolments
+  * timetabled classes

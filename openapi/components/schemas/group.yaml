@@ -1,0 +1,45 @@
+title: Group
+description: |
+  A group within Schoolbox.
+
+  This contains some of the folder's fields in this context.
+type: object
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    description: |
+      The name of the group.
+
+      In this context, this is the name of the group's folder.
+  access:
+    description: |
+      The level of access that users have to this group.
+
+      * Restricted: membership is by invitation only
+      * Moderated: users may apply for membership, but must be approved
+      * Free: users may join and leave at any time
+    type: string
+    enum:
+      - restricted
+      - moderated
+      - free
+  subscriptionLevel:
+    description: |
+      The level of subscription that is allowed to this group.
+
+      * Disabled: users may not subscribe to this group's events
+      * Enabled: users may subscribe to this group's events
+      * Forced: users must subscribe to this group's events, and may not
+        unsubscribe
+    type: string
+    enum:
+      - disabled
+      - enabled
+      - forced
+  _links:
+    type: object
+    properties:
+      homepage:
+        type: string
+        format: uri-reference

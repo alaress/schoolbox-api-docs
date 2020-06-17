@@ -21,7 +21,7 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: 'user/groupMembership.yaml#/components/schemas/groupMembership'
+      $ref: ./user/groupMembership.yaml
 
   schoolHouse:
     $ref: schoolHouse.yaml
