@@ -1,7 +1,7 @@
 Code samples
 =====
 
-This is our recommended convention for organizing `code_samples`:
+Recommended convention for organizing `code_samples`:
 
 [x-code-samples](https://github.com/Rebilly/ReDoc/blob/master/docs/redoc-vendor-extensions.md#x-code-samples)
 Path `<lang>/<path>/<HTTP verb>.<extension>` where:

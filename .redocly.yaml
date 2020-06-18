@@ -5,7 +5,7 @@ lint:
   rules:
     no-unused-schemas: warning
 referenceDocs:
-  htmlTemplate: ./docs/preview.html
+  htmlTemplate: ./docs/template.html
   theme:
     colors:
       primary:
