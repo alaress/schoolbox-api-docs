@@ -1,0 +1,8 @@
+type:         http
+scheme:       bearer
+bearerFormat: JWT
+description: |
+  A JWT generated for a particular user.
+
+  This token allows the bearer to perform requests within the context of the
+  user for whom the token was generated.

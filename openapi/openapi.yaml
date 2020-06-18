@@ -77,8 +77,11 @@ security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.
   - session: []
+  - bearerAuth: []
 
 components:
   securitySchemes:
     session:
       $ref: components/securitySchemes/session.yaml
+    bearerAuth:
+      $ref: components/securitySchemes/bearerAuth.yaml
