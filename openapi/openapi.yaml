@@ -76,22 +76,9 @@ paths:
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.
-  - bearerAuth:     []
+  - session: []
 
 components:
   securitySchemes:
-    main_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: 'http://example.com/api/oauth/dialog'
-          scopes:
-            'read:users': read users info
-            'write:users': modify or remove users
-    api_key:
-      type: apiKey
-      in: header
-      name: api_key
-    basic_auth:
-      type: http
-      scheme: basic
+    session:
+      $ref: components/securitySchemes/session.yaml

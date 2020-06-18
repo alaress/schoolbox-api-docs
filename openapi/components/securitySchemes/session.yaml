@@ -1,0 +1,13 @@
+# I suppose that a session cookie counts as a apiKey?
+type: apiKey
+in:   cookie
+name: PHPSESSID
+description: |
+  A cookie which represents a session which has already been authenticated as a
+  particular Schoolbox user.
+
+  The authentication may have occurred via Schoolbox's login form, or via a
+  third-party identity provider.
+
+  Expect that this security scheme will be deprecated in the near future, when
+  an API token based authentication scheme is implemented.
