@@ -73,6 +73,11 @@ paths:
   /discussion/{contextType}/{contextId}/threads/{id}/close:
     $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@close.yaml'
 
+security:
+  # Authorization is handled by Schoolbox itself once a user is authenticated:
+  # therefore, no scopes are defined for any security scheme.
+  - bearerAuth:     []
+
 components:
   securitySchemes:
     main_auth:
