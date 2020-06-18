@@ -1,6 +1,6 @@
-# schoolbox-api OpenAPI Definition
+# Schoolbox API Reference
 
-## Working on your OpenAPI Definition
+## Getting Started
 
 ### Install
 
