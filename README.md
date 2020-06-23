@@ -4,7 +4,7 @@
 
 ### Install
 
-1. Install [Node JS](https://nodejs.org/).
+1. Install [Node.js](https://nodejs.org/).
 2. Clone this repo and run `npm install` in the repo root.
 
 ### Usage
@@ -13,24 +13,23 @@
 Starts the reference docs preview server.
 
 #### `npm run build`
-Bundles the definition to the dist folder.
+Bundles the definition to the `dist` folder.
 
 #### `npm test`
 Validates the definition.
 
 #### `npm run build-static`
-Bundles the definition to the dist folder, and bundles a zero-dependency HTML
+Bundles the definition to the `dist` folder, and bundles a zero-dependency HTML
 version of the definition to `docs/index.html`.
 
 ## Contribution Guide
 
 ### Configuration
 
-The `.redocly.yaml` controls settings for various
-tools including the lint tool and the reference
-docs engine.  Open it to find examples and 
-[read the docs](https://docs.redoc.ly/cli/configuration/)
-for more information.
+`.redocly.yaml` controls settings for various tools, including the `lint` tool
+and the reference docs engine.
+
+More information is available at https://docs.redoc.ly/cli/configuration/.
 
 
 ### Paths
