@@ -19,7 +19,7 @@ info:
 
 tags:
   - name: user
-    x-displayName: Users
+    x-displayName: Users (under development)
     description: |
       Create and manage users.
 
