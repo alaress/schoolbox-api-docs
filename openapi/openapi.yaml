@@ -4,10 +4,8 @@ info:
   version: 1.0.0
   title:       Schoolbox API
   description: |
-    Schoolbox API.
-
-    An umbrella spec for all the other API specs that have been developed for
-    Schoolbox.
+    This document describes the API endpoints that are available to a Schoolbox
+    instance.
   x-api-id:    0609d493-8804-4e97-b5ac-0ed7b3c99db8
   x-audience:  external-partner
   contact:
@@ -19,7 +17,7 @@ info:
 
 tags:
   - name: user
-    x-displayName: Users
+    x-displayName: Users (under development)
     description: |
       Create and manage users.
 
