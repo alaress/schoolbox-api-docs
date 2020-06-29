@@ -1,0 +1,30 @@
+get:
+  operationId: userGetTokenForSelf
+  tags: [user]
+  summary: Get an authentication token for the current user
+  description: |
+    Retrieve an authentication token for the user identified by the session
+    cookie.
+
+    This endpoint is intended so that in-browser API calls performed within
+    a Schoolbox instance may be performed in a manner more in common with
+    calls to a remote API.
+  security:
+    - session: []
+  responses:
+    '200':
+      description: A user token
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                description: |
+                  A JSON Web Token (JWT) that may be used to perform API
+                  calls as the user identified by the session cookie.
+
+                  This is the "BearerAuth" security scheme.
+    default:
+      $ref: ../components/responses/problem.yaml
