@@ -1,0 +1,11 @@
+type: object
+properties:
+  token:
+    type: string
+    description: |
+      A JSON Web Token (JWT) which authenticates the bearer as a particular
+      user, and allows the bearer to perform API calls within the context of
+      that user.
+
+      This token is passed to the Schoolbox API according to the "BearerAuth"
+      security scheme (i.e. in a HTTP header `Authorization: Bearer $token`).

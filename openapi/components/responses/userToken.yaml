@@ -2,12 +2,4 @@ description: A user token
 content:
   application/json:
     schema:
-      type: object
-      properties:
-        token:
-          type: string
-          description: |
-            A JSON Web Token (JWT) that may be used to perform API
-            calls as the user identified by the session cookie.
-
-            This is the "BearerAuth" security scheme.
+      $ref: ../schemas/userToken.yaml
