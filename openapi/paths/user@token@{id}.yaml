@@ -4,28 +4,13 @@ get:
   summary: Get an authentication token for another user
   description: |
     Retrieve an authentication token for another user.
-  security:
-    - session: []
+
+    Only users which are authenticated as a superuser may request a token for
+    another user.
   responses:
     '200':
-      description: A user token
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              token:
-                type: string
-                description: |
-                  A JSON Web Token (JWT) that may be used to perform API
-                  calls as the user identified by the session cookie.
-
-                  This is the "BearerAuth" security scheme.
+      $ref: ../components/responses/userToken.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
+    - $ref: ../components/parameters/id.yaml
