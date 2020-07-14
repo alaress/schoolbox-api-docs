@@ -41,6 +41,12 @@ paths:
   /user:
     $ref: 'paths/user.yaml'
 
+  /user/token:
+    $ref: 'paths/user@token.yaml'
+
+  /user/token/{id}:
+    $ref: 'paths/user@token@{id}.yaml'
+
   /user/{id}:
     $ref: 'paths/user@{id}.yaml'
 
