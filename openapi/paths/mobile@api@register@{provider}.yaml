@@ -45,26 +45,25 @@ post:
     content:
       application/x-www-form-urlencoded:
         schema:
-            type: object
-            properties:
-              username:
-                description: The user who logged into the device
-                type: string
-              password:
-                description: The users password who logged into the device
-                type: string
-              jwt:
-                description: Optionally you may provide a JWT token generated via an oAuth request instead of a username password pair
-                type: string
-              token:
-                description: A unique string used to identify the user on the device, you don't provide this no device will be registered
-                type: string
-              appId:
-                description: A unique string to identify the apps identity
-                type: string
-                required: true
-              deviceId:
-                description: A unique string to identify the device identity, this is normally not provided or is the same as the app id due to limitations by device makers.
-                type: string
-
-
+          type: object
+          properties:
+            username:
+              description: The user who logged into the device
+              type: string
+            password:
+              description: The users password who logged into the device
+              type: string
+            jwt:
+              description: Optionally you may provide a JWT token generated via an oAuth request instead of a username password pair
+              type: string
+            token:
+              description: A unique string used to identify the user on the device, you don't provide this no device will be registered
+              type: string
+            appId:
+              description: A unique string to identify the apps identity
+              type: string
+            deviceId:
+              description: A unique string to identify the device identity, this is normally not provided or is the same as the app id due to limitations by device makers.
+              type: string
+          required:
+            - appId

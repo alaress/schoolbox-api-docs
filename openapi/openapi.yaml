@@ -82,8 +82,8 @@ paths:
   /discussion/{contextType}/{contextId}/threads/{id}/close:
     $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@close.yaml'
 
-  /api/register/{service}:
-    $ref: 'paths/mobile@api@register@{service}.yaml'
+  /api/register/{provider}:
+    $ref: 'paths/mobile@api@register@{provider}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
