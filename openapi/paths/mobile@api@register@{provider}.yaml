@@ -39,7 +39,8 @@ post:
       description: Not enough data provided or could not authenticate user
       content:
         text/plain:
-          type: string
+          schema:
+            type: string
 
   requestBody:
     content:
