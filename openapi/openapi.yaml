@@ -26,6 +26,11 @@ tags:
     description: |
       Create and manage discussion threads and comments.
 
+  - name: mobile
+    x-displayName: Push Notification
+    description: Endpoints for Mobile App Developers to connect and register devices
+
+
 servers:
   - url: https://{hostname}.{domain}/
     variables:
@@ -76,6 +81,9 @@ paths:
 
   /discussion/{contextType}/{contextId}/threads/{id}/close:
     $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@close.yaml'
+
+  /api/register/{provider}:
+    $ref: 'paths/mobile@api@register@{provider}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
