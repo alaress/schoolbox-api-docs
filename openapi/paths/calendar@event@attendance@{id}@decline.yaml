@@ -1,0 +1,12 @@
+post:
+  operationId: postCalendarEventAttendance
+  tags: [calendar]
+  summary: |
+    As the authenticated user, accepts attendance to the given event.
+  responses:
+    '200':
+      $ref: ../components/responses/calendarAttendance-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml

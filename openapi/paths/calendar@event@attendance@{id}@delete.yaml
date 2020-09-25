@@ -1,0 +1,23 @@
+post:
+  operationId: postCalendarEventAttendanceDelete
+  tags: [calendar]
+  summary: |
+    Deletes an attendance record for the given event.
+  responses:
+    '200':
+      $ref: ../components/responses/calendarAttendance-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    required: true
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            userId:
+              description: |
+                A user ID to remove attendance from.
+              type: integer
+  parameters:
+    - $ref: ../components/parameters/id.yaml
