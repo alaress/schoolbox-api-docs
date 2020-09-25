@@ -26,6 +26,11 @@ tags:
     description: |
       Create and manage users.
 
+  - name: calendar
+    x-displayName: Calendar
+    description: |
+      Create and manage calendar events.
+
   - name: discussion
     x-displayName: Discussions
     description: |
@@ -93,6 +98,20 @@ paths:
   /api/register/{provider}:
     $ref: 'paths/api@register@{provider}.yaml'
 
+  /calendar/event/attendance/{id}:
+    $ref: 'paths/calendar@event@attendance@{id}.yaml'
+
+  /calendar/event/attendance/{id}/create:
+    $ref: 'paths/calendar@event@attendance@{id}@create.yaml'
+
+  /calendar/event/attendance/{id}/accept:
+    $ref: 'paths/calendar@event@attendance@{id}@accept.yaml'
+
+  /calendar/event/attendance/{id}/decline:
+    $ref: 'paths/calendar@event@attendance@{id}@decline.yaml'
+
+  /calendar/event/attendance/{id}/delete:
+    $ref: 'paths/calendar@event@attendance@{id}@delete.yaml'
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.
