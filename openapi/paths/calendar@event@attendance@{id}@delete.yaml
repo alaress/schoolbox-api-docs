@@ -1,8 +1,9 @@
 post:
   operationId: postCalendarEventAttendanceDelete
   tags: [calendar]
-  summary: |
-    Deletes an attendance record for the given event.
+  summary: Uninvite attendees from an event
+  description: |
+    Deletes invitations to the given event, for the given user.
   responses:
     '200':
       $ref: ../components/responses/calendarAttendance-item.yaml
