@@ -1,10 +1,9 @@
 post:
   operationId: postCalendarEventAttendanceCreate
   tags: [calendar]
-  summary: |
-    Creates attendance records for the given event.
-
-    This has the effect of inviting the given users to the event.
+  summary: Invite attendees to an event
+  description: |
+    Creates invitations to the given event, for the given set of users.
   responses:
     '200':
       $ref: ../components/responses/calendarAttendance-item.yaml
