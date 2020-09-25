@@ -2,43 +2,4 @@ description: Calendar event attendance
 content:
   application/json:
     schema:
-      title: Attendance
-      description: A list of users
-      readOnly: true
-      type: object
-      properties:
-        level:
-          type: integer
-        currentUser:
-          type: object
-          properties:
-            user:
-              type: object
-            status:
-              type: integer
-              nullable: true
-            canModify:
-              type: boolean
-            canInvite:
-              type: boolean
-        attendees:
-          type: object
-          properties:
-            guests:
-              type: array
-              items:
-                type: object
-            max:
-              type: integer
-              nullable: true
-            num:
-              type: integer
-            available:
-              type: integer
-              nullable: true
-            pending:
-              type: integer
-            accepted:
-              type: integer
-            declined:
-              type: integer
+      $ref: ../schemas/calendarAttendance.yaml
