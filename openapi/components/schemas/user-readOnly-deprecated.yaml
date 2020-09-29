@@ -1,0 +1,38 @@
+description: |
+  The existing set of read-only user fields.
+
+  (The code which outputs a user in this format was built before the user API
+   was designed, and is expected to be replaced by the user API.)
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+
+  externalId:
+    $ref: ./externalId.yaml
+
+  title:
+    type: string
+    nullable: true
+    description: The user's title (Mr., Ms., etc.).
+
+  firstname:
+    type: string
+    nullable: true
+    description: |
+      The user's first name.
+
+      Schoolbox doesn't distinguish between a person's actual first name
+      and any other names, and in any case is not the definitive source of
+      naming information; therefore in practice this will usually be the
+      user's given name.
+
+  lastname:
+    type: string
+    nullable: true
+    description: The user's surname.
+
+required:
+  - id
+readOnly: true
+deprecated: true
