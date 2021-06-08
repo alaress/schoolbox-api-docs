@@ -5,8 +5,6 @@ description: |
 content:
   application/x-www-form-urlencoded:
     schema:
-      allOf:
-        - oneOf:
-            - $ref: ../schemas/authentication-username-password.yaml
-            - $ref: ../schemas/authentication-jwt.yaml
-        - $ref: ../schemas/registration.yaml
+      oneOf:
+        - $ref: ../schemas/registration-usernamePassword.yaml
+        - $ref: ../schemas/registration-jwt.yaml
