@@ -20,3 +20,5 @@ content:
         username:
           description: The user who logged into the device
           type: string
+headers:
+  $ref: '../headers/sessionCookie.yaml'
