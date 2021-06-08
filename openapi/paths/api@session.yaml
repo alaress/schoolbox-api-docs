@@ -8,9 +8,9 @@ get:
     - none: []
   responses:
     '200':
-      $ref: ../components/responses/authenticated-user.yaml
+      $ref: ../components/responses/authentication-successUser.yaml
     '302':
-      $ref: ../components/responses/authenticated-redirect.yaml
+      $ref: ../components/responses/authentication-successRedirect.yaml
     '400':
       $ref: ../components/responses/authentication-failed.yaml
     default:
@@ -35,9 +35,9 @@ post:
     - none: []
   responses:
     '200':
-      $ref: ../components/responses/authenticated-user.yaml
+      $ref: ../components/responses/authentication-successUser.yaml
     '302':
-      $ref: ../components/responses/authenticated-redirect.yaml
+      $ref: ../components/responses/authentication-successRedirect.yaml
     '400':
       $ref: ../components/responses/authentication-failed.yaml
     default:
