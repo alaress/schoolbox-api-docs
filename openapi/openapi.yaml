@@ -91,7 +91,7 @@ paths:
     $ref: 'paths/api@session.yaml'
 
   /api/register/{provider}:
-    $ref: 'paths/mobile@api@register@{provider}.yaml'
+    $ref: 'paths/api@register@{provider}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
