@@ -8,14 +8,21 @@ post:
   parameters:
     - name: provider
       in: path
-      description: The type of device that is connecting to the service, either Apple (APNS) of Google Andriod (GCM).
+      description: |
+        The type of device that is connecting to the service.
+
+        As of this version, this is expected to always be "Digistorm". Apple
+        (APNS) or Google Android (GCM) are still supported, but deprecated: the
+        Digistorm provider will handle the sending of notifications via APNS or
+        GCM internally.
       required: true
-      example: 'GCM'
+      example: 'Digistorm'
       schema:
         type: string
         enum:
           - GCM
           - APNS
+          - Digistorm
   responses:
     '201':
       description: Mobile return data
@@ -35,6 +42,9 @@ post:
                 type: string
                 enum: ['staff','student','parent','guest']
                 example: 'parent'
+              username:
+                description: The user who logged into the device
+                type: string
     '400':
       description: Not enough data provided or could not authenticate user
       content:
