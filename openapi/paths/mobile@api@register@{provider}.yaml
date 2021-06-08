@@ -25,56 +25,11 @@ post:
           - Digistorm
   responses:
     '201':
-      description: Mobile return data
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              id:
-                description: A schoolbox user ID number
-                type: integer
-              key:
-                description: A key for accessing resources on behalf of that user like RSS or VCAL feeds
-                type: string
-              role:
-                description: The role type the user has in Schoolbox
-                type: string
-                enum: ['staff','student','parent','guest']
-                example: 'parent'
-              username:
-                description: The user who logged into the device
-                type: string
+      $ref: ../components/responses/authenticated-user.yaml
     '400':
-      description: Not enough data provided or could not authenticate user
-      content:
-        text/plain:
-          schema:
-            type: string
+      $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
 
   requestBody:
-    content:
-      application/x-www-form-urlencoded:
-        schema:
-          type: object
-          properties:
-            username:
-              description: The user who logged into the device
-              type: string
-            password:
-              description: The users password who logged into the device
-              type: string
-            jwt:
-              description: Optionally you may provide a JWT token generated via an oAuth request instead of a username password pair
-              type: string
-            token:
-              description: A unique string used to identify the user on the device, you don't provide this no device will be registered
-              type: string
-            appId:
-              description: A unique string to identify the apps identity
-              type: string
-            deviceId:
-              description: A unique string to identify the device identity, this is normally not provided or is the same as the app id due to limitations by device makers.
-              type: string
-          required:
-            - appId
+    $ref: ../components/requestBodies/registration.yaml

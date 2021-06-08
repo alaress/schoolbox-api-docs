@@ -1,0 +1,12 @@
+description: |
+  A request to create a mobile app registration for a user.
+
+  Includes authentication data, either via JWT or username/password.
+content:
+  application/x-www-form-urlencoded:
+    schema:
+      allOf:
+        - oneOf:
+            - $ref: ../schemas/authentication-username-password.yaml
+            - $ref: ../schemas/authentication-jwt.yaml
+        - $ref: ../schemas/registration.yaml

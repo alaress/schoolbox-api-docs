@@ -11,12 +11,14 @@ get:
       $ref: ../components/responses/authenticated-user.yaml
     '302':
       $ref: ../components/responses/authenticated-redirect.yaml
+    '400':
+      $ref: ../components/responses/authentication-failed.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
     - name:        jwt
       in:          query
-      description: Provide a JWT generated via an oAuth request.
+      description: A JWT generated via an oAuth request.
       required:    true
       schema:
         type: string
@@ -36,29 +38,9 @@ post:
       $ref: ../components/responses/authenticated-user.yaml
     '302':
       $ref: ../components/responses/authenticated-redirect.yaml
+    '400':
+      $ref: ../components/responses/authentication-failed.yaml
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    content:
-      application/x-www-form-urlencoded:
-        schema:
-          oneOf:
-            - type: object
-              description: Username/Password
-              properties:
-                username:
-                  description: The user who logged into the device
-                  type: string
-                  required: true
-                password:
-                  description: The users password who logged into the device
-                  type: string
-                  required: true
-            - type: object
-              description: JWT
-              properties:
-                jwt:
-                  description: Optionally you may provide a JWT generated via an oAuth request instead of a username/password pair.
-                  type: string
-                  required: true
-
+    $ref: ../components/requestBodies/authentication.yaml
