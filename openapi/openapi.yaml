@@ -16,6 +16,11 @@ info:
     url: './logo.png'
 
 tags:
+  - name: session
+    x-displayName: Session management
+    description: |
+      Authenticate and create sessions for users.
+
   - name: user
     x-displayName: Users (under development)
     description: |

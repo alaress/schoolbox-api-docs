@@ -1,7 +1,9 @@
 get:
   operationId: apiSessionGet
-  tags: [mobile]
+  tags: [session]
   summary: Create a user session via data in the query string
+  description: |
+    Attempt to authenticate a user based on a JWT passed in the query string.
   security:
     - none: []
   responses:
@@ -12,27 +14,21 @@ get:
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
-    - name:        username
-      in:          query
-      description: The user who logged into the device
-      schema:
-        type: string
-    - name:        password
-      in:          query
-      description: The users password who logged into the device
-      schema:
-        type: string
     - name:        jwt
       in:          query
-      description: Optionally you may provide a JWT token generated via an oAuth request instead of a username password pair
+      description: Provide a JWT generated via an oAuth request.
+      required:    true
       schema:
         type: string
 
 
 post:
   operationId: apiSessionPost
-  tags: [mobile]
+  tags: [session]
   summary: Create a user session via data in the request body
+  description: |
+    Attempt to authenticate a user based on either a username/password pair, or
+    a JWT passed in form data.
   security:
     - none: []
   responses:
@@ -46,15 +42,23 @@ post:
     content:
       application/x-www-form-urlencoded:
         schema:
-          type: object
-          properties:
-            username:
-              description: The user who logged into the device
-              type: string
-            password:
-              description: The users password who logged into the device
-              type: string
-            jwt:
-              description: Optionally you may provide a JWT token generated via an oAuth request instead of a username password pair
-              type: string
+          oneOf:
+            - type: object
+              description: Username/Password
+              properties:
+                username:
+                  description: The user who logged into the device
+                  type: string
+                  required: true
+                password:
+                  description: The users password who logged into the device
+                  type: string
+                  required: true
+            - type: object
+              description: JWT
+              properties:
+                jwt:
+                  description: Optionally you may provide a JWT generated via an oAuth request instead of a username/password pair.
+                  type: string
+                  required: true
 
