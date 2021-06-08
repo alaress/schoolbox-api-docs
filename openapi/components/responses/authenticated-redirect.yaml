@@ -1,0 +1,4 @@
+description: |
+  A redirect to another location within the Schoolbox instance,
+  if the user was successfully authenticated and the request was not made
+  via JSON.

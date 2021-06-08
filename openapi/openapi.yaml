@@ -82,6 +82,9 @@ paths:
   /discussion/{contextType}/{contextId}/threads/{id}/close:
     $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@close.yaml'
 
+  /api/session:
+    $ref: 'paths/api@session.yaml'
+
   /api/register/{provider}:
     $ref: 'paths/mobile@api@register@{provider}.yaml'
 

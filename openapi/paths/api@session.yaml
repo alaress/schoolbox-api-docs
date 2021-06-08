@@ -1,0 +1,60 @@
+get:
+  operationId: apiSessionGet
+  tags: [mobile]
+  summary: Create a user session via data in the query string
+  security:
+    - none: []
+  responses:
+    '200':
+      $ref: ../components/responses/authenticated-user.yaml
+    '302':
+      $ref: ../components/responses/authenticated-redirect.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name:        username
+      in:          query
+      description: The user who logged into the device
+      schema:
+        type: string
+    - name:        password
+      in:          query
+      description: The users password who logged into the device
+      schema:
+        type: string
+    - name:        jwt
+      in:          query
+      description: Optionally you may provide a JWT token generated via an oAuth request instead of a username password pair
+      schema:
+        type: string
+
+
+post:
+  operationId: apiSessionPost
+  tags: [mobile]
+  summary: Create a user session via data in the request body
+  security:
+    - none: []
+  responses:
+    '200':
+      $ref: ../components/responses/authenticated-user.yaml
+    '302':
+      $ref: ../components/responses/authenticated-redirect.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            username:
+              description: The user who logged into the device
+              type: string
+            password:
+              description: The users password who logged into the device
+              type: string
+            jwt:
+              description: Optionally you may provide a JWT token generated via an oAuth request instead of a username password pair
+              type: string
+
