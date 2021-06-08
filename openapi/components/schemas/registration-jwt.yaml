@@ -1,0 +1,3 @@
+allOf:
+  - $ref: authentication-jwt.yaml
+  - $ref: registration-base.yaml

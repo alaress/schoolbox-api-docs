@@ -1,0 +1,6 @@
+Cookie:
+  description: |
+    Contains the value of the session cookie as defined in the "session"
+    security scheme.
+  schema:
+    type: string

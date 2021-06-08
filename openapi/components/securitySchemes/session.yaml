@@ -9,5 +9,5 @@ description: |
   The authentication may have occurred via Schoolbox's login form, or via a
   third-party identity provider.
 
-  Expect that this security scheme will be deprecated in the near future, when
-  an API token based authentication scheme is implemented.
+  Expect that this security scheme will eventually be deprecated for API
+  requests, when an API token based authentication scheme is implemented.

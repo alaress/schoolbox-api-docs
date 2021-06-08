@@ -1,0 +1,24 @@
+description: |
+  User information, if the user was successfully authenticated and the
+  request was made via JSON.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        id:
+          description: A schoolbox user ID number
+          type: integer
+        key:
+          description: A key for accessing resources on behalf of that user like RSS or VCAL feeds
+          type: string
+        role:
+          description: The role type the user has in Schoolbox
+          type: string
+          enum: ['staff','student','parent','guest']
+          example: 'parent'
+        username:
+          description: The user who logged into the device
+          type: string
+headers:
+  $ref: '../headers/sessionCookie.yaml'

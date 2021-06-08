@@ -1,0 +1,24 @@
+type: object
+description: Mobile App Registration
+properties:
+  token:
+    description: |
+      A unique string used to identify the user on the device.
+
+      Ignored if using the Digistorm provider: otherwise, if not
+      provided no device will be registered.
+    type: string
+  appId:
+    description: |
+      A unique string to identify the app's identity.
+    type: string
+  deviceId:
+    description: |
+      An optional unique string to identify the device identity.
+
+      Stored but not used if using the Digistorm provider: otherwise,
+      this is normally not provided or is the same as the app ID due
+      to limitations enforced by device makers.
+    type: string
+required:
+  - appId

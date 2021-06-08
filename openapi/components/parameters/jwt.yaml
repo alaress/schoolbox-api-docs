@@ -1,0 +1,6 @@
+name:        jwt
+in:          query
+description: A JWT generated via an oAuth request.
+required:    true
+schema:
+  type: string

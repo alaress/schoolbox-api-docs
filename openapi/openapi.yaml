@@ -1,7 +1,7 @@
 openapi: 3.0.2
 
 info:
-  version: 1.0.0
+  version: 1.0.1
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
@@ -16,6 +16,11 @@ info:
     url: './logo.png'
 
 tags:
+  - name: session
+    x-displayName: Session management
+    description: |
+      Authenticate and create sessions for users.
+
   - name: user
     x-displayName: Users (under development)
     description: |
@@ -82,8 +87,11 @@ paths:
   /discussion/{contextType}/{contextId}/threads/{id}/close:
     $ref: 'paths/discussion@{contextType}@{contextId}@threads@{id}@close.yaml'
 
+  /api/session:
+    $ref: 'paths/api@session.yaml'
+
   /api/register/{provider}:
-    $ref: 'paths/mobile@api@register@{provider}.yaml'
+    $ref: 'paths/api@register@{provider}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
