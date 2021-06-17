@@ -1,0 +1,107 @@
+get:
+  operationId: commsNews.getIndex
+  tags: [comms]
+  summary: HTML template for news home page
+  responses:
+    '200':
+      content:
+        text/html:
+          schema:
+            type: string
+            description: A HTML template into which news articles are loaded.
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: c
+      in: query
+      description: |
+        Is compact mode enabled?
+      schema:
+        $ref: ../components/schemas/queryBoolean.yaml
+
+    - name: topic
+      in: query
+      description: |
+        Currently selected news topic
+      schema:
+        type: string
+
+    - name: p
+      in: query
+      description: |
+        Current page of results
+      schema:
+        type: integer
+
+    - name: l
+      in: query
+      description: |
+        Limit of results to show per page
+      schema:
+        type: integer
+
+    - name: hp
+      in: query
+      description: |
+        Should the paginator be hidden?
+      schema:
+        $ref: ../components/schemas/queryBoolean.yaml
+
+    - name: f
+      in: query
+      description: |
+        If provided, show only news from this folder.
+      schema:
+        type: integer
+
+    - name: ref
+      in: query
+      description: |
+        Referrer type for this news page.
+      schema:
+        type: string
+        enum:
+          - archive
+          - dashboard
+          - email
+          - homepage
+          - index
+          - rss
+          - saved
+          - search
+
+    - name: status
+      in: query
+      description: |
+        Fetch only news with this publication status.
+      schema:
+        type: string
+        enum:
+          - 'All'
+          - 'Drafted'
+          - 'Awaiting Moderation'
+          - 'Rejected'
+          - 'Awaiting Publication'
+          - 'Published'
+          - 'Archived'
+
+    - name: type
+      in: query
+      description: |
+        If provided, only allow news of this type to be created from this page.
+
+        Currently, only "folder" is supported, in conjunction with the "f" query
+        parameter.
+      schema:
+        type: string
+        enum:
+          - folder
+
+    - $ref: ../components/parameters/returnUrl.yaml
+
+    - name: cid
+      in: query
+      description: |
+        If provided, redirect back to this component ID when done creating news.
+      schema:
+        type: integer

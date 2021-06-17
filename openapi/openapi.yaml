@@ -35,6 +35,10 @@ tags:
     x-displayName: Push Notification
     description: Endpoints for Mobile App Developers to connect and register devices
 
+  - name: comms
+    x-displayName: Communications
+    description: |
+      Create and manage school communications, commonly known as news.
 
 servers:
   - url: https://{hostname}.{domain}/
@@ -92,6 +96,9 @@ paths:
 
   /api/register/{provider}:
     $ref: 'paths/api@register@{provider}.yaml'
+
+  /news:
+    $ref: 'paths/news.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

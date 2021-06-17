@@ -1,0 +1,7 @@
+type: integer
+description: |
+  A truthy integer value (0 or 1).
+
+  0 evaluates to false; 1 evaluates to true.
+enum: [0, 1]
+default: 0
