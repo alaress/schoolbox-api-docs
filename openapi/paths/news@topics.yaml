@@ -6,11 +6,11 @@ get:
     Retrieve all available news topics, which may be attached to a news article.
   responses:
     '200':
+      description: All available news topics.
       content:
         application/json:
           schema:
             type: array
-            description: All available news topics.
             items:
               type: object
               properties:

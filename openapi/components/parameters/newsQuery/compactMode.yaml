@@ -3,4 +3,4 @@ in: query
 description: |
   Is compact mode enabled?
 schema:
-  $ref: ../components/schemas/queryBoolean.yaml
+  $ref: ../../schemas/queryBoolean.yaml

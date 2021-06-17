@@ -4,11 +4,11 @@ get:
   summary: HTML template for news create page
   responses:
     '200':
+      description: A HTML template for the news create page.
       content:
         text/html:
           schema:
             type: string
-            description: A HTML template for the news create page.
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
@@ -22,7 +22,7 @@ get:
     - $ref: ../components/parameters/newsQuery/status.yaml
     - $ref: ../components/parameters/newsQuery/type.yaml
     - $ref: ../components/parameters/returnUrl.yaml
-    - $ref: ../components/parameters/newsQuery/cid.yaml
+    - $ref: ../components/parameters/newsQuery/componentId.yaml
 
 post:
   operationId: commsNews.postCreate

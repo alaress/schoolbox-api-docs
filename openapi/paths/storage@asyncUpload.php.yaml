@@ -9,6 +9,8 @@ post:
     another place which accepts file uploads.
   responses:
     default:
+      description: |
+        A description of a file upload.
       content:
         application/json:
           schema:

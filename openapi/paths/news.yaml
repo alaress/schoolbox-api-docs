@@ -4,11 +4,12 @@ get:
   summary: HTML template for news home page
   responses:
     '200':
+      description: |
+        A HTML template into which news articles are loaded.
       content:
         text/html:
           schema:
             type: string
-            description: A HTML template into which news articles are loaded.
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
@@ -22,4 +23,4 @@ get:
     - $ref: ../components/parameters/newsQuery/status.yaml
     - $ref: ../components/parameters/newsQuery/type.yaml
     - $ref: ../components/parameters/returnUrl.yaml
-    - $ref: ../components/parameters/newsQuery/cid.yaml
+    - $ref: ../components/parameters/newsQuery/componentId.yaml
