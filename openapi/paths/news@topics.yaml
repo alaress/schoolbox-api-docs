@@ -1,0 +1,27 @@
+get:
+  operationId: commsNews.getTopics
+  tags: [comms]
+  summary: Get available news topics
+  description: |
+    Retrieve all available news topics, which may be attached to a news article.
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: array
+            description: All available news topics.
+            items:
+              type: object
+              properties:
+                id:
+                  $ref: ../components/schemas/id.yaml
+                name:
+                  type: string
+                  description: The topic's name.
+                sequence:
+                  type: integer
+                  description: |
+                    The order in which this topic will display in a topic list.
+    default:
+      $ref: ../components/responses/problem.yaml
