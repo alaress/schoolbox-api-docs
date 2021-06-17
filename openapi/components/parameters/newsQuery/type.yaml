@@ -1,0 +1,11 @@
+name: type
+in: query
+description: |
+  If provided, only allow news of this type to be created from this page.
+
+  Currently, only "folder" is supported, in conjunction with the "f" query
+  parameter.
+schema:
+  type: string
+  enum:
+    - folder

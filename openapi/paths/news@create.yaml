@@ -1,14 +1,14 @@
 get:
-  operationId: commsNews.getIndex
+  operationId: commsNews.getCreate
   tags: [comms]
-  summary: HTML template for news home page
+  summary: HTML template for news create page
   responses:
     '200':
       content:
         text/html:
           schema:
             type: string
-            description: A HTML template into which news articles are loaded.
+            description: A HTML template for the news create page.
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

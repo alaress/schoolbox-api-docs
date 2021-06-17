@@ -1,0 +1,6 @@
+name: f
+in: query
+description: |
+  If provided, show only news from this folder.
+schema:
+  type: integer

@@ -1,0 +1,6 @@
+name: p
+in: query
+description: |
+  Current page of results
+schema:
+  type: integer

@@ -1,0 +1,6 @@
+name: hp
+in: query
+description: |
+  Should the paginator be hidden?
+schema:
+  $ref: ../components/schemas/queryBoolean.yaml
