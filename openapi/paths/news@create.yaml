@@ -23,3 +23,14 @@ get:
     - $ref: ../components/parameters/newsQuery/type.yaml
     - $ref: ../components/parameters/returnUrl.yaml
     - $ref: ../components/parameters/newsQuery/cid.yaml
+
+post:
+  operationId: commsNews.postCreate
+  tags: [comms]
+  summary: Create a news article
+  description: |
+    Creates a new news article.
+
+    This new article's author will be the currently authenticated user.
+  requestBody:
+    $ref: ../components/requestBodies/newsItem.yaml

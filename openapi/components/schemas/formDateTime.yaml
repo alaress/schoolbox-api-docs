@@ -1,0 +1,8 @@
+title: Form datetime
+description: |
+  A datetime as entered via a standard Schoolbox datetime form input.
+
+  The format is dependent on the Schoolbox instance's "Numerical Date Format"
+  and "Time Format" settings: ideally, this would just be a "datetime" format
+  but the datetime input was developed before JSON was used for request bodies.
+type: string

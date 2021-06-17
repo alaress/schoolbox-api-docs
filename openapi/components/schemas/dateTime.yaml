@@ -11,7 +11,7 @@ oneOf:
     readOnly: true
     deprecated: true
     description: |
-      This read-only object representation is deprectaed and will be
+      This read-only object representation is deprecated and will be
       removed eventually: it exists only for compatibility with existing
       API endpoints.
 
