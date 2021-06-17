@@ -21,6 +21,11 @@ tags:
     description: |
       Authenticate and create sessions for users.
 
+  - name: file
+    x-displayName: File management
+    description: |
+      Upload files.
+
   - name: user
     x-displayName: Users (under development)
     description: |
@@ -96,6 +101,9 @@ paths:
 
   /api/register/{provider}:
     $ref: 'paths/api@register@{provider}.yaml'
+
+  /storage/asyncUpload.php:
+    $ref: 'paths/storage@asyncUpload.php.yaml'
 
   /news:
     $ref: 'paths/news.yaml'
