@@ -24,7 +24,6 @@ content:
           type: array
           items:
             $ref: ../schemas/id.yaml
-          style: form
         sticky:
           allOf:
             - description: |
@@ -46,16 +45,22 @@ content:
           type: array
           items:
             $ref: ../schemas/filePointer.yaml
-          style: form
           maxItems: 1
         attachedFiles[]:
           type: array
           items:
             $ref: ../schemas/filePointer.yaml
-          style: form
         audience:
           type: array
           items:
             $ref: ../schemas/news/audience.yaml
-          style: simple
           minItems: 1
+    encoding:
+      topics[]:
+        style: form
+      attachment[]:
+        style: form
+      attachedFiles[]:
+        style: form
+      audience:
+        style: simple
