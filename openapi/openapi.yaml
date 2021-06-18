@@ -123,6 +123,9 @@ paths:
   /news/{id}/delete:
     $ref: 'paths/news@{id}@delete.yaml'
 
+  /news/moderation/{id}/{status}:
+    $ref: 'paths/news@moderation@{id}@{status}.yaml'
+
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.
