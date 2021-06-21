@@ -15,11 +15,12 @@ post:
         - `accept`: accept the article for publication
         - `reject`: block the article from being published, or retract it from
                     publication
-      type: string
-      enum:
-        - submit
-        - accept
-        - reject
+      schema:
+        type: string
+        enum:
+          - submit
+          - accept
+          - reject
   responses:
     '302':
       $ref: ../components/responses/redirect.yaml
