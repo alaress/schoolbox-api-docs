@@ -13,6 +13,25 @@ post:
           schema:
             type: array
             items:
-              $ref: ../components/schemas/news/commonFields.yaml
+              allOf:
+                - $ref: ../components/schemas/news/commonFields.yaml
+                - type: object
+                  properties:
+                    author:
+                      type: object
+                      description: |
+                        The author's details: currently, only their name.
+                      properties:
+                        fullname:
+                          type: string
+                          description: |
+                            The author's full name.
+                    sticky:
+                      type: boolean
+                      description: |
+                        Is this article sticky?
+
+                        If so, it will always display at the top of the list of
+                        articles.
     default:
       $ref: ../components/responses/problem.yaml
