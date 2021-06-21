@@ -1,0 +1,23 @@
+post:
+  operationId: commsNewsFeed.getFeedForUser
+  tags: [comms]
+  summary: RSS feed of articles for a user
+  description: |
+    Get the articles for the user (identified by the `$key` parameter) as a RSS
+    document.
+
+    This endpoint doesn't use the standard security schemes: instead, it relies
+    upon the `$key` parameter remaining secret.
+  security: []
+  responses:
+    '200':
+      description: |
+        RSS feed of articles.
+      content:
+        application/rss+xml:
+          schema:
+            type: string
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/key.yaml

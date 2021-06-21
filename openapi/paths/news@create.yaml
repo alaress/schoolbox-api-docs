@@ -1,0 +1,43 @@
+get:
+  operationId: commsNews.getCreate
+  tags: [comms]
+  summary: HTML template for news create
+  responses:
+    '200':
+      description: A HTML template for the news create page.
+      content:
+        text/html:
+          schema:
+            type: string
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/newsQuery/compactMode.yaml
+    - $ref: ../components/parameters/newsQuery/topic.yaml
+    - $ref: ../components/parameters/newsQuery/page.yaml
+    - $ref: ../components/parameters/newsQuery/limit.yaml
+    - $ref: ../components/parameters/newsQuery/hidePaginator.yaml
+    - $ref: ../components/parameters/newsQuery/folderId.yaml
+    - $ref: ../components/parameters/newsQuery/referer.yaml
+    - $ref: ../components/parameters/newsQuery/status.yaml
+    - $ref: ../components/parameters/newsQuery/type.yaml
+    - $ref: ../components/parameters/returnUrl.yaml
+    - $ref: ../components/parameters/newsQuery/componentId.yaml
+
+post:
+  operationId: commsNews.postCreate
+  tags: [comms]
+  summary: Create a news article
+  description: |
+    Creates a new news article: the article's author will be the currently
+    authenticated user.
+
+    The article is not necessarily published yet: this simply saves the article
+    so that the user may refine it before publishing.
+  responses:
+    '200':
+      $ref: ../components/responses/news/save.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/newsItem.yaml

@@ -1,0 +1,6 @@
+name: c
+in: query
+description: |
+  Is compact mode enabled?
+schema:
+  $ref: ../../schemas/queryBoolean.yaml

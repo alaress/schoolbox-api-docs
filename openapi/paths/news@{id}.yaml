@@ -1,0 +1,34 @@
+get:
+  operationId: commsNews.getDetail
+  tags: [comms]
+  summary: HTML template for news article
+  responses:
+    '200':
+      description: A news article, rendered into a HTML template.
+      content:
+        text/html:
+          schema:
+            type: string
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+
+post:
+  operationId: commsNews.postUpdate
+  tags: [comms]
+  summary: Update a news article
+  description: |
+    Update an existing news article.
+
+    The article is not necessarily published yet: this simply saves the article
+    so that the user may refine it before publishing.
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/news/save.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/newsItem.yaml

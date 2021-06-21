@@ -1,0 +1,26 @@
+get:
+  operationId: commsNews.getCreateInFolder
+  tags: [comms]
+  summary: Redirect to the news create page for a single folder
+  responses:
+    '302':
+      $ref: ../components/responses/redirect.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: folderId
+      in: path
+      description: |
+        The ID of the folder to create news within.
+      schema:
+        type: integer
+    - $ref: ../components/parameters/newsQuery/compactMode.yaml
+    - $ref: ../components/parameters/newsQuery/topic.yaml
+    - $ref: ../components/parameters/newsQuery/page.yaml
+    - $ref: ../components/parameters/newsQuery/limit.yaml
+    - $ref: ../components/parameters/newsQuery/hidePaginator.yaml
+    - $ref: ../components/parameters/newsQuery/referer.yaml
+    - $ref: ../components/parameters/newsQuery/status.yaml
+    - $ref: ../components/parameters/newsQuery/type.yaml
+    - $ref: ../components/parameters/returnUrl.yaml
+    - $ref: ../components/parameters/newsQuery/componentId.yaml

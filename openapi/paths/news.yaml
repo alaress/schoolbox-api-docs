@@ -1,0 +1,26 @@
+get:
+  operationId: commsNews.getIndex
+  tags: [comms]
+  summary: HTML template for news home
+  responses:
+    '200':
+      description: |
+        A HTML template into which news articles are loaded.
+      content:
+        text/html:
+          schema:
+            type: string
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/newsQuery/compactMode.yaml
+    - $ref: ../components/parameters/newsQuery/topic.yaml
+    - $ref: ../components/parameters/newsQuery/page.yaml
+    - $ref: ../components/parameters/newsQuery/limit.yaml
+    - $ref: ../components/parameters/newsQuery/hidePaginator.yaml
+    - $ref: ../components/parameters/newsQuery/folderId.yaml
+    - $ref: ../components/parameters/newsQuery/referer.yaml
+    - $ref: ../components/parameters/newsQuery/status.yaml
+    - $ref: ../components/parameters/newsQuery/type.yaml
+    - $ref: ../components/parameters/returnUrl.yaml
+    - $ref: ../components/parameters/newsQuery/componentId.yaml

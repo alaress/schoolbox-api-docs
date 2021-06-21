@@ -1,0 +1,34 @@
+description: |
+  A summary of the saved news item's status.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        articleId:
+          $ref: ../../schemas/id.yaml
+        returnUrl:
+          $ref: ../../schemas/returnUrl.yaml
+        success:
+          type: boolean
+          description: |
+            Was the article successfully saved?
+
+            Note this doesn't mean that the article is necessary ready for
+            publishing.
+        approveRoute:
+          type: string
+          format: uri
+          description: |
+            The URL via which the user may approve this article.
+        submitRoute:
+          type: string
+          format: uri
+          description: |
+            The URL via which the user may submit this article for publish
+            or review.
+        updateRoute:
+          type: string
+          format: uri
+          description: |
+            The URL via which the user may update this article.

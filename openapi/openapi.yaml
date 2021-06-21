@@ -21,6 +21,11 @@ tags:
     description: |
       Authenticate and create sessions for users.
 
+  - name: file
+    x-displayName: File management
+    description: |
+      Upload files.
+
   - name: user
     x-displayName: Users (under development)
     description: |
@@ -35,6 +40,10 @@ tags:
     x-displayName: Push Notification
     description: Endpoints for Mobile App Developers to connect and register devices
 
+  - name: comms
+    x-displayName: Communications
+    description: |
+      Create and manage school communications, commonly known as news.
 
 servers:
   - url: https://{hostname}.{domain}/
@@ -92,6 +101,51 @@ paths:
 
   /api/register/{provider}:
     $ref: 'paths/api@register@{provider}.yaml'
+
+  /storage/asyncUpload.php:
+    $ref: 'paths/storage@asyncUpload.php.yaml'
+
+  /news:
+    $ref: 'paths/news.yaml'
+
+  /news/create:
+    $ref: 'paths/news@create.yaml'
+
+  /news/create/folder/{folderId}:
+    $ref: 'paths/news@create@folder@{folderId}.yaml'
+
+  /news/topics:
+    $ref: 'paths/news@topics.yaml'
+
+  /news/{id}:
+    $ref: 'paths/news@{id}.yaml'
+
+  /news/{id}/update:
+    $ref: 'paths/news@{id}@update.yaml'
+
+  /news/{id}/delete:
+    $ref: 'paths/news@{id}@delete.yaml'
+
+  /news/moderation/{id}/{status}:
+    $ref: 'paths/news@moderation@{id}@{status}.yaml'
+
+  /news/saved/:
+    $ref: 'paths/news@saved.yaml'
+
+  /news/saved/{id}/add:
+    $ref: 'paths/news@saved@{id}@add.yaml'
+
+  /news/saved/{id}/remove:
+    $ref: 'paths/news@saved@{id}@remove.yaml'
+
+  /news/me/articles:
+    $ref: 'paths/news@me@articles.yaml'
+
+  /news/lists/feed:
+    $ref: 'paths/news@lists@feed.yaml'
+
+  /news/feed/{key}:
+    $ref: 'paths/news@feed@{key}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

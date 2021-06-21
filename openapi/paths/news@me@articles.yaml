@@ -1,0 +1,37 @@
+post:
+  operationId: commsNews.getAuthoredArticles
+  tags: [comms]
+  summary: Get articles written by the authenticated user
+  description: |
+    Get the list of articles written by the currently authenticated user.
+  responses:
+    '200':
+      description: |
+        A list of articles which the authenticated user has written.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: ../components/schemas/news/commonFields.yaml
+                - type: object
+                  properties:
+                    author:
+                      type: object
+                      description: |
+                        The author's details: currently, only their name.
+                      properties:
+                        fullname:
+                          type: string
+                          description: |
+                            The author's full name.
+                    sticky:
+                      type: boolean
+                      description: |
+                        Is this article sticky?
+
+                        If so, it will always display at the top of the list of
+                        articles.
+    default:
+      $ref: ../components/responses/problem.yaml

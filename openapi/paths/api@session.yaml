@@ -4,8 +4,7 @@ get:
   summary: Create a user session via data in the query string
   description: |
     Attempt to authenticate a user based on a JWT passed in the query string.
-  security:
-    - none: []
+  security: []
   responses:
     '200':
       $ref: ../components/responses/authentication-successUser.yaml
@@ -26,8 +25,7 @@ post:
   description: |
     Attempt to authenticate a user based on either a username/password pair, or
     a JWT passed in form data.
-  security:
-    - none: []
+  security: []
   responses:
     '200':
       $ref: ../components/responses/authentication-successUser.yaml

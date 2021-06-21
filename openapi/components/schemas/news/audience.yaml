@@ -1,0 +1,29 @@
+type: string
+description: |
+  A description of a news audience, in one of two formats:
+  * for simple audiences: `$entityType:$entityValue:$relationship`
+  * for composite audiences: `composite;$relationship;`, then two
+    simple audiences, delimited by a `.` character
+
+  The variables within the audience string have this meaning:
+  * `$entityType` is the type of audience: currently out of
+    `campus`, `folder`, `role`, `school_house`, `year`
+  * `$entityValue` is the identifier for the audience, JSON-encoded
+    then base64-encoded
+  * `$relationship` is the users who are actually in the identified
+    audience:
+    * `self` for the users associated directly with the audience
+    * `teachers_of` for the teachers of users in the audience
+    * `parents_of` for the parents of users in the audience
+
+  Composite audiences will only contain users who are in both of the
+  simple audiences.
+examples:
+  - summary: Simple audience (users in campus ID 1)
+    value: "campus:IjEi:self"
+  - summary: Simple audience (parents of users in folder ID 55)
+    value: "folder:IjU1Ig==:parents_of"
+  - summary: Simple audience (teachers of users in year ID 9)
+    value: "folder:Ijki==:teachers_of"
+  - summary: Composite audience (users in campus ID 2 and year ID 3)
+    value: "composite;self;campus:IjIi:self.year:IjQi:self"

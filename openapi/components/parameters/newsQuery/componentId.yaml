@@ -1,0 +1,6 @@
+name: cid
+in: query
+description: |
+  If provided, redirect back to this component ID when done creating news.
+schema:
+  type: integer

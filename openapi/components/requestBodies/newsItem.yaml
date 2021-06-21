@@ -1,0 +1,66 @@
+description: |
+  News article information.
+content:
+  application/x-www-form-urlencoded:
+    schema:
+      type: object
+      properties:
+        title:
+          description: News article title.
+          type: string
+        body:
+          description: News article body, as raw HTML.
+          type: string
+        blurb:
+          description: |
+            News article blurb, as raw HTML.
+
+            If provided, the blurb will be displayed as the article's summary:
+            otherwise, a trimmed version the article's body will be used instead.
+          type: string
+        topics[]:
+          description: |
+            A list of IDs of topics to associate with this news article.
+          type: array
+          items:
+            $ref: ../schemas/id.yaml
+        sticky:
+          allOf:
+            - description: |
+                Is this article pinned to the top of any list it is within?
+
+                (Not all users have permission to set this flag.)
+            - $ref: ../schemas/queryBoolean.yaml
+        publishAt:
+          allOf:
+            - description: |
+                The date at which this article should be published.
+            - $ref: ../schemas/formDateTime.yaml
+        expiresAt:
+          allOf:
+            - description: |
+                The date at which this article should be archived.
+            - $ref: ../schemas/formDateTime.yaml
+        attachment[]:
+          type: array
+          items:
+            $ref: ../schemas/filePointer.yaml
+          maxItems: 1
+        attachedFiles[]:
+          type: array
+          items:
+            $ref: ../schemas/filePointer.yaml
+        audience:
+          type: array
+          items:
+            $ref: ../schemas/news/audience.yaml
+          minItems: 1
+    encoding:
+      topics[]:
+        style: form
+      attachment[]:
+        style: form
+      attachedFiles[]:
+        style: form
+      audience:
+        style: simple

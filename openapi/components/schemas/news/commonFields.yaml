@@ -1,0 +1,71 @@
+type: object
+properties:
+  id:
+    $ref: ../id.yaml
+  title:
+    description: News article title.
+    type: string
+  blurb:
+    description: |
+      News article displayed blurb, as raw HTML.
+
+      This is derived from the article's blurb (if any) and body:
+      * the blurb is used in full, if provided
+      * if not, the body is trimmed
+    type: string
+  readMore:
+    type: object
+    properties:
+      string:
+        description: |
+          The text to show in this article's "read more" link,
+          if any.
+        type: string
+      available:
+        description: |
+          Is there a "read more" link?
+
+          It is only available if the "read more" link
+          configuration is not empty, and the article has one or
+          more of:
+          * a feature image
+          * a discussion thread
+          * a body
+        type: boolean
+  featureImage:
+    $ref: ../file.yaml
+  publishAt:
+    allOf:
+      - description: |
+          When was the article published?
+      - $ref: ../dateTime.yaml
+  topics:
+    type: array
+    description: |
+      A list of topics which are applicable to the article.
+    items:
+      $ref: ../news/topic.yaml
+  _links:
+    type: object
+    properties:
+      saveForLater:
+        allOf:
+          - description: |
+              Endpoint for [saving this article for later](#operation/commsNewsSaveForLater.postAdd).
+          - $ref: ../link.yaml
+      unsaveForLater:
+        allOf:
+          - description: |
+              Endpoint for [removing this article from the save
+              for later list](#operation/commsNewsSaveForLater.postRemove).
+          - $ref: ../link.yaml
+      self:
+        allOf:
+          - description: |
+              Endpoint for [viewing this article](#operation/commsNews.getDetail).
+          - $ref: ../link.yaml
+      update:
+        allOf:
+          - description: |
+              Endpoint for [updating this article](#operation/commsNews.getUpdate).
+          - $ref: ../link.yaml

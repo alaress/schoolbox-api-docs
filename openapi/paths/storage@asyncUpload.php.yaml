@@ -1,0 +1,68 @@
+post:
+  operationId: storageAsyncUpload
+  tags: [file]
+  summary: Upload a file to Schoolbox
+  description: |
+    Upload a file to Schoolbox's internal file storage system.
+
+    This file may then be referenced directly, or provided as an argument to
+    another place which accepts file uploads.
+  responses:
+    default:
+      description: |
+        A description of a file upload.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: integer
+                description: |
+                  The HTTP response code, usually 200 for a successful upload.
+              hash:
+                type: string
+                description: |
+                  A pointer to the now uploaded file within Schoolbox, in the format
+                  `store:$hash`.
+
+                  `store` is the locator used to find the file: `$hash` is its
+                  location within the store.
+              message:
+                type: string
+                description: |
+                  A user-friendly message for what went wrong with the upload
+                  (if anything).
+              meta:
+                type: object
+                description: |
+                  File metadata.
+                properties:
+                  type:
+                    type: string
+                    description: |
+                      The mimetype of the uploaded file.
+                  size:
+                    type: integer
+                    description: |
+                      The uploaded file's size, in bytes.
+                  name:
+                    type: string
+                    description: |
+                      The uploaded file's name.
+                  file:
+                    $ref: ../components/schemas/file.yaml
+
+              success:
+                type: boolean
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            upload:
+              type: string
+              format: binary
+              description: |
+                The file being uploaded.
