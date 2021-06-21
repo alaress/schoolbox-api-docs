@@ -8,8 +8,7 @@ post:
 
     This endpoint doesn't use the standard security schemes: instead, it relies
     upon the `$key` parameter remaining secret.
-  security:
-    - none: []
+  security: []
   responses:
     '200':
       description: |
