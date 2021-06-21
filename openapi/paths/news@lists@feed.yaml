@@ -1,13 +1,13 @@
 post:
-  operationId: commsNews.getAuthoredArticles
+  operationId: commsNews.getListForIndex
   tags: [comms]
-  summary: Get articles written by the authenticated user
+  summary: Get articles to display on the home page
   description: |
-    Get the list of articles written by the currently authenticated user.
+    Get the list of articles to display on the [news home page](#operation/commsNews.getIndex).
   responses:
     '200':
       description: |
-        A list of articles which the authenticated user has written.
+        A list of articles to display on the home page.
       content:
         application/json:
           schema:

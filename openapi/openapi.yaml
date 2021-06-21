@@ -141,6 +141,9 @@ paths:
   /news/me/articles:
     $ref: 'paths/news@me@articles.yaml'
 
+  /news/lists/feed:
+    $ref: 'paths/news@lists@feed.yaml'
+
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.
