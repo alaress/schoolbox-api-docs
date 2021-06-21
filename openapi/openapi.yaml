@@ -120,6 +120,9 @@ paths:
   /news/{id}:
     $ref: 'paths/news@{id}.yaml'
 
+  /news/{id}/update:
+    $ref: 'paths/news@{id}@update.yaml'
+
   /news/{id}/delete:
     $ref: 'paths/news@{id}@delete.yaml'
 
@@ -134,6 +137,9 @@ paths:
 
   /news/saved/{id}/remove:
     $ref: 'paths/news@saved@{id}@remove.yaml'
+
+  /news/me/articles:
+    $ref: 'paths/news@me@articles.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

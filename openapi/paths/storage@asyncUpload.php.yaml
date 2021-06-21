@@ -51,47 +51,7 @@ post:
                     description: |
                       The uploaded file's name.
                   file:
-                    type: object
-                    description: |
-                      Detailed file data. (Some meta fields are duplicated here.)
-                    properties:
-                      hash:
-                        type: string
-                        description: |
-                          The location of the file in the file store.
-                      mime:
-                        type: string
-                        description: |
-                          The mimetype of the uploaded file.
-                      size:
-                        type: integer
-                        description: |
-                          The uploaded file's size, in bytes.
-                      _links:
-                        type: object
-                        description: |
-                          Relevant links for the file.
-                        properties:
-                          icon:
-                            type: string
-                            description: |
-                              An icon for the file's mimetype.
-                            format: uri
-                          image:
-                            type: string
-                            description: |
-                              An image URL for the file (if it's an image).
-                            format: uri
-                          stream:
-                            type: string
-                            description: |
-                              A stream URL for the file (if it's audio or video).
-                            format: uri
-                          poster:
-                            type: string
-                            description: |
-                              A poster URL for the file (if it's a video).
-                            format: uri
+                    $ref: ../components/schemas/file.yaml
 
               success:
                 type: boolean

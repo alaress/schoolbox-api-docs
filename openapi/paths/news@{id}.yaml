@@ -1,7 +1,7 @@
 get:
   operationId: commsNews.getDetail
   tags: [comms]
-  summary: Get news article
+  summary: HTML template for news article
   responses:
     '200':
       description: A news article, rendered into a HTML template.

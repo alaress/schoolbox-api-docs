@@ -1,7 +1,7 @@
 get:
   operationId: commsNews.getIndex
   tags: [comms]
-  summary: HTML template for news home page
+  summary: HTML template for news home
   responses:
     '200':
       description: |
