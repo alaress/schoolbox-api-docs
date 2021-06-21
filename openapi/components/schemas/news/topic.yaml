@@ -1,0 +1,18 @@
+type: object
+description: |
+  A topic which may be applicable to a news article.
+properties:
+  id:
+    $ref: ../id.yaml
+  name:
+    type: string
+    description: |
+      A human-readable name for the topic.
+  slug:
+    type: string
+    description: |
+      A machine-readable name for the topic.
+  sequence:
+    type: integer
+    description: |
+      The order in which this topic will display in a topic list.

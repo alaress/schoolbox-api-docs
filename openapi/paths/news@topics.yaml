@@ -12,16 +12,6 @@ get:
           schema:
             type: array
             items:
-              type: object
-              properties:
-                id:
-                  $ref: ../components/schemas/id.yaml
-                name:
-                  type: string
-                  description: The topic's name.
-                sequence:
-                  type: integer
-                  description: |
-                    The order in which this topic will display in a topic list.
+              $ref: ../components/schemas/news/topic.yaml
     default:
       $ref: ../components/responses/problem.yaml

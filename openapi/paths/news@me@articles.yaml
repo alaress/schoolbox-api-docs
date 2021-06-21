@@ -79,16 +79,7 @@ post:
                   description: |
                     A list of topics which are applicable to the article.
                   items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        description: |
-                          A human-readable name for the topic.
-                      slug:
-                        type: string
-                        description: |
-                          A machine-readable name for the topic.
+                    $ref: ../components/schemas/news/topic.yaml
                 _links:
                   type: object
                   properties:
