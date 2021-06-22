@@ -7,9 +7,12 @@ description: |
   is associated, and then to determine whether the authenticated user has
   permission to perform the requested action.
 
-  Currently, only comms is supported, but it is intended that other
-  contexts will be introduced.
+  The following contexts are currently supported:
+  * `comms` (the internal name for [news](/#tag/comms))
+  * `evidence` (the internal name for learning moments: not yet documented)
+
+  It is intended that discussion threads will be introduced to more contexts.
 required:    true
 schema:
   type: string
-  enum: [comms]
+  enum: [comms, evidence]

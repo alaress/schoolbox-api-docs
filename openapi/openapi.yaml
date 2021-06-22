@@ -41,9 +41,9 @@ tags:
     description: Endpoints for Mobile App Developers to connect and register devices
 
   - name: comms
-    x-displayName: Communications
+    x-displayName: News
     description: |
-      Create and manage school communications, commonly known as news.
+      Create and manage school news (also known as communications).
 
 servers:
   - url: https://{hostname}.{domain}/
