@@ -105,9 +105,6 @@ paths:
   /storage/asyncUpload.php:
     $ref: 'paths/storage@asyncUpload.php.yaml'
 
-  /news:
-    $ref: 'paths/news.yaml'
-
   /news/create:
     $ref: 'paths/news@create.yaml'
 
@@ -119,9 +116,6 @@ paths:
 
   /news/{id}:
     $ref: 'paths/news@{id}.yaml'
-
-  /news/{id}/update:
-    $ref: 'paths/news@{id}@update.yaml'
 
   /news/{id}/delete:
     $ref: 'paths/news@{id}@delete.yaml'

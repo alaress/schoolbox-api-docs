@@ -62,10 +62,10 @@ properties:
       self:
         allOf:
           - description: |
-              Endpoint for [viewing this article](#operation/commsNews.getDetail).
+              Endpoint for viewing this article as HTML.
           - $ref: ../link.yaml
       update:
         allOf:
           - description: |
-              Endpoint for [updating this article](#operation/commsNews.getUpdate).
+              Endpoint for viewing a HTML form for updating this article.
           - $ref: ../link.yaml
