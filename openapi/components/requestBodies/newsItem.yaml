@@ -151,7 +151,7 @@ content:
           audience: |
             campus:IjEi:self
 
-      Standard article, with attachments, audienced to campus 1:
+      Standard article, with attachments, audienced to campus 1 and teachers of year 9:
         value:
           title: A news article title
           body: |
@@ -168,8 +168,9 @@ content:
           attachedFiles[]:
             - store:1234567890:attachment1.jpg
             - store:0987654321:attachment2.jpg
-          audience: |
-            campus:IjEi:self
+          audience:
+            - campus:IjEi:self
+            - folder:Ijki==:teachers_of
 
 
     encoding:
@@ -180,4 +181,4 @@ content:
       attachedFiles[]:
         style: form
       audience:
-        style: simple
+        explode: false
