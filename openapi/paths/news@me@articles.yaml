@@ -18,7 +18,7 @@ get:
                 - type: object
                   properties:
                     author:
-                      $ref: ../components/schemas/news/author.yaml
+                      $ref: ../components/schemas/news/authorNameOnly.yaml
                     sticky:
                       $ref: ../components/schemas/news/sticky.yaml
                     readMore:
