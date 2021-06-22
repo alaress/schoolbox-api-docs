@@ -19,6 +19,10 @@ get:
                 - $ref: ../components/schemas/news/commonFields.yaml
                 - type: object
                   properties:
+                    body:
+                      $ref: ../components/schemas/news/body.yaml
+                    author:
+                      $ref: ../components/schemas/news/author.yaml
                     status:
                       $ref: ../components/schemas/news/status.yaml
                     statusDate:

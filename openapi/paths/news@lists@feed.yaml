@@ -21,5 +21,9 @@ get:
                       $ref: ../components/schemas/news/status.yaml
                     statusDate:
                       $ref: ../components/schemas/news/statusDate.yaml
+                    readMore:
+                      $ref: ../components/schemas/news/readMore.yaml
+                    _links:
+                      $ref: ../components/schemas/news/links.yaml
     default:
       $ref: ../components/responses/problem.yaml

@@ -13,25 +13,6 @@ properties:
       * the blurb is used in full, if provided
       * if not, the body is trimmed
     type: string
-  readMore:
-    type: object
-    properties:
-      string:
-        description: |
-          The text to show in this article's "read more" link,
-          if any.
-        type: string
-      available:
-        description: |
-          Is there a "read more" link?
-
-          It is only available if the "read more" link
-          configuration is not empty, and the article has one or
-          more of:
-          * a feature image
-          * a discussion thread
-          * a body
-        type: boolean
   featureImage:
     $ref: ../file.yaml
   publishAt:
@@ -45,27 +26,3 @@ properties:
       A list of topics which are applicable to the article.
     items:
       $ref: ../news/topic.yaml
-  _links:
-    type: object
-    properties:
-      saveForLater:
-        allOf:
-          - description: |
-              Endpoint for [saving this article for later](#operation/commsNewsSaveForLater.postAdd).
-          - $ref: ../link.yaml
-      unsaveForLater:
-        allOf:
-          - description: |
-              Endpoint for [removing this article from the save
-              for later list](#operation/commsNewsSaveForLater.postRemove).
-          - $ref: ../link.yaml
-      self:
-        allOf:
-          - description: |
-              Endpoint for viewing this article as HTML.
-          - $ref: ../link.yaml
-      update:
-        allOf:
-          - description: |
-              Endpoint for viewing a HTML form for updating this article.
-          - $ref: ../link.yaml

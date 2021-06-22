@@ -9,8 +9,7 @@ content:
           description: News article title.
           type: string
         body:
-          description: News article body, as raw HTML.
-          type: string
+          $ref: ../schemas/news/body.yaml
         blurb:
           description: |
             News article blurb, as raw HTML.
