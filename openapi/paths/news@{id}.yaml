@@ -1,3 +1,42 @@
+get:
+  operationId: commsNews.getDetail
+  tags: [news]
+  summary: Get a news article
+  responses:
+    '200':
+      description: |
+        A single news article.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              isSavedForLater:
+                type: boolean
+                description: |
+                  Has the authenticated user saved this article for later?
+              article:
+                allOf:
+                  - $ref: ../components/schemas/news/commonFields.yaml
+                  - type: object
+                    properties:
+                      body:
+                        $ref: ../components/schemas/news/body.yaml
+                      author:
+                        $ref: ../components/schemas/news/author.yaml
+                      status:
+                        $ref: ../components/schemas/news/status.yaml
+                      statusDate:
+                        $ref: ../components/schemas/news/statusDate.yaml
+                      sticky:
+                        $ref: ../components/schemas/news/sticky.yaml
+                      _links:
+                        $ref: ../components/schemas/news/links.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+
 post:
   operationId: commsNews.postUpdate
   tags: [news]

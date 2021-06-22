@@ -14,7 +14,7 @@ properties:
   self:
     allOf:
       - description: |
-          Endpoint for viewing this article as HTML.
+          Endpoint for [viewing this article](#operation/commsNews.getDetail).
       - $ref: ../link.yaml
   update:
     allOf:
