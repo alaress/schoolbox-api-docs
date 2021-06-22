@@ -6,6 +6,8 @@ get:
     Get the list of articles audienced to the given folder.
   parameters:
     - $ref: ../components/parameters/id.yaml
+    - $ref: ../components/parameters/newsQuery/compactMode.yaml
+    - $ref: ../components/parameters/newsQuery/limit.yaml
   responses:
     '200':
       description: |

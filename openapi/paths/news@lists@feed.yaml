@@ -4,6 +4,8 @@ get:
   summary: Get articles audienced to the authenticated user
   description: |
     Get the list of articles audienced to the currently authenticated user.
+  parameters:
+    - $ref: ../components/parameters/newsQuery/topic.yaml
   responses:
     '200':
       description: |
@@ -23,6 +25,21 @@ get:
                       $ref: ../components/schemas/news/statusDate.yaml
                     readMore:
                       $ref: ../components/schemas/news/readMore.yaml
+                    metadata:
+                      type: object
+                      properties:
+                        commentCount:
+                          type: integer
+                          description: |
+                            The number of comments on this article.
+
+                            May be null, in which case there are no comments.
+                    attachments:
+                      type: integer
+                      description: |
+                        The number of attachments on this article.
+
+                        May be null, in which case there are no attachments.
                     _links:
                       $ref: ../components/schemas/news/links.yaml
     default:
