@@ -133,6 +133,45 @@ content:
           items:
             $ref: ../schemas/news/audience.yaml
           minItems: 1
+    examples:
+      Standard article, no attachments, audienced to campus 1:
+        value:
+          title: A news article title
+          body: |
+            <p>The body of the article, as a <em>HTML fragment</em>.</p>
+          blurb: |
+            <p>An optional HTML fragment, which will be used as the short version of
+            the article.</p>
+          topics[]: [1, 2, 3]
+          sticky: 0
+          publishAt: 01/01/2021 12:00am
+          expiresAt: 31/12/2021 11:59pm
+          attachment[]: null
+          attachedFiles[]: null
+          audience: |
+            campus:IjEi:self
+
+      Standard article, with attachments, audienced to campus 1:
+        value:
+          title: A news article title
+          body: |
+            <p>The body of the article, as a <em>HTML fragment</em>.</p>
+          blurb: |
+            <p>An optional HTML fragment, which will be used as the short version of
+            the article.</p>
+          topics[]: [1, 2, 3]
+          sticky: 0
+          publishAt: 01/01/2021 12:00am
+          expiresAt: 31/12/2021 11:59pm
+          attachment[]:
+            - store:1111111111:featuredImage.jpg
+          attachedFiles[]:
+            - store:1234567890:attachment1.jpg
+            - store:0987654321:attachment2.jpg
+          audience: |
+            campus:IjEi:self
+
+
     encoding:
       topics[]:
         style: form

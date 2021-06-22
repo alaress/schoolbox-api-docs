@@ -6,3 +6,4 @@ description: |
   and "Time Format" settings: ideally, this would just be a "datetime" format
   but the datetime input was developed before JSON was used for request bodies.
 type: string
+example: 22/06/2021 11:28am
