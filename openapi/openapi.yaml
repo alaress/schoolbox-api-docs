@@ -108,9 +108,6 @@ paths:
   /news/create:
     $ref: 'paths/news@create.yaml'
 
-  /news/create/folder/{folderId}:
-    $ref: 'paths/news@create@folder@{folderId}.yaml'
-
   /news/topics:
     $ref: 'paths/news@topics.yaml'
 
