@@ -18,20 +18,8 @@ get:
                 - type: object
                   properties:
                     author:
-                      type: object
-                      description: |
-                        The author's details: currently, only their name.
-                      properties:
-                        fullname:
-                          type: string
-                          description: |
-                            The author's full name.
+                      $ref: ../components/schemas/news/author.yaml
                     sticky:
-                      type: boolean
-                      description: |
-                        Is this article sticky?
-
-                        If so, it will always display at the top of the list of
-                        articles.
+                      $ref: ../components/schemas/news/sticky.yaml
     default:
       $ref: ../components/responses/problem.yaml

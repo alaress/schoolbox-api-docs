@@ -1,13 +1,15 @@
 get:
-  operationId: commsNews.getListForIndex
+  operationId: commsNews.getListForHomepage
   tags: [news]
-  summary: Get articles audienced to the authenticated user
+  summary: Get articles audienced to the given folder
   description: |
-    Get the list of articles audienced to the currently authenticated user.
+    Get the list of articles audienced to the given folder.
+  parameters:
+    - $ref: ../components/parameters/id.yaml
   responses:
     '200':
       description: |
-        A list of articles which are audienced to the authenticated user.
+        A list of articles which are audienced to the given folder.
       content:
         application/json:
           schema:

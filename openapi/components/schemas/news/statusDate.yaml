@@ -1,0 +1,5 @@
+allOf:
+  - description: |
+      When did the article's status change to its current
+      value?
+  - $ref: ../dateTime.yaml
