@@ -1,13 +1,13 @@
-post:
+get:
   operationId: commsNews.getListForIndex
   tags: [comms]
-  summary: Get articles to display on the home page
+  summary: Get articles audienced to the authenticated user
   description: |
-    Get the list of articles to display on the [news home page](#operation/commsNews.getIndex).
+    Get the list of articles audienced to the currently authenticated user.
   responses:
     '200':
       description: |
-        A list of articles to display on the home page.
+        A list of articles which are audienced to the authenticated user.
       content:
         application/json:
           schema:

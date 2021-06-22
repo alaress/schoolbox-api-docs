@@ -1,4 +1,4 @@
-post:
+get:
   operationId: commsNews.getAuthoredArticles
   tags: [comms]
   summary: Get articles written by the authenticated user
