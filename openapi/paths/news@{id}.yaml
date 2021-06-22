@@ -1,6 +1,6 @@
 post:
   operationId: commsNews.postUpdate
-  tags: [comms]
+  tags: [news]
   summary: Update a news article
   description: |
     Update an existing news article.

@@ -1,6 +1,6 @@
 post:
   operationId: commsNews.postCreate
-  tags: [comms]
+  tags: [news]
   summary: Create a news article
   description: |
     Creates a new news article: the article's author will be the currently

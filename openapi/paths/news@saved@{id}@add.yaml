@@ -1,6 +1,6 @@
 get:
   operationId: commsNewsSaveForLater.postAdd
-  tags: [comms]
+  tags: [news]
   summary: Save an article for later
   description: |
     Save an article for the authenticated user.

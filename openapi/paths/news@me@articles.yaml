@@ -1,6 +1,6 @@
 get:
   operationId: commsNews.getAuthoredArticles
-  tags: [comms]
+  tags: [news]
   summary: Get articles written by the authenticated user
   description: |
     Get the list of articles written by the currently authenticated user.

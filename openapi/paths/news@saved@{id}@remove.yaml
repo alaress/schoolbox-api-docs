@@ -1,6 +1,6 @@
 get:
   operationId: commsNewsSaveForLater.postRemove
-  tags: [comms]
+  tags: [news]
   summary: Remove an article from the saved for later list
   description: |
     Remove an article from the authenticated user's saved articles.

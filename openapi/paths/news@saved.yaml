@@ -1,6 +1,6 @@
 get:
   operationId: commsNewsSaveForLater.getList
-  tags: [comms]
+  tags: [news]
   summary: Get list of saved articles
   description: |
     Retrieve the IDs of all saved news articles for the authenticated user.

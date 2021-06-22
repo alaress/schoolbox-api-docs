@@ -1,6 +1,6 @@
 post:
   operationId: commsNewsModeration.setStatus
-  tags: [comms]
+  tags: [news]
   summary: Change the publication status of a news article
   description: |
     Change the publication status of a news article.

@@ -8,7 +8,7 @@ description: |
   permission to perform the requested action.
 
   The following contexts are currently supported:
-  * `comms` (the internal name for [news](/#tag/comms))
+  * `comms` (the internal name for [news](/#tag/news))
   * `evidence` (the internal name for learning moments: not yet documented)
 
   It is intended that discussion threads will be introduced to more contexts.

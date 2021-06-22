@@ -1,6 +1,6 @@
 post:
   operationId: commsNewsFeed.getFeedForUser
-  tags: [comms]
+  tags: [news]
   summary: RSS feed of articles for a user
   description: |
     Get the articles for the user (identified by the `$key` parameter) as a RSS

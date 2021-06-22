@@ -1,6 +1,6 @@
 get:
   operationId: commsNews.getListForIndex
-  tags: [comms]
+  tags: [news]
   summary: Get articles audienced to the authenticated user
   description: |
     Get the list of articles audienced to the currently authenticated user.

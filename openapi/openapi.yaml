@@ -40,7 +40,7 @@ tags:
     x-displayName: Push Notification
     description: Endpoints for Mobile App Developers to connect and register devices
 
-  - name: comms
+  - name: news
     x-displayName: News
     description: |
       Create and manage school news (also known as communications).
