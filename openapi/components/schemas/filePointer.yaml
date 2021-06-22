@@ -15,3 +15,7 @@ description: |
     * for `office365` this is the file's unique node
   * `$filename` is the filename that the file will be given once it is uploaded
     to wherever it is being uploaded
+
+  See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+  endpoint for details on how to upload a file, and receive a file
+  pointer from that upload.

@@ -43,15 +43,94 @@ content:
             - $ref: ../schemas/formDateTime.yaml
         attachment[]:
           type: array
+          description: |
+            A single featured image to attach to this news item, supplied as a
+            pointer to a file in Schoolbox. This parameter may be provided no
+            more than once.
+
+            The pointer will be in the format: `$locator:$location:$filename`;
+            the variables within the pointer have this meaning:
+            * `$locator` represents the strategy for finding the file:
+              * `store` for files uploaded to Schoolbox's storage
+              * `browse` finds files in Schoolbox's resource browser
+              * `myfile` finds files in a Schoolbox user's My Files browser
+              * `office365` finds files in an Office365 store
+            * `$location` is the location of the file within `$locator`:
+              * for `store` this is a file's unique hash
+              * for `browse` and `myfile` this is a file ID
+              * for `office365` this is the file's unique node
+            * `$filename` is the filename that the file will be given once it is
+              uploaded to wherever it is being uploaded
+
+            See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+            endpoint for details on how to upload a file, and receive a file
+            pointer from that upload.
           items:
             $ref: ../schemas/filePointer.yaml
           maxItems: 1
         attachedFiles[]:
           type: array
+          description: |
+            Files to attach to this news item, supplied as pointers to a file in
+            Schoolbox. This parameter may be provided multiple times to attach
+            multiple files.
+
+            Each pointer will be in the format: `$locator:$location:$filename`;
+            the variables within the pointer have this meaning:
+            * `$locator` represents the strategy for finding the file:
+              * `store` for files uploaded to Schoolbox's storage
+              * `browse` finds files in Schoolbox's resource browser
+              * `myfile` finds files in a Schoolbox user's My Files browser
+              * `office365` finds files in an Office365 store
+            * `$location` is the location of the file within `$locator`:
+              * for `store` this is a file's unique hash
+              * for `browse` and `myfile` this is a file ID
+              * for `office365` this is the file's unique node
+            * `$filename` is the filename that the file will be given once it is
+              uploaded to wherever it is being uploaded
+
+            See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+            endpoint for details on how to upload a file, and receive a file
+            pointer from that upload.
           items:
             $ref: ../schemas/filePointer.yaml
         audience:
           type: array
+          description: |
+            A comma-separated list of audiences for this news item.
+
+            Each audience will be in one of two formats:
+            * simple audiences: `$entityType:$entityValue:$relationship`
+            * composite audiences: `composite;$relationship;`, then two simple
+              audiences, delimited by a `.` character
+
+            The variables within each audience string have this meaning:
+            * `$entityType` is the type of audience: currently out of
+              `campus`, `folder`, `role`, `school_house`, `year`
+            * `$entityValue` is the identifier for the audience, JSON-encoded
+              then base64-encoded
+            * `$relationship` is the users who are actually in the identified
+              audience:
+              * `self` for the users associated directly with the audience
+              * `teachers_of` for the teachers of users in the audience
+              * `parents_of` for the parents of users in the audience
+
+            Composite audiences will only contain users who are in both of the
+            simple audiences.
+
+            Examples:
+            * `campus:IjEi:self` is a simple audience, targeting users in campus
+              ID 1
+            * `folder:IjU1Ig==:parents_of` is a simple audience, targeting
+              parents of users in folder ID 55
+            * `folder:IjU1Ig==:parents_of` is a simple audience, targeting
+              parents of users in folder ID 55
+            * `folder:Ijki==:teachers_of` is a simple audience, targeting
+              teachers of users in year ID 9
+            * `composite;self;campus:IjIi:self.year:IjQi:self` is a composite
+              audience, targeting the intersection of:
+              * users in campus ID 2
+              * users in year ID 3
           items:
             $ref: ../schemas/news/audience.yaml
           minItems: 1
