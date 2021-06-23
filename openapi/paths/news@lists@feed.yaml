@@ -1,13 +1,15 @@
-post:
+get:
   operationId: commsNews.getListForIndex
-  tags: [comms]
-  summary: Get articles to display on the home page
+  tags: [news]
+  summary: Get articles audienced to the authenticated user
   description: |
-    Get the list of articles to display on the [news home page](#operation/commsNews.getIndex).
+    Get the list of articles audienced to the currently authenticated user.
+  parameters:
+    - $ref: ../components/parameters/newsQuery/topic.yaml
   responses:
     '200':
       description: |
-        A list of articles to display on the home page.
+        A list of articles which are audienced to the authenticated user.
       content:
         application/json:
           schema:
@@ -18,26 +20,27 @@ post:
                 - type: object
                   properties:
                     status:
-                      description: |
-                        A human-readable representation of the article's current
-                        status.
-
-                        * `Drafted`: the article is a draft only
-                        * `Awaiting Moderation`: the article has been submitted
-                          for approval, but is not yet approved or rejected
-                        * `Awaiting Publication`: the article has been approved
-                          for publishing, but its publish date has not been
-                          reached yet
-                        * `Rejected`: the article has been rejected for
-                          publishing
-                        * `Published`: the article has been published
-                        * `Archived`: the article has expired; whilst it is no
-                          longer published, it is still readable in the archive
+                      $ref: ../components/schemas/news/status.yaml
                     statusDate:
-                      allOf:
-                        - description: |
-                            When did the article's status change to its current
-                            value?
-                        - $ref: ../components/schemas/dateTime.yaml
+                      $ref: ../components/schemas/news/statusDate.yaml
+                    readMore:
+                      $ref: ../components/schemas/news/readMore.yaml
+                    metadata:
+                      type: object
+                      properties:
+                        commentCount:
+                          type: integer
+                          description: |
+                            The number of comments on this article.
+
+                            May be null, in which case there are no comments.
+                    attachments:
+                      type: integer
+                      description: |
+                        The number of attachments on this article.
+
+                        May be null, in which case there are no attachments.
+                    _links:
+                      $ref: ../components/schemas/news/links.yaml
     default:
       $ref: ../components/responses/problem.yaml

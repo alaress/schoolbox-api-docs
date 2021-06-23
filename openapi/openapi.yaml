@@ -1,7 +1,7 @@
 openapi: 3.0.2
 
 info:
-  version: 1.0.1
+  version: 1.0.3
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
@@ -40,10 +40,10 @@ tags:
     x-displayName: Push Notification
     description: Endpoints for Mobile App Developers to connect and register devices
 
-  - name: comms
-    x-displayName: Communications
+  - name: news
+    x-displayName: News
     description: |
-      Create and manage school communications, commonly known as news.
+      Create and manage school news (also known as communications).
 
 servers:
   - url: https://{hostname}.{domain}/
@@ -105,23 +105,14 @@ paths:
   /storage/asyncUpload.php:
     $ref: 'paths/storage@asyncUpload.php.yaml'
 
-  /news:
-    $ref: 'paths/news.yaml'
-
   /news/create:
     $ref: 'paths/news@create.yaml'
-
-  /news/create/folder/{folderId}:
-    $ref: 'paths/news@create@folder@{folderId}.yaml'
 
   /news/topics:
     $ref: 'paths/news@topics.yaml'
 
   /news/{id}:
     $ref: 'paths/news@{id}.yaml'
-
-  /news/{id}/update:
-    $ref: 'paths/news@{id}@update.yaml'
 
   /news/{id}/delete:
     $ref: 'paths/news@{id}@delete.yaml'
@@ -146,6 +137,9 @@ paths:
 
   /news/feed/{key}:
     $ref: 'paths/news@feed@{key}.yaml'
+
+  /news/lists/folder/{id}:
+    $ref: 'paths/news@lists@folder@{id}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

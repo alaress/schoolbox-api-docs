@@ -1,6 +1,6 @@
 post:
   operationId: commsNews.postDelete
-  tags: [comms]
+  tags: [news]
   summary: Delete a news article
   description: |
     Delete an existing news article.

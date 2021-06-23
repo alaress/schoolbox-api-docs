@@ -1,0 +1,16 @@
+type: string
+description: |
+  A human-readable representation of the article's current
+  status.
+
+  * `Drafted`: the article is a draft only
+  * `Awaiting Moderation`: the article has been submitted
+    for approval, but is not yet approved or rejected
+  * `Awaiting Publication`: the article has been approved
+    for publishing, but its publish date has not been
+    reached yet
+  * `Rejected`: the article has been rejected for
+    publishing
+  * `Published`: the article has been published
+  * `Archived`: the article has expired; whilst it is no
+    longer published, it is still readable in the archive

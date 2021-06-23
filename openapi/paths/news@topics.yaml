@@ -1,6 +1,6 @@
 get:
   operationId: commsNews.getTopics
-  tags: [comms]
+  tags: [news]
   summary: Get available news topics
   description: |
     Retrieve all available news topics, which may be attached to a news article.

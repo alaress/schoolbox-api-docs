@@ -1,14 +1,37 @@
 get:
   operationId: commsNews.getDetail
-  tags: [comms]
-  summary: HTML template for news article
+  tags: [news]
+  summary: Get a news article
   responses:
     '200':
-      description: A news article, rendered into a HTML template.
+      description: |
+        A single news article.
       content:
-        text/html:
+        application/json:
           schema:
-            type: string
+            type: object
+            properties:
+              isSavedForLater:
+                type: boolean
+                description: |
+                  Has the authenticated user saved this article for later?
+              article:
+                allOf:
+                  - $ref: ../components/schemas/news/commonFields.yaml
+                  - type: object
+                    properties:
+                      body:
+                        $ref: ../components/schemas/news/body.yaml
+                      author:
+                        $ref: ../components/schemas/news/author.yaml
+                      status:
+                        $ref: ../components/schemas/news/status.yaml
+                      statusDate:
+                        $ref: ../components/schemas/news/statusDate.yaml
+                      sticky:
+                        $ref: ../components/schemas/news/sticky.yaml
+                      _links:
+                        $ref: ../components/schemas/news/links.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
@@ -16,7 +39,7 @@ get:
 
 post:
   operationId: commsNews.postUpdate
-  tags: [comms]
+  tags: [news]
   summary: Update a news article
   description: |
     Update an existing news article.
