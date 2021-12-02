@@ -35,6 +35,8 @@ When updating the API, do the following before creating a pull request:
     change (e.g. adding a property to a response or request body)
   * increment the patch version when making a non-functional change
     (e.g. fixing a spelling or grammar mistake)
+* update `openapi/openapi.yaml` path `info.description` with the Schoolbox
+  version which this version of the API applies for
 * run `npm run build-static`, and commit the resultant changes to
   `docs/index.html`
 
