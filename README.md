@@ -24,6 +24,20 @@ version of the definition to `docs/index.html`.
 
 ## Contribution Guide
 
+### Updating the API
+
+When updating the API, do the following before creating a pull request:
+* increment the version number in both `openapi/openapi.yaml` and `package.json`
+  according to [Semantic Versioning](https://semver.org/#summary):
+  * increment the major version when making a backwards-incompatible functional
+    change (e.g. removing a property from a response or request body)
+  * increment the minor version when making a backwards-compatible functional
+    change (e.g. adding a property to a response or request body)
+  * increment the patch version when making a non-functional change
+    (e.g. fixing a spelling or grammar mistake)
+* run `npm run build-static`, and commit the resultant changes to
+  `docs/index.html`
+
 ### Configuration
 
 `.redocly.yaml` controls settings for various tools, including the `lint` tool
