@@ -40,6 +40,13 @@ get:
                         The number of attachments on this article.
 
                         May be null, in which case there are no attachments.
+                    viewedAt:
+                      allOf:
+                        - description: |
+                            The datetime the news article was originally read by the user.
+
+                            May be null, in which case the user has not read the article
+                        - $ref: ../components/schemas/dateTime.yaml
                     _links:
                       $ref: ../components/schemas/news/links.yaml
     default:

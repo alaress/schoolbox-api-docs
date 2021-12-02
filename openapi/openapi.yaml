@@ -1,11 +1,13 @@
 openapi: 3.0.2
 
 info:
-  version: 1.0.3
+  version:     1.1.0
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
     instance.
+
+    This document is current as of Schoolbox version 21.1.0.
   x-api-id:    0609d493-8804-4e97-b5ac-0ed7b3c99db8
   x-audience:  external-partner
   contact:
