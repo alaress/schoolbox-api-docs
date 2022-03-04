@@ -7,8 +7,8 @@ get:
       $ref: ../components/responses/userGroupMembership-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
-  parameters:
-    - $ref: ../components/parameters/cursor.yaml
+#  parameters:
+#    - $ref: ../components/parameters/cursor.yaml
 #    - $ref: ../components/parameters/search.yaml
 #    - $ref: ../components/parameters/filter.yaml
 #    - $ref: ../components/parameters/properties.yaml
@@ -27,4 +27,3 @@ post:
 
 parameters:
   - $ref: ../components/parameters/id.yaml
-  - $ref: ../components/parameters/token.yaml

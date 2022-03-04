@@ -21,12 +21,16 @@ properties:
       - write
       - read
       - awaitingApproval
-  subscribed:
+  isNotificationsOn:
     description: |
       Is this user subscribed to this group's events? If so, they will be
       notified when an event occurs.
 
       Note that the group administrator may:
-      * force subscription, so that users may not opt out of notifications
-      * disable subscription, so that users never receive notifications
+      * force Follow, so that users may not opt out of notifications
+      * disable Notifications, so that users never receive notifications
+    type: boolean
+  isFavourite:
+    description: |
+      Does the user have this group set as a favourite
     type: boolean
