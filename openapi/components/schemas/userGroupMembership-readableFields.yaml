@@ -17,6 +17,7 @@ properties:
           The name of the group.
 
           In this context, this is the name of the group's folder.
+        example: Basketball
       type:
         description: |
           The level of access that users have to this group.
@@ -37,6 +38,7 @@ properties:
           * true: users must subscribe to this group's events, and may not
             unsubscribe
         type: bool
+        example: true
       membership:
         description: |
           The type of membership that this user has.
@@ -86,4 +88,5 @@ properties:
           homepage:
             type: string
             format: uri-reference
+            example: /homepage/83
 
