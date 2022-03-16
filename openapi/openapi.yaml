@@ -71,7 +71,7 @@ paths:
   /user/{id}:
     $ref: 'paths/user@{id}.yaml'
 
-  /user/{id}/groupMembership:
+  /apigroup/{id}/groupMembership:
     $ref: 'paths/user@{id}@groupMembership.yaml'
 
   /user/{id}/groupMembership/{groupId}:
