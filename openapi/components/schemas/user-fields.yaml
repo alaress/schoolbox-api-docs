@@ -5,6 +5,7 @@ properties:
 
   externalId:
     $ref: ./externalId.yaml
+    example: 501
 
   username:
     type: string
@@ -13,6 +14,7 @@ properties:
     description: |
       The user's username. This will be used as the user's identification
       when they attempt to log into the Schoolbox instance.
+    example: rwhite
 
   superuser:
     type: boolean
@@ -30,6 +32,7 @@ properties:
     type: string
     nullable: true
     description: The user's title (Mr., Ms., etc.).
+    example: Ms
 
   firstName:
     type: string
@@ -41,11 +44,13 @@ properties:
       and any other names, and in any case is not the definitive source of
       naming information; therefore in practice this will usually be the
       user's given name.
+    example: Rebecca
 
   lastName:
     type: string
     nullable: true
     description: The user's surname.
+    example: White
 
   isEmailDerived:
     type: boolean
@@ -60,6 +65,7 @@ properties:
     description: |
       The user's email address, if it is not derived from their username
       and hostname.
+    example: rwhite@example.com.au
 
   positionTitle:
     type: string

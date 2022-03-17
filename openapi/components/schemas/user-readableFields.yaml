@@ -4,6 +4,7 @@ type: object
 properties:
   id:
     $ref: ./id.yaml
+    example: 24
 
   campus:
     type: array
@@ -42,7 +43,7 @@ properties:
     uniqueItems: true
     items:
       $ref: ./user-read.yaml
-    nullable: true
+    nullable: false
 
   students:
     description: |
@@ -58,7 +59,7 @@ properties:
     uniqueItems: true
     items:
       $ref: ./user-read.yaml
-    nullable: true
+    nullable: false
 
   impersonableUsers:
     description: |
@@ -70,7 +71,7 @@ properties:
     uniqueItems: true
     items:
       $ref: ./user-read.yaml
-    nullable: true
+    nullable: false
 
   email:
     type: string
