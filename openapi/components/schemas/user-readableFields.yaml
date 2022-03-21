@@ -27,9 +27,6 @@ properties:
   schoolHouse:
     $ref: ./schoolHouse.yaml
 
-  residentialHouse:
-    $ref: ./residentialHouse.yaml
-
   guardians:
     description: |
       This user's guardians. (Only applicable if this user is of role
