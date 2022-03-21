@@ -71,10 +71,10 @@ paths:
   /user/{id}:
     $ref: 'paths/user@{id}.yaml'
 
-  /apigroup/{id}/groupMembership:
+  /user/{id}/group:
     $ref: 'paths/user@{id}@groupMembership.yaml'
 
-  /user/{id}/groupMembership/{groupId}:
+  /user/{id}/group/{groupId}:
     $ref: 'paths/user@{id}@groupMembership@{groupId}.yaml'
 
   /discussion/{contextType}/{contextId}/comments/{id}:
