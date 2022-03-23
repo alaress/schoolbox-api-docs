@@ -23,21 +23,6 @@ required:
   - id
 readOnly: true
 example:
-  - id:   3
-    name: Parents
-    type: parent
   - id:   4
     name: Senior Students
     type: student
-  - id:   5
-    name: Teaching Staff
-    type: staff
-  - id:   6
-    name: Non-teaching Staff
-    type: staff
-  - id:   7
-    name: Alumni
-    type: student
-  - id:   8
-    name: Guests
-    type: guest
