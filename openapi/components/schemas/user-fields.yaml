@@ -74,13 +74,6 @@ properties:
       The user's job or position title within the school which owns the
       Schoolbox instance.
 
-  yearLevel:
-    type: string
-    nullable: true
-    description: |
-      The user's year level. May be provided as a number, or as a textual
-      description of their year level.
-
   isBoarder:
     type: boolean
     description: Is this user a boarder?
