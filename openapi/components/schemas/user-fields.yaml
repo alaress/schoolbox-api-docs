@@ -52,6 +52,12 @@ properties:
     description: The user's surname.
     example: White
 
+    fullName:
+      type: string
+      nullable: true
+      description: The user's formatted full name.
+      example: Ms Rebecca White
+
   isEmailDerived:
     type: boolean
     description: |
