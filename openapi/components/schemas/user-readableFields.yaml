@@ -44,6 +44,13 @@ properties:
     items:
       $ref: ./user-read.yaml
     nullable: false
+    example:
+      - id: 25
+        fullName: Janna Reed
+        yearLevel: []
+        role:
+          id: 3
+          name: Parent
 
   students:
     description: |
@@ -60,6 +67,7 @@ properties:
     items:
       $ref: ./user-read.yaml
     nullable: false
+    example: []
 
   impersonableUsers:
     description: |
@@ -72,6 +80,16 @@ properties:
     items:
       $ref: ./user-read.yaml
     nullable: false
+    example:
+      - id: 6
+        fullName: Eden Reed
+        yearLevel:
+          id: 3
+          name: 3
+        role:
+          id: 5
+          name: Primary Student
+
 
   email:
     type: string
