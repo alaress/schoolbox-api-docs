@@ -52,7 +52,7 @@ properties:
     description: The user's surname.
     example: White
 
-    fullName:
+  fullName:
       type: string
       nullable: true
       description: The user's formatted full name.
