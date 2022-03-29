@@ -1,13 +1,13 @@
 openapi: 3.0.2
 
 info:
-  version:     1.1.0
+  version:     1.2.0
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
     instance.
 
-    This document is current as of Schoolbox version 21.1.0.
+    This document is current as of Schoolbox version 22.0.0.
   x-api-id:    0609d493-8804-4e97-b5ac-0ed7b3c99db8
   x-audience:  external-partner
   contact:
@@ -71,10 +71,10 @@ paths:
   /user/{id}:
     $ref: 'paths/user@{id}.yaml'
 
-  /user/{id}/groupMembership:
+  /user/{id}/group:
     $ref: 'paths/user@{id}@groupMembership.yaml'
 
-  /user/{id}/groupMembership/{groupId}:
+  /user/{id}/group/{groupId}:
     $ref: 'paths/user@{id}@groupMembership@{groupId}.yaml'
 
   /discussion/{contextType}/{contextId}/comments/{id}:

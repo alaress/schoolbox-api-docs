@@ -2,31 +2,4 @@ title: Group Membership
 description: |
   A description of the membership a user has within a group.
 type: object
-properties:
-  membership:
-    description: |
-      The type of membership that this user has.
-
-      * Admin: the user is the administrator of this group: they may add
-        and remove members, change the group's permissions and disband the
-        group
-      * Write: the user may create content within the group
-      * Read: the user may view content within the group, and may be
-        notified of and may participate in group events
-      * Awaiting Approval: the user has applied to join the group, but has
-        not yet been approved
-    type: string
-    enum:
-      - admin
-      - write
-      - read
-      - awaitingApproval
-  subscribed:
-    description: |
-      Is this user subscribed to this group's events? If so, they will be
-      notified when an event occurs.
-
-      Note that the group administrator may:
-      * force subscription, so that users may not opt out of notifications
-      * disable subscription, so that users never receive notifications
-    type: boolean
+#properties:
