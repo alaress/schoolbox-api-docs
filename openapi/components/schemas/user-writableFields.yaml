@@ -13,9 +13,17 @@ properties:
     $ref: ./itemRelation.yaml
 
   schoolHouse:
+    nullable: true
     $ref: ./itemRelation.yaml
 
   yearLevel:
+    nullable: true
     $ref: ./itemRelation.yaml
+
+  impersonableUser:
+    nullable: true
+    type: array
+    items:
+      $ref: ./itemRelation.yaml
 
 writeOnly: true

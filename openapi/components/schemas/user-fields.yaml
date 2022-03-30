@@ -80,6 +80,11 @@ properties:
       The user's job or position title within the school which owns the
       Schoolbox instance.
 
+  isDeleted:
+    type: boolean
+    default: false
+    description: Is this user deleted?
+
   isBoarder:
     type: boolean
     description: Is this user a boarder?
