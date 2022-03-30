@@ -2,4 +2,4 @@ value:
   type:   about:blank
   title:  Not Found
   status: 404
-  detail: The resource with ID=1 was not found.
+  detail: The requested object was not found.

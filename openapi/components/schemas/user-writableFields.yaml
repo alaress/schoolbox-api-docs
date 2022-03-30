@@ -12,25 +12,18 @@ properties:
   role:
     $ref: ./itemRelation.yaml
 
-  groups:
-    description: |
-      This user's group memberships.
-    type: array
-    uniqueItems: true
-    items:
-      $ref: ./userGroupMembership-write.yaml
-
   schoolHouse:
+    nullable: true
     $ref: ./itemRelation.yaml
 
-  residentialHouse:
+  yearLevel:
+    nullable: true
     $ref: ./itemRelation.yaml
 
-  impersonableUsers:
-    description: |
-      The users whom this user may impersonate within a Schoolbox session.
+  impersonableUser:
+    nullable: true
     type: array
-    uniqueItems: true
     items:
       $ref: ./itemRelation.yaml
+
 writeOnly: true
