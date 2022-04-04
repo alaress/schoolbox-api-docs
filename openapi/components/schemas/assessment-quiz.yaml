@@ -16,5 +16,5 @@ properties:
 
   section:
     type: array
-        items:
-          $ref: ./quiz-section.yaml
+    items:
+      $ref: ./quiz-section.yaml

@@ -1,19 +1,14 @@
 title: Assessment
 description: Common fields for assessments
 type: object
+required:
+  - type
+
 properties:
 
   id:
     $ref: ./id.yaml
     example: 45
-
-  type:
-    type: enum
-      - task
-      - quiz
-      - dueWork
-      - project
-    example: quiz
 
   folderId:
     $ref: ./id.yaml
@@ -71,4 +66,13 @@ properties:
     items:
       $ref: ./assessment-participants.yaml
 
+  assessmentType:
+    type: string
 
+#discriminator:
+#    propertyName: assessmentType
+#    mapping:
+#      project: ./assessment-project.yaml
+#      task: ./assessment-task.yaml
+#      quiz: ./assessment-quiz.yaml
+#      dueWork: ./assessment-dueWork.yaml

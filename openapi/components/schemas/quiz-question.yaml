@@ -23,3 +23,52 @@ properties:
     nullable: false
     required: true
 
+  stringAnswer:
+      type: string
+      description: |
+        Will only be usable when questionType is set to `Short Answer`, `Cloze Exercise`, `Numeric Answer`, `Rich Text Answer` or `Exact Answer`
+        
+        Cloze Answer must be contained within `<span class="selected-word"></span>`
+
+  options:
+    description: |
+      Will only be usable when questionType is set to `Multiple Choice (Multiple Answer)` or `Multiple Choice (Single Answer)`
+    type: array
+    items:
+      id:
+        $ref: ./id.yaml
+      correct:
+        type: boolean
+        default: false
+      text:
+        type: string
+    example:
+      - text: first
+        correct: true
+      - text: second
+        correct: false
+      - text: third
+        correct: false
+
+  randomiseAnswerOrder:
+    type: boolean
+    default: false
+    description: |
+      Will only be usable when questionType is set to `Multiple Choice (Multiple Answer)` or `Multiple Choice (Single Answer)`
+
+  pairs:
+      description: |
+        Will only be usable when questionType is set to `Matching Pairs`
+      type: array
+      items:
+        id:
+          $ref: ./id.yaml
+        left:
+          type: string
+        right:
+          type: string
+      example:
+        - left: sky
+          right: blue
+        - left: tree
+          right: green
