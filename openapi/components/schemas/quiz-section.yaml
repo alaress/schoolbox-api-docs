@@ -1,0 +1,16 @@
+title: Quiz Section
+description: Specific fields for Quiz  Sections
+type: object
+properties:
+
+  shuffleQuestions:
+    type: boolean
+    default: false
+
+  description:
+    type: string
+
+  question:
+    type: array
+    items:
+      $ref: ./quiz-question.yaml

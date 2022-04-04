@@ -3,52 +3,6 @@ description: Common fields for assessments
 type: object
 properties:
 
-  id:
-    $ref: ./id.yaml
-    example: 45
-
-  type:
-    type: enum
-      - task
-      - quiz
-      - dueWork
-      - project
-    example: quiz
-
-  folderId:
-    $ref: ./id.yaml
-    example: 88
-
-  title:
-    type: string
-    example: "Pre-Unit Quiz: To Kill a Mockingbird"
-
-  workType:
-    type: string
-    description: |
-      System configurable worktype list.
-    example: Formative Assessment Task
-
-  publishDate:
-    $ref: ./dateTime.yaml
-
-  openDate:
-    $ref: ./dateTime.yaml
-
-  dueDate:
-    $ref: ./dateTime.yaml
-
-  closeDate:
-    $ref: ./dateTime.yaml
-
-  weight:
-    type: int
-    example: 10
-
-  sebEnabled:
-    type: boolean
-    example: true
-
-  courseManaged:
-    type: boolean
-    example: true
+  projectChildren:
+    items:
+      $ref: ./assessment-read.yaml

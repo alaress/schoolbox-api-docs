@@ -13,3 +13,8 @@ properties:
 
   completionMessage:
     type: string
+
+  section:
+    type: array
+        items:
+          $ref: ./quiz-section.yaml

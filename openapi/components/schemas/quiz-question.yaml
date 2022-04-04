@@ -1,0 +1,25 @@
+title: Quiz Question
+description: Specific fields for Quiz Question
+type: object
+properties:
+
+  questionType:
+    type: enum
+      - Short Answer
+      - Multiple Choice (Multiple Answer)
+      - Cloze Exercise
+      - Matching Pairs
+      - Multiple Choice (Single Answer)
+      - Numeric Answer
+      - Rich Text Answer
+      - Exact Answer
+    default: Short Answer
+
+  question:
+    type: string
+
+  marks:
+    type: int
+    nullable: false
+    required: true
+
