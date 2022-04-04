@@ -1,63 +1,67 @@
-title: Assessment
-description: Common fields for assessments
-type: object
-properties:
+allOf:
+  - $ref: ./assessment.yaml
+  - type: object
+    description: Common fields for assessments
+    properties:
 
-  multipleSubmissions:
-    type: enum
-      - none
-      - single
-      - multiple
-    default: none
+      assessmentType:
+        type: string
 
-  selfReflection:
-    type: boolean
-    default: none
+      multipleSubmissions:
+        type: enum
+          - none
+          - single
+          - multiple
+        default: none
 
-  markType:
-    type: enum
-      - none
-      - Percentage
-      - Total Mark
-      - Letter Grade
-    default: none
+      selfReflection:
+        type: boolean
+        default: none
 
-  gradingScheme:
-    type: int
-    description: |
-      System configurable in your Admin LMS Grades area
-      
-      Will only be usable when markType is set to `Letter Grade`
+      markType:
+        type: enum
+          - none
+          - Percentage
+          - Total Mark
+          - Letter Grade
+        default: none
 
-  maxAvailableMark:
-    type: int
-    description: |
-      Will only be usable when markType is set to `Total Mark`
+      gradingScheme:
+        type: int
+        description: |
+          System configurable in your Admin LMS Grades area
+          
+          Will only be usable when markType is set to `Letter Grade`
 
+      maxAvailableMark:
+        type: int
+        description: |
+          Will only be usable when markType is set to `Total Mark`
+    
 
-  hasRubric:
-    type: boolean
-    default: false
+      hasRubric:
+        type: boolean
+        default: false
 
-  capabilityMarkType:
-    description: |
-      Will only be usable when hasRubric is set to `true`
-    type: enum
-      - none
-      - Percentage
-      - Total Mark
-      - Letter Grade
-    default: none
+      capabilityMarkType:
+        description: |
+          Will only be usable when hasRubric is set to `true`
+        type: enum
+          - none
+          - Percentage
+          - Total Mark
+          - Letter Grade
+        default: none
 
-  rubricGradingScheme:
-    type: int
-    description: |
-      System configurable in your Admin LMS Grades area
-      
-      Will only be usable when hasRubric is set to `true`
+      rubricGradingScheme:
+        type: int
+        description: |
+          System configurable in your Admin LMS Grades area
+          
+          Will only be usable when hasRubric is set to `true`
 
-  markRange:
-    description: |
-      Will only be usable when hasRubric is set to `true`
-    type: boolean
-    default: false
+      markRange:
+        description: |
+          Will only be usable when hasRubric is set to `true`
+        type: boolean
+        default: false

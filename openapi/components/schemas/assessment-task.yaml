@@ -1,10 +1,14 @@
-title: Assessment task
-description: specific fields for Task Assessments
-type: object
-properties:
+allOf:
+  - $ref: ./assessment.yaml
+  - type: object
+    description: specific fields for Task Assessments
+    properties:
 
-  link:
-    type: string
+      assessmentType:
+        type: string
 
-  selfAssessable:
-    type: boolean
+      link:
+        type: string
+
+      selfAssessable:
+        type: boolean

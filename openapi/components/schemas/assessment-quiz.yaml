@@ -1,20 +1,24 @@
-title: Assessment Quiz
-description: Specific fields for Quizes
-type: object
-properties:
+allOf:
+  - $ref: ./assessment.yaml
+  - type: object
+    description: Specific fields for Quizes
+    properties:
 
-  maxAttempts:
-    type: string
-    example: Unlimited
+      assessmentType:
+        type: string
 
-  allowedTime:
-    type: string
-    example: 2H15Min
+      maxAttempts:
+        type: string
+        example: Unlimited
 
-  completionMessage:
-    type: string
+      allowedTime:
+        type: string
+        example: 2H15Min
 
-  section:
-    type: array
-    items:
-      $ref: ./quiz-section.yaml
+      completionMessage:
+        type: string
+
+      section:
+        type: array
+        items:
+          $ref: ./quiz-section.yaml

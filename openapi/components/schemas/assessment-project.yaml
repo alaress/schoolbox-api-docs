@@ -1,8 +1,12 @@
-title: Assessment
-description: Common fields for assessments
-type: object
-properties:
+allOf:
+  - $ref: ./assessment.yaml
+  - type: object
+    description: Common fields for assessments
+    properties:
 
-  projectChildren:
-    items:
-      $ref: ./assessment-read.yaml
+      assessmentType:
+        type: string
+
+      projectChildren:
+        items:
+          $ref: ./assessment-read.yaml

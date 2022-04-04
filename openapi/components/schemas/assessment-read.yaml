@@ -1,7 +1,3 @@
 allOf:
   - $ref: ./assessment.yaml
-  - $ref: ./assessment-task.yaml
-  - $ref: ./assessment-quiz.yaml
-  - $ref: ./assessment-project.yaml
-  - $ref: ./assessment-dueWork.yaml
 
