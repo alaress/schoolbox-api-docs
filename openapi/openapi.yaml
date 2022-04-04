@@ -1,7 +1,7 @@
 openapi: 3.0.2
 
 info:
-  version:     1.2.0
+  version:     1.2.1
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
@@ -29,7 +29,7 @@ tags:
       Upload files.
 
   - name: user
-    x-displayName: Users (under development)
+    x-displayName: Users
     description: |
       Create and manage users.
 
