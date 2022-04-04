@@ -1,0 +1,11 @@
+title: Assessment feedback
+description: a feedback is made up by these fields.
+type: object
+properties:
+
+  id:
+    $ref: ./id.yaml
+  assessingUser:
+    $ref: ./user-read.yaml
+  feedbackDate:
+    $ref: ./dateTime.yaml

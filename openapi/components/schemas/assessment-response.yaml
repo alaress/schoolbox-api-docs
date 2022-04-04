@@ -1,0 +1,13 @@
+title: Assessment responses
+description: a response is made up by these fields.
+type: object
+properties:
+
+  id:
+    $ref: ./id.yaml
+  submittingUser:
+    description: |
+      may be different to the participant
+    $ref: ./user-read.yaml
+  submissionDate:
+    $ref: ./dateTime.yaml

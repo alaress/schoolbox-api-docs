@@ -1,0 +1,15 @@
+title: Assessment Quiz
+description: Specific fields for Quizes
+type: object
+properties:
+
+  maxAttempts:
+    type: string
+    example: Unlimited
+
+  allowedTime:
+    type: string
+    example: 2H15Min
+
+  completionMessage:
+    type: string

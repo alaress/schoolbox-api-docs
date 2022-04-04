@@ -1,0 +1,5 @@
+description: An assessment
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/assessment-read.yaml

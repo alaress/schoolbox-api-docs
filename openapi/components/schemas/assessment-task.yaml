@@ -1,0 +1,10 @@
+title: Assessment task
+description: specific fields for Task Assessments
+type: object
+properties:
+
+  link:
+    type: string
+
+  selfAssessable:
+    type: boolean

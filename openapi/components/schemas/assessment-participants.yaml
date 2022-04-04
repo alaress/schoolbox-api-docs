@@ -1,0 +1,20 @@
+title: Assessment Participants
+description: Common fields for assessments
+type: object
+properties:
+
+  userId:
+    $ref: ./user-read.yaml
+    example: 45
+
+  responses:
+    type: array
+    uniqueItems: true
+    items:
+      $ref: ./assessment-response.yaml
+
+  feedback:
+    type: array
+    uniqueItems: true
+    items:
+      $ref: ./assessment-feedback.yaml

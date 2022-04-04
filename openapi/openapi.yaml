@@ -47,6 +47,11 @@ tags:
     description: |
       Create and manage school news (also known as communications).
 
+  - name: assessment
+    x-displayName: Assessment
+    description: |
+      Search and extract assessment information including results.
+
 servers:
   - url: https://{hostname}.{domain}/
     variables:
@@ -142,6 +147,9 @@ paths:
 
   /news/lists/folder/{id}:
     $ref: 'paths/news@lists@folder@{id}.yaml'
+
+  /api/assessment/{id}:
+    $ref: 'paths/assessments@{id}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

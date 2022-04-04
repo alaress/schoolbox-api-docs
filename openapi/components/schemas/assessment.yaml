@@ -1,0 +1,74 @@
+title: Assessment
+description: Common fields for assessments
+type: object
+properties:
+
+  id:
+    $ref: ./id.yaml
+    example: 45
+
+  type:
+    type: enum
+      - task
+      - quiz
+      - dueWork
+      - project
+    example: quiz
+
+  folderId:
+    $ref: ./id.yaml
+    example: 88
+
+  title:
+    type: string
+    example: "Pre-Unit Quiz: To Kill a Mockingbird"
+
+  workType:
+    type: string
+    description: |
+      System configurable in your Admin Lists Work Types area
+    example: Formative Assessment Task
+
+  publishDate:
+    $ref: ./dateTime.yaml
+
+  openDate:
+    $ref: ./dateTime.yaml
+
+  dueDate:
+    $ref: ./dateTime.yaml
+
+  closeDate:
+    $ref: ./dateTime.yaml
+
+  weight:
+    type: int
+    example: 10
+
+  sebEnabled:
+    type: boolean
+    example: true
+
+  courseManaged:
+    type: boolean
+    example: true
+
+  description:
+    type: string
+
+  markVisibility:
+    type: enum
+      - staff
+      - staff & students
+      - staff, students & parents
+    default: staff, students & parents
+
+  participants:
+    description: |
+      array of students participating in the assessment also containing the responses and feedback for the assessment
+    type: array
+    uniqueItems: true
+    items:
+      $ref: ./assessment-participants.yaml
+
+
