@@ -4,7 +4,8 @@ type: object
 properties:
 
   questionType:
-    type: enum
+    type: string
+    enum:
       - Short Answer
       - Multiple Choice (Multiple Answer)
       - Cloze Exercise

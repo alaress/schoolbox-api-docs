@@ -16,7 +16,7 @@ properties:
   contextId:
     $ref: ./id.yaml
     description: |
-    May be the folder the assessment is part of, or the project this is a child of
+      May be the folder the assessment is part of, or the project this is a child of
     example: 88
 
   title:
@@ -57,7 +57,8 @@ properties:
     type: string
 
   markVisibility:
-    type: enum
+    type: string
+    enum:
       - staff
       - staff & students
       - staff, students & parents

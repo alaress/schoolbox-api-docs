@@ -8,7 +8,8 @@ allOf:
         type: string
 
       multipleSubmissions:
-        type: enum
+        type: text
+        enum:
           - none
           - single
           - multiple
@@ -19,7 +20,8 @@ allOf:
         default: none
 
       markType:
-        type: enum
+        type: string
+        enum:
           - none
           - Percentage
           - Total Mark
@@ -46,7 +48,8 @@ allOf:
       capabilityMarkType:
         description: |
           Will only be usable when hasRubric is set to `true`
-        type: enum
+        type: text
+        enum:
           - none
           - Percentage
           - Total Mark
