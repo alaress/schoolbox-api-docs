@@ -1,0 +1,13 @@
+get:
+  operationId: assessmentSearch
+  tags: [assessment]
+  summary: Search for an Assessment
+  responses:
+    '200':
+      $ref: ../components/responses/assessment-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/search.yaml
+    - $ref: ../components/parameters/filter-assessment.yaml
