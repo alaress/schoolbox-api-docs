@@ -13,8 +13,10 @@ properties:
   assessmentType:
     type: string
 
-  folderId:
+  contextId:
     $ref: ./id.yaml
+    description: |
+    May be the folder the assessment is part of, or the project this is a child of
     example: 88
 
   title:
