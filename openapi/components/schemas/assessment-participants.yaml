@@ -15,6 +15,5 @@ properties:
 
   feedback:
     type: array
-    uniqueItems: true
     items:
       $ref: ./assessment-feedback.yaml

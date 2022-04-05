@@ -1,5 +1,5 @@
-title: Assessment feedback
-description: a feedback is made up by these fields.
+title: Assessment Feedback
+description: Common fields for assessment feedbacks
 type: object
 properties:
 
@@ -9,3 +9,23 @@ properties:
     $ref: ./user-read.yaml
   feedbackDate:
     $ref: ./dateTime.yaml
+
+  comment:
+    type: string
+    description: |
+      Only available for `assessmentType` `dueWork` and`quiz`
+
+  mark:
+    type: string
+    description: |
+      Only available for `assessmentType` `dueWork` and`quiz`
+
+  normalisedMark:
+    type: integer
+    description: |
+      Only available for `assessmentType` `dueWork`
+
+  resubmitRequired:
+    type: boolean
+    description: |
+      Only available for `assessmentType` `dueWork`
