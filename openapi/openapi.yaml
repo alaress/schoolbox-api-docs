@@ -8,6 +8,32 @@ info:
     instance.
 
     This document is current as of Schoolbox version 22.0.0.
+
+    Examples to get started:
+
+    **cURL:** Get User id 1
+    ```
+    curl -X GET --location "https://demo.schoolbox.com.au/api/user/1" \
+        -H "Content-Type: application/json" \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer {{Add you JWT here}}"
+    ```
+    **Python Requests:** Update user 1's name
+    ```
+    import requests
+    data = {
+      "firstName": 'System',
+      "lastName": 'Adminsistrator'
+    }
+    headers={
+      "Authorization": "Bearer {{Add you JWT here}}",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    }
+    req = requests.request('PATCH', 'https://demo.schoolbox.com.au/api/user/1', json=data, headers=headers)
+
+    print(req.json())
+    ```
   x-api-id:    0609d493-8804-4e97-b5ac-0ed7b3c99db8
   x-audience:  external-partner
   contact:
