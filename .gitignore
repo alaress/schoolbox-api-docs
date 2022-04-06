@@ -4,3 +4,6 @@ dist
 dist.yaml
 node_modules
 .idea
+
+# Temporary staging folder for pages
+.staging
