@@ -5,7 +5,7 @@
 ### Install
 
 1. Install [Node.js](https://nodejs.org/).
-2. Clone this repo and run `npm install` in the repo root.
+2. Clone this repo and run `npm ci` in the repo root.
 
 ### Usage
 
