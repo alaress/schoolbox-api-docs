@@ -32,6 +32,7 @@ jobs:
           cp -r docs/ .staging
           git checkout gh-pages
           mv .staging/* .
+          rm -rf .staging/
 
           # Commit and push
           git add .
