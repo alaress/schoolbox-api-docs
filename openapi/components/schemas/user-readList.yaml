@@ -9,3 +9,5 @@ properties:
     items:
       allOf:
         - $ref: ./user-read.yaml
+  metadata:
+    $ref: ./listMetadata.yaml
