@@ -1,8 +1,0 @@
-description: |
-  Authentication data, either via JWT or username/password.
-content:
-  application/x-www-form-urlencoded:
-    schema:
-      oneOf:
-        - $ref: ../schemas/authentication-usernamePassword.yaml
-        - $ref: ../schemas/authentication-jwt.yaml

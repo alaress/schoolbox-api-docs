@@ -1,7 +1,0 @@
-name:        key
-in:          path
-description: |
-  A key which identifies a user.
-required:    true
-schema:
-  type: string

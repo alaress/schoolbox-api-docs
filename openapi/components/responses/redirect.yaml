@@ -1,7 +1,0 @@
-description: |
-  A redirect to another location within the Schoolbox instance.
-headers:
-  Location:
-    schema:
-      type: string
-      format: uri

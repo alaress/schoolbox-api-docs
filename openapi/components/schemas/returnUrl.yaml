@@ -1,5 +1,0 @@
-description: |
-  A base-64 encoded URL to redirect to, once processing of the entity on this
-  page is completed.
-type: string
-pattern: "^[a-zA-Z0-9+/]+={0,2}$"

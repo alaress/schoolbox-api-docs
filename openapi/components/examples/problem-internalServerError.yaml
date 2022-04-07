@@ -1,5 +1,0 @@
-value:
-  type:   about:blank
-  title:  Internal Server Error
-  status: 500
-  detail: An unexpected error occured when accessing resource with ID=1. This error has been logged.

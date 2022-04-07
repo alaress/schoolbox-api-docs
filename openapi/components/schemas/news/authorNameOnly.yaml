@@ -1,8 +1,0 @@
-type: object
-description: |
-  The author's details: currently, only their name.
-properties:
-  fullname:
-    type: string
-    description: |
-      The author's full name.

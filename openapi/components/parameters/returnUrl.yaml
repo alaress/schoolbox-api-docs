@@ -1,4 +1,0 @@
-name:        returnUrl
-in:          query
-schema:
-  $ref: ../schemas/returnUrl.yaml

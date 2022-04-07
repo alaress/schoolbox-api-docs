@@ -1,8 +1,0 @@
-name:        redirect
-in:          query
-description: |
-  If provided, a relative path to redirect to upon successful authentication.
-
-  If not provided: will fall back to redirecting to an empty relative path (/).
-schema:
-  type: string

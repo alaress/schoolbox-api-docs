@@ -1,5 +1,0 @@
-description: Not enough data provided or could not authenticate user
-content:
-  text/plain:
-    schema:
-      type: string
