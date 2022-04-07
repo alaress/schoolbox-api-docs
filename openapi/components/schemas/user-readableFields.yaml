@@ -16,6 +16,12 @@ properties:
   role:
     $ref: ./role.yaml
 
+  fullName:
+    type: string
+    nullable: true
+    description: The user's formatted full name.
+    example: Ms Rebecca White
+
   groups:
     description: |
       This user's group memberships.
@@ -90,6 +96,10 @@ properties:
           id: 5
           name: Primary Student
 
+  isDeleted:
+    type: boolean
+    default: false
+    description: Is this user deleted?
 
   email:
     type: string
