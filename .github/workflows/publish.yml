@@ -25,6 +25,9 @@ jobs:
           npm ci
           npm run build-static
 
+          # What commit is this?
+          COMMIT_NUM=$(git rev-parse --short=12 HEAD)
+
           # Copy docs into gh-pages repo
           cp -r docs/ .staging
           git checkout gh-pages
@@ -32,5 +35,5 @@ jobs:
 
           # Commit and push
           git add .
-          git commit -m "Build pages for commit $COMMIT_NUM" .
+          git commit -m "Build pages for commit ${COMMIT_NUM}" .
           git push
