@@ -52,12 +52,6 @@ properties:
     description: The user's surname.
     example: White
 
-  fullName:
-      type: string
-      nullable: true
-      description: The user's formatted full name.
-      example: Ms Rebecca White
-
   isEmailDerived:
     type: boolean
     description: |
@@ -79,11 +73,6 @@ properties:
     description: |
       The user's job or position title within the school which owns the
       Schoolbox instance.
-
-  isDeleted:
-    type: boolean
-    default: false
-    description: Is this user deleted?
 
   isBoarder:
     type: boolean
