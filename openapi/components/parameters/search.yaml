@@ -10,3 +10,4 @@ description: |
   for this search term.
 schema:
   type: string
+required: true

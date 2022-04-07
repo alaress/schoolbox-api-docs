@@ -9,6 +9,3 @@ properties:
     items:
       allOf:
         - $ref: ./user-read.yaml
-        - $ref: ./itemSearchRelevance.yaml
-  metadata:
-    $ref: ./listMetadata.yaml
