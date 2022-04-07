@@ -26,7 +26,7 @@ required:
   - id
 readOnly: true
 example:
-  - id: 1
-    name: Secondary
-    code: SEC
-    days: 5
+  id: 1
+  name: Secondary
+  code: SEC
+  days: 5

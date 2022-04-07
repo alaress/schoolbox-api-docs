@@ -7,7 +7,8 @@ properties:
     example: 24
 
   campus:
-    $ref: ./campus.yaml
+    items:
+      $ref: ./campus.yaml
 
   role:
     $ref: ./role.yaml
