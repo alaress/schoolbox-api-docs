@@ -1,5 +1,0 @@
-description: A user token
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/userToken.yaml

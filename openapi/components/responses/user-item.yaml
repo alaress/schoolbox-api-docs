@@ -1,5 +1,0 @@
-description: A user
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/user-read.yaml

@@ -1,6 +1,0 @@
-name: l
-in: query
-description: |
-  Limit of results to show per page
-schema:
-  type: integer

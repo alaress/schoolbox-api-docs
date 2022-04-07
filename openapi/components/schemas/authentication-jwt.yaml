@@ -1,8 +1,0 @@
-type: object
-description: JWT
-properties:
-  jwt:
-    description: A JWT generated via an oAuth request.
-    type: string
-required:
-  - jwt

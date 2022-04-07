@@ -1,5 +1,0 @@
-value:
-  type:   about:blank
-  title:  Unauthorized Access
-  status: 401
-  detail: Authorization is required to access resource with ID=1.

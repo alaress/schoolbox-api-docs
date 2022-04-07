@@ -1,6 +1,0 @@
-type: boolean
-description: |
-  Is this article sticky?
-
-  If so, it will always display at the top of the list of
-  articles.

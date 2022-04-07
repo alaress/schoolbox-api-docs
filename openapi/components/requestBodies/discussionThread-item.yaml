@@ -1,5 +1,0 @@
-description: A thread
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/discussionThread-read.yaml

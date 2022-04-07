@@ -1,3 +1,0 @@
-allOf:
-  - $ref: ./user-readableFields.yaml
-  - $ref: ./user-fields.yaml
