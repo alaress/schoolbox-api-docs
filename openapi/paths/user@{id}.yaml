@@ -1,3 +1,13 @@
+get:
+  operationId: userGet
+  tags: [user]
+  summary: Returns a user
+  responses:
+    '200':
+      $ref: ../components/responses/user-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
 put:
   operationId: userPut
   tags: [user]
@@ -32,16 +42,5 @@ delete:
     default:
       $ref: ../components/responses/problem.yaml
 
-get:
-  operationId: userGet
-  tags: [user]
-  summary: Returns a user
-  responses:
-    '200':
-      $ref: ../components/responses/user-item.yaml
-    default:
-      $ref: ../components/responses/problem.yaml
-
 parameters:
   - $ref: ../components/parameters/id.yaml
-  - $ref: ../components/parameters/token.yaml

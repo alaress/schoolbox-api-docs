@@ -56,7 +56,6 @@ post:
 
 parameters:
   - $ref: ../components/parameters/id.yaml
-  - $ref: ../components/parameters/token.yaml
   - name: groupId
     in:       path
     required: true
