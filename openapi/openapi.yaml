@@ -139,6 +139,9 @@ paths:
   /storage/asyncUpload.php:
     $ref: 'paths/storage@asyncUpload.php.yaml'
 
+  /resources/file/{fileId}/ajax:
+      $ref: 'paths/resource@file@{id}@ajax.yaml'
+
   /news/create:
     $ref: 'paths/news@create.yaml'
 
