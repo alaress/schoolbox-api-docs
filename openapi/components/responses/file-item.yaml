@@ -1,0 +1,26 @@
+description: A file
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        fileName:
+          type: string
+          example: School-Events-PNG-2
+        title:
+          type: string
+          example: School Events
+        description:
+          type: string
+          example: |
+            Banner image for 2022 school events
+        hidden:
+          type: boolean
+          example: false
+        mimeType:
+          type: string
+          example: image/png
+        filesize:
+          type: integer
+          description: file size in bytes
+          example: 117407
