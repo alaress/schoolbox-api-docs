@@ -1,0 +1,94 @@
+title: Calendar event attendance
+description: |
+  A record of the invitees to a calendar event, and whether or not they are
+  attending.
+readOnly: true
+type: object
+properties:
+  level:
+    description: |
+      The level of attendance which applies to this event.
+
+      * 0: event may not be attended (usually, this means that no users will be
+         invited to this event; however, it is possible for an event's
+         attendance level to change)
+      * 1: event attendees may only be invited by the event's creator
+      * 2: any user who may view the event may invite themselves to the event
+    type: integer
+    minimum: 0
+    maximum: 2
+  currentUser:
+    type: object
+    properties:
+      user:
+        $ref: ./user-readOnly-deprecated.yaml
+      status:
+        allOf:
+        - $ref: ./calendarAttendanceStatus.yaml
+        - nullable: true
+      canModify:
+        description: |
+          Can the authenticated user modify the event?
+        type: boolean
+      canInvite:
+        description: |
+          Can the authenticated user invite other users to the event?
+        type: boolean
+  attendees:
+    description: |
+      A summary of all the invitees of this event.
+    type: object
+    properties:
+      guests:
+        description: |
+          A list of the event's invitees.
+
+          Not all events have public invitation lists: if this is the case, then
+          the guest list is hidden from all but the event's creator.
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              description: |
+                The invitee's ID number.
+              type: integer
+            name:
+              description: |
+                The invitee's full name.
+              type: string
+            status:
+              $ref: ./calendarAttendanceStatus.yaml
+      max:
+        description: |
+          The maximum number of invitees to this event, or null if there is no
+          maximum.
+        type: integer
+        nullable: true
+      num:
+        description: |
+          The current total number of invitees to this event.
+
+          This may differ from the number of guests in the guest list, due to
+          the ability to create events with private invitation lists.
+        type: integer
+      available:
+        description: |
+          The number of available invite slots for this event.
+        type: integer
+        nullable: true
+      pending:
+        description: |
+          The number of invitees for this event whose invitation is pending
+          response.
+        type: integer
+      accepted:
+        description: |
+          The number of invitees for this event whose invitation has been
+          accepted.
+        type: integer
+      declined:
+        description: |
+          The number of invitees for this event whose invitation has been
+          declined.
+        type: integer

@@ -1,0 +1,14 @@
+get:
+  operationId: getCalendarEventAttendance
+  tags: [calendar]
+  summary: Get an event's attendees
+  description: |
+    Retrieves a calendar event's attendance.
+  responses:
+    '200':
+      $ref: ../components/responses/calendarAttendance-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+

@@ -1,0 +1,10 @@
+description: |
+  The status of the user's attendance.
+
+  * null: user is not invited to this event
+  * 1: user has not yet responded to the invitation
+  * 2: user has accepted the invitation
+  * 3: user has declined the invitation
+type: integer
+minimum: 1
+maximum: 3

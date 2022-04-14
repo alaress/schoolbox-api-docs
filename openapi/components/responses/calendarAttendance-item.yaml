@@ -1,0 +1,5 @@
+description: Calendar event attendance
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/calendarAttendance.yaml
