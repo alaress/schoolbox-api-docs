@@ -1,0 +1,23 @@
+get:
+  operationId: assessmentSearch
+  tags: [assessment]
+  summary: Searches for a list of assessments
+  responses:
+    '200':
+      $ref: ../components/responses/assessment-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/cursor.yaml
+  - $ref: ../components/parameters/search.yaml
+  - $ref: ../components/parameters/filter.yaml
+    example:
+      assessmentType: [ dueWork, quiz, task, project, LTI ]
+      workType: Formative Assessment
+      yearLevel: {"name": "Year 9", "id": 3}
+      contextId: 83
+      weighted: true
+      assessmentId: 255
+      assessmentName: Turning on the computer
+
