@@ -188,7 +188,6 @@ paths:
   /news/lists/folder/{id}:
     $ref: 'paths/news@lists@folder@{id}.yaml'
 
-<<<<<<< HEAD
   /calendar/event/attendance/{id}:
     $ref: 'paths/calendar@event@attendance@{id}.yaml'
 
@@ -203,10 +202,9 @@ paths:
 
   /calendar/event/attendance/{id}/delete:
     $ref: 'paths/calendar@event@attendance@{id}@delete.yaml'
-=======
+
   /api/assessment:
     $ref: 'paths/assessment.yaml'
->>>>>>> b32e9d3 (added assessment search to api docs [SA-13377])
 
   /api/assessment/{id}:
       $ref: 'paths/assessment@{id}.yaml'
