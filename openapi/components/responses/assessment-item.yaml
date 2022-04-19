@@ -1,0 +1,5 @@
+description: A list of feedback items for an assement
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/assessment-feedback-list.yaml

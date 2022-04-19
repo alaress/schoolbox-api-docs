@@ -84,6 +84,11 @@ tags:
     description: |
       Create and manage school news (also known as communications).
 
+  - name: assessment
+    x-displayName: Assessments
+    description: |
+      Search and get assessments
+
 servers:
   - url: https://{hostname}.{domain}/
     variables:
@@ -197,6 +202,10 @@ paths:
 
   /calendar/event/attendance/{id}/delete:
     $ref: 'paths/calendar@event@attendance@{id}@delete.yaml'
+
+  /api/assessment/{id}:
+      $ref: 'paths/assessment@{id}.yaml'
+
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.

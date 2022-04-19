@@ -1,0 +1,12 @@
+get:
+  operationId: assessmentGet
+  tags: [assessment]
+  summary: Returns an assessment
+  responses:
+    '200':
+      $ref: ../components/responses/assessment-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
