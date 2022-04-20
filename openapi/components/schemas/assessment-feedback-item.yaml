@@ -5,7 +5,7 @@ type: object
 properties:
   assessmentId:
     $ref: ./id.yaml
-    example: 36
+    example: 639
   title:
     type: string
     example: Essay - Final Assessment
