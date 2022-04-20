@@ -27,12 +27,17 @@ properties:
   normalisedMark:
     type: integer
     example: 36
-  studentId:
-    $ref: ./id.yaml
-    example: 6
-  instructorId:
-    $ref: ./id.yaml
-    example: 50
+  student:
+    $ref: ./userShort.yaml
+    examples:
+      firstName: Joffery
+  assessor:
+    $ref: ./userShort.yaml
+  resubmissionRequired:
+    type: boolean
+    default: false
+    description: |
+      specifies if assessor has requested the student resubmit the assessment
   comment:
     type: string
     example: |
