@@ -30,7 +30,7 @@ properties:
   student:
     $ref: ./userShort.yaml
     examples:
-      firstName: Joffery
+      firstName: Joffrey
   assessor:
     $ref: ./userShort.yaml
   resubmissionRequired:
