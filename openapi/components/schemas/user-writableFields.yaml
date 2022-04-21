@@ -4,12 +4,14 @@ type: object
 properties:
   campus:
     type: array
+    required: true
     minItems: 1
     uniqueItems: true
     items:
       $ref: ./itemRelation.yaml
 
   role:
+    required: true
     $ref: ./itemRelation.yaml
 
   schoolHouse:
