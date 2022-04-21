@@ -1,7 +1,7 @@
 openapi: 3.0.2
 
 info:
-  version:     1.2.2
+  version:     1.2.3
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
@@ -22,17 +22,17 @@ info:
     curl -X GET --location "https://demo.schoolbox.com.au/api/user/1" \
         -H "Content-Type: application/json" \
         -H "Accept: application/json" \
-        -H "Authorization: Bearer {{Add you JWT here}}"
+        -H "Authorization: Bearer {{Add your JWT here}}"
     ```
     **Python Requests:** Update user 1's name
     ```
     import requests
     data = {
       "firstName": 'System',
-      "lastName": 'Adminsistrator'
+      "lastName": 'Administrator'
     }
     headers={
-      "Authorization": "Bearer {{Add you JWT here}}",
+      "Authorization": "Bearer {{Add your JWT here}}",
       "Accept": "application/json",
       "Content-Type": "application/json"
     }

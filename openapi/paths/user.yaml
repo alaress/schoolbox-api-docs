@@ -2,20 +2,53 @@ get:
   operationId: userSearch
   tags: [user]
   summary: Returns users which match a search term and set of filters.
+  description: |
+    `/api/user?search=rebecca&filter={"username":"rwhite","externalId":"501",
+    "email":"user@example.com","role":{"name":"Senior Student", "id":4},
+    "campus":{"name":"Secondary", "id":1},"year":{"name":"year 12", "id":13},
+    "roleType":"student"}&cursor=0&limit=3`
+
   responses:
     '200':
       $ref: ../components/responses/user-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
-    - $ref: ../components/parameters/cursor.yaml
     - $ref: ../components/parameters/search.yaml
     - $ref: ../components/parameters/filter.yaml
+    - $ref: ../components/parameters/cursor.yaml
+      default: 5
+    - $ref: ../components/parameters/limit.yaml
+      example:
+        filter:
+          username: rreed
+          externalId: 501
+          email: example@schoolbox.com.au
+          roleType: [ student, parent, staff, guest ]
+          role: Primary Student
+          campus: Secondary
+          year: 9
+
 
 post:
   operationId: userPost
   tags: [user]
   summary: Creates a user
+  description: |
+    minimum fields required:
+    ```
+    "username": "rwhite",
+    "role": {
+      "id": 4
+    },
+    "campus": [
+      {
+        "id": 1
+      }
+    ],
+    "firstName": "Rebecca"
+    }
+    ```
   responses:
     '201':
       $ref: ../components/responses/user-item.yaml

@@ -1,0 +1,16 @@
+name:        limit
+in:          query
+description: |
+  Limit the returned results to this count.
+
+  Each endpoint whose data accepts a limit will limit
+  their results to that number.
+schema:
+  title: Limit
+  description: |
+    An option to limit the returned results.
+
+    Each endpoint whose data accepts a limit will limit
+    their results to that number.
+  type: integer
+

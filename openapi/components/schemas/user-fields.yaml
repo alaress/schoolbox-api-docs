@@ -9,8 +9,7 @@ properties:
 
   username:
     type: string
-    # Apparently this is nullable?
-    nullable: true
+    required: false
     description: |
       The user's username. This will be used as the user's identification
       when they attempt to log into the Schoolbox instance.
@@ -36,7 +35,7 @@ properties:
 
   firstName:
     type: string
-    nullable: true
+    required: true
     description: |
       The user's first name.
 
@@ -86,6 +85,7 @@ properties:
     properties:
       showWebmailTab:
         type: boolean
+        default: false
         description: Does the Webmail tab display for this user?
       showContacts:
         type: boolean
@@ -104,9 +104,11 @@ properties:
         description: Does the grade graph show for this user?
       enableEportfolio:
         type: boolean
+        default: false
         description: Is this user able to create ePortfolio content?
       useInternalMail:
         type: boolean
+        default: false
         description: |
           Does this user use Schoolbox's internal mail system to send
           email?
@@ -115,6 +117,7 @@ properties:
       calendarView:
         type: string
         description: Which calendar view will the user default to?
+        default: month
         enum:
           - month
           - agendaWeek

@@ -11,11 +11,3 @@ description: |
 
 schema:
   type: object
-example:
-  username: rreed
-  externalId: 501
-  email: example@schoolbox.com.au
-  roleType: [student, parent, staff, guest]
-  role: Primary Student
-  campus: Secondary
-  year: 9
