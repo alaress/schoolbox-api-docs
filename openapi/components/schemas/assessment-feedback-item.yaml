@@ -33,23 +33,25 @@ properties:
     example: Formative Assessment
     description: |
       System configurable in your Admin Lists Work Types area
-  mark:
-    type: string
-    example: A
-  normalisedMark:
-    type: integer
-    example: 36
   learner:
-    $ref: ./userShort.yaml
-    examples:
-      firstName: Joffrey
+    allOf:
+      - $ref: ./userShort.yaml
+      - type: object
+        properties:
+          comment:
+            type: string
+            example: |
+              Joffrey,
+              Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
+              Please consider this for your next essay.
+          completionDate:
+            $ref: ./dateTime.yaml
+          mark:
+            type: string
+            example: A
+          normalisedMark:
+            type: integer
+            example: 36
+
   instructor:
     $ref: ./userShort.yaml
-  comment:
-    type: string
-    example: |
-      Joffrey,
-      Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
-      Please consider this for your next essay.
-  completionDate:
-    $ref: ./dateTime.yaml
