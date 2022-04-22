@@ -3,6 +3,9 @@ get:
   tags: [assessment]
   summary: Searches for a list of assessments
   description: |
+    `/api/assessment?search=[Final]&filter={"assessmentType":"dueWork","workType":"Formative Assessment",
+    "folderId":88,"weighted", "commonAssessment": false, "assessmentId": 256,
+    "assessmentName": "English 3/4 [Final]"}&cursor=0&limit=3`
 
   responses:
     '200':
@@ -19,6 +22,7 @@ parameters:
       workType: Formative Assessment
       yearLevel: {"name": "Year 9", "id": 3}
       contextId: 83
+      commonAssessment: false
       weighted: true
       assessmentId: 255
       assessmentName: Turning on the computer
