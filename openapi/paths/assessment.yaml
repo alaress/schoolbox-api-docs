@@ -2,6 +2,8 @@ get:
   operationId: assessmentSearch
   tags: [assessment]
   summary: Searches for a list of assessments
+  description: |
+
   responses:
     '200':
       $ref: ../components/responses/assessment-list.yaml
