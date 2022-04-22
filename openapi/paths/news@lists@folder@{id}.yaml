@@ -7,7 +7,7 @@ get:
   parameters:
     - $ref: ../components/parameters/id.yaml
     - $ref: ../components/parameters/newsQuery/compactMode.yaml
-    - $ref: ../components/parameters/newsQuery/limit.yaml
+    - $ref: ../components/parameters/newsQuery/news-limit.yaml
   responses:
     '200':
       description: |
