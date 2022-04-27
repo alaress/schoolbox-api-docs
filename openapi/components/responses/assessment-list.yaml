@@ -1,0 +1,5 @@
+description: A list of assements
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/assessment-list.yaml

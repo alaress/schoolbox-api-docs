@@ -1,0 +1,10 @@
+title: a list of assessment feedback items
+description: A list of feedback items
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    items:
+      allOf:
+        - $ref: ./assessment-feedback-item.yaml

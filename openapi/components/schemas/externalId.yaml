@@ -1,5 +1,6 @@
 title: External ID
 type: string
+nullable: true
 description: |
   This user's ID in the school's School Information System (SIS).
 

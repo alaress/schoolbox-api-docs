@@ -1,0 +1,57 @@
+title: An Assessment feedback item
+description: An Assessment feedback item
+readOnly: true
+type: object
+properties:
+  assessmentId:
+    $ref: ./id.yaml
+    example: 639
+  title:
+    type: string
+    example: Essay - Final Assessment
+  folder:
+    type: integer
+    example: 83
+    description: |
+      The folder where the assessment is found
+  type:
+    type: string
+    enum:
+      - quiz
+      - task
+      - project
+      - dueWork
+      - LTI
+    example: dueWork
+  commonAssessment:
+    type: boolean
+  weight:
+    type: integer
+    example: 3
+  workType:
+    type: string
+    example: Formative Assessment
+    description: |
+      System configurable in your Admin Lists Work Types area
+  learner:
+    allOf:
+      - $ref: ./userShort.yaml
+      - type: object
+        properties:
+          comment:
+            type: string
+            example: |
+              Joffrey,
+              Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
+              Please consider this for your next essay.
+          completionDate:
+            $ref: ./dateTime.yaml
+          mark:
+            type: string
+            example: A
+          normalisedMark:
+            type: integer
+            example: 36
+
+  instructor:
+    $ref: ./userShort.yaml
