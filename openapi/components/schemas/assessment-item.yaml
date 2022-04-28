@@ -16,8 +16,7 @@ properties:
       - LTI
     example: task
   folder:
-    type: integer
-    example: 83
+    $ref: ./folder.yaml
     description: |
       The folder where the assessment is found
   commonAssessment:
@@ -37,15 +36,9 @@ properties:
       example:
         name: Year 9
         id: 3
-  contextId:
-    $ref: ./id.yaml
-    example: 83
   weighted:
     type: boolean
     example: true
-  assessmentId:
-    $ref: ./id.yaml
-    example: 255
   assessmentName:
     type: string
     example: Turning on the computer
