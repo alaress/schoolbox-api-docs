@@ -7,4 +7,38 @@ properties:
     type: array
     items:
       allOf:
-        - $ref: ./assessment-feedback-item.yaml
+        - type: object
+          properties:
+            id:
+              $ref: ./id.yaml
+              example: 639
+            title:
+              type: string
+              example: Essay - Final Assessment
+            folder:
+              $ref: ./folder.yaml
+              description: |
+                The folder where the assessment is found
+            assessmentType:
+              type: string
+              enum:
+                - quiz
+                - task
+                - project
+                - dueWork
+                - LTI
+              example: dueWork
+            commonAssessment:
+              type: boolean
+            weight:
+              type: string
+              example: 1.00
+            workType:
+              type: string
+              example: Formative Assessment
+              description: |
+                System configurable in your Admin Lists Work Types area
+            markType:
+              type: string
+            participants:
+              $ref: ./assessment-feedback-item.yaml
