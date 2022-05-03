@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.2.5
+  version: 1.2.6
   title: Schoolbox API
   description: >
     This document describes the API endpoints that are available to a Schoolbox
@@ -133,24 +133,71 @@ paths:
         default:
           $ref: '#/components/responses/problem'
       parameters:
-        - $ref: '#/components/parameters/search'
-        - $ref: '#/components/parameters/filter'
+        - name: search
+          in: query
+          description: >
+            will search `username`, `firstname`, `lastname` for non exact
+            matches
+          schema:
+            type: string
+          required: true
         - $ref: '#/components/parameters/cursor'
           default: 5
         - $ref: '#/components/parameters/limit'
-          example:
-            filter:
-              username: rreed
-              externalId: 501
-              email: example@schoolbox.com.au
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: object
+            properties:
+              externalId:
+                type: string
+                example: 501
+              username:
+                type: string
+                example: jreed
+              email:
+                type: string
+                example: jreed@schoolbox.com.au
+              yearLevel:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: the db identifier of the Year Level
+                    example: 6
+                  name:
+                    type: integer
+                    description: the name of the Year Level. may not be unique
+                    example: Year 6
+              role:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: the db identifier of the Role
+                    example: 1
+                  name:
+                    type: integer
+                    description: the name of the Role. may not be unique
+                    example: Staff
               roleType:
-                - student
-                - parent
-                - staff
-                - guest
-              role: Primary Student
-              campus: Secondary
-              year: 9
+                type: string
+                enum:
+                  - student
+                  - staff
+                  - parent
+              campus:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: the db identifier of the Campus
+                    example: 6
+                  name:
+                    type: integer
+                    description: the name of the Campus. may not be unique
+                    example: Year 6
     post:
       operationId: userPost
       tags:
@@ -1189,14 +1236,6 @@ paths:
       tags:
         - assessment
       summary: Searches for a list of assessments
-      description: >
-        `/api/assessment?search=[Final]&filter={"assessmentType":"dueWork","workType":"Formative
-        Assessment",
-
-        "folderId":88,"weighted", "commonAssessment": false, "assessmentId":
-        256,
-
-        "assessmentName": "English 3/4 [Final]"}&cursor=0&limit=3`
       responses:
         '200':
           $ref: '#/components/responses/assessment-list'
@@ -1205,24 +1244,78 @@ paths:
     parameters:
       - $ref: '#/components/parameters/cursor'
       - $ref: '#/components/parameters/limit'
-      - $ref: '#/components/parameters/search'
-      - $ref: '#/components/parameters/filter'
-        example:
-          assessmentType:
-            - dueWork
-            - quiz
-            - task
-            - project
-            - LTI
-          workType: Formative Assessment
-          yearLevel:
-            name: Year 9
-            id: 3
-          contextId: 83
-          commonAssessment: false
-          weighted: true
-          assessmentId: 255
-          assessmentName: Turning on the computer
+        default: 5
+      - name: filter
+        in: query
+        description: >-
+          {"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType":
+          "dueWork","folderId": 80,"weighted": false,"workType": {"id":
+          1,"name": "Formative Assessment"},"dueDate": {"from":
+          "2022-01-30T21:00:00.000Z","to":
+          "2022-06-24T06:00:00.000Z"},"yearLevel": {"id": 6,"name": "Year 6"}}
+        schema:
+          type: object
+          properties:
+            assessmentId:
+              type: integer
+              example: 256
+            title:
+              type: string
+              description: |
+                `*like* check on title`
+              example: English 3/4 [Final]
+            assessmentType:
+              type: string
+              enum:
+                - task
+                - quiz
+                - dueWork
+                - LTI
+                - project
+              example: dueWork
+            folderId:
+              type: integer
+              example: 80
+            weighted:
+              type: boolean
+              example: false
+            workType:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: the DB identifier of the worktype
+                  example: 1
+                name:
+                  type: string
+                  description: the name of the work type, may not be unique
+                  example: Formative Assessment
+            dueDate:
+              type: object
+              properties:
+                from:
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: '2022-01-30T21:00:00.000Z'
+                to:
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: '2022-06-24T06:00:00.000Z'
+            yearLevel:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: the db identifier of the yearlevel
+                  example: 6
+                name:
+                  type: integer
+                  description: the name of the year level. may not be unique
+                  example: Year 6
   /api/assessment/{id}:
     get:
       operationId: assessmentGet
@@ -1273,169 +1366,6 @@ components:
         the
 
         user for whom the token was generated.
-  parameters:
-    search:
-      name: search
-      in: query
-      description: |
-        A search term.
-
-        Each endpoint which accepts this parameter will have its own logic for
-        determining whether an item matches this search term.
-
-        In addition, each returned item should return how close a match it is
-        for this search term.
-      schema:
-        type: string
-      required: true
-    filter:
-      name: filter
-      in: query
-      description: |
-        A set of filters (if any) which will be used to filter out the list of
-        items that this endpoint returns.
-
-        Generally, the structure of this object will match the structure of
-        the object that the endpoint returns.
-
-        Values in the object field must equal the value of this key.  
-      schema:
-        type: object
-    cursor:
-      name: cursor
-      in: query
-      description: |
-        A generated but decodable pointer to the first record to return.
-
-        Each endpoint whose data accepts a cursor will return a cursor that
-        points to the next page of the result set.
-      schema:
-        $ref: '#/components/schemas/cursor'
-    limit:
-      name: limit
-      in: query
-      description: |
-        Limit the returned results to this count.
-
-        Each endpoint whose data accepts a limit will limit
-        their results to that number.
-      schema:
-        title: Limit
-        description: |
-          An option to limit the returned results.
-
-          Each endpoint whose data accepts a limit will limit
-          their results to that number.
-        type: integer
-    id:
-      name: id
-      in: path
-      description: >
-        The ID of an item to act upon.
-
-
-        The type of item that is acted upon is dependent on the endpoint in
-        which
-
-        it is included.
-      required: true
-      schema:
-        type: integer
-        format: int32
-        minimum: 1
-    discussion-contextType:
-      name: contextType
-      in: path
-      description: >
-        The type of item that a thread is associated with.
-
-
-        Used in conjunction with contextId to find the item with which a thread
-
-        is associated, and then to determine whether the authenticated user has
-
-        permission to perform the requested action.
-
-
-        The following contexts are currently supported:
-
-        * `comms` (the internal name for [news](/#tag/news))
-
-        * `evidence` (the internal name for learning moments: not yet
-        documented)
-
-
-        It is intended that discussion threads will be introduced to more
-        contexts.
-      required: true
-      schema:
-        type: string
-        enum:
-          - comms
-          - evidence
-    discussion-contextId:
-      name: contextId
-      in: path
-      description: |
-        The unique ID of the item that a thread is associated with.
-
-        Used in conjunction with contextType to find the item with which a
-        thread is associated, and then to determine whether the authenticated
-        user has permission to perform the requested action.
-      required: true
-      schema:
-        $ref: '#/components/schemas/id'
-    redirect:
-      name: redirect
-      in: query
-      description: >
-        If provided, a relative path to redirect to upon successful
-        authentication.
-
-
-        If not provided: will fall back to redirecting to an empty relative path
-        (/).
-      schema:
-        type: string
-    jwt:
-      name: jwt
-      in: query
-      description: A JWT generated via an oAuth request.
-      required: true
-      schema:
-        type: string
-    topic:
-      name: topic
-      in: query
-      description: |
-        The machine-readable value (a.k.a. slug) for the selected news topic.
-      schema:
-        type: string
-    key:
-      name: key
-      in: path
-      description: |
-        A key which identifies a user.
-      required: true
-      schema:
-        type: string
-    compactMode:
-      name: c
-      in: query
-      description: |
-        Is compact mode enabled?
-
-        If on, the list of attachments is loaded, and any articles loaded are
-        considered as read by the authenticated user.
-      schema:
-        $ref: '#/components/schemas/queryBoolean'
-    news-limit:
-      name: l
-      in: query
-      description: |
-        Limit of results to show per page
-      schema:
-        type: integer
   schemas:
     cursor:
       title: Cursor
@@ -2972,6 +2902,142 @@ components:
                     type: string
                   participants:
                     $ref: '#/components/schemas/assessment-feedback-item'
+  parameters:
+    cursor:
+      name: cursor
+      in: query
+      description: |
+        A generated but decodable pointer to the first record to return.
+
+        Each endpoint whose data accepts a cursor will return a cursor that
+        points to the next page of the result set.
+      schema:
+        $ref: '#/components/schemas/cursor'
+    limit:
+      name: limit
+      in: query
+      description: |
+        Limit the returned results to this count.
+
+        Each endpoint whose data accepts a limit will limit
+        their results to that number.
+      schema:
+        title: Limit
+        description: |
+          An option to limit the returned results.
+
+          Each endpoint whose data accepts a limit will limit
+          their results to that number.
+        type: integer
+    id:
+      name: id
+      in: path
+      description: >
+        The ID of an item to act upon.
+
+
+        The type of item that is acted upon is dependent on the endpoint in
+        which
+
+        it is included.
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+    discussion-contextType:
+      name: contextType
+      in: path
+      description: >
+        The type of item that a thread is associated with.
+
+
+        Used in conjunction with contextId to find the item with which a thread
+
+        is associated, and then to determine whether the authenticated user has
+
+        permission to perform the requested action.
+
+
+        The following contexts are currently supported:
+
+        * `comms` (the internal name for [news](/#tag/news))
+
+        * `evidence` (the internal name for learning moments: not yet
+        documented)
+
+
+        It is intended that discussion threads will be introduced to more
+        contexts.
+      required: true
+      schema:
+        type: string
+        enum:
+          - comms
+          - evidence
+    discussion-contextId:
+      name: contextId
+      in: path
+      description: |
+        The unique ID of the item that a thread is associated with.
+
+        Used in conjunction with contextType to find the item with which a
+        thread is associated, and then to determine whether the authenticated
+        user has permission to perform the requested action.
+      required: true
+      schema:
+        $ref: '#/components/schemas/id'
+    redirect:
+      name: redirect
+      in: query
+      description: >
+        If provided, a relative path to redirect to upon successful
+        authentication.
+
+
+        If not provided: will fall back to redirecting to an empty relative path
+        (/).
+      schema:
+        type: string
+    jwt:
+      name: jwt
+      in: query
+      description: A JWT generated via an oAuth request.
+      required: true
+      schema:
+        type: string
+    topic:
+      name: topic
+      in: query
+      description: |
+        The machine-readable value (a.k.a. slug) for the selected news topic.
+      schema:
+        type: string
+    key:
+      name: key
+      in: path
+      description: |
+        A key which identifies a user.
+      required: true
+      schema:
+        type: string
+    compactMode:
+      name: c
+      in: query
+      description: |
+        Is compact mode enabled?
+
+        If on, the list of attachments is loaded, and any articles loaded are
+        considered as read by the authenticated user.
+      schema:
+        $ref: '#/components/schemas/queryBoolean'
+    news-limit:
+      name: l
+      in: query
+      description: |
+        Limit of results to show per page
+      schema:
+        type: integer
   examples:
     problem-unauthorized:
       value:
