@@ -14,21 +14,70 @@ get:
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
-    - $ref: ../components/parameters/search.yaml
-    - $ref: ../components/parameters/filter.yaml
+    - name: search
+      in: query
+      description: |
+        will search `username`, `firstname`, `lastname` for non exact matches
+      schema:
+        type: string
+      required: true
     - $ref: ../components/parameters/cursor.yaml
       default: 5
     - $ref: ../components/parameters/limit.yaml
-      example:
-        filter:
-          username: rreed
-          externalId: 501
-          email: example@schoolbox.com.au
-          roleType: [ student, parent, staff, guest ]
-          role: Primary Student
-          campus: Secondary
-          year: 9
-
+    - name: filter
+      in: query
+      description: ''
+      schema:
+        type: object
+        properties:
+          externalId:
+            type: string
+            example: 501
+          username:
+            type: string
+            example: jreed
+          email:
+            type: string
+            example: jreed@schoolbox.com.au
+          yearLevel:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: the db identifier of the Year Level
+                example: 6
+              name:
+                type: integer
+                description: the name of the Year Level. may not be unique
+                example: Year 6
+          role:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: the db identifier of the Role
+                example: 1
+              name:
+                type: integer
+                description: the name of the Role. may not be unique
+                example: Staff
+          roleType:
+            type: string
+            enum:
+              - student
+              - staff
+              - parent
+          campus:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: the db identifier of the Campus
+                example: 6
+              name:
+                type: integer
+                description: the name of the Campus. may not be unique
+                example: Year 6
 
 post:
   operationId: userPost
