@@ -2,11 +2,6 @@ get:
   operationId: assessmentSearch
   tags: [assessment]
   summary: Searches for a list of assessments
-  description: |
-    `/api/assessment?search=[Final]&filter={"assessmentType":"dueWork","workType":"Formative Assessment",
-    "folderId":88,"weighted", "commonAssessment": false, "assessmentId": 256,
-    "assessmentName": "English 3/4 [Final]"}&cursor=0&limit=3`
-
   responses:
     '200':
       $ref: ../components/responses/assessment-list.yaml
@@ -19,14 +14,18 @@ parameters:
     default: 5
   - name: filter
     in: query
-    description: '{"assessmentType":"dueWork","workType":"Formative Assessment", "folderId":88,"weighted", "commonAssessment": false, "assessmentId": 256, "assessmentName": "English 3/4 [Final]"}'
+    description: '{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folderId": 80,"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2022-01-30T21:00:00.000Z","to": "2022-06-24T06:00:00.000Z"},"yearLevel": {"id": 6,"name": "Year 6"}}'
     schema:
       type: object
       properties:
         assessmentId:
           type: integer
+          example: 256
         title:
           type: string
+          description: |
+            `*like* check on title`
+          example: English 3/4 [Final]
         assessmentType:
           type: string
           enum:
@@ -35,7 +34,8 @@ parameters:
             - dueWork
             - LTI
             - project
-        contextId:
+          example: dueWork
+        folderId:
           type: integer
           example: 80
         weighted:
@@ -78,11 +78,3 @@ parameters:
               type: integer
               description: the name of the year level. may not be unique
               example: Year 6
-    example:
-      assessmentId: 256
-      title: English 3/4 [Final]
-      assessmentType: dueWork
-      contextId: 80
-      weighted: false
-      workType:
-        name: Formative Assessment
