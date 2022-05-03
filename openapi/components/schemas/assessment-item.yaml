@@ -6,6 +6,9 @@ properties:
   id:
     $ref: ./id.yaml
     example: 255
+  title:
+    type: string
+    example: Turning on the computer
   assessmentType:
     type: string
     enum:
@@ -22,10 +25,18 @@ properties:
   commonAssessment:
     type: boolean
   workType:
-    type: string
+    type: object
     description: |
       System configurable in your Admin Lists Work Types area
-    example: Formative Assessment
+    properties:
+      id:
+        type: integer
+        description: the DB identifier of the worktype
+        example: 1
+      name:
+        type: string
+        description: the name of the work type, may not be unique
+        example: Formative Assessment
     yearLevel:
       type: object
       properties:
@@ -39,6 +50,9 @@ properties:
   weighted:
     type: boolean
     example: true
-  assessmentName:
+  dueDate:
     type: string
-    example: Turning on the computer
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-01-30T21:00:00.000Z
