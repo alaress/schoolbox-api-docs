@@ -16,15 +16,73 @@ get:
 parameters:
   - $ref: ../components/parameters/cursor.yaml
   - $ref: ../components/parameters/limit.yaml
-  - $ref: ../components/parameters/search.yaml
-  - $ref: ../components/parameters/filter.yaml
+    default: 5
+  - name: filter
+    in: query
+    description: '{"assessmentType":"dueWork","workType":"Formative Assessment", "folderId":88,"weighted", "commonAssessment": false, "assessmentId": 256, "assessmentName": "English 3/4 [Final]"}'
+    schema:
+      type: object
+      properties:
+        assessmentId:
+          type: integer
+        title:
+          type: string
+        assessmentType:
+          type: string
+          enum:
+            - task
+            - quiz
+            - dueWork
+            - LTI
+            - project
+        contextId:
+          type: integer
+          example: 80
+        weighted:
+          type: boolean
+          example: false
+        workType:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: the DB identifier of the worktype
+              example: 1
+            name:
+              type: string
+              description: the name of the work type, may not be unique
+              example: Formative Assessment
+        dueDate:
+          type: object
+          properties:
+            from:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: 2022-01-30T21:00:00.000Z
+            to:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: 2022-06-24T06:00:00.000Z
+        yearLevel:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: the db identifier of the yearlevel
+              example: 6
+            name:
+              type: integer
+              description: the name of the year level. may not be unique
+              example: Year 6
     example:
-      assessmentType: [ dueWork, quiz, task, project, LTI ]
-      workType: Formative Assessment
-      yearLevel: {"name": "Year 9", "id": 3}
-      contextId: 83
-      commonAssessment: false
-      weighted: true
-      assessmentId: 255
-      assessmentName: Turning on the computer
-
+      assessmentId: 256
+      title: English 3/4 [Final]
+      assessmentType: dueWork
+      contextId: 80
+      weighted: false
+      workType:
+        name: Formative Assessment
