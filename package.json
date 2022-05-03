@@ -1,6 +1,6 @@
 {
   "name": "schoolbox-api",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "dependencies": {
     "@redocly/openapi-cli": "^1.0.0-beta.50",
     "redoc-cli": "^0.12.1"
