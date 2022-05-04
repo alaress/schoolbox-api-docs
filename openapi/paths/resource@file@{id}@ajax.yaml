@@ -1,7 +1,7 @@
 patch:
   operationId: filePatch
   tags: [file]
-  summary: Updates a subset of a file's fields
+  summary: Partially update a file
   responses:
     '200':
       $ref: ../components/responses/file-item.yaml

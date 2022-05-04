@@ -1,10 +1,9 @@
 get:
   operationId: userGetTokenForSelf
   tags: [user]
-  summary: Get an authentication token for the current user
+  summary: Get an authentication token
   description: |
-    Retrieve an authentication token for the user identified by the session
-    cookie.
+    Retrieve an authentication token for the user
 
     This endpoint is intended so that in-browser API calls performed within
     a Schoolbox instance may be performed in a manner more in common with

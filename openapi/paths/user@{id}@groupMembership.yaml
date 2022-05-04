@@ -1,7 +1,9 @@
 get:
   operationId: userGroupMembershipSearch
   tags: [user]
-  summary: Returns the list of groups the user is a member of.
+  summary: Get a users groups
+  description: |
+    This will provide a list of the groups a user is a member of.  It will include information about the group membership status and settings.  The endpoint is only available to superusers.
   responses:
     '200':
       $ref: ../components/responses/userGroupMembership-list.yaml

@@ -1,7 +1,7 @@
 post:
   operationId: createThread
   tags: [discussion]
-  summary: Creates a thread
+  summary: Create a thread
   responses:
     '200':
       $ref: ../components/responses/discussionThread-item.yaml

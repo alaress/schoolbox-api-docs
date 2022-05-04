@@ -1,7 +1,7 @@
 put:
   operationId: openThread
   tags: [discussion]
-  summary: Open commenting thread
+  summary: Enable a thread
   responses:
     '200':
       description: Enable the thread

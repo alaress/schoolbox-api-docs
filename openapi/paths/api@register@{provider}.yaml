@@ -1,7 +1,7 @@
 post:
   operationId: mobileRegister
   tags: [mobile]
-  summary: Register Mobile Device
+  summary: Register mobile device
   security: []
   description: "In order to register your app to receive push notifications you first need to notify Schoolbox of a valid user and the app identifier. This process is handled via a POST call as specified below"
   parameters:

@@ -3,7 +3,7 @@ get:
   tags: [calendar]
   summary: Get an event's attendees
   description: |
-    Retrieves a calendar event's attendance.
+    This will return a list of people that have been invited or RSVP to an an event.  It will include the status of their invitation and if they have accepted the invitation.
   responses:
     '200':
       $ref: ../components/responses/calendarAttendance-item.yaml

@@ -1,9 +1,9 @@
 get:
   operationId: apiSessionGet
   tags: [session]
-  summary: Create a user session via data in the query string
+  summary: Login using JWT param
   description: |
-    Attempt to authenticate a user based on a JWT passed in the query string.
+    Attempt to authenticate a user based on a JWT passed in the query string. Then returns a response with a session cookie.  This can be used to start a user session when the user only has a JWT.  The JWT may be a QR code, oAuth token or a user generated API key.
   security: []
   responses:
     '200':
@@ -21,10 +21,11 @@ get:
 post:
   operationId: apiSessionPost
   tags: [session]
-  summary: Create a user session via data in the request body
+  summary: Login to system
   description: |
     Attempt to authenticate a user based on either a username/password pair, or
-    a JWT passed in form data.
+    a JWT passed in form data. This is used to login the user to the system so they can continue.  It will effectively create a session cookie for the user.
+
   security: []
   responses:
     '200':

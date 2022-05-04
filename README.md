@@ -9,8 +9,10 @@
 
 ### Usage
 
-#### `npm start`
+#### To start a test server 2 steps
+`cd docs && python3 -m http.server`
 Starts the reference docs preview server.
+and in a second terminal run `npm run build-static` after making changes to the code
 
 #### `npm run build`
 Bundles the definition to the `dist` folder.
@@ -19,7 +21,7 @@ Bundles the definition to the `dist` folder.
 Validates the definition.
 
 #### `npm run build-static`
-Bundles the definition to the `dist` folder, and bundles a zero-dependency HTML
+Bundles the definition to the `dist` folder, and bundles a HTML
 version of the definition to `docs/index.html`.
 
 ## Contribution Guide
@@ -42,10 +44,9 @@ When updating the API, do the following before creating a pull request:
 
 ### Configuration
 
-`.redocly.yaml` controls settings for various tools, including the `lint` tool
-and the reference docs engine.
+Design and layout options are configurable using attributes within the `rapi-doc` tag in `/docs/index.html`
 
-More information is available at https://docs.redoc.ly/cli/configuration/.
+More information is available at https://rapidocweb.com/api.html
 
 
 ### Paths
