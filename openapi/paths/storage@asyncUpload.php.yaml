@@ -1,7 +1,7 @@
 post:
   operationId: storageAsyncUpload
   tags: [file]
-  summary: Upload a file to Schoolbox
+  summary: Upload a file
   description: |
     Upload a file to Schoolbox's internal file storage system.
 

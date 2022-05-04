@@ -118,16 +118,13 @@ paths:
       operationId: userSearch
       tags:
         - user
-      summary: Returns users which match a search term and set of filters.
+      summary: Get a list of users
       description: >
-        `/api/user?search=rebecca&filter={"username":"rwhite","externalId":"501",
+        This allows you to search for users and get details about the user. The
+        search filter attributes are all optional.   
 
-        "email":"user@example.com","role":{"name":"Senior Student", "id":4},
-
-        "campus":{"name":"Secondary", "id":1},"year":{"name":"year 12",
-        "id":13},
-
-        "roleType":"student"}&cursor=0&limit=3`
+        This endpoint is only available to superusers to avoid leaking
+        information about users to other users.
       responses:
         '200':
           $ref: '#/components/responses/user-list'
@@ -142,9 +139,6 @@ paths:
           schema:
             type: string
           required: true
-        - $ref: '#/components/parameters/cursor'
-          default: 5
-        - $ref: '#/components/parameters/limit'
         - name: filter
           in: query
           description: ''
@@ -199,41 +193,243 @@ paths:
                     type: integer
                     description: the name of the Campus. may not be unique
                     example: Year 6
+        - $ref: '#/components/parameters/cursor'
+        - $ref: '#/components/parameters/limit'
+          default: 5
     post:
       operationId: userPost
       tags:
         - user
-      summary: Creates a user
-      description: |
-        minimum fields required:
+      summary: Create a user
+      description: >
+        This can be used to create a new user in the system.  This can only be
+        completed by a superuser.  
+
+
+        The minimum fields required to create a user are:
+
         ```
+
         "username": "rwhite",
+
         "role": {
           "id": 4
         },
+
         "campus": [
           {
             "id": 1
           }
         ],
+
         "firstName": "Rebecca"
+
         }
+
         ```
       responses:
         '201':
           $ref: '#/components/responses/user-item'
       requestBody:
         $ref: '#/components/requestBodies/user-item'
+  /user/token/{id}:
+    get:
+      operationId: userGetTokenForUser
+      tags:
+        - user
+      summary: Get an authentication token for a user
+      description: >
+        Retrieve an authentication token for another user.
+
+
+        Only users which are authenticated as a superuser may request a token
+        for
+
+        another user.
+      responses:
+        '200':
+          $ref: '#/components/responses/userToken'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /api/user/{id}:
+    get:
+      operationId: userGet
+      tags:
+        - user
+      summary: Get a user
+      description: >
+        Returns all the information about a specific user. The result from this
+        API can be passed into the update user endpoint. This endpoint may only
+        be used by superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/user-item'
+        default:
+          $ref: '#/components/responses/problem'
+    put:
+      operationId: userPut
+      tags:
+        - user
+      summary: Update a user
+      description: >
+        This allows a user to be updated by passing in a user object. When using
+        this endpoint you must provide the entire user, we recommend you get the
+        user first via the "get a user" endpoint. This endpoint may only be used
+        by superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/user-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/user-item'
+    patch:
+      operationId: userPatch
+      tags:
+        - user
+      summary: Partially update a user
+      description: >
+        This allows you to update specific fields of a user without needing to
+        provide all the fields. By providing a partial user object, only the
+        fields provided will be updated. The remaining fields will be left as
+        they were. This endpoint may only be used by superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/user-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/user-item'
+    delete:
+      operationId: userDelete
+      tags:
+        - user
+      summary: Delete a user
+      description: >
+        This will soft-delete a user from the system.  A soft-deleted user will
+        no longer be visible in the system, but the data will remain. This
+        endpoint may only be used by superusers.
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+  /api/user/{id}/group:
+    get:
+      operationId: userGroupMembershipSearch
+      tags:
+        - user
+      summary: Get a users groups
+      description: >
+        This will provide a list of the groups a user is a member of.  It will
+        include information about the group membership status and settings.  The
+        endpoint is only available to superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-list'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+  /api/user/{id}/group/{groupId}:
+    get:
+      operationId: userGroupMembershipGet
+      tags:
+        - user
+      summary: Get a users settings for a group
+      description: >
+        This will provide you with the currently enrolment settings the user has
+        for a specific group. This endpoint is only available for superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+    post:
+      operationId: userGroupMembershipPost
+      tags:
+        - user
+      summary: Add user to a group
+      description: >
+        This will add a user as a member into a group. This membership must not
+        already exist. You will need to provide all the settings for the
+        membership. This endpoint is only available for superusers.
+      responses:
+        '201':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/userGroupMembership-item'
+    put:
+      operationId: userGroupMembershipPut
+      tags:
+        - user
+      summary: Update a user's settings for a group
+      description: >
+        This allows you to change the group access level, notification and
+        favourite status of a group for a particular user. The group membership
+        for the user must already exist. The endpoint is only available for
+        superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/userGroupMembership-item'
+    patch:
+      operationId: userGroupMembershipPatch
+      tags:
+        - user
+      summary: Partially update a user's group settings
+      description: >
+        This allows you to change only the group access level, notification and
+        favourite status of a group for a particular user. You can use this
+        endpoint to set one setting, leaving the other settings unchanged. The
+        endpoint is only available for superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/userGroupMembership-item'
+    delete:
+      operationId: userGroupMembershipDelete
+      tags:
+        - user
+      summary: Remove this user from a group
+      description: >
+        This will remove the relationship between a user and a group, it will
+        also remove any settings related to that group membership. The endpoint
+        is only available for superusers.
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
   /user/token:
     get:
       operationId: userGetTokenForSelf
       tags:
         - user
-      summary: Get an authentication token for the current user
+      summary: Get an authentication token
       description: >
-        Retrieve an authentication token for the user identified by the session
-
-        cookie.
+        Retrieve an authentication token for the user
 
 
         This endpoint is intended so that in-browser API calls performed within
@@ -256,205 +452,12 @@ paths:
           $ref: '#/components/responses/userToken'
         default:
           $ref: '#/components/responses/problem'
-  /user/token/{id}:
-    get:
-      operationId: userGetTokenForUser
-      tags:
-        - user
-      summary: Get an authentication token for another user
-      description: >
-        Retrieve an authentication token for another user.
-
-
-        Only users which are authenticated as a superuser may request a token
-        for
-
-        another user.
-      responses:
-        '200':
-          $ref: '#/components/responses/userToken'
-        default:
-          $ref: '#/components/responses/problem'
-      parameters:
-        - $ref: '#/components/parameters/id'
-  /api/user/{id}:
-    get:
-      operationId: userGet
-      tags:
-        - user
-      summary: Returns a user
-      responses:
-        '200':
-          $ref: '#/components/responses/user-item'
-        default:
-          $ref: '#/components/responses/problem'
-    put:
-      operationId: userPut
-      tags:
-        - user
-      summary: Updates a user
-      responses:
-        '200':
-          $ref: '#/components/responses/user-item'
-        default:
-          $ref: '#/components/responses/problem'
-      requestBody:
-        $ref: '#/components/requestBodies/user-item'
-    patch:
-      operationId: userPatch
-      tags:
-        - user
-      summary: Updates a subset of a user's fields
-      responses:
-        '200':
-          $ref: '#/components/responses/user-item'
-        default:
-          $ref: '#/components/responses/problem'
-      requestBody:
-        $ref: '#/components/requestBodies/user-item'
-    delete:
-      operationId: userDelete
-      tags:
-        - user
-      summary: Deletes a user
-      responses:
-        '204':
-          description: The resource was deleted successfully.
-        default:
-          $ref: '#/components/responses/problem'
-    parameters:
-      - $ref: '#/components/parameters/id'
-  /api/user/{id}/group:
-    get:
-      operationId: userGroupMembershipSearch
-      tags:
-        - user
-      summary: Returns the list of groups the user is a member of.
-      responses:
-        '200':
-          $ref: '#/components/responses/userGroupMembership-list'
-        default:
-          $ref: '#/components/responses/problem'
-    parameters:
-      - $ref: '#/components/parameters/id'
-  /api/user/{id}/group/{groupId}:
-    put:
-      operationId: userGroupMembershipPut
-      tags:
-        - user
-      summary: Updates a user's group membership
-      responses:
-        '200':
-          $ref: '#/components/responses/userGroupMembership-item'
-        default:
-          $ref: '#/components/responses/problem'
-      requestBody:
-        $ref: '#/components/requestBodies/userGroupMembership-item'
-    patch:
-      operationId: userGroupMembershipPatch
-      tags:
-        - user
-      summary: Updates a subset of a user's group membership's fields
-      responses:
-        '200':
-          $ref: '#/components/responses/userGroupMembership-item'
-        default:
-          $ref: '#/components/responses/problem'
-      requestBody:
-        $ref: '#/components/requestBodies/userGroupMembership-item'
-    delete:
-      operationId: userGroupMembershipDelete
-      tags:
-        - user
-      summary: Deletes a user's group membership
-      responses:
-        '204':
-          description: The resource was deleted successfully.
-        default:
-          $ref: '#/components/responses/problem'
-    get:
-      operationId: userGroupMembershipGet
-      tags:
-        - user
-      summary: Returns a user's group membership
-      responses:
-        '200':
-          $ref: '#/components/responses/userGroupMembership-item'
-        default:
-          $ref: '#/components/responses/problem'
-    post:
-      operationId: userGroupMembershipPost
-      tags:
-        - user
-      summary: Creates a group membership for a user
-      responses:
-        '201':
-          $ref: '#/components/responses/userGroupMembership-item'
-        default:
-          $ref: '#/components/responses/problem'
-      requestBody:
-        $ref: '#/components/requestBodies/userGroupMembership-item'
-    parameters:
-      - $ref: '#/components/parameters/id'
-      - name: groupId
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int32
-          minimum: 1
-  /discussion/{contextType}/{contextId}/comments/{id}:
-    delete:
-      operationId: deleteComment
-      tags:
-        - discussion
-      summary: Deletes a comment
-      responses:
-        '204':
-          description: The resource was deleted successfully.
-        default:
-          $ref: '#/components/responses/problem'
-    parameters:
-      - $ref: '#/components/parameters/discussion-contextType'
-      - $ref: '#/components/parameters/discussion-contextId'
-      - $ref: '#/components/parameters/id'
-  /discussion/{contextType}/{contextId}/comments/{id}/comments:
-    get:
-      operationId: getCommentsByParent
-      tags:
-        - discussion
-      summary: Returns child comments for a parent comment
-      responses:
-        '200':
-          $ref: '#/components/responses/discussionComment-list'
-        default:
-          $ref: '#/components/responses/problem'
-    parameters:
-      - $ref: '#/components/parameters/discussion-contextType'
-      - $ref: '#/components/parameters/discussion-contextId'
-      - $ref: '#/components/parameters/id'
-      - $ref: '#/components/parameters/cursor'
-  /discussion/{contextType}/{contextId}/threads/{id}:
-    get:
-      operationId: getThread
-      tags:
-        - discussion
-      summary: Returns a thread
-      responses:
-        '200':
-          $ref: '#/components/responses/discussionThread-item'
-        default:
-          $ref: '#/components/responses/problem'
-    parameters:
-      - $ref: '#/components/parameters/discussion-contextType'
-      - $ref: '#/components/parameters/discussion-contextId'
-      - $ref: '#/components/parameters/id'
   /discussion/{contextType}/{contextId}/threads:
     post:
       operationId: createThread
       tags:
         - discussion
-      summary: Creates a thread
+      summary: Create a thread
       responses:
         '200':
           $ref: '#/components/responses/discussionThread-item'
@@ -465,40 +468,27 @@ paths:
     parameters:
       - $ref: '#/components/parameters/discussion-contextType'
       - $ref: '#/components/parameters/discussion-contextId'
-  /discussion/{contextType}/{contextId}/threads/{id}/comments:
+  /discussion/{contextType}/{contextId}/threads/{id}:
     get:
-      operationId: getCommentsByThread
+      operationId: getThread
       tags:
         - discussion
-      summary: Returns comments for a thread
+      summary: Get a thread
       responses:
         '200':
-          $ref: '#/components/responses/discussionComment-list'
+          $ref: '#/components/responses/discussionThread-item'
         default:
           $ref: '#/components/responses/problem'
-    post:
-      operationId: createCommentInThread
-      tags:
-        - discussion
-      summary: Creates a new comment
-      responses:
-        '200':
-          $ref: '#/components/responses/discussionComment-item'
-        default:
-          $ref: '#/components/responses/problem'
-      requestBody:
-        $ref: '#/components/requestBodies/discussionComment-item'
     parameters:
       - $ref: '#/components/parameters/discussion-contextType'
       - $ref: '#/components/parameters/discussion-contextId'
       - $ref: '#/components/parameters/id'
-      - $ref: '#/components/parameters/cursor'
   /discussion/{contextType}/{contextId}/threads/{id}/open:
     put:
       operationId: openThread
       tags:
         - discussion
-      summary: Open commenting thread
+      summary: Enable a thread
       responses:
         '200':
           description: Enable the thread
@@ -515,7 +505,7 @@ paths:
       operationId: closeThread
       tags:
         - discussion
-      summary: Close commenting thread
+      summary: Disable a thread
       responses:
         '200':
           description: Disable the thread
@@ -527,15 +517,76 @@ paths:
       - $ref: '#/components/parameters/discussion-contextType'
       - $ref: '#/components/parameters/discussion-contextId'
       - $ref: '#/components/parameters/id'
+  /discussion/{contextType}/{contextId}/threads/{id}/comments:
+    get:
+      operationId: getCommentsByThread
+      tags:
+        - discussion
+      summary: Get comments for a thread
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionComment-list'
+        default:
+          $ref: '#/components/responses/problem'
+    post:
+      operationId: createCommentInThread
+      tags:
+        - discussion
+      summary: Create a new comment
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionComment-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/discussionComment-item'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/cursor'
+  /discussion/{contextType}/{contextId}/comments/{id}:
+    delete:
+      operationId: deleteComment
+      tags:
+        - discussion
+      summary: Delete a comment
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+  /discussion/{contextType}/{contextId}/comments/{id}/comments:
+    get:
+      operationId: getCommentsByParent
+      tags:
+        - discussion
+      summary: Get replies to a comment
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionComment-list'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/cursor'
   /api/session:
     get:
       operationId: apiSessionGet
       tags:
         - session
-      summary: Create a user session via data in the query string
+      summary: Login using JWT param
       description: >
         Attempt to authenticate a user based on a JWT passed in the query
-        string.
+        string. Then returns a response with a session cookie.  This can be used
+        to start a user session when the user only has a JWT.  The JWT may be a
+        QR code, oAuth token or a user generated API key.
       security: []
       responses:
         '200':
@@ -553,12 +604,14 @@ paths:
       operationId: apiSessionPost
       tags:
         - session
-      summary: Create a user session via data in the request body
+      summary: Login to system
       description: >
         Attempt to authenticate a user based on either a username/password pair,
         or
 
-        a JWT passed in form data.
+        a JWT passed in form data. This is used to login the user to the system
+        so they can continue.  It will effectively create a session cookie for
+        the user.
       security: []
       responses:
         '200':
@@ -578,7 +631,7 @@ paths:
       operationId: mobileRegister
       tags:
         - mobile
-      summary: Register Mobile Device
+      summary: Register mobile device
       security: []
       description: >-
         In order to register your app to receive push notifications you first
@@ -622,7 +675,7 @@ paths:
       operationId: storageAsyncUpload
       tags:
         - file
-      summary: Upload a file to Schoolbox
+      summary: Upload a file
       description: |
         Upload a file to Schoolbox's internal file storage system.
 
@@ -699,7 +752,7 @@ paths:
       operationId: filePatch
       tags:
         - file
-      summary: Updates a subset of a file's fields
+      summary: Partially update a file
       responses:
         '200':
           $ref: '#/components/responses/file-item'
@@ -1136,8 +1189,10 @@ paths:
       tags:
         - calendar
       summary: Get an event's attendees
-      description: |
-        Retrieves a calendar event's attendance.
+      description: >
+        This will return a list of people that have been invited or RSVP to an
+        an event.  It will include the status of their invitation and if they
+        have accepted the invitation.
       responses:
         '200':
           $ref: '#/components/responses/calendarAttendance-item'
@@ -1180,8 +1235,9 @@ paths:
         - calendar
       summary: Accept event invitation
       description: >
-        As the authenticated user, accepts the invitation to attend the given
-        event.
+        This allows a user to accept an invitation.  Note that not all events
+        will allow the user to accept an invitation.  They must either have been
+        invited, or have the ability to invite themselves.
       responses:
         '200':
           $ref: '#/components/responses/calendarAttendance-item'
@@ -1236,16 +1292,19 @@ paths:
       operationId: assessmentSearch
       tags:
         - assessment
-      summary: Searches for a list of assessments
+      summary: Get a list of assessments
+      description: >
+        This endpoint will return all assessments and their results that match
+        the filter provided.  We strongly recommend the use of due date filters,
+        to ensure you only get relevant assessments from the current period. 
+        For example a common request may be to get assessments of work type
+        'major' that are due in the current year.
       responses:
         '200':
           $ref: '#/components/responses/assessment-list'
         default:
           $ref: '#/components/responses/problem'
     parameters:
-      - $ref: '#/components/parameters/cursor'
-      - $ref: '#/components/parameters/limit'
-        default: 5
       - name: filter
         in: query
         description: >-
@@ -1317,12 +1376,19 @@ paths:
                   type: integer
                   description: the name of the year level. may not be unique
                   example: Year 6
+      - $ref: '#/components/parameters/cursor'
+      - $ref: '#/components/parameters/limit'
+        default: 5
   /api/assessment/{id}:
     get:
       operationId: assessmentGet
       tags:
         - assessment
-      summary: Returns an assessment
+      summary: Get an assessment
+      description: >
+        This will return all the information related to a specific assessment. 
+        This will include the the assessment details and the results of all
+        participants in that assessment.
       responses:
         '200':
           $ref: '#/components/responses/assessment-item'
@@ -2083,18 +2149,6 @@ components:
               format: date-time
               description: |
                 The date as a RFC3339 string.
-    discussionComment-readList:
-      title: Comment list
-      description: A list of comments
-      readOnly: true
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/discussionComment-read'
-        metadata:
-          $ref: '#/components/schemas/listMetadata'
     discussionThread-read:
       title: Thread
       description: Common fields for discussion threads
@@ -2166,6 +2220,18 @@ components:
         - id
         - thread
         - content
+    discussionComment-readList:
+      title: Comment list
+      description: A list of comments
+      readOnly: true
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionComment-read'
+        metadata:
+          $ref: '#/components/schemas/listMetadata'
     authentication-usernamePassword:
       type: object
       description: Username/Password
@@ -3273,6 +3339,16 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/userGroupMembership-read'
+    discussionThread-item:
+      description: A thread
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/discussionThread-read'
+        text/html:
+          schema:
+            type: string
+            description: The thread, rendered into HTML on the server.
     discussionComment-list:
       description: a list of comments
       content:
@@ -3290,16 +3366,6 @@ components:
           schema:
             type: string
             description: The list of comments, rendered into HTML on the server.
-    discussionThread-item:
-      description: A thread
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/discussionThread-read'
-        text/html:
-          schema:
-            type: string
-            description: The thread, rendered into HTML on the server.
     discussionComment-item:
       description: A single comment
       content:

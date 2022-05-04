@@ -1,7 +1,7 @@
 delete:
   operationId: deleteComment
   tags: [discussion]
-  summary: Deletes a comment
+  summary: Delete a comment
   responses:
     '204':
       description: The resource was deleted successfully.

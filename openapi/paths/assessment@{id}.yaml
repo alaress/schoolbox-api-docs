@@ -1,7 +1,9 @@
 get:
   operationId: assessmentGet
   tags: [assessment]
-  summary: Returns an assessment
+  summary: Get an assessment
+  description: |
+    This will return all the information related to a specific assessment.  This will include the the assessment details and the results of all participants in that assessment.
   responses:
     '200':
       $ref: ../components/responses/assessment-item.yaml

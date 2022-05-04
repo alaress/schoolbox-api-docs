@@ -1,7 +1,7 @@
 get:
   operationId: getCommentsByParent
   tags: [discussion]
-  summary: Returns child comments for a parent comment
+  summary: Get replies to a comment
   responses:
     '200':
       $ref: ../components/responses/discussionComment-list.yaml

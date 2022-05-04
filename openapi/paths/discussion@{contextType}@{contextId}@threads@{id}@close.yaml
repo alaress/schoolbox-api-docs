@@ -1,7 +1,7 @@
 put:
   operationId: closeThread
   tags: [discussion]
-  summary: Close commenting thread
+  summary: Disable a thread
   responses:
     '200':
       description: Disable the thread

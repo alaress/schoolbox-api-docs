@@ -1,7 +1,7 @@
 get:
   operationId: getCommentsByThread
   tags: [discussion]
-  summary: Returns comments for a thread
+  summary: Get comments for a thread
   responses:
     '200':
       $ref: ../components/responses/discussionComment-list.yaml
@@ -11,7 +11,7 @@ get:
 post:
   operationId: createCommentInThread
   tags: [discussion]
-  summary: Creates a new comment
+  summary: Create a new comment
   responses:
     '200':
       $ref: ../components/responses/discussionComment-item.yaml
