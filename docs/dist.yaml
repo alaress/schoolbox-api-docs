@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.2.6
+  version: 1.2.7
   title: Schoolbox API
   description: >
     This document describes the API endpoints that are available to a Schoolbox
@@ -988,7 +988,7 @@ paths:
         default:
           $ref: '#/components/responses/problem'
   /news/saved/{id}/add:
-    get:
+    post:
       operationId: commsNewsSaveForLater.postAdd
       tags:
         - news
@@ -997,7 +997,7 @@ paths:
         Save an article for the authenticated user.
 
         This article will then be returned by the
-        [Get list of saved articles](#operation/commsNewsSaveForLater.getList)
+        [Get list of saved articles](#get-/news/saved/)
         endpoint.
       responses:
         '200':
