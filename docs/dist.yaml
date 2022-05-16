@@ -1333,9 +1333,13 @@ paths:
                 - LTI
                 - project
               example: dueWork
-            folderId:
-              type: integer
-              example: 80
+            folder:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ID of the folder the assessment contained in
+                  example: 80
             weighted:
               type: boolean
               example: false
