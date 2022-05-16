@@ -56,3 +56,12 @@ properties:
     description: |
       The date as a RFC3339 string.
     example: 2022-01-30T21:00:00.000Z
+  project:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: ID of the parent assessment (project)
+        example: 255
+  participants:
+    $ref: ./assessment-feedback-item.yaml

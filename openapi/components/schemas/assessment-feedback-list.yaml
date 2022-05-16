@@ -40,5 +40,12 @@ properties:
                 System configurable in your Admin Lists Work Types area
             markType:
               type: string
+            project:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ID of the parent assessment (project)
+                  example: 255
             participants:
               $ref: ./assessment-feedback-item.yaml
