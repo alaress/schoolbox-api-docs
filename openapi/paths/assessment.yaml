@@ -77,6 +77,13 @@ parameters:
               type: integer
               description: the name of the year level. may not be unique
               example: Year 6
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the parents assessment (project)
+              example: 255
   - $ref: ../components/parameters/cursor.yaml
   - $ref: ../components/parameters/limit.yaml
     default: 5
