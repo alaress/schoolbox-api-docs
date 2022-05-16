@@ -82,7 +82,7 @@ parameters:
           properties:
             id:
               type: integer
-              description: ID of the parents assessment (project)
+              description: ID of the parent assessment (project)
               example: 255
   - $ref: ../components/parameters/cursor.yaml
   - $ref: ../components/parameters/limit.yaml
