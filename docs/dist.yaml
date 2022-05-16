@@ -1376,6 +1376,13 @@ paths:
                   type: integer
                   description: the name of the year level. may not be unique
                   example: Year 6
+            project:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ID of the parent assessment (project)
+                  example: 255
       - $ref: '#/components/parameters/cursor'
       - $ref: '#/components/parameters/limit'
         default: 5
@@ -2810,6 +2817,68 @@ components:
         yearLevel:
           id: 9
           name: Year 10
+    userShort:
+      title: User
+      description: Short fields for users
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        externalId:
+          $ref: '#/components/schemas/externalId'
+          example: 501
+        title:
+          type: string
+          nullable: true
+          description: The user's title (Mr., Ms., etc.).
+          example: Ms
+        firstName:
+          type: string
+          nullable: true
+          description: |
+            The user's first name.
+
+            Schoolbox doesn't distinguish between a person's actual first name
+            and any other names, and in any case is not the definitive source of
+            naming information; therefore in practice this will usually be the
+            user's given name.
+          example: Rebecca
+        lastName:
+          type: string
+          nullable: true
+          description: The user's surname.
+          example: White
+    assessment-feedback-item:
+      title: An Assessment feedback item
+      description: An Assessment feedback item
+      readOnly: true
+      type: object
+      properties:
+        learner:
+          $ref: '#/components/schemas/userShort'
+        comment:
+          type: string
+          example: >
+            Joffrey,
+
+            Your introduction was very strong, but you did not use the previous
+            feedback, which reminded you to add evidence.
+
+            Please consider this for your next essay.
+        date:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-01-30T21:00:00.000Z'
+        mark:
+          type: string
+          example: A
+        normalisedMark:
+          type: integer
+          example: 36
+        instructor:
+          $ref: '#/components/schemas/userShort'
     assessment-item:
       title: an Assessment Item
       description: An assessment item
@@ -2869,6 +2938,15 @@ components:
           description: |
             The date as a RFC3339 string.
           example: '2022-01-30T21:00:00.000Z'
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the parent assessment (project)
+              example: 255
+        participants:
+          $ref: '#/components/schemas/assessment-feedback-item'
     assessment-list:
       title: Assessment list
       description: A list of assessments
@@ -2880,64 +2958,6 @@ components:
           items:
             allOf:
               - $ref: '#/components/schemas/assessment-item'
-    userShort:
-      title: User
-      description: Short fields for users
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/id'
-        externalId:
-          $ref: '#/components/schemas/externalId'
-          example: 501
-        title:
-          type: string
-          nullable: true
-          description: The user's title (Mr., Ms., etc.).
-          example: Ms
-        firstName:
-          type: string
-          nullable: true
-          description: |
-            The user's first name.
-
-            Schoolbox doesn't distinguish between a person's actual first name
-            and any other names, and in any case is not the definitive source of
-            naming information; therefore in practice this will usually be the
-            user's given name.
-          example: Rebecca
-        lastName:
-          type: string
-          nullable: true
-          description: The user's surname.
-          example: White
-    assessment-feedback-item:
-      title: An Assessment feedback item
-      description: An Assessment feedback item
-      readOnly: true
-      type: object
-      properties:
-        learner:
-          $ref: '#/components/schemas/userShort'
-        comment:
-          type: string
-          example: >
-            Joffrey,
-
-            Your introduction was very strong, but you did not use the previous
-            feedback, which reminded you to add evidence.
-
-            Please consider this for your next essay.
-        date:
-          $ref: '#/components/schemas/dateTime'
-        mark:
-          type: string
-          example: A
-        normalisedMark:
-          type: integer
-          example: 36
-        instructor:
-          $ref: '#/components/schemas/userShort'
     assessment-feedback-list:
       title: a list of assessment feedback items
       description: A list of feedback items
@@ -2981,6 +3001,13 @@ components:
                       System configurable in your Admin Lists Work Types area
                   markType:
                     type: string
+                  project:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: ID of the parent assessment (project)
+                        example: 255
                   participants:
                     $ref: '#/components/schemas/assessment-feedback-item'
   parameters:
