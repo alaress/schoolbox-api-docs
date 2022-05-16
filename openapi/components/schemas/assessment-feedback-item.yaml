@@ -12,7 +12,11 @@ properties:
       Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
       Please consider this for your next essay.
   date:
-    $ref: ./dateTime.yaml
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-01-30T21:00:00.000Z
   mark:
     type: string
     example: A
