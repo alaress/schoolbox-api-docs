@@ -1,4 +1,4 @@
-get:
+post:
   operationId: commsNewsSaveForLater.postAdd
   tags: [news]
   summary: Save an article for later
@@ -6,7 +6,7 @@ get:
     Save an article for the authenticated user.
 
     This article will then be returned by the
-    [Get list of saved articles](#operation/commsNewsSaveForLater.getList)
+    [Get list of saved articles](#get-/news/saved/)
     endpoint.
   responses:
     '200':
