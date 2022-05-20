@@ -3013,8 +3013,6 @@ components:
                         example: 10
                     description: |
                       System configurable in your Admin Lists Work Types area
-                  markType:
-                    type: string
                   project:
                     type: object
                     properties:
