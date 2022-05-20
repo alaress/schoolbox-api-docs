@@ -8,3 +8,5 @@ properties:
     items:
       allOf:
         - $ref: ./assessment-item.yaml
+  metadata:
+    $ref: ./listMetadata.yaml

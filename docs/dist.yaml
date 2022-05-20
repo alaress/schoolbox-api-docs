@@ -2962,6 +2962,8 @@ components:
           items:
             allOf:
               - $ref: '#/components/schemas/assessment-item'
+        metadata:
+          $ref: '#/components/schemas/listMetadata'
     assessment-feedback-list:
       title: a list of assessment feedback items
       description: A list of feedback items
@@ -2995,12 +2997,20 @@ components:
                     example: dueWork
                   commonAssessment:
                     type: boolean
-                  weight:
-                    type: string
-                    example: 1
+                  weighted:
+                    type: boolean
+                    example: true
                   workType:
-                    type: string
-                    example: Formative Assessment
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: the name of the work type, may not be unique
+                        example: Formative Assessment
+                      id:
+                        type: integer
+                        description: the DB identifier of the worktype
+                        example: 10
                     description: |
                       System configurable in your Admin Lists Work Types area
                   markType:
@@ -3012,6 +3022,12 @@ components:
                         type: integer
                         description: ID of the parent assessment (project)
                         example: 255
+                  dueDate:
+                    type: string
+                    format: date-time
+                    description: |
+                      The date as a RFC3339 string.
+                    example: '2022-01-30T21:00:00.000Z'
                   participants:
                     $ref: '#/components/schemas/assessment-feedback-item'
   parameters:
