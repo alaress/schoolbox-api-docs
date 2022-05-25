@@ -11,6 +11,7 @@
 
 #### To start a test server 2 steps
 `cd docs && python3 -m http.server`
+`http://127.0.0.1:8000/?debug`
 Starts the reference docs preview server.
 and in a second terminal run `npm run build-static` after making changes to the code
 
