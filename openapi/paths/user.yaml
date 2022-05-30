@@ -18,7 +18,6 @@ get:
         will search `username`, `firstname`, `lastname` for non exact matches
       schema:
         type: string
-      required: true
     - name: filter
       in: query
       description: ''
