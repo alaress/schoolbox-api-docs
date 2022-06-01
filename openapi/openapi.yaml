@@ -7,7 +7,7 @@ info:
     This document describes the API endpoints that are available to a Schoolbox
     instance.
 
-    This document is current as of Schoolbox version 22.0.0.
+    This document is current as of Schoolbox version 22.0.2.
 
 
     **To generate a JWT in your schoolbox instance.**
