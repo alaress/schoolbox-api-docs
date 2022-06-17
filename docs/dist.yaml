@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.2.7
+  version: 1.2.8
   title: Schoolbox API
   description: >
     This document describes the API endpoints that are available to a Schoolbox
@@ -8,7 +8,7 @@ info:
     instance.
 
 
-    This document is current as of Schoolbox version 22.0.0.
+    This document is current as of Schoolbox version 22.0.2.
 
 
 
@@ -138,7 +138,6 @@ paths:
             matches
           schema:
             type: string
-          required: true
         - name: filter
           in: query
           description: ''
