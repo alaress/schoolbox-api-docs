@@ -1666,6 +1666,10 @@ components:
                   type: string
                   format: uri-reference
                   example: /homepage/83
+                  nullable: true
+                  description: >
+                    Gives the homepage link to the group, or NULL if the group
+                    has no homepage
     userGroupMembership-fields:
       title: Group Membership
       description: |
