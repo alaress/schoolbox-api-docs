@@ -66,6 +66,8 @@ properties:
     description: |
       The date as a RFC3339 string.
     example: 2022-01-30T21:00:00.000Z
+  rubric:
+    $ref: ./assessment-rubric.yaml
   project:
     type: object
     properties:

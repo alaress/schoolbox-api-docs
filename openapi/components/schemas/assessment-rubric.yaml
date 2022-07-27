@@ -1,0 +1,46 @@
+title: An Assessment Rubric item
+description: An Assessment Rubric item
+readOnly: true
+type: object
+properties:
+  capabilities:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 47
+      name:
+        type: string
+        example: Skills
+      maxValue:
+        type: number
+        example: 0
+      indicators:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 105
+          name:
+            type: string
+            example: |
+              Communication
+          maxValue:
+            type: number
+            example: 0
+          descriptors:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 620
+              name:
+                type: string
+                example: |
+                  Developing in reading appropriate materials and writing on-topic.
+              maxValue:
+                type: number
+                example: 0
+              sequence:
+                type: integer
+                example: 4

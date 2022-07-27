@@ -1,0 +1,47 @@
+title: An Assessment Rubric item
+description: An Assessment Rubric item
+readOnly: true
+type: object
+properties:
+  capabilities:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 47
+      name:
+        type: string
+        example: Skills
+      maxValue:
+        type: number
+        example: 0
+      human_readable_mark:
+        type: string
+        nullable: true
+        example: null
+      indicators:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 105
+          name:
+            type: string
+            example: |
+              Communication
+          maxValue:
+            type: number
+            example: 0
+          descriptor:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 628
+              name:
+                type: string
+                example: |
+                  Mostly listening, speaking on topic, reading appropriate materials, writing on-topic & using critical non-verbal communication.
+              maxValue:
+                type: number
+                example: 0

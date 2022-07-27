@@ -23,5 +23,7 @@ properties:
   normalisedMark:
     type: integer
     example: 36
+  rubric:
+    $ref: ./assessment-rubric-feedback.yaml
   instructor:
     $ref: ./userShort.yaml
