@@ -15,7 +15,10 @@ properties:
       maxValue:
         type: number
         example: 0
-      human_readable_mark:
+      value:
+        type: number
+        example: 0
+      mark:
         type: string
         nullable: true
         example: null
@@ -32,6 +35,13 @@ properties:
           maxValue:
             type: number
             example: 0
+          value:
+            type: number
+            example: 0
+          mark:
+            type: string
+            nullable: true
+            example: null
           descriptor:
             type: object
             properties:
@@ -45,3 +55,6 @@ properties:
               maxValue:
                 type: number
                 example: 0
+              sequence:
+                type: integer
+                example: 4
