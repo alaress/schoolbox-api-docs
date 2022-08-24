@@ -1308,7 +1308,7 @@ paths:
         in: query
         description: >-
           {"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType":
-          "dueWork","folderId": 80,"weighted": false,"workType": {"id":
+          "dueWork","folder": {id: 80},"weighted": false,"workType": {"id":
           1,"name": "Formative Assessment"},"dueDate": {"from":
           "2022-01-30T21:00:00.000Z","to":
           "2022-06-24T06:00:00.000Z"},"yearLevel": {"id": 6,"name": "Year 6"}}
@@ -1333,12 +1333,23 @@ paths:
                 - project
               example: dueWork
             folder:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  description: ID of the folder containing the assessment
-                  example: 80
+              anyOf:
+                - type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: ID of the folder containing the assessment
+                      example: 80
+                - type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: ID of the folder containing the assessment
+                      example: 80
+                    code:
+                      type: string
+                      description: Code of the folder containing the assessment
+                      example: 9ENGA
             weighted:
               type: boolean
               example: false
