@@ -1333,27 +1333,20 @@ paths:
                 - project
               example: dueWork
             folder:
-              anyOf:
-                - type: object
-                  description: |
-                    Original folder ID format, will still work
-                  properties:
-                    id:
-                      type: integer
-                      description: ID of the folder containing the assessment
-                      example: 80
-                - type: object
-                  description: |
-                    Select either one of the following fields to filter on:
-                  properties:
-                    id:
-                      type: integer
-                      description: ID of the folder containing the assessment
-                      example: 80
-                    code:
-                      type: string
-                      description: Code of the folder containing the assessment
-                      example: 9ENGA
+              type: array
+              items:
+                type: object
+                description: |
+                  Select either one of the following fields to filter on:
+                properties:
+                  id:
+                    type: integer
+                    description: ID of the folder containing the assessment
+                    example: 80
+                  code:
+                    type: string
+                    description: Code of the folder containing the assessment
+                    example: 9ENGA
             weighted:
               type: boolean
               example: false
@@ -2947,7 +2940,9 @@ components:
               name:
                 type: string
               id:
-                $ref: ./id.yaml
+                type: integer
+                description: the db identifier of the yearlevel
+                example: 6
             example:
               name: Year 9
               id: 3
