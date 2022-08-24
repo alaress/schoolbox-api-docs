@@ -43,7 +43,9 @@ properties:
         name:
           type: string
         id:
-          $ref: ./id.yaml
+          type: integer
+          description: the db identifier of the yearlevel
+          example: 6
       example:
         name: Year 9
         id: 3
