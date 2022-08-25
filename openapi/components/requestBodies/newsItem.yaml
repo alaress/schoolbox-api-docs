@@ -8,6 +8,7 @@ content:
         title:
           description: News article title.
           type: string
+          required: true
         body:
           $ref: ../schemas/news/body.yaml
         blurb:
@@ -31,11 +32,13 @@ content:
                 (Not all users have permission to set this flag.)
             - $ref: ../schemas/queryBoolean.yaml
         publishAt:
+          required: true
           allOf:
             - description: |
                 The date at which this article should be published.
             - $ref: ../schemas/formDateTime.yaml
         expiresAt:
+          required: true
           allOf:
             - description: |
                 The date at which this article should be archived.
@@ -95,6 +98,7 @@ content:
             $ref: ../schemas/filePointer.yaml
         audience:
           type: array
+          required: true
           description: |
             A comma-separated list of audiences for this news item.
 

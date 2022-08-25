@@ -1,15 +1,10 @@
 title: Readable Group Membership Fields
+description: |
+  A group within Schoolbox.
+  
+  This contains some of the folder's fields in this context.
 type: object
 properties:
-  group:
-    # TODO once groups are used outside of users, move this to its own folder
-    title: Group
-    description: |
-      A group within Schoolbox.
-
-      This contains some of the folder's fields in this context.
-    type: object
-    properties:
       id:
         $ref: ./id.yaml
       name:
