@@ -341,7 +341,7 @@ paths:
         - user
       summary: Get a users settings for a group
       description: >
-        This will provide you with the currently enrolment settings the user has
+        This will provide you with the current enrolment settings the user has
         for a specific group. This endpoint is only available for superusers.
       responses:
         '200':
@@ -1567,117 +1567,99 @@ components:
           type: student
     userGroupMembership-readableFields:
       title: Readable Group Membership Fields
+      description: |
+        A group within Schoolbox.
+
+        This contains some of the folder's fields in this context.
       type: object
       properties:
-        group:
-          title: Group
+        id:
+          $ref: '#/components/schemas/id'
+        name:
           description: |
-            A group within Schoolbox.
+            The name of the group.
 
-            This contains some of the folder's fields in this context.
+            In this context, this is the name of the group's folder.
+          example: Basketball
+        type:
+          description: |
+            The level of access that users have to this group.
+
+            * Private: membership is by invitation only
+            * Moderated: users may apply for membership, but must be approved
+            * Free: users may join and leave at any time
+          type: string
+          enum:
+            - private
+            - moderated
+            - free
+        isForceFollow:
+          description: |
+            The level of subscription that is allowed to this group.
+
+            * false: users may subscribe to this group's events
+            * true: users must subscribe to this group's events, and may not
+              unsubscribe
+          type: bool
+          example: true
+        membership:
+          description: |
+            The type of membership that this user has.
+
+            * Admin: the user is the administrator of this group: they may add
+              and remove members, change the group's permissions and disband the
+              group
+            * Write: the user may create content within the group
+            * Read: the user may view content within the group, and may be
+              notified of and may participate in group events
+            * None: the user is not a member of the group
+          type: string
+          enum:
+            - admin
+            - write
+            - read
+            - none
+        enrolmentStatus:
+          description: >
+            The enrolment status of the user for this group.
+
+
+            * Enrolled: the user is enrolled in the group with the 'membership'
+            permission
+
+            * Not Enroled: the user is not enrolled in the group
+
+            * Pending: the user has requested to join the group and is currently
+              awaiting approval by a group admin
+          type: string
+          enum:
+            - enroled
+            - notEnroled
+            - pending
+        isNotificationsOn:
+          description: |
+            Is this user subscribed to this group's events? If so, they will be
+            notified when an event occurs.
+
+            Note that the group administrator may:
+            * force Follow, so that users may not opt out of notifications
+            * disable Notifications, so that users never receive notifications
+          type: boolean
+        isFavourite:
+          description: |
+            Does the user have this group set as a favourite
+          type: boolean
+        _links:
           type: object
           properties:
-            id:
-              $ref: '#/components/schemas/id'
-            name:
-              description: |
-                The name of the group.
-
-                In this context, this is the name of the group's folder.
-              example: Basketball
-            type:
-              description: >
-                The level of access that users have to this group.
-
-
-                * Private: membership is by invitation only
-
-                * Moderated: users may apply for membership, but must be
-                approved
-
-                * Free: users may join and leave at any time
+            homepage:
               type: string
-              enum:
-                - private
-                - moderated
-                - free
-            isForceFollow:
-              description: |
-                The level of subscription that is allowed to this group.
-
-                * false: users may subscribe to this group's events
-                * true: users must subscribe to this group's events, and may not
-                  unsubscribe
-              type: bool
-              example: true
-            membership:
+              format: uri-reference
+              example: /homepage/83
+              nullable: true
               description: >
-                The type of membership that this user has.
-
-
-                * Admin: the user is the administrator of this group: they may
-                add
-                  and remove members, change the group's permissions and disband the
-                  group
-                * Write: the user may create content within the group
-
-                * Read: the user may view content within the group, and may be
-                  notified of and may participate in group events
-                * None: the user is not a member of the group
-              type: string
-              enum:
-                - admin
-                - write
-                - read
-                - none
-            enrolmentStatus:
-              description: >
-                The enrolment status of the user for this group.
-
-
-                * Enrolled: the user is enrolled in the group with the
-                'membership' permission
-
-                * Not Enroled: the user is not enrolled in the group
-
-                * Pending: the user has requested to join the group and is
-                currently
-                  awaiting approval by a group admin
-              type: string
-              enum:
-                - enroled
-                - notEnroled
-                - pending
-            isNotificationsOn:
-              description: >
-                Is this user subscribed to this group's events? If so, they will
-                be
-
-                notified when an event occurs.
-
-
-                Note that the group administrator may:
-
-                * force Follow, so that users may not opt out of notifications
-
-                * disable Notifications, so that users never receive
-                notifications
-              type: boolean
-            isFavourite:
-              description: |
-                Does the user have this group set as a favourite
-              type: boolean
-            _links:
-              type: object
-              properties:
-                homepage:
-                  type: string
-                  format: uri-reference
-                  example: /homepage/83
-                  nullable: true
-                  description: >
-                    Gives the homepage link to the group, or NULL if the group
-                    has no homepage
+                Gives the homepage link to the group, or NULL if the group has
+                no homepage
     userGroupMembership-fields:
       title: Group Membership
       description: |
@@ -2076,6 +2058,10 @@ components:
             $token`).
     userGroupMembership-writableFields:
       title: Writable Group Membership Fields
+      required:
+        - membership
+        - isNotificationsOn
+        - isFavourite
       type: object
       properties:
         membership:
@@ -2088,13 +2074,11 @@ components:
             * Write: the user may create content within the group
             * Read: the user may view content within the group, and may be
               notified of and may participate in group events
-            * None: the user is not a member of the group
           type: string
           enum:
             - admin
             - write
             - read
-            - none
         enrolmentStatus:
           description: >
             The enrolment status of the user for this group.
@@ -2103,15 +2087,13 @@ components:
             * Enrolled: the user is enrolled in the group with the 'membership'
             permission
 
-            * Not Enroled: the user is not enrolled in the group
-
             * Pending: the user has requested to join the group and is currently
               awaiting approval by a group admin
           type: string
           enum:
             - enroled
-            - notEnroled
             - pending
+          default: enroled
         isNotificationsOn:
           description: |
             Is this user subscribed to this group's events? If so, they will be
@@ -3653,6 +3635,7 @@ components:
               title:
                 description: News article title.
                 type: string
+                required: true
               body:
                 $ref: '#/components/schemas/body'
               blurb:
@@ -3682,11 +3665,13 @@ components:
                       (Not all users have permission to set this flag.)
                   - $ref: '#/components/schemas/queryBoolean'
               publishAt:
+                required: true
                 allOf:
                   - description: |
                       The date at which this article should be published.
                   - $ref: '#/components/schemas/formDateTime'
               expiresAt:
+                required: true
                 allOf:
                   - description: |
                       The date at which this article should be archived.
@@ -3772,6 +3757,7 @@ components:
                   $ref: '#/components/schemas/filePointer'
               audience:
                 type: array
+                required: true
                 description: >
                   A comma-separated list of audiences for this news item.
 
