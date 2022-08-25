@@ -3,7 +3,7 @@ get:
   tags: [user]
   summary: Get a users settings for a group
   description: |
-    This will provide you with the currently enrolment settings the user has for a specific group. This endpoint is only available for superusers.
+    This will provide you with the current enrolment settings the user has for a specific group. This endpoint is only available for superusers.
   responses:
     '200':
       $ref: ../components/responses/userGroupMembership-item.yaml
