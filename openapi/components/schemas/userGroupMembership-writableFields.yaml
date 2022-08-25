@@ -1,4 +1,8 @@
 title: Writable Group Membership Fields
+required:
+  - membership
+  - isNotificationsOn
+  -   isFavourite
 type: object
 properties:
   membership:
@@ -11,36 +15,33 @@ properties:
       * Write: the user may create content within the group
       * Read: the user may view content within the group, and may be
         notified of and may participate in group events
-      * None: the user is not a member of the group
     type: string
     enum:
       - admin
       - write
       - read
-      - none
   enrolmentStatus:
-      description: |
-        The enrolment status of the user for this group.
+    description: |
+      The enrolment status of the user for this group.
 
-        * Enrolled: the user is enrolled in the group with the 'membership' permission
-        * Not Enroled: the user is not enrolled in the group
-        * Pending: the user has requested to join the group and is currently
-          awaiting approval by a group admin
-      type: string
-      enum:
-        - enroled
-        - notEnroled
-        - pending
+      * Enrolled: the user is enrolled in the group with the 'membership' permission
+      * Pending: the user has requested to join the group and is currently
+        awaiting approval by a group admin
+    type: string
+    enum:
+      - enroled
+      - pending
+    default: enroled
   isNotificationsOn:
-      description: |
-        Is this user subscribed to this group's events? If so, they will be
-        notified when an event occurs.
+    description: |
+      Is this user subscribed to this group's events? If so, they will be
+      notified when an event occurs.
 
-        Note that the group administrator may:
-        * force Follow, so that users may not opt out of notifications
-        * disable Notifications, so that users never receive notifications
-      type: boolean
+      Note that the group administrator may:
+      * force Follow, so that users may not opt out of notifications
+      * disable Notifications, so that users never receive notifications
+    type: boolean
   isFavourite:
-      description: |
-        Does the user have this group set as a favourite
-      type: boolean
+    description: |
+      Does the user have this group set as a favourite
+    type: boolean
