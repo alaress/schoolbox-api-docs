@@ -24,7 +24,7 @@ properties:
     description: |
       The enrolment status of the user for this group.
 
-      * Enrolled: the user is enrolled in the group with the 'membership' permission
+      * Enroled: the user is enroled in the group with the 'membership' permission
       * Pending: the user has requested to join the group and is currently
         awaiting approval by a group admin
     type: string
