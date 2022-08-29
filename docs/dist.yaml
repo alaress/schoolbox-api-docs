@@ -747,18 +747,20 @@ paths:
                   format: binary
                   description: |
                     The file being uploaded.
-                expiryDate:
-                  type: string
-                  format: datetime
-                  description: |
-                    An optional date at which the uploaded file is considered to
-                    expire: after this date, the file will be subject to garbage
-                    collection.
+      parameters:
+        - name: expiryDate
+          in: query
+          description: >
+            An optional date at which the uploaded file is considered to expire:
+            after
 
-                    If not provided: the uploaded file will never expire.
+            this date, the file will be subject to garbage collection.
 
-                    (If an identical file has already been uploaded with
-                    a later or no expiry, the existing expiry will be retained.)
+
+            If not provided: the uploaded file will never expire.
+          schema:
+            type: string
+            format: datetime
   /resources/file/{fileId}/ajax:
     patch:
       operationId: filePatch
