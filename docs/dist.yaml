@@ -743,9 +743,22 @@ paths:
               properties:
                 upload:
                   type: string
+                  required: true
                   format: binary
                   description: |
                     The file being uploaded.
+                expiryDate:
+                  type: string
+                  format: datetime
+                  description: |
+                    An optional date at which the uploaded file is considered to
+                    expire: after this date, the file will be subject to garbage
+                    collection.
+
+                    If not provided: the uploaded file will never expire.
+
+                    (If an identical file has already been uploaded with
+                    a later or no expiry, the existing expiry will be retained.)
   /resources/file/{fileId}/ajax:
     patch:
       operationId: filePatch
