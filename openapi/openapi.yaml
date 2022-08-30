@@ -222,8 +222,8 @@ paths:
   /learning/evidence/user/{userId}: #GET, /create #POST
     $ref: 'paths/evidence@user@{id}.yaml'
 
-#  /learning/evidenceFeed/user/{userId}: #get
-#    $ref: 'paths/evidenceFeed@user@{id}.yaml'
+  /learning/evidenceFeed/user/{userId}: #get
+    $ref: 'paths/evidenceFeed@user@{id}.yaml'
 
 
 security:
