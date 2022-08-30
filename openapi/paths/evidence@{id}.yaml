@@ -1,0 +1,38 @@
+get:
+  operationId: getEvidenceDetail
+  tags: [Learning Moment]
+  summary:     #delete, GET, PUT
+  description: |
+    Get Learning Moment
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/evidenceItem.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+put:
+  operationId: putEvidence
+  tags: [Learning Moment]
+  summary:     #delete, GET, PUT
+  description: |
+    Update Learning Moment
+  responses:
+    '200':
+      $ref: ../components/responses/assessment-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+delete:
+  operationId: deleteEvidence
+  tags: [Learning Moment]
+  summary:     #delete, GET, PUT
+  description: |
+    Delete Learning Moment
+  responses:
+    '200':
+      $ref: ../components/responses/assessment-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

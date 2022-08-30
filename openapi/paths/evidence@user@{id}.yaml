@@ -1,0 +1,11 @@
+get:
+  operationId: assessmentSearch
+  tags: [Learning Moment]
+  summary: #GET, /create #POST
+  description: |
+    #GET, /create #POST
+  responses:
+    '200':
+      $ref: ../components/responses/assessment-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
