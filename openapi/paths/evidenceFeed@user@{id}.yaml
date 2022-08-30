@@ -3,9 +3,32 @@ get:
   tags: [Learning Moment]
   summary: List the Learning Moments and Badges for the specified User
   description: |
-    This endpoint will return a list of all evidence objects achieved or received by the user
+    This endpoint will return a list of all evidence objects achieved or received by the user limited to a count of 10 items
   responses:
     '200':
       $ref: ../components/responses/evidence-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
+parameters:
+  - cursor:
+    name: cursor
+    in: query
+    schema:
+      type: object
+      description: |
+        base64 encoded object
+      properties:
+        id:
+          $ref: ../components/schemas/id.yaml
+        discriminator:
+          type: string
+          enum:
+            - evidence
+            - badgeAward
+          example: badgeAward
+        date:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: 2022-08-30T10:09:09+10:00
