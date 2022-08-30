@@ -1,0 +1,11 @@
+get:
+  operationId: evidenceFeed
+  tags: [Learning Moment]
+  summary: List the Learning Moments and Badges for the specified User
+  description: |
+    This endpoint will return a list of all evidence objects achieved or received by the user
+  responses:
+    '200':
+      $ref: ../components/responses/evidence-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

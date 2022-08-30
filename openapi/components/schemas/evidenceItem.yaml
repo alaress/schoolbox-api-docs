@@ -1,0 +1,86 @@
+title: A learning moment item
+description: A learning moment item
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  createdAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+  updatedAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+  body:
+    type: string
+    description: |
+      The content of the Learning Moment
+  creator:
+    $ref: ./userShort.yaml
+  recipient:
+    $ref: ./userShort.yaml
+  discussionThread:
+    nullable: true
+    type: object
+    properties:
+      id:
+        type: integer
+  filename:
+    nullable: true
+    type: string
+  storage:
+    nullable: true
+    type: object
+    properties:
+      hash:
+        nullable: true
+        type: string
+      mime:
+        nullable: true
+        type: string
+      type:
+        nullable: true
+        type: string
+      size:
+        nullable: true
+        type: integer
+      _links:
+        nullable: true
+        type: object
+        description: |
+          Will contain one of the following depending on what file type is attached
+        properties:
+          icon:
+            type: string
+          image:
+            type: string
+          stream:
+            type: string
+          poster:
+            type: string
+
+  curriculumNodes:
+    nullable: true
+    type: array
+    items:
+      $ref: ./curriculumItem.yaml
+  tags:
+    nullable: true
+    type: object
+    description: |
+      System configurable in your Admin Lists Learning Moment area
+    properties:
+      id:
+        type: integer
+        description: the DB identifier of the Learning Moment Tags
+        example: 1
+      name:
+        type: string
+        description: the name of the Learning Moment type, may not be unique
+        example: Class Work
