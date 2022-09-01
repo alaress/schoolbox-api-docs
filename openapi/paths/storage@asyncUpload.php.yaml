@@ -63,6 +63,18 @@ post:
           properties:
             upload:
               type: string
+              required: true
               format: binary
               description: |
                 The file being uploaded.
+  parameters:
+    - name:        expiryDate
+      in:          query
+      description: |
+        An optional date at which the uploaded file is considered to expire: after
+        this date, the file will be subject to garbage collection.
+
+        If not provided: the uploaded file will never expire.
+      schema:
+        type: string
+        format: datetime
