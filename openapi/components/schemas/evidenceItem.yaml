@@ -41,15 +41,19 @@ properties:
       hash:
         nullable: true
         type: string
+        example: 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
       mime:
         nullable: true
         type: string
+        example: image/jpeg
       type:
         nullable: true
         type: string
+        example: image
       size:
         nullable: true
         type: integer
+        example: 3385989
       _links:
         nullable: true
         type: object
@@ -58,12 +62,17 @@ properties:
         properties:
           icon:
             type: string
+            example: /static/images/mime/application-image-jpg.svg
           image:
             type: string
+            example: /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
           stream:
             type: string
           poster:
             type: string
+          fetch:
+            type: string
+            example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
 
   curriculumNodes:
     nullable: true
@@ -84,3 +93,22 @@ properties:
         type: string
         description: the name of the Learning Moment type, may not be unique
         example: Class Work
+  tags:
+  _links:
+    type: object
+    properties:
+      createThread:
+        type: string
+        example: /discussion/evidence/7/threads
+      delete:
+        type: string
+        example: /learning/evidence/7
+      detail:
+        type: string
+        example: /learning/evidence/7
+      modifyForm:
+        type: string
+        example: /learning/evidence/7/modify
+      put:
+        type: string
+        example: /learning/evidence/7
