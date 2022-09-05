@@ -19,18 +19,20 @@ content:
             $ref: ../schemas/curriculumItem.yaml
         tags:
           nullable: true
-          type: object
-          description: |
-            System configurable in your Admin Lists Learning Moment area
-          properties:
-            id:
-              type: integer
-              description: the DB identifier of the Learning Moment Tags
-              example: 1
-            name:
-              type: string
-              description: the name of the Learning Moment type, may not be unique
-              example: Class Work
+          type: array
+          items:
+            type: object
+            description: |
+              System configurable in your Admin Lists Learning Moment area
+            properties:
+              id:
+                type: integer
+                description: the DB identifier of the Learning Moment Tags
+                example: 1
+              name:
+                type: string
+                description: the name of the Learning Moment type, may not be unique
+                example: Class Work
         type:
           type: string
           enum:
