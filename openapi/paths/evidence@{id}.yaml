@@ -1,14 +1,16 @@
 put:
   operationId: putEvidence
   tags: [Learning Moment]
-  summary:     #delete, GET, PUT
+  summary: Update Learning Moment
   description: |
     Update Learning Moment
   responses:
     '200':
-      $ref: ../components/responses/assessment-list.yaml
+      description: Successfully Created a Learning moment
     default:
       $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/evidence-item.yaml
 
 delete:
   operationId: deleteEvidence
