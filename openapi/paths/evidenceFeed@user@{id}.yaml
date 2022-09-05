@@ -32,3 +32,4 @@ parameters:
           description: |
             The date as a RFC3339 string.
           example: 2022-08-30T10:09:09+10:00
+  - $ref: ../components/parameters/id.yaml
