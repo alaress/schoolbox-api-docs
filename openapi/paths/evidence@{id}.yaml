@@ -11,6 +11,8 @@ put:
       $ref: ../components/responses/problem.yaml
   requestBody:
     $ref: ../components/requestBodies/evidence-item.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
 
 delete:
   operationId: deleteEvidence
@@ -23,3 +25,5 @@ delete:
       description: The Learning Moment was deleted successfully.
     default:
       $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml

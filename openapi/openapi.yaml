@@ -216,13 +216,13 @@ paths:
   /api/assessment/{id}:
       $ref: 'paths/assessment@{id}.yaml'
 
-  /learning/evidence/user/{userId}: #GET, /create #POST
+  /learning/evidence/user/{id}: #GET, /create #POST
     $ref: 'paths/evidence@user@{id}.yaml'
 
-  /learning/evidence/{evidenceId}: #delete, GET, PUT
+  /learning/evidence/{id}: #delete, GET, PUT
     $ref: 'paths/evidence@{id}.yaml'
 
-  /learning/evidenceFeed/user/{userId}: #get
+  /learning/evidenceFeed/user/{id}: #get
     $ref: 'paths/evidenceFeed@user@{id}.yaml'
 
 

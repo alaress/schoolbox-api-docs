@@ -11,3 +11,5 @@ post:
       $ref: ../components/responses/problem.yaml
   requestBody:
     $ref: ../components/requestBodies/evidence-item.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
