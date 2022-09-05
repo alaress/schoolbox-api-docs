@@ -27,10 +27,7 @@ properties:
     $ref: ./userShort.yaml
   discussionThread:
     nullable: true
-    type: object
-    properties:
-      id:
-        type: integer
+    $ref: ./discussionThread-read.yaml
   filename:
     nullable: true
     type: string
@@ -93,7 +90,6 @@ properties:
         type: string
         description: the name of the Learning Moment type, may not be unique
         example: Class Work
-  tags:
   _links:
     type: object
     properties:
