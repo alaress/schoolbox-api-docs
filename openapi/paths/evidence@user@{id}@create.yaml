@@ -7,6 +7,10 @@ post:
   responses:
     '200':
       description: Successfully Created a Learning moment
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/evidenceItem.yaml
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
