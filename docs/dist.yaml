@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.2.8
+  version: 1.2.9
   title: Schoolbox API
   description: >
     This document describes the API endpoints that are available to a Schoolbox
@@ -1418,7 +1418,7 @@ paths:
           $ref: '#/components/responses/problem'
     parameters:
       - $ref: '#/components/parameters/id'
-  /learning/evidence/user/{userId}:
+  /learning/evidence/user/{id}/create:
     post:
       operationId: assessmentSearch
       tags:
@@ -1429,14 +1429,17 @@ paths:
       responses:
         '200':
           description: Successfully Created a Learning moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/evidenceItem'
         default:
           $ref: '#/components/responses/problem'
       requestBody:
         $ref: '#/components/requestBodies/evidence-item'
-        required:
-          - body
-          - type
-  /learning/evidence/{evidenceId}:
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /learning/evidence/{id}:
     put:
       operationId: putEvidence
       tags:
@@ -1446,11 +1449,17 @@ paths:
         Update Learning Moment
       responses:
         '200':
-          description: Successfully Created a Learning moment
+          description: Successfully Updated a Learning moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/evidenceItem'
         default:
           $ref: '#/components/responses/problem'
       requestBody:
         $ref: '#/components/requestBodies/evidence-item'
+      parameters:
+        - $ref: '#/components/parameters/id'
     delete:
       operationId: deleteEvidence
       tags:
@@ -1463,7 +1472,9 @@ paths:
           description: The Learning Moment was deleted successfully.
         default:
           $ref: '#/components/responses/problem'
-  /learning/evidenceFeed/user/{userId}:
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /learning/evidenceFeed/user/{id}:
     get:
       operationId: evidenceFeed
       tags:
@@ -1500,6 +1511,7 @@ paths:
               description: |
                 The date as a RFC3339 string.
               example: '2022-08-30T10:09:09+10:00'
+      - $ref: '#/components/parameters/id'
 security:
   - session: []
   - bearerAuth: []
@@ -4356,18 +4368,20 @@ components:
                   $ref: '#/components/schemas/curriculumItem'
               tags:
                 nullable: true
-                type: object
-                description: |
-                  System configurable in your Admin Lists Learning Moment area
-                properties:
-                  id:
-                    type: integer
-                    description: the DB identifier of the Learning Moment Tags
-                    example: 1
-                  name:
-                    type: string
-                    description: the name of the Learning Moment type, may not be unique
-                    example: Class Work
+                type: array
+                items:
+                  type: object
+                  description: |
+                    System configurable in your Admin Lists Learning Moment area
+                  properties:
+                    id:
+                      type: integer
+                      description: the DB identifier of the Learning Moment Tags
+                      example: 1
+                    name:
+                      type: string
+                      description: the name of the Learning Moment type, may not be unique
+                      example: Class Work
               type:
                 type: string
                 enum:
@@ -4377,3 +4391,6 @@ components:
                   - video
                   - audio
                 example: upload
+            required:
+              - body
+              - type
