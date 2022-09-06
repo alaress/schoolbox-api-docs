@@ -8,7 +8,7 @@ info:
     instance.
 
 
-    This document is current as of Schoolbox version 22.0.10.
+    This document is current as of Schoolbox version 22.1.0.
 
 
 
@@ -86,6 +86,10 @@ tags:
     x-displayName: File management
     description: |
       Upload files.
+  - name: Learning Moment
+    x-displayName: Learning Moment
+    description: |
+      Create and manage Learning Moments.
   - name: mobile
     x-displayName: Push Notification
     description: Endpoints for Mobile App Developers to connect and register devices
@@ -743,24 +747,9 @@ paths:
               properties:
                 upload:
                   type: string
-                  required: true
                   format: binary
                   description: |
                     The file being uploaded.
-      parameters:
-        - name: expiryDate
-          in: query
-          description: >
-            An optional date at which the uploaded file is considered to expire:
-            after
-
-            this date, the file will be subject to garbage collection.
-
-
-            If not provided: the uploaded file will never expire.
-          schema:
-            type: string
-            format: datetime
   /resources/file/{fileId}/ajax:
     patch:
       operationId: filePatch
@@ -1365,8 +1354,6 @@ paths:
             weighted:
               type: boolean
               example: false
-              description: |
-                limit assessments to only those that have a weight set
             workType:
               type: object
               properties:
@@ -1430,6 +1417,100 @@ paths:
         default:
           $ref: '#/components/responses/problem'
     parameters:
+      - $ref: '#/components/parameters/id'
+  /learning/evidence/user/{id}/create:
+    post:
+      operationId: assessmentSearch
+      tags:
+        - Learning Moment
+      summary: null
+      description: |
+        Share Learning Moment
+      responses:
+        '200':
+          description: Successfully Created a Learning moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/evidenceItem'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/evidence-item'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /learning/evidence/{id}:
+    put:
+      operationId: putEvidence
+      tags:
+        - Learning Moment
+      summary: Update Learning Moment
+      description: |
+        Update Learning Moment
+      responses:
+        '200':
+          description: Successfully Updated a Learning moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/evidenceItem'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/evidence-item'
+      parameters:
+        - $ref: '#/components/parameters/id'
+    delete:
+      operationId: deleteEvidence
+      tags:
+        - Learning Moment
+      summary: Delete Learning Moment
+      description: |
+        Delete Learning Moment
+      responses:
+        '200':
+          description: The Learning Moment was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /learning/evidenceFeed/user/{id}:
+    get:
+      operationId: evidenceFeed
+      tags:
+        - Learning Moment
+      summary: List the Learning Moments and Badges for the specified User
+      description: >
+        This endpoint will return a list of all evidence objects achieved or
+        received by the user limited to a count of 10 items
+      responses:
+        '200':
+          $ref: '#/components/responses/evidence-list'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - cursor: null
+        name: cursor
+        in: query
+        schema:
+          type: object
+          description: |
+            base64 encoded object
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            discriminator:
+              type: string
+              enum:
+                - evidence
+                - badgeAward
+              example: badgeAward
+            date:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: '2022-08-30T10:09:09+10:00'
       - $ref: '#/components/parameters/id'
 security:
   - session: []
@@ -2831,6 +2912,54 @@ components:
         yearLevel:
           id: 9
           name: Year 10
+    assessment-rubric:
+      title: An Assessment Rubric item
+      description: An Assessment Rubric item
+      readOnly: true
+      type: object
+      properties:
+        capabilities:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 47
+            name:
+              type: string
+              example: Skills
+            maxValue:
+              type: number
+              example: 0
+            indicators:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 105
+                name:
+                  type: string
+                  example: |
+                    Communication
+                maxValue:
+                  type: number
+                  example: 0
+                descriptors:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 620
+                    name:
+                      type: string
+                      example: >
+                        Developing in reading appropriate materials and writing
+                        on-topic.
+                    maxValue:
+                      type: number
+                      example: 0
+                    sequence:
+                      type: integer
+                      example: 4
     userShort:
       title: User
       description: Short fields for users
@@ -2862,6 +2991,69 @@ components:
           nullable: true
           description: The user's surname.
           example: White
+    assessment-rubric-feedback:
+      title: An Assessment Rubric item
+      description: An Assessment Rubric item
+      readOnly: true
+      type: object
+      properties:
+        capabilities:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 47
+            name:
+              type: string
+              example: Skills
+            maxValue:
+              type: number
+              example: 0
+            value:
+              type: number
+              example: 0
+            mark:
+              type: string
+              nullable: true
+              example: null
+            indicators:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 105
+                name:
+                  type: string
+                  example: |
+                    Communication
+                maxValue:
+                  type: number
+                  example: 0
+                value:
+                  type: number
+                  example: 0
+                mark:
+                  type: string
+                  nullable: true
+                  example: null
+                descriptor:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 628
+                    name:
+                      type: string
+                      example: >
+                        Mostly listening, speaking on topic, reading appropriate
+                        materials, writing on-topic & using critical non-verbal
+                        communication.
+                    maxValue:
+                      type: number
+                      example: 0
+                    sequence:
+                      type: integer
+                      example: 4
     assessment-feedback-item:
       title: An Assessment feedback item
       description: An Assessment feedback item
@@ -2891,6 +3083,8 @@ components:
         normalisedMark:
           type: integer
           example: 36
+        rubric:
+          $ref: '#/components/schemas/assessment-rubric-feedback'
         instructor:
           $ref: '#/components/schemas/userShort'
     assessment-item:
@@ -2948,24 +3142,14 @@ components:
         weighted:
           type: boolean
           example: true
-          deprecated: true
-        weight:
-          type: integer
-          example: 30
-          description: >
-            The value of how much this assessment's outcome contributes to the
-            final overall grade -
-
-            a value of 0 indicates this assessment has no impact on the overall
-            grade.
-
-            Generally, this is a number between 0 and 100.
         dueDate:
           type: string
           format: date-time
           description: |
             The date as a RFC3339 string.
           example: '2022-01-30T21:00:00.000Z'
+        rubric:
+          $ref: '#/components/schemas/assessment-rubric'
         project:
           type: object
           properties:
@@ -3024,10 +3208,6 @@ components:
                   weighted:
                     type: boolean
                     example: true
-                    deprecated: true
-                  weight:
-                    type: integer
-                    example: 30
                   workType:
                     type: object
                     properties:
@@ -3048,6 +3228,8 @@ components:
                         type: integer
                         description: ID of the parent assessment (project)
                         example: 255
+                  rubric:
+                    $ref: '#/components/schemas/assessment-rubric'
                   dueDate:
                     type: string
                     format: date-time
@@ -3056,6 +3238,134 @@ components:
                     example: '2022-01-30T21:00:00.000Z'
                   participants:
                     $ref: '#/components/schemas/assessment-feedback-item'
+    curriculumItem:
+      title: a Curriculum Code
+      description: A Curriculm Code
+      readOnly: true
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+          example: 65
+        name:
+          type: string
+          example: Self-awareness
+        code:
+          type: string
+          example: GCPSC-SEA
+    evidenceItem:
+      title: A learning moment item
+      description: A learning moment item
+      readOnly: true
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        createdAt:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-08-30T10:09:09+10:00'
+        updatedAt:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-08-30T10:09:09+10:00'
+        body:
+          type: string
+          description: |
+            The content of the Learning Moment
+        creator:
+          $ref: '#/components/schemas/userShort'
+        recipient:
+          $ref: '#/components/schemas/userShort'
+        discussionThread:
+          nullable: true
+          $ref: '#/components/schemas/discussionThread-read'
+        filename:
+          nullable: true
+          type: string
+        storage:
+          nullable: true
+          type: object
+          properties:
+            hash:
+              nullable: true
+              type: string
+              example: 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+            mime:
+              nullable: true
+              type: string
+              example: image/jpeg
+            type:
+              nullable: true
+              type: string
+              example: image
+            size:
+              nullable: true
+              type: integer
+              example: 3385989
+            _links:
+              nullable: true
+              type: object
+              description: >
+                Will contain one of the following depending on what file type is
+                attached
+              properties:
+                icon:
+                  type: string
+                  example: /static/images/mime/application-image-jpg.svg
+                image:
+                  type: string
+                  example: >-
+                    /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+                stream:
+                  type: string
+                poster:
+                  type: string
+                fetch:
+                  type: string
+                  example: >-
+                    /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+        curriculumNodes:
+          nullable: true
+          type: array
+          items:
+            $ref: '#/components/schemas/curriculumItem'
+        tags:
+          nullable: true
+          type: object
+          description: |
+            System configurable in your Admin Lists Learning Moment area
+          properties:
+            id:
+              type: integer
+              description: the DB identifier of the Learning Moment Tags
+              example: 1
+            name:
+              type: string
+              description: the name of the Learning Moment type, may not be unique
+              example: Class Work
+        _links:
+          type: object
+          properties:
+            createThread:
+              type: string
+              example: /discussion/evidence/7/threads
+            delete:
+              type: string
+              example: /learning/evidence/7
+            detail:
+              type: string
+              example: /learning/evidence/7
+            modifyForm:
+              type: string
+              example: /learning/evidence/7/modify
+            put:
+              type: string
+              example: /learning/evidence/7
   parameters:
     cursor:
       name: cursor
@@ -3587,6 +3897,262 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/assessment-feedback-list'
+    evidence-list:
+      description: A list of Learning Moments
+      content:
+        application/json:
+          schema:
+            title: Learning Moment list
+            description: A list of learning moments
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    discriminator:
+                      type: string
+                      enum:
+                        - evidence
+                        - badgeAward
+                      example: evidence
+                    object:
+                      oneOf:
+                        - title: evidence
+                          $ref: '#/components/schemas/evidenceItem'
+                        - title: badgeAward
+                          type: object
+                          properties:
+                            badge:
+                              type: object
+                              properties:
+                                id:
+                                  $ref: '#/components/schemas/id'
+                                badge:
+                                  type: object
+                                  properties:
+                                    id:
+                                      $ref: '#/components/schemas/id'
+                                    createdAt:
+                                      type: string
+                                      format: date-time
+                                      description: |
+                                        The date as a RFC3339 string.
+                                      example: '2022-08-30T10:09:09+10:00'
+                                    createdBy:
+                                      $ref: '#/components/schemas/userShort'
+                                    updatedAt:
+                                      type: string
+                                      format: date-time
+                                      description: |
+                                        The date as a RFC3339 string.
+                                      example: '2022-08-30T10:09:09+10:00'
+                                    updatedBy:
+                                      $ref: '#/components/schemas/userShort'
+                                    name:
+                                      type: string
+                                      example: |
+                                        Jump Rope for Heart Team
+                                    body:
+                                      type: string
+                                      description: |
+                                        The content of the Learning Moment
+                                    image:
+                                      type: string
+                                      nullable: true
+                                    icon:
+                                      type: string
+                                      description: >
+                                        The Badge Image, either system defined
+                                        or selectable by the user
+                                      example: |
+                                        /images/badges/sport/23.svg
+                                    allowAsGoal:
+                                      type: boolean
+                                      example: true
+                                    animate:
+                                      type: boolean
+                                      example: true
+                                      description: >
+                                        On First load of the achieved badge,
+                                        should the badge be animated? flying
+                                        stars, fly in...
+                                    category:
+                                      type: object
+                                      properties:
+                                        id:
+                                          type: integer
+                                          example: 4
+                                        name:
+                                          type: string
+                                          example: |
+                                            Extra-Curricular
+                                    achievementExpiry:
+                                      nullable: true
+                                      type: string
+                                      format: date-time
+                                      description: |
+                                        The date as a RFC3339 string.
+                                      example: null
+                                    goalExpiry:
+                                      nullable: true
+                                      type: string
+                                      format: date-time
+                                      description: |
+                                        The date as a RFC3339 string.
+                                      example: null
+                                    curriculumNodes:
+                                      nullable: true
+                                      type: array
+                                      items:
+                                        $ref: '#/components/schemas/curriculumItem'
+                                    tags:
+                                      nullable: true
+                                      example: null
+                                      type: object
+                                      description: >
+                                        System configurable in your Admin Lists
+                                        Learning Moment area
+                                      properties:
+                                        id:
+                                          type: integer
+                                          description: >-
+                                            the DB identifier of the Learning Moment
+                                            Tags
+                                          example: 1
+                                        name:
+                                          type: string
+                                          description: >-
+                                            the name of the Learning Moment type,
+                                            may not be unique
+                                          example: Class Work
+                                    _links:
+                                      type: object
+                                      properties:
+                                        update:
+                                          type: string
+                                          description: >
+                                            the link for the user to update the
+                                            badge
+                                          example: /learning/badge/10/update
+                                        delete:
+                                          type: string
+                                          description: >
+                                            the link for the user to delete the
+                                            badge
+                                          example: /learning/badge/10
+                                        achievementRecipients:
+                                          type: string
+                                          description: |
+                                            ???
+                                          example: >-
+                                            /learning/badge/award/10/achievement/recipients
+                                        goalRecipients:
+                                          type: string
+                                          description: |
+                                            ???
+                                          example: /learning/badge/award/10/goal/recipients
+                                        achievementWithdraw:
+                                          type: string
+                                          description: |
+                                            ???
+                                          example: >-
+                                            /learning/badge/award/10/achievement/withdraw
+                                        goalWithdraw:
+                                          type: string
+                                          description: |
+                                            ???
+                                          example: /learning/badge/award/10/goal/withdraw
+                                        icon:
+                                          type: string
+                                          description: >
+                                            The Badge Image, either system defined
+                                            or selectable by the user\
+                                          example: /static/images/badges/sport/23.svg
+                            status:
+                              type: string
+                              example: goal
+                            isGoal:
+                              type: boolean
+                              example: true
+                            award:
+                              nullable: true
+                              example: null
+                            recipient:
+                              $ref: '#/components/schemas/userShort'
+                            awardedBy:
+                              $ref: '#/components/schemas/userShort'
+                            awardedAt:
+                              type: string
+                              format: date-time
+                              description: |
+                                The date as a RFC3339 string.
+                              example: '2022-08-27T12:49:11+10:00'
+                            expiresAt:
+                              nullable: true
+                              type: string
+                              format: date-time
+                              description: |
+                                The date as a RFC3339 string.
+                              example: null
+                            viewedOn:
+                              nullable: true
+                              type: string
+                              format: date-time
+                              description: |
+                                The date as a RFC3339 string.
+                              example: null
+                            _links:
+                              type: object
+                              properties:
+                                achievementWithdraw:
+                                  type: string
+                                  example: >-
+                                    /learning/badge/award/10/achievement/withdraw
+                                goalWithdraw:
+                                  type: string
+                                  example: /learning/badge/award/10/goal/withdraw
+                                goalAward:
+                                  type: string
+                                  example: /learning/badge/award/10/achievement
+                    date:
+                      type: string
+                      format: date-time
+                      description: |
+                        The date as a RFC3339 string.
+                      example: '2022-08-30T10:09:09+10:00'
+              metadata:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 18
+                  cursor:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        nullable: true
+                      next:
+                        type: object
+                        description: |
+                          base64 encoded object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          discriminator:
+                            type: string
+                            enum:
+                              - evidence
+                              - badgeAward
+                            example: badgeAward
+                          date:
+                            type: string
+                            format: date-time
+                            description: |
+                              The date as a RFC3339 string.
+                            example: '2022-08-30T10:09:09+10:00'
   requestBodies:
     user-item:
       description: A user
@@ -3898,3 +4464,51 @@ components:
               style: form
             audience:
               explode: false
+    evidence-item:
+      description: A Learning Moment
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              body:
+                type: string
+                example: <p>I can count forwards and backwards by 2s.</p>\n
+              file:
+                nullable: true
+                type: string
+                example: store:1f8f836cce05750ac98302c74d4081f99fdd443f
+                description: hash as returned by asyncUpload.php
+              curriculumNodes:
+                nullable: true
+                type: array
+                items:
+                  $ref: '#/components/schemas/curriculumItem'
+              tags:
+                nullable: true
+                type: array
+                items:
+                  type: object
+                  description: |
+                    System configurable in your Admin Lists Learning Moment area
+                  properties:
+                    id:
+                      type: integer
+                      description: the DB identifier of the Learning Moment Tags
+                      example: 1
+                    name:
+                      type: string
+                      description: the name of the Learning Moment type, may not be unique
+                      example: Class Work
+              type:
+                type: string
+                enum:
+                  - photo
+                  - text
+                  - upload
+                  - video
+                  - audio
+                example: upload
+            required:
+              - body
+              - type
