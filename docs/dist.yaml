@@ -1496,6 +1496,8 @@ paths:
           type: object
           description: |
             base64 encoded object
+          example: >-
+            eyJpZCI6IjQiLCJkaXNjcmltaW5hdG9yIjoiYmFkZ2VBd2FyZCIsImRhdGUiOiIyMDIyLTA3LTIzIDExOjM5OjI3In0=
           properties:
             id:
               $ref: '#/components/schemas/id'
