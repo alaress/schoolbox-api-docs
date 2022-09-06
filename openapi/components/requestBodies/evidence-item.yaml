@@ -12,6 +12,7 @@ content:
           nullable: true
           type: string
           example: store:1f8f836cce05750ac98302c74d4081f99fdd443f
+          description: hash as returned by asyncUpload.php
         curriculumNodes:
           nullable: true
           type: array
