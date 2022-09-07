@@ -3251,6 +3251,256 @@ components:
             put:
               type: string
               example: /learning/evidence/7
+    evidenceList:
+      title: Evidence
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              discriminator:
+                type: string
+                example: evidence
+              object:
+                $ref: '#/components/schemas/evidenceItem'
+              date:
+                type: string
+                format: date-time
+                description: |
+                  The date as a RFC3339 string.
+                example: '2022-08-30T10:09:09+10:00'
+        metadata:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 18
+            cursor:
+              type: object
+              properties:
+                current:
+                  type: string
+                  nullable: true
+                next:
+                  type: string
+    badgeAwardItem:
+      title: A badgeAward item
+      description: A Badge Award item
+      readOnly: true
+      type: object
+      properties:
+        badge:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            badge:
+              type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/id'
+                createdAt:
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: '2022-08-30T10:09:09+10:00'
+                createdBy:
+                  $ref: '#/components/schemas/userShort'
+                updatedAt:
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: '2022-08-30T10:09:09+10:00'
+                updatedBy:
+                  $ref: '#/components/schemas/userShort'
+                name:
+                  type: string
+                  example: |
+                    Jump Rope for Heart Team
+                body:
+                  type: string
+                  description: |
+                    The content of the Learning Moment
+                image:
+                  type: string
+                  nullable: true
+                icon:
+                  type: string
+                  description: >
+                    The Badge Image, either system defined or selectable by the
+                    user
+                  example: |
+                    /images/badges/sport/23.svg
+                allowAsGoal:
+                  type: boolean
+                  example: true
+                animate:
+                  type: boolean
+                  example: true
+                  description: >
+                    On First load of the achieved badge, should the badge be
+                    animated? flying stars, fly in...
+                category:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 4
+                    name:
+                      type: string
+                      example: |
+                        Extra-Curricular
+                achievementExpiry:
+                  nullable: true
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: null
+                goalExpiry:
+                  nullable: true
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: null
+                curriculumNodes:
+                  nullable: true
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/curriculumItem'
+                tags:
+                  nullable: true
+                  example: null
+                  type: object
+                  description: |
+                    System configurable in your Admin Lists Learning Moment area
+                  properties:
+                    id:
+                      type: integer
+                      description: the DB identifier of the Learning Moment Tags
+                      example: 1
+                    name:
+                      type: string
+                      description: the name of the Learning Moment type, may not be unique
+                      example: Class Work
+                _links:
+                  type: object
+                  properties:
+                    update:
+                      type: string
+                      description: |
+                        the link for the user to update the badge
+                      example: /learning/badge/10/update
+                    delete:
+                      type: string
+                      description: |
+                        the link for the user to delete the badge
+                      example: /learning/badge/10
+                    achievementRecipients:
+                      type: string
+                      example: /learning/badge/award/10/achievement/recipients
+                    goalRecipients:
+                      type: string
+                      example: /learning/badge/award/10/goal/recipients
+                    achievementWithdraw:
+                      type: string
+                      example: /learning/badge/award/10/achievement/withdraw
+                    goalWithdraw:
+                      type: string
+                      example: /learning/badge/award/10/goal/withdraw
+                    icon:
+                      type: string
+                      description: >
+                        The Badge Image, either system defined or selectable by
+                        the user
+                      example: /static/images/badges/sport/23.svg
+        status:
+          type: string
+          enum:
+            - goal
+            - achievement
+          example: goal
+        isGoal:
+          type: boolean
+          example: true
+        award:
+          $ref: '#/components/schemas/badgeAwardItem'
+          nullable: true
+        recipient:
+          $ref: '#/components/schemas/userShort'
+        awardedBy:
+          $ref: '#/components/schemas/userShort'
+        awardedAt:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-08-27T12:49:11+10:00'
+        expiresAt:
+          nullable: true
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: null
+        viewedOn:
+          nullable: true
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: null
+        _links:
+          type: object
+          properties:
+            achievementWithdraw:
+              type: string
+              example: /learning/badge/award/10/achievement/withdraw
+            goalWithdraw:
+              type: string
+              example: /learning/badge/award/10/goal/withdraw
+            goalAward:
+              type: string
+              example: /learning/badge/award/10/achievement
+    badgeAwardList:
+      title: Badge
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              discriminator:
+                type: string
+                example: badgeAward
+              object:
+                $ref: '#/components/schemas/badgeAwardItem'
+              date:
+                type: string
+                format: date-time
+                description: |
+                  The date as a RFC3339 string.
+                example: '2022-08-30T10:09:09+10:00'
+        metadata:
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 18
+            cursor:
+              type: object
+              properties:
+                current:
+                  type: string
+                  nullable: true
+                next:
+                  type: string
   parameters:
     cursor:
       name: cursor
@@ -3787,257 +4037,14 @@ components:
       content:
         application/json:
           schema:
-            title: Learning Moment list
-            description: A list of learning moments
-            type: object
-            properties:
-              data:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    discriminator:
-                      type: string
-                      enum:
-                        - evidence
-                        - badgeAward
-                      example: evidence
-                    object:
-                      oneOf:
-                        - title: evidence
-                          $ref: '#/components/schemas/evidenceItem'
-                        - title: badgeAward
-                          type: object
-                          properties:
-                            badge:
-                              type: object
-                              properties:
-                                id:
-                                  $ref: '#/components/schemas/id'
-                                badge:
-                                  type: object
-                                  properties:
-                                    id:
-                                      $ref: '#/components/schemas/id'
-                                    createdAt:
-                                      type: string
-                                      format: date-time
-                                      description: |
-                                        The date as a RFC3339 string.
-                                      example: '2022-08-30T10:09:09+10:00'
-                                    createdBy:
-                                      $ref: '#/components/schemas/userShort'
-                                    updatedAt:
-                                      type: string
-                                      format: date-time
-                                      description: |
-                                        The date as a RFC3339 string.
-                                      example: '2022-08-30T10:09:09+10:00'
-                                    updatedBy:
-                                      $ref: '#/components/schemas/userShort'
-                                    name:
-                                      type: string
-                                      example: |
-                                        Jump Rope for Heart Team
-                                    body:
-                                      type: string
-                                      description: |
-                                        The content of the Learning Moment
-                                    image:
-                                      type: string
-                                      nullable: true
-                                    icon:
-                                      type: string
-                                      description: >
-                                        The Badge Image, either system defined
-                                        or selectable by the user
-                                      example: |
-                                        /images/badges/sport/23.svg
-                                    allowAsGoal:
-                                      type: boolean
-                                      example: true
-                                    animate:
-                                      type: boolean
-                                      example: true
-                                      description: >
-                                        On First load of the achieved badge,
-                                        should the badge be animated? flying
-                                        stars, fly in...
-                                    category:
-                                      type: object
-                                      properties:
-                                        id:
-                                          type: integer
-                                          example: 4
-                                        name:
-                                          type: string
-                                          example: |
-                                            Extra-Curricular
-                                    achievementExpiry:
-                                      nullable: true
-                                      type: string
-                                      format: date-time
-                                      description: |
-                                        The date as a RFC3339 string.
-                                      example: null
-                                    goalExpiry:
-                                      nullable: true
-                                      type: string
-                                      format: date-time
-                                      description: |
-                                        The date as a RFC3339 string.
-                                      example: null
-                                    curriculumNodes:
-                                      nullable: true
-                                      type: array
-                                      items:
-                                        $ref: '#/components/schemas/curriculumItem'
-                                    tags:
-                                      nullable: true
-                                      example: null
-                                      type: object
-                                      description: >
-                                        System configurable in your Admin Lists
-                                        Learning Moment area
-                                      properties:
-                                        id:
-                                          type: integer
-                                          description: >-
-                                            the DB identifier of the Learning Moment
-                                            Tags
-                                          example: 1
-                                        name:
-                                          type: string
-                                          description: >-
-                                            the name of the Learning Moment type,
-                                            may not be unique
-                                          example: Class Work
-                                    _links:
-                                      type: object
-                                      properties:
-                                        update:
-                                          type: string
-                                          description: >
-                                            the link for the user to update the
-                                            badge
-                                          example: /learning/badge/10/update
-                                        delete:
-                                          type: string
-                                          description: >
-                                            the link for the user to delete the
-                                            badge
-                                          example: /learning/badge/10
-                                        achievementRecipients:
-                                          type: string
-                                          description: |
-                                            ???
-                                          example: >-
-                                            /learning/badge/award/10/achievement/recipients
-                                        goalRecipients:
-                                          type: string
-                                          description: |
-                                            ???
-                                          example: /learning/badge/award/10/goal/recipients
-                                        achievementWithdraw:
-                                          type: string
-                                          description: |
-                                            ???
-                                          example: >-
-                                            /learning/badge/award/10/achievement/withdraw
-                                        goalWithdraw:
-                                          type: string
-                                          description: |
-                                            ???
-                                          example: /learning/badge/award/10/goal/withdraw
-                                        icon:
-                                          type: string
-                                          description: >
-                                            The Badge Image, either system defined
-                                            or selectable by the user\
-                                          example: /static/images/badges/sport/23.svg
-                            status:
-                              type: string
-                              example: goal
-                            isGoal:
-                              type: boolean
-                              example: true
-                            award:
-                              nullable: true
-                              example: null
-                            recipient:
-                              $ref: '#/components/schemas/userShort'
-                            awardedBy:
-                              $ref: '#/components/schemas/userShort'
-                            awardedAt:
-                              type: string
-                              format: date-time
-                              description: |
-                                The date as a RFC3339 string.
-                              example: '2022-08-27T12:49:11+10:00'
-                            expiresAt:
-                              nullable: true
-                              type: string
-                              format: date-time
-                              description: |
-                                The date as a RFC3339 string.
-                              example: null
-                            viewedOn:
-                              nullable: true
-                              type: string
-                              format: date-time
-                              description: |
-                                The date as a RFC3339 string.
-                              example: null
-                            _links:
-                              type: object
-                              properties:
-                                achievementWithdraw:
-                                  type: string
-                                  example: >-
-                                    /learning/badge/award/10/achievement/withdraw
-                                goalWithdraw:
-                                  type: string
-                                  example: /learning/badge/award/10/goal/withdraw
-                                goalAward:
-                                  type: string
-                                  example: /learning/badge/award/10/achievement
-                    date:
-                      type: string
-                      format: date-time
-                      description: |
-                        The date as a RFC3339 string.
-                      example: '2022-08-30T10:09:09+10:00'
-              metadata:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    example: 18
-                  cursor:
-                    type: object
-                    properties:
-                      current:
-                        type: string
-                        nullable: true
-                      next:
-                        type: object
-                        description: |
-                          base64 encoded object
-                        properties:
-                          id:
-                            $ref: '#/components/schemas/id'
-                          discriminator:
-                            type: string
-                            enum:
-                              - evidence
-                              - badgeAward
-                            example: badgeAward
-                          date:
-                            type: string
-                            format: date-time
-                            description: |
-                              The date as a RFC3339 string.
-                            example: '2022-08-30T10:09:09+10:00'
+            discriminator:
+              propertyName: discriminator
+              mapping:
+                evidence: '#/components/schemas/evidenceList'
+                badgeAward: '#/components/schemas/badgeAwardList'
+            anyOf:
+              - $ref: '#/components/schemas/evidenceList'
+              - $ref: '#/components/schemas/badgeAwardList'
   requestBodies:
     user-item:
       description: A user
