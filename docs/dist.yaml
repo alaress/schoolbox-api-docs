@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.2.8
+  version: 1.2.9
   title: Schoolbox API
   description: >
     This document describes the API endpoints that are available to a Schoolbox
@@ -8,7 +8,7 @@ info:
     instance.
 
 
-    This document is current as of Schoolbox version 22.0.2.
+    This document is current as of Schoolbox version 22.0.10.
 
 
 
@@ -1365,6 +1365,8 @@ paths:
             weighted:
               type: boolean
               example: false
+              description: |
+                limit assessments to only those that have a weight set
             workType:
               type: object
               properties:
@@ -2943,9 +2945,17 @@ components:
             example:
               name: Year 9
               id: 3
-        weighted:
-          type: boolean
-          example: true
+        weight:
+          type: integer
+          example: 30
+          description: >
+            The value of how much this assessment's outcome contributes to the
+            final overall grade -
+
+            a value of 0 indicates this assessment has no impact on the overall
+            grade.
+
+            Generally, this is a number between 0 and 100.
         dueDate:
           type: string
           format: date-time
@@ -3007,9 +3017,9 @@ components:
                     example: dueWork
                   commonAssessment:
                     type: boolean
-                  weighted:
-                    type: boolean
-                    example: true
+                  weight:
+                    type: integer
+                    example: 30
                   workType:
                     type: object
                     properties:
