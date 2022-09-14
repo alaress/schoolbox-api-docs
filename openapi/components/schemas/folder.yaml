@@ -10,7 +10,7 @@ properties:
   code:
     type: string
     description: |
-      Schoolbox Subject Codes
+      Schoolbox Folder Codes
   yearLevel:
     $ref: ./yearLevel.yaml
 example:
