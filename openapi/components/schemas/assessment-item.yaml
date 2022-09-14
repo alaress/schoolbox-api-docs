@@ -49,9 +49,13 @@ properties:
       example:
         name: Year 9
         id: 3
-  weighted:
-    type: boolean
-    example: true
+  weight:
+    type: integer
+    example: 30
+    description: |
+      The value of how much this assessment's outcome contributes to the final overall grade -
+      a value of 0 indicates this assessment has no impact on the overall grade.
+      Generally, this is a number between 0 and 100.
   dueDate:
     type: string
     format: date-time

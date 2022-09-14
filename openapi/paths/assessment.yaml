@@ -52,6 +52,8 @@ parameters:
         weighted:
           type: boolean
           example: false
+          description: |
+            limit assessments to only those that have a weight set
         workType:
           type: object
           properties:
