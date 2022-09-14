@@ -30,9 +30,9 @@ properties:
               example: dueWork
             commonAssessment:
               type: boolean
-            weighted:
-              type: boolean
-              example: true
+            weight:
+              type: integer
+              example: 30
             workType:
               type: object
               properties:
