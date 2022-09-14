@@ -1,13 +1,13 @@
 openapi: 3.0.2
 
 info:
-  version:     1.2.8
+  version:     1.2.9
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
     instance.
 
-    This document is current as of Schoolbox version 22.0.2.
+    This document is current as of Schoolbox version 22.0.10.
 
 
     **To generate a JWT in your schoolbox instance.**
