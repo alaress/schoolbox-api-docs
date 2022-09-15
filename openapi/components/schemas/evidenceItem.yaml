@@ -22,9 +22,89 @@ properties:
     description: |
       The content of the Learning Moment
   creator:
-    $ref: ./userShort.yaml
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      externalId:
+        $ref: ./externalId.yaml
+        example: 501
+      title:
+        type: string
+        nullable: true
+        description: The user's title (Mr., Ms., etc.).
+        example: Ms
+      firstName:
+        type: string
+        nullable: true
+        description: |
+          The user's first name.
+
+          Schoolbox doesn't distinguish between a person's actual first name
+          and any other names, and in any case is not the definitive source of
+          naming information; therefore in practice this will usually be the
+          user's given name.
+        example: Rebecca
+
+      lastName:
+        type: string
+        nullable: true
+        description: The user's surname.
+        example: White
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            example: /search/user/2
+          avatar:
+            type: string
+            example: /portrait.php?id=2&size=square64
+      isDeleted:
+        type: boolean
+        example: false
   recipient:
-    $ref: ./userShort.yaml
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      externalId:
+        $ref: ./externalId.yaml
+        example: 501
+      title:
+        type: string
+        nullable: true
+        description: The user's title (Mr., Ms., etc.).
+        example: Ms
+      firstName:
+        type: string
+        nullable: true
+        description: |
+          The user's first name.
+
+          Schoolbox doesn't distinguish between a person's actual first name
+          and any other names, and in any case is not the definitive source of
+          naming information; therefore in practice this will usually be the
+          user's given name.
+        example: Rebecca
+
+      lastName:
+        type: string
+        nullable: true
+        description: The user's surname.
+        example: White
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            example: /search/user/2
+          avatar:
+            type: string
+            example: /portrait.php?id=2&size=square64
+      isDeleted:
+        type: boolean
+        example: false
   discussionThread:
     nullable: true
     $ref: ./discussionThread-read.yaml
