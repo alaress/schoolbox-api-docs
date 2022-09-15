@@ -33,6 +33,10 @@ properties:
             weighted:
               type: boolean
               example: true
+              deprecated: true
+            weight:
+              type: integer
+              example: 30
             workType:
               type: object
               properties:
