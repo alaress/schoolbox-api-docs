@@ -174,3 +174,6 @@ properties:
       goalAward:
         type: string
         example: /learning/badge/award/10/achievement
+      awardUpdate:
+        type: string
+        example: /learning/badge/award/8/update
