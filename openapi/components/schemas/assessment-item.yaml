@@ -49,6 +49,10 @@ properties:
       example:
         name: Year 9
         id: 3
+  weighted:
+    type: boolean
+    example: true
+    deprecated: true
   weight:
     type: integer
     example: 30
