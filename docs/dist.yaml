@@ -8,7 +8,7 @@ info:
     instance.
 
 
-    This document is current as of Schoolbox version 22.0.2.
+    This document is current as of Schoolbox version 22.0.10.
 
 
 
@@ -747,9 +747,24 @@ paths:
               properties:
                 upload:
                   type: string
+                  required: true
                   format: binary
                   description: |
                     The file being uploaded.
+      parameters:
+        - name: expiryDate
+          in: query
+          description: >
+            An optional date at which the uploaded file is considered to expire:
+            after
+
+            this date, the file will be subject to garbage collection.
+
+
+            If not provided: the uploaded file will never expire.
+          schema:
+            type: string
+            format: datetime
   /resources/file/{fileId}/ajax:
     patch:
       operationId: filePatch
@@ -1354,6 +1369,8 @@ paths:
             weighted:
               type: boolean
               example: false
+              description: |
+                limit assessments to only those that have a weight set
             workType:
               type: object
               properties:
@@ -3031,6 +3048,18 @@ components:
         weighted:
           type: boolean
           example: true
+          deprecated: true
+        weight:
+          type: integer
+          example: 30
+          description: >
+            The value of how much this assessment's outcome contributes to the
+            final overall grade -
+
+            a value of 0 indicates this assessment has no impact on the overall
+            grade.
+
+            Generally, this is a number between 0 and 100.
         dueDate:
           type: string
           format: date-time
@@ -3095,6 +3124,10 @@ components:
                   weighted:
                     type: boolean
                     example: true
+                    deprecated: true
+                  weight:
+                    type: integer
+                    example: 30
                   workType:
                     type: object
                     properties:
