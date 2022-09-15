@@ -7,6 +7,6 @@ content:
         mapping:
           evidence: ../schemas/evidenceList.yaml
           badgeAward: ../schemas/badgeAwardList.yaml
-      anyOf:
+      oneOf:
         - $ref: ../schemas/evidenceList.yaml
         - $ref: ../schemas/badgeAwardList.yaml
