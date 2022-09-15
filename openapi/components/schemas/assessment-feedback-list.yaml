@@ -30,6 +30,10 @@ properties:
               example: dueWork
             commonAssessment:
               type: boolean
+            weighted:
+              type: boolean
+              example: true
+              deprecated: true
             weight:
               type: integer
               example: 30
