@@ -2945,6 +2945,10 @@ components:
             example:
               name: Year 9
               id: 3
+        weighted:
+          type: boolean
+          example: true
+          deprecated: true
         weight:
           type: integer
           example: 30
@@ -3017,6 +3021,10 @@ components:
                     example: dueWork
                   commonAssessment:
                     type: boolean
+                  weighted:
+                    type: boolean
+                    example: true
+                    deprecated: true
                   weight:
                     type: integer
                     example: 30
