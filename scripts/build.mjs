@@ -16,14 +16,15 @@ const __dirname = dirname(__filename);
 // Build this version
 const version = process.argv[2];
 
-async function build(version) {
-    const pathToApi = __dirname + `/../docs/dist.yaml`;
+async function build (version) {
+    const pathToApi = __dirname + `/../openapi/openapi.yaml`;
     const config    = await loadConfig(__dirname + '/../.redocly.yaml');
-    const { b, problems } = await bundle({ ref: pathToApi, config });
+    const result    = await bundle({ ref: pathToApi, config });
+    console.log(result.bundle);
 }
 build(version)
-    .then(r => console.log(r))
-    .catch(r => console.log(r))
+    .then(r => console.log('then', r))
+    .catch(r => console.log('catch', r))
 ;
 
 // run redocly bundle -o $1
