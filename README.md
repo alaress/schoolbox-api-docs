@@ -13,8 +13,8 @@
 `cd docs && python3 -m http.server`
 `http://127.0.0.1:8000/?debug`
 Starts the reference docs preview server.
-and in a second terminal run `npm run build` as below after making changes to
-the code.
+To bundle new definitions: in a second terminal run `npm run build` as below
+after making changes to the code.
 
 #### `npm run build --build-version=$buildVersion [--selected]`
 Bundles the definition to `docs/builds/$buildVersion.yaml`, and also creates a
