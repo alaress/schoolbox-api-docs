@@ -14,8 +14,8 @@ function main () {
           buildSelected      = Boolean(process.argv[3] || false),
           buildsFile         =  __dirname + `/../docs/builds.json`,
           buildsFileContents = fs.readFileSync(buildsFile).toString();
-    let buildsData    = JSON.parse(buildsFileContents),
-        thisBuildData = {label: buildVersion, value: buildVersion};
+    let buildsData           = JSON.parse(buildsFileContents),
+        thisBuildData        = {label: buildVersion, value: buildVersion};
 
     // Deselect all existing builds if the current is selected
     if (buildSelected) {
@@ -39,5 +39,11 @@ function main () {
 
     // Write
     fs.writeFileSync(buildsFile, JSON.stringify(buildsData));
+
+    // Search for $VERSION, and replace it with the actual version
+    const apiFile         =  __dirname + `/../docs/builds/${buildVersion}.yaml`;
+    let   apiFileContents = fs.readFileSync(apiFile).toString();
+    apiFileContents = apiFileContents.replace(/\$VERSION/g, buildVersion);
+    fs.writeFileSync(apiFile, apiFileContents);
 }
 main();
