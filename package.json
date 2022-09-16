@@ -8,6 +8,6 @@
   "scripts": {
     "build": "redocly bundle -o dist",
     "test": "redocly lint",
-    "build-static": "npm run build && cp dist.yaml docs/"
+    "build-static": "npm run build && mv dist.yaml docs/"
   }
 }
