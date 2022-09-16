@@ -16,9 +16,12 @@ Starts the reference docs preview server.
 and in a second terminal run `npm run build` as below after making changes to
 the code.
 
-#### `npm run build --build-version=$buildVersion`
+#### `npm run build --build-version=$buildVersion [--selected]`
 Bundles the definition to `docs/builds/$buildVersion.yaml`, and also creates a
 dropdown option for this build.
+
+If `--selected` is passed, this build will be selected in the dropdown by
+default: otherwise, the default selected build will not be changed.
 
 #### `npm test`
 Validates the definition.

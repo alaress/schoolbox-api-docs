@@ -9,11 +9,23 @@ if (process.argv.length < 3) {
 
 // Add a line to builds.json
 function main () {
-    const version          = process.argv[2],
-        buildsFile         =  __dirname + `/../docs/builds.json`,
-        buildsFileContents = fs.readFileSync(buildsFile).toString();
-    let buildsData = JSON.parse(buildsFileContents);
-    buildsData.push({label: version, value: version});
+    const buildVersion       = process.argv[2],
+          buildSelected      = Boolean(process.argv[3] ?? false),
+          buildsFile         =  __dirname + `/../docs/builds.json`,
+          buildsFileContents = fs.readFileSync(buildsFile).toString();
+    let buildsData    = JSON.parse(buildsFileContents),
+        thisBuildData = {label: buildVersion, value: buildVersion};
+
+    // Deselect all existing builds if the current is selected
+    if (buildSelected) {
+        buildsData = buildsData.map(function (v) {delete v.selected; return v;})
+        thisBuildData.selected = true;
+    }
+    buildsData.push({label: buildVersion, value: buildVersion});
+
+    // Order the new list
+
+
     fs.writeFileSync(buildsFile, JSON.stringify(buildsData));
 }
 main();

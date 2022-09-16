@@ -21,6 +21,9 @@ async function build (version) {
     const config    = await loadConfig(__dirname + '/../.redocly.yaml');
     const result    = await bundle({ ref: pathToApi, config });
     console.log(result.bundle);
+
+    // I don't know how to write this result to a .yaml file,
+    // and the docs are no help
 }
 build(version)
     .then(r => console.log('then', r))
