@@ -12,19 +12,49 @@
       if ('http:' === window.location.protocol && '?debug' !== window.location.search) {
         window.location.protocol = 'https:';
       }
+      document.addEventListener('DOMContentLoaded', async function () {
+        // Load content of builds.json
+        let response = await fetch('/builds.json'),
+            responseJson = await response.json(),
+            selectedVersion = null;
+
+        // Add each version to the picker
+        const selector = document.getElementById('version-selector');
+        responseJson.forEach(function (v) {
+          let node = document.createElement('option');
+          node.label = v.label;
+          node.value = '/builds/' + v.value + '.yaml';
+          node.innerText = v.label;
+          selector.appendChild(node);
+
+          // Select first available version for now
+          selectedVersion ??= node.value;
+        });
+
+        // Set the current loaded version into the doc
+        const rapidoc = document.getElementById('rapidoc');
+        rapidoc.setAttribute('spec-url', selectedVersion);
+      }, false);
     </script>
   </head>
   <body>
   <rapi-doc
-          spec-url="/dist.yaml"
+          id="rapidoc"
           schema-style="table"
           show-header="false"
           schema-description-expanded="true"
   >
-    <img
-            slot="nav-logo"
-            src="/logo.png"
-    />
+    <div slot="nav-logo">
+      <img
+              slot="nav-logo"
+              src="/logo.png"
+      />
+      <div style="width:100%; display: flex;justify-content: center;">
+        <div>SB Version:</div>
+        <select id="version-selector" onchange="document.getElementById('thedoc').setAttribute('spec-url', this.value)">
+        </select>
+      </div>
+    </div>
   </rapi-doc>
   </body>
 </html>
