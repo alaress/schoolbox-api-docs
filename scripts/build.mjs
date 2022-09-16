@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import { bundle, loadConfig } from '@redocly/openapi-core';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 // Validate there's a version number
 if (process.argv.length < 3) {
@@ -7,17 +9,17 @@ if (process.argv.length < 3) {
     process.exit(1);
 }
 
-// Build this version
-const version = process.argv[2],
-      cwd     = process.cwd();
+// Wrangling to get dirname and filename in module context
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-console.log("Current directory:", process.cwd());
+// Build this version
+const version = process.argv[2];
 
 async function build(version) {
-    const pathToApi = cwd + `/docs/dist.yaml`;
-    const config    = await loadConfig(cwd + '/.redocly.yaml');
+    const pathToApi = __dirname + `/../docs/dist.yaml`;
+    const config    = await loadConfig(__dirname + '/../.redocly.yaml');
     const { b, problems } = await bundle({ ref: pathToApi, config });
-    console.log(b);
 }
 build(version)
     .then(r => console.log(r))
