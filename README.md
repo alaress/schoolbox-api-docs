@@ -16,14 +16,11 @@ Starts the reference docs preview server.
 and in a second terminal run `npm run build-static` after making changes to the code
 
 #### `npm run build`
-Bundles the definition to the `dist` folder.
+#### `npm run build-static`
+Bundles the definition to `docs/dist.yaml`.
 
 #### `npm test`
 Validates the definition.
-
-#### `npm run build-static`
-Bundles the definition to the `dist` folder, and bundles a HTML
-version of the definition to `docs/index.html`.
 
 ## Contribution Guide
 

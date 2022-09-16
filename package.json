@@ -6,8 +6,8 @@
   },
   "private": true,
   "scripts": {
-    "build": "redocly bundle -o dist",
+    "build": "redocly bundle -o docs/dist",
     "test": "redocly lint",
-    "build-static": "npm run build && mv dist.yaml docs/"
+    "build-static": "redocly bundle -o docs/dist"
   }
 }
