@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
+const fs     = require("fs"),
+      semver = require('semver');
 
 // Validate there's a version number
 if (process.argv.length < 3) {
@@ -34,6 +35,7 @@ function main () {
     });
 
     // Sort by semver descending
+    buildsData.sort((a, b) => semver.rcompare(a.value, b.value));
 
     // Write
     fs.writeFileSync(buildsFile, JSON.stringify(buildsData));
