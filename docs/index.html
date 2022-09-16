@@ -27,13 +27,18 @@
           node.innerText = v.label;
           selector.appendChild(node);
 
-          // Select first available version for now
-          selectedVersion ??= node.value;
+          // If nothing is selected: select first available version for now
+          if (node.selected ?? false) {
+            selectedVersion = node.value;
+          } else {
+            selectedVersion ??= node.value;
+          }
         });
 
         // Set the current loaded version into the doc
         const rapidoc = document.getElementById('rapidoc');
         rapidoc.setAttribute('spec-url', selectedVersion);
+        selector.addEventListener('change', ev => rapidoc.setAttribute('spec-url', ev.target.value));
       }, false);
     </script>
   </head>
@@ -51,7 +56,7 @@
       />
       <div style="width:100%; display: flex;justify-content: center;">
         <div>SB Version:</div>
-        <select id="version-selector" onchange="document.getElementById('thedoc').setAttribute('spec-url', this.value)">
+        <select id="version-selector">
         </select>
       </div>
     </div>
