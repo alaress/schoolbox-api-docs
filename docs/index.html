@@ -28,7 +28,7 @@
           selector.appendChild(node);
 
           // If nothing is selected: select first available version for now
-          if (node.selected ?? false) {
+          if (v.selected ?? false) {
             selectedVersion = node.value;
           } else {
             selectedVersion ??= node.value;
@@ -38,6 +38,7 @@
         // Set the current loaded version into the doc
         const rapidoc = document.getElementById('rapidoc');
         rapidoc.setAttribute('spec-url', selectedVersion);
+        selector.value = selectedVersion;
         selector.addEventListener('change', ev => rapidoc.setAttribute('spec-url', ev.target.value));
       }, false);
     </script>
