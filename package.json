@@ -6,9 +6,8 @@
   },
   "private": true,
   "scripts": {
-    "start": "openapi preview-docs",
-    "build": "openapi bundle -o dist",
-    "test": "openapi validate",
+    "build": "redocly bundle -o dist",
+    "test": "redocly lint",
     "build-static": "npm run build && cp dist.yaml docs/"
   }
 }
