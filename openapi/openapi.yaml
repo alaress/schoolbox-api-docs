@@ -80,6 +80,11 @@ tags:
     description: |
       Create and manage school news (also known as communications).
 
+  - name: notification
+    x-displayName: Notification
+    description: |
+      Create user notifications
+
   - name: session
     x-displayName: Session management
     description: |
@@ -210,6 +215,9 @@ paths:
 
   /api/assessment/{id}:
       $ref: 'paths/assessment@{id}.yaml'
+
+  /api/user/{id}/notify:
+      $ref: 'paths/api@user@{id}@notify.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

@@ -1,0 +1,32 @@
+description: A user
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+        - from
+      properties:
+        message:
+          type: string
+          required: true
+          description: |
+            Message title for the notification
+          example: |
+            Checkout the 22.1 Release notes
+        from:
+          type: object
+          required:
+            - fullName
+          properties:
+            fullName:
+              type: string
+              required: true
+              description: |
+                User who initially created this message, if unset defaults to Unknown User
+              example: Schoolbox Admin
+        href:
+          type: string
+          description: |
+            url for when clicking the notification to redirect to, if unset, defaults to #
+          example: https://help.schoolbox.com.au/homepage/3343
