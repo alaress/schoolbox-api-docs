@@ -93,6 +93,10 @@ tags:
     x-displayName: News
     description: |
       Create and manage school news (also known as communications).
+  - name: notification
+    x-displayName: Notification
+    description: |
+      Create user notifications
   - name: session
     x-displayName: Session management
     description: |
@@ -1429,6 +1433,22 @@ paths:
           $ref: '#/components/responses/assessment-item'
         default:
           $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+  /api/user/{id}/notify:
+    post:
+      tags:
+        - notification
+      summary: Create a user notification
+      description: |
+        Send an instant notification to a selected user
+      responses:
+        '200':
+          description: The notification was sent
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/userNotify'
     parameters:
       - $ref: '#/components/parameters/id'
 security:
@@ -3898,3 +3918,38 @@ components:
               style: form
             audience:
               explode: false
+    userNotify:
+      description: A user
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - message
+              - from
+            properties:
+              message:
+                type: string
+                required: true
+                description: |
+                  Message title for the notification
+                example: |
+                  Checkout the 22.1 Release notes
+              from:
+                type: object
+                required:
+                  - fullName
+                properties:
+                  fullName:
+                    type: string
+                    required: true
+                    description: >
+                      User who initially created this message, if unset defaults
+                      to Unknown User
+                    example: Schoolbox Admin
+              href:
+                type: string
+                description: >
+                  url for when clicking the notification to redirect to, if
+                  unset, defaults to #
+                example: https://help.schoolbox.com.au/homepage/3343
