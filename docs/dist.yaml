@@ -3172,7 +3172,7 @@ components:
           type: string
           example: GCPSC-SEA
     evidenceItem:
-      title: A learning moment item
+      title: evidence
       description: A learning moment item
       readOnly: true
       type: object
@@ -3376,42 +3376,8 @@ components:
             put:
               type: string
               example: /learning/evidence/7
-    evidenceList:
-      title: Evidence
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              discriminator:
-                type: string
-                example: evidence
-              object:
-                $ref: '#/components/schemas/evidenceItem'
-              date:
-                type: string
-                format: date-time
-                description: |
-                  The date as a RFC3339 string.
-                example: '2022-08-30T10:09:09+10:00'
-        metadata:
-          type: object
-          properties:
-            count:
-              type: integer
-              example: 18
-            cursor:
-              type: object
-              properties:
-                current:
-                  type: string
-                  nullable: true
-                next:
-                  type: string
     badgeAwardItem:
-      title: A badgeAward item
+      title: badgeAward
       description: A Badge Award item
       readOnly: true
       type: object
@@ -3775,40 +3741,6 @@ components:
             awardUpdate:
               type: string
               example: /learning/badge/award/8/update
-    badgeAwardList:
-      title: Badge
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              discriminator:
-                type: string
-                example: badgeAward
-              object:
-                $ref: '#/components/schemas/badgeAwardItem'
-              date:
-                type: string
-                format: date-time
-                description: |
-                  The date as a RFC3339 string.
-                example: '2022-08-30T10:09:09+10:00'
-        metadata:
-          type: object
-          properties:
-            count:
-              type: integer
-              example: 18
-            cursor:
-              type: object
-              properties:
-                current:
-                  type: string
-                  nullable: true
-                next:
-                  type: string
   parameters:
     cursor:
       name: cursor
@@ -4345,14 +4277,65 @@ components:
       content:
         application/json:
           schema:
-            discriminator:
-              propertyName: discriminator
-              mapping:
-                evidence: '#/components/schemas/evidenceList'
-                badgeAward: '#/components/schemas/badgeAwardList'
-            oneOf:
-              - $ref: '#/components/schemas/evidenceList'
-              - $ref: '#/components/schemas/badgeAwardList'
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    discriminator:
+                      type: string
+                      enum:
+                        - evidence
+                        - badgeAward
+                      example: badgeAward
+                    object:
+                      discriminator:
+                        propertyName: discriminator
+                        mapping:
+                          evidence: '#/components/schemas/evidenceItem'
+                          badgeAward: '#/components/schemas/badgeAwardItem'
+                      oneOf:
+                        - $ref: '#/components/schemas/evidenceItem'
+                        - $ref: '#/components/schemas/badgeAwardItem'
+                    date:
+                      type: string
+                      format: date-time
+                      description: |
+                        The date as a RFC3339 string.
+                      example: '2022-08-30T10:09:09+10:00'
+              metadata:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 18
+                  cursor:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        nullable: true
+                      next:
+                        type: object
+                        description: |
+                          base64 encoded object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          discriminator:
+                            type: string
+                            enum:
+                              - evidence
+                              - badgeAward
+                            example: badgeAward
+                          date:
+                            type: string
+                            format: date-time
+                            description: |
+                              The date as a RFC3339 string.
+                            example: '2022-08-30T10:09:09+10:00'
   requestBodies:
     user-item:
       description: A user
