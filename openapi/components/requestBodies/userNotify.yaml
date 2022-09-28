@@ -5,7 +5,6 @@ content:
       type: object
       required:
         - message
-        - from
       properties:
         message:
           type: string
@@ -16,12 +15,9 @@ content:
             Checkout the 22.1 Release notes
         from:
           type: object
-          required:
-            - fullName
           properties:
             fullName:
               type: string
-              required: true
               description: |
                 User who initially created this message, if unset defaults to Unknown User
               example: Schoolbox Admin
