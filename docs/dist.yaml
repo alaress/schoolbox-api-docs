@@ -93,10 +93,6 @@ tags:
     x-displayName: News
     description: |
       Create and manage school news (also known as communications).
-  - name: notification
-    x-displayName: Notification
-    description: |
-      Create user notifications
   - name: session
     x-displayName: Session management
     description: |
@@ -1438,7 +1434,7 @@ paths:
   /api/user/{id}/notify:
     post:
       tags:
-        - notification
+        - user
       summary: Create a user notification
       description: |
         Send an instant notification to a selected user
@@ -3926,23 +3922,19 @@ components:
             type: object
             required:
               - message
-              - from
             properties:
               message:
                 type: string
                 required: true
                 description: |
-                  Message title for the notification
+                  The content of the notification message
                 example: |
                   Checkout the 22.1 Release notes
               from:
                 type: object
-                required:
-                  - fullName
                 properties:
                   fullName:
                     type: string
-                    required: true
                     description: >
                       User who initially created this message, if unset defaults
                       to Unknown User
@@ -3952,4 +3944,6 @@ components:
                 description: >
                   url for when clicking the notification to redirect to, if
                   unset, defaults to #
+
+                  can be both absolute or relative
                 example: https://help.schoolbox.com.au/homepage/3343
