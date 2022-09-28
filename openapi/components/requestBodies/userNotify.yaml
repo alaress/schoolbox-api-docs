@@ -25,4 +25,5 @@ content:
           type: string
           description: |
             url for when clicking the notification to redirect to, if unset, defaults to #
+            can be both absolute or relative
           example: https://help.schoolbox.com.au/homepage/3343
