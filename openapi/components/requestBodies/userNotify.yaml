@@ -11,7 +11,7 @@ content:
           type: string
           required: true
           description: |
-            Message title for the notification
+            The content of the notification message
           example: |
             Checkout the 22.1 Release notes
         from:
