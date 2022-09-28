@@ -80,11 +80,6 @@ tags:
     description: |
       Create and manage school news (also known as communications).
 
-  - name: notification
-    x-displayName: Notification
-    description: |
-      Create user notifications
-
   - name: session
     x-displayName: Session management
     description: |

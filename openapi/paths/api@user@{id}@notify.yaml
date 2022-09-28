@@ -1,5 +1,5 @@
 post:
-  tags: [notification]
+  tags: [user]
   summary: Create a user notification
   description: |
    Send an instant notification to a selected user
