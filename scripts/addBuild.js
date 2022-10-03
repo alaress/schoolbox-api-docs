@@ -38,6 +38,6 @@ function main () {
     buildsData.sort((a, b) => semver.rcompare(a.value, b.value));
 
     // Write
-    fs.writeFileSync(buildsFile, JSON.stringify(buildsData));
+    fs.writeFileSync(buildsFile, JSON.stringify(buildsData, null, 2));
 }
 main();
