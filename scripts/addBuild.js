@@ -39,11 +39,5 @@ function main () {
 
     // Write
     fs.writeFileSync(buildsFile, JSON.stringify(buildsData));
-
-    // Search for $VERSION, and replace it with the actual version
-    const apiFile         =  __dirname + `/../docs/builds/${buildVersion}.yaml`;
-    let   apiFileContents = fs.readFileSync(apiFile).toString();
-    apiFileContents = apiFileContents.replace(/\$VERSION/g, buildVersion);
-    fs.writeFileSync(apiFile, apiFileContents);
 }
 main();
