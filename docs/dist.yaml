@@ -1,12 +1,12 @@
 openapi: 3.0.2
 info:
-  version: 1.2.9
+  version: latest
   title: Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
     instance.
 
-    This document is current as of Schoolbox version 22.0.10.
+    This document is current as of Schoolbox version latest.
 
 
     **To generate a JWT in your schoolbox instance.**
@@ -2736,13 +2736,9 @@ components:
         weight:
           type: integer
           example: 30
-          description: >
-            The value of how much this assessment's outcome contributes to the
-            final overall grade -
-
-            a value of 0 indicates this assessment has no impact on the overall
-            grade.
-
+          description: |
+            The value of how much this assessment's outcome contributes to the final overall grade -
+            a value of 0 indicates this assessment has no impact on the overall grade.
             Generally, this is a number between 0 and 100.
         dueDate:
           type: string
