@@ -8,8 +8,8 @@
   },
   "private": true,
   "scripts": {
-    "build": "redocly bundle -o docs/builds/${npm_config_build_version}.yaml && ./scripts/addBuild.js ${npm_config_build_version} ${npm_config_selected}",
-    "test": "redocly lint",
-    "build-static": "redocly bundle -o docs/dist"
+    "build": "redocly bundle -o docs/dist.yaml && sed -i '/\\$VERSION/d' docs/dist.yaml",
+    "build-new": "redocly bundle -o docs/builds/${npm_config_build_version}.yaml && ./scripts/addBuild.js ${npm_config_build_version} ${npm_config_selected}",
+    "test": "redocly lint"
   }
 }
