@@ -6,9 +6,6 @@ info:
     This document describes the API endpoints that are available to a Schoolbox
     instance.
 
-    This document is current as of Schoolbox version latest.
-
-
     **To generate a JWT in your schoolbox instance.**
 
     Go to the User Edit in admin. Scroll down to the `TOKENS` section, and click `Create token`.
