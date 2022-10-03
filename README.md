@@ -9,21 +9,58 @@
 
 ### Usage
 
-#### To start a test server 2 steps
-`cd docs && python3 -m http.server`
-`http://127.0.0.1:8000/?debug`
-Starts the reference docs preview server.
-To bundle new definitions: in a second terminal run `npm run build` as below
-after making changes to the code.
+#### Variants
 
-#### `npm run build --build-version=$buildVersion [--selected]`
-Bundles the definition to `docs/builds/$buildVersion.yaml`, and also creates a
-dropdown option for this build.
+There are currently two variants of the API reference:
+
+##### Single version
+
+The single-version variant supports only the most recently built version of the 
+API reference.
+
+This version is the current default, but will eventually be superseded by the
+multiple version variant described below.
+
+##### Multiple version
+
+The multi-version variant supports the most recently built version of the API
+reference, and also allows selection of:
+* previous versions
+* pre-release versions
+
+#### Previewing API docs locally
+
+Start the reference docs preview server in the `docs` folder:
+```bash
+cd docs;
+python3 -m http.server;
+```
+
+Then, visit http://127.0.0.1:8000/?debug (for the old single-version docs) or
+http://127.0.0.1:8000/new.html?debug (for the new multi-version docs).
+
+In order to view changes to the docs, run one of the "Building API docs locally"
+steps provided below:
+
+#### Building API docs locally
+
+##### `npm run build`
+
+Bundles the current definition to `docs/dist.yaml`.
+
+(This is required for backward compatibility with the old single-version docs.)
+
+##### `npm run build-new --build-version=$buildVersion [--selected]`
+Bundles the current definition to `docs/builds/$buildVersion.yaml`, and also
+creates a dropdown option for this build so that it may be selected.
+
+`$buildVersion` is expected to match the Schoolbox version to which the current
+definition applies.
 
 If `--selected` is passed, this build will be selected in the dropdown by
 default: otherwise, the default selected build will not be changed.
 
-#### `npm test`
+##### `npm test`
 Validates the definition.
 
 ## Contribution Guide
@@ -31,18 +68,8 @@ Validates the definition.
 ### Updating the API
 
 When updating the API, do the following before creating a pull request:
-* increment the version number in both `openapi/openapi.yaml` and `package.json`
-  according to [Semantic Versioning](https://semver.org/#summary):
-  * increment the major version when making a backwards-incompatible functional
-    change (e.g. removing a property from a response or request body)
-  * increment the minor version when making a backwards-compatible functional
-    change (e.g. adding a property to a response or request body)
-  * increment the patch version when making a non-functional change
-    (e.g. fixing a spelling or grammar mistake)
-* update `openapi/openapi.yaml` path `info.description` with the Schoolbox
-  version which this version of the API applies for
-* run `npm run build-static`, and commit the resultant changes to
-  `docs/index.html`
+* run `npm run build`, and commit the resultant changes to
+  `docs/dist.html`
 
 ### Configuration
 
