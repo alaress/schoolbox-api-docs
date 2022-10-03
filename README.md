@@ -68,8 +68,14 @@ Validates the definition.
 ### Updating the API
 
 When updating the API, do the following before creating a pull request:
-* run `npm run build`, and commit the resultant changes to
-  `docs/dist.html`
+* run `npm run build`
+* commit the resultant changes to `docs/dist.yaml`
+
+If building documentation for a new Schoolbox version:
+* run `npm run build-new` for the new version
+  * if the new version is not a beta: provide the `--selected` flag
+* commit the changes to the builds list file `docs/builds.json`
+* commit the new YAML file in `docs/builds`
 
 ### Configuration
 
