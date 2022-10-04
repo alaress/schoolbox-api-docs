@@ -1,0 +1,19 @@
+post:
+  operationId: assessmentSearch
+  tags: [Learning Moment]
+  summary: #GET, /create #POST
+  description: |
+    Share Learning Moment
+  responses:
+    '200':
+      description: Successfully Created a Learning moment
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/evidenceItem.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/evidence-item.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml

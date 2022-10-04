@@ -1,0 +1,190 @@
+title: evidence
+description: A learning moment item
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  createdAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+  updatedAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+  body:
+    type: string
+    description: |
+      The content of the Learning Moment
+  creator:
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      externalId:
+        $ref: ./externalId.yaml
+        example: 501
+      title:
+        type: string
+        nullable: true
+        description: The user's title (Mr., Ms., etc.).
+        example: Ms
+      firstName:
+        type: string
+        nullable: true
+        description: |
+          The user's first name.
+
+          Schoolbox doesn't distinguish between a person's actual first name
+          and any other names, and in any case is not the definitive source of
+          naming information; therefore in practice this will usually be the
+          user's given name.
+        example: Rebecca
+
+      lastName:
+        type: string
+        nullable: true
+        description: The user's surname.
+        example: White
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            example: /search/user/2
+          avatar:
+            type: string
+            example: /portrait.php?id=2&size=square64
+      isDeleted:
+        type: boolean
+        example: false
+  recipient:
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      externalId:
+        $ref: ./externalId.yaml
+        example: 501
+      title:
+        type: string
+        nullable: true
+        description: The user's title (Mr., Ms., etc.).
+        example: Ms
+      firstName:
+        type: string
+        nullable: true
+        description: |
+          The user's first name.
+
+          Schoolbox doesn't distinguish between a person's actual first name
+          and any other names, and in any case is not the definitive source of
+          naming information; therefore in practice this will usually be the
+          user's given name.
+        example: Rebecca
+
+      lastName:
+        type: string
+        nullable: true
+        description: The user's surname.
+        example: White
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            example: /search/user/2
+          avatar:
+            type: string
+            example: /portrait.php?id=2&size=square64
+      isDeleted:
+        type: boolean
+        example: false
+  discussionThread:
+    nullable: true
+    $ref: ./discussionThread-read.yaml
+  filename:
+    nullable: true
+    type: string
+  storage:
+    nullable: true
+    type: object
+    properties:
+      hash:
+        nullable: true
+        type: string
+        example: 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+      mime:
+        nullable: true
+        type: string
+        example: image/jpeg
+      type:
+        nullable: true
+        type: string
+        example: image
+      size:
+        nullable: true
+        type: integer
+        example: 3385989
+      _links:
+        nullable: true
+        type: object
+        description: |
+          Will contain one of the following depending on what file type is attached
+        properties:
+          icon:
+            type: string
+            example: /static/images/mime/application-image-jpg.svg
+          image:
+            type: string
+            example: /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+          stream:
+            type: string
+          poster:
+            type: string
+          fetch:
+            type: string
+            example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+
+  curriculumNodes:
+    nullable: true
+    type: array
+    items:
+      $ref: ./curriculumItem.yaml
+  tags:
+    nullable: true
+    type: object
+    description: |
+      System configurable in your Admin Lists Learning Moment area
+    properties:
+      id:
+        type: integer
+        description: the DB identifier of the Learning Moment Tags
+        example: 1
+      name:
+        type: string
+        description: the name of the Learning Moment type, may not be unique
+        example: Class Work
+  _links:
+    type: object
+    properties:
+      createThread:
+        type: string
+        example: /discussion/evidence/7/threads
+      delete:
+        type: string
+        example: /learning/evidence/7
+      detail:
+        type: string
+        example: /learning/evidence/7
+      modifyForm:
+        type: string
+        example: /learning/evidence/7/modify
+      put:
+        type: string
+        example: /learning/evidence/7

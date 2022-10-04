@@ -71,6 +71,11 @@ tags:
     description: |
       Upload files.
 
+  - name: Learning Moment
+    x-displayName: Learning Moment
+    description: |
+      Create and manage Learning Moments.
+
   - name: mobile
     x-displayName: Push Notification
     description: Endpoints for Mobile App Developers to connect and register devices
@@ -210,6 +215,16 @@ paths:
 
   /api/assessment/{id}:
       $ref: 'paths/assessment@{id}.yaml'
+
+  /learning/evidence/user/{id}/create:
+    $ref: 'paths/evidence@user@{id}@create.yaml'
+
+  /learning/evidence/{id}:
+    $ref: 'paths/evidence@{id}.yaml'
+
+  /learning/evidenceFeed/user/{id}:
+    $ref: 'paths/evidenceFeed@user@{id}.yaml'
+
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
