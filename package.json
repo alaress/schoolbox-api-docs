@@ -2,13 +2,14 @@
   "name": "schoolbox-api",
   "version": "1.2.9",
   "dependencies": {
-    "@redocly/openapi-cli": "^1.0.0-beta.50"
+    "@redocly/cli": "^1.0.0-beta.109",
+    "@redocly/openapi-core": "^1.0.0-beta.109",
+    "semver": "^7.3.7"
   },
   "private": true,
   "scripts": {
-    "start": "openapi preview-docs",
-    "build": "openapi bundle -o dist",
-    "test": "openapi validate",
-    "build-static": "npm run build && cp dist.yaml docs/"
+    "build": "redocly bundle -o docs/dist.yaml && ./scripts/applyVersion.js latest docs/dist.yaml",
+    "build-new": "redocly bundle -o docs/builds/${npm_config_build_version}.yaml && ./scripts/addBuild.js ${npm_config_build_version} ${npm_config_selected} && ./scripts/applyVersion.js ${npm_config_build_version} docs/builds/${npm_config_build_version}.yaml",
+    "test": "redocly lint"
   }
 }

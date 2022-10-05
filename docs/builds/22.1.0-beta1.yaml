@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: latest
+  version: 22.1.0-beta1
   title: Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
@@ -1293,22 +1293,6 @@ paths:
           $ref: '#/components/responses/assessment-item'
         default:
           $ref: '#/components/responses/problem'
-    parameters:
-      - $ref: '#/components/parameters/id'
-  /api/user/{id}/notify:
-    post:
-      tags:
-        - user
-      summary: Create a user notification
-      description: |
-        Send an instant notification to a selected user
-      responses:
-        '200':
-          description: The notification was sent
-        default:
-          $ref: '#/components/responses/problem'
-      requestBody:
-        $ref: '#/components/requestBodies/userNotify'
     parameters:
       - $ref: '#/components/parameters/id'
 security:
@@ -3609,36 +3593,3 @@ components:
               style: form
             audience:
               explode: false
-    userNotify:
-      description: A user
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - message
-            properties:
-              message:
-                type: string
-                required: true
-                description: |
-                  The content of the notification message
-                example: |
-                  Checkout the 22.1 Release notes
-              from:
-                type: object
-                properties:
-                  fullName:
-                    type: string
-                    description: >
-                      User who initially created this message, if unset defaults
-                      to Unknown User
-                    example: Schoolbox Admin
-              href:
-                type: string
-                description: >
-                  url for when clicking the notification to redirect to, if
-                  unset, defaults to #
-
-                  can be both absolute or relative
-                example: https://help.schoolbox.com.au/homepage/3343
