@@ -9,8 +9,6 @@ on:
     tags:
       - "[0-9]+.[0-9]+.0-alpha[0-9]+"
       - "[0-9]+.[0-9]+.0-beta[0-9]+"
-    paths-ignore:
-      - .github/workflows/**
 jobs:
   build:
     if: github.repository == 'alaress/schoolbox-api-docs'
@@ -32,7 +30,6 @@ jobs:
 
           # Copy docs into gh-pages repo
           cp -r docs/builds* .staging
-          cp docs/dist.yaml .staging
           cp docs/builds.json .staging
           git checkout gh-pages
           mv .staging/* docs/

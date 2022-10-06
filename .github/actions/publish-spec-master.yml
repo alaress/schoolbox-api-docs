@@ -8,8 +8,6 @@ on:
       - master
     tags:
       - "[0-9]+.[0-9]+.[0-9]+"
-    paths-ignore:
-      - .github/workflows/**
 jobs:
   build:
     if: github.repository == 'alaress/schoolbox-api-docs'
