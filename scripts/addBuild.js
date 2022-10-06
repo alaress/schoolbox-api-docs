@@ -35,7 +35,7 @@ function main () {
     });
 
     // Sort by semver descending
-    buildsData.sort((a, b) => semver.rcompare(a.value, b.value));
+    buildsData.sort((a, b) => semver.rcompare(a.value, b.value, true));
 
     // Write
     fs.writeFileSync(buildsFile, JSON.stringify(buildsData, null, 2));
