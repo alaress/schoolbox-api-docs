@@ -23,8 +23,8 @@ jobs:
           # Copy docs (excl. builds/, builds.json, dist.yaml) into gh-pages repo
           cp -r docs* .staging
           rm -rf .staging/builds/
-          rm .staging/dist.yaml
-          rm .staging/builds.json
+          rm -f .staging/dist.yaml
+          rm -f .staging/builds.json
           git checkout gh-pages
           mv .staging/* docs/
           rm -rf .staging/
