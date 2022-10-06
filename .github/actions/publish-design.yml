@@ -1,0 +1,35 @@
+name: publish-spec
+
+# Publish of design versions happens on push to master.
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - docs/**
+jobs:
+  build:
+    if: github.repository == 'alaress/schoolbox-api-docs'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Push design to gh-pages branch
+        id: publish-design
+        run: |
+          # Commit on behalf of the github-actions bot
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Copy docs (excl. builds/, builds.json, dist.yaml) into gh-pages repo
+          cp -r docs* .staging
+          rm -rf .staging/builds/
+          rm .staging/dist.yaml
+          rm .staging/builds.json
+          git checkout gh-pages
+          mv .staging/* docs/
+          rm -rf .staging/
+
+          # Commit and push
+          git add docs/
+          git commit -m "Build design for tag ${$GITHUB_REF}" .
+          git push
