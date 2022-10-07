@@ -23,6 +23,7 @@ function main () {
     let hasSelectedBuild = false;
     buildsData = buildsData.map(
         function (v) {
+            delete v.selected;
             if (!hasSelectedBuild) {
                 if (semver.prerelease(v.value, true) === null) {
                     v.selected = true;
