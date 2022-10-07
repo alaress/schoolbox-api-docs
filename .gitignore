@@ -4,3 +4,4 @@ dist
 ./dist.yaml
 node_modules
 .idea
+.staging

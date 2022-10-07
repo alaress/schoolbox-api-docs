@@ -1,0 +1,45 @@
+name: publish-spec
+
+# Publish of production specs happens on tagging master with a valid version
+# number.
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  build:
+    if: github.repository == 'alaress/schoolbox-api-docs'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.1.0
+      - name: Push to gh-pages branch
+        id: publish-spec-master
+        run: |
+          # Commit on behalf of the github-actions bot
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Build the docs
+          npm ci
+          npm run rebuild-builds-list
+          npm run build-new --build-version=$GITHUB_REF --selected
+
+          # also do the old build (for now)
+          npm run build
+
+          # Copy docs into gh-pages repo
+          mkdir .staging/
+          cp -r docs/builds* .staging
+          cp docs/dist.yaml .staging
+          cp docs/builds.json .staging
+          git checkout gh-pages
+          cp -r .staging/* docs/
+          rm -rf .staging/
+
+          # Commit and push
+          git add docs/
+          git commit -m "Build spec for tag ${$GITHUB_REF}" .
+          git push
