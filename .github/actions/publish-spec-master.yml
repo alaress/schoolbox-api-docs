@@ -30,6 +30,7 @@ jobs:
           npm run build
 
           # Copy docs into gh-pages repo
+          mkdir .staging/
           cp -r docs/builds* .staging
           cp docs/dist.yaml .staging
           cp docs/builds.json .staging

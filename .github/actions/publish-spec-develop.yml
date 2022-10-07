@@ -29,6 +29,7 @@ jobs:
           npm run build-new --build-version=$GITHUB_REF
 
           # Copy docs into gh-pages repo
+          mkdir .staging/
           cp -r docs/builds* .staging
           cp docs/builds.json .staging
           git checkout gh-pages
