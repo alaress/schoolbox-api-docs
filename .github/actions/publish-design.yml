@@ -34,7 +34,7 @@ jobs:
           rm -f .staging/docs/dist.yaml
           rm -f .staging/docs/builds.json
           git checkout gh-pages
-          mv .staging/* .
+          cp -r .staging/* .
           rm -rf .staging/
 
           # Commit and push
