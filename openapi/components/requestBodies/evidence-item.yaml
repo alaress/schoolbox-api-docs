@@ -1,0 +1,48 @@
+description: A Learning Moment
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        body:
+          type: string
+          example:
+            <p>I can count forwards and backwards by 2s.</p>\n
+        file:
+          nullable: true
+          type: string
+          example: store:1f8f836cce05750ac98302c74d4081f99fdd443f
+          description: hash as returned by asyncUpload.php
+        curriculumNodes:
+          nullable: true
+          type: array
+          items:
+            $ref: ../schemas/curriculumItem.yaml
+        tags:
+          nullable: true
+          type: array
+          items:
+            type: object
+            description: |
+              System configurable in your Admin Lists Learning Moment area
+            properties:
+              id:
+                type: integer
+                description: the DB identifier of the Learning Moment Tags
+                example: 1
+              name:
+                type: string
+                description: the name of the Learning Moment type, may not be unique
+                example: Class Work
+        type:
+          type: string
+          enum:
+            - photo
+            - text
+            - upload
+            - video
+            - audio
+          example: upload
+      required:
+        - body
+        - type
