@@ -29,7 +29,7 @@ jobs:
 
           # Copy all files (excl. builds/, builds.json, dist.yaml) into gh-pages repo
           mkdir .staging/
-          cp -r . .staging/
+          cp -r ./* .staging/
           rm -rf .staging/docs/builds/
           rm -f .staging/docs/dist.yaml
           rm -f .staging/docs/builds.json
