@@ -1,0 +1,33 @@
+put:
+  operationId: putEvidence
+  tags: [Learning Moment]
+  summary: Update Learning Moment
+  description: |
+    Update Learning Moment
+  responses:
+    '200':
+      description: Successfully Updated a Learning moment
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/evidenceItem.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/evidence-item.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+
+delete:
+  operationId: deleteEvidence
+  tags: [Learning Moment]
+  summary: Delete Learning Moment
+  description: |
+    Delete Learning Moment
+  responses:
+    '200':
+      description: The Learning Moment was deleted successfully.
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml

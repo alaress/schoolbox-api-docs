@@ -1,0 +1,12 @@
+description: A list of Learning Moments
+content:
+  application/json:
+    schema:
+      discriminator:
+        propertyName: discriminator
+        mapping:
+          evidence: ../schemas/evidenceList.yaml
+          badgeAward: ../schemas/badgeAwardList.yaml
+      oneOf:
+        - $ref: ../schemas/evidenceList.yaml
+        - $ref: ../schemas/badgeAwardList.yaml
