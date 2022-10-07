@@ -1,11 +1,9 @@
 name: publish-spec-master
 
-# Publish of production specs happens on tagging master with a valid version
-# number.
+# Publish of production specs happens on tagging with a valid non-alpha or beta
+# version number.
 on:
   push:
-    branches:
-      - master
     tags:
       - "[0-9]+.[0-9]+.[0-9]+"
 jobs:
