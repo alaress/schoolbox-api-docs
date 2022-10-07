@@ -1,4 +1,4 @@
-name: publish-spec
+name: publish-spec-master
 
 # Publish of production specs happens on tagging master with a valid version
 # number.

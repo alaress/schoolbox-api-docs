@@ -1,4 +1,4 @@
-name: publish-spec
+name: publish-spec-develop
 
 # Publish of beta specs happens on tagging develop with an alpha or beta version
 # number.
