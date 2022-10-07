@@ -38,6 +38,6 @@ jobs:
           rm -rf .staging/
 
           # Commit and push
-          git add docs/
+          git add .
           git commit -m "Build design for tag ${$GITHUB_REF}" .
           git push
