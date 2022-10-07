@@ -24,6 +24,7 @@ jobs:
 
           # Build the docs
           npm ci
+          npm run rebuild-builds-list
           npm run build-new --build-version=$GITHUB_REF --selected
 
           # also do the old build (for now)

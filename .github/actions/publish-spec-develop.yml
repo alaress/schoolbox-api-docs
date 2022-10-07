@@ -26,6 +26,7 @@ jobs:
           # Build the docs:
           # do not set beta specs as the most recently selected
           npm ci
+          npm run rebuild-builds-list
           npm run build-new --build-version=$GITHUB_REF
 
           # Copy docs into gh-pages repo
