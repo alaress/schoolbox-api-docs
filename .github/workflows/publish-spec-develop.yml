@@ -1,11 +1,8 @@
-name: publish-spec
+name: publish-spec-develop
 
-# Publish of beta specs happens on tagging develop with an alpha or beta version
-# number.
+# Publish of beta specs happens on tagging with an alpha or beta version number.
 on:
   push:
-    branches:
-      - develop
     tags:
       - "[0-9]+.[0-9]+.0-alpha[0-9]+"
       - "[0-9]+.[0-9]+.0-beta[0-9]+"

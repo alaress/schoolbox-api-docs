@@ -1,4 +1,4 @@
-name: publish-spec
+name: publish-design
 
 # Publish of design versions happens on push to develop for now.
 # (Once the multi-version docs go live, this will trigger off master.)
