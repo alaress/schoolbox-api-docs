@@ -1,0 +1,14 @@
+post:
+  operationId: postCalendarEventAttendanceDecline
+  tags: [calendar]
+  summary: Decline event invitation
+  description: |
+    As the authenticated user, declines the invitation to attend the given
+    event.
+  responses:
+    '200':
+      $ref: ../components/responses/calendarAttendance-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml

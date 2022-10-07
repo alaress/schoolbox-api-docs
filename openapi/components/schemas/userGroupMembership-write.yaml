@@ -1,0 +1,3 @@
+allOf:
+  - $ref: ./userGroupMembership-writableFields.yaml
+  - $ref: ./userGroupMembership-fields.yaml

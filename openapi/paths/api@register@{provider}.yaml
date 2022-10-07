@@ -1,0 +1,34 @@
+post:
+  operationId: mobileRegister
+  tags: [mobile]
+  summary: Register mobile device
+  security: []
+  description: "In order to register your app to receive push notifications you first need to notify Schoolbox of a valid user and the app identifier. This process is handled via a POST call as specified below"
+  parameters:
+    - name: provider
+      in: path
+      description: |
+        The type of device that is connecting to the service.
+
+        As of this version, this is expected to always be "Digistorm". Apple
+        (APNS) or Google Android (GCM) are still supported, but deprecated: the
+        Digistorm provider will handle the sending of notifications via APNS or
+        GCM internally.
+      required: true
+      example: 'Digistorm'
+      schema:
+        type: string
+        enum:
+          - GCM
+          - APNS
+          - Digistorm
+  responses:
+    '201':
+      $ref: ../components/responses/authentication-successUser.yaml
+    '400':
+      $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+  requestBody:
+    $ref: ../components/requestBodies/registration.yaml

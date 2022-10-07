@@ -1,0 +1,14 @@
+get:
+  operationId: getCalendarEventAttendance
+  tags: [calendar]
+  summary: Get an event's attendees
+  description: |
+    This will return a list of people that have been invited or RSVP to an an event.  It will include the status of their invitation and if they have accepted the invitation.
+  responses:
+    '200':
+      $ref: ../components/responses/calendarAttendance-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+

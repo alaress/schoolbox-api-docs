@@ -1,0 +1,6 @@
+name: topic
+in: query
+description: |
+  The machine-readable value (a.k.a. slug) for the selected news topic.
+schema:
+  type: string

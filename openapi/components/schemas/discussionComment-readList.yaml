@@ -1,0 +1,11 @@
+title: Comment list
+description: A list of comments
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./discussionComment-read.yaml
+  metadata:
+    $ref: ./listMetadata.yaml

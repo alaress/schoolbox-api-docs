@@ -1,0 +1,16 @@
+get:
+  operationId: commsNewsSaveForLater.getList
+  tags: [news]
+  summary: Get list of saved articles
+  description: |
+    Retrieve the IDs of all saved news articles for the authenticated user.
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/id.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

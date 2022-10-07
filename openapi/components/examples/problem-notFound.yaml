@@ -1,0 +1,5 @@
+value:
+  type:   about:blank
+  title:  Not Found
+  status: 404
+  detail: The requested object was not found.

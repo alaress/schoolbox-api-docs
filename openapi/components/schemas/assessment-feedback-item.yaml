@@ -1,0 +1,27 @@
+title: An Assessment feedback item
+description: An Assessment feedback item
+readOnly: true
+type: object
+properties:
+  learner:
+    $ref: ./userShort.yaml
+  comment:
+    type: string
+    example: |
+      Joffrey,
+      Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
+      Please consider this for your next essay.
+  date:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-01-30T21:00:00.000Z
+  mark:
+    type: string
+    example: A
+  normalisedMark:
+    type: integer
+    example: 36
+  instructor:
+    $ref: ./userShort.yaml

@@ -1,0 +1,28 @@
+type: object
+properties:
+  id:
+    $ref: ../id.yaml
+  title:
+    description: News article title.
+    type: string
+  blurb:
+    description: |
+      News article displayed blurb, as raw HTML.
+
+      This is derived from the article's blurb (if any) and body:
+      * the blurb is used in full, if provided
+      * if not, the body is trimmed
+    type: string
+  featureImage:
+    $ref: ../file.yaml
+  publishAt:
+    allOf:
+      - description: |
+          When was the article published?
+      - $ref: ../dateTime.yaml
+  topics:
+    type: array
+    description: |
+      A list of topics which are applicable to the article.
+    items:
+      $ref: ../news/topic.yaml

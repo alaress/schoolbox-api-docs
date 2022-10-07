@@ -1,0 +1,11 @@
+patch:
+  operationId: filePatch
+  tags: [file]
+  summary: Partially update a file
+  responses:
+    '200':
+      $ref: ../components/responses/file-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/file-item.yaml

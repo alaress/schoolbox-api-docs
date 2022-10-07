@@ -1,0 +1,16 @@
+get:
+  operationId: userGetTokenForUser
+  tags: [user]
+  summary: Get an authentication token for a user
+  description: |
+    Retrieve an authentication token for another user.
+
+    Only users which are authenticated as a superuser may request a token for
+    another user.
+  responses:
+    '200':
+      $ref: ../components/responses/userToken.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml

@@ -1,0 +1,67 @@
+title: a list of assessment feedback items
+description: A list of feedback items
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    items:
+      allOf:
+        - type: object
+          properties:
+            id:
+              $ref: ./id.yaml
+              example: 639
+            title:
+              type: string
+              example: Essay - Final Assessment
+            folder:
+              $ref: ./folder.yaml
+              description: |
+                The folder where the assessment is found
+            assessmentType:
+              type: string
+              enum:
+                - quiz
+                - task
+                - project
+                - dueWork
+                - LTI
+              example: dueWork
+            commonAssessment:
+              type: boolean
+            weighted:
+              type: boolean
+              example: true
+              deprecated: true
+            weight:
+              type: integer
+              example: 30
+            workType:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: the name of the work type, may not be unique
+                  example: Formative Assessment
+                id:
+                  type: integer
+                  description: the DB identifier of the worktype
+                  example: 10
+              description: |
+                System configurable in your Admin Lists Work Types area
+            project:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ID of the parent assessment (project)
+                  example: 255
+            dueDate:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: 2022-01-30T21:00:00.000Z
+            participants:
+              $ref: ./assessment-feedback-item.yaml

@@ -1,0 +1,25 @@
+description: |
+  The response that the API returns if it was unable or unwilling to fulfill a
+  request.
+
+  If the request's "Accept" header is "application/json", this will conform to
+  the [RFC7807](https://tools.ietf.org/html/rfc7807) Problem Details
+  specification; otherwise, it may be a HTML document which contains a textual
+  description of the error. For this reason, the "Accept" header should always
+  be set to "application/json".
+content:
+  application/problem+json:
+    schema:
+      $ref: ../schemas/problem.yaml
+    examples:
+      unauthorized:
+        $ref: ../examples/problem-unauthorized.yaml
+      notFound:
+        $ref: ../examples/problem-notFound.yaml
+      internalServerError:
+        $ref: ../examples/problem-internalServerError.yaml
+  text/html:
+    schema:
+      description: A HTML description of an error.
+      readOnly: true
+      type: string

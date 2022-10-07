@@ -1,0 +1,42 @@
+get:
+  operationId: apiSessionGet
+  tags: [session]
+  summary: Login using JWT param
+  description: |
+    Attempt to authenticate a user based on a JWT passed in the query string. Then returns a response with a session cookie.  This can be used to start a user session when the user only has a JWT.  The JWT may be a QR code, oAuth token or a user generated API key.
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/authentication-successUser.yaml
+    '302':
+      $ref: ../components/responses/authentication-successRedirect.yaml
+    '400':
+      $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/redirect.yaml
+    - $ref: ../components/parameters/jwt.yaml
+
+post:
+  operationId: apiSessionPost
+  tags: [session]
+  summary: Login to system
+  description: |
+    Attempt to authenticate a user based on either a username/password pair, or
+    a JWT passed in form data. This is used to login the user to the system so they can continue.  It will effectively create a session cookie for the user.
+
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/authentication-successUser.yaml
+    '302':
+      $ref: ../components/responses/authentication-successRedirect.yaml
+    '400':
+      $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/redirect.yaml
+  requestBody:
+    $ref: ../components/requestBodies/authentication.yaml

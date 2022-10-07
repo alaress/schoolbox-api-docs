@@ -1,0 +1,8 @@
+name:        token
+in:          query
+deprecated:  true
+description: |
+  A token for user authentication.
+  This is temporary, and will be replaced with oAuth/JWT authentication.
+schema:
+  type: string

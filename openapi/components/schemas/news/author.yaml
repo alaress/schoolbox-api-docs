@@ -1,0 +1,25 @@
+type: object
+description: |
+  The author's details.
+properties:
+  id:
+    $ref: ../id.yaml
+  externalId:
+    $ref: ../externalId.yaml
+  firstname:
+    type: string
+    description: |
+      The author's first name (a.k.a. given name).
+  lastname:
+    type: string
+    description: |
+      The author's last name (a.k.a. surname).
+  title:
+    type: string
+    description: |
+      The author's title.
+  fullname:
+    type: string
+    description: |
+      The author's full name: usually, this is the title, first name and last
+      name joined together.

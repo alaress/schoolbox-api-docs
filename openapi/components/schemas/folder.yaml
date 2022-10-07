@@ -1,0 +1,22 @@
+title: Folder
+description: |
+type: object
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    type: string
+    description: The name of the Folder.
+  code:
+    type: string
+    description: |
+      Schoolbox Subject Codes
+  yearLevel:
+    $ref: ./yearLevel.yaml
+example:
+  id: 80
+  name: 9A English
+  code: 9ENGA
+  yearLevel:
+    id: 9
+    name: Year 10

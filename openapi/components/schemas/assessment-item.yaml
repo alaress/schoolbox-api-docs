@@ -1,0 +1,77 @@
+title: an Assessment Item
+description: An assessment item
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+    example: 255
+  title:
+    type: string
+    example: Turning on the computer
+  assessmentType:
+    type: string
+    enum:
+      - dueWork
+      - quiz
+      - task
+      - project
+      - LTI
+    example: task
+  folder:
+    $ref: ./folder.yaml
+    description: |
+      The folder where the assessment is found
+  commonAssessment:
+    type: boolean
+  workType:
+    type: object
+    description: |
+      System configurable in your Admin Lists Work Types area
+    properties:
+      id:
+        type: integer
+        description: the DB identifier of the worktype
+        example: 1
+      name:
+        type: string
+        description: the name of the work type, may not be unique
+        example: Formative Assessment
+    yearLevel:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+          description: the db identifier of the yearlevel
+          example: 6
+      example:
+        name: Year 9
+        id: 3
+  weighted:
+    type: boolean
+    example: true
+    deprecated: true
+  weight:
+    type: integer
+    example: 30
+    description: |
+      The value of how much this assessment's outcome contributes to the final overall grade -
+      a value of 0 indicates this assessment has no impact on the overall grade.
+      Generally, this is a number between 0 and 100.
+  dueDate:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-01-30T21:00:00.000Z
+  project:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: ID of the parent assessment (project)
+        example: 255
+  participants:
+    $ref: ./assessment-feedback-item.yaml

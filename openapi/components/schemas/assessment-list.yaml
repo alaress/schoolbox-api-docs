@@ -1,0 +1,12 @@
+title: Assessment list
+description: A list of assessments
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    items:
+      allOf:
+        - $ref: ./assessment-item.yaml
+  metadata:
+    $ref: ./listMetadata.yaml

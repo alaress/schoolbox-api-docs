@@ -1,0 +1,28 @@
+post:
+  operationId: commsNews.postDelete
+  tags: [news]
+  summary: Delete a news article
+  description: |
+    Delete an existing news article.
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+  responses:
+    '200':
+      description: |
+        A summary of the deleted news item.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                description: |
+                  Was the article successfully deleted?
+              returnUrl:
+                $ref: ../components/schemas/returnUrl.yaml
+
+    '302':
+      $ref: ../components/responses/redirect.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

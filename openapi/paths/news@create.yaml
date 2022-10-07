@@ -1,0 +1,17 @@
+post:
+  operationId: commsNews.postCreate
+  tags: [news]
+  summary: Create a news article
+  description: |
+    Creates a new news article: the article's author will be the currently
+    authenticated user.
+
+    The article is not necessarily published yet: this simply saves the article
+    so that the user may refine it before publishing.
+  responses:
+    '200':
+      $ref: ../components/responses/news/save.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/newsItem.yaml

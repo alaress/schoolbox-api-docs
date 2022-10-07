@@ -1,0 +1,13 @@
+name:        filter
+in:          query
+description: |
+  A set of filters (if any) which will be used to filter out the list of
+  items that this endpoint returns.
+
+  Generally, the structure of this object will match the structure of
+  the object that the endpoint returns.
+
+  Values in the object field must equal the value of this key.  
+
+schema:
+  type: object

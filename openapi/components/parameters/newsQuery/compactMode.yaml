@@ -1,0 +1,9 @@
+name: c
+in: query
+description: |
+  Is compact mode enabled?
+
+  If on, the list of attachments is loaded, and any articles loaded are
+  considered as read by the authenticated user.
+schema:
+  $ref: ../../schemas/queryBoolean.yaml

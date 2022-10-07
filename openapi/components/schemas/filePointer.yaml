@@ -1,0 +1,21 @@
+type: string
+description: |
+  A pointer to a file within Schoolbox, in the format:
+  `$locator:$location:$filename`
+
+  The variables within the pointer have this meaning:
+  * `$locator` represents the strategy for finding the file:
+    * `store` for files uploaded to Schoolbox's storage
+    * `browse` finds files in Schoolbox's resource browser
+    * `myfile` finds files in a Schoolbox user's My Files browser
+    * `office365` finds files in an Office365 store
+  * `$location` is the location of the file within `$locator`:
+    * for `store` this is a file's unique hash
+    * for `browse` and `myfile` this is a file ID
+    * for `office365` this is the file's unique node
+  * `$filename` is the filename that the file will be given once it is uploaded
+    to wherever it is being uploaded
+
+  See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+  endpoint for details on how to upload a file, and receive a file
+  pointer from that upload.

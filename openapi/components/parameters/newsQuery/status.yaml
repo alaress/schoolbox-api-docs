@@ -1,0 +1,14 @@
+name: status
+in: query
+description: |
+  Fetch only news with this publication status.
+schema:
+  type: string
+  enum:
+    - 'All'
+    - 'Drafted'
+    - 'Awaiting Moderation'
+    - 'Rejected'
+    - 'Awaiting Publication'
+    - 'Published'
+    - 'Archived'

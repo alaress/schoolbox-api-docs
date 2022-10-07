@@ -1,0 +1,31 @@
+description: |
+  Fields that are only relevant when writing a user's value.
+type: object
+properties:
+  campus:
+    type: array
+    required: true
+    minItems: 1
+    uniqueItems: true
+    items:
+      $ref: ./itemRelation.yaml
+
+  role:
+    required: true
+    $ref: ./itemRelation.yaml
+
+  schoolHouse:
+    nullable: true
+    $ref: ./itemRelation.yaml
+
+  yearLevel:
+    nullable: true
+    $ref: ./itemRelation.yaml
+
+  impersonableUser:
+    nullable: true
+    type: array
+    items:
+      $ref: ./itemRelation.yaml
+
+writeOnly: true

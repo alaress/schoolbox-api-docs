@@ -1,0 +1,32 @@
+title: Campus
+description: |
+  A sub-division within the school.
+
+  All users within the school belong to one or more campuses:
+  * a teacher may have classes across multiple campuses
+  * a student will generally only attend one campus
+  * a parent may have children who belong to different campuses
+type: object
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    type: string
+    description: The name of the campus.
+  code:
+    type: string
+    description: |
+      The identifying code for the campus in the school's SIS.
+  days:
+    type: integer
+    minimum: 5
+    maximum: 10
+    description: The number of days in a cycle for this campus' timetable.
+required:
+  - id
+readOnly: true
+example:
+  id: 1
+  name: Secondary
+  code: SEC
+  days: 5

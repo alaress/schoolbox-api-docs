@@ -1,0 +1,5 @@
+value:
+  type:   about:blank
+  title:  Forbidden
+  status: 401
+  detail: You do not have permission to access resource with ID=1.

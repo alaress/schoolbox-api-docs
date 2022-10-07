@@ -1,0 +1,75 @@
+get:
+  operationId: userGroupMembershipGet
+  tags: [user]
+  summary: Get a users settings for a group
+  description: |
+    This will provide you with the current enrolment settings the user has for a specific group. This endpoint is only available for superusers.
+  responses:
+    '200':
+      $ref: ../components/responses/userGroupMembership-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+post:
+  operationId: userGroupMembershipPost
+  tags: [ user ]
+  summary: Add user to a group
+  description: |
+    This will add a user as a member into a group. This membership must not already exist. You will need to provide all the settings for the membership. This endpoint is only available for superusers.
+  responses:
+    '201':
+      $ref: ../components/responses/userGroupMembership-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/userGroupMembership-item.yaml
+
+put:
+  operationId: userGroupMembershipPut
+  tags: [user]
+  summary: Update a user's settings for a group
+  description: |
+    This allows you to change the group access level, notification and favourite status of a group for a particular user. The group membership for the user must already exist. The endpoint is only available for superusers.
+  responses:
+    '200':
+      $ref: ../components/responses/userGroupMembership-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/userGroupMembership-item.yaml
+
+patch:
+  operationId: userGroupMembershipPatch
+  tags: [user]
+  summary: Partially update a user's group settings
+  description: |
+    This allows you to change only the group access level, notification and favourite status of a group for a particular user. You can use this endpoint to set one setting, leaving the other settings unchanged. The endpoint is only available for superusers.
+  responses:
+    '200':
+      $ref: ../components/responses/userGroupMembership-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/userGroupMembership-item.yaml
+
+delete:
+  operationId: userGroupMembershipDelete
+  tags: [user]
+  summary: Remove this user from a group
+  description: |
+    This will remove the relationship between a user and a group, it will also remove any settings related to that group membership. The endpoint is only available for superusers.
+  responses:
+    '204':
+      description: The resource was deleted successfully.
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
+  - name: groupId
+    in:       path
+    required: true
+    schema:
+      type: integer
+      format: int32
+      minimum: 1

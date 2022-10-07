@@ -1,0 +1,33 @@
+get:
+  operationId: commsNews.getListForHomepage
+  tags: [news]
+  summary: Get articles audienced to the given folder
+  description: |
+    Get the list of articles audienced to the given folder.
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+    - $ref: ../components/parameters/newsQuery/compactMode.yaml
+    - $ref: ../components/parameters/newsQuery/news-limit.yaml
+  responses:
+    '200':
+      description: |
+        A list of articles which are audienced to the given folder.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: ../components/schemas/news/commonFields.yaml
+                - type: object
+                  properties:
+                    body:
+                      $ref: ../components/schemas/news/body.yaml
+                    author:
+                      $ref: ../components/schemas/news/author.yaml
+                    status:
+                      $ref: ../components/schemas/news/status.yaml
+                    statusDate:
+                      $ref: ../components/schemas/news/statusDate.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

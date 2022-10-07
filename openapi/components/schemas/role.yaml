@@ -1,0 +1,28 @@
+title: Role
+description: |
+  A type of user account at the school. Roles are generally used to group
+  users by the type of position that they have at the school.
+type: object
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    type: string
+    description: The name of the role.
+  type:
+    type: string
+    description: |
+      The type of this role. Different role types have different levels of
+      access to different parts of Schoolbox.
+    enum:
+      - staff
+      - student
+      - parent
+      - guest
+required:
+  - id
+readOnly: true
+example:
+  - id:   4
+    name: Senior Students
+    type: student

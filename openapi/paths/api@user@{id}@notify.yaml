@@ -1,0 +1,15 @@
+post:
+  tags: [user]
+  summary: Create a user notification
+  description: |
+   Send an instant notification to a selected user
+  responses:
+    '200':
+      description: The notification was sent
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/userNotify.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml

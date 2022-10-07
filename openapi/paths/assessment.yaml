@@ -1,0 +1,103 @@
+get:
+  operationId: assessmentSearch
+  tags: [assessment]
+  summary: Get a list of assessments
+  description: |
+    This endpoint will return all assessments and their results that match the filter provided.  We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.  For example a common request may be to get assessments of work type 'major' that are due in the current year.
+  responses:
+    '200':
+      $ref: ../components/responses/assessment-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - name: filter
+    in: query
+    description: '{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2022-01-30T21:00:00.000Z","to": "2022-06-24T06:00:00.000Z"},"yearLevel": {"id": 6,"name": "Year 6"}}'
+    schema:
+      type: object
+      properties:
+        assessmentId:
+          type: integer
+          example: 256
+        title:
+          type: string
+          description: |
+            `*like* check on title`
+          example: English 3/4 [Final]
+        assessmentType:
+          type: string
+          enum:
+            - task
+            - quiz
+            - dueWork
+            - LTI
+            - project
+          example: dueWork
+        folder:
+          type: array
+          items:
+            type: object
+            description: |
+              Select either one of the following fields to filter on:
+            properties:
+              id:
+                type: integer
+                description: ID of the folder containing the assessment
+                example: 80
+              code:
+                type: string
+                description: Code of the folder containing the assessment
+                example: 9ENGA
+        weighted:
+          type: boolean
+          example: false
+          description: |
+            limit assessments to only those that have a weight set
+        workType:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: the DB identifier of the worktype
+              example: 1
+            name:
+              type: string
+              description: the name of the work type, may not be unique
+              example: Formative Assessment
+        dueDate:
+          type: object
+          properties:
+            from:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: 2022-01-30T21:00:00.000Z
+            to:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: 2022-06-24T06:00:00.000Z
+        yearLevel:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: the db identifier of the yearlevel
+              example: 6
+            name:
+              type: integer
+              description: the name of the year level. may not be unique
+              example: Year 6
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the parent assessment (project)
+              example: 255
+  - $ref: ../components/parameters/cursor.yaml
+  - $ref: ../components/parameters/limit.yaml
+    default: 5

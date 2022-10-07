@@ -1,0 +1,16 @@
+name: properties
+in: query
+description: |
+  If this is set, then only these properties are included in any items
+  that this endpoint retrieves. (If not provided, all properties will be
+  included.)
+
+  This parameter is useful for if only a subset of the item's properties
+  is required for an operation.
+schema:
+  type: array
+  items:
+    type: string
+example:
+  # fetch only the ID, first name and last name properties
+  - [id, firstname, lastname]

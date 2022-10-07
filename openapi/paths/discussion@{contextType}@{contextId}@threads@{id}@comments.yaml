@@ -1,0 +1,27 @@
+get:
+  operationId: getCommentsByThread
+  tags: [discussion]
+  summary: Get comments for a thread
+  responses:
+    '200':
+      $ref: ../components/responses/discussionComment-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+post:
+  operationId: createCommentInThread
+  tags: [discussion]
+  summary: Create a new comment
+  responses:
+    '200':
+      $ref: ../components/responses/discussionComment-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/discussionComment-item.yaml
+
+parameters:
+  - $ref: ../components/parameters/discussion-contextType.yaml
+  - $ref: ../components/parameters/discussion-contextId.yaml
+  - $ref: ../components/parameters/id.yaml
+  - $ref: ../components/parameters/cursor.yaml

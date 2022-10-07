@@ -1,0 +1,71 @@
+post:
+  operationId: commsNewsModeration.setStatus
+  tags: [news]
+  summary: Change the publication status of a news article
+  description: |
+    Change the publication status of a news article.
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+    - name: status
+      in: path
+      description: |
+        The status to put the article into.
+
+        - `submit`: put the article into the mod queue
+        - `accept`: accept the article for publication
+        - `reject`: block the article from being published, or retract it from
+                    publication
+      schema:
+        type: string
+        enum:
+          - submit
+          - accept
+          - reject
+  responses:
+    '302':
+      $ref: ../components/responses/redirect.yaml
+    'default':
+      description: |
+        A summary of the article's status change.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errorCode:
+                type: integer
+                description: |
+                  * `0`: successfully approved
+                  * `1`:
+                    * some attributes invalid (if the response code was invalid)
+                    * some other user has already put the article in this state,
+                      and there is otherwise no difference
+                      (if the response code was valid)
+                  * `2`: some other user has already put the article in this
+                    state, and there is a conflict in the reason for
+                    putting it in this state
+                  * `3`: the article may not be put into this state
+                  * `4`: an unspecified error
+              message:
+                type: string
+                description: |
+                  A brief message detailing what succeeded, or went wrong
+              redirect:
+                type: string
+                format: uri
+                description: |
+                  A URL to redirect to once the article state changes
+
+
+  requestBody:
+    content:
+      application/x-www-form-urlencoded:
+        schema:
+          type: object
+          properties:
+            rejectionReason:
+              description: |
+                Why was the article rejected?
+
+                (Only applies if rejecting the article.)
+              type: string

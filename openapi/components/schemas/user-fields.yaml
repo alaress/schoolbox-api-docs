@@ -1,0 +1,125 @@
+title: User
+description: Common fields for users
+type: object
+properties:
+
+  externalId:
+    $ref: ./externalId.yaml
+    example: 501
+
+  username:
+    type: string
+    required: false
+    description: |
+      The user's username. This will be used as the user's identification
+      when they attempt to log into the Schoolbox instance.
+    example: rwhite
+
+  superuser:
+    type: boolean
+    description: |
+      Does this user have superuser permissions over the Schoolbox
+      instance?
+    default: false
+
+  enabled:
+    type: boolean
+    description: Is this user able to log in to the Schoolbox instance?
+    default: true
+
+  title:
+    type: string
+    nullable: true
+    description: The user's title (Mr., Ms., etc.).
+    example: Ms
+
+  firstName:
+    type: string
+    required: true
+    description: |
+      The user's first name.
+
+      Schoolbox doesn't distinguish between a person's actual first name
+      and any other names, and in any case is not the definitive source of
+      naming information; therefore in practice this will usually be the
+      user's given name.
+    example: Rebecca
+
+  lastName:
+    type: string
+    nullable: true
+    description: The user's surname.
+    example: White
+
+  isEmailDerived:
+    type: boolean
+    description: |
+      Is this user's email address derived directly from their username
+      and the host name of the Schoolbox instance?
+
+  altEmail:
+    type: string
+    format: email
+    nullable: true
+    description: |
+      The user's email address, if it is not derived from their username
+      and hostname.
+    example: rwhite@example.com.au
+
+  positionTitle:
+    type: string
+    nullable: true
+    description: |
+      The user's job or position title within the school which owns the
+      Schoolbox instance.
+
+  isBoarder:
+    type: boolean
+    description: Is this user a boarder?
+
+  flags:
+    type: object
+    description: |
+      A set of flags which control the behavior of a user's Schoolbox
+      session.
+    properties:
+      showWebmailTab:
+        type: boolean
+        default: false
+        description: Does the Webmail tab display for this user?
+      showContacts:
+        type: boolean
+        description: Does this user's contacts get shown to other users?
+      enableTimetable:
+        type: boolean
+        description: Does this user get to see their timetabled classes?
+      showSideNav:
+        type: boolean
+        description: Does the side navigation show for this user?
+      showNotificationsPanel:
+        type: boolean
+        description: Does the notifications panel show for this user?
+      showGradeGraph:
+        type: boolean
+        description: Does the grade graph show for this user?
+      enableEportfolio:
+        type: boolean
+        default: false
+        description: Is this user able to create ePortfolio content?
+      useInternalMail:
+        type: boolean
+        default: false
+        description: |
+          Does this user use Schoolbox's internal mail system to send
+          email?
+
+          If false, they use webmail instead.
+      calendarView:
+        type: string
+        description: Which calendar view will the user default to?
+        default: month
+        enum:
+          - month
+          - agendaWeek
+          - agendaDay
+          - list

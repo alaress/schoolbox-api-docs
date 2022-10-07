@@ -1,0 +1,9 @@
+name:        cursor
+in:          query
+description: |
+  A generated but decodable pointer to the first record to return.
+
+  Each endpoint whose data accepts a cursor will return a cursor that
+  points to the next page of the result set.
+schema:
+  $ref: ../schemas/cursor.yaml

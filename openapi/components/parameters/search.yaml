@@ -1,0 +1,13 @@
+name:        search
+in:          query
+description: |
+  A search term.
+
+  Each endpoint which accepts this parameter will have its own logic for
+  determining whether an item matches this search term.
+
+  In addition, each returned item should return how close a match it is
+  for this search term.
+schema:
+  type: string
+required: true

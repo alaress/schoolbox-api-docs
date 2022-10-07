@@ -1,0 +1,15 @@
+name: ref
+in: query
+description: |
+  Referer type for this news page.
+schema:
+  type: string
+  enum:
+    - archive
+    - dashboard
+    - email
+    - homepage
+    - index
+    - rss
+    - saved
+    - search

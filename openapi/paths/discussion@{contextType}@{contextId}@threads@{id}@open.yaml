@@ -1,0 +1,15 @@
+put:
+  operationId: openThread
+  tags: [discussion]
+  summary: Enable a thread
+  responses:
+    '200':
+      description: Enable the thread
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/discussionThread-item.yaml
+parameters:
+  - $ref: ../components/parameters/discussion-contextType.yaml
+  - $ref: ../components/parameters/discussion-contextId.yaml
+  - $ref: ../components/parameters/id.yaml

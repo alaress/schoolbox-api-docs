@@ -1,0 +1,9 @@
+description: A thread
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/discussionThread-read.yaml
+  text/html:
+    schema:
+      type: string
+      description: The thread, rendered into HTML on the server.

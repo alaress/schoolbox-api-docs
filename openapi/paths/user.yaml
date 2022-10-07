@@ -1,0 +1,105 @@
+get:
+  operationId: userSearch
+  tags: [user]
+  summary: Get a list of users
+  description: |
+    This allows you to search for users and get details about the user. The search filter attributes are all optional.   
+    This endpoint is only available to superusers to avoid leaking information about users to other users.
+
+  responses:
+    '200':
+      $ref: ../components/responses/user-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: search
+      in: query
+      description: |
+        will search `username`, `firstname`, `lastname` for non exact matches
+      schema:
+        type: string
+    - name: filter
+      in: query
+      description: ''
+      schema:
+        type: object
+        properties:
+          externalId:
+            type: string
+            example: 501
+          username:
+            type: string
+            example: jreed
+          email:
+            type: string
+            example: jreed@schoolbox.com.au
+          yearLevel:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: the db identifier of the Year Level
+                example: 6
+              name:
+                type: integer
+                description: the name of the Year Level. may not be unique
+                example: Year 6
+          role:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: the db identifier of the Role
+                example: 1
+              name:
+                type: integer
+                description: the name of the Role. may not be unique
+                example: Staff
+          roleType:
+            type: string
+            enum:
+              - student
+              - staff
+              - parent
+          campus:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: the db identifier of the Campus
+                example: 6
+              name:
+                type: integer
+                description: the name of the Campus. may not be unique
+                example: Year 6
+    - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/limit.yaml
+      default: 5
+
+
+post:
+  operationId: userPost
+  tags: [user]
+  summary: Create a user
+  description: |
+    This can be used to create a new user in the system.  This can only be completed by a superuser.  
+    
+    The minimum fields required to create a user are:
+    ```
+    "username": "rwhite",
+    "role": {
+      "id": 4
+    },
+    "campus": [
+      {
+        "id": 1
+      }
+    ],
+    "firstName": "Rebecca"
+    }
+    ```
+  responses:
+    '201':
+      $ref: ../components/responses/user-item.yaml
+  requestBody:
+    $ref: ../components/requestBodies/user-item.yaml
