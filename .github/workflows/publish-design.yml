@@ -49,5 +49,5 @@ jobs:
 
           # Commit and push
           git add .
-          git commit -m "Build design for commit ${GITHUB_REF}" .
+          git commit -m "Build design for commit ${{ github.sha }}" .
           git push
