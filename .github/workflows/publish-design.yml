@@ -34,6 +34,12 @@ jobs:
           # Copy all files (excl. builds/, builds.json, dist.yaml) into gh-pages repo
           mkdir .staging/
           cp -r ./* .staging/
+
+          # Copy hidden files too (excl. .git, .github)
+          cp .gitignore .staging/
+          cp .gitattributes .staging/
+          cp .redocly.yaml, .staging/
+
           rm -rf .staging/docs/builds/
           rm -f .staging/docs/dist.yaml
           rm -f .staging/docs/builds.json
