@@ -1,0 +1,3595 @@
+openapi: 3.0.2
+info:
+  version: 22.1.0-beta1
+  title: Schoolbox API
+  description: |
+    This document describes the API endpoints that are available to a Schoolbox
+    instance.
+
+    **To generate a JWT in your schoolbox instance.**
+
+    Go to the User Edit in admin. Scroll down to the `TOKENS` section, and click `Create token`.
+
+    <img src="data:image/jpeg;base64, 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VUbC1ktWuy5U+dcNIu3sCB19+KvUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQByt54jEsl79nmeG1sQPtEyoDIzE4CoG4HPc//AF6LTxGIpbHz53mtL/P2eVowJFYHBVwvB57gf41p3ejJNcvc27rDPIuyXdGHjlHo68Z+uQaLPRkiuUup3SaeNNkQWMJHEvoi84+uTW3NTtt/X/DmHLU5tzXqtd/wfjVmq13/AAfjWJuVqKKKACiiigC1a/6s/wC9Viq9r/qz/vVYoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAzaKKKACiiigDSooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAqtd/wfjVmq13/AAfjQBWooooAKKKKALVr/qz/AL1WKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAM2iiigAooooA0qKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKrXf8H40UUAVqKKKAP/2Q==" />
+
+    Examples to get started:
+
+    **cURL:** Get User id 1
+    ```
+    curl -X GET --location "https://demo.schoolbox.com.au/api/user/1" \
+        -H "Content-Type: application/json" \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer {{Add your JWT here}}"
+    ```
+    **Python Requests:** Update user 1's name
+    ```
+    import requests
+    data = {
+      "firstName": 'System',
+      "lastName": 'Administrator'
+    }
+    headers={
+      "Authorization": "Bearer {{Add your JWT here}}",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    }
+    req = requests.request('PATCH', 'https://demo.schoolbox.com.au/api/user/1', json=data, headers=headers)
+
+    print(req.json())
+    ```
+  x-api-id: 0609d493-8804-4e97-b5ac-0ed7b3c99db8
+  x-audience: external-partner
+  contact:
+    name: Schoolbox Team
+    url: https://schoolbox.com.au
+    email: developers@schoolbox.com.au
+  x-logo:
+    url: ./logo.png
+tags:
+  - name: assessment
+    x-displayName: Assessments
+    description: |
+      Search and get assessments
+  - name: calendar
+    x-displayName: Calendar
+    description: |
+      Create and manage calendar events.
+  - name: discussion
+    x-displayName: Discussions
+    description: |
+      Create and manage discussion threads and comments.
+  - name: file
+    x-displayName: File management
+    description: |
+      Upload files.
+  - name: mobile
+    x-displayName: Push Notification
+    description: Endpoints for Mobile App Developers to connect and register devices
+  - name: news
+    x-displayName: News
+    description: |
+      Create and manage school news (also known as communications).
+  - name: session
+    x-displayName: Session management
+    description: |
+      Authenticate and create sessions for users.
+  - name: user
+    x-displayName: Users
+    description: |
+      Create and manage users.
+servers:
+  - url: https://{hostname}.{domain}/
+    variables:
+      hostname:
+        description: The subdomain of the school's domain name on which Schoolbox is hosted.
+        default: demo
+      domain:
+        description: The school's domain name.
+        default: schoolbox.com.au
+paths:
+  /api/user:
+    get:
+      operationId: userSearch
+      tags:
+        - user
+      summary: Get a list of users
+      description: |
+        This allows you to search for users and get details about the user. The search filter attributes are all optional.   
+        This endpoint is only available to superusers to avoid leaking information about users to other users.
+      responses:
+        '200':
+          $ref: '#/components/responses/user-list'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - name: search
+          in: query
+          description: |
+            will search `username`, `firstname`, `lastname` for non exact matches
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: ''
+          schema:
+            type: object
+            properties:
+              externalId:
+                type: string
+                example: 501
+              username:
+                type: string
+                example: jreed
+              email:
+                type: string
+                example: jreed@schoolbox.com.au
+              yearLevel:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: the db identifier of the Year Level
+                    example: 6
+                  name:
+                    type: integer
+                    description: the name of the Year Level. may not be unique
+                    example: Year 6
+              role:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: the db identifier of the Role
+                    example: 1
+                  name:
+                    type: integer
+                    description: the name of the Role. may not be unique
+                    example: Staff
+              roleType:
+                type: string
+                enum:
+                  - student
+                  - staff
+                  - parent
+              campus:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: the db identifier of the Campus
+                    example: 6
+                  name:
+                    type: integer
+                    description: the name of the Campus. may not be unique
+                    example: Year 6
+        - $ref: '#/components/parameters/cursor'
+        - $ref: '#/components/parameters/limit'
+          default: 5
+    post:
+      operationId: userPost
+      tags:
+        - user
+      summary: Create a user
+      description: |
+        This can be used to create a new user in the system.  This can only be completed by a superuser.  
+
+        The minimum fields required to create a user are:
+        ```
+        "username": "rwhite",
+        "role": {
+          "id": 4
+        },
+        "campus": [
+          {
+            "id": 1
+          }
+        ],
+        "firstName": "Rebecca"
+        }
+        ```
+      responses:
+        '201':
+          $ref: '#/components/responses/user-item'
+      requestBody:
+        $ref: '#/components/requestBodies/user-item'
+  /user/token/{id}:
+    get:
+      operationId: userGetTokenForUser
+      tags:
+        - user
+      summary: Get an authentication token for a user
+      description: |
+        Retrieve an authentication token for another user.
+
+        Only users which are authenticated as a superuser may request a token for
+        another user.
+      responses:
+        '200':
+          $ref: '#/components/responses/userToken'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /api/user/{id}:
+    get:
+      operationId: userGet
+      tags:
+        - user
+      summary: Get a user
+      description: |
+        Returns all the information about a specific user. The result from this API can be passed into the update user endpoint. This endpoint may only be used by superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/user-item'
+        default:
+          $ref: '#/components/responses/problem'
+    put:
+      operationId: userPut
+      tags:
+        - user
+      summary: Update a user
+      description: |
+        This allows a user to be updated by passing in a user object. When using this endpoint you must provide the entire user, we recommend you get the user first via the "get a user" endpoint. This endpoint may only be used by superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/user-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/user-item'
+    patch:
+      operationId: userPatch
+      tags:
+        - user
+      summary: Partially update a user
+      description: |
+        This allows you to update specific fields of a user without needing to provide all the fields. By providing a partial user object, only the fields provided will be updated. The remaining fields will be left as they were. This endpoint may only be used by superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/user-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/user-item'
+    delete:
+      operationId: userDelete
+      tags:
+        - user
+      summary: Delete a user
+      description: |
+        This will soft-delete a user from the system.  A soft-deleted user will no longer be visible in the system, but the data will remain. This endpoint may only be used by superusers.
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+  /api/user/{id}/group:
+    get:
+      operationId: userGroupMembershipSearch
+      tags:
+        - user
+      summary: Get a users groups
+      description: |
+        This will provide a list of the groups a user is a member of.  It will include information about the group membership status and settings.  The endpoint is only available to superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-list'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+  /api/user/{id}/group/{groupId}:
+    get:
+      operationId: userGroupMembershipGet
+      tags:
+        - user
+      summary: Get a users settings for a group
+      description: |
+        This will provide you with the current enrolment settings the user has for a specific group. This endpoint is only available for superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+    post:
+      operationId: userGroupMembershipPost
+      tags:
+        - user
+      summary: Add user to a group
+      description: |
+        This will add a user as a member into a group. This membership must not already exist. You will need to provide all the settings for the membership. This endpoint is only available for superusers.
+      responses:
+        '201':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/userGroupMembership-item'
+    put:
+      operationId: userGroupMembershipPut
+      tags:
+        - user
+      summary: Update a user's settings for a group
+      description: |
+        This allows you to change the group access level, notification and favourite status of a group for a particular user. The group membership for the user must already exist. The endpoint is only available for superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/userGroupMembership-item'
+    patch:
+      operationId: userGroupMembershipPatch
+      tags:
+        - user
+      summary: Partially update a user's group settings
+      description: |
+        This allows you to change only the group access level, notification and favourite status of a group for a particular user. You can use this endpoint to set one setting, leaving the other settings unchanged. The endpoint is only available for superusers.
+      responses:
+        '200':
+          $ref: '#/components/responses/userGroupMembership-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/userGroupMembership-item'
+    delete:
+      operationId: userGroupMembershipDelete
+      tags:
+        - user
+      summary: Remove this user from a group
+      description: |
+        This will remove the relationship between a user and a group, it will also remove any settings related to that group membership. The endpoint is only available for superusers.
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+  /user/token:
+    get:
+      operationId: userGetTokenForSelf
+      tags:
+        - user
+      summary: Get an authentication token
+      description: |
+        Retrieve an authentication token for the user
+
+        This endpoint is intended so that in-browser API calls performed within
+        a Schoolbox instance may be performed in a manner more in common with
+        calls to a remote API.
+
+        This endpoint only makes sense for users authenticated with the "session"
+        security scheme, as it returns a token which is used by the "bearerAuth"
+        scheme.
+      security:
+        - session: []
+      responses:
+        '200':
+          $ref: '#/components/responses/userToken'
+        default:
+          $ref: '#/components/responses/problem'
+  /discussion/{contextType}/{contextId}/threads:
+    post:
+      operationId: createThread
+      tags:
+        - discussion
+      summary: Create a thread
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionThread-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/discussionThread-item'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+  /discussion/{contextType}/{contextId}/threads/{id}:
+    get:
+      operationId: getThread
+      tags:
+        - discussion
+      summary: Get a thread
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionThread-item'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+  /discussion/{contextType}/{contextId}/threads/{id}/open:
+    put:
+      operationId: openThread
+      tags:
+        - discussion
+      summary: Enable a thread
+      responses:
+        '200':
+          description: Enable the thread
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/discussionThread-item'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+  /discussion/{contextType}/{contextId}/threads/{id}/close:
+    put:
+      operationId: closeThread
+      tags:
+        - discussion
+      summary: Disable a thread
+      responses:
+        '200':
+          description: Disable the thread
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/discussionThread-item'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+  /discussion/{contextType}/{contextId}/threads/{id}/comments:
+    get:
+      operationId: getCommentsByThread
+      tags:
+        - discussion
+      summary: Get comments for a thread
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionComment-list'
+        default:
+          $ref: '#/components/responses/problem'
+    post:
+      operationId: createCommentInThread
+      tags:
+        - discussion
+      summary: Create a new comment
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionComment-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/discussionComment-item'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/cursor'
+  /discussion/{contextType}/{contextId}/comments/{id}:
+    delete:
+      operationId: deleteComment
+      tags:
+        - discussion
+      summary: Delete a comment
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+  /discussion/{contextType}/{contextId}/comments/{id}/comments:
+    get:
+      operationId: getCommentsByParent
+      tags:
+        - discussion
+      summary: Get replies to a comment
+      responses:
+        '200':
+          $ref: '#/components/responses/discussionComment-list'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/discussion-contextType'
+      - $ref: '#/components/parameters/discussion-contextId'
+      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/cursor'
+  /api/session:
+    get:
+      operationId: apiSessionGet
+      tags:
+        - session
+      summary: Login using JWT param
+      description: |
+        Attempt to authenticate a user based on a JWT passed in the query string. Then returns a response with a session cookie.  This can be used to start a user session when the user only has a JWT.  The JWT may be a QR code, oAuth token or a user generated API key.
+      security: []
+      responses:
+        '200':
+          $ref: '#/components/responses/authentication-successUser'
+        '302':
+          $ref: '#/components/responses/authentication-successRedirect'
+        '400':
+          $ref: '#/components/responses/authentication-failed'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/redirect'
+        - $ref: '#/components/parameters/jwt'
+    post:
+      operationId: apiSessionPost
+      tags:
+        - session
+      summary: Login to system
+      description: |
+        Attempt to authenticate a user based on either a username/password pair, or
+        a JWT passed in form data. This is used to login the user to the system so they can continue.  It will effectively create a session cookie for the user.
+      security: []
+      responses:
+        '200':
+          $ref: '#/components/responses/authentication-successUser'
+        '302':
+          $ref: '#/components/responses/authentication-successRedirect'
+        '400':
+          $ref: '#/components/responses/authentication-failed'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/redirect'
+      requestBody:
+        $ref: '#/components/requestBodies/authentication'
+  /api/register/{provider}:
+    post:
+      operationId: mobileRegister
+      tags:
+        - mobile
+      summary: Register mobile device
+      security: []
+      description: In order to register your app to receive push notifications you first need to notify Schoolbox of a valid user and the app identifier. This process is handled via a POST call as specified below
+      parameters:
+        - name: provider
+          in: path
+          description: |
+            The type of device that is connecting to the service.
+
+            As of this version, this is expected to always be "Digistorm". Apple
+            (APNS) or Google Android (GCM) are still supported, but deprecated: the
+            Digistorm provider will handle the sending of notifications via APNS or
+            GCM internally.
+          required: true
+          example: Digistorm
+          schema:
+            type: string
+            enum:
+              - GCM
+              - APNS
+              - Digistorm
+      responses:
+        '201':
+          $ref: '#/components/responses/authentication-successUser'
+        '400':
+          $ref: '#/components/responses/authentication-failed'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/registration'
+  /storage/asyncUpload.php:
+    post:
+      operationId: storageAsyncUpload
+      tags:
+        - file
+      summary: Upload a file
+      description: |
+        Upload a file to Schoolbox's internal file storage system.
+
+        This file may then be referenced directly, or provided as an argument to
+        another place which accepts file uploads.
+      responses:
+        default:
+          description: |
+            A description of a file upload.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    description: |
+                      The HTTP response code, usually 200 for a successful upload.
+                  hash:
+                    type: string
+                    description: |
+                      A pointer to the now uploaded file within Schoolbox, in the format
+                      `store:$hash`.
+
+                      `store` is the locator used to find the file: `$hash` is its
+                      location within the store.
+                  message:
+                    type: string
+                    description: |
+                      A user-friendly message for what went wrong with the upload
+                      (if anything).
+                  meta:
+                    type: object
+                    description: |
+                      File metadata.
+                    properties:
+                      type:
+                        type: string
+                        description: |
+                          The mimetype of the uploaded file.
+                      size:
+                        type: integer
+                        description: |
+                          The uploaded file's size, in bytes.
+                      name:
+                        type: string
+                        description: |
+                          The uploaded file's name.
+                      file:
+                        $ref: '#/components/schemas/file'
+                  success:
+                    type: boolean
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                upload:
+                  type: string
+                  required: true
+                  format: binary
+                  description: |
+                    The file being uploaded.
+      parameters:
+        - name: expiryDate
+          in: query
+          description: |
+            An optional date at which the uploaded file is considered to expire: after
+            this date, the file will be subject to garbage collection.
+
+            If not provided: the uploaded file will never expire.
+          schema:
+            type: string
+            format: datetime
+  /resources/file/{fileId}/ajax:
+    patch:
+      operationId: filePatch
+      tags:
+        - file
+      summary: Partially update a file
+      responses:
+        '200':
+          $ref: '#/components/responses/file-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/file-item'
+  /news/create:
+    post:
+      operationId: commsNews.postCreate
+      tags:
+        - news
+      summary: Create a news article
+      description: |
+        Creates a new news article: the article's author will be the currently
+        authenticated user.
+
+        The article is not necessarily published yet: this simply saves the article
+        so that the user may refine it before publishing.
+      responses:
+        '200':
+          $ref: '#/components/responses/save'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/newsItem'
+  /news/topics:
+    get:
+      operationId: commsNews.getTopics
+      tags:
+        - news
+      summary: Get available news topics
+      description: |
+        Retrieve all available news topics, which may be attached to a news article.
+      responses:
+        '200':
+          description: All available news topics.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/topic'
+        default:
+          $ref: '#/components/responses/problem'
+  /news/{id}:
+    get:
+      operationId: commsNews.getDetail
+      tags:
+        - news
+      summary: Get a news article
+      responses:
+        '200':
+          description: |
+            A single news article.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isSavedForLater:
+                    type: boolean
+                    description: |
+                      Has the authenticated user saved this article for later?
+                  article:
+                    allOf:
+                      - $ref: '#/components/schemas/commonFields'
+                      - type: object
+                        properties:
+                          body:
+                            $ref: '#/components/schemas/body'
+                          author:
+                            $ref: '#/components/schemas/author'
+                          status:
+                            $ref: '#/components/schemas/status'
+                          statusDate:
+                            $ref: '#/components/schemas/statusDate'
+                          sticky:
+                            $ref: '#/components/schemas/sticky'
+                          _links:
+                            $ref: '#/components/schemas/links'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+    post:
+      operationId: commsNews.postUpdate
+      tags:
+        - news
+      summary: Update a news article
+      description: |
+        Update an existing news article.
+
+        The article is not necessarily published yet: this simply saves the article
+        so that the user may refine it before publishing.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          $ref: '#/components/responses/save'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/newsItem'
+  /news/{id}/delete:
+    post:
+      operationId: commsNews.postDelete
+      tags:
+        - news
+      summary: Delete a news article
+      description: |
+        Delete an existing news article.
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: |
+            A summary of the deleted news item.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: |
+                      Was the article successfully deleted?
+                  returnUrl:
+                    $ref: '#/components/schemas/returnUrl'
+        '302':
+          $ref: '#/components/responses/redirect'
+        default:
+          $ref: '#/components/responses/problem'
+  /news/moderation/{id}/{status}:
+    post:
+      operationId: commsNewsModeration.setStatus
+      tags:
+        - news
+      summary: Change the publication status of a news article
+      description: |
+        Change the publication status of a news article.
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - name: status
+          in: path
+          description: |
+            The status to put the article into.
+
+            - `submit`: put the article into the mod queue
+            - `accept`: accept the article for publication
+            - `reject`: block the article from being published, or retract it from
+                        publication
+          schema:
+            type: string
+            enum:
+              - submit
+              - accept
+              - reject
+      responses:
+        '302':
+          $ref: '#/components/responses/redirect'
+        default:
+          description: |
+            A summary of the article's status change.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: integer
+                    description: |
+                      * `0`: successfully approved
+                      * `1`:
+                        * some attributes invalid (if the response code was invalid)
+                        * some other user has already put the article in this state,
+                          and there is otherwise no difference
+                          (if the response code was valid)
+                      * `2`: some other user has already put the article in this
+                        state, and there is a conflict in the reason for
+                        putting it in this state
+                      * `3`: the article may not be put into this state
+                      * `4`: an unspecified error
+                  message:
+                    type: string
+                    description: |
+                      A brief message detailing what succeeded, or went wrong
+                  redirect:
+                    type: string
+                    format: uri
+                    description: |
+                      A URL to redirect to once the article state changes
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                rejectionReason:
+                  description: |
+                    Why was the article rejected?
+
+                    (Only applies if rejecting the article.)
+                  type: string
+  /news/saved/:
+    get:
+      operationId: commsNewsSaveForLater.getList
+      tags:
+        - news
+      summary: Get list of saved articles
+      description: |
+        Retrieve the IDs of all saved news articles for the authenticated user.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/id'
+        default:
+          $ref: '#/components/responses/problem'
+  /news/saved/{id}/add:
+    post:
+      operationId: commsNewsSaveForLater.postAdd
+      tags:
+        - news
+      summary: Save an article for later
+      description: |
+        Save an article for the authenticated user.
+
+        This article will then be returned by the
+        [Get list of saved articles](#get-/news/saved/)
+        endpoint.
+      responses:
+        '200':
+          content:
+            application/json:
+              description: |
+                Currently always empty for this endpoint.
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /news/saved/{id}/remove:
+    get:
+      operationId: commsNewsSaveForLater.postRemove
+      tags:
+        - news
+      summary: Remove an article from the saved for later list
+      description: |
+        Remove an article from the authenticated user's saved articles.
+      responses:
+        '200':
+          content:
+            application/json:
+              description: |
+                Currently always empty for this endpoint.
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /news/me/articles:
+    get:
+      operationId: commsNews.getAuthoredArticles
+      tags:
+        - news
+      summary: Get articles written by the authenticated user
+      description: |
+        Get the list of articles written by the currently authenticated user.
+      responses:
+        '200':
+          description: |
+            A list of articles which the authenticated user has written.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/commonFields'
+                    - type: object
+                      properties:
+                        author:
+                          $ref: '#/components/schemas/authorNameOnly'
+                        sticky:
+                          $ref: '#/components/schemas/sticky'
+                        readMore:
+                          $ref: '#/components/schemas/readMore'
+                        _links:
+                          $ref: '#/components/schemas/links'
+        default:
+          $ref: '#/components/responses/problem'
+  /news/lists/feed:
+    get:
+      operationId: commsNews.getListForIndex
+      tags:
+        - news
+      summary: Get articles audienced to the authenticated user
+      description: |
+        Get the list of articles audienced to the currently authenticated user.
+      parameters:
+        - $ref: '#/components/parameters/topic'
+      responses:
+        '200':
+          description: |
+            A list of articles which are audienced to the authenticated user.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/commonFields'
+                    - type: object
+                      properties:
+                        status:
+                          $ref: '#/components/schemas/status'
+                        statusDate:
+                          $ref: '#/components/schemas/statusDate'
+                        readMore:
+                          $ref: '#/components/schemas/readMore'
+                        metadata:
+                          type: object
+                          properties:
+                            commentCount:
+                              type: integer
+                              description: |
+                                The number of comments on this article.
+
+                                May be null, in which case there are no comments.
+                        attachments:
+                          type: integer
+                          description: |
+                            The number of attachments on this article.
+
+                            May be null, in which case there are no attachments.
+                        viewedAt:
+                          allOf:
+                            - description: |
+                                The datetime the news article was originally read by the user.
+
+                                May be null, in which case the user has not read the article
+                            - $ref: '#/components/schemas/dateTime'
+                        _links:
+                          $ref: '#/components/schemas/links'
+        default:
+          $ref: '#/components/responses/problem'
+  /news/feed/{key}:
+    get:
+      operationId: commsNewsFeed.getFeedForUser
+      tags:
+        - news
+      summary: RSS feed of articles for a user
+      description: |
+        Get the articles for the user (identified by the `$key` parameter) as a RSS
+        document.
+
+        This endpoint doesn't use the standard security schemes: instead, it relies
+        upon the `$key` parameter remaining secret.
+      security: []
+      responses:
+        '200':
+          description: |
+            RSS feed of articles.
+          content:
+            application/rss+xml:
+              schema:
+                type: string
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/key'
+  /news/lists/folder/{id}:
+    get:
+      operationId: commsNews.getListForHomepage
+      tags:
+        - news
+      summary: Get articles audienced to the given folder
+      description: |
+        Get the list of articles audienced to the given folder.
+      parameters:
+        - $ref: '#/components/parameters/id'
+        - $ref: '#/components/parameters/compactMode'
+        - $ref: '#/components/parameters/news-limit'
+      responses:
+        '200':
+          description: |
+            A list of articles which are audienced to the given folder.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/commonFields'
+                    - type: object
+                      properties:
+                        body:
+                          $ref: '#/components/schemas/body'
+                        author:
+                          $ref: '#/components/schemas/author'
+                        status:
+                          $ref: '#/components/schemas/status'
+                        statusDate:
+                          $ref: '#/components/schemas/statusDate'
+        default:
+          $ref: '#/components/responses/problem'
+  /calendar/event/attendance/{id}:
+    get:
+      operationId: getCalendarEventAttendance
+      tags:
+        - calendar
+      summary: Get an event's attendees
+      description: |
+        This will return a list of people that have been invited or RSVP to an an event.  It will include the status of their invitation and if they have accepted the invitation.
+      responses:
+        '200':
+          $ref: '#/components/responses/calendarAttendance-item'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /calendar/event/attendance/{id}/create:
+    post:
+      operationId: postCalendarEventAttendanceCreate
+      tags:
+        - calendar
+      summary: Invite attendees to an event
+      description: |
+        Creates invitations to the given event, for the given set of users.
+      responses:
+        '200':
+          $ref: '#/components/responses/calendarAttendance-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                guests:
+                  description: |
+                    A list of user IDs to mark as attending this event.
+                  type: array
+                  items:
+                    type: integer
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /calendar/event/attendance/{id}/accept:
+    post:
+      operationId: postCalendarEventAttendanceAccept
+      tags:
+        - calendar
+      summary: Accept event invitation
+      description: |
+        This allows a user to accept an invitation.  Note that not all events will allow the user to accept an invitation.  They must either have been invited, or have the ability to invite themselves.
+      responses:
+        '200':
+          $ref: '#/components/responses/calendarAttendance-item'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /calendar/event/attendance/{id}/decline:
+    post:
+      operationId: postCalendarEventAttendanceDecline
+      tags:
+        - calendar
+      summary: Decline event invitation
+      description: |
+        As the authenticated user, declines the invitation to attend the given
+        event.
+      responses:
+        '200':
+          $ref: '#/components/responses/calendarAttendance-item'
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /calendar/event/attendance/{id}/delete:
+    post:
+      operationId: postCalendarEventAttendanceDelete
+      tags:
+        - calendar
+      summary: Uninvite attendees from an event
+      description: |
+        Deletes invitations to the given event, for the given user.
+      responses:
+        '200':
+          $ref: '#/components/responses/calendarAttendance-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                userId:
+                  description: |
+                    A user ID to remove attendance from.
+                  type: integer
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /api/assessment:
+    get:
+      operationId: assessmentSearch
+      tags:
+        - assessment
+      summary: Get a list of assessments
+      description: |
+        This endpoint will return all assessments and their results that match the filter provided.  We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.  For example a common request may be to get assessments of work type 'major' that are due in the current year.
+      responses:
+        '200':
+          $ref: '#/components/responses/assessment-list'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - name: filter
+        in: query
+        description: '{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2022-01-30T21:00:00.000Z","to": "2022-06-24T06:00:00.000Z"},"yearLevel": {"id": 6,"name": "Year 6"}}'
+        schema:
+          type: object
+          properties:
+            assessmentId:
+              type: integer
+              example: 256
+            title:
+              type: string
+              description: |
+                `*like* check on title`
+              example: English 3/4 [Final]
+            assessmentType:
+              type: string
+              enum:
+                - task
+                - quiz
+                - dueWork
+                - LTI
+                - project
+              example: dueWork
+            folder:
+              type: array
+              items:
+                type: object
+                description: |
+                  Select either one of the following fields to filter on:
+                properties:
+                  id:
+                    type: integer
+                    description: ID of the folder containing the assessment
+                    example: 80
+                  code:
+                    type: string
+                    description: Code of the folder containing the assessment
+                    example: 9ENGA
+            weighted:
+              type: boolean
+              example: false
+              description: |
+                limit assessments to only those that have a weight set
+            workType:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: the DB identifier of the worktype
+                  example: 1
+                name:
+                  type: string
+                  description: the name of the work type, may not be unique
+                  example: Formative Assessment
+            dueDate:
+              type: object
+              properties:
+                from:
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: '2022-01-30T21:00:00.000Z'
+                to:
+                  type: string
+                  format: date-time
+                  description: |
+                    The date as a RFC3339 string.
+                  example: '2022-06-24T06:00:00.000Z'
+            yearLevel:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: the db identifier of the yearlevel
+                  example: 6
+                name:
+                  type: integer
+                  description: the name of the year level. may not be unique
+                  example: Year 6
+            project:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ID of the parent assessment (project)
+                  example: 255
+      - $ref: '#/components/parameters/cursor'
+      - $ref: '#/components/parameters/limit'
+        default: 5
+  /api/assessment/{id}:
+    get:
+      operationId: assessmentGet
+      tags:
+        - assessment
+      summary: Get an assessment
+      description: |
+        This will return all the information related to a specific assessment.  This will include the the assessment details and the results of all participants in that assessment.
+      responses:
+        '200':
+          $ref: '#/components/responses/assessment-item'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - $ref: '#/components/parameters/id'
+security:
+  - session: []
+  - bearerAuth: []
+components:
+  securitySchemes:
+    session:
+      type: apiKey
+      in: cookie
+      name: PHPSESSID
+      description: |
+        A cookie which represents a session which has already been authenticated as a
+        particular Schoolbox user.
+
+        The authentication may have occurred via Schoolbox's login form, or via a
+        third-party identity provider.
+
+        Expect that this security scheme will eventually be deprecated for API
+        requests, when an API token based authentication scheme is implemented.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        A JWT generated for a particular user.
+
+        This token allows the bearer to perform requests within the context of the
+        user for whom the token was generated.
+  schemas:
+    cursor:
+      title: Cursor
+      description: |
+        A generated but decodable pointer to the first record to return.
+
+        Each endpoint whose data accepts a cursor will return a cursor that
+        points to the next page of the result set.
+      type: string
+    problem:
+      title: Problem Details
+      description: Schema for RFC 7807 (Problem Details for HTTP APIs)
+      readOnly: true
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          description: A URI reference that identifies the problem type
+          default: about:blank
+        title:
+          type: string
+          description: A short human-readable summary of the problem type
+        status:
+          type: integer
+          format: int32
+          minimum: 100
+          maximum: 600
+          exclusiveMaximum: true
+          example: 503
+          description: The HTTP status code
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem
+        instance:
+          type: string
+          format: uri
+          description: A URI reference that identifies the specific occurrence of the problem
+      required:
+        - type
+        - title
+        - status
+    id:
+      title: ID
+      description: Identifying ID number for most objects within Schoolbox
+      type: integer
+      format: int32
+      minimum: 1
+    campus:
+      title: Campus
+      description: |
+        A sub-division within the school.
+
+        All users within the school belong to one or more campuses:
+        * a teacher may have classes across multiple campuses
+        * a student will generally only attend one campus
+        * a parent may have children who belong to different campuses
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          type: string
+          description: The name of the campus.
+        code:
+          type: string
+          description: |
+            The identifying code for the campus in the school's SIS.
+        days:
+          type: integer
+          minimum: 5
+          maximum: 10
+          description: The number of days in a cycle for this campus' timetable.
+      required:
+        - id
+      readOnly: true
+      example:
+        id: 1
+        name: Secondary
+        code: SEC
+        days: 5
+    role:
+      title: Role
+      description: |
+        A type of user account at the school. Roles are generally used to group
+        users by the type of position that they have at the school.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          type: string
+          description: The name of the role.
+        type:
+          type: string
+          description: |
+            The type of this role. Different role types have different levels of
+            access to different parts of Schoolbox.
+          enum:
+            - staff
+            - student
+            - parent
+            - guest
+      required:
+        - id
+      readOnly: true
+      example:
+        - id: 4
+          name: Senior Students
+          type: student
+    userGroupMembership-readableFields:
+      title: Readable Group Membership Fields
+      description: |
+        A group within Schoolbox.
+
+        This contains some of the folder's fields in this context.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          description: |
+            The name of the group.
+
+            In this context, this is the name of the group's folder.
+          example: Basketball
+        type:
+          description: |
+            The level of access that users have to this group.
+
+            * Private: membership is by invitation only
+            * Moderated: users may apply for membership, but must be approved
+            * Free: users may join and leave at any time
+          type: string
+          enum:
+            - private
+            - moderated
+            - free
+        isForceFollow:
+          description: |
+            The level of subscription that is allowed to this group.
+
+            * false: users may subscribe to this group's events
+            * true: users must subscribe to this group's events, and may not
+              unsubscribe
+          type: bool
+          example: true
+        membership:
+          description: |
+            The type of membership that this user has.
+
+            * Admin: the user is the administrator of this group: they may add
+              and remove members, change the group's permissions and disband the
+              group
+            * Write: the user may create content within the group
+            * Read: the user may view content within the group, and may be
+              notified of and may participate in group events
+            * None: the user is not a member of the group
+          type: string
+          enum:
+            - admin
+            - write
+            - read
+            - none
+        enrolmentStatus:
+          description: |
+            The enrolment status of the user for this group.
+
+            * Enroled: the user is enroled in the group with the 'membership' permission
+            * Not Enroled: the user is not enroled in the group
+            * Pending: the user has requested to join the group and is currently
+              awaiting approval by a group admin
+          type: string
+          enum:
+            - enroled
+            - notEnroled
+            - pending
+        isNotificationsOn:
+          description: |
+            Is this user subscribed to this group's events? If so, they will be
+            notified when an event occurs.
+
+            Note that the group administrator may:
+            * force Follow, so that users may not opt out of notifications
+            * disable Notifications, so that users never receive notifications
+          type: boolean
+        isFavourite:
+          description: |
+            Does the user have this group set as a favourite
+          type: boolean
+        _links:
+          type: object
+          properties:
+            homepage:
+              type: string
+              format: uri-reference
+              example: /homepage/83
+              nullable: true
+              description: |
+                Gives the homepage link to the group, or NULL if the group has no homepage
+    userGroupMembership-fields:
+      title: Group Membership
+      description: |
+        A description of the membership a user has within a group.
+      type: object
+    userGroupMembership-read:
+      allOf:
+        - $ref: '#/components/schemas/userGroupMembership-readableFields'
+        - $ref: '#/components/schemas/userGroupMembership-fields'
+    schoolHouse:
+      title: School House
+      description: |
+        A school house which a student may belong to.
+      type: object
+      nullable: true
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          type: string
+          description: The name of the school house.
+      readOnly: true
+      required:
+        - id
+      example:
+        id: 2
+        name: Prospect
+    yearLevel:
+      title: Year Level
+      description: |
+        A year level which a student may belong to.
+      type: object
+      nullable: true
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          type: string
+          description: The name of the year level.
+      readOnly: true
+      required:
+        - id
+      example:
+        id: 13
+        name: Year 12
+    user-read:
+      allOf:
+        - $ref: '#/components/schemas/user-readableFields'
+        - $ref: '#/components/schemas/user-fields'
+    user-readableFields:
+      description: |
+        Fields that are only relevant when reading a user's value.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+          example: 24
+        campus:
+          items:
+            $ref: '#/components/schemas/campus'
+        role:
+          $ref: '#/components/schemas/role'
+        fullName:
+          type: string
+          nullable: true
+          description: The user's formatted full name.
+          example: Ms Rebecca White
+        groups:
+          description: |
+            This user's group memberships.
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/userGroupMembership-read'
+        schoolHouse:
+          $ref: '#/components/schemas/schoolHouse'
+        yearLevel:
+          $ref: '#/components/schemas/yearLevel'
+        guardians:
+          description: |
+            This user's guardians. (Only applicable if this user is of role
+            type: student.)
+
+            Guardians are not necessarily the same thing as parents: a guardian
+            is not always the child's parent (e.g. they may be a foster parent
+            or other relative), and a parent is not always the child's guardian
+            (e.g. the family might have separated).
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/user-read'
+          nullable: false
+          example:
+            - id: 25
+              fullName: Janna Reed
+              yearLevel: []
+              role:
+                id: 3
+                name: Parent
+        students:
+          description: |
+            This user's students. (Only applicable if this user is of role type:
+            parent.)
+
+            Students are not necessarily the same thing as children, for the
+            same reason that guardians are not the same thing as parents.
+
+            Generally, the guardian => student relation is symmetrical to the
+            student => guardian relation.
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/user-read'
+          nullable: false
+          example: []
+        impersonableUsers:
+          description: |
+            The users whom this user may impersonate within a Schoolbox session.
+
+            This relation is asymmetric: A may impersonate B, but that does not
+            imply that B may impersonate A.
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/user-read'
+          nullable: false
+          example:
+            - id: 6
+              fullName: Eden Reed
+              yearLevel:
+                id: 3
+                name: 3
+              role:
+                id: 5
+                name: Primary Student
+        isDeleted:
+          type: boolean
+          default: false
+          description: Is this user deleted?
+        email:
+          type: string
+          format: email
+          description: |
+            The user's email address for receiving communication from this
+            Schoolbox instance, or its users.
+
+            This may be derived from the user's username and the instance's
+            hostname (see isEmailDerived); if not, it may be set via the
+            altEmail field.
+        _links:
+          type: object
+          properties:
+            profile:
+              type: string
+              format: uri-reference
+            avatar:
+              type: string
+              format: uri-reference
+              nullable: true
+      required:
+        - id
+      readOnly: true
+    externalId:
+      title: External ID
+      type: string
+      nullable: true
+      description: |
+        This user's ID in the school's School Information System (SIS).
+
+        This value is used to query the SIS for data that is stored in the SIS,
+        in particular:
+        * relationships with other users
+        * class enrolments
+        * timetabled classes
+    user-fields:
+      title: User
+      description: Common fields for users
+      type: object
+      properties:
+        externalId:
+          $ref: '#/components/schemas/externalId'
+          example: 501
+        username:
+          type: string
+          required: false
+          description: |
+            The user's username. This will be used as the user's identification
+            when they attempt to log into the Schoolbox instance.
+          example: rwhite
+        superuser:
+          type: boolean
+          description: |
+            Does this user have superuser permissions over the Schoolbox
+            instance?
+          default: false
+        enabled:
+          type: boolean
+          description: Is this user able to log in to the Schoolbox instance?
+          default: true
+        title:
+          type: string
+          nullable: true
+          description: The user's title (Mr., Ms., etc.).
+          example: Ms
+        firstName:
+          type: string
+          required: true
+          description: |
+            The user's first name.
+
+            Schoolbox doesn't distinguish between a person's actual first name
+            and any other names, and in any case is not the definitive source of
+            naming information; therefore in practice this will usually be the
+            user's given name.
+          example: Rebecca
+        lastName:
+          type: string
+          nullable: true
+          description: The user's surname.
+          example: White
+        isEmailDerived:
+          type: boolean
+          description: |
+            Is this user's email address derived directly from their username
+            and the host name of the Schoolbox instance?
+        altEmail:
+          type: string
+          format: email
+          nullable: true
+          description: |
+            The user's email address, if it is not derived from their username
+            and hostname.
+          example: rwhite@example.com.au
+        positionTitle:
+          type: string
+          nullable: true
+          description: |
+            The user's job or position title within the school which owns the
+            Schoolbox instance.
+        isBoarder:
+          type: boolean
+          description: Is this user a boarder?
+        flags:
+          type: object
+          description: |
+            A set of flags which control the behavior of a user's Schoolbox
+            session.
+          properties:
+            showWebmailTab:
+              type: boolean
+              default: false
+              description: Does the Webmail tab display for this user?
+            showContacts:
+              type: boolean
+              description: Does this user's contacts get shown to other users?
+            enableTimetable:
+              type: boolean
+              description: Does this user get to see their timetabled classes?
+            showSideNav:
+              type: boolean
+              description: Does the side navigation show for this user?
+            showNotificationsPanel:
+              type: boolean
+              description: Does the notifications panel show for this user?
+            showGradeGraph:
+              type: boolean
+              description: Does the grade graph show for this user?
+            enableEportfolio:
+              type: boolean
+              default: false
+              description: Is this user able to create ePortfolio content?
+            useInternalMail:
+              type: boolean
+              default: false
+              description: |
+                Does this user use Schoolbox's internal mail system to send
+                email?
+
+                If false, they use webmail instead.
+            calendarView:
+              type: string
+              description: Which calendar view will the user default to?
+              default: month
+              enum:
+                - month
+                - agendaWeek
+                - agendaDay
+                - list
+    listMetadata:
+      title: List metadata
+      description: Metadata for lists of items retrieved
+      readOnly: true
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: If provided, the number of items in the result set.
+        cursor:
+          type: object
+          properties:
+            current:
+              allOf:
+                - $ref: '#/components/schemas/cursor'
+              nullable: true
+              description: |
+                If set, a cursor to the current page of results.
+                Seems redundant, but it does generate a cursor to a request
+                made without one.
+            next:
+              allOf:
+                - $ref: '#/components/schemas/cursor'
+              nullable: true
+              description: If set, a cursor to the next page of results.
+          required:
+            - current
+            - next
+    user-readList:
+      title: User list
+      description: A list of users
+      readOnly: true
+      type: object
+      properties:
+        data:
+          type: array
+          uniqueItems: true
+          items:
+            allOf:
+              - $ref: '#/components/schemas/user-read'
+        metadata:
+          $ref: '#/components/schemas/listMetadata'
+    itemRelation:
+      title: Item relation
+      description: |
+        A relation to another item, consisting only of an ID.
+
+        Generally, this is used within request bodies for specifying that the
+        item is to be related to another item, without implying that any
+        properties of the related item are to be modified.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+      required:
+        - id
+    user-writableFields:
+      description: |
+        Fields that are only relevant when writing a user's value.
+      type: object
+      properties:
+        campus:
+          type: array
+          required: true
+          minItems: 1
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/itemRelation'
+        role:
+          required: true
+          $ref: '#/components/schemas/itemRelation'
+        schoolHouse:
+          nullable: true
+          $ref: '#/components/schemas/itemRelation'
+        yearLevel:
+          nullable: true
+          $ref: '#/components/schemas/itemRelation'
+        impersonableUser:
+          nullable: true
+          type: array
+          items:
+            $ref: '#/components/schemas/itemRelation'
+      writeOnly: true
+    user-write:
+      allOf:
+        - $ref: '#/components/schemas/user-writableFields'
+        - $ref: '#/components/schemas/user-fields'
+    userToken:
+      type: object
+      properties:
+        token:
+          type: string
+          description: |
+            A JSON Web Token (JWT) which authenticates the bearer as a particular
+            user, and allows the bearer to perform API calls within the context of
+            that user.
+
+            This token is passed to the Schoolbox API according to the "BearerAuth"
+            security scheme (i.e. in a HTTP header `Authorization: Bearer $token`).
+    userGroupMembership-writableFields:
+      title: Writable Group Membership Fields
+      required:
+        - membership
+        - isNotificationsOn
+        - isFavourite
+      type: object
+      properties:
+        membership:
+          description: |
+            The type of membership that this user has.
+
+            * Admin: the user is the administrator of this group: they may add
+              and remove members, change the group's permissions and disband the
+              group
+            * Write: the user may create content within the group
+            * Read: the user may view content within the group, and may be
+              notified of and may participate in group events
+          type: string
+          enum:
+            - admin
+            - write
+            - read
+        enrolmentStatus:
+          description: |
+            The enrolment status of the user for this group.
+
+            * Enroled: the user is enroled in the group with the 'membership' permission
+            * Pending: the user has requested to join the group and is currently
+              awaiting approval by a group admin
+          type: string
+          enum:
+            - enroled
+            - pending
+          default: enroled
+        isNotificationsOn:
+          description: |
+            Is this user subscribed to this group's events? If so, they will be
+            notified when an event occurs.
+
+            Note that the group administrator may:
+            * force Follow, so that users may not opt out of notifications
+            * disable Notifications, so that users never receive notifications
+          type: boolean
+        isFavourite:
+          description: |
+            Does the user have this group set as a favourite
+          type: boolean
+    userGroupMembership-write:
+      allOf:
+        - $ref: '#/components/schemas/userGroupMembership-writableFields'
+        - $ref: '#/components/schemas/userGroupMembership-fields'
+    dateTime:
+      title: Datetime
+      description: |
+        A JSON representation of a datetime.
+        For compatibility with existing code, can be defined as either:
+        * a RFC3339 string
+        * an object, which contains a datetime in several formats
+      oneOf:
+        - type: string
+          format: date-time
+        - type: object
+          readOnly: true
+          deprecated: true
+          description: |
+            This read-only object representation is deprecated and will be
+            removed eventually: it exists only for compatibility with existing
+            API endpoints.
+
+            If using this object representation, please use the "json" property
+            and perform localization using client-side libraries.
+          required:
+            - json
+          properties:
+            database:
+              type: string
+              description: |
+                A database representation of the date.
+            unixTimestamp:
+              type: integer
+              format: int64
+              description: |
+                The date as a Unix timestamp.
+            local:
+              type: string
+              description: |
+                A string representation of the date, localized to the Schoolbox
+                instance's settings.
+            json:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+    discussionThread-read:
+      title: Thread
+      description: Common fields for discussion threads
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        open:
+          type: boolean
+          description: Is the thread open for further comments?
+        created:
+          $ref: '#/components/schemas/dateTime'
+        updated:
+          $ref: '#/components/schemas/dateTime'
+        children:
+          allOf:
+            - $ref: '#/components/schemas/discussionComment-readList'
+          description: A list of direct child comments of this thread
+      required:
+        - id
+        - open
+    discussionComment-read:
+      title: Comment
+      description: Common fields for discussion comments
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        thread:
+          $ref: '#/components/schemas/discussionThread-read'
+        author:
+          allOf:
+            - $ref: '#/components/schemas/user-read'
+          nullable: true
+        content:
+          type: string
+        created:
+          $ref: '#/components/schemas/dateTime'
+        updated:
+          $ref: '#/components/schemas/dateTime'
+        parent:
+          allOf:
+            - $ref: '#/components/schemas/discussionComment-read'
+          description: |
+            The direct parent of this comment, if there is one.
+            If there is none, this comment is a top-level comment within a thread.
+          nullable: true
+        children:
+          allOf:
+            - $ref: '#/components/schemas/discussionComment-readList'
+          description: A list of direct children of this comment
+        visibility:
+          description: |
+            Which role types may view this comment? If not set, assume all role
+            types may view it.
+            This is likely to be replaced with a more sophisticated visibility
+            system, which encompasses individual roles, role types, folders,
+            and who knows what else?
+          type: array
+          items:
+            type: string
+            enum:
+              - staff
+              - parent
+              - student
+      required:
+        - id
+        - thread
+        - content
+    discussionComment-readList:
+      title: Comment list
+      description: A list of comments
+      readOnly: true
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/discussionComment-read'
+        metadata:
+          $ref: '#/components/schemas/listMetadata'
+    authentication-usernamePassword:
+      type: object
+      description: Username/Password
+      properties:
+        username:
+          description: The username which identifies the user who logged into the device.
+          type: string
+        password:
+          description: The password which authenticates the user who logged into the device.
+          type: string
+      required:
+        - username
+        - password
+    authentication-jwt:
+      type: object
+      description: JWT
+      properties:
+        jwt:
+          description: A JWT generated via an oAuth request.
+          type: string
+      required:
+        - jwt
+    registration-base:
+      type: object
+      description: Mobile App Registration
+      properties:
+        token:
+          description: |
+            A unique string used to identify the user on the device.
+
+            Ignored if using the Digistorm provider: otherwise, if not
+            provided no device will be registered.
+          type: string
+        appId:
+          description: |
+            A unique string to identify the app's identity.
+          type: string
+        deviceId:
+          description: |
+            An optional unique string to identify the device identity.
+
+            Stored but not used if using the Digistorm provider: otherwise,
+            this is normally not provided or is the same as the app ID due
+            to limitations enforced by device makers.
+          type: string
+      required:
+        - appId
+    registration-usernamePassword:
+      allOf:
+        - $ref: '#/components/schemas/authentication-usernamePassword'
+        - $ref: '#/components/schemas/registration-base'
+    registration-jwt:
+      allOf:
+        - $ref: '#/components/schemas/authentication-jwt'
+        - $ref: '#/components/schemas/registration-base'
+    file:
+      type: object
+      description: |
+        A description of how a file is stored in Schoolbox's internal file storage,
+        and of how it may be retrieved.
+      properties:
+        hash:
+          type: string
+          description: |
+            The location of the file in the file store.
+        mime:
+          type: string
+          description: |
+            The mimetype of the uploaded file.
+        size:
+          type: integer
+          description: |
+            The uploaded file's size, in bytes.
+        _links:
+          type: object
+          description: |
+            Relevant links for the file.
+          properties:
+            icon:
+              type: string
+              description: |
+                An icon for the file's mimetype.
+              format: uri
+            image:
+              type: string
+              description: |
+                An image URL for the file (if it's an image).
+              format: uri
+            stream:
+              type: string
+              description: |
+                A stream URL for the file (if it's audio or video).
+              format: uri
+            poster:
+              type: string
+              description: |
+                A poster URL for the file (if it's a video).
+              format: uri
+    body:
+      description: News article body, as raw HTML.
+      type: string
+    queryBoolean:
+      type: integer
+      description: |
+        A truthy integer value (0 or 1).
+
+        0 evaluates to false; 1 evaluates to true.
+      enum:
+        - 0
+        - 1
+      default: 0
+    formDateTime:
+      title: Form datetime
+      description: |
+        A datetime as entered via a standard Schoolbox datetime form input.
+
+        The format is dependent on the Schoolbox instance's "Numerical Date Format"
+        and "Time Format" settings: ideally, this would just be a "datetime" format
+        but the datetime input was developed before JSON was used for request bodies.
+      type: string
+      example: 22/06/2021 11:28am
+    filePointer:
+      type: string
+      description: |
+        A pointer to a file within Schoolbox, in the format:
+        `$locator:$location:$filename`
+
+        The variables within the pointer have this meaning:
+        * `$locator` represents the strategy for finding the file:
+          * `store` for files uploaded to Schoolbox's storage
+          * `browse` finds files in Schoolbox's resource browser
+          * `myfile` finds files in a Schoolbox user's My Files browser
+          * `office365` finds files in an Office365 store
+        * `$location` is the location of the file within `$locator`:
+          * for `store` this is a file's unique hash
+          * for `browse` and `myfile` this is a file ID
+          * for `office365` this is the file's unique node
+        * `$filename` is the filename that the file will be given once it is uploaded
+          to wherever it is being uploaded
+
+        See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+        endpoint for details on how to upload a file, and receive a file
+        pointer from that upload.
+    audience:
+      type: string
+      description: |
+        A description of a news audience, in one of two formats:
+        * for simple audiences: `$entityType:$entityValue:$relationship`
+        * for composite audiences: `composite;$relationship;`, then two
+          simple audiences, delimited by a `.` character
+
+        The variables within the audience string have this meaning:
+        * `$entityType` is the type of audience: currently out of
+          `campus`, `folder`, `role`, `school_house`, `year`
+        * `$entityValue` is the identifier for the audience, JSON-encoded
+          then base64-encoded
+        * `$relationship` is the users who are actually in the identified
+          audience:
+          * `self` for the users associated directly with the audience
+          * `teachers_of` for the teachers of users in the audience
+          * `parents_of` for the parents of users in the audience
+
+        Composite audiences will only contain users who are in both of the
+        simple audiences.
+      examples:
+        - summary: Simple audience (users in campus ID 1)
+          value: campus:IjEi:self
+        - summary: Simple audience (parents of users in folder ID 55)
+          value: folder:IjU1Ig==:parents_of
+        - summary: Simple audience (teachers of users in year ID 9)
+          value: folder:Ijki==:teachers_of
+        - summary: Composite audience (users in campus ID 2 and year ID 3)
+          value: composite;self;campus:IjIi:self.year:IjQi:self
+    returnUrl:
+      description: |
+        A base-64 encoded URL to redirect to, once processing of the entity on this
+        page is completed.
+      type: string
+      pattern: ^[a-zA-Z0-9+/]+={0,2}$
+    topic:
+      type: object
+      description: |
+        A topic which may be applicable to a news article.
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          type: string
+          description: |
+            A human-readable name for the topic.
+        slug:
+          type: string
+          description: |
+            A machine-readable name for the topic.
+        sequence:
+          type: integer
+          description: |
+            The order in which this topic will display in a topic list.
+    commonFields:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        title:
+          description: News article title.
+          type: string
+        blurb:
+          description: |
+            News article displayed blurb, as raw HTML.
+
+            This is derived from the article's blurb (if any) and body:
+            * the blurb is used in full, if provided
+            * if not, the body is trimmed
+          type: string
+        featureImage:
+          $ref: '#/components/schemas/file'
+        publishAt:
+          allOf:
+            - description: |
+                When was the article published?
+            - $ref: '#/components/schemas/dateTime'
+        topics:
+          type: array
+          description: |
+            A list of topics which are applicable to the article.
+          items:
+            $ref: '#/components/schemas/topic'
+    author:
+      type: object
+      description: |
+        The author's details.
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        externalId:
+          $ref: '#/components/schemas/externalId'
+        firstname:
+          type: string
+          description: |
+            The author's first name (a.k.a. given name).
+        lastname:
+          type: string
+          description: |
+            The author's last name (a.k.a. surname).
+        title:
+          type: string
+          description: |
+            The author's title.
+        fullname:
+          type: string
+          description: |
+            The author's full name: usually, this is the title, first name and last
+            name joined together.
+    status:
+      type: string
+      description: |
+        A human-readable representation of the article's current
+        status.
+
+        * `Drafted`: the article is a draft only
+        * `Awaiting Moderation`: the article has been submitted
+          for approval, but is not yet approved or rejected
+        * `Awaiting Publication`: the article has been approved
+          for publishing, but its publish date has not been
+          reached yet
+        * `Rejected`: the article has been rejected for
+          publishing
+        * `Published`: the article has been published
+        * `Archived`: the article has expired; whilst it is no
+          longer published, it is still readable in the archive
+    statusDate:
+      allOf:
+        - description: |
+            When did the article's status change to its current
+            value?
+        - $ref: '#/components/schemas/dateTime'
+    sticky:
+      type: boolean
+      description: |
+        Is this article sticky?
+
+        If so, it will always display at the top of the list of
+        articles.
+    link:
+      title: Link
+      description: |
+        A JSON representation of a link to content within Schoolbox.
+        For compatibility with existing code, can be defined as either:
+        * a URI string
+        * an object, which contains a URI string and an `auth` boolean value
+      oneOf:
+        - type: string
+          format: uri
+        - type: object
+          readOnly: true
+          deprecated: true
+          description: |
+            This read-only object representation is deprecated: the string
+            representation should be used instead, and if the authenticated user is
+            not authorized then no value should be returned at all.
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri
+            auth:
+              type: boolean
+              nullable: true
+              description: |
+                Is the currently authenticated user authorized to view the resource
+                pointed to by `href`?
+
+                If this value is `null`, then it is not known whether the user may
+                view this resource.
+    links:
+      type: object
+      properties:
+        saveForLater:
+          allOf:
+            - description: |
+                Endpoint for [saving this article for later](#operation/commsNewsSaveForLater.postAdd).
+            - $ref: '#/components/schemas/link'
+        unsaveForLater:
+          allOf:
+            - description: |
+                Endpoint for [removing this article from the save
+                for later list](#operation/commsNewsSaveForLater.postRemove).
+            - $ref: '#/components/schemas/link'
+        self:
+          allOf:
+            - description: |
+                Endpoint for [viewing this article](#operation/commsNews.getDetail).
+            - $ref: '#/components/schemas/link'
+        update:
+          allOf:
+            - description: |
+                Endpoint for viewing a HTML form for updating this article.
+            - $ref: '#/components/schemas/link'
+    authorNameOnly:
+      type: object
+      description: |
+        The author's details: currently, only their name.
+      properties:
+        fullname:
+          type: string
+          description: |
+            The author's full name.
+    readMore:
+      type: object
+      properties:
+        string:
+          description: |
+            The text to show in this article's "read more" link,
+            if any.
+          type: string
+        available:
+          description: |
+            Is there a "read more" link?
+
+            It is only available if the "read more" link
+            configuration is not empty, and the article has one or
+            more of:
+            * a feature image
+            * a discussion thread
+            * a body
+          type: boolean
+    user-readOnly-deprecated:
+      description: |
+        The existing set of read-only user fields.
+
+        (The code which outputs a user in this format was built before the user API
+         was designed, and is expected to be replaced by the user API.)
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        externalId:
+          $ref: '#/components/schemas/externalId'
+        title:
+          type: string
+          nullable: true
+          description: The user's title (Mr., Ms., etc.).
+        firstname:
+          type: string
+          nullable: true
+          description: |
+            The user's first name.
+
+            Schoolbox doesn't distinguish between a person's actual first name
+            and any other names, and in any case is not the definitive source of
+            naming information; therefore in practice this will usually be the
+            user's given name.
+        lastname:
+          type: string
+          nullable: true
+          description: The user's surname.
+      required:
+        - id
+      readOnly: true
+      deprecated: true
+    calendarAttendanceStatus:
+      description: |
+        The status of the user's attendance.
+
+        * null: user is not invited to this event
+        * 1: user has not yet responded to the invitation
+        * 2: user has accepted the invitation
+        * 3: user has declined the invitation
+      type: integer
+      minimum: 1
+      maximum: 3
+    calendarAttendance:
+      title: Calendar event attendance
+      description: |
+        A record of the invitees to a calendar event, and whether or not they are
+        attending.
+      readOnly: true
+      type: object
+      properties:
+        level:
+          description: |
+            The level of attendance which applies to this event.
+
+            * 0: event may not be attended (usually, this means that no users will be
+               invited to this event; however, it is possible for an event's
+               attendance level to change)
+            * 1: event attendees may only be invited by the event's creator
+            * 2: any user who may view the event may invite themselves to the event
+          type: integer
+          minimum: 0
+          maximum: 2
+        currentUser:
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/user-readOnly-deprecated'
+            status:
+              allOf:
+                - $ref: '#/components/schemas/calendarAttendanceStatus'
+                - nullable: true
+            canModify:
+              description: |
+                Can the authenticated user modify the event?
+              type: boolean
+            canInvite:
+              description: |
+                Can the authenticated user invite other users to the event?
+              type: boolean
+        attendees:
+          description: |
+            A summary of all the invitees of this event.
+          type: object
+          properties:
+            guests:
+              description: |
+                A list of the event's invitees.
+
+                Not all events have public invitation lists: if this is the case, then
+                the guest list is hidden from all but the event's creator.
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    description: |
+                      The invitee's ID number.
+                    type: integer
+                  name:
+                    description: |
+                      The invitee's full name.
+                    type: string
+                  status:
+                    $ref: '#/components/schemas/calendarAttendanceStatus'
+            max:
+              description: |
+                The maximum number of invitees to this event, or null if there is no
+                maximum.
+              type: integer
+              nullable: true
+            num:
+              description: |
+                The current total number of invitees to this event.
+
+                This may differ from the number of guests in the guest list, due to
+                the ability to create events with private invitation lists.
+              type: integer
+            available:
+              description: |
+                The number of available invite slots for this event.
+              type: integer
+              nullable: true
+            pending:
+              description: |
+                The number of invitees for this event whose invitation is pending
+                response.
+              type: integer
+            accepted:
+              description: |
+                The number of invitees for this event whose invitation has been
+                accepted.
+              type: integer
+            declined:
+              description: |
+                The number of invitees for this event whose invitation has been
+                declined.
+              type: integer
+    folder:
+      title: Folder
+      description: ''
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        name:
+          type: string
+          description: The name of the Folder.
+        code:
+          type: string
+          description: |
+            Schoolbox Subject Codes
+        yearLevel:
+          $ref: '#/components/schemas/yearLevel'
+      example:
+        id: 80
+        name: 9A English
+        code: 9ENGA
+        yearLevel:
+          id: 9
+          name: Year 10
+    userShort:
+      title: User
+      description: Short fields for users
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        externalId:
+          $ref: '#/components/schemas/externalId'
+          example: 501
+        title:
+          type: string
+          nullable: true
+          description: The user's title (Mr., Ms., etc.).
+          example: Ms
+        firstName:
+          type: string
+          nullable: true
+          description: |
+            The user's first name.
+
+            Schoolbox doesn't distinguish between a person's actual first name
+            and any other names, and in any case is not the definitive source of
+            naming information; therefore in practice this will usually be the
+            user's given name.
+          example: Rebecca
+        lastName:
+          type: string
+          nullable: true
+          description: The user's surname.
+          example: White
+    assessment-feedback-item:
+      title: An Assessment feedback item
+      description: An Assessment feedback item
+      readOnly: true
+      type: object
+      properties:
+        learner:
+          $ref: '#/components/schemas/userShort'
+        comment:
+          type: string
+          example: |
+            Joffrey,
+            Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
+            Please consider this for your next essay.
+        date:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-01-30T21:00:00.000Z'
+        mark:
+          type: string
+          example: A
+        normalisedMark:
+          type: integer
+          example: 36
+        instructor:
+          $ref: '#/components/schemas/userShort'
+    assessment-item:
+      title: an Assessment Item
+      description: An assessment item
+      readOnly: true
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+          example: 255
+        title:
+          type: string
+          example: Turning on the computer
+        assessmentType:
+          type: string
+          enum:
+            - dueWork
+            - quiz
+            - task
+            - project
+            - LTI
+          example: task
+        folder:
+          $ref: '#/components/schemas/folder'
+          description: |
+            The folder where the assessment is found
+        commonAssessment:
+          type: boolean
+        workType:
+          type: object
+          description: |
+            System configurable in your Admin Lists Work Types area
+          properties:
+            id:
+              type: integer
+              description: the DB identifier of the worktype
+              example: 1
+            name:
+              type: string
+              description: the name of the work type, may not be unique
+              example: Formative Assessment
+          yearLevel:
+            type: object
+            properties:
+              name:
+                type: string
+              id:
+                type: integer
+                description: the db identifier of the yearlevel
+                example: 6
+            example:
+              name: Year 9
+              id: 3
+        weighted:
+          type: boolean
+          example: true
+          deprecated: true
+        weight:
+          type: integer
+          example: 30
+          description: |
+            The value of how much this assessment's outcome contributes to the final overall grade -
+            a value of 0 indicates this assessment has no impact on the overall grade.
+            Generally, this is a number between 0 and 100.
+        dueDate:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-01-30T21:00:00.000Z'
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the parent assessment (project)
+              example: 255
+        participants:
+          $ref: '#/components/schemas/assessment-feedback-item'
+    assessment-list:
+      title: Assessment list
+      description: A list of assessments
+      readOnly: true
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            allOf:
+              - $ref: '#/components/schemas/assessment-item'
+        metadata:
+          $ref: '#/components/schemas/listMetadata'
+    assessment-feedback-list:
+      title: a list of assessment feedback items
+      description: A list of feedback items
+      readOnly: true
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            allOf:
+              - type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/id'
+                    example: 639
+                  title:
+                    type: string
+                    example: Essay - Final Assessment
+                  folder:
+                    $ref: '#/components/schemas/folder'
+                    description: |
+                      The folder where the assessment is found
+                  assessmentType:
+                    type: string
+                    enum:
+                      - quiz
+                      - task
+                      - project
+                      - dueWork
+                      - LTI
+                    example: dueWork
+                  commonAssessment:
+                    type: boolean
+                  weighted:
+                    type: boolean
+                    example: true
+                    deprecated: true
+                  weight:
+                    type: integer
+                    example: 30
+                  workType:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: the name of the work type, may not be unique
+                        example: Formative Assessment
+                      id:
+                        type: integer
+                        description: the DB identifier of the worktype
+                        example: 10
+                    description: |
+                      System configurable in your Admin Lists Work Types area
+                  project:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: ID of the parent assessment (project)
+                        example: 255
+                  dueDate:
+                    type: string
+                    format: date-time
+                    description: |
+                      The date as a RFC3339 string.
+                    example: '2022-01-30T21:00:00.000Z'
+                  participants:
+                    $ref: '#/components/schemas/assessment-feedback-item'
+  parameters:
+    cursor:
+      name: cursor
+      in: query
+      description: |
+        A generated but decodable pointer to the first record to return.
+
+        Each endpoint whose data accepts a cursor will return a cursor that
+        points to the next page of the result set.
+      schema:
+        $ref: '#/components/schemas/cursor'
+    limit:
+      name: limit
+      in: query
+      description: |
+        Limit the returned results to this count.
+
+        Each endpoint whose data accepts a limit will limit
+        their results to that number.
+      schema:
+        title: Limit
+        description: |
+          An option to limit the returned results.
+
+          Each endpoint whose data accepts a limit will limit
+          their results to that number.
+        type: integer
+    id:
+      name: id
+      in: path
+      description: |
+        The ID of an item to act upon.
+
+        The type of item that is acted upon is dependent on the endpoint in which
+        it is included.
+      required: true
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+    discussion-contextType:
+      name: contextType
+      in: path
+      description: |
+        The type of item that a thread is associated with.
+
+        Used in conjunction with contextId to find the item with which a thread
+        is associated, and then to determine whether the authenticated user has
+        permission to perform the requested action.
+
+        The following contexts are currently supported:
+        * `comms` (the internal name for [news](/#tag/news))
+        * `evidence` (the internal name for learning moments: not yet documented)
+
+        It is intended that discussion threads will be introduced to more contexts.
+      required: true
+      schema:
+        type: string
+        enum:
+          - comms
+          - evidence
+    discussion-contextId:
+      name: contextId
+      in: path
+      description: |
+        The unique ID of the item that a thread is associated with.
+
+        Used in conjunction with contextType to find the item with which a
+        thread is associated, and then to determine whether the authenticated
+        user has permission to perform the requested action.
+      required: true
+      schema:
+        $ref: '#/components/schemas/id'
+    redirect:
+      name: redirect
+      in: query
+      description: |
+        If provided, a relative path to redirect to upon successful authentication.
+
+        If not provided: will fall back to redirecting to an empty relative path (/).
+      schema:
+        type: string
+    jwt:
+      name: jwt
+      in: query
+      description: A JWT generated via an oAuth request.
+      required: true
+      schema:
+        type: string
+    topic:
+      name: topic
+      in: query
+      description: |
+        The machine-readable value (a.k.a. slug) for the selected news topic.
+      schema:
+        type: string
+    key:
+      name: key
+      in: path
+      description: |
+        A key which identifies a user.
+      required: true
+      schema:
+        type: string
+    compactMode:
+      name: c
+      in: query
+      description: |
+        Is compact mode enabled?
+
+        If on, the list of attachments is loaded, and any articles loaded are
+        considered as read by the authenticated user.
+      schema:
+        $ref: '#/components/schemas/queryBoolean'
+    news-limit:
+      name: l
+      in: query
+      description: |
+        Limit of results to show per page
+      schema:
+        type: integer
+  examples:
+    problem-unauthorized:
+      value:
+        type: about:blank
+        title: Unauthorized Access
+        status: 401
+        detail: Authorization is required to access resource with ID=1.
+    problem-notFound:
+      value:
+        type: about:blank
+        title: Not Found
+        status: 404
+        detail: The requested object was not found.
+    problem-internalServerError:
+      value:
+        type: about:blank
+        title: Internal Server Error
+        status: 500
+        detail: An unexpected error occured when accessing resource with ID=1. This error has been logged.
+    discussionComment-listEmpty:
+      value:
+        data: []
+        metadata:
+          cursor:
+            current: bbb
+            next: ccc
+    discussionComment-listOne:
+      value:
+        data:
+          - id: 1
+            thread:
+              id: 2
+              open: false
+              created: '2019-01-01T00:00:00Z'
+              updated:
+                database: '2019-01-01 00:00:00'
+                json: '2019-01-01T00:00:00Z'
+                local: 1 Jan 2019 12:00am
+                unixTimestamp: 1546300800000
+            author:
+              id: 1
+              externalId: 2
+              firstName: Schoolbox
+              lastName: User
+              _links:
+                avatar: /profile?id=1
+            content: <p>Some HTML content goes here</p>
+            created: '2019-01-01T00:00:00Z'
+            updated:
+              database: '2019-01-01 00:00:00'
+              json: '2019-01-01T00:00:00Z'
+              local: 1 Jan 2019 12:00am
+              unixTimestamp: 1546300800000
+            visibility:
+              - staff
+              - parent
+              - student
+        metadata:
+          cursor:
+            current: bbb
+            next: ccc
+    discussionComment-listMany:
+      value:
+        data:
+          - id: 2
+            thread:
+              id: 1
+              open: true
+              created: '2019-01-01T00:00:00Z'
+              updated: '2019-01-01T00:00:00Z'
+            author:
+              id: 1
+              externalId: 2
+              firstName: Schoolbox
+              lastName: User
+              _links:
+                avatar: /profile?id=1
+            content: <p>Some HTML content goes here</p>
+            created:
+              database: '2019-01-01 00:00:00'
+              json: '2019-01-01T00:00:00Z'
+              local: 1 Jan 2019 12:00am
+              unixTimestamp: 1546300800000
+            updated: '2019-01-01T00:00:00Z'
+            visibility:
+              - staff
+              - parent
+              - student
+          - id: 3
+            thread:
+              id: 1
+              open: true
+              created: '2019-01-01T00:00:00Z'
+              updated: '2019-01-01T00:00:00Z'
+            author:
+              id: 1
+              externalId: 2
+              firstName: Schoolbox
+              lastName: User
+              _links:
+                avatar: /profile?id=1
+            content: <p>This article was modified</p>
+            created: '2019-01-02T00:00:00Z'
+            updated: '2019-01-02T01:00:00Z'
+            visibility:
+              - staff
+          - id: 4
+            thread:
+              id: 1
+              open: true
+              created: '2019-01-01T00:00:00Z'
+              updated: '2019-01-01T00:00:00Z'
+            author:
+              id: 1
+              externalId: 2
+              firstName: Schoolbox
+              lastName: User
+              _links:
+                avatar: /profile?id=1
+            content: <p>This article was not modified, just the created/updated are in different timezone</p>
+            created: '2019-01-04T00:00:00Z'
+            updated: 2019-01-04T11:00:00+1100
+            visibility:
+              - staff
+              - student
+          - id: 5
+            thread:
+              id: 1
+              open: true
+              created: '2019-01-01T00:00:00Z'
+              updated: '2019-01-01T00:00:00Z'
+            author:
+              id: 1
+              externalId: 2
+              firstName: Schoolbox
+              lastName: User
+              _links:
+                avatar: /profile?id=1
+            content: '<p>XSS Article: you must escape this <script type="text/javascript">alert(''XSS'')</script></p>'
+            created: '2019-01-01T00:00:00Z'
+            updated: '2019-01-01T00:00:00Z'
+            visibility:
+              - staff
+        metadata:
+          cursor:
+            current: xxx
+            next: yyy
+  responses:
+    problem:
+      description: |
+        The response that the API returns if it was unable or unwilling to fulfill a
+        request.
+
+        If the request's "Accept" header is "application/json", this will conform to
+        the [RFC7807](https://tools.ietf.org/html/rfc7807) Problem Details
+        specification; otherwise, it may be a HTML document which contains a textual
+        description of the error. For this reason, the "Accept" header should always
+        be set to "application/json".
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/problem'
+          examples:
+            unauthorized:
+              $ref: '#/components/examples/problem-unauthorized'
+            notFound:
+              $ref: '#/components/examples/problem-notFound'
+            internalServerError:
+              $ref: '#/components/examples/problem-internalServerError'
+        text/html:
+          schema:
+            description: A HTML description of an error.
+            readOnly: true
+            type: string
+    user-list:
+      description: A list of users
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/user-readList'
+    user-item:
+      description: A user
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/user-read'
+    userToken:
+      description: A user token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/userToken'
+    userGroupMembership-list:
+      description: A list of group memberships for a user
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/userGroupMembership-read'
+    userGroupMembership-item:
+      description: A group membership
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/userGroupMembership-read'
+    discussionThread-item:
+      description: A thread
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/discussionThread-read'
+        text/html:
+          schema:
+            type: string
+            description: The thread, rendered into HTML on the server.
+    discussionComment-list:
+      description: a list of comments
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/discussionComment-readList'
+          examples:
+            empty:
+              $ref: '#/components/examples/discussionComment-listEmpty'
+            one:
+              $ref: '#/components/examples/discussionComment-listOne'
+            many:
+              $ref: '#/components/examples/discussionComment-listMany'
+        text/html:
+          schema:
+            type: string
+            description: The list of comments, rendered into HTML on the server.
+    discussionComment-item:
+      description: A single comment
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/discussionComment-read'
+    authentication-successUser:
+      description: |
+        User information, if the user was successfully authenticated and the
+        request was made via JSON.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                description: A schoolbox user ID number
+                type: integer
+              key:
+                description: A key for accessing resources on behalf of that user like RSS or VCAL feeds
+                type: string
+              role:
+                description: The role type the user has in Schoolbox
+                type: string
+                enum:
+                  - staff
+                  - student
+                  - parent
+                  - guest
+                example: parent
+              username:
+                description: The user who logged into the device
+                type: string
+      headers:
+        Cookie:
+          description: |
+            Contains the value of the session cookie as defined in the "session"
+            security scheme.
+          schema:
+            type: string
+    authentication-successRedirect:
+      description: |
+        A redirect to another location within the Schoolbox instance,
+        if the user was successfully authenticated and the request was not made
+        via JSON.
+      headers:
+        Cookie:
+          description: |
+            Contains the value of the session cookie as defined in the "session"
+            security scheme.
+          schema:
+            type: string
+    authentication-failed:
+      description: Not enough data provided or could not authenticate user
+      content:
+        text/plain:
+          schema:
+            type: string
+    file-item:
+      description: A file
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              fileName:
+                type: string
+                example: School-Events-PNG-2
+              title:
+                type: string
+                example: School Events
+              description:
+                type: string
+                example: |
+                  Banner image for 2022 school events
+              hidden:
+                type: boolean
+                example: false
+              mimeType:
+                type: string
+                example: image/png
+              filesize:
+                type: integer
+                description: file size in bytes
+                example: 117407
+    save:
+      description: |
+        A summary of the saved news item's status.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              articleId:
+                $ref: '#/components/schemas/id'
+              returnUrl:
+                $ref: '#/components/schemas/returnUrl'
+              success:
+                type: boolean
+                description: |
+                  Was the article successfully saved?
+
+                  Note this doesn't mean that the article is necessary ready for
+                  publishing.
+              approveRoute:
+                type: string
+                format: uri
+                description: |
+                  The URL via which the user may approve this article.
+              submitRoute:
+                type: string
+                format: uri
+                description: |
+                  The URL via which the user may submit this article for publish
+                  or review.
+              updateRoute:
+                type: string
+                format: uri
+                description: |
+                  The URL via which the user may update this article.
+    redirect:
+      description: |
+        A redirect to another location within the Schoolbox instance.
+      headers:
+        Location:
+          schema:
+            type: string
+            format: uri
+    calendarAttendance-item:
+      description: Calendar event attendance
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/calendarAttendance'
+    assessment-list:
+      description: A list of assements
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/assessment-list'
+    assessment-item:
+      description: A list of feedback items for an assessment
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/assessment-feedback-list'
+  requestBodies:
+    user-item:
+      description: A user
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/user-write'
+    userGroupMembership-item:
+      description: A group membership
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/userGroupMembership-write'
+    discussionThread-item:
+      description: A thread
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/discussionThread-read'
+    discussionComment-item:
+      description: A single comment
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/discussionComment-read'
+    authentication:
+      description: |
+        Authentication data, either via JWT or username/password.
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/authentication-usernamePassword'
+              - $ref: '#/components/schemas/authentication-jwt'
+    registration:
+      description: |
+        A request to create a mobile app registration for a user.
+
+        Includes authentication data, either via JWT or username/password.
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/registration-usernamePassword'
+              - $ref: '#/components/schemas/registration-jwt'
+    file-item:
+      description: A file
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              fileName:
+                type: string
+                description: |
+                  limit of 250 characters
+                example: 2022-School-Events
+              title:
+                type: string
+                example: School Events
+              description:
+                type: string
+                description: |
+                  limit of 255 characters
+                example: |
+                  Current
+                  Banner image for 2022 school events
+              hidden:
+                type: boolean
+                example: false
+    newsItem:
+      description: |
+        News article information.
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              title:
+                description: News article title.
+                type: string
+                required: true
+              body:
+                $ref: '#/components/schemas/body'
+              blurb:
+                description: |
+                  News article blurb, as raw HTML.
+
+                  If provided, the blurb will be displayed as the article's summary:
+                  otherwise, a trimmed version the article's body will be used instead.
+                type: string
+              topics[]:
+                description: |
+                  A list of IDs of topics to associate with this news article.
+                type: array
+                items:
+                  $ref: '#/components/schemas/id'
+              sticky:
+                allOf:
+                  - description: |
+                      Is this article pinned to the top of any list it is within?
+
+                      (Not all users have permission to set this flag.)
+                  - $ref: '#/components/schemas/queryBoolean'
+              publishAt:
+                required: true
+                allOf:
+                  - description: |
+                      The date at which this article should be published.
+                  - $ref: '#/components/schemas/formDateTime'
+              expiresAt:
+                required: true
+                allOf:
+                  - description: |
+                      The date at which this article should be archived.
+                  - $ref: '#/components/schemas/formDateTime'
+              attachment[]:
+                type: array
+                description: |
+                  A single featured image to attach to this news item, supplied as a
+                  pointer to a file in Schoolbox. This parameter may be provided no
+                  more than once.
+
+                  The pointer will be in the format: `$locator:$location:$filename`;
+                  the variables within the pointer have this meaning:
+                  * `$locator` represents the strategy for finding the file:
+                    * `store` for files uploaded to Schoolbox's storage
+                    * `browse` finds files in Schoolbox's resource browser
+                    * `myfile` finds files in a Schoolbox user's My Files browser
+                    * `office365` finds files in an Office365 store
+                  * `$location` is the location of the file within `$locator`:
+                    * for `store` this is a file's unique hash
+                    * for `browse` and `myfile` this is a file ID
+                    * for `office365` this is the file's unique node
+                  * `$filename` is the filename that the file will be given once it is
+                    uploaded to wherever it is being uploaded
+
+                  See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+                  endpoint for details on how to upload a file, and receive a file
+                  pointer from that upload.
+                items:
+                  $ref: '#/components/schemas/filePointer'
+                maxItems: 1
+              attachedFiles[]:
+                type: array
+                description: |
+                  Files to attach to this news item, supplied as pointers to a file in
+                  Schoolbox. This parameter may be provided multiple times to attach
+                  multiple files.
+
+                  Each pointer will be in the format: `$locator:$location:$filename`;
+                  the variables within the pointer have this meaning:
+                  * `$locator` represents the strategy for finding the file:
+                    * `store` for files uploaded to Schoolbox's storage
+                    * `browse` finds files in Schoolbox's resource browser
+                    * `myfile` finds files in a Schoolbox user's My Files browser
+                    * `office365` finds files in an Office365 store
+                  * `$location` is the location of the file within `$locator`:
+                    * for `store` this is a file's unique hash
+                    * for `browse` and `myfile` this is a file ID
+                    * for `office365` this is the file's unique node
+                  * `$filename` is the filename that the file will be given once it is
+                    uploaded to wherever it is being uploaded
+
+                  See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+                  endpoint for details on how to upload a file, and receive a file
+                  pointer from that upload.
+                items:
+                  $ref: '#/components/schemas/filePointer'
+              audience:
+                type: array
+                required: true
+                description: |
+                  A comma-separated list of audiences for this news item.
+
+                  Each audience will be in one of two formats:
+                  * simple audiences: `$entityType:$entityValue:$relationship`
+                  * composite audiences: `composite;$relationship;`, then two simple
+                    audiences, delimited by a `.` character
+
+                  The variables within each audience string have this meaning:
+                  * `$entityType` is the type of audience: currently out of
+                    `campus`, `folder`, `role`, `school_house`, `year`
+                  * `$entityValue` is the identifier for the audience, JSON-encoded
+                    then base64-encoded
+                  * `$relationship` is the users who are actually in the identified
+                    audience:
+                    * `self` for the users associated directly with the audience
+                    * `teachers_of` for the teachers of users in the audience
+                    * `parents_of` for the parents of users in the audience
+
+                  Composite audiences will only contain users who are in both of the
+                  simple audiences.
+
+                  Examples:
+                  * `campus:IjEi:self` is a simple audience, targeting users in campus
+                    ID 1
+                  * `folder:IjU1Ig==:parents_of` is a simple audience, targeting
+                    parents of users in folder ID 55
+                  * `folder:IjU1Ig==:parents_of` is a simple audience, targeting
+                    parents of users in folder ID 55
+                  * `folder:Ijki==:teachers_of` is a simple audience, targeting
+                    teachers of users in year ID 9
+                  * `composite;self;campus:IjIi:self.year:IjQi:self` is a composite
+                    audience, targeting the intersection of:
+                    * users in campus ID 2
+                    * users in year ID 3
+                items:
+                  $ref: '#/components/schemas/audience'
+                minItems: 1
+          examples:
+            Standard article, no attachments, audienced to campus 1:
+              value:
+                title: A news article title
+                body: |
+                  <p>The body of the article, as a <em>HTML fragment</em>.</p>
+                blurb: |
+                  <p>An optional HTML fragment, which will be used as the short version of
+                  the article.</p>
+                topics[]:
+                  - 1
+                  - 2
+                  - 3
+                sticky: 0
+                publishAt: 01/01/2021 12:00am
+                expiresAt: 31/12/2021 11:59pm
+                attachment[]: null
+                attachedFiles[]: null
+                audience: |
+                  campus:IjEi:self
+            Standard article, with attachments, audienced to campus 1 and teachers of year 9:
+              value:
+                title: A news article title
+                body: |
+                  <p>The body of the article, as a <em>HTML fragment</em>.</p>
+                blurb: |
+                  <p>An optional HTML fragment, which will be used as the short version of
+                  the article.</p>
+                topics[]:
+                  - 1
+                  - 2
+                  - 3
+                sticky: 0
+                publishAt: 01/01/2021 12:00am
+                expiresAt: 31/12/2021 11:59pm
+                attachment[]:
+                  - store:1111111111:featuredImage.jpg
+                attachedFiles[]:
+                  - store:1234567890:attachment1.jpg
+                  - store:0987654321:attachment2.jpg
+                audience:
+                  - campus:IjEi:self
+                  - folder:Ijki==:teachers_of
+          encoding:
+            topics[]:
+              style: form
+            attachment[]:
+              style: form
+            attachedFiles[]:
+              style: form
+            audience:
+              explode: false
