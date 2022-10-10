@@ -26,7 +26,8 @@ function main () {
             delete v.selected;
             if (!hasSelectedBuild) {
                 if (semver.prerelease(v.value, true) === null) {
-                    v.selected = true;
+                    hasSelectedBuild = true
+                    v.selected       = true;
                 }
             }
             return v;
