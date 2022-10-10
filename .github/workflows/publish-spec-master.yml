@@ -22,6 +22,15 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Copy docs into gh-pages repo
+          # Also copy openapi/ and .redocly.yaml (for building docs)
+          mkdir .staging/
+          cp -r docs/ docs/ openapi/ .redocly.yaml .staging
+          git checkout -- .
+          git checkout gh-pages
+          cp -r .staging/* .
+          rm -rf .staging/
+
           # Build the docs
           npm ci
           npm run rebuild-builds-list
@@ -30,17 +39,7 @@ jobs:
           # also do the old build (for now)
           npm run build
 
-          # Copy docs into gh-pages repo
-          mkdir .staging/
-          cp -r docs/builds* .staging
-          cp docs/dist.yaml .staging
-          cp docs/builds.json .staging
-          git checkout -- .
-          git checkout gh-pages
-          cp -r .staging/* docs/
-          rm -rf .staging/
-
           # Commit and push
-          git add docs/
+          git add docs/builds docs/builds.json docs/dist.yaml
           git commit --allow-empty -m "Publish spec for production release ${{ github.ref_name }}" .
           git push
