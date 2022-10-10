@@ -1,11 +1,14 @@
 openapi: 3.0.2
 
 info:
-  version:     $VERSION
+  version:     1.2.9
   title:       Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
     instance.
+
+    This document is current as of Schoolbox version 22.0.10.
+
 
     **To generate a JWT in your schoolbox instance.**
 
@@ -213,9 +216,6 @@ paths:
   /api/assessment/{id}:
       $ref: 'paths/assessment@{id}.yaml'
 
-  /api/user/{id}/notify:
-      $ref: 'paths/api@user@{id}@notify.yaml'
-
   /learning/evidence/user/{id}/create:
     $ref: 'paths/evidence@user@{id}@create.yaml'
 
@@ -224,6 +224,7 @@ paths:
 
   /learning/evidenceFeed/user/{id}:
     $ref: 'paths/evidenceFeed@user@{id}.yaml'
+
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
