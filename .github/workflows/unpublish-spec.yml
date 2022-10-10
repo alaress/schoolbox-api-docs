@@ -22,16 +22,16 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # Delete the tagged release, if it's there
-          SPEC_FILENAME="docs/builds/${{ github.ref }}.yaml"
+          SPEC_FILENAME="docs/builds/${{ github.ref_name }}.yaml"
           if [ -f "${SPEC_FILENAME}" ]; then
-            rm docs/builds/${{ github.ref }}.yaml
+            rm docs/builds/${{ github.ref_name }}.yaml
 
             # Rebuild builds list without deleted release
             npm ci
             npm run rebuild-builds-list
   
             # Commit and push
-            git commit -m "Unpublish spec for release ${{ github.ref }}" .
+            git commit -m "Unpublish spec for release ${{ github.ref_name }}" .
             git push
           else
             echo "spec ${SPEC_FILENAME} does not exist; pushing nothing"
