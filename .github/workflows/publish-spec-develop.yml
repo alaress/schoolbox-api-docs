@@ -38,5 +38,5 @@ jobs:
 
           # Commit and push
           git add docs/
-          git commit -m "Build beta spec for release ${{ release.tag_name }}" .
+          git commit --allow-empty -m "Publish spec for beta release ${{ release.tag_name }}" .
           git push

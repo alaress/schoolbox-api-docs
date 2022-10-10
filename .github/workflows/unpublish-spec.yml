@@ -1,0 +1,38 @@
+name: unpublish-spec
+
+# Unpublish of beta specs happens on delete of a release.
+on:
+  release:
+    types:
+      - deleted
+jobs:
+  build:
+    if: github.repository == 'alaress/schoolbox-api-docs'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+      - uses: actions/setup-node@v3.1.0
+      - name: Push to gh-pages branch
+        id: unpublish-spec
+        run: |
+          # Commit on behalf of the github-actions bot
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Delete the tagged release, if it's there
+          SPEC_FILENAME="docs/builds/${{ release.tag_name }}.yaml"
+          if [ -f "${SPEC_FILENAME}" ]; then
+            rm docs/builds/${{ release.tag_name }}.yaml
+            
+            # Rebuild builds list without deleted release
+            npm ci
+            npm run rebuild-builds-list
+  
+            # Commit and push
+            git commit -m "Unpublish spec for release ${{ release.tag_name }}" .
+            git push
+          else
+            echo "spec ${SPEC_FILENAME} does not exist; pushing nothing"
+          fi
