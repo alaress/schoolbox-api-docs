@@ -24,6 +24,8 @@ jobs:
         with:
           ref: gh-pages
       - uses: actions/checkout@v3
+        with:
+          ref: develop
       - name: Push design to gh-pages branch
         id: publish-design
         run: |
