@@ -31,7 +31,7 @@ jobs:
             npm run rebuild-builds-list
   
             # Commit and push
-            git commit -m "Build beta spec for release ${{ release.tag_name }}" .
+            git commit -m "Unpublish spec for release ${{ release.tag_name }}" .
             git push
           else
             echo "spec ${SPEC_FILENAME} does not exist; pushing nothing"
