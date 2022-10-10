@@ -8,12 +8,8 @@
     "value": "22.1.0-beta1"
   },
   {
-    "label": "22.0.11",
-    "value": "22.0.11",
-    "selected": true
-  },
-  {
     "label": "22.0.10",
-    "value": "22.0.10"
+    "value": "22.0.10",
+    "selected": true
   }
 ]
