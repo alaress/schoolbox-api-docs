@@ -25,7 +25,7 @@ jobs:
           # Build the docs
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=${{ release.tag_name }} --selected
+          npm run build-new --build-version=${{ github.ref }} --selected
 
           # also do the old build (for now)
           npm run build
@@ -41,5 +41,5 @@ jobs:
 
           # Commit and push
           git add docs/
-          git commit --allow-empty -m "Publish spec for production release ${{ release.tag_name }}" .
+          git commit --allow-empty -m "Publish spec for production release ${{ github.ref }}" .
           git push

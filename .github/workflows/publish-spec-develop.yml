@@ -26,7 +26,7 @@ jobs:
           # do not set beta specs as the most recently selected
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=${{ release.tag_name }}
+          npm run build-new --build-version=${{ github.ref }}
 
           # Copy docs into gh-pages repo
           mkdir .staging/
@@ -38,5 +38,5 @@ jobs:
 
           # Commit and push
           git add docs/
-          git commit --allow-empty -m "Publish spec for beta release ${{ release.tag_name }}" .
+          git commit --allow-empty -m "Publish spec for beta release ${{ github.ref }}" .
           git push
