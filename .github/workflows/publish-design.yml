@@ -38,7 +38,7 @@ jobs:
           # Copy hidden files too (excl. .git, .github)
           cp .gitignore .staging/
           cp .gitattributes .staging/
-          cp .redocly.yaml, .staging/
+          cp .redocly.yaml .staging/
 
           rm -rf .staging/docs/builds/
           rm -f .staging/docs/dist.yaml
