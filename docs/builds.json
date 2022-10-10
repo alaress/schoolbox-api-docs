@@ -5,11 +5,11 @@
   },
   {
     "label": "22.0.10",
-    "value": "22.0.10"
+    "value": "22.0.10",
+    "selected": true
   },
   {
-    "label": "0.0.2",
-    "value": "0.0.2",
-    "selected": true
+    "label": "0.1.0-beta1",
+    "value": "0.1.0-beta1"
   }
 ]
