@@ -48,6 +48,7 @@ jobs:
           rm -f .staging/docs/builds.json
           
           # move files from base commit to gh-pages
+          git checkout -- .
           git checkout gh-pages
           cp -r .staging/* .
           cp .staging/.gitignore .gitignore
