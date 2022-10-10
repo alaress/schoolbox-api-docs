@@ -5,7 +5,12 @@
   },
   {
     "label": "22.0.10",
-    "value": "22.0.10"
+    "value": "22.0.10",
+    "selected": true
+  },
+  {
+    "label": "0.1.0-beta3",
+    "value": "0.1.0-beta3"
   },
   {
     "label": "0.1.0-beta2",
@@ -22,10 +27,12 @@
   },
   {
     "label": "0.0.3",
-    "value": "0.0.3"
+    "value": "0.0.3",
+    "selected": true
   },
   {
     "label": "0.0.2",
-    "value": "0.0.2"
+    "value": "0.0.2",
+    "selected": true
   }
 ]
