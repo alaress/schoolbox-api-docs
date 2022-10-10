@@ -1,11 +1,10 @@
 name: publish-spec-master
 
-# Publish of production specs happens on tagging with a valid non-alpha or beta
-# version number.
+# Publish of production specs happens on release.
 on:
-  push:
-    tags:
-      - "[0-9]+.[0-9]+.[0-9]+"
+  release:
+    types:
+      - released
 jobs:
   build:
     if: github.repository == 'alaress/schoolbox-api-docs'
@@ -26,7 +25,7 @@ jobs:
           # Build the docs
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=$GITHUB_REF --selected
+          npm run build-new --build-version=${{ release.tag_name }} --selected
 
           # also do the old build (for now)
           npm run build
@@ -42,5 +41,5 @@ jobs:
 
           # Commit and push
           git add docs/
-          git commit -m "Build spec for tag ${GITHUB_REF}" .
+          git commit -m "Build production spec for release ${{ release.tag_name }}" .
           git push

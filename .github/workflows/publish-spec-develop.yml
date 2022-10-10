@@ -1,11 +1,10 @@
 name: publish-spec-develop
 
-# Publish of beta specs happens on tagging with an alpha or beta version number.
+# Publish of beta specs happens on prerelease.
 on:
-  push:
-    tags:
-      - "[0-9]+.[0-9]+.0-alpha[0-9]+"
-      - "[0-9]+.[0-9]+.0-beta[0-9]+"
+  release:
+    types:
+      - prereleased
 jobs:
   build:
     if: github.repository == 'alaress/schoolbox-api-docs'
@@ -27,7 +26,7 @@ jobs:
           # do not set beta specs as the most recently selected
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=$GITHUB_REF
+          npm run build-new --build-version=${{ release.tag_name }}
 
           # Copy docs into gh-pages repo
           mkdir .staging/
@@ -39,5 +38,5 @@ jobs:
 
           # Commit and push
           git add docs/
-          git commit -m "Build spec for tag ${GITHUB_REF}" .
+          git commit -m "Build beta spec for release ${{ release.tag_name }}" .
           git push
