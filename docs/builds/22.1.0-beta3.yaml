@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: latest
+  version: 22.1.0-beta3
   title: Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox

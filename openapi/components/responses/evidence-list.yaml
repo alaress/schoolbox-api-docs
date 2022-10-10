@@ -2,60 +2,11 @@ description: A list of Learning Moments
 content:
   application/json:
     schema:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              discriminator:
-                type: string
-                enum: [ evidence, badgeAward ]
-                example: badgeAward
-              object:
-                discriminator:
-                  propertyName: discriminator
-                  mapping:
-                    evidence: ../schemas/evidenceItem.yaml
-                    badgeAward: ../schemas/badgeAwardItem.yaml
-                oneOf:
-                  - $ref: ../schemas/evidenceItem.yaml
-                  - $ref: ../schemas/badgeAwardItem.yaml
-              date:
-                type: string
-                format: date-time
-                description: |
-                  The date as a RFC3339 string.
-                example: 2022-08-30T10:09:09+10:00
-        metadata:
-          type: object
-          properties:
-            count:
-              type: integer
-              example: 18
-            cursor:
-              type: object
-              properties:
-                current:
-                  type: string
-                  nullable: true
-                next:
-                  type: object
-                  description: |
-                    base64 encoded object
-                  properties:
-                    id:
-                      $ref: ../schemas/id.yaml
-                    discriminator:
-                      type: string
-                      enum:
-                        - evidence
-                        - badgeAward
-                      example: badgeAward
-                    date:
-                      type: string
-                      format: date-time
-                      description: |
-                        The date as a RFC3339 string.
-                      example: 2022-08-30T10:09:09+10:00
+      discriminator:
+        propertyName: discriminator
+        mapping:
+          evidence: ../schemas/evidenceList.yaml
+          badgeAward: ../schemas/badgeAwardList.yaml
+      oneOf:
+        - $ref: ../schemas/evidenceList.yaml
+        - $ref: ../schemas/badgeAwardList.yaml
