@@ -31,8 +31,6 @@ jobs:
           cp -r .staging/* .
           rm -rf .staging/
 
-          echo "${{ github.event.release.prerelease }}"
-
           # Build the docs
           npm ci
           npm run rebuild-builds-list
