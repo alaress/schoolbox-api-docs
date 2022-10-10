@@ -38,15 +38,21 @@ jobs:
           cp -r ./* .staging/
 
           # Copy hidden files too (excl. .git, .github)
-          cp .gitignore .staging/
-          cp .gitattributes .staging/
-          cp .redocly.yaml .staging/
+          cp .gitignore .staging/.gitignore
+          cp .gitattributes .staging/.gitattributes
+          cp .redocly.yaml .staging/.redocly.yaml
 
+          # remove specs themselves
           rm -rf .staging/docs/builds/
           rm -f .staging/docs/dist.yaml
           rm -f .staging/docs/builds.json
+          
+          # move files from base commit to gh-pages
           git checkout gh-pages
           cp -r .staging/* .
+          cp .staging/.gitignore .gitignore
+          cp .staging/.gitattributes .gitattributes
+          cp .staging/.redocly.yaml .redocly.yaml
           rm -rf .staging/
 
           # Commit and push: if there are no changes, do nothing
