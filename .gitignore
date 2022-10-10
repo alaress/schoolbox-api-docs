@@ -1,6 +1,7 @@
 # Dir for bundles
 dist
 # Filename for bundle
-dist.yaml
+./dist.yaml
 node_modules
 .idea
+.staging
