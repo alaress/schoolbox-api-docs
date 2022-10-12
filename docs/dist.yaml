@@ -1232,6 +1232,12 @@ paths:
                     type: string
                     description: Code of the folder containing the assessment
                     example: 9ENGA
+            subjectCode:
+              type: array
+              items:
+                type: integer
+                description: |
+                  The Course Subject Code
             weighted:
               type: boolean
               example: false
@@ -2905,6 +2911,10 @@ components:
                     $ref: '#/components/schemas/folder'
                     description: |
                       The folder where the assessment is found
+                  subjectCode:
+                    type: string
+                    description: |
+                      The Course Subject Code
                   assessmentType:
                     type: string
                     enum:
