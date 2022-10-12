@@ -19,6 +19,10 @@ properties:
               $ref: ./folder.yaml
               description: |
                 The folder where the assessment is found
+            subjectCode:
+              type: string
+              description: |
+                The Course Subject Code
             assessmentType:
               type: string
               enum:
