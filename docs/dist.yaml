@@ -2719,7 +2719,7 @@ components:
         code:
           type: string
           description: |
-            Schoolbox Subject Codes
+            Schoolbox Class Codes
         yearLevel:
           $ref: '#/components/schemas/yearLevel'
       example:
@@ -2813,6 +2813,10 @@ components:
           $ref: '#/components/schemas/folder'
           description: |
             The folder where the assessment is found
+        subjectCode:
+          type: string
+          description: |
+            The Course Subject Code
         commonAssessment:
           type: boolean
         workType:
