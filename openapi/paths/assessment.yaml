@@ -49,6 +49,12 @@ parameters:
                 type: string
                 description: Code of the folder containing the assessment
                 example: 9ENGA
+        subjectCode:
+          type: array
+          items:
+            type: integer
+            description: |
+              The Course Subject Code
         weighted:
           type: boolean
           example: false
