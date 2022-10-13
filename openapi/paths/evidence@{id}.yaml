@@ -25,7 +25,7 @@ delete:
   description: |
     Delete Learning Moment
   responses:
-    '200':
+    '204':
       description: The Learning Moment was deleted successfully.
     default:
       $ref: ../components/responses/problem.yaml
