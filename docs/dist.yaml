@@ -2735,6 +2735,69 @@ components:
         yearLevel:
           id: 9
           name: Year 10
+    assessment-rubric:
+      title: An Assessment Rubric item
+      description: An Assessment Rubric item
+      readOnly: true
+      type: object
+      properties:
+        capabilities:
+          description: The area that you are assessing.
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 47
+              description: The id in the DB of this field. To help identify different rubric capabilities
+            name:
+              type: string
+              example: Skills
+              description: The description of the capability
+            maxValue:
+              description: |
+                By default, the maximum points for the capability is the sum of the highest descriptor values available in each indicator within that capability.
+              type: number
+              example: 0
+            indicators:
+              description: The key skills that you will be assessing in the assessment.
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 105
+                  description: The id in the DB of this field. To help identify different rubric indicators
+                name:
+                  type: string
+                  example: |
+                    Communication
+                  description: The description of the indicator
+                maxValue:
+                  type: number
+                  example: 0
+                  description: |
+                    By default, the maximum points for the indicator is the sum of the highest descriptor values available within the indicator.
+                descriptors:
+                  description: Statement that explain what a student has achieved or demonstrated for this level.
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 620
+                      description: The id in the DB of this field. To help identify different rubric descriptors
+                    name:
+                      type: string
+                      example: |
+                        Developing in reading appropriate materials and writing on-topic.
+                      description: The description of the descriptor
+                    maxValue:
+                      description: |
+                        If you are using the mark range, this will be the upper point value available for that particular descriptor.
+                      type: number
+                      example: 0
+                    sequence:
+                      description: The order the descriptors are ordered in
+                      type: integer
+                      example: 4
     userShort:
       title: User
       description: Short fields for users
@@ -2766,6 +2829,87 @@ components:
           nullable: true
           description: The user's surname.
           example: White
+    assessment-rubric-feedback:
+      title: An Assessment Rubric item
+      description: An Assessment Rubric item
+      readOnly: true
+      type: object
+      properties:
+        capabilities:
+          description: The area that was assessed.
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 47
+              description: The id in the DB of this field. To help identify different rubric capabilities
+            name:
+              type: string
+              example: Skills
+              description: The description of the capability
+            maxValue:
+              type: number
+              example: 0
+              description: |
+                By default, the maximum points for the capability is the sum of the highest descriptor values available in each indicator within that capability.
+            value:
+              type: number
+              example: 0
+              description: The marked value for this capability
+            mark:
+              type: string
+              nullable: true
+              example: null
+              description: The human readable mark for this capability
+            indicators:
+              description: The key skills that was assessed in the assessment.
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 105
+                  description: The id in the DB of this field. To help identify different rubric indicators
+                name:
+                  type: string
+                  example: |
+                    Communication
+                  description: The description of the indicator
+                maxValue:
+                  type: number
+                  example: 0
+                  description: |
+                    By default, the maximum points for the indicator is the sum of the highest descriptor values available within the indicator.
+                value:
+                  type: number
+                  example: 0
+                  description: The marked value for this indicator
+                mark:
+                  type: string
+                  nullable: true
+                  example: null
+                  description: The human readable mark for this indicator.
+                descriptor:
+                  description: Statement that explain what a student has achieved or demonstrated for this level.
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 628
+                      description: The id in the DB of this field. To help identify different rubric descriptors
+                    name:
+                      type: string
+                      example: |
+                        Mostly listening, speaking on topic, reading appropriate materials, writing on-topic & using critical non-verbal communication.
+                      description: The description of the descriptor
+                    maxValue:
+                      type: number
+                      example: 0
+                      description: |
+                        If you are using the mark range, this will be the upper point value available for that particular descriptor.
+                    sequence:
+                      description: The order the descriptor was ordered in
+                      type: integer
+                      example: 4
     assessment-feedback-item:
       title: An Assessment feedback item
       description: An Assessment feedback item
@@ -2780,6 +2924,7 @@ components:
             Joffrey,
             Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
             Please consider this for your next essay.
+          description: The teachers feedback for the student
         date:
           type: string
           format: date-time
@@ -2789,9 +2934,13 @@ components:
         mark:
           type: string
           example: A
+          description: A human readable mark
         normalisedMark:
           type: integer
           example: 36
+          description: The mark in numeric form
+        rubric:
+          $ref: '#/components/schemas/assessment-rubric-feedback'
         instructor:
           $ref: '#/components/schemas/userShort'
     assessment-item:
@@ -2867,6 +3016,8 @@ components:
           description: |
             The date as a RFC3339 string.
           example: '2022-01-30T21:00:00.000Z'
+        rubric:
+          $ref: '#/components/schemas/assessment-rubric'
         project:
           type: object
           properties:
@@ -2953,6 +3104,8 @@ components:
                         type: integer
                         description: ID of the parent assessment (project)
                         example: 255
+                  rubric:
+                    $ref: '#/components/schemas/assessment-rubric'
                   dueDate:
                     type: string
                     format: date-time
