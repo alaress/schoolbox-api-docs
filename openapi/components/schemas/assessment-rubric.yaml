@@ -4,43 +4,59 @@ readOnly: true
 type: object
 properties:
   capabilities:
+    description: The area that you are assessing.
     type: object
     properties:
       id:
         type: integer
         example: 47
+        description: The id in the DB of this field. To help identify different rubric capabilities
       name:
         type: string
         example: Skills
+        description: The description of the capability
       maxValue:
+        description: |
+          By default, the maximum points for the capability is the sum of the highest descriptor values available in each indicator within that capability.
         type: number
         example: 0
       indicators:
+        description: The key skills that you will be assessing in the assessment.
         type: object
         properties:
           id:
             type: integer
             example: 105
+            description: The id in the DB of this field. To help identify different rubric indicators
           name:
             type: string
             example: |
               Communication
+            description: The description of the indicator
           maxValue:
             type: number
             example: 0
+            description: |
+              By default, the maximum points for the indicator is the sum of the highest descriptor values available within the indicator.
           descriptors:
+            description: Statement that explain what a student has achieved or demonstrated for this level.
             type: object
             properties:
               id:
                 type: integer
                 example: 620
+                description: The id in the DB of this field. To help identify different rubric descriptors
               name:
                 type: string
                 example: |
                   Developing in reading appropriate materials and writing on-topic.
+                description: The description of the descriptor
               maxValue:
+                description: |
+                  If you are using the mark range, this will be the upper point value available for that particular descriptor.
                 type: number
                 example: 0
               sequence:
+                description: The order the descriptors are ordered in
                 type: integer
                 example: 4
