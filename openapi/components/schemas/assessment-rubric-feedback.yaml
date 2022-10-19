@@ -1,0 +1,80 @@
+title: An Assessment Rubric item
+description: An Assessment Rubric item
+readOnly: true
+type: object
+properties:
+  capabilities:
+    description: The area that was assessed.
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 47
+        description: The id in the DB of this field. To help identify different rubric capabilities
+      name:
+        type: string
+        example: Skills
+        description: The description of the capability
+      maxValue:
+        type: number
+        example: 0
+        description: |
+          By default, the maximum points for the capability is the sum of the highest descriptor values available in each indicator within that capability.
+      value:
+        type: number
+        example: 0
+        description: The marked value for this capability
+      mark:
+        type: string
+        nullable: true
+        example: null
+        description: The human readable mark for this capability
+      indicators:
+        description: The key skills that was assessed in the assessment.
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 105
+            description: The id in the DB of this field. To help identify different rubric indicators
+          name:
+            type: string
+            example: |
+              Communication
+            description: The description of the indicator
+          maxValue:
+            type: number
+            example: 0
+            description: |
+              By default, the maximum points for the indicator is the sum of the highest descriptor values available within the indicator.
+          value:
+            type: number
+            example: 0
+            description: The marked value for this indicator
+          mark:
+            type: string
+            nullable: true
+            example: null
+            description: The human readable mark for this indicator.
+          descriptor:
+            description: Statement that explain what a student has achieved or demonstrated for this level.
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 628
+                description: The id in the DB of this field. To help identify different rubric descriptors
+              name:
+                type: string
+                example: |
+                  Mostly listening, speaking on topic, reading appropriate materials, writing on-topic & using critical non-verbal communication.
+                description: The description of the descriptor
+              maxValue:
+                type: number
+                example: 0
+                description: |
+                  If you are using the mark range, this will be the upper point value available for that particular descriptor.
+              sequence:
+                description: The order the descriptor was ordered in
+                type: integer
+                example: 4
