@@ -1330,7 +1330,7 @@ paths:
       description: |
         Share Learning Moment
       responses:
-        '200':
+        '201':
           description: Successfully Created a Learning moment
           content:
             application/json:
@@ -1371,7 +1371,7 @@ paths:
       description: |
         Delete Learning Moment
       responses:
-        '200':
+        '204':
           description: The Learning Moment was deleted successfully.
         default:
           $ref: '#/components/responses/problem'
