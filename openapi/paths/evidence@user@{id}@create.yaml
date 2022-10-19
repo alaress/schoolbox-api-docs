@@ -5,7 +5,7 @@ post:
   description: |
     Share Learning Moment
   responses:
-    '200':
+    '201':
       description: Successfully Created a Learning moment
       content:
         application/json:
