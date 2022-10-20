@@ -3,7 +3,7 @@ get:
   tags: [assessment]
   summary: Get an assessment
   description: |
-    This will return all the information related to a specific assessment.  This will include the the assessment details and the results of all participants in that assessment.
+    This will return all the information related to a specific assessment.  This will include the the assessment details and the results of all participants in that assessment.   The endpoint is only available to superusers.
   responses:
     '200':
       $ref: ../components/responses/assessment-item.yaml
