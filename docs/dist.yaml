@@ -1277,7 +1277,7 @@ paths:
                   description: the db identifier of the yearlevel
                   example: 6
                 name:
-                  type: integer
+                  type: string
                   description: the name of the year level. may not be unique
                   example: Year 6
             project:
