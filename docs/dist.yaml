@@ -1187,7 +1187,7 @@ paths:
         - assessment
       summary: Get a list of assessments
       description: |
-        This endpoint will return all assessments and their results that match the filter provided.  We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.  For example a common request may be to get assessments of work type 'major' that are due in the current year.
+        This endpoint will return all assessments and their results that match the filter provided.  We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.  For example a common request may be to get assessments of work type 'major' that are due in the current year.   The endpoint is only available to superusers.
       responses:
         '200':
           $ref: '#/components/responses/assessment-list'
@@ -1277,7 +1277,7 @@ paths:
                   description: the db identifier of the yearlevel
                   example: 6
                 name:
-                  type: integer
+                  type: string
                   description: the name of the year level. may not be unique
                   example: Year 6
             project:
@@ -1297,7 +1297,7 @@ paths:
         - assessment
       summary: Get an assessment
       description: |
-        This will return all the information related to a specific assessment.  This will include the the assessment details and the results of all participants in that assessment.
+        This will return all the information related to a specific assessment.  This will include the the assessment details and the results of all participants in that assessment.   The endpoint is only available to superusers.
       responses:
         '200':
           $ref: '#/components/responses/assessment-item'
@@ -1311,7 +1311,7 @@ paths:
         - user
       summary: Create a user notification
       description: |
-        Send an instant notification to a selected user
+        Send an instant notification to a selected user.  The endpoint is only available to superusers.
       responses:
         '200':
           description: The notification was sent
