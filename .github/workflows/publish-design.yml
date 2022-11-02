@@ -14,7 +14,6 @@ on:
     paths-ignore:
       - docs/builds/*
       - docs/builds.json
-      - docs/dist.yaml
 jobs:
   build:
     if: github.repository == 'alaress/schoolbox-api-docs'
@@ -33,7 +32,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Copy all files (excl. builds/, builds.json, dist.yaml) into gh-pages repo
+          # Copy all files (excl. builds/, builds.json) into gh-pages repo
           mkdir .staging/
           cp -r ./* .staging/
 
@@ -44,7 +43,6 @@ jobs:
 
           # remove specs themselves
           rm -rf .staging/docs/builds/
-          rm -f .staging/docs/dist.yaml
           rm -f .staging/docs/builds.json
           
           # move files from base commit to gh-pages
