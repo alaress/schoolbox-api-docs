@@ -44,7 +44,7 @@ steps provided below:
 
 #### Building API docs locally
 
-##### `npm run build-new --build-version=$buildVersion [--selected]`
+##### `npm run build --build-version=$buildVersion [--selected]`
 Bundles the current definition to `docs/builds/$buildVersion.yaml`, and also
 creates a dropdown option for this build so that it may be selected.
 

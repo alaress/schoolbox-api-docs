@@ -35,7 +35,7 @@ jobs:
           # do not set beta specs as the most recently selected
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=${{ github.ref_name }}
+          npm run build --build-version=${{ github.ref_name }}
 
           # Commit and push
           git add docs/builds docs/builds.json

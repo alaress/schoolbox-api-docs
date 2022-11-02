@@ -34,10 +34,7 @@ jobs:
           # Build the docs
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=${{ github.ref_name }} --selected
-
-          # also do the old build (for now)
-          npm run build
+          npm run build --build-version=${{ github.ref_name }} --selected
 
           # Commit and push
           git add docs/builds docs/builds.json
