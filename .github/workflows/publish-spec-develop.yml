@@ -25,7 +25,7 @@ jobs:
           # Copy docs into gh-pages repo
           # Also copy openapi/ and .redocly.yaml (for building docs)
           mkdir .staging/
-          cp -r docs/ docs/ openapi/ .redocly.yaml .staging
+          cp -r docs/ openapi/ .redocly.yaml .staging
           git checkout -- .
           git checkout gh-pages
           cp -r .staging/* .
