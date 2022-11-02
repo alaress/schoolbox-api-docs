@@ -44,12 +44,6 @@ steps provided below:
 
 #### Building API docs locally
 
-##### `npm run build`
-
-Bundles the current definition to `docs/dist.yaml`.
-
-(This is required for backward compatibility with the old single-version docs.)
-
 ##### `npm run build-new --build-version=$buildVersion [--selected]`
 Bundles the current definition to `docs/builds/$buildVersion.yaml`, and also
 creates a dropdown option for this build so that it may be selected.
