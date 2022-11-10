@@ -44,13 +44,7 @@ steps provided below:
 
 #### Building API docs locally
 
-##### `npm run build`
-
-Bundles the current definition to `docs/dist.yaml`.
-
-(This is required for backward compatibility with the old single-version docs.)
-
-##### `npm run build-new --build-version=$buildVersion [--selected]`
+##### `npm run build --build-version=$buildVersion [--selected]`
 Bundles the current definition to `docs/builds/$buildVersion.yaml`, and also
 creates a dropdown option for this build so that it may be selected.
 
@@ -67,15 +61,21 @@ Validates the definition.
 
 ### Updating the API
 
-When updating the API, do the following before creating a pull request:
-* run `npm run build`
-* commit the resultant changes to `docs/dist.yaml`
+Create a new release whose version number matches the Schoolbox version number
+you wish to create a release for.
 
-If building documentation for a new Schoolbox version:
-* run `npm run build-new` for the new version
-  * if the new version is not a beta: provide the `--selected` flag
-* commit the changes to the builds list file `docs/builds.json`
-* commit the new YAML file in `docs/builds`
+Releases may be created at https://github.com/alaress/schoolbox-api-docs/releases.
+
+#### Beta releases
+
+- include the beta number, e.g. 22.1.0-beta3
+- check the pre-release checkbox
+
+#### Stable releases
+
+- do not include the beta number, e.g. 22.1.0
+- leave the pre-release checkbox unchecked
+
 
 ### Configuration
 

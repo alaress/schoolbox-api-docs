@@ -25,7 +25,7 @@ jobs:
           # Copy docs into gh-pages repo
           # Also copy openapi/ and .redocly.yaml (for building docs)
           mkdir .staging/
-          cp -r docs/ docs/ openapi/ .redocly.yaml .staging
+          cp -r docs/ openapi/ .redocly.yaml .staging
           git checkout -- .
           git checkout gh-pages
           cp -r .staging/* .
@@ -35,9 +35,9 @@ jobs:
           # do not set beta specs as the most recently selected
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=${{ github.ref_name }}
+          npm run build --build-version=${{ github.ref_name }}
 
           # Commit and push
-          git add docs/builds docs/builds.json docs/dist.yaml
+          git add docs/builds docs/builds.json
           git commit --allow-empty -m "Publish spec for production release ${{ github.ref_name }}" .
           git push

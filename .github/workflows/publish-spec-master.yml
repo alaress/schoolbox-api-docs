@@ -25,7 +25,7 @@ jobs:
           # Copy docs into gh-pages repo
           # Also copy openapi/ and .redocly.yaml (for building docs)
           mkdir .staging/
-          cp -r docs/ docs/ openapi/ .redocly.yaml .staging
+          cp -r docs/ openapi/ .redocly.yaml .staging
           git checkout -- .
           git checkout gh-pages
           cp -r .staging/* .
@@ -34,12 +34,9 @@ jobs:
           # Build the docs
           npm ci
           npm run rebuild-builds-list
-          npm run build-new --build-version=${{ github.ref_name }} --selected
-
-          # also do the old build (for now)
-          npm run build
+          npm run build --build-version=${{ github.ref_name }} --selected
 
           # Commit and push
-          git add docs/builds docs/builds.json docs/dist.yaml
+          git add docs/builds docs/builds.json
           git commit --allow-empty -m "Publish spec for production release ${{ github.ref_name }}" .
           git push
