@@ -1,8 +1,12 @@
 [
   {
-    "label": "22.1.0",
-    "value": "22.1.0",
+    "label": "22.1.5",
+    "value": "22.1.5",
     "selected": true
+  },
+  {
+    "label": "22.1.0",
+    "value": "22.1.0"
   },
   {
     "label": "22.1.0-beta3",
