@@ -38,7 +38,6 @@ jobs:
 
           # Copy hidden files too (excl. .git, .github)
           cp .gitignore .staging/.gitignore
-          cp .gitattributes .staging/.gitattributes
           cp .redocly.yaml .staging/.redocly.yaml
 
           # remove specs themselves
@@ -50,12 +49,11 @@ jobs:
           git checkout gh-pages
           cp -r .staging/* .
           cp .staging/.gitignore .gitignore
-          cp .staging/.gitattributes .gitattributes
           cp .staging/.redocly.yaml .redocly.yaml
           rm -rf .staging/
 
           # Commit and push: if there are no changes, do nothing
-          git add . .gitignore .gitattributes .redocly.yaml
+          git add . .gitignore .redocly.yaml
           CHANGES=`git diff --cached --shortstat`
           if [ -n "${CHANGES}" ]; then
             git commit -m "Build design for commit ${{ github.sha }}" .
