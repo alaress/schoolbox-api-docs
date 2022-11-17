@@ -11,10 +11,14 @@
 
 #### Previewing API docs locally
 
-Start the reference docs preview server in the `docs` folder:
+Build an example doc locally:
 ```bash
-cd docs;
-python3 -m http.server;
+npm run build --build-version=0.0.1 --selected
+```
+
+Then, start the reference docs preview server in the `docs` folder:
+```bash
+python3 -m http.server --directory docs;
 ```
 
 Then, visit http://127.0.0.1:8000/?debug.
@@ -23,20 +27,22 @@ Note the version selector at the top-left of the page, under the Schoolbox logo.
 * previous versions
 * pre-release versions
 
-In order to view changes to the docs, run one of the "Building API docs locally"
-steps provided below:
-
 #### Building API docs locally
 
 ##### `npm run build --build-version=$buildVersion [--selected]`
 Bundles the current definition to `docs/builds/$buildVersion.yaml`, and also
 creates a dropdown option for this build so that it may be selected.
+(The set of options is stored in `docs/builds.json`.)
 
 `$buildVersion` is expected to match the Schoolbox version to which the current
 definition applies.
 
 If `--selected` is passed, this build will be selected in the dropdown by
 default: otherwise, the default selected build will not be changed.
+
+##### `npm run rebuild-builds-list`
+Recreates `docs/builds.json` with the builds which already exist in
+`docs/builds`.
 
 ##### `npm test`
 Validates the definition.
@@ -48,15 +54,18 @@ Validates the definition.
 Create a new release whose version number matches the Schoolbox version number
 you wish to create a release for.
 
-Releases may be created at https://github.com/alaress/schoolbox-api-docs/releases.
+Releases may be created at
+https://github.com/alaress/schoolbox-api-docs/releases.
 
 #### Beta releases
 
+- tag against develop
 - include the beta number, e.g. 22.1.0-beta3
 - check the pre-release checkbox
 
 #### Stable releases
 
+- tag against develop (for now: this may change to tag against master)
 - do not include the beta number, e.g. 22.1.0
 - leave the pre-release checkbox unchecked
 
