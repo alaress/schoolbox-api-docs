@@ -3,7 +3,7 @@ get:
   tags: [user]
   summary: Get a user
   description: |
-    Returns all the information about a specific user. The result from this API can be passed into the update user endpoint. This endpoint may only be used by superusers.
+    Returns all the information about a specific user. The result from this API can be passed into the update user endpoint. This endpoint may only be used by the current user or superusers.
   responses:
     '200':
       $ref: ../components/responses/user-item.yaml
