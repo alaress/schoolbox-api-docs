@@ -37,6 +37,6 @@ jobs:
           npm run build --build-version=${{ github.ref_name }} --selected
 
           # Commit and push
-          git add docs/builds docs/builds.json
-          git commit --allow-empty -m "Publish spec for production release ${{ github.ref_name }}" .
+          git add -f docs/builds docs/builds.json
+          git commit --allow-empty -m "Publish spec for beta release ${{ github.ref_name }}" .
           git push
