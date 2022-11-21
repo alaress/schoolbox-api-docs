@@ -64,7 +64,7 @@ content:
             * `$filename` is the filename that the file will be given once it is
               uploaded to wherever it is being uploaded
 
-            See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+            See the [Upload a file](#post-/storage/asyncUpload.php)
             endpoint for details on how to upload a file, and receive a file
             pointer from that upload.
           items:
@@ -91,7 +91,7 @@ content:
             * `$filename` is the filename that the file will be given once it is
               uploaded to wherever it is being uploaded
 
-            See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+            See the [Upload a file](#post-/storage/asyncUpload.php)
             endpoint for details on how to upload a file, and receive a file
             pointer from that upload.
           items:
