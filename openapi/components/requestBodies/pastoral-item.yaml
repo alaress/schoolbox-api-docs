@@ -56,6 +56,7 @@ content:
               * for `browse` and `myfile` this is a file ID
              * for `office365` this is the file's unique node
             * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
+
             See the [Upload a file to Schoolbox](#operation/storageAsyncUpload) endpoint for details on how to upload a file, and receive a file pointer from that upload.
         private_attachments[]:
           nullable: true
@@ -75,6 +76,7 @@ content:
               * for `browse` and `myfile` this is a file ID
              * for `office365` this is the file's unique node
             * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
+
             See the [Upload a file to Schoolbox](#operation/storageAsyncUpload) endpoint for details on how to upload a file, and receive a file pointer from that upload.
         actions[]:
           nullable: true
@@ -97,7 +99,7 @@ content:
           description: |
             An array of pairs of a role and its access level to this pastoral record in the format of:
             `$roleId => $accessLevel`
-            * `$roleId` is either of the followings:
+            * `$roleId` is one of the following:
               * The ID of a role of Staff Role Type with Access Pastoral Care permission
               * 'role-type-parent' (requires Allow Parent Pastoral Access config enabled)
               * 'role-type-student' (requires Allow Student Pastoral Access config enabled)
