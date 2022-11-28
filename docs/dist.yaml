@@ -3539,11 +3539,11 @@ components:
               name:
                 description: The name of the pastoral type
                 type: string
-              colour:
-                description: The colour associated to the pastoral type
-                type: string
               icon:
                 description: The name of the icon associated to the pastoral type
+                type: string
+              colour:
+                description: The colour of the icon associated to the pastoral type
                 type: string
               sentiment:
                 type: string
@@ -3560,11 +3560,11 @@ components:
               name:
                 description: The name of the pastoral sub-type
                 type: string
-              colour:
-                description: The colour associated to the pastoral sub-type
-                type: string
               icon:
                 description: The name of the icon associated to the pastoral sub-type
+                type: string
+              colour:
+                description: The colour of the icon associated to the pastoral sub-type
                 type: string
               sentiment:
                 type: string
