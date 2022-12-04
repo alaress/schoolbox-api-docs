@@ -1,10 +1,13 @@
 openapi: 3.0.2
 info:
-  version: 22.0.10
+  version: 1.2.9
   title: Schoolbox API
   description: |
     This document describes the API endpoints that are available to a Schoolbox
     instance.
+
+    This document is current as of Schoolbox version 22.0.10.
+
 
     **To generate a JWT in your schoolbox instance.**
 
@@ -62,6 +65,10 @@ tags:
     x-displayName: File management
     description: |
       Upload files.
+  - name: Learning Moment
+    x-displayName: Learning Moment
+    description: |
+      Create and manage Learning Moments.
   - name: mobile
     x-displayName: Push Notification
     description: Endpoints for Mobile App Developers to connect and register devices
@@ -69,6 +76,10 @@ tags:
     x-displayName: News
     description: |
       Create and manage school news (also known as communications).
+  - name: pastoral
+    x-displayName: Pastoral
+    description: |
+      Create and manage pastoral records.
   - name: session
     x-displayName: Session management
     description: |
@@ -1295,6 +1306,125 @@ paths:
           $ref: '#/components/responses/problem'
     parameters:
       - $ref: '#/components/parameters/id'
+  /learning/evidence/user/{id}/create:
+    post:
+      operationId: assessmentSearch
+      tags:
+        - Learning Moment
+      summary: null
+      description: |
+        Share Learning Moment
+      responses:
+        '200':
+          description: Successfully Created a Learning moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/evidenceItem'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/evidence-item'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /learning/evidence/{id}:
+    put:
+      operationId: putEvidence
+      tags:
+        - Learning Moment
+      summary: Update Learning Moment
+      description: |
+        Update Learning Moment
+      responses:
+        '200':
+          description: Successfully Updated a Learning moment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/evidenceItem'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/evidence-item'
+      parameters:
+        - $ref: '#/components/parameters/id'
+    delete:
+      operationId: deleteEvidence
+      tags:
+        - Learning Moment
+      summary: Delete Learning Moment
+      description: |
+        Delete Learning Moment
+      responses:
+        '200':
+          description: The Learning Moment was deleted successfully.
+        default:
+          $ref: '#/components/responses/problem'
+      parameters:
+        - $ref: '#/components/parameters/id'
+  /learning/evidenceFeed/user/{id}:
+    get:
+      operationId: evidenceFeed
+      tags:
+        - Learning Moment
+      summary: List the Learning Moments and Badges for the specified User
+      description: |
+        This endpoint will return a list of all evidence objects achieved or received by the user limited to a count of 10 items
+      responses:
+        '200':
+          $ref: '#/components/responses/evidence-list'
+        default:
+          $ref: '#/components/responses/problem'
+    parameters:
+      - cursor: null
+        name: cursor
+        in: query
+        schema:
+          type: object
+          description: |
+            base64 encoded object
+          example: eyJpZCI6IjQiLCJkaXNjcmltaW5hdG9yIjoiYmFkZ2VBd2FyZCIsImRhdGUiOiIyMDIyLTA3LTIzIDExOjM5OjI3In0=
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            discriminator:
+              type: string
+              enum:
+                - evidence
+                - badgeAward
+              example: badgeAward
+            date:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: '2022-08-30T10:09:09+10:00'
+      - $ref: '#/components/parameters/id'
+  /pastoral/record/insert:
+    post:
+      operationId: pastoral.postRecordInsert
+      tags:
+        - pastoral
+      summary: Create a new pastoral record
+      description: |
+        Creates a new pastoral record. The record's author will be the currently authenticated user.
+        #### Availability
+        This is accessible only when Pastoral module is enabled.
+        #### Permission
+        This endpoint is available for:
+        * Users with Pastoral Moderator service permission
+        * Users with a role of Staff role type with Access Pastoral Care permission
+      responses:
+        '200':
+          description: Successfully created a pastoral record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pastoral-item'
+        default:
+          $ref: '#/components/responses/problem'
+      requestBody:
+        $ref: '#/components/requestBodies/pastoral-item'
 security:
   - session: []
   - bearerAuth: []
@@ -2225,7 +2355,7 @@ components:
         * `$filename` is the filename that the file will be given once it is uploaded
           to wherever it is being uploaded
 
-        See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+        See the [Upload a file](#post-/storage/asyncUpload.php)
         endpoint for details on how to upload a file, and receive a file
         pointer from that upload.
     audience:
@@ -2833,6 +2963,789 @@ components:
                     example: '2022-01-30T21:00:00.000Z'
                   participants:
                     $ref: '#/components/schemas/assessment-feedback-item'
+    curriculumItem:
+      title: a Curriculum Code
+      description: A Curriculm Code
+      readOnly: true
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+          example: 65
+        name:
+          type: string
+          example: Self-awareness
+        code:
+          type: string
+          example: GCPSC-SEA
+    evidenceItem:
+      title: evidence
+      description: A learning moment item
+      readOnly: true
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        createdAt:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-08-30T10:09:09+10:00'
+        updatedAt:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-08-30T10:09:09+10:00'
+        body:
+          type: string
+          description: |
+            The content of the Learning Moment
+        creator:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            externalId:
+              $ref: '#/components/schemas/externalId'
+              example: 501
+            title:
+              type: string
+              nullable: true
+              description: The user's title (Mr., Ms., etc.).
+              example: Ms
+            firstName:
+              type: string
+              nullable: true
+              description: |
+                The user's first name.
+
+                Schoolbox doesn't distinguish between a person's actual first name
+                and any other names, and in any case is not the definitive source of
+                naming information; therefore in practice this will usually be the
+                user's given name.
+              example: Rebecca
+            lastName:
+              type: string
+              nullable: true
+              description: The user's surname.
+              example: White
+            _links:
+              type: object
+              properties:
+                profile:
+                  type: string
+                  example: /search/user/2
+                avatar:
+                  type: string
+                  example: /portrait.php?id=2&size=square64
+            isDeleted:
+              type: boolean
+              example: false
+        recipient:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            externalId:
+              $ref: '#/components/schemas/externalId'
+              example: 501
+            title:
+              type: string
+              nullable: true
+              description: The user's title (Mr., Ms., etc.).
+              example: Ms
+            firstName:
+              type: string
+              nullable: true
+              description: |
+                The user's first name.
+
+                Schoolbox doesn't distinguish between a person's actual first name
+                and any other names, and in any case is not the definitive source of
+                naming information; therefore in practice this will usually be the
+                user's given name.
+              example: Rebecca
+            lastName:
+              type: string
+              nullable: true
+              description: The user's surname.
+              example: White
+            _links:
+              type: object
+              properties:
+                profile:
+                  type: string
+                  example: /search/user/2
+                avatar:
+                  type: string
+                  example: /portrait.php?id=2&size=square64
+            isDeleted:
+              type: boolean
+              example: false
+        discussionThread:
+          nullable: true
+          $ref: '#/components/schemas/discussionThread-read'
+        filename:
+          nullable: true
+          type: string
+        storage:
+          nullable: true
+          type: object
+          properties:
+            hash:
+              nullable: true
+              type: string
+              example: 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+            mime:
+              nullable: true
+              type: string
+              example: image/jpeg
+            type:
+              nullable: true
+              type: string
+              example: image
+            size:
+              nullable: true
+              type: integer
+              example: 3385989
+            _links:
+              nullable: true
+              type: object
+              description: |
+                Will contain one of the following depending on what file type is attached
+              properties:
+                icon:
+                  type: string
+                  example: /static/images/mime/application-image-jpg.svg
+                image:
+                  type: string
+                  example: /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+                stream:
+                  type: string
+                poster:
+                  type: string
+                fetch:
+                  type: string
+                  example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+        curriculumNodes:
+          nullable: true
+          type: array
+          items:
+            $ref: '#/components/schemas/curriculumItem'
+        tags:
+          nullable: true
+          type: object
+          description: |
+            System configurable in your Admin Lists Learning Moment area
+          properties:
+            id:
+              type: integer
+              description: the DB identifier of the Learning Moment Tags
+              example: 1
+            name:
+              type: string
+              description: the name of the Learning Moment type, may not be unique
+              example: Class Work
+        _links:
+          type: object
+          properties:
+            createThread:
+              type: string
+              example: /discussion/evidence/7/threads
+            delete:
+              type: string
+              example: /learning/evidence/7
+            detail:
+              type: string
+              example: /learning/evidence/7
+            modifyForm:
+              type: string
+              example: /learning/evidence/7/modify
+            put:
+              type: string
+              example: /learning/evidence/7
+    badgeAwardItem:
+      title: badgeAward
+      description: A Badge Award item
+      readOnly: true
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/id'
+        badge:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            createdAt:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: '2022-08-30T10:09:09+10:00'
+            createdBy:
+              type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/id'
+                externalId:
+                  $ref: '#/components/schemas/externalId'
+                  example: 501
+                title:
+                  type: string
+                  nullable: true
+                  description: The user's title (Mr., Ms., etc.).
+                  example: Ms
+                firstName:
+                  type: string
+                  nullable: true
+                  description: |
+                    The user's first name.
+
+                    Schoolbox doesn't distinguish between a person's actual first name
+                    and any other names, and in any case is not the definitive source of
+                    naming information; therefore in practice this will usually be the
+                    user's given name.
+                  example: Rebecca
+                lastName:
+                  type: string
+                  nullable: true
+                  description: The user's surname.
+                  example: White
+                _links:
+                  type: object
+                  properties:
+                    profile:
+                      type: string
+                      example: /search/user/2
+                    avatar:
+                      type: string
+                      example: /portrait.php?id=2&size=square64
+                isDeleted:
+                  type: boolean
+                  example: false
+            updatedAt:
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: '2022-08-30T10:09:09+10:00'
+            updatedBy:
+              type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/id'
+                externalId:
+                  $ref: '#/components/schemas/externalId'
+                  example: 501
+                title:
+                  type: string
+                  nullable: true
+                  description: The user's title (Mr., Ms., etc.).
+                  example: Ms
+                firstName:
+                  type: string
+                  nullable: true
+                  description: |
+                    The user's first name.
+
+                    Schoolbox doesn't distinguish between a person's actual first name
+                    and any other names, and in any case is not the definitive source of
+                    naming information; therefore in practice this will usually be the
+                    user's given name.
+                  example: Rebecca
+                lastName:
+                  type: string
+                  nullable: true
+                  description: The user's surname.
+                  example: White
+                _links:
+                  type: object
+                  properties:
+                    profile:
+                      type: string
+                      example: /search/user/2
+                    avatar:
+                      type: string
+                      example: /portrait.php?id=2&size=square64
+                isDeleted:
+                  type: boolean
+                  example: false
+            name:
+              type: string
+              example: |
+                Jump Rope for Heart Team
+            body:
+              type: string
+              description: |
+                The content of the Learning Moment
+            image:
+              type: string
+              nullable: true
+            icon:
+              type: string
+              description: |
+                The Badge Image, either system defined or selectable by the user
+              example: |
+                /images/badges/sport/23.svg
+            allowAsGoal:
+              type: boolean
+              example: true
+            animate:
+              type: boolean
+              example: true
+              description: |
+                On First load of the achieved badge, should the badge be animated? flying stars, fly in...
+            category:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 4
+                name:
+                  type: string
+                  example: |
+                    Extra-Curricular
+            achievementExpiry:
+              nullable: true
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: null
+            goalExpiry:
+              nullable: true
+              type: string
+              format: date-time
+              description: |
+                The date as a RFC3339 string.
+              example: null
+            curriculumNodes:
+              nullable: true
+              type: array
+              items:
+                $ref: '#/components/schemas/curriculumItem'
+            tags:
+              nullable: true
+              example: null
+              type: object
+              description: |
+                System configurable in your Admin Lists Learning Moment area
+              properties:
+                id:
+                  type: integer
+                  description: the DB identifier of the Learning Moment Tags
+                  example: 1
+                name:
+                  type: string
+                  description: the name of the Learning Moment type, may not be unique
+                  example: Class Work
+            _links:
+              type: object
+              properties:
+                update:
+                  type: string
+                  description: |
+                    the link for the user to update the badge
+                  example: /learning/badge/10/update
+                delete:
+                  type: string
+                  description: |
+                    the link for the user to delete the badge
+                  example: /learning/badge/10
+                achievementRecipients:
+                  type: string
+                  example: /learning/badge/award/10/achievement/recipients
+                goalRecipients:
+                  type: string
+                  example: /learning/badge/award/10/goal/recipients
+                achievementWithdraw:
+                  type: string
+                  example: /learning/badge/award/10/achievement/withdraw
+                goalWithdraw:
+                  type: string
+                  example: /learning/badge/award/10/goal/withdraw
+                icon:
+                  type: string
+                  description: |
+                    The Badge Image, either system defined or selectable by the user
+                  example: /static/images/badges/sport/23.svg
+        status:
+          type: string
+          enum:
+            - goal
+            - achievement
+          example: goal
+        isGoal:
+          type: boolean
+          example: true
+        award:
+          $ref: '#/components/schemas/badgeAwardItem'
+          nullable: true
+        recipient:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            externalId:
+              $ref: '#/components/schemas/externalId'
+              example: 501
+            title:
+              type: string
+              nullable: true
+              description: The user's title (Mr., Ms., etc.).
+              example: Ms
+            firstName:
+              type: string
+              nullable: true
+              description: |
+                The user's first name.
+
+                Schoolbox doesn't distinguish between a person's actual first name
+                and any other names, and in any case is not the definitive source of
+                naming information; therefore in practice this will usually be the
+                user's given name.
+              example: Rebecca
+            lastName:
+              type: string
+              nullable: true
+              description: The user's surname.
+              example: White
+            _links:
+              type: object
+              properties:
+                profile:
+                  type: string
+                  example: /search/user/2
+                avatar:
+                  type: string
+                  example: /portrait.php?id=2&size=square64
+            isDeleted:
+              type: boolean
+              example: false
+        awardedBy:
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/id'
+            externalId:
+              $ref: '#/components/schemas/externalId'
+              example: 501
+            title:
+              type: string
+              nullable: true
+              description: The user's title (Mr., Ms., etc.).
+              example: Ms
+            firstName:
+              type: string
+              nullable: true
+              description: |
+                The user's first name.
+
+                Schoolbox doesn't distinguish between a person's actual first name
+                and any other names, and in any case is not the definitive source of
+                naming information; therefore in practice this will usually be the
+                user's given name.
+              example: Rebecca
+            lastName:
+              type: string
+              nullable: true
+              description: The user's surname.
+              example: White
+            _links:
+              type: object
+              properties:
+                profile:
+                  type: string
+                  example: /search/user/2
+                avatar:
+                  type: string
+                  example: /portrait.php?id=2&size=square64
+            isDeleted:
+              type: boolean
+              example: false
+        awardedAt:
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: '2022-08-27T12:49:11+10:00'
+        expiresAt:
+          nullable: true
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: null
+        viewedOn:
+          nullable: true
+          type: string
+          format: date-time
+          description: |
+            The date as a RFC3339 string.
+          example: null
+        _links:
+          type: object
+          properties:
+            achievementWithdraw:
+              type: string
+              example: /learning/badge/award/10/achievement/withdraw
+            goalWithdraw:
+              type: string
+              example: /learning/badge/award/10/goal/withdraw
+            goalAward:
+              type: string
+              example: /learning/badge/award/10/achievement
+            awardUpdate:
+              type: string
+              example: /learning/badge/award/8/update
+    pastoral-item:
+      title: a Pastoral Record
+      description: A pastoral record
+      readOnly: true
+      type: array
+      items:
+        properties:
+          id:
+            $ref: '#/components/schemas/id'
+          externalId:
+            description: The ID of SIS data corresponding to this pastoral record, if External Pastoral Synchronisation is ON
+            type: string
+            nullable: true
+          student:
+            $ref: '#/components/schemas/userShort'
+            _links:
+              type: object
+              properties:
+                profile:
+                  type: string
+                  format: uri-reference
+                avatar:
+                  type: string
+                  format: uri-reference
+                  nullable: true
+          heading:
+            description: Heading of the pastoral record
+            type: string
+          type:
+            description: Type of the pastoral record
+            type: object
+            properties:
+              id:
+                description: The ID of the pastoral type associated to this pastoral record
+                type: integer
+              name:
+                description: The name of the pastoral type
+                type: string
+              colour:
+                description: The colour associated to the pastoral type
+                type: string
+              icon:
+                description: The name of the icon associated to the pastoral type
+                type: string
+              sentiment:
+                type: string
+              sequence:
+                description: The order in which this pastoral type will display in a pastoral type list
+                type: integer
+          subType:
+            description: Sub-type of the pastoral record
+            type: object
+            properties:
+              id:
+                description: The ID of the pastoral sub-type associated to this pastoral record
+                type: integer
+              name:
+                description: The name of the pastoral sub-type
+                type: string
+              colour:
+                description: The colour associated to the pastoral sub-type
+                type: string
+              icon:
+                description: The name of the icon associated to the pastoral sub-type
+                type: string
+              sentiment:
+                type: string
+              sequence:
+                description: The order in which this pastoral sub-type will display in a pastoral sub-type list
+                type: integer
+          severity:
+            description: Severity of the pastoral record
+            type: object
+            properties:
+              id:
+                description: The ID of the pastoral severity of this pastoral record
+                type: integer
+              name:
+                description: The name of the pastoral severity
+                type: string
+              color:
+                description: The colour associated to the pastoral severity
+                type: string
+              sequence:
+                description: The order in which this pastoral severity will display in a pastoral severity list
+                type: integer
+          points:
+            nullable: true
+            description: Points of this pastoral record
+            type: integer
+          tags:
+            description: List of tag names
+            type: array
+            items:
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+          bodyPublic:
+            description: |
+              General content of this pastoral record in raw HTML
+            type: string
+          bodyPrivate:
+            description: |
+              Confidential content of this pastoral record in raw HTML
+            type: string
+          attachmentsPublic:
+            description: |
+              Files attached to General content
+            type: array
+            items:
+              $ref: '#/components/schemas/file'
+          attachmentsPrivate:
+            description: |
+              Files attached to Confidential content
+            type: array
+            items:
+              $ref: '#/components/schemas/file'
+          commentsPublic:
+            description: |
+              General comments
+            type: array
+            items:
+              $ref: '#/components/schemas/discussionComment-read'
+          commentsPrivate:
+            description: |
+              Confidential comments
+            type: array
+            items:
+              $ref: '#/components/schemas/discussionComment-read'
+          recordActions:
+            nullable: true
+            description: An array of pastoral actions
+            type: array
+            items:
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                completed:
+                  type: boolean
+                updatedAt:
+                  type: date
+                updatedBy:
+                  $ref: '#/components/schemas/userShort'
+          createdBy:
+            $ref: '#/components/schemas/userShort'
+          createdAt:
+            type: string
+            format: date-time
+            description: |
+              The date as a RFC3339 string.
+          updatedBy:
+            $ref: '#/components/schemas/userShort'
+          updatedAt:
+            type: string
+            format: date-time
+            description: |
+              The date as a RFC3339 string.
+          _links:
+            type: object
+        example:
+          id: 77
+          externalId: null
+          student:
+            id: 25
+            _links:
+              profile: /search/user/25
+              avatar: /portrait.php?id=25&size=square64
+            title: Ms
+            firstName: Jana
+            preferredName: null
+            lastName: Reed
+            fullName: Ms Jana Reed
+            isDeleted: false
+            externalId: 507
+          heading: Academic Achievement Award - Semester 2
+          type:
+            id: 1
+            name: Academic
+            colour: null
+            icon: null
+            sentiment: neutral
+            sequence: 1
+          subType:
+            id: 1
+            name: Award/Achievement
+            colour: rgba(182, 74, 74, 1.000)
+            icon: achievement
+            sentiment: neutral
+            sequence: 1
+          severity:
+            id: 1
+            name: Low
+            sequence: 1
+            color: rgba(0, 128, 0, 1.000)
+          points: 50
+          tags:
+            - id: 26
+              name: test tag A
+            - id: 27
+              name: test tag B
+          bodyPrivate: null
+          bodyPublic: Public body\nPublic body.
+          attachmentsPrivate: []
+          attachmentsPublic:
+            - hash: 723b6e31c2979b33deea852cdbbad9c4b0e00b96
+              mime: image/jpeg
+              type: image
+              size: 279489
+              _links:
+                fetch: /storage/fetch.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
+                icon: /static/images/mime/application-image-jpg.svg
+                image: /storage/image.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
+          commentsPrivate: []
+          commentsPublic: []
+          recordActions: []
+          createdBy:
+            id: 22
+            _links:
+              profile: /search/user/165
+              avatar: /portrait.php?id=165&size=square64
+            title: null
+            firstName: Jack
+            preferredName: null
+            lastName: Coles
+            fullName: Jack Coles
+            isDeleted: false
+          createdAt: '2022-11-14T15:08:21+11:00'
+          updatedBy:
+            id: 22
+            _links:
+              profile: /search/user/165
+              avatar: /portrait.php?id=165&size=square64
+            title: null
+            firstName: Jack
+            preferredName: null
+            lastName: Coles
+            fullName: Jack Coles
+            isDeleted: false
+          updatedAt: '2022-11-14T15:08:21+11:00'
+          _links:
+            read: /pastoral/student/25/record/77
   parameters:
     cursor:
       name: cursor
@@ -3331,6 +4244,70 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/assessment-feedback-list'
+    evidence-list:
+      description: A list of Learning Moments
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    discriminator:
+                      type: string
+                      enum:
+                        - evidence
+                        - badgeAward
+                      example: badgeAward
+                    object:
+                      discriminator:
+                        propertyName: discriminator
+                        mapping:
+                          evidence: '#/components/schemas/evidenceItem'
+                          badgeAward: '#/components/schemas/badgeAwardItem'
+                      oneOf:
+                        - $ref: '#/components/schemas/evidenceItem'
+                        - $ref: '#/components/schemas/badgeAwardItem'
+                    date:
+                      type: string
+                      format: date-time
+                      description: |
+                        The date as a RFC3339 string.
+                      example: '2022-08-30T10:09:09+10:00'
+              metadata:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 18
+                  cursor:
+                    type: object
+                    properties:
+                      current:
+                        type: string
+                        nullable: true
+                      next:
+                        type: object
+                        description: |
+                          base64 encoded object
+                        properties:
+                          id:
+                            $ref: '#/components/schemas/id'
+                          discriminator:
+                            type: string
+                            enum:
+                              - evidence
+                              - badgeAward
+                            example: badgeAward
+                          date:
+                            type: string
+                            format: date-time
+                            description: |
+                              The date as a RFC3339 string.
+                            example: '2022-08-30T10:09:09+10:00'
   requestBodies:
     user-item:
       description: A user
@@ -3468,7 +4445,7 @@ components:
                   * `$filename` is the filename that the file will be given once it is
                     uploaded to wherever it is being uploaded
 
-                  See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+                  See the [Upload a file](#post-/storage/asyncUpload.php)
                   endpoint for details on how to upload a file, and receive a file
                   pointer from that upload.
                 items:
@@ -3495,7 +4472,7 @@ components:
                   * `$filename` is the filename that the file will be given once it is
                     uploaded to wherever it is being uploaded
 
-                  See the [Upload a file to Schoolbox](#operation/storageAsyncUpload)
+                  See the [Upload a file](#post-/storage/asyncUpload.php)
                   endpoint for details on how to upload a file, and receive a file
                   pointer from that upload.
                 items:
@@ -3593,3 +4570,211 @@ components:
               style: form
             audience:
               explode: false
+    evidence-item:
+      description: A Learning Moment
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              body:
+                type: string
+                example: <p>I can count forwards and backwards by 2s.</p>\n
+              file:
+                nullable: true
+                type: string
+                example: store:1f8f836cce05750ac98302c74d4081f99fdd443f
+                description: hash as returned by asyncUpload.php
+              curriculumNodes:
+                nullable: true
+                type: array
+                items:
+                  $ref: '#/components/schemas/curriculumItem'
+              tags:
+                nullable: true
+                type: array
+                items:
+                  type: object
+                  description: |
+                    System configurable in your Admin Lists Learning Moment area
+                  properties:
+                    id:
+                      type: integer
+                      description: the DB identifier of the Learning Moment Tags
+                      example: 1
+                    name:
+                      type: string
+                      description: the name of the Learning Moment type, may not be unique
+                      example: Class Work
+              type:
+                type: string
+                enum:
+                  - photo
+                  - text
+                  - upload
+                  - video
+                  - audio
+                example: upload
+            required:
+              - body
+              - type
+    pastoral-item:
+      description: |
+        Pastoral record
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              student_id:
+                description: The ID of a student to create this pastoral record for.
+                type: integer
+                required: true
+              duplicateIds:
+                description: A comma separated list of IDs of students to create this pastoral record for.
+                type: string
+                nullable: true
+              heading:
+                description: Pastoral record title.
+                type: string
+                maxLength: 255
+                required: true
+              typeId:
+                description: The ID of a pastoral type to associate to this pastoral record.
+                type: integer
+                required: true
+              subtypeId:
+                description: |
+                  The ID of a pastoral sub-type to associate to this pastoral record.\
+                  The sub-type must already be associated with the type provided as typeId.\
+                  This can be null, if the pastoral type does not have any sub-type.\
+                  This cannot be null, if the pastoral type has sub-type(s).
+                type: integer
+                nullable: true
+              severityId:
+                description: |
+                  The ID of a pastoral severity to associate to this pastoral record.\
+                  Required only if Allow specification of severity on pastoral records config is ON.
+                type: integer
+                nullable: true
+              body_public:
+                description: |
+                  General content of this pastoral record in raw HTML.\
+                  The following tokens will be substituted with the students details on creation: [firstname], [preferredname], [surname], [fullname], [year], [house].
+                type: string
+                maxLength: 65535
+                nullable: true
+              body_private:
+                description: |
+                  Confidential content of this pastoral record in raw HTML.\
+                  The following tokens will be substituted with the students details on creation: [firstname], [preferredname], [surname], [fullname], [year], [house].
+                type: string
+                maxLength: 65535
+                nullable: true
+              public_attachments[]:
+                description: |
+                  Files to attach to general content of the pastoral record, supplied as pointers to a file in Schoolbox.\
+                  Each pointer will be in the format:\
+                  `$locator:$location:$filename`
+                  The variables within the pointer have this meaning:
+                  * `$locator` represents the strategy for finding the file:
+                    * `store` for files uploaded to Schoolbox's storage
+                    * `browse` finds files in Schoolbox's resource browser
+                    * `myfile` finds files in a Schoolbox user's My Files browser
+                    * `office365` finds files in an Office365 store
+                  * `$location` is the location of the file within `$locator`:
+                    * for `store` this is a file's unique hash
+                    * for `browse` and `myfile` this is a file ID
+                   * for `office365` this is the file's unique node
+                  * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
+
+                  See the [Upload a file](#post-/storage/asyncUpload.php) endpoint for details on how to upload a file, and receive a file pointer from that upload.
+                type: array
+                nullable: true
+              private_attachments[]:
+                description: |
+                  Files to attach to confidential content of the pastoral record, supplied as pointers to a file in Schoolbox.\
+                  Each pointer will be in the format:\
+                  `$locator:$location:$filename`
+                  The variables within the pointer have this meaning:
+                  * `$locator` represents the strategy for finding the file:
+                    * `store` for files uploaded to Schoolbox's storage
+                    * `browse` finds files in Schoolbox's resource browser
+                    * `myfile` finds files in a Schoolbox user's My Files browser
+                    * `office365` finds files in an Office365 store
+                  * `$location` is the location of the file within `$locator`:
+                    * for `store` this is a file's unique hash
+                    * for `browse` and `myfile` this is a file ID
+                   * for `office365` this is the file's unique node
+                  * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
+
+                  See the [Upload a file](#post-/storage/asyncUpload.php) endpoint for details on how to upload a file, and receive a file pointer from that upload.
+                type: array
+                nullable: true
+              actions[]:
+                description: |
+                  An array of IDs of pastoral action.\
+                  Available only if Enable Pastoral Actions config is ON.
+                type: array
+                nullable: true
+                items:
+                  type: integer
+              tags:
+                description: |
+                  Comma separated IDs of existing Pastoral Record Tags.\
+                  If non numerical string is provided, it'll be silently discarded.\
+                  To provide a name to create a new tag, use tagNames instead.
+                type: string
+                nullable: true
+              tagNames:
+                description: |
+                  Comma separated names of Pastoral Record Tags.\
+                  If Allow Staff to Create Pastoral Care Tags config is ON, attempts to create a new tag, if not alraeady exists.\
+                  The max length of a tag name is 255 chars.
+                type: string
+                nullable: true
+              points:
+                description: Points of this pastoral record.
+                type: number
+                format: float
+                minimum: -100000
+                maximum: 100000
+                nullable: true
+              role:
+                description: |
+                  An array of pairs of a role and its access level to this pastoral record in the format of:\
+                  `$roleId => $accessLevel`
+                  * `$roleId` is one of the following:
+                    * The ID of a role of Staff Role Type with Access Pastoral Care permission
+                    * 'role-type-parent' (requires Allow Parent Pastoral Access config enabled)
+                    * 'role-type-student' (requires Allow Student Pastoral Access config enabled)
+                  * `$accessLevel` is an integer representation of access level of the $roleId
+                    * 0 - Deny
+                    * 1 - General
+                    * 2 - General + Confidential
+                type: array
+                nullable: true
+              group:
+                description: |
+                  An array of pairs of a pastoral group and its access level to this pastoral record in the format of:\
+                  `$pastoralGroupId => $accessLevel`
+                  * `$pastoralGroupId` is the ID of a pastoral group to set access level to
+                  * `$accessLevel` is an integer representation of access level of the $roleId
+                    * 0 - Deny
+                    * 1 - General
+                    * 2 - General + Confidential
+                type: array
+                nullable: true
+              user:
+                description: |
+                  An array of pairs of a user and its access level to this pastoral record in the format of:\
+                  `$userId => $accessLevel`
+                  * `$userId` is ID of a user to set access level to. The user must be one of:
+                    * a staff with pastoral access
+                    * a parent of the student (requires Allow Parent Pastoral Access enabled)
+                  * `$accessLevel` is an integer representation of access level of the $roleId
+                    * 0 - Deny
+                    * 1 - General
+                    * 2 - General + Confidential
+                type: array
+                nullable: true
