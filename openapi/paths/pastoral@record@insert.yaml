@@ -1,0 +1,23 @@
+post:
+  operationId: pastoral.postRecordInsert
+  tags: [pastoral]
+  summary: Create a new pastoral record
+  description: |
+    Creates a new pastoral record. The record's author will be the currently authenticated user.
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with Pastoral Moderator service permission
+    * Users with a role of Staff role type with Access Pastoral Care permission
+  responses:
+    '200':
+      description: Successfully created a pastoral record
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/pastoral-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/pastoral-item.yaml

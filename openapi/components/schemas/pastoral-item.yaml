@@ -1,0 +1,244 @@
+title: a Pastoral Record
+description: A pastoral record
+readOnly: true
+type: array
+items:
+  properties:
+    id:
+      $ref: ./id.yaml
+    externalId:
+      description: The ID of SIS data corresponding to this pastoral record, if External Pastoral Synchronisation is ON
+      type: string
+      nullable: true
+    student:
+      $ref: ./userShort.yaml
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            format: uri-reference
+          avatar:
+            type: string
+            format: uri-reference
+            nullable: true
+    heading:
+      description: Heading of the pastoral record
+      type: string
+    type:
+      description: Type of the pastoral record
+      type: object
+      properties:
+        id:
+          description: The ID of the pastoral type associated to this pastoral record
+          type: integer
+        name:
+          description: The name of the pastoral type
+          type: string
+        icon:
+          description: The name of the icon associated to the pastoral type
+          type: string
+        colour:
+          description: The colour of the icon associated to the pastoral type
+          type: string
+        sentiment:
+          type: string
+        sequence:
+          description: The order in which this pastoral type will display in a pastoral type list
+          type: integer
+    subType:
+      description: Sub-type of the pastoral record
+      type: object
+      properties:
+        id:
+          description: The ID of the pastoral sub-type associated to this pastoral record
+          type: integer
+        name:
+          description: The name of the pastoral sub-type
+          type: string
+        icon:
+          description: The name of the icon associated to the pastoral sub-type
+          type: string
+        colour:
+          description: The colour of the icon associated to the pastoral sub-type
+          type: string
+        sentiment:
+          type: string
+        sequence:
+          description: The order in which this pastoral sub-type will display in a pastoral sub-type list
+          type: integer
+    severity:
+      description: Severity of the pastoral record
+      type: object
+      properties:
+        id:
+          description: The ID of the pastoral severity of this pastoral record
+          type: integer
+        name:
+          description: The name of the pastoral severity
+          type: string
+        color:
+          description: The colour associated to the pastoral severity
+          type: string
+        sequence:
+          description: The order in which this pastoral severity will display in a pastoral severity list
+          type: integer
+    points:
+      nullable: true
+      description: Points of this pastoral record
+      type: integer
+    tags:
+      description: List of tag names
+      type: array
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+    bodyPublic:
+      description: |
+        General content of this pastoral record in raw HTML
+      type: string
+    bodyPrivate:
+      description: |
+        Confidential content of this pastoral record in raw HTML
+      type: string
+    attachmentsPublic:
+      description: |
+        Files attached to General content
+      type: array
+      items:
+        $ref: ./file.yaml
+    attachmentsPrivate:
+      description: |
+        Files attached to Confidential content
+      type: array
+      items:
+        $ref: ./file.yaml
+    commentsPublic:
+      description: |
+        General comments
+      type: array
+      items:
+        $ref: ./discussionComment-read.yaml
+    commentsPrivate:
+      description: |
+        Confidential comments
+      type: array
+      items:
+        $ref: ./discussionComment-read.yaml
+    recordActions:
+      nullable: true
+      description: An array of pastoral actions
+      type: array
+      items:
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          completed:
+            type: boolean
+          updatedAt:
+            type: date
+          updatedBy:
+            $ref: ./userShort.yaml
+    createdBy:
+      $ref: ./userShort.yaml
+    createdAt:
+      type: string
+      format: date-time
+      description: |
+        The date as a RFC3339 string.
+    updatedBy:
+      $ref: ./userShort.yaml
+    updatedAt:
+      type: string
+      format: date-time
+      description: |
+        The date as a RFC3339 string.
+    _links:
+      type: object
+  example:
+    id: 77
+    externalId: null
+    student:
+      id: 25
+      _links:
+        profile: /search/user/25
+        avatar: /portrait.php?id=25&size=square64
+      title: Ms
+      firstName: Jana
+      preferredName: null
+      lastName: Reed
+      fullName: Ms Jana Reed
+      isDeleted: false
+      externalId: 507
+    heading: Academic Achievement Award - Semester 2
+    type:
+      id: 1
+      name: Academic
+      colour: null
+      icon: null
+      sentiment: neutral
+      sequence: 1
+    subType:
+      id: 1
+      name: Award/Achievement
+      colour: rgba(182, 74, 74, 1.000)
+      icon: achievement
+      sentiment: neutral
+      sequence: 1
+    severity:
+      id: 1
+      name: Low
+      sequence: 1
+      color: rgba(0, 128, 0, 1.000)
+    points: 50
+    tags:
+      - id: 26
+        name: test tag A
+      - id: 27
+        name: test tag B
+    bodyPrivate: null
+    bodyPublic: Public body\nPublic body.
+    attachmentsPrivate: []
+    attachmentsPublic:
+      - hash: 723b6e31c2979b33deea852cdbbad9c4b0e00b96
+        mime: image/jpeg
+        type: image
+        size: 279489
+        _links:
+          fetch: /storage/fetch.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
+          icon: /static/images/mime/application-image-jpg.svg
+          image: /storage/image.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
+    commentsPrivate: []
+    commentsPublic: []
+    recordActions: []
+    createdBy:
+      id: 22
+      _links:
+        profile: /search/user/165
+        avatar: /portrait.php?id=165&size=square64
+      title:
+      firstName: Jack
+      preferredName: null
+      lastName: Coles
+      fullName: Jack Coles
+      isDeleted: false
+    createdAt: 2022-11-14T15:08:21+11:00
+    updatedBy:
+      id: 22
+      _links:
+        profile: /search/user/165
+        avatar: /portrait.php?id=165&size=square64
+      title:
+      firstName: Jack
+      preferredName: null
+      lastName: Coles
+      fullName: Jack Coles
+      isDeleted: false
+    updatedAt: 2022-11-14T15:08:21+11:00
+    _links:
+      read: /pastoral/student/25/record/77
