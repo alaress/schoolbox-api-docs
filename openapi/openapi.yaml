@@ -85,6 +85,11 @@ tags:
     description: |
       Create and manage school news (also known as communications).
 
+  - name: pastoral
+    x-displayName: Pastoral
+    description: |
+      Create and manage pastoral records.
+    
   - name: session
     x-displayName: Session management
     description: |
@@ -224,6 +229,9 @@ paths:
 
   /learning/evidenceFeed/user/{id}:
     $ref: 'paths/evidenceFeed@user@{id}.yaml'
+    
+  /pastoral/record/insert:
+    $ref: 'paths/pastoral@record@insert.yaml'
 
 
 security:
