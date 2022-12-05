@@ -9,25 +9,6 @@
 
 ### Usage
 
-#### Variants
-
-There are currently two variants of the API reference:
-
-##### Single version
-
-The single-version variant supports only the most recently built version of the 
-API reference.
-
-This version is the current default, but will eventually be superseded by the
-multiple version variant described below.
-
-##### Multiple version
-
-The multi-version variant supports the most recently built version of the API
-reference, and also allows selection of:
-* previous versions
-* pre-release versions
-
 #### Previewing API docs locally
 
 Start the reference docs preview server in the `docs` folder:
@@ -36,8 +17,11 @@ cd docs;
 python3 -m http.server;
 ```
 
-Then, visit http://127.0.0.1:8000/?debug (for the old single-version docs) or
-http://127.0.0.1:8000/new.html?debug (for the new multi-version docs).
+Then, visit http://127.0.0.1:8000/?debug.
+
+Note the version selector at the top-left of the page, under the Schoolbox logo.  This allows selection of:
+* previous versions
+* pre-release versions
 
 In order to view changes to the docs, run one of the "Building API docs locally"
 steps provided below:
