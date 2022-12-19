@@ -18,6 +18,10 @@ content:
           type: string
           maxLength: 255
           required: true
+        occurredOn:
+          description: The date on which this is occurred.
+          $ref: ../schemas/formDate.yaml
+          nullable: true
         typeId:
           description: The ID of a pastoral type to associate to this pastoral record.
           type: integer
