@@ -8,7 +8,6 @@ content:
         student_id:
           description: The ID of a student to create this pastoral record for.
           type: integer
-          required: true
         duplicateIds:
           description: A comma separated list of IDs of students to create this pastoral record for.
           type: string
@@ -17,15 +16,14 @@ content:
           description: Pastoral record title.
           type: string
           maxLength: 255
-          required: true
         occurredOn:
           description: The date on which this is occurred.
           $ref: ../schemas/formDate.yaml
           nullable: true
         typeId:
-          description: The ID of a pastoral type to associate to this pastoral record.
+          description: The ID of a pastoral type to associate with this pastoral record.
           type: integer
-          required: true
+          nullable: false
         subtypeId:
           description: |
             The ID of a pastoral sub-type to associate to this pastoral record.\
@@ -36,7 +34,7 @@ content:
           nullable: true
         severityId:
           description: |
-            The ID of a pastoral severity to associate to this pastoral record.\
+            The ID of a pastoral severity to associate with this pastoral record.\
             Required only if Allow specification of severity on pastoral records config is ON.
           type: integer
           nullable: true
@@ -161,3 +159,7 @@ content:
               * 2 - General + Confidential
           type: array
           nullable: true
+      required:
+        - student_id
+        - heading
+        - typeId

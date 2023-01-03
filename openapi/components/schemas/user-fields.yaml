@@ -1,15 +1,13 @@
 title: User
-description: Common fields for users
+description: Common fields for users.
 type: object
 properties:
 
   externalId:
     $ref: ./externalId.yaml
-    example: 501
 
   username:
     type: string
-    required: false
     description: |
       The user's username. This will be used as the user's identification
       when they attempt to log into the Schoolbox instance.
@@ -35,7 +33,6 @@ properties:
 
   firstName:
     type: string
-    required: true
     description: |
       The user's first name.
 

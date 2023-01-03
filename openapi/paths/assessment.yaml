@@ -13,19 +13,29 @@ get:
 parameters:
   - name: filter
     in: query
-    description: '{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2022-01-30T21:00:00.000Z","to": "2022-06-24T06:00:00.000Z"},"yearLevel": {"id": 6,"name": "Year 6"}}'
+    required: true
+    description: | 
+      Json encoded object of fields and values to filter assessments on. \
+      For example, to get assessment with ID 676: \
+      `filter=%7b%22assessmentId%22%3a676%7d`
+      
+      Filter string to filter on all the fields would look like: \
+      `{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2022-01-30T21:00:00.000Z","to": "2022-06-24T06:00:00.000Z"},"yearLevel": {"id": 6,"name": "Year 6"}}`
     schema:
       type: object
       properties:
         assessmentId:
+          description: |
+            The ID of the assessment to search.
           type: integer
           example: 256
         title:
           type: string
           description: |
-            `*like* check on title`
+            A part of title to filter assessments on.
           example: English 3/4 [Final]
         assessmentType:
+          description: The type of assessments to filter on.
           type: string
           enum:
             - task
@@ -43,33 +53,35 @@ parameters:
             properties:
               id:
                 type: integer
-                description: ID of the folder containing the assessment
+                description: ID of the folder containing the assessment.
                 example: 80
               code:
                 type: string
-                description: Code of the folder containing the assessment
+                description: Code of the folder containing the assessment.
                 example: 9ENGA
         subjectCode:
           type: array
           items:
-            type: integer
+            type: string
             description: |
-              The Course Subject Code
+              The Course Subject Code.
         weighted:
           type: boolean
           example: false
           description: |
-            limit assessments to only those that have a weight set
+            Limit assessments to only those that have a weight set.
         workType:
           type: object
+          description: |
+            Select either one of the following fields to filter on:
           properties:
             id:
               type: integer
-              description: the DB identifier of the worktype
+              description: The DB identifier of the worktype.
               example: 1
             name:
               type: string
-              description: the name of the work type, may not be unique
+              description: The name of the work type, may not be unique.
               example: Formative Assessment
         dueDate:
           type: object
@@ -88,21 +100,23 @@ parameters:
               example: 2022-06-24T06:00:00.000Z
         yearLevel:
           type: object
+          description: |
+            Select either one of the following fields to filter on year levels associated with folder:
           properties:
             id:
               type: integer
-              description: the db identifier of the yearlevel
+              description: The db identifier of the yearlevel.
               example: 6
             name:
               type: string
-              description: the name of the year level. may not be unique
+              description: The name of the year level, may not be unique.
               example: Year 6
         project:
           type: object
           properties:
             id:
               type: integer
-              description: ID of the parent assessment (project)
+              description: ID of the parent assessment (project).
               example: 255
   - $ref: ../components/parameters/cursor.yaml
   - $ref: ../components/parameters/limit.yaml

@@ -6,6 +6,74 @@ properties:
   data:
     type: array
     items:
-      $ref: ./discussionComment-read.yaml
+      title: Comment
+      description: Common fields for discussion comments.
+      type: object
+      properties:
+        id:
+          description: The ID of this comment.
+          type: integer
+        author:
+          description: The author of this comment.
+          type: object
+          properties:
+            id:
+              description: The ID of this user.
+              type: integer
+            externalId:
+              $ref: ./externalId.yaml
+            title:
+              description: The user's title (Mr., Ms., etc.).
+              type: string
+              nullable: true
+            firstname:
+              description: The user's first name.
+              type: string
+              nullable: true
+            fullName:
+              description: The user's full name.
+              type: string
+              nullable: true
+            givenName:
+              description: The user's given name.
+              type: string
+              nullable: true
+            lastname:
+              description: The user's last name.
+              type: string
+              nullable: true
+            preferredName:
+              description: The user's preferred name.
+              type: string
+              nullable: true
+            _links:
+              type: object
+              properties:
+                avatar:
+                  type: object
+                  properties:
+                    auth:
+                      type: string
+                      nullable: true
+                    href:
+                      type: string
+                      format: uri
+                      nullable: true
+                profile:
+                  type: object
+                  properties:
+                    auth:
+                      type: string
+                      nullable: true
+                    href:
+                      type: string
+                      format: uri
+                      nullable: true
+        content:
+          type: string
+        createdAt:
+          $ref: ./dateTime.yaml
+        updatedAt:
+          $ref: ./dateTime.yaml
   metadata:
     $ref: ./listMetadata.yaml

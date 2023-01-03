@@ -8,8 +8,17 @@ post:
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    $ref: ../components/requestBodies/discussionThread-item.yaml
-
+    description: Common fields for discussion threads.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            open:
+              type: boolean
+              description: Is the thread open for further comments?
+          required:
+            - open
 parameters:
   - $ref: ../components/parameters/discussion-contextType.yaml
   - $ref: ../components/parameters/discussion-contextId.yaml
