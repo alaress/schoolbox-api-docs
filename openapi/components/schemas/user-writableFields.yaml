@@ -4,7 +4,6 @@ type: object
 properties:
   campus:
     type: array
-    required: true
     minItems: 1
     uniqueItems: true
     items:

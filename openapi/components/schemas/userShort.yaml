@@ -33,3 +33,8 @@ properties:
     nullable: true
     description: The user's surname.
     example: White
+
+  preferredName:
+    type: string
+    nullable: true
+    description: The user's preferred name.

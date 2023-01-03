@@ -45,7 +45,7 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ./user-read.yaml
+      $ref: ./userShort.yaml
     nullable: false
     example:
       - id: 25
@@ -68,7 +68,7 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ./user-read.yaml
+      $ref: ./userShort.yaml
     nullable: false
     example: []
 
@@ -81,7 +81,7 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ./user-read.yaml
+      $ref: ./userShort.yaml
     nullable: false
     example:
       - id: 6
@@ -119,6 +119,4 @@ properties:
         type: string
         format: uri-reference
         nullable: true
-required:
-  - id
 readOnly: true

@@ -51,7 +51,7 @@ tags:
   - name: assessment
     x-displayName: Assessments
     description: |
-      Search and get assessments
+      Search and get assessments.
 
   - name: calendar
     x-displayName: Calendar
@@ -75,7 +75,7 @@ tags:
 
   - name: mobile
     x-displayName: Push Notification
-    description: Endpoints for Mobile App Developers to connect and register devices
+    description: Endpoints for Mobile App Developers to connect and register devices.
 
   - name: news
     x-displayName: News
@@ -159,7 +159,7 @@ paths:
     $ref: 'paths/storage@asyncUpload.php.yaml'
 
   /resources/file/{fileId}/ajax:
-      $ref: 'paths/resource@file@{id}@ajax.yaml'
+    $ref: 'paths/resource@file@{fileId}@ajax.yaml'
 
   /news/create:
     $ref: 'paths/news@create.yaml'
@@ -176,7 +176,7 @@ paths:
   /news/moderation/{id}/{status}:
     $ref: 'paths/news@moderation@{id}@{status}.yaml'
 
-  /news/saved/:
+  /news/saved:
     $ref: 'paths/news@saved.yaml'
 
   /news/saved/{id}/add:
