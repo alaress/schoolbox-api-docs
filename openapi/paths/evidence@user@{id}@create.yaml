@@ -1,12 +1,12 @@
 post:
-  operationId: assessmentSearch
+  operationId: learningMomentEvidence.postMomentForUsers
   tags: [Learning Moment]
-  summary: #GET, /create #POST
+  summary: Create a Learning moment for users
   description: |
-    Share Learning Moment
+    Share Learning Moment.
   responses:
     '201':
-      description: Successfully Created a Learning moment
+      description: Successfully Created a Learning moment.
       content:
         application/json:
           schema:
