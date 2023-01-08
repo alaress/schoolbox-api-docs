@@ -1,4 +1,4 @@
-description: Calendar event attendance
+description: Calendar event attendance.
 content:
   application/json:
     schema:

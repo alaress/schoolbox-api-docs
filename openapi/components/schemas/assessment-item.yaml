@@ -91,4 +91,6 @@ properties:
         description: ID of the parent assessment (project).
         example: 255
   participants:
-    $ref: ./assessment-feedback-item.yaml
+    type: array
+    items:
+      $ref: ./assessment-feedback-item.yaml
