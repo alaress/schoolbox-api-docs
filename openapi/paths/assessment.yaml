@@ -3,7 +3,12 @@ get:
   tags: [assessment]
   summary: Get a list of assessments
   description: |
-    This endpoint will return all assessments and their results that match the filter provided.  We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.  For example a common request may be to get assessments of work type 'major' that are due in the current year.   The endpoint is only available to superusers.
+    This endpoint will return assessments and their results that match the filter provided. 
+    The number of assessments returned is 5 by default, if the limit query parameter is not provided.
+    We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.
+    For example a common request may be to get assessments of work type 'major' that are due in the current year. 
+    
+    The endpoint is only available to superusers.
   responses:
     '200':
       $ref: ../components/responses/assessment-list.yaml
@@ -14,7 +19,7 @@ parameters:
   - name: filter
     in: query
     required: true
-    description: | 
+    description: |
       Json encoded object of fields and values to filter assessments on. \
       For example, to get assessment with ID 676: \
       `filter=%7b%22assessmentId%22%3a676%7d`
@@ -45,20 +50,30 @@ parameters:
             - project
           example: dueWork
         folder:
-          type: array
-          items:
-            type: object
+          oneOf:
+          - type: array
+            description: Array for folders to filter assessments on.
+            items:
+              type: object
+              description: |
+                Select either one of the following fields to filter on:
+              properties:
+                id:
+                  type: integer
+                  description: ID of the folder containing the assessment.
+                  example: 80
+                code:
+                  type: string
+                  description: Code of the folder containing the assessment.
+                  example: 9ENGA
+          - type: object
             description: |
-              Select either one of the following fields to filter on:
+              Select a folder ID to filter on:
             properties:
               id:
                 type: integer
                 description: ID of the folder containing the assessment.
                 example: 80
-              code:
-                type: string
-                description: Code of the folder containing the assessment.
-                example: 9ENGA
         subjectCode:
           type: array
           items:
@@ -120,4 +135,3 @@ parameters:
               example: 255
   - $ref: ../components/parameters/cursor.yaml
   - $ref: ../components/parameters/limit.yaml
-    default: 5

@@ -150,7 +150,6 @@ properties:
           fetch:
             type: string
             example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
-
   curriculumNodes:
     nullable: true
     type: array
