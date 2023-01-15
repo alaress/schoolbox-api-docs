@@ -57,6 +57,7 @@ parameters:
           enum:
             - evidence
             - badgeAward
+            - dueWorkFeedback
           example: badgeAward
         date:
           type: string
