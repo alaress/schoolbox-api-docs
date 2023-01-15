@@ -10,6 +10,37 @@ get:
     default:
       $ref: ../components/responses/problem.yaml
 parameters:
+  - name: filter
+    in: query
+    schema:
+      description: |
+        Base 64 encoded object.
+        Decoded examples:
+         1. Return all feed items that are assessments.
+            {'feedItemTypes' => ['assessments'], ‘tag' => ‘'}
+         2. Return all feed items that are either assessments or achievements.
+            {'feedItemTypes' => ['assessments', ‘achievements'], 'tag' => ''}
+         3. Return all feed items that are either or assessments, or learning moments with tag 'Class Work'.
+            {'feedItemTypes' => ['assessments', 'learning-moments'], 'tag' => 'Class Work'}
+      example: eyJmZWVkSXRlbVR5cGVzIjpbImxlYXJuaW5nLW1vbWVudHMiXSwidGFnIjoiQ2xhc3MgV29yayJ9
+      type: object
+      properties:
+        feedItemTypes:
+          type: array
+          items:
+            type: string
+            enum:
+             - achievements
+             - assessments
+             - goals
+             - learning-moments
+          example: ["achievements", "assessments", "goals", "learning-moments"]
+        tag:
+          type: string
+          description: |
+            String to match a tag on one or more learning moments.
+            Note that tag is only relevant if 'learning-moments' is included in feedItemTypes.
+          example: "Class Work"
   - cursor:
     name: cursor
     in: query
