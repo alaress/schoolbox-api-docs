@@ -17,11 +17,11 @@ parameters:
         Base 64 encoded object.
         Decoded examples:
          1. Return all feed items that are assessments.
-            {'feedItemTypes' => ['assessments'], ‘tag' => ‘'}
+            {"feedItemTypes" => ["assessments"], "tag" => ‘"}
          2. Return all feed items that are either assessments or achievements.
-            {'feedItemTypes' => ['assessments', ‘achievements'], 'tag' => ''}
-         3. Return all feed items that are either or assessments, or learning moments with tag 'Class Work'.
-            {'feedItemTypes' => ['assessments', 'learning-moments'], 'tag' => 'Class Work'}
+            {"feedItemTypes" => ["assessments", "achievements"], "tag" => ""}
+         3. Return all feed items that are either or assessments, or learning moments with tag "Class Work".
+            {"feedItemTypes" => ["assessments", "learning-moments"], "tag" => "Class Work"}
       example: eyJmZWVkSXRlbVR5cGVzIjpbImxlYXJuaW5nLW1vbWVudHMiXSwidGFnIjoiQ2xhc3MgV29yayJ9
       type: object
       properties:
