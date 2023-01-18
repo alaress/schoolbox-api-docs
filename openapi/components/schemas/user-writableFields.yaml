@@ -10,15 +10,12 @@ properties:
       $ref: ./itemRelation.yaml
 
   role:
-    required: true
     $ref: ./itemRelation.yaml
 
   schoolHouse:
-    nullable: true
     $ref: ./itemRelation.yaml
 
   yearLevel:
-    nullable: true
     $ref: ./itemRelation.yaml
 
   impersonableUser:

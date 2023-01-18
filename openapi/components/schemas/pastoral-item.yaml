@@ -11,17 +11,49 @@ items:
       type: string
       nullable: true
     student:
-      $ref: ./userShort.yaml
-      _links:
-        type: object
-        properties:
-          profile:
-            type: string
-            format: uri-reference
-          avatar:
-            type: string
-            format: uri-reference
-            nullable: true
+      title: User
+      description: Short fields for users
+      type: object
+      properties:
+        id:
+          $ref: ./id.yaml
+        externalId:
+          $ref: ./externalId.yaml
+        title:
+          type: string
+          nullable: true
+          description: The user's title (Mr., Ms., etc.).
+          example: Ms
+        firstName:
+          type: string
+          nullable: true
+          description: |
+            The user's first name.
+      
+            Schoolbox doesn't distinguish between a person's actual first name
+            and any other names, and in any case is not the definitive source of
+            naming information; therefore in practice this will usually be the
+            user's given name.
+          example: Rebecca
+        lastName:
+          type: string
+          nullable: true
+          description: The user's surname.
+          example: White
+        preferredName:
+          type: string
+          nullable: true
+          description: The user's preferred name.
+        _links:
+          type: object
+          properties:
+            profile:
+              type: string
+              format: uri-reference
+            avatar:
+              type: string
+              format: uri-reference
+              nullable: true
     heading:
       description: Heading of the pastoral record.
       type: string

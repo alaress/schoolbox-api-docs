@@ -16,9 +16,6 @@ properties:
     $ref: ./dateTime.yaml
   parent:
     $ref: ./discussionComment-read.yaml
-    description: |
-      The direct parent of this comment, if there is one.
-      If there is none, this comment is a top-level comment within a thread.
   children:
     allOf:
       - $ref: ./discussionComment-readList.yaml

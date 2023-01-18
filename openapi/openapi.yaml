@@ -98,7 +98,7 @@ tags:
       Create and manage users.
 
 servers:
-  - url: https://{hostname}.{domain}/
+  - url: https://{hostname}.{domain}
     variables:
       hostname:
         description: The subdomain of the school's domain name on which Schoolbox is hosted.
