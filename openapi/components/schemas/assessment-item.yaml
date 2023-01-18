@@ -5,7 +5,6 @@ type: object
 properties:
   id:
     $ref: ./id.yaml
-    example: 255
   title:
     type: string
     example: Turning on the computer

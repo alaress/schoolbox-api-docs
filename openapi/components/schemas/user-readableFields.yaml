@@ -4,7 +4,6 @@ type: object
 properties:
   id:
     $ref: ./id.yaml
-    example: 24
 
   campus:
     items:

@@ -8,7 +8,6 @@ properties:
 
   externalId:
     $ref: ./externalId.yaml
-    example: 501
 
   title:
     type: string
