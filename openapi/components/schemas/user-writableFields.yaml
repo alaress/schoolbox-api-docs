@@ -1,3 +1,4 @@
+title: Schoolbox User
 description: |
   Fields that are only relevant when writing a user's value.
 type: object
@@ -8,16 +9,16 @@ properties:
     uniqueItems: true
     items:
       $ref: ./itemRelation.yaml
-
+  
   role:
     $ref: ./itemRelation.yaml
-
+  
   schoolHouse:
     $ref: ./itemRelation.yaml
-
+  
   yearLevel:
     $ref: ./itemRelation.yaml
-
+  
   impersonableUser:
     nullable: true
     type: array

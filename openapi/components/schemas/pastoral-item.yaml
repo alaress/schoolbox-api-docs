@@ -186,16 +186,16 @@ items:
             type: string
             format: date-time
           updatedBy:
-            $ref: ./userShort.yaml
+            $ref: ./userAuthor.yaml
     createdBy:
-      $ref: ./userShort.yaml
+      $ref: ./userAuthor.yaml
     createdAt:
       type: string
       format: date-time
       description: |
         The date as a RFC3339 string.
     updatedBy:
-      $ref: ./userShort.yaml
+      $ref: ./userAuthor.yaml
     updatedAt:
       type: string
       format: date-time

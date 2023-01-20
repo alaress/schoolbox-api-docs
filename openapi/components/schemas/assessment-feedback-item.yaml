@@ -4,7 +4,7 @@ readOnly: true
 type: object
 properties:
   learner:
-    $ref: ./userShort.yaml
+    $ref: ./userAuthor.yaml
   comment:
     type: string
     example: |
@@ -29,4 +29,4 @@ properties:
   rubric:
     $ref: ./assessment-rubric-feedback.yaml
   instructor:
-    $ref: ./userShort.yaml
+    $ref: ./userAuthor.yaml
