@@ -1,5 +1,3 @@
-title: User
-description: Common fields for users.
 type: object
 properties:
 
@@ -11,6 +9,7 @@ properties:
     description: |
       The user's username. This will be used as the user's identification
       when they attempt to log into the Schoolbox instance.
+    required: true
     example: rwhite
 
   superuser:
@@ -48,6 +47,11 @@ properties:
     description: The user's surname.
     example: White
 
+  preferredName:
+    type: string
+    nullable: true
+    description: The user's preferred name.
+  
   isEmailDerived:
     type: boolean
     description: |
