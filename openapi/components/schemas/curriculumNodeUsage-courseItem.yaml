@@ -1,0 +1,13 @@
+title: A course usage
+description: A course usage
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    type: string
+    description: The name of the course.
+  type:
+    type: string
+    enum: [course]
