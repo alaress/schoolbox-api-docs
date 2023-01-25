@@ -11,6 +11,20 @@ properties:
     properties:
       id:
         $ref: id.yaml
-      name:
+      title:
         type: string
         description: The name of the course.
+      subjectCode:
+        type: string
+        description: The course's subject code.
+      _links:
+        type: object
+        properties:
+          modify:
+            type: string
+            format: uri-reference
+            description: A link to the modify page for this course.
+          folder:
+            type: string
+            format: uri-reference
+            description: A link to the homepage for this course.
