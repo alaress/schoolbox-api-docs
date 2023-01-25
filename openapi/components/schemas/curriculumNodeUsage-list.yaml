@@ -5,7 +5,7 @@ properties:
     items:
       type: object
       discriminator:
-        propertyName: type
+        propertyName: discriminator
         mapping:
           folder: ./curriculumNodeUsage-folderItem.yaml
           course: ./curriculumNodeUsage-courseItem.yaml
@@ -14,26 +14,5 @@ properties:
         - $ref: ./curriculumNodeUsage-folderItem.yaml
         - $ref: ./curriculumNodeUsage-courseItem.yaml
         - $ref: ./curriculumNodeUsage-unitItem.yaml
-#      properties:
-#        discriminator:
-#          type: string
-#          enum:
-#            - folder
-#            - course
-#            - unit
-#        object:
-#          type: object
-#          properties:
-#            id:
-#              $ref: id.yaml
-#            name:
-#              type: string
-#              description: The name of the node.
-#        date:
-#          type: string
-#          format: date-time
-#          description: |
-#            The date as a RFC3339 string.
-#          example: 2022-08-30T10:09:09+10:00
   metadata:
     $ref: ./listMetadata.yaml
