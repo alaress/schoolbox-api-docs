@@ -17,14 +17,13 @@ properties:
       subjectCode:
         type: string
         description: The course's subject code.
+      folder:
+        $ref: ./curriculumNodeUsage-folderItem.yaml
       _links:
         type: object
         properties:
-          modify:
+          view:
             type: string
             format: uri-reference
-            description: A link to the modify page for this course.
-          folder:
-            type: string
-            format: uri-reference
-            description: A link to the homepage for this course.
+            description: |
+              A link to view this course: contains a modify form.

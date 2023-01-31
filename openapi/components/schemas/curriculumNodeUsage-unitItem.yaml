@@ -14,14 +14,15 @@ properties:
       title:
         type: string
         description: The name of the unit.
+      folder:
+        $ref: ./curriculumNodeUsage-folderItem.yaml
+      course:
+        $ref: ./curriculumNodeUsage-courseItem.yaml
       _links:
         type: object
         properties:
-          modify:
+          view:
             type: string
             format: uri-reference
-            description: A link to the modify page for this unit's course.
-          folder:
-            type: string
-            format: uri-reference
-            description: A link to the homepage for this unit.
+            description: |
+              A link to view this unit's course: contains a modify form.
