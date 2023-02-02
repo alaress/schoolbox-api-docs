@@ -1,4 +1,4 @@
-description: A list of curriculum node usages
+description: Provides all locations where this curriculum has been mapped
 content:
   application/json:
     schema:
