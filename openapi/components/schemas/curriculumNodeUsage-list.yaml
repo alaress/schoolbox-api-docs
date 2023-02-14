@@ -10,9 +10,11 @@ properties:
           folder: ./curriculumNodeUsage-folderItem.yaml
           course: ./curriculumNodeUsage-courseItem.yaml
           unit: ./curriculumNodeUsage-unitItem.yaml
+          assessment: ./curriculumNodeUsage-assessmentItem.yaml
       anyOf:
         - $ref: ./curriculumNodeUsage-folderItem.yaml
         - $ref: ./curriculumNodeUsage-courseItem.yaml
         - $ref: ./curriculumNodeUsage-unitItem.yaml
+        - $ref: ./curriculumNodeUsage-assessmentItem.yaml
   metadata:
     $ref: ./listMetadata.yaml
