@@ -1,0 +1,18 @@
+type: object
+properties:
+  data:
+    type: array
+    items:
+      type: object
+      discriminator:
+        propertyName: discriminator
+        mapping:
+          folder: ./curriculumNodeUsage-folderItem.yaml
+          course: ./curriculumNodeUsage-courseItem.yaml
+          unit: ./curriculumNodeUsage-unitItem.yaml
+      anyOf:
+        - $ref: ./curriculumNodeUsage-folderItem.yaml
+        - $ref: ./curriculumNodeUsage-courseItem.yaml
+        - $ref: ./curriculumNodeUsage-unitItem.yaml
+  metadata:
+    $ref: ./listMetadata.yaml

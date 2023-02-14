@@ -1,0 +1,29 @@
+title: A course usage
+description: A course usage
+readOnly: true
+type: object
+properties:
+  discriminator:
+    type: string
+    enum: [course]
+  object:
+    type: object
+    properties:
+      id:
+        $ref: id.yaml
+      title:
+        type: string
+        description: The name of the course.
+      subjectCode:
+        type: string
+        description: The course's subject code.
+      folder:
+        $ref: ./curriculumNodeUsage-folderItem.yaml
+      _links:
+        type: object
+        properties:
+          view:
+            type: string
+            format: uri-reference
+            description: |
+              A link to view this course: contains a modify form.

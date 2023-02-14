@@ -233,6 +233,9 @@ paths:
   /pastoral/record/insert:
     $ref: 'paths/pastoral@record@insert.yaml'
 
+  /api/curriculum/usage/{id}:
+    $ref: 'paths/api@curriculum@usage@{id}.yaml'
+
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.

@@ -1,68 +1,94 @@
 get:
   operationId: evidenceFeed
   tags: [Learning Moment]
-  summary: List the Learning Moments and Badges for the specified User
+  summary: List the Learning Moments, Badges and Due Work feedback for the specified User
   description: |
-    This endpoint will return a list of all evidence objects achieved or received by the user limited to a count of 10 items
+    This endpoint will return a list of all evidence objects achieved or received by the user
+    limited to a count of 10 items in reverse chronological order.
+    When `cursor` query parameter is provided, it'll return 10 items from the item specified in the cursor.
+
+    #### Availability
+    The types of items appear on the feed depend on available modules:
+      * The Learning Moments: Learning Moment Module
+      * Badges: Badge Module
+      * Due Work Feedback: Grade Module
+
+    #### Permission
+    This endpoint is permitted to:
+    * Superusers
+    * Users with a role of Staff role type
+      * Requires Learning Moments role permission to see Learning Moments
+      * Requires View Student Grades role permission to see Due Work feedback
+    * Students for their own
+    * Parent for their own and their child's
   responses:
     '200':
       $ref: ../components/responses/evidence-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
-parameters:
-  - name: filter
-    in: query
-    schema:
-      description: |
-        Base 64 encoded object.
-        Decoded examples:
-         1. Return all feed items in category 'feedback'.
-            {"filterNames" => ["feedback"], "tag" => ‘"}
-         2. Return all feed items in category 'feedback' or 'achievements'.
-            {"filterNames" => ["feedback", "achievements"], "tag" => ""}
-         3. Return all feed items in category 'feedback' or 'learningMoments', that have tag "Class Work".
-            {"filterNames" => ["feedback", "learningMoments"], "tag" => "Class Work"}
-      example: eyJmaWx0ZXJOYW1lcyI6WyJsZWFybmluZ01vbWVudHMiLCJmZWVkYmFjayJdLCJ0YWciOiJDbGFzcyBXb3JrIn0
-      type: object
-      properties:
-        filterNames:
-          type: array
-          items:
+  parameters:
+    - name: filter
+      in: query
+      schema:
+        description: |
+          Base 64 encoded object.
+          Decoded examples:
+           1. Return all feed items in category 'feedback'.
+              {"filterNames" => ["feedback"], "tag" => ‘"}
+           2. Return all feed items in category 'feedback' or 'achievements'.
+              {"filterNames" => ["feedback", "achievements"], "tag" => ""}
+           3. Return all feed items in category 'feedback' or 'learningMoments', that have tag "Class Work".
+              {"filterNames" => ["feedback", "learningMoments"], "tag" => "Class Work"}
+        example: eyJmaWx0ZXJOYW1lcyI6WyJsZWFybmluZ01vbWVudHMiLCJmZWVkYmFjayJdLCJ0YWciOiJDbGFzcyBXb3JrIn0
+        type: object
+        properties:
+          filterNames:
+            type: array
+            items:
+              type: string
+              enum:
+               - achievements
+               - feedback
+               - goals
+               - learningMoments
+            example: ["achievements", "feedback", "goals", "learningMoments"]
+          tag:
+            type: string
+            description: |
+              String to match a tag on one or more learning moments.
+              Note that tag is only relevant if 'learningMoments' is included in filterNames.
+            example: "Class Work"
+    - name: cursor
+      in: query
+      required: false
+      schema:
+        type: object
+        description: |
+          Base64 encoded object of a pointer to display the next 10 items from.
+
+          The ID, discriminator and datetime of the current last item.
+        example: eyJpZCI6IjQiLCJkaXNjcmltaW5hdG9yIjoiYmFkZ2VBd2FyZCIsImRhdGUiOiIyMDIyLTA3LTIzIDExOjM5OjI3In0=
+        properties:
+          id:
+            description: The ID of the object specified by discriminator.
+            type: integer
+          discriminator:
+            description: The type of the object.
             type: string
             enum:
-             - achievements
-             - feedback
-             - goals
-             - learningMoments
-          example: ["achievements", "feedback", "goals", "learningMoments"]
-        tag:
-          type: string
-          description: |
-            String to match a tag on one or more learning moments.
-            Note that tag is only relevant if 'learningMoments' is included in filterNames.
-          example: "Class Work"
-  - cursor:
-    name: cursor
-    in: query
-    schema:
-      type: object
-      description: |
-        base64 encoded object
-      example: eyJpZCI6IjQiLCJkaXNjcmltaW5hdG9yIjoiYmFkZ2VBd2FyZCIsImRhdGUiOiIyMDIyLTA3LTIzIDExOjM5OjI3In0=
-      properties:
-        id:
-          $ref: ../components/schemas/id.yaml
-        discriminator:
-          type: string
-          enum:
-            - evidence
-            - badgeAward
-            - dueWorkFeedback
-          example: badgeAward
-        date:
-          type: string
-          format: date-time
-          description: |
-            The date as a RFC3339 string.
-          example: 2022-08-30T10:09:09+10:00
-  - $ref: ../components/parameters/id.yaml
+              - evidence
+              - badgeAward
+              - dueWorkFeedback
+            example: badgeAward
+          date:
+            description: |
+              The date time of the object in `YYYY-MM-DD hh:mm:ss` format.
+            type: string
+            format: date-time
+            example: 2022-08-30 10:09:09
+    - name: id
+      in: path
+      description: The ID of the user.
+      required: true
+      schema:
+        type: integer

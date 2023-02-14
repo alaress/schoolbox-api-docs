@@ -83,6 +83,10 @@ items:
         sequence:
           description: The order in which this pastoral severity will display in a pastoral severity list
           type: integer
+    occuredOn:
+      description: The date on which this is occurred as a RFC3339 string.
+      type: string
+      format: date-time
     points:
       nullable: true
       description: Points of this pastoral record
@@ -93,8 +97,10 @@ items:
       items:
         properties:
           id:
+            description: The ID of the pastoral tag
             type: integer
           name:
+            description: The name of the pastoral tag
             type: string
     bodyPublic:
       description: |
@@ -135,12 +141,16 @@ items:
       items:
         properties:
           id:
+            description: The ID of the pastoral action
             type: integer
           name:
+            description: The name of the pastoral action
             type: string
           completed:
+            description: Whether the action is completed
             type: boolean
           updatedAt:
+            description: The last modified date of the action
             type: date
           updatedBy:
             $ref: ./userShort.yaml

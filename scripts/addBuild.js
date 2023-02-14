@@ -10,10 +10,16 @@ if (process.argv.length < 3) {
 
 // Add a line to builds.json
 function main () {
-    const buildVersion       = process.argv[2],
-          buildSelected      = Boolean(process.argv[3] || false),
-          buildsFile         =  __dirname + `/../docs/builds.json`,
-          buildsFileContents = fs.readFileSync(buildsFile).toString();
+    const buildVersion  = process.argv[2],
+          buildSelected = Boolean(process.argv[3] || false),
+          buildsFile    =  __dirname + `/../docs/builds.json`;
+    let buildsFileContents;
+    try {
+        buildsFileContents = fs.readFileSync(buildsFile).toString();
+    } catch (e) {
+        buildsFileContents = '[]';
+    }
+
     let buildsData           = JSON.parse(buildsFileContents),
         thisBuildData        = {label: buildVersion, value: buildVersion};
 
