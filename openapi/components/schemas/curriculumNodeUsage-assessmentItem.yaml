@@ -1,0 +1,60 @@
+title: An assessment usage
+description: |
+  An assessment usage.
+
+  This only includes assessments which are within a unit specification.
+readOnly: true
+type: object
+properties:
+  discriminator:
+    type: string
+    enum: [assessment]
+  object:
+    type: object
+    properties:
+      id:
+        $ref: id.yaml
+      title:
+        type: string
+        description: The name of the assessment.
+      type:
+        type: string
+        description: The type of the assessment.
+        enum:
+        - dueWork
+        - project
+        - ltiAssessment
+        - quiz
+        - task
+      unit:
+        $ref: ./curriculumNodeUsage-unitItem.yaml
+      project:
+        type: object
+        properties:
+          id:
+            $ref: id.yaml
+          type:
+            type: string
+            description: |
+              The type of the project: always "project".
+            enum:
+              - project
+          title:
+            type: string
+            description: The name of the project.
+          _links:
+            type: object
+            properties:
+              view:
+                type: string
+                format: uri-reference
+                description: |
+                  A link to view this project: contains a modify form.
+      _links:
+        type: object
+        properties:
+          view:
+            type: string
+            format: uri-reference
+            description: |
+              A link to view this assessment: contains a modify form.
