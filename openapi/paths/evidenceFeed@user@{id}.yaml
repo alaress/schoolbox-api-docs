@@ -27,6 +27,37 @@ get:
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
+    - name: filter
+      in: query
+      schema:
+        description: |
+          Base 64 encoded object.
+          Decoded examples:
+           1. Return all feed items in category 'feedback'.
+              {"filterNames" => ["feedback"], "tag" => ‘"}
+           2. Return all feed items in category 'feedback' or 'achievements'.
+              {"filterNames" => ["feedback", "achievements"], "tag" => ""}
+           3. Return all feed items in category 'feedback' or 'learningMoments', that have tag "Class Work".
+              {"filterNames" => ["feedback", "learningMoments"], "tag" => "Class Work"}
+        example: eyJmaWx0ZXJOYW1lcyI6WyJsZWFybmluZ01vbWVudHMiLCJmZWVkYmFjayJdLCJ0YWciOiJDbGFzcyBXb3JrIn0
+        type: object
+        properties:
+          filterNames:
+            type: array
+            items:
+              type: string
+              enum:
+               - achievements
+               - feedback
+               - goals
+               - learningMoments
+            example: ["achievements", "feedback", "goals", "learningMoments"]
+          tag:
+            type: string
+            description: |
+              String to match a tag on one or more learning moments.
+              Note that tag is only relevant if 'learningMoments' is included in filterNames.
+            example: "Class Work"
     - name: cursor
       in: query
       required: false
