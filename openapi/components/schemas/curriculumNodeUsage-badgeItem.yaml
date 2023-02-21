@@ -26,3 +26,5 @@ properties:
         type: array
         items: string
         description: A list of year levels (if any) associated with this badge.
+      object:
+        $ref: ./badgeItem.yaml
