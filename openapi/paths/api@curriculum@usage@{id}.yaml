@@ -1,6 +1,7 @@
 get:
+  operationId: curriculumApiUsage.getNodeUsage
   tags: [curriculum]
-  summary:
+  summary: Get curriculum node usage
   description: |
    Get curriculum node usage
   responses:

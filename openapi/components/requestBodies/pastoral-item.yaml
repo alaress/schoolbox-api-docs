@@ -17,8 +17,10 @@ content:
           type: string
           maxLength: 255
         occurredOn:
-          description: The date on which this is occurred.
-          $ref: ../schemas/formDate.yaml
+          description: The date on which this is occurred in the format configured in your Admin area.
+          type: string
+          format: date
+          example: 22/06/2021
           nullable: true
         typeId:
           description: The ID of a pastoral type to associate with this pastoral record.
