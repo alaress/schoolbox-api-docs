@@ -9,7 +9,6 @@ properties:
     description: |
       The user's username. This will be used as the user's identification
       when they attempt to log into the Schoolbox instance.
-    required: true
     example: rwhite
 
   superuser:
