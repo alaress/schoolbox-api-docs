@@ -1,0 +1,87 @@
+title: A dueWorkFeedback item
+description: A Due Work Feedback item
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  mark:
+    type: string
+    description: The mark in its original form.  For example this could be a letter grade or a percentage or a rubric.
+    example: 'A'
+  normalisedMark:
+    type: integer
+    example: 85
+    description: The mark in numeric form
+  comment:
+    type: string
+    description: Comments about the work or the mark, by the user who assessed the work and gave the mark.
+  publishedAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+  instructor:
+    $ref: ./userShort.yaml
+  assessment:
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      title:
+        type: string
+        description: The title of the assessment.
+        example: "Evaluate your Approaches to Learning"
+      publishedAt:
+        type: string
+        format: date-time
+        description: |
+          The date on which the assessment was published, as a RFC3339 string.
+        example: 2022-08-30T10:09:09+10:00
+      openAt:
+        type: string
+        format: date-time
+        description: |
+          The earliest date on which the assessment may be started, as a RFC3339 string.
+        example: 2022-08-30T10:09:09+10:00
+      dueAt:
+        type: string
+        format: date-time
+        description: |
+          The date on which the assessment is due, as a RFC3339 string.
+        example: 2022-08-30T10:09:09+10:00
+      closeAt:
+        type: string
+        format: date-time
+        description: |
+          The latest date on which the assessment may be submitted, as a RFC3339 string.
+        example: 2022-08-30T10:09:09+10:00
+      weight:
+        type: integer
+        example: 25
+        description: The weight given to this assessment for the purpose of calculating an overall grade.
+      sequence:
+        type: integer
+        example: 5
+        description: The number determines the order in which the assessment is intended to be completed, relative to other assessments.
+      workType:
+        type: string
+        description: The type of work involved in this assessment.
+        example: "Formative Assessment Task"
+      folderId:
+        title: folderId
+        description: The ID of the folder to which this assessment belongs.
+        type: integer
+        format: int32
+        minimum: 1
+      folderName:
+        type: string
+        description: The name of the folder to which this assessment belongs.
+        example: "3IH"
+  _links:
+    type: object
+    properties:
+      summary:
+        type: string
+        example: /learning/assessments/150/69

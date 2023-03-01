@@ -39,7 +39,7 @@ get:
               {"filterNames" => ["feedback", "achievements"], "tag" => ""}
            3. Return all feed items in category 'feedback' or 'learningMoments', that have tag "Class Work".
               {"filterNames" => ["feedback", "learningMoments"], "tag" => "Class Work"}
-        example: eyJmaWx0ZXJOYW1lcyI6WyJsZWFybmluZ01vbWVudHMiLCJmZWVkYmFjayJdLCJ0YWciOiJDbGFzcyBXb3JrIn0
+        example: eyJmaWx0ZXJOYW1lcyI6WyJnb2FscyIsImxlYXJuaW5nTW9tZW50cyIsImFjaGlldmVtZW50cyIsImZlZWRiYWNrIl0sInRhZyI6IiJ9
         type: object
         properties:
           filterNames:
