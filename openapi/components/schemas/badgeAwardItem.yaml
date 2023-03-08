@@ -109,6 +109,15 @@ properties:
     description: |
       The date as a RFC3339 string.
     example: 2022-08-27T12:49:11+10:00
+  reasonedBy:
+    $ref: ./userShort.yaml
+  reasonedAt:
+    nullable: true
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-27T12:49:11+10:00
   expiresAt:
     nullable: true
     type: string
