@@ -1,11 +1,12 @@
 post:
+  operationId: apiusernotify.apiUserNotify
   tags: [user]
   summary: Create a user notification
   description: |
    Send an instant notification to a selected user.  The endpoint is only available to superusers.
   responses:
     '200':
-      description: The notification was sent
+      description: The notification was sent.
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:

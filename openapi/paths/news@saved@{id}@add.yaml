@@ -10,10 +10,13 @@ post:
     endpoint.
   responses:
     '200':
+      description: |
+        Currently always empty for this endpoint.
       content:
         application/json:
-          description: |
-            Currently always empty for this endpoint.
+          schema:
+            type: array
+          example: []
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

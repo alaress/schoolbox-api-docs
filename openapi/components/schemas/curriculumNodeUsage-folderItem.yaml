@@ -19,7 +19,8 @@ properties:
         description: The name of the folder, including any class codes.
       code:
         type: array
-        items: string
+        items:
+          type: string
         description: A list of class codes (if any) associated with this folder.
       _links:
         type: object

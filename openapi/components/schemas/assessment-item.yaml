@@ -1,11 +1,10 @@
 title: an Assessment Item
-description: An assessment item
+description: An assessment item.
 readOnly: true
 type: object
 properties:
   id:
     $ref: ./id.yaml
-    example: 255
   title:
     type: string
     example: Turning on the computer
@@ -19,13 +18,36 @@ properties:
       - LTI
     example: task
   folder:
-    $ref: ./folder.yaml
     description: |
-      The folder where the assessment is found
-  subjectCode:
-    type: string
-    description: |
-      The Course Subject Code
+      The folder where the assessment is found.
+    type: object
+    properties:
+      id:
+        type: integer
+        description: The ID of the folder.
+      name:
+        type: string
+        description: The name of the folder.
+      code:
+        description: Class Codes associated with the folder.
+        oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+      yearLevel:
+        description: |
+          A year level which the folder is associated with.
+        type: array
+        nullable: true
+        items:
+          type: object
+          properties:
+            id:
+              $ref: id.yaml
+            name:
+              type: string
+              description: The name of the year level.
   commonAssessment:
     type: boolean
   workType:
@@ -35,24 +57,12 @@ properties:
     properties:
       id:
         type: integer
-        description: the DB identifier of the worktype
+        description: The DB identifier of the worktype.
         example: 1
       name:
         type: string
-        description: the name of the work type, may not be unique
+        description: The name of the work type, may not be unique.
         example: Formative Assessment
-    yearLevel:
-      type: object
-      properties:
-        name:
-          type: string
-        id:
-          type: integer
-          description: the db identifier of the yearlevel
-          example: 6
-      example:
-        name: Year 9
-        id: 3
   weighted:
     type: boolean
     example: true
@@ -68,7 +78,7 @@ properties:
     type: string
     format: date-time
     description: |
-      The date as a RFC3339 string.
+      The due date of the assessment as a RFC3339 string.
     example: 2022-01-30T21:00:00.000Z
   rubric:
     $ref: ./assessment-rubric.yaml
@@ -77,7 +87,9 @@ properties:
     properties:
       id:
         type: integer
-        description: ID of the parent assessment (project)
+        description: ID of the parent assessment (project).
         example: 255
   participants:
-    $ref: ./assessment-feedback-item.yaml
+    type: array
+    items:
+      $ref: ./assessment-feedback-item.yaml

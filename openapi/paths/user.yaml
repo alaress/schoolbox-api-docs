@@ -4,6 +4,7 @@ get:
   summary: Get a list of users
   description: |
     This allows you to search for users and get details about the user. The search filter attributes are all optional.   
+    The number of users returned is 5 by default, if the limit query parameter is not provided.
     This endpoint is only available to superusers to avoid leaking information about users to other users.
 
   responses:
@@ -15,12 +16,15 @@ get:
     - name: search
       in: query
       description: |
-        will search `username`, `firstname`, `lastname` for non exact matches
+        Will search `username`, `firstname`, `lastname` and `preferred_name` for non exact matches.
       schema:
         type: string
     - name: filter
       in: query
-      description: ''
+      description: |
+        Json encoded object of fields and values to filter users on. \
+        For example, to get user with username `jcoles`: \
+        `filter=%7b%22username%22%3a%22jcoles%22%7d`
       schema:
         type: object
         properties:
@@ -33,50 +37,60 @@ get:
           email:
             type: string
             example: jreed@schoolbox.com.au
-          yearLevel:
-            type: object
-            properties:
-              id:
-                type: integer
-                description: the db identifier of the Year Level
-                example: 6
-              name:
-                type: integer
-                description: the name of the Year Level. may not be unique
-                example: Year 6
+          year:
+            description: A Year level to filter users with.
+            oneOf:
+              - type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The DB identifier of the Year Level.
+                    example: 6
+              - type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the Year Level, may not be unique.
+                    example: Year 6
           role:
-            type: object
-            properties:
-              id:
-                type: integer
-                description: the db identifier of the Role
-                example: 1
-              name:
-                type: integer
-                description: the name of the Role. may not be unique
-                example: Staff
+            description: A role to filter users with.
+            oneOf:
+              - type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The DB identifier of the Role.
+                    example: 1
+              - type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the Role, may not be unique.
+                    example: Staff
           roleType:
             type: string
             enum:
               - student
               - staff
               - parent
+              - guest
           campus:
-            type: object
-            properties:
-              id:
-                type: integer
-                description: the db identifier of the Campus
-                example: 6
-              name:
-                type: integer
-                description: the name of the Campus. may not be unique
-                example: Year 6
+            description: A campus to filter users with.
+            oneOf:
+              - type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The DB identifier of the Campus.
+                    example: 6
+              - type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the Campus, may not be unique.
+                    example: Senior
     - $ref: ../components/parameters/cursor.yaml
     - $ref: ../components/parameters/limit.yaml
-      default: 5
-
-
 post:
   operationId: userPost
   tags: [user]

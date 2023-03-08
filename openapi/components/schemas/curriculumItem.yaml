@@ -5,7 +5,6 @@ type: object
 properties:
   id:
     $ref: ./id.yaml
-    example: 65
   name:
     type: string
     example: Self-awareness

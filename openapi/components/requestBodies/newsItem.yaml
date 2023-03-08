@@ -8,7 +8,6 @@ content:
         title:
           description: News article title.
           type: string
-          required: true
         body:
           $ref: ../schemas/news/body.yaml
         blurb:
@@ -18,33 +17,45 @@ content:
             If provided, the blurb will be displayed as the article's summary:
             otherwise, a trimmed version the article's body will be used instead.
           type: string
-        topics[]:
+        topics:
           description: |
             A list of IDs of topics to associate with this news article.
           type: array
           items:
             $ref: ../schemas/id.yaml
         sticky:
-          allOf:
-            - description: |
-                Is this article pinned to the top of any list it is within?
+          type: integer
+          description: |
+            Is this article pinned to the top of any list it is within?
+            
+            (Not all users have permission to set this flag.)
 
-                (Not all users have permission to set this flag.)
-            - $ref: ../schemas/queryBoolean.yaml
+            A truthy integer value (0 or 1).
+            
+            0 evaluates to false; 1 evaluates to true.
+          enum: [ 0, 1 ]
+          default: 0
         publishAt:
-          required: true
-          allOf:
-            - description: |
-                The date at which this article should be published.
-            - $ref: ../schemas/formDateTime.yaml
+          description: |
+            The datetime at which this article should be published.
+            
+            The format is dependent on the Schoolbox instance's "Numerical Date Format"
+            and "Time Format" settings: ideally, this would just be a "datetime" format
+            but the datetime input was developed before JSON was used for request bodies.
+          type: string
+          example: 22/06/2021 11:28am
         expiresAt:
-          required: true
-          allOf:
-            - description: |
-                The date at which this article should be archived.
-            - $ref: ../schemas/formDateTime.yaml
-        attachment[]:
+          description: |
+            The datetime at which this article should be achieved.
+            
+            The format is dependent on the Schoolbox instance's "Numerical Date Format"
+            and "Time Format" settings: ideally, this would just be a "datetime" format
+            but the datetime input was developed before JSON was used for request bodies.
+          type: string
+          example: 22/06/2021 11:28am
+        attachment:
           type: array
+          nullable: true
           description: |
             A single featured image to attach to this news item, supplied as a
             pointer to a file in Schoolbox. This parameter may be provided no
@@ -70,8 +81,9 @@ content:
           items:
             $ref: ../schemas/filePointer.yaml
           maxItems: 1
-        attachedFiles[]:
+        attachedFiles:
           type: array
+          nullable: true
           description: |
             Files to attach to this news item, supplied as pointers to a file in
             Schoolbox. This parameter may be provided multiple times to attach
@@ -97,8 +109,7 @@ content:
           items:
             $ref: ../schemas/filePointer.yaml
         audience:
-          type: array
-          required: true
+          type: string
           description: |
             A comma-separated list of audiences for this news item.
 
@@ -134,9 +145,11 @@ content:
               audience, targeting the intersection of:
               * users in campus ID 2
               * users in year ID 3
-          items:
-            $ref: ../schemas/news/audience.yaml
-          minItems: 1
+      required:
+        - title
+        - publishAt
+        - expiresAt
+        - audience
     examples:
       Standard article, no attachments, audienced to campus 1:
         value:
@@ -146,12 +159,12 @@ content:
           blurb: |
             <p>An optional HTML fragment, which will be used as the short version of
             the article.</p>
-          topics[]: [1, 2, 3]
+          topics: [ 1, 2, 3 ]
           sticky: 0
           publishAt: 01/01/2021 12:00am
           expiresAt: 31/12/2021 11:59pm
-          attachment[]: null
-          attachedFiles[]: null
+          attachment: null
+          attachedFiles: null
           audience: |
             campus:IjEi:self
 
@@ -163,26 +176,20 @@ content:
           blurb: |
             <p>An optional HTML fragment, which will be used as the short version of
             the article.</p>
-          topics[]: [1, 2, 3]
+          topics: [ 1, 2, 3 ]
           sticky: 0
           publishAt: 01/01/2021 12:00am
           expiresAt: 31/12/2021 11:59pm
-          attachment[]:
-            - store:1111111111:featuredImage.jpg
-          attachedFiles[]:
-            - store:1234567890:attachment1.jpg
-            - store:0987654321:attachment2.jpg
-          audience:
-            - campus:IjEi:self
-            - folder:Ijki==:teachers_of
-
+          attachment: [ "store:1111111111:featuredImage.jpg" ]
+          attachedFiles: [ "store:1234567890:attachment1.jpg", "store:0987654321:attachment2.jpg" ]
+          audience: campus:IjEi:self,folder:Ijki==:teachers_of
 
     encoding:
-      topics[]:
+      topics:
         style: form
-      attachment[]:
+      attachment:
         style: form
-      attachedFiles[]:
+      attachedFiles:
         style: form
       audience:
         explode: false

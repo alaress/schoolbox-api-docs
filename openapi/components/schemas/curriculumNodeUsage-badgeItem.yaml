@@ -24,7 +24,8 @@ properties:
         description: Either the user uploaded or selected badge banner image
       yearLevel:
         type: array
-        items: string
+        items:
+          type: string
         description: A list of year levels (if any) associated with this badge.
       object:
         $ref: ./badgeItem.yaml

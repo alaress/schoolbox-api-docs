@@ -3,7 +3,7 @@ post:
   tags: [calendar]
   summary: Invite attendees to an event
   description: |
-    Creates invitations to the given event, for the given set of users.
+    Create invitations to the given event, for the given set of users.
   responses:
     '200':
       $ref: ../components/responses/calendarAttendance-item.yaml
@@ -18,9 +18,7 @@ post:
           properties:
             guests:
               description: |
-                A list of user IDs to mark as attending this event.
-              type: array
-              items:
-                type: integer
+                A comma separated list of user IDs to invite to this event.
+              type: string
   parameters:
     - $ref: ../components/parameters/id.yaml
