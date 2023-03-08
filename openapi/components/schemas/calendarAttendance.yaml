@@ -21,7 +21,7 @@ properties:
     type: object
     properties:
       user:
-        $ref: ./user-readOnly-deprecated.yaml
+        $ref: ./userShort.yaml
       status:
         allOf:
         - $ref: ./calendarAttendanceStatus.yaml

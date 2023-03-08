@@ -1,87 +1,92 @@
 value:
   data:
     - id: 2
-      thread:
-        id: 1
-        open: true
-        created: 2019-01-01T00:00:00Z
-        updated: 2019-01-01T00:00:00Z
       author:
         id: 1
-        externalId: 2
-        firstName: Schoolbox
-        lastName: User
+        externalId: "2"
+        firstname: Schoolbox
+        lastname: User
+        fullName: Schoolbox User
+        givenName: Schoolbox
+        preferredName: null
+        title:
         _links:
-          avatar: /profile?id=1
+          profile:
+            href: /search/user/1
+            auth: null
+          avatar:
+            href: /portrait.php?id=1&size=square64
+            auth: null
       content: <p>Some HTML content goes here</p>
-      created:
+      createdAt:
         database: 2019-01-01 00:00:00
         json: 2019-01-01T00:00:00Z
         local: 1 Jan 2019 12:00am
         unixTimestamp: 1546300800000
-      updated: 2019-01-01T00:00:00Z
-      visibility:
-        - staff
-        - parent
-        - student
+      updatedAt: 2019-01-01T00:00:00Z
 
     - id: 3
-      thread:
-        id: 1
-        open: true
-        created: 2019-01-01T00:00:00Z
-        updated: 2019-01-01T00:00:00Z
       author:
         id: 1
-        externalId: 2
-        firstName: Schoolbox
-        lastName: User
+        externalId: "2"
+        firstname: Schoolbox
+        lastname: User
+        fullName: Schoolbox User
+        givenName: Schoolbox
+        preferredName: null
+        title:
         _links:
-          avatar: /profile?id=1
+          profile:
+            href: /search/user/1
+            auth: null
+          avatar:
+            href: /portrait.php?id=1&size=square64
+            auth: null
       content: <p>This article was modified</p>
-      created: 2019-01-02T00:00:00Z
-      updated: 2019-01-02T01:00:00Z
-      visibility:
-        - staff
+      createdAt: 2019-01-02T00:00:00Z
+      updatedAt: 2019-01-02T01:00:00Z
 
     - id: 4
-      thread:
-        id: 1
-        open: true
-        created: 2019-01-01T00:00:00Z
-        updated: 2019-01-01T00:00:00Z
       author:
         id: 1
-        externalId: 2
-        firstName: Schoolbox
-        lastName: User
+        externalId: "2"
+        firstname: Schoolbox
+        lastname: User
+        fullName: Schoolbox User
+        givenName: Schoolbox
+        preferredName: null
+        title:
         _links:
-          avatar: /profile?id=1
+          profile:
+            href: /search/user/1
+            auth: null
+          avatar:
+            href: /portrait.php?id=1&size=square64
+            auth: null
       content: <p>This article was not modified, just the created/updated are in different timezone</p>
-      created: 2019-01-04T00:00:00Z
-      updated: 2019-01-04T11:00:00+1100
-      visibility:
-        - staff
-        - student
+      createdAt: 2019-01-04T00:00:00Z
+      updatedAt: 2019-01-04T11:00:00+1100
 
     - id: 5
-      thread:
-        id: 1
-        open: true
-        created: 2019-01-01T00:00:00Z
-        updated: 2019-01-01T00:00:00Z
       author:
         id: 1
-        externalId: 2
-        firstName: Schoolbox
-        lastName: User
+        externalId: "2"
+        firstname: Schoolbox
+        lastname: User
+        fullName: Schoolbox User
+        givenName: Schoolbox
+        preferredName: null
+        title:
         _links:
-          avatar: /profile?id=1
+          profile:
+            href: /search/user/1
+            auth: null
+          avatar:
+            href: /portrait.php?id=1&size=square64
+            auth: null
       content: "<p>XSS Article: you must escape this <script type=\"text/javascript\">alert('XSS')</script></p>"
-      created: 2019-01-01T00:00:00Z
-      updated: 2019-01-01T00:00:00Z
-      visibility:
-        - staff
+      createdAt: 2019-01-01T00:00:00Z
+      updatedAt: 2019-01-01T00:00:00Z
 
   metadata:
     cursor:

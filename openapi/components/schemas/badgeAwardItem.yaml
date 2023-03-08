@@ -24,7 +24,6 @@ properties:
             $ref: ./id.yaml
           externalId:
             $ref: ./externalId.yaml
-            example: 501
           title:
             type: string
             nullable: true
@@ -72,7 +71,6 @@ properties:
             $ref: ./id.yaml
           externalId:
             $ref: ./externalId.yaml
-            example: 501
           title:
             type: string
             nullable: true
@@ -217,7 +215,6 @@ properties:
     example: true
   award:
     $ref: ./badgeAwardItem.yaml
-    nullable: true
   recipient:
     type: object
     properties:
@@ -225,7 +222,6 @@ properties:
         $ref: ./id.yaml
       externalId:
         $ref: ./externalId.yaml
-        example: 501
       title:
         type: string
         nullable: true
@@ -267,7 +263,6 @@ properties:
         $ref: ./id.yaml
       externalId:
         $ref: ./externalId.yaml
-        example: 501
       title:
         type: string
         nullable: true

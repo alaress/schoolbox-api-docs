@@ -6,6 +6,7 @@ get:
     Retrieve the IDs of all saved news articles for the authenticated user.
   responses:
     '200':
+      description: The IDs of all saved news articles for the authenticated user.
       content:
         application/json:
           schema:

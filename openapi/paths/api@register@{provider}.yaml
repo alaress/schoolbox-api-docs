@@ -3,7 +3,7 @@ post:
   tags: [mobile]
   summary: Register mobile device
   security: []
-  description: "In order to register your app to receive push notifications you first need to notify Schoolbox of a valid user and the app identifier. This process is handled via a POST call as specified below"
+  description: In order to register your app to receive push notifications you first need to notify Schoolbox of a valid user and the app identifier. This process is handled via a POST call as specified below.
   parameters:
     - name: provider
       in: path
@@ -22,13 +22,13 @@ post:
           - GCM
           - APNS
           - Digistorm
+  requestBody:
+    $ref: ../components/requestBodies/registration.yaml
   responses:
     '201':
       $ref: ../components/responses/authentication-successUser.yaml
-    '400':
+    '401':
       $ref: ../components/responses/authentication-failed.yaml
     default:
       $ref: ../components/responses/problem.yaml
 
-  requestBody:
-    $ref: ../components/requestBodies/registration.yaml

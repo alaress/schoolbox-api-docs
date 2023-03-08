@@ -1,5 +1,6 @@
-description: A list of feedback items for an assessment
+description: An assessment detail with a list of feedback items for the assessment.
 content:
   application/json:
     schema:
-      $ref: ../schemas/assessment-feedback-list.yaml
+      $ref: ../schemas/assessment-item.yaml
+      

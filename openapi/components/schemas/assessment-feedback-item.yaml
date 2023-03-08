@@ -1,17 +1,17 @@
 title: An Assessment feedback item
-description: An Assessment feedback item
+description: An Assessment feedback item.
 readOnly: true
 type: object
 properties:
   learner:
-    $ref: ./userShort.yaml
+    $ref: ./userAuthor.yaml
   comment:
     type: string
     example: |
       Joffrey,
       Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
       Please consider this for your next essay.
-    description: The teachers feedback for the student
+    description: The teacher's feedback for the student.
   date:
     type: string
     format: date-time
@@ -21,12 +21,12 @@ properties:
   mark:
     type: string
     example: A
-    description: A human readable mark
+    description: A human readable mark.
   normalisedMark:
     type: integer
     example: 36
-    description: The mark in numeric form
+    description: The mark in numeric form.
   rubric:
     $ref: ./assessment-rubric-feedback.yaml
   instructor:
-    $ref: ./userShort.yaml
+    $ref: ./userAuthor.yaml
