@@ -3,9 +3,28 @@ openapi: 3.0.2
 info:
   version:     $VERSION
   title:       Schoolbox API
+  # "Note about changes in $VERSION" and its contents should be removed after
+  # one version, as that note will no longer be relevant the release after.
   description: |
     This document describes the API endpoints that are available to a Schoolbox
     instance.
+
+    > **Note about changes in $VERSION**
+    >
+    > We have recently audited our API documentation: as a result, we've made
+    > significant changes in this version of the documentation.
+    >
+    > We wish to reassure developers using the API that the reason for these
+    > changes is solely to make the documentation correct and consistent with
+    > how the API works in practice: the paths, requests and responses which
+    > comprise the API have not changed in $VERSION.
+    >
+    > You do not need to make any changes to your integration in order to
+    > continue using the API.
+    >
+    > Regards,
+    >
+    > Schoolbox Team
 
     **To generate a JWT in your schoolbox instance.**
 
