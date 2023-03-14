@@ -36,8 +36,7 @@ cd docs;
 python3 -m http.server;
 ```
 
-Then, visit http://127.0.0.1:8000/?debug (for the old single-version docs) or
-http://127.0.0.1:8000/new.html?debug (for the new multi-version docs).
+Then, visit http://127.0.0.1:8000/?debug for the multi-version docs.
 
 In order to view changes to the docs, run one of the "Building API docs locally"
 steps provided below:
