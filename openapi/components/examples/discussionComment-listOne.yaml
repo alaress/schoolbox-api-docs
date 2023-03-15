@@ -2,33 +2,29 @@ value:
   # Frustratingly, sub-keys of example values don't follow $ref
   data:
     - id: 1
-      thread:
-        id: 2
-        open: false
-        created: 2019-01-01T00:00:00Z
-        updated:
-          database: 2019-01-01 00:00:00
-          json: 2019-01-01T00:00:00Z
-          local: 1 Jan 2019 12:00am
-          unixTimestamp: 1546300800000
       author:
         id: 1
-        externalId: 2
-        firstName: Schoolbox
-        lastName: User
+        externalId: "2"
+        firstname: Schoolbox
+        lastname: User
+        fullName: Schoolbox User
+        givenName: Schoolbox
+        preferredName: null
+        title:
         _links:
-          avatar: /profile?id=1
+          profile:
+            href: /search/user/1
+            auth: null
+          avatar:
+            href: /portrait.php?id=1&size=square64
+            auth: null
       content: <p>Some HTML content goes here</p>
-      created: 2019-01-01T00:00:00Z
-      updated:
+      createdAt: 2019-01-01T00:00:00Z
+      updatedAt:
         database: 2019-01-01 00:00:00
         json: 2019-01-01T00:00:00Z
         local: 1 Jan 2019 12:00am
         unixTimestamp: 1546300800000
-      visibility:
-        - staff
-        - parent
-        - student
   metadata:
     cursor:
       current: bbb

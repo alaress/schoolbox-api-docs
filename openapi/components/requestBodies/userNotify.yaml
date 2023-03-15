@@ -1,4 +1,4 @@
-description: A user
+description: A notification message.
 content:
   application/json:
     schema:
@@ -8,9 +8,8 @@ content:
       properties:
         message:
           type: string
-          required: true
           description: |
-            The content of the notification message
+            The content of the notification message.
           example: |
             Checkout the 22.1 Release notes
         from:
@@ -19,11 +18,12 @@ content:
             fullName:
               type: string
               description: |
-                User who initially created this message, if unset defaults to Unknown User
+                User who initially created this message, if unset defaults to Unknown User.
               example: Schoolbox Admin
         href:
           type: string
+          format: uri-reference
           description: |
-            url for when clicking the notification to redirect to, if unset, defaults to #
-            can be both absolute or relative
+            Url for when clicking the notification to redirect to, if unset, defaults to #
+            can be both absolute or relative.
           example: https://help.schoolbox.com.au/homepage/3343

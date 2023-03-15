@@ -2,4 +2,100 @@ description: A single comment
 content:
   application/json:
     schema:
-      $ref: ../schemas/discussionComment-read.yaml
+      type: object
+      properties:
+        id:
+          description: The ID of this comment.
+          type: integer
+        author:
+          type: object
+          properties:
+            id:
+              description: The ID of this user.
+              type: integer
+            externalId:
+              $ref: ../schemas/externalId.yaml
+            title:
+              description: The user's title (Mr., Ms., etc.).
+              type: string
+              nullable: true
+            firstname:
+              description: The user's first name.
+              type: string
+              nullable: true
+            fullName:
+              description: The user's full name.
+              type: string
+              nullable: true
+            givenName:
+              description: The user's given name.
+              type: string
+              nullable: true
+            lastname:
+              description: The user's last name.
+              type: string
+              nullable: true
+            preferredName:
+              description: The user's preferred name.
+              type: string
+              nullable: true
+            _links:
+              type: object
+              properties:
+                avatar:
+                  type: object
+                  properties:
+                    auth:
+                      type: boolean
+                      nullable: true
+                      description: |
+                        Is the currently authenticated user authorized to view the resource
+                        pointed to by `href`?
+                        
+                        If this value is `null`, then it is not known whether the user may
+                        view this resource.
+                    href:
+                      type: string
+                      format: uri
+                      nullable: true
+                profile:
+                  type: object
+                  properties:
+                    auth:
+                      type: boolean
+                      nullable: true
+                      description: |
+                        Is the currently authenticated user authorized to view the resource
+                        pointed to by `href`?
+                        
+                        If this value is `null`, then it is not known whether the user may
+                        view this resource.
+                    href:
+                      type: string
+                      format: uri
+                      nullable: true
+        content:
+          type: string
+        createdAt:
+          $ref: ../schemas/dateTime.yaml
+        updatedAt:
+          $ref: ../schemas/dateTime.yaml
+        _links:
+          type: object
+          properties:
+            delete:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+                  nullable: true
+                auth:
+                  type: boolean
+                  nullable: true
+                  description: |
+                    Is the currently authenticated user authorized to view the resource
+                    pointed to by `href`?
+                    
+                    If this value is `null`, then it is not known whether the user may
+                    view this resource.

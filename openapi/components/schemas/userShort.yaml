@@ -8,7 +8,6 @@ properties:
 
   externalId:
     $ref: ./externalId.yaml
-    example: 501
 
   title:
     type: string
@@ -18,7 +17,7 @@ properties:
 
   firstName:
     type: string
-    nullable: true
+    nullable: false
     description: |
       The user's first name.
 
@@ -28,8 +27,24 @@ properties:
       user's given name.
     example: Rebecca
 
+  preferredName:
+    type: string
+    nullable: true
+    description: The user's preferred name.
+  
+  givenName:
+    type: string
+    nullable: false
+    description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
+  
   lastName:
     type: string
     nullable: true
     description: The user's surname.
     example: White
+
+  fullName:
+    type: string
+    nullable: false
+    description: The user's formatted full name.
+    example: Ms Rebecca White
