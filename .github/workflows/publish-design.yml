@@ -1,7 +1,6 @@
 name: publish-design
 
-# Publish of design versions happens on push to develop for now.
-# (Once the multi-version docs go live, this will trigger off master.)
+# Publish of design versions happens on push to master.
 # Needs to include:
 # * Design changes
 # * Anything required to actually build a spec, e.g. scripts, package files:
@@ -10,7 +9,7 @@ name: publish-design
 on:
   push:
     branches:
-      - develop
+      - master
     paths-ignore:
       - docs/builds/*
       - docs/builds.json

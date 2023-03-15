@@ -12,7 +12,20 @@ properties:
     description: |
       Schoolbox Class Codes
   yearLevel:
-    $ref: ./yearLevel.yaml
+    title: Year Level
+    description: |
+      Year level(s) which the folder is associated to.
+    type: object
+    nullable: true
+    properties:
+      id:
+        $ref: ./id.yaml
+      name:
+        type: string
+        description: The name of the year level.
+    readOnly: true
+    required:
+      - id
 example:
   id: 80
   name: 9A English

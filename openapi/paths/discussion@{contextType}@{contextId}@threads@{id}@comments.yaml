@@ -18,8 +18,17 @@ post:
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    $ref: ../components/requestBodies/discussionComment-item.yaml
-
+    description: A single comment.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            content:
+              description: Comment content.
+              type: string
+          required:
+            - content
 parameters:
   - $ref: ../components/parameters/discussion-contextType.yaml
   - $ref: ../components/parameters/discussion-contextId.yaml

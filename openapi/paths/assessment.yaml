@@ -3,7 +3,12 @@ get:
   tags: [assessment]
   summary: Get a list of assessments
   description: |
-    This endpoint will return all assessments and their results that match the filter provided.  We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.  For example a common request may be to get assessments of work type 'major' that are due in the current year.   The endpoint is only available to superusers.
+    This endpoint will return assessments and their results that match the filter provided. 
+    The number of assessments returned is 5 by default, if the limit query parameter is not provided.
+    We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.
+    For example a common request may be to get assessments of work type 'major' that are due in the current year. 
+    
+    The endpoint is only available to superusers.
   responses:
     '200':
       $ref: ../components/responses/assessment-list.yaml
@@ -13,19 +18,29 @@ get:
 parameters:
   - name: filter
     in: query
-    description: '{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2017-10-12T14:20:50+10:00","to": "2019-10-12T14:20:50+10:00"},"yearLevel": {"id": 6,"name": "Year 6"}}'
+    required: true
+    description: |
+      Json encoded object of fields and values to filter assessments on. \
+      For example, to get assessment with ID 676: \
+      `filter=%7b%22assessmentId%22%3a676%7d`
+      
+      Filter string to filter on all the fields would look like: \
+      `{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2017-10-12T14:20:50+10:00","to": "2019-10-12T14:20:50+10:00"},"yearLevel": {"id": 6,"name": "Year 6"}}`
     schema:
       type: object
       properties:
         assessmentId:
+          description: |
+            The ID of the assessment to search.
           type: integer
           example: 256
         title:
           type: string
           description: |
-            `*like* check on title`
+            A part of title to filter assessments on.
           example: English 3/4 [Final]
         assessmentType:
+          description: The type of assessments to filter on.
           type: string
           enum:
             - task
@@ -35,41 +50,53 @@ parameters:
             - project
           example: dueWork
         folder:
-          type: array
-          items:
-            type: object
+          oneOf:
+          - type: array
+            description: Array for folders to filter assessments on.
+            items:
+              type: object
+              description: |
+                Select either one of the following fields to filter on:
+              properties:
+                id:
+                  type: integer
+                  description: ID of the folder containing the assessment.
+                  example: 80
+                code:
+                  type: string
+                  description: Code of the folder containing the assessment.
+                  example: 9ENGA
+          - type: object
             description: |
-              Select either one of the following fields to filter on:
+              Select a folder ID to filter on:
             properties:
               id:
                 type: integer
-                description: ID of the folder containing the assessment
+                description: ID of the folder containing the assessment.
                 example: 80
-              code:
-                type: string
-                description: Code of the folder containing the assessment
-                example: 9ENGA
         subjectCode:
           type: array
           items:
-            type: integer
+            type: string
             description: |
-              The Course Subject Code
+              The Course Subject Code.
         weighted:
           type: boolean
           example: false
           description: |
-            limit assessments to only those that have a weight set
+            Limit assessments to only those that have a weight set.
         workType:
           type: object
+          description: |
+            Select either one of the following fields to filter on:
           properties:
             id:
               type: integer
-              description: the DB identifier of the worktype
+              description: The DB identifier of the worktype.
               example: 1
             name:
               type: string
-              description: the name of the work type, may not be unique
+              description: The name of the work type, may not be unique.
               example: Formative Assessment
         dueDate:
           type: object
@@ -88,22 +115,23 @@ parameters:
               example: '2019-10-12T14:20:50+10:00'
         yearLevel:
           type: object
+          description: |
+            Select either one of the following fields to filter on year levels associated with folder:
           properties:
             id:
               type: integer
-              description: the db identifier of the yearlevel
+              description: The db identifier of the yearlevel.
               example: 6
             name:
               type: string
-              description: the name of the year level. may not be unique
+              description: The name of the year level, may not be unique.
               example: Year 6
         project:
           type: object
           properties:
             id:
               type: integer
-              description: ID of the parent assessment (project)
+              description: ID of the parent assessment (project).
               example: 255
   - $ref: ../components/parameters/cursor.yaml
   - $ref: ../components/parameters/limit.yaml
-    default: 5

@@ -28,7 +28,6 @@ properties:
         $ref: ./id.yaml
       externalId:
         $ref: ./externalId.yaml
-        example: 501
       title:
         type: string
         nullable: true
@@ -70,7 +69,6 @@ properties:
         $ref: ./id.yaml
       externalId:
         $ref: ./externalId.yaml
-        example: 501
       title:
         type: string
         nullable: true
@@ -106,7 +104,6 @@ properties:
         type: boolean
         example: false
   discussionThread:
-    nullable: true
     $ref: ./discussionThread-read.yaml
   filename:
     nullable: true
@@ -150,7 +147,6 @@ properties:
           fetch:
             type: string
             example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
-
   curriculumNodes:
     nullable: true
     type: array

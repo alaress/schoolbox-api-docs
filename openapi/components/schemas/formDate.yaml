@@ -1,0 +1,7 @@
+title: Form date
+description: |
+  A date as entered via a standard Schoolbox date form input.
+
+  The format is dependent on the Schoolbox instance's "Numerical Date Format" settings.
+type: string
+example: 22/06/2021

@@ -1,0 +1,28 @@
+title: A unit usage
+description: A unit usage
+readOnly: true
+type: object
+properties:
+  discriminator:
+    type: string
+    enum: [unit]
+  object:
+    type: object
+    properties:
+      id:
+        $ref: id.yaml
+      title:
+        type: string
+        description: The name of the unit.
+      folder:
+        $ref: ./curriculumNodeUsage-folderItem.yaml
+      course:
+        $ref: ./curriculumNodeUsage-courseItem.yaml
+      _links:
+        type: object
+        properties:
+          view:
+            type: string
+            format: uri-reference
+            description: |
+              A link to view this unit's course: contains a modify form.

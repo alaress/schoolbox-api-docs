@@ -3,3 +3,7 @@ dist
 node_modules
 .idea
 .staging
+
+# Ignore builds by default: they will only be committed in the Github workflows
+docs/builds
+docs/builds.json

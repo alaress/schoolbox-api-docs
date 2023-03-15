@@ -1,5 +1,5 @@
 title: Thread
-description: Common fields for discussion threads
+description: Common fields for discussion threads.
 type: object
 properties:
   id:
@@ -7,14 +7,11 @@ properties:
   open:
     type: boolean
     description: Is the thread open for further comments?
-  created:
+  createdAt:
     $ref: ./dateTime.yaml
-  updated:
+  updatedAt:
     $ref: ./dateTime.yaml
   children:
     allOf:
       - $ref: ./discussionComment-readList.yaml
-    description: A list of direct child comments of this thread
-required:
-  - id
-  - open
+    description: A list of direct child comments of this thread.

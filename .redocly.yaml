@@ -1,10 +1,12 @@
 # See https://docs.redoc.ly/cli/configuration/ for more information.
-apiDefinitions:
-  main: openapi/openapi.yaml
-lint:
-  rules:
-    no-unused-schemas: warning
-referenceDocs:
+apis:
+  main:
+    root: openapi/openapi.yaml
+rules:
+  no-empty-servers: off
+  info-license: off
+  operation-4xx-response: off
+features.openapi:
   htmlTemplate: ./docs/template.html
   theme:
     colors:

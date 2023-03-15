@@ -1,5 +1,5 @@
 title: a Pastoral Record
-description: A pastoral record
+description: A pastoral record.
 readOnly: true
 type: array
 items:
@@ -7,118 +7,156 @@ items:
     id:
       $ref: ./id.yaml
     externalId:
-      description: The ID of SIS data corresponding to this pastoral record, if External Pastoral Synchronisation is ON
+      description: The ID of SIS data corresponding to this pastoral record, if External Pastoral Synchronisation is ON.
       type: string
       nullable: true
     student:
-      $ref: ./userShort.yaml
-      _links:
-        type: object
-        properties:
-          profile:
-            type: string
-            format: uri-reference
-          avatar:
-            type: string
-            format: uri-reference
-            nullable: true
+      title: User
+      description: Short fields for users
+      type: object
+      properties:
+        id:
+          $ref: ./id.yaml
+        externalId:
+          $ref: ./externalId.yaml
+        title:
+          type: string
+          nullable: true
+          description: The user's title (Mr., Ms., etc.).
+          example: Ms
+        firstName:
+          type: string
+          nullable: true
+          description: |
+            The user's first name.
+      
+            Schoolbox doesn't distinguish between a person's actual first name
+            and any other names, and in any case is not the definitive source of
+            naming information; therefore in practice this will usually be the
+            user's given name.
+          example: Rebecca
+        lastName:
+          type: string
+          nullable: true
+          description: The user's surname.
+          example: White
+        preferredName:
+          type: string
+          nullable: true
+          description: The user's preferred name.
+        _links:
+          type: object
+          properties:
+            profile:
+              type: string
+              format: uri-reference
+            avatar:
+              type: string
+              format: uri-reference
+              nullable: true
     heading:
-      description: Heading of the pastoral record
+      description: Heading of the pastoral record.
       type: string
     type:
-      description: Type of the pastoral record
+      description: Type of the pastoral record.
       type: object
       properties:
         id:
-          description: The ID of the pastoral type associated to this pastoral record
+          description: The ID of the pastoral type associated to this pastoral record.
           type: integer
         name:
-          description: The name of the pastoral type
+          description: The name of the pastoral type.
           type: string
         icon:
-          description: The name of the icon associated to the pastoral type
+          description: The name of the icon associated to the pastoral type.
           type: string
         colour:
-          description: The colour of the icon associated to the pastoral type
+          description: The colour of the icon associated to the pastoral type.
           type: string
         sentiment:
           type: string
         sequence:
-          description: The order in which this pastoral type will display in a pastoral type list
+          description: The order in which this pastoral type will display in a pastoral type list.
           type: integer
     subType:
-      description: Sub-type of the pastoral record
+      description: Sub-type of the pastoral record.
       type: object
       properties:
         id:
-          description: The ID of the pastoral sub-type associated to this pastoral record
+          description: The ID of the pastoral sub-type associated to this pastoral record.
           type: integer
         name:
-          description: The name of the pastoral sub-type
+          description: The name of the pastoral sub-type.
           type: string
         icon:
-          description: The name of the icon associated to the pastoral sub-type
+          description: The name of the icon associated to the pastoral sub-type.
           type: string
         colour:
-          description: The colour of the icon associated to the pastoral sub-type
+          description: The colour of the icon associated to the pastoral sub-type.
           type: string
         sentiment:
           type: string
         sequence:
-          description: The order in which this pastoral sub-type will display in a pastoral sub-type list
+          description: The order in which this pastoral sub-type will display in a pastoral sub-type list.
           type: integer
     severity:
-      description: Severity of the pastoral record
+      description: Severity of the pastoral record.
       type: object
       properties:
         id:
-          description: The ID of the pastoral severity of this pastoral record
+          description: The ID of the pastoral severity of this pastoral record.
           type: integer
         name:
-          description: The name of the pastoral severity
+          description: The name of the pastoral severity.
           type: string
         color:
-          description: The colour associated to the pastoral severity
+          description: The colour associated to the pastoral severity.
           type: string
         sequence:
-          description: The order in which this pastoral severity will display in a pastoral severity list
+          description: The order in which this pastoral severity will display in a pastoral severity list.
           type: integer
+    occuredOn:
+      description: The date on which this is occurred as a RFC3339 string.
+      type: string
+      format: date-time
     points:
       nullable: true
-      description: Points of this pastoral record
+      description: Points of this pastoral record.
       type: integer
     tags:
-      description: List of tag names
+      description: List of tag names.
       type: array
       items:
         properties:
           id:
+            description: The ID of the pastoral tag.
             type: integer
           name:
+            description: The name of the pastoral tag.
             type: string
     bodyPublic:
       description: |
-        General content of this pastoral record in raw HTML
+        General content of this pastoral record in raw HTML.
       type: string
     bodyPrivate:
       description: |
-        Confidential content of this pastoral record in raw HTML
+        Confidential content of this pastoral record in raw HTML.
       type: string
     attachmentsPublic:
       description: |
-        Files attached to General content
+        Files attached to General content.
       type: array
       items:
         $ref: ./file.yaml
     attachmentsPrivate:
       description: |
-        Files attached to Confidential content
+        Files attached to Confidential content.
       type: array
       items:
         $ref: ./file.yaml
     commentsPublic:
       description: |
-        General comments
+        General comments.
       type: array
       items:
         $ref: ./discussionComment-read.yaml
@@ -130,29 +168,34 @@ items:
         $ref: ./discussionComment-read.yaml
     recordActions:
       nullable: true
-      description: An array of pastoral actions
+      description: An array of pastoral actions.
       type: array
       items:
         properties:
           id:
+            description: The ID of the pastoral action.
             type: integer
           name:
+            description: The name of the pastoral action.
             type: string
           completed:
+            description: Whether the action is completed.
             type: boolean
           updatedAt:
-            type: date
+            description: The last modified date of the action as a RFC3339 string.
+            type: string
+            format: date-time
           updatedBy:
-            $ref: ./userShort.yaml
+            $ref: ./userAuthor.yaml
     createdBy:
-      $ref: ./userShort.yaml
+      $ref: ./userAuthor.yaml
     createdAt:
       type: string
       format: date-time
       description: |
         The date as a RFC3339 string.
     updatedBy:
-      $ref: ./userShort.yaml
+      $ref: ./userAuthor.yaml
     updatedAt:
       type: string
       format: date-time

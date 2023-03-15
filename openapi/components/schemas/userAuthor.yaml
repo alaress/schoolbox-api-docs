@@ -6,9 +6,6 @@ properties:
   id:
     $ref: ./id.yaml
 
-  externalId:
-    $ref: ./externalId.yaml
-
   title:
     type: string
     nullable: true
@@ -32,11 +29,6 @@ properties:
     nullable: true
     description: The user's preferred name.
   
-  givenName:
-    type: string
-    nullable: false
-    description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
-  
   lastName:
     type: string
     nullable: true
@@ -47,4 +39,8 @@ properties:
     type: string
     nullable: false
     description: The user's formatted full name.
-    example: Ms Rebecca White
+
+  isDeleted:
+    type: boolean
+    nullable: false
+    description: Whether the user is deleted or not.
