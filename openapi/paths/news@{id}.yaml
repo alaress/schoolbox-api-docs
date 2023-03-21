@@ -24,6 +24,64 @@ get:
                         $ref: ../components/schemas/news/body.yaml
                       author:
                         $ref: ../components/schemas/news/author.yaml
+                      attachedFiles:
+                        description: Files attached to this article.
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            hash:
+                              type: string
+                              description: |
+                                The location of the file in the file store.
+                            mime:
+                              type: string
+                              description: |
+                                The mimetype of the uploaded file.
+                            type:
+                              type: string
+                              enum:
+                                - 'image'
+                                - 'video'
+                                - 'audio'
+                                - 'document'
+                                - 'other'
+                              description: |
+                                The type of the uploaded file.
+                            size:
+                              type: integer
+                              description: |
+                                The uploaded file's size, in bytes.
+                            _links:
+                              type: object
+                              description: |
+                                Relevant links for the file.
+                              properties:
+                                fetch:
+                                  type: string
+                                  description: |
+                                    A URL to fetch the file as a plain file.
+                                  format: uri
+                                icon:
+                                  type: string
+                                  description: |
+                                    An icon for the file's mimetype.
+                                  format: uri
+                                image:
+                                  type: string
+                                  description: |
+                                    An image URL for the file (if it's an image).
+                                  format: uri
+                                stream:
+                                  type: string
+                                  description: |
+                                    A stream URL for the file (if it's audio or video).
+                                  format: uri
+                                poster:
+                                  type: string
+                                  description: |
+                                    A poster URL for the file (if it's a video).
+                                  format: uri
                       status:
                         $ref: ../components/schemas/news/status.yaml
                       statusDate:
