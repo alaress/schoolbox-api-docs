@@ -11,6 +11,16 @@ properties:
     type: string
     description: |
       The mimetype of the uploaded file.
+  type:
+    type: string
+    enum:
+      - 'image'
+      - 'video'
+      - 'audio'
+      - 'document'
+      - 'other'
+    description: |
+      The type of the uploaded file.
   size:
     type: integer
     description: |
