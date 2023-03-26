@@ -24,6 +24,11 @@ get:
                         $ref: ../components/schemas/news/body.yaml
                       author:
                         $ref: ../components/schemas/news/author.yaml
+                      attachedFiles:
+                        description: Files attached to this article.
+                        type: array
+                        items:
+                          $ref: ../components/schemas/file.yaml
                       status:
                         $ref: ../components/schemas/news/status.yaml
                       statusDate:
