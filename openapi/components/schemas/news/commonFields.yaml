@@ -33,8 +33,6 @@ properties:
         properties:
           image:
             type: object
-            description: |
-              An image URL for the file (if it's an image).
             properties:
               auth:
                 type: boolean
@@ -42,7 +40,7 @@ properties:
               href:
                 type: string
                 description: |
-                  A stream URL for the file (if it's audio or video).
+                  A URL for the file storage.
                 format: uri
   publishAt:
     allOf:
