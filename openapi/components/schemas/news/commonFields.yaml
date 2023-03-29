@@ -14,7 +14,36 @@ properties:
       * if not, the body is trimmed
     type: string
   featureImage:
-    $ref: ../file.yaml
+    type: object
+    description: |
+      Feature image of this article.
+    properties:
+      mime:
+        type: string
+        description: |
+          The mimetype of the image file.
+      size:
+        type: integer
+        description: |
+          The size of the image file in bytes.
+      _links:
+        type: object
+        description: |
+          Relevant links for the file.
+        properties:
+          image:
+            type: object
+            description: |
+              An image URL for the file (if it's an image).
+            properties:
+              auth:
+                type: boolean
+                nullable: true
+              href:
+                type: string
+                description: |
+                  A stream URL for the file (if it's audio or video).
+                format: uri
   publishAt:
     allOf:
       - description: |
