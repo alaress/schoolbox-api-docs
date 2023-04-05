@@ -5,10 +5,30 @@ type: object
 properties:
   learner:
     $ref: ./userAuthor.yaml
+  response:
+    type: object
+    description: The most recent response given by (or for) the participant.
+    properties:
+      id:
+        $ref: ./id.yaml
+      date:
+        type: string
+        format: date-time
+        description: |
+          The date as a RFC3339 string.
+        example: 2022-01-30T21:00:00.000Z
+      files:
+        type: array
+        description: |
+          Any files which were attached as part of the participant's response.
+        items:
+          $ref: ./file.yaml
   feedback:
     type: object
     description: The most recent feedback given for the participant.
     properties:
+      id:
+        $ref: ./id.yaml
       comment:
         type: string
         example: |
@@ -31,9 +51,9 @@ properties:
         example: 36
         description: The mark in numeric form.
       rubric:
-          $ref: ./assessment-rubric-feedback.yaml
+        $ref: ./assessment-rubric-feedback.yaml
       instructor:
-          $ref: ./userAuthor.yaml
+        $ref: ./userAuthor.yaml
   comment:
     type: string
     deprecated: true
