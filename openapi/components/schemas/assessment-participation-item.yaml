@@ -1,0 +1,69 @@
+title: An Assessment participation item
+description: An Assessment participation item.
+readOnly: true
+type: object
+properties:
+  learner:
+    $ref: ./userAuthor.yaml
+  feedback:
+    type: object
+    description: The most recent feedback given for the participant.
+    properties:
+      comment:
+        type: string
+        example: |
+          Joffrey,
+          Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
+          Please consider this for your next essay.
+        description: The teacher's feedback for the student.
+      date:
+        type: string
+        format: date-time
+        description: |
+          The date as a RFC3339 string.
+        example: 2022-01-30T21:00:00.000Z
+      mark:
+        type: string
+        example: A
+        description: A human readable mark.
+      normalisedMark:
+        type: integer
+        example: 36
+        description: The mark in numeric form.
+      rubric:
+          $ref: ./assessment-rubric-feedback.yaml
+      instructor:
+          $ref: ./userAuthor.yaml
+  comment:
+    type: string
+    deprecated: true
+    description: |
+      The teacher's feedback for the student. (Deprecated: moved to the `feedback` object.)
+  date:
+    type: string
+    format: date-time
+    deprecated: true
+    description: |
+      The date as a RFC3339 string. (Deprecated: moved to the `feedback` object.)
+  mark:
+    type: string
+    deprecated: true
+    description: |
+      A human readable mark. (Deprecated: moved to the `feedback` object.)
+  normalisedMark:
+    type: integer
+    deprecated: true
+    description: |
+      The mark in numeric form. (Deprecated: moved to the `feedback` object.)
+  rubric:
+    allOf:
+      - $ref: ./assessment-rubric-feedback.yaml
+      - deprecated: true
+        description: |
+          An Assessment Rubric item. (Deprecated: moved to the `feedback` object.)
+  instructor:
+    allOf:
+    - $ref: ./userAuthor.yaml
+    - deprecated: true
+      description: |
+        Short fields for users (Deprecated: moved to the `feedback` object.)

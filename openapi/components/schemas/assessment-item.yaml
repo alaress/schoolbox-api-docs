@@ -88,4 +88,4 @@ properties:
   participants:
     type: array
     items:
-      $ref: ./assessment-feedback-item.yaml
+      $ref: ./assessment-participation-item.yaml
