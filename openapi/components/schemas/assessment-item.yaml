@@ -63,10 +63,6 @@ properties:
         type: string
         description: The name of the work type, may not be unique.
         example: Formative Assessment
-  weighted:
-    type: boolean
-    example: true
-    deprecated: true
   weight:
     type: integer
     example: 30
