@@ -7,6 +7,10 @@ properties:
     type: string
     description: |
       The location of the file in the file store.
+  name:
+    type: string
+    description: |
+      The name with which the file was uploaded.
   mime:
     type: string
     description: |
