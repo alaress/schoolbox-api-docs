@@ -4,7 +4,10 @@ readOnly: true
 type: object
 properties:
   learner:
-    $ref: ./userAuthor.yaml
+    allOf:
+      - $ref: ./userAuthor.yaml
+      - description: |
+          The user who is participating in the assessment: usually a student.
   response:
     type: object
     description: The most recent response given by (or for) the participant.
@@ -23,6 +26,14 @@ properties:
           Any files which were attached as part of the participant's response.
         items:
           $ref: ./file.yaml
+      submitter:
+        allOf:
+          - $ref: ./userAuthor.yaml
+          - description: |
+              The user who submitted the due response.
+              
+              This may be different to the learner: the instructor may submit a
+              response on behalf of the learner.
   feedback:
     type: object
     description: The most recent feedback given for the participant.
@@ -53,28 +64,35 @@ properties:
       rubric:
         $ref: ./assessment-rubric-feedback.yaml
       instructor:
-        $ref: ./userAuthor.yaml
+        allOf:
+          - $ref: ./userAuthor.yaml
+          - description: |
+              The user who gave the feedback to the learner: usually a teacher.
   comment:
     type: string
     deprecated: true
     description: |
-      The teacher's feedback for the student. (Deprecated: moved to the `feedback` object.)
+      The teacher's feedback for the student. 
+      (Deprecated: moved to the `feedback` object.)
   date:
     type: string
     format: date-time
     deprecated: true
     description: |
-      The date as a RFC3339 string. (Deprecated: moved to the `feedback` object.)
+      The date as a RFC3339 string.
+      (Deprecated: moved to the `feedback` object.)
   mark:
     type: string
     deprecated: true
     description: |
-      A human readable mark. (Deprecated: moved to the `feedback` object.)
+      A human readable mark.
+      (Deprecated: moved to the `feedback` object.)
   normalisedMark:
     type: integer
     deprecated: true
     description: |
-      The mark in numeric form. (Deprecated: moved to the `feedback` object.)
+      The mark in numeric form.
+      (Deprecated: moved to the `feedback` object.)
   rubric:
     allOf:
       - $ref: ./assessment-rubric-feedback.yaml
@@ -83,7 +101,8 @@ properties:
           An Assessment Rubric item. (Deprecated: moved to the `feedback` object.)
   instructor:
     allOf:
-    - $ref: ./userAuthor.yaml
-    - deprecated: true
-      description: |
-        Short fields for users (Deprecated: moved to the `feedback` object.)
+      - $ref: ./userAuthor.yaml
+      - deprecated: true
+        description: |
+          The user who gave the feedback to the learner: usually a teacher.
+          (Deprecated: moved to the `feedback` object.)
