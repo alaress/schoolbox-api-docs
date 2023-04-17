@@ -2,4 +2,6 @@ description: A list of group memberships for a user
 content:
   application/json:
     schema:
-      $ref: ../schemas/userGroupMembership-read.yaml
+      type: array
+      items:
+        $ref: ../schemas/userGroupMembership-read.yaml
