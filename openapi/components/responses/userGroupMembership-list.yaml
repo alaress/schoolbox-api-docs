@@ -2,6 +2,11 @@ description: A list of group memberships for a user
 content:
   application/json:
     schema:
+      title: Readable Group Membership Fields
+      description: |
+        A group within Schoolbox.
+        
+        This contains some of the folder's fields in this context.
       type: array
       items:
-        $ref: ../schemas/userGroupMembership-read.yaml
+        $ref: ../schemas/userGroupMembership-readableFields.yaml
