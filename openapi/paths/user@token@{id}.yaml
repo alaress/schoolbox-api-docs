@@ -1,4 +1,4 @@
-get:
+post:
   operationId: userGetTokenForUser
   tags: [user]
   summary: Get an authentication token for a user
