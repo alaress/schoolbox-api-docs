@@ -17,16 +17,18 @@ properties:
   groups:
     description: |
       This user's group memberships indexed by folder ID of the groups.
-    type: object
-    additionalProperties:
-      title: Group Membership
-      description: |
-        A group within Schoolbox.
-        
-        This contains some of the folder's fields in this context.
+    type: array
+    items:
       type: object
-      properties:
-        $ref: ../schemas/userGroupMembership-readableFields.yaml
+      additionalProperties:
+        title: Group Membership
+        description: |
+          A group within Schoolbox.
+          
+          This contains some of the folder's fields in this context.
+        type: object
+        properties:
+          $ref: ../schemas/userGroupMembership-readableFields.yaml
   
   schoolHouse:
     $ref: ./schoolHouse.yaml
