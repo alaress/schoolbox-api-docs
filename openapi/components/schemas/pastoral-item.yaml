@@ -115,6 +115,10 @@ items:
         sequence:
           description: The order in which this pastoral severity will display in a pastoral severity list.
           type: integer
+    occuredOn:
+      description: The date on which this is occurred as a RFC3339 string.
+      type: string
+      format: date-time
     points:
       nullable: true
       description: Points of this pastoral record.

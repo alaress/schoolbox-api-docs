@@ -7,6 +7,8 @@ content:
         A group within Schoolbox.
         
         This contains some of the folder's fields in this context.
-      type: object
-      properties:
-        $ref: ../schemas/userGroupMembership-readableFields.yaml
+      type: array
+      items:
+        type: object
+        properties:
+          $ref: ../schemas/userGroupMembership-readableFields.yaml

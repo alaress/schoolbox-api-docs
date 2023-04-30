@@ -1,7 +1,7 @@
 get:
   operationId: evidenceFeed
   tags: [Learning Moment]
-  summary: List the Learning Moments and Badges for the specified User
+  summary: List the Learning Moments, Badges and Due Work feedback for the specified User
   description: |
     This endpoint will return a list of all evidence objects achieved or received by the user
     limited to a count of 10 items in reverse chronological order.
@@ -11,12 +11,14 @@ get:
     The types of items appear on the feed depend on available modules:
       * The Learning Moments: Learning Moment Module
       * Badges: Badge Module
+      * Due Work Feedback: Grade Module
 
     #### Permission
     This endpoint is permitted to:
     * Superusers
     * Users with a role of Staff role type
       * Requires Learning Moments role permission to see Learning Moments
+      * Requires View Student Grades role permission to see Due Work feedback
     * Students for their own
     * Parent for their own and their child's
   responses:
@@ -25,6 +27,37 @@ get:
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
+    - name: filter
+      in: query
+      schema:
+        description: |
+          Base 64 encoded object.
+          Decoded examples:
+           1. Return all feed items in category 'feedback'.
+              {"filterNames" => ["feedback"], "tag" => ‘"}
+           2. Return all feed items in category 'feedback' or 'achievements'.
+              {"filterNames" => ["feedback", "achievements"], "tag" => ""}
+           3. Return all feed items in category 'feedback' or 'learningMoments', that have tag "Class Work".
+              {"filterNames" => ["feedback", "learningMoments"], "tag" => "Class Work"}
+        example: eyJmaWx0ZXJOYW1lcyI6WyJnb2FscyIsImxlYXJuaW5nTW9tZW50cyIsImFjaGlldmVtZW50cyIsImZlZWRiYWNrIl0sInRhZyI6IiJ9
+        type: object
+        properties:
+          filterNames:
+            type: array
+            items:
+              type: string
+              enum:
+               - achievements
+               - feedback
+               - goals
+               - learningMoments
+            example: ["achievements", "feedback", "goals", "learningMoments"]
+          tag:
+            type: string
+            description: |
+              String to match a tag on one or more learning moments.
+              Note that tag is only relevant if 'learningMoments' is included in filterNames.
+            example: "Class Work"
     - name: cursor
       in: query
       required: false
@@ -45,6 +78,7 @@ get:
             enum:
               - evidence
               - badgeAward
+              - dueWorkFeedback
             example: badgeAward
           date:
             description: |
