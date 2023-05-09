@@ -1,33 +1,17 @@
 title: Badge
 type: object
 properties:
-  data:
-    type: array
-    items:
-      type: object
-      properties:
-        discriminator:
-          type: string
-          example: badgeAward
-        object:
-          $ref: ./badgeAwardItem.yaml
-        date:
-          type: string
-          format: date-time
-          description: |
-            The date as a RFC3339 string.
-          example: 2022-08-30T10:09:09+10:00
-  metadata:
-    type: object
-    properties:
-      count:
-        type: integer
-        example: 18
-      cursor:
-        type: object
-        properties:
-          current:
-            type: string
-            nullable: true
-          next:
-            type: string
+  discriminator:
+    type: string
+    description: badgeAward - discriminator for Badge award object
+    example: badgeAward
+  object:
+    $ref: ./badgeAwardItem.yaml
+  date:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+required:
+  - discriminator
