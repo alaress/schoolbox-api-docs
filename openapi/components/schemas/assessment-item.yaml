@@ -51,10 +51,14 @@ properties:
               description: The name of the year level.
   commonAssessment:
     type: boolean
+    nullable: true
+    description: Null if assessmentType is 'lessonPlan'.
   workType:
     type: object
+    nullable: true
     description: |
-      System configurable in your Admin Lists Work Types area
+      System configurable in your Admin Lists Work Types area.
+      Null if assessmentType is 'lessonPlan'.
     properties:
       id:
         type: integer
@@ -66,11 +70,13 @@ properties:
         example: Formative Assessment
   weight:
     type: integer
+    nullable: true
     example: 30
     description: |
       The value of how much this assessment's outcome contributes to the final overall grade -
       a value of 0 indicates this assessment has no impact on the overall grade.
       Generally, this is a number between 0 and 100.
+      Null if assessmentType is 'lessonPlan'.
   dueDate:
     type: string
     format: date-time
