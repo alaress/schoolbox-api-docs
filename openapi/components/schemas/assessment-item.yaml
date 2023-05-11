@@ -16,6 +16,7 @@ properties:
       - task
       - project
       - LTI
+      - lessonPlan
     example: task
   folder:
     description: |
