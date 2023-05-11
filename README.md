@@ -94,17 +94,3 @@ More information is available at https://rapidocweb.com/api.html
     [`openapi/components/`](openapi/components) sub-folders.
     See [`openapi/components/README.md`](openapi/components/README.md) for more
     information.
-
-
-### Testing API responses using HTTP Client (in PHPStorm)
-
- * Create a new file with .http extension, then start with #Examples (top-right button that appears in PHPStorm).
- * https://www.jetbrains.com/help/phpstorm/http-client-in-product-code-editor.html
- * Example of working file using authorisation:
-```
-### Auth test (working)
-### Bearer token found by following instructions at https://api.schoolbox.com.au
-GET https://vagrant.dev.schoolbox.cloud/news/1
-Accept: application/json
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJ2YWdyYW50LmRldi5zY2hvb2xib3guY2xvdWQiLCJzdWIiOiJhbGFyZXNzIiwianRpIjoiYmQxNmE3NmYtZThjNS0xMWVkLWE4MWItMDQwMzAwMDAwMDAwIn0.MhWaeSX0VsotYZxLg5uIDsmziNsKiPl_KGsNFDsaxe_aSuP0Thlvtc_zxLJSqvbxSEqx4dJc-vN3Aw6vIy8-xx421gjnbmGcMj2F4tDiTD_9Nru_CvkzPtfE_gvwD_-bxlGudE0k8KaHNRCOIKv7x9aeyI36q2ILsMYl-kUAwZFh32FSideKIFb6XP6Mdut7LBDZljYLQptmwJRp2aL4Kf1hEYvutDFLSZLu1w5GmUS9fY1YVV8dr6H4ryJWO4L-HgzSyb_yiZFEzuINR-6Z-D1alYabcujwyWmNpMs5YA9B2J64iRveBKJEJ9PBW29i2bIT8j711RVJ8DzsKiCwcw
-```
