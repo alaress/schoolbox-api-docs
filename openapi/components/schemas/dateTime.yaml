@@ -24,18 +24,22 @@ oneOf:
         type: string
         description: |
           A database representation of the date.
+        example: "2018-01-28 00:00:00"
       unixTimestamp:
         type: integer
         format: int64
         description: |
           The date as a Unix timestamp.
+        example: 1517058000
       local:
         type: string
         description: |
           A string representation of the date, localized to the Schoolbox
           instance's settings.
+        example: "28/01/2018 12:00am"
       json:
         type: string
         format: date-time
         description: |
           The date as a RFC3339 string.
+        example: "2018-01-28T00:00:00+11:00"
