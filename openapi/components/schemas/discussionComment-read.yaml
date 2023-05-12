@@ -11,9 +11,9 @@ properties:
   content:
     type: string
   created:
-    $ref: ./dateTimeStringOrObject.yaml
+    $ref: ./dateTime.yaml
   updated:
-    $ref: ./dateTimeStringOrObject.yaml
+    $ref: ./dateTime.yaml
   parent:
     $ref: ./discussionComment-read.yaml
   children:
