@@ -94,5 +94,6 @@ properties:
         example: 255
   participants:
     type: array
+    nullable: true
     items:
       $ref: ./assessment-participation-item.yaml
