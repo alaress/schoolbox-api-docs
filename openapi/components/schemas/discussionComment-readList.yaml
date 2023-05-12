@@ -72,8 +72,8 @@ properties:
         content:
           type: string
         createdAt:
-          $ref: ./dateTime.yaml
+          $ref: ./dateTimeStringOrObject.yaml
         updatedAt:
-          $ref: ./dateTime.yaml
+          $ref: ./dateTimeStringOrObject.yaml
   metadata:
     $ref: ./listMetadata.yaml
