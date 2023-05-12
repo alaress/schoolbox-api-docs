@@ -8,9 +8,9 @@ properties:
     type: boolean
     description: Is the thread open for further comments?
   createdAt:
-    $ref: ./dateTimeStringOrObject.yaml
+    $ref: ./dateTime.yaml
   updatedAt:
-    $ref: ./dateTimeStringOrObject.yaml
+    $ref: ./dateTime.yaml
   children:
     allOf:
       - $ref: ./discussionComment-readList.yaml
