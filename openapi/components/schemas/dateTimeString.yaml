@@ -1,0 +1,4 @@
+title: Datetime
+description: An RFC3339 string
+type: string
+format: date-time
