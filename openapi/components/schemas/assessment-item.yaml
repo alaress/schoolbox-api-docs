@@ -63,10 +63,6 @@ properties:
         type: string
         description: The name of the work type, may not be unique.
         example: Formative Assessment
-  weighted:
-    type: boolean
-    example: true
-    deprecated: true
   weight:
     type: integer
     example: 30
@@ -92,4 +88,4 @@ properties:
   participants:
     type: array
     items:
-      $ref: ./assessment-feedback-item.yaml
+      $ref: ./assessment-participation-item.yaml

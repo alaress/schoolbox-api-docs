@@ -1,0 +1,16 @@
+get:
+  operationId: curriculumApiUsage.getNodeUsage
+  tags: [curriculum]
+  summary: Get curriculum node usage
+  description: |
+   Get curriculum node usage
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNodeUsage-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
+  - $ref: ../components/parameters/cursor.yaml
+  - $ref: ../components/parameters/limit.yaml

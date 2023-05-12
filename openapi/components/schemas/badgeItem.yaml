@@ -1,0 +1,200 @@
+title: badge
+description: A Badge item
+type: object
+properties:
+
+  id:
+    $ref: ./id.yaml
+  createdAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+  createdBy:
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      externalId:
+        $ref: ./externalId.yaml
+      title:
+        type: string
+        nullable: true
+        description: The user's title (Mr., Ms., etc.).
+        example: Ms
+      firstName:
+        type: string
+        nullable: true
+        description: |
+          The user's first name.
+          
+          Schoolbox doesn't distinguish between a person's actual first name
+          and any other names, and in any case is not the definitive source of
+          naming information; therefore in practice this will usually be the
+          user's given name.
+        example: Rebecca
+
+      lastName:
+        type: string
+        nullable: true
+        description: The user's surname.
+        example: White
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            example: /search/user/2
+          avatar:
+            type: string
+            example: /portrait.php?id=2&size=square64
+      isDeleted:
+        type: boolean
+        example: false
+  updatedAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: 2022-08-30T10:09:09+10:00
+  updatedBy:
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      externalId:
+        $ref: ./externalId.yaml
+      title:
+        type: string
+        nullable: true
+        description: The user's title (Mr., Ms., etc.).
+        example: Ms
+      firstName:
+        type: string
+        nullable: true
+        description: |
+          The user's first name.
+          
+          Schoolbox doesn't distinguish between a person's actual first name
+          and any other names, and in any case is not the definitive source of
+          naming information; therefore in practice this will usually be the
+          user's given name.
+        example: Rebecca
+
+      lastName:
+        type: string
+        nullable: true
+        description: The user's surname.
+        example: White
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            example: /search/user/2
+          avatar:
+            type: string
+            example: /portrait.php?id=2&size=square64
+      isDeleted:
+        type: boolean
+        example: false
+  name:
+    type: string
+    example: |
+      Jump Rope for Heart Team
+  body:
+    type: string
+    description: |
+      The content of the Learning Moment
+  image:
+    type: string
+    nullable: true
+  icon:
+    type: string
+    description: |
+      The Badge Image, either system defined or selectable by the user
+    example: |
+      /images/badges/sport/23.svg
+  allowAsGoal:
+    type: boolean
+    example: true
+  animate:
+    type: boolean
+    example: true
+    description: |
+      On First load of the achieved badge, should the badge be animated? flying stars, fly in...
+  category:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 4
+      name:
+        type: string
+        example: |
+          Extra-Curricular
+  achievementExpiry:
+    nullable: true
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: null
+  goalExpiry:
+    nullable: true
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+    example: null
+  curriculumNodes:
+    nullable: true
+    type: array
+    items:
+      $ref: ./curriculumItem.yaml
+  tags:
+    nullable: true
+    example: null
+    type: object
+    description: |
+      System configurable in your Admin Lists Learning Moment area
+    properties:
+      id:
+        type: integer
+        description: the DB identifier of the Learning Moment Tags
+        example: 1
+      name:
+        type: string
+        description: the name of the Learning Moment type, may not be unique
+        example: Class Work
+  _links:
+    type: object
+    properties:
+      update:
+        type: string
+        description: |
+          the link for the user to update the badge
+        example: /learning/badge/10/update
+      delete:
+        type: string
+        description: |
+          the link for the user to delete the badge
+        example: /learning/badge/10
+      achievementRecipients:
+        type: string
+        example: /learning/badge/award/10/achievement/recipients
+      goalRecipients:
+        type: string
+        example: /learning/badge/award/10/goal/recipients
+      achievementWithdraw:
+        type: string
+        example: /learning/badge/award/10/achievement/withdraw
+      goalWithdraw:
+        type: string
+        example: /learning/badge/award/10/goal/withdraw
+      icon:
+        type: string
+        description: |
+          The Badge Image, either system defined or selectable by the user
+        example: /static/images/badges/sport/23.svg

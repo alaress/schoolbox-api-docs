@@ -1,0 +1,5 @@
+description: Provides all locations where this curriculum has been mapped
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/curriculumNodeUsage-list.yaml

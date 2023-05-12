@@ -1,12 +1,12 @@
-title: Badge
+title: Due Work Feedback
 type: object
 properties:
   discriminator:
     type: string
-    description: badgeAward - discriminator for Badge award object
-    example: badgeAward
+    description: dueWorkFeedback - discriminator for Due Work Feedback object
+    example: dueWorkFeedback
   object:
-    $ref: ./badgeAwardItem.yaml
+    $ref: ./dueWorkFeedbackItem.yaml
   date:
     type: string
     format: date-time

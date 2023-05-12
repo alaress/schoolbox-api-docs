@@ -1,0 +1,31 @@
+title: A badge usage
+description: |
+  A badge usage.
+
+readOnly: true
+type: object
+properties:
+  discriminator:
+    type: string
+    enum: [badge]
+  object:
+    type: object
+    properties:
+      id:
+        $ref: id.yaml
+      title:
+        type: string
+        description: The name of the badge.
+      category:
+        type: string
+        description: The name of the badge category.
+      icon:
+        type: string
+        description: Either the user uploaded or selected badge banner image
+      yearLevel:
+        type: array
+        items:
+          type: string
+        description: A list of year levels (if any) associated with this badge.
+      object:
+        $ref: ./badgeItem.yaml
