@@ -46,7 +46,7 @@ properties:
     allOf:
       - description: |
           When was the article published?
-      - $ref: ../dateTime.yaml
+      - $ref: ../dateTimeObject.yaml
   topics:
     type: array
     description: |
