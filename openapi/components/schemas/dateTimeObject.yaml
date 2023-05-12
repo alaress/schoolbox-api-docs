@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 title: Datetime Object
 type: object
 readOnly: true
@@ -17,20 +16,6 @@ readOnly: true
 #
 #  If using this object representation, please use the "json" property
 #  and perform localization using client-side libraries.
-title: Datetime
-type: object
-readOnly: true
-deprecated: true
-description: |
-  A JSON representation of a datetime.
-  * an object, which contains a datetime in several formats
-  
-  This read-only object representation is deprecated and will be
-  removed eventually: it exists only for compatibility with existing
-  API endpoints.
-
-  If using this object representation, please use the "json" property
-  and perform localization using client-side libraries.
 required:
   - json
 properties:
