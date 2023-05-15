@@ -41,5 +41,5 @@ properties:
     type: string
     format: date-time
     description: |
-      The date as a RFC3339 string.
+      The date as a RFC3339 string. eg. "2018-01-28T00:00:00+11:00".
     example: "2018-01-28T00:00:00+11:00"
