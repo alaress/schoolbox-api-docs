@@ -1,7 +1,6 @@
 title: Datetime Object
 type: object
 readOnly: true
-deprecated: true
 #
 # This has been commented out so that the description from the parent will be displayed in the generated docs.
 # The description in the parent should describe the purpose of the particular date field, whereas this description
