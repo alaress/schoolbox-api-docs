@@ -2,4 +2,7 @@ allOf:
   - description: |
       When did the article's status change to its current
       value?
+      
+      This read-only object representation is deprecated.  It will be
+      replaced in 23.1 with an RFC3339 string eg. "2018-01-28T00:00:00+11:00".
   - $ref: ../dateTimeObject.yaml
