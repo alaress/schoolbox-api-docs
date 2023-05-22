@@ -16,6 +16,7 @@ properties:
       - task
       - project
       - LTI
+      - lessonPlan
     example: task
   folder:
     description: |
@@ -50,10 +51,15 @@ properties:
               description: The name of the year level.
   commonAssessment:
     type: boolean
+    nullable: true
+    description: |
+      Only applicable for assessmentType 'dueWork' (so value will be null for other assessmentTypes).
   workType:
     type: object
+    nullable: true
     description: |
-      System configurable in your Admin Lists Work Types area
+      System configurable in your Admin Lists Work Types area.
+      Not applicable to assessmentType 'lessonPlan' (so value will be null in that case).
     properties:
       id:
         type: integer
@@ -65,11 +71,13 @@ properties:
         example: Formative Assessment
   weight:
     type: integer
+    nullable: true
     example: 30
     description: |
       The value of how much this assessment's outcome contributes to the final overall grade -
       a value of 0 indicates this assessment has no impact on the overall grade.
       Generally, this is a number between 0 and 100.
+      Not applicable to assessmentTypes 'lessonPlan' and 'task' (so value will be null in those cases).
   dueDate:
     type: string
     format: date-time
@@ -87,5 +95,7 @@ properties:
         example: 255
   participants:
     type: array
+    nullable: true
     items:
       $ref: ./assessment-participation-item.yaml
+    description: Not applicable to assessmentType 'lessonPlan' (so value will be null in that case).
