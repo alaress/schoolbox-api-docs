@@ -52,4 +52,16 @@ properties:
     description: |
       A list of topics which are applicable to the article.
     items:
-      $ref: ../news/topic.yaml
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            A human-readable name for the topic.
+        slug:
+          type: string
+          description: |
+            A machine-readable name for the topic.
+
+
+
