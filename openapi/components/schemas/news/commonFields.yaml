@@ -45,11 +45,23 @@ properties:
   publishAt:
     allOf:
       - description: |
-          When was the article published?
-      - $ref: ../dateTime.yaml
+          When was the article published? (RFC3339 string eg. "2018-01-28T00:00:00+11:00").
+      - $ref: ../dateTimeString.yaml
   topics:
     type: array
     description: |
       A list of topics which are applicable to the article.
     items:
-      $ref: ../news/topic.yaml
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            A human-readable name for the topic.
+        slug:
+          type: string
+          description: |
+            A machine-readable name for the topic.
+
+
+
