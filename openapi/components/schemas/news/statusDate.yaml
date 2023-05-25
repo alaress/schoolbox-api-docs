@@ -1,5 +1,5 @@
 allOf:
   - description: |
       When did the article's status change to its current
-      value?
-  - $ref: ../dateTime.yaml
+      value? (RFC3339 string eg. "2018-01-28T00:00:00+11:00").
+  - $ref: ../dateTimeString.yaml

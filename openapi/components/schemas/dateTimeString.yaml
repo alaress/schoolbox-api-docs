@@ -1,0 +1,5 @@
+title: Datetime
+type: string
+description: The date as a RFC3339 string. eg. "2018-01-28T00:00:00+11:00".
+format: date-time
+example: "2018-01-28T00:00:00+11:00"

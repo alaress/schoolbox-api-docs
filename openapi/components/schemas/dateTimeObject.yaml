@@ -1,0 +1,44 @@
+title: Datetime Object
+type: object
+readOnly: true
+#
+# This has been commented out so that the description from the parent will be displayed in the generated docs.
+# The description in the parent should describe the purpose of the particular date field, whereas this description
+# describes the particulars of this representation.
+#
+#description: |
+#  A JSON representation of a datetime.
+#  * an object, which contains a datetime in several formats
+#
+#  This read-only object representation is deprecated and will be
+#  removed eventually: it exists only for compatibility with existing
+#  API endpoints.
+#
+#  If using this object representation, please use the "json" property
+#  and perform localization using client-side libraries.
+required:
+  - json
+properties:
+  database:
+    type: string
+    description: |
+      A database representation of the date.  Eg. "2018-01-28 00:00:00"
+    example: "2018-01-28 00:00:00"
+  unixTimestamp:
+    type: integer
+    format: int64
+    description: |
+      The date as a Unix timestamp.  Eg. 1517058000
+    example: 1517058000
+  local:
+    type: string
+    description: |
+      A string representation of the date, localized to the Schoolbox
+      instance's settings.  Eg. "28/01/2018 12:00am".
+    example: "28/01/2018 12:00am"
+  json:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string. Eg. "2018-01-28T00:00:00+11:00".
+    example: "2018-01-28T00:00:00+11:00"
