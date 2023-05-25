@@ -5,37 +5,5 @@ description: |
   * a RFC3339 string
   * an object, which contains a datetime in several formats
 oneOf:
-  - type: string
-    format: date-time
-  - type: object
-    readOnly: true
-    deprecated: true
-    description: |
-      This read-only object representation is deprecated and will be
-      removed eventually: it exists only for compatibility with existing
-      API endpoints.
-
-      If using this object representation, please use the "json" property
-      and perform localization using client-side libraries.
-    required:
-      - json
-    properties:
-      database:
-        type: string
-        description: |
-          A database representation of the date.
-      unixTimestamp:
-        type: integer
-        format: int64
-        description: |
-          The date as a Unix timestamp.
-      local:
-        type: string
-        description: |
-          A string representation of the date, localized to the Schoolbox
-          instance's settings.
-      json:
-        type: string
-        format: date-time
-        description: |
-          The date as a RFC3339 string.
+  - $ref: dateTimeString.yaml
+  - $ref: dateTimeObject.yaml
