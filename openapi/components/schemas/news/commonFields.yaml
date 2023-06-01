@@ -45,8 +45,11 @@ properties:
   publishAt:
     allOf:
       - description: |
-          When was the article published? (RFC3339 string eg. "2018-01-28T00:00:00+11:00").
-      - $ref: ../dateTimeString.yaml
+          When was the article published?
+          
+          This read-only object representation is deprecated.  It will be
+          replaced in 23.1 with an RFC3339 string eg. "2018-01-28T00:00:00+11:00".
+      - $ref: ../dateTimeObject.yaml
   topics:
     type: array
     description: |
