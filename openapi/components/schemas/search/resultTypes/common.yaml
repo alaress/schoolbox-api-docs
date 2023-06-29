@@ -1,7 +1,7 @@
 type: object
 properties:
   id:
-    $ref: ./id.yaml
+    $ref: ../../id.yaml
   date:
     type: string
     format: date-time

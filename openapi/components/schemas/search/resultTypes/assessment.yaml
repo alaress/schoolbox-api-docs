@@ -3,7 +3,7 @@ allOf:
   - $ref: ../../assessment-item.yaml
   - type: object
     properties:
-      discriminator:
+      type:
         type: string
         enum: [assessment]
 

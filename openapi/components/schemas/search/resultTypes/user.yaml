@@ -3,6 +3,6 @@ allOf:
   - $ref: ../../user-read.yaml
   - type: object
     properties:
-      discriminator:
+      type:
         type: string
         enum: [user]

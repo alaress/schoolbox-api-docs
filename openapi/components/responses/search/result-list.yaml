@@ -2,4 +2,4 @@ description: A list of search results
 content:
   application/json:
     schema:
-      $ref: ../schemas/search/result-item.yaml
+      $ref: ../../schemas/search/result-item.yaml
