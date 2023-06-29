@@ -1,0 +1,25 @@
+get:
+  operationId: apiSearchFolderGet
+  tags: [search]
+  summary: Search for content within a folder
+  description: |
+    Search for content within a folder
+  security: []
+  responses:
+    '200':
+      # search result
+      $ref: ../components/responses/authentication-successUser.yaml
+    '302':
+      $ref: ../components/responses/authentication-successRedirect.yaml
+    '400':
+      $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    # filters
+    # date span
+    # cursor
+    # folder ID
+    - $ref: ../components/parameters/id.yaml
+    - $ref: ../components/parameters/redirect.yaml
+    - $ref: ../components/parameters/jwt.yaml

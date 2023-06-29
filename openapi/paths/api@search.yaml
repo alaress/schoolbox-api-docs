@@ -1,0 +1,24 @@
+get:
+  operationId: apiSearchGet
+  tags: [search]
+  summary: Search for content
+  description: |
+    Search for content
+  security: []
+  responses:
+    '200':
+      # search result
+      $ref: ../components/responses/authentication-successUser.yaml
+    '302':
+      $ref: ../components/responses/authentication-successRedirect.yaml
+    '400':
+      $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    # filters
+    # date span
+    # cursor
+    # folder ID
+    - $ref: ../components/parameters/redirect.yaml
+    - $ref: ../components/parameters/jwt.yaml
