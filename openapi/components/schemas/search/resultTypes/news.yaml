@@ -1,0 +1,9 @@
+allOf:
+  - $ref: ./common.yaml
+  # TODO consider a common format for search results, instead of the raw object
+  - $ref: ../../file.yaml
+  - type: object
+    properties:
+      type:
+        type: string
+        enum: [news]
