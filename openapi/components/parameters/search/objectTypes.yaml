@@ -1,0 +1,19 @@
+name: objectTypes[]
+in: query
+description: |
+  A list of types of objects to fetch in the search.
+style: form
+explode: true
+schema:
+  type: array
+  items:
+    type: string
+    enum:
+      - user
+      - tile
+      - folder
+      - file
+      - event
+      - assessment
+      - news
+      - forum
