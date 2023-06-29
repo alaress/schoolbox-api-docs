@@ -1,0 +1,7 @@
+name: keyword
+in: query
+description:
+  A keyword to search for.
+required: true
+schema:
+  type: string

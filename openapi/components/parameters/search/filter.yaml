@@ -1,0 +1,56 @@
+name: filter
+in: query
+description:
+  A JSON-encoded object representing a list of values to search for.
+schema:
+  type: object
+  properties:
+    types:
+      type: array
+      description: |
+        If provided, filter the response to these types of object.
+      items:
+        type: string
+        enum:
+          - user
+          - tile
+          - folder
+          - file
+          - event
+          - assessment
+          - news
+          - forum
+
+    date:
+      type: object
+      description: |
+        If provided, filter the response to results relevant within this date
+        span.
+
+        (This has different meanings for different types of object.)
+      properties:
+        from:
+          type: string
+          format: date-time
+          description: |
+            An RFC3339 time string including timezone.
+          example: '2023-01-01T00:00:00+10:00'
+        to:
+          type: string
+          format: date-time
+          description: |
+            An RFC3339 time string including timezone.
+          example: '2023-12-31T23:59:59+10:00'
+
+    creator:
+      type: object
+      description: |
+        If provided, filter the response to results created by this user.
+
+        (Currently only allows filtering by user's ID, but may allow more
+        properties later?)
+      properties:
+        id:
+          description: |
+            The ID of the creator.
+          type: integer
