@@ -7,8 +7,7 @@ get:
   security: []
   responses:
     '200':
-      # search result
-      $ref: ../components/responses/authentication-successUser.yaml
+      $ref: ../components/responses/search/result-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
