@@ -1,6 +1,6 @@
 allOf:
   - $ref: ./common.yaml
-  - $ref: ../../user-read.yaml
+  - $ref: ../../userAuthor.yaml
   - type: object
     properties:
       type:
