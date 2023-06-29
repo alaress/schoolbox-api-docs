@@ -1,0 +1,9 @@
+allOf:
+  - $ref: ./common.yaml
+  - $ref: ../../assessment-item.yaml
+  - type: object
+    properties:
+      discriminator:
+        type: string
+        enum: [assessment]
+

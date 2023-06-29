@@ -6,30 +6,19 @@ discriminator:
   propertyName: type
   mapping:
     user: ./resultTypes/user.yaml
-    tile: ./resultTypes/tile.yaml
-    folder: ./resultTypes/folder.yaml
-    file: ./resultTypes/file.yaml
-    event: ./resultTypes/event.yaml
+#    tile: ./resultTypes/tile.yaml
+#    folder: ./resultTypes/folder.yaml
+#    file: ./resultTypes/file.yaml
+#    event: ./resultTypes/event.yaml
     assessment: ./resultTypes/assessment.yaml
-    news: ./resultTypes/news.yaml
-    forum: ./resultTypes/forum.yaml
+#    news: ./resultTypes/news.yaml
+#    forum: ./resultTypes/forum.yaml
   anyOf:
     - $ref: ./resultTypes/user.yaml
-    - $ref: ./resultTypes/tile.yaml
-    - $ref: ./resultTypes/folder.yaml
-    - $ref: ./resultTypes/file.yaml
-    - $ref: ./resultTypes/event.yaml
+#    - $ref: ./resultTypes/tile.yaml
+#    - $ref: ./resultTypes/folder.yaml
+#    - $ref: ./resultTypes/file.yaml
+#    - $ref: ./resultTypes/event.yaml
     - $ref: ./resultTypes/assessment.yaml
-    - $ref: ./resultTypes/news.yaml
-    - $ref: ./resultTypes/forum.yaml
-
-#properties:
-#  id:
-#    $ref: ./id.yaml
-#  date:
-#    type: string
-#    format: date-time
-#    description: |
-#      The date of the search result.
-#    example: 2022-01-30T21:00:00.000Z
-#
+#    - $ref: ./resultTypes/news.yaml
+#    - $ref: ./resultTypes/forum.yaml

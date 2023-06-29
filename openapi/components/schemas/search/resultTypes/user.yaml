@@ -1,0 +1,8 @@
+allOf:
+  - $ref: ./common.yaml
+  - $ref: ../../user-read.yaml
+  - type: object
+    properties:
+      discriminator:
+        type: string
+        enum: [user]
