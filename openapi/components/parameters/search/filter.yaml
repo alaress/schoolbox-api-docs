@@ -12,14 +12,36 @@ schema:
       items:
         type: string
         enum:
-          - user
-          - tile
-          - folder
-          - file
-          - event
           - assessment
-          - news
+          - assessment.dueWork
+          - assessment.lessonPlan
+          - assessment.project
+          - assessment.task
+          - assessment.quiz
+          - badge
+          - event
+          - file
+          - file.audio
+          - file.document
+          - file.image
+          - file.video
+          - file.other
+          - folder
+          - folder.class
+          - folder.course
+          - folder.unit
+          - folder.homepage
+          - folder.other
           - forum
+          - link
+          - news
+          - textBox
+          - tile
+          - user
+          - user.guest
+          - user.parent
+          - user.staff
+          - user.student
 
     date:
       type: object
