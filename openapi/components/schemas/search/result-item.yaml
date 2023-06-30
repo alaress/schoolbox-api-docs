@@ -3,23 +3,24 @@ allOf:
     description: A single search result
     readOnly: true
     type: object
-    discriminator:
-      propertyName: type
-      mapping:
-        user: ./resultTypes/user.yaml
-    #    tile: ./resultTypes/tile.yaml
-        folder: ./resultTypes/folder.yaml
-        file: ./resultTypes/file.yaml
-    #    event: ./resultTypes/event.yaml
-        assessment: ./resultTypes/assessment.yaml
-        news: ./resultTypes/news.yaml
-    #    forum: ./resultTypes/forum.yaml
-  - anyOf:
-      - $ref: ./resultTypes/user.yaml
-      #    - $ref: ./resultTypes/tile.yaml
-      - $ref: ./resultTypes/folder.yaml
-      - $ref: ./resultTypes/file.yaml
-      #    - $ref: ./resultTypes/event.yaml
-      - $ref: ./resultTypes/assessment.yaml
-      - $ref: ./resultTypes/news.yaml
-        #    - $ref: ./resultTypes/forum.yaml
+  - $ref: ./resultTypes/common.yaml
+#    discriminator:
+#      propertyName: type
+#      mapping:
+#        user: ./resultTypes/user.yaml
+#    #    tile: ./resultTypes/tile.yaml
+#        folder: ./resultTypes/folder.yaml
+#        file: ./resultTypes/file.yaml
+#    #    event: ./resultTypes/event.yaml
+#        assessment: ./resultTypes/assessment.yaml
+#        news: ./resultTypes/news.yaml
+#    #    forum: ./resultTypes/forum.yaml
+#  - anyOf:
+#      - $ref: ./resultTypes/user.yaml
+#      #    - $ref: ./resultTypes/tile.yaml
+#      - $ref: ./resultTypes/folder.yaml
+#      - $ref: ./resultTypes/file.yaml
+#      #    - $ref: ./resultTypes/event.yaml
+#      - $ref: ./resultTypes/assessment.yaml
+#      - $ref: ./resultTypes/news.yaml
+#        #    - $ref: ./resultTypes/forum.yaml
