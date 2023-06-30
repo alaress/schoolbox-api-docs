@@ -1,5 +1,115 @@
 value:
   data:
+    - id: 1
+      type: badge
+      date: 2022-01-30T21:00:00Z
+      # TODO add a proper homepage for a badge
+      url: https://{hostname}.{domain}/badge/1/update
+      title: A badge
+      image: https://{hostname}.{domain}/static/images/badges/ui/25.svg
+      description: |
+        A badge in this Schoolbox instance.
+      creator:
+        id: 1
+        firstName: Schoolbox
+        lastName: Admin
+        fullName: Schoolbox Admin
+      context: []
+      icon: badge
+      # TODO implement API for badges
+      _links: {}
+    - id: 1
+      type: event
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/calendar/event/1
+      title: An event
+      image: ~
+      description: |
+        An event in this Schoolbox instance.
+      creator:
+        id: 2
+        title: Ms
+        firstName: Teacher
+        lastName: User
+        fullName: Ms Teacher User
+      context: []
+      icon: calendar
+      _links: {}
+    - id: 1
+      type: news
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/news/1
+      title: A news article
+      image: https://{hostname}.{domain}/storage/image.php?hash=1234567890&size=coverPhoto
+      description: |
+        A news article in this Schoolbox instance.
+      creator:
+        id: 2
+        title: Ms
+        firstName: Teacher
+        lastName: User
+        fullName: Ms Teacher User
+      context: []
+      icon: news
+      _links: {}
+    - id: 1
+      type: page.class
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/homepage/1
+      title: A class page
+      image: https://{hostname}.{domain}/storage/image.php?hash=1234567890&size=coverPhoto
+      description: ~
+      creator:
+        id: 2
+        title: Ms
+        firstName: Teacher
+        lastName: User
+        fullName: Ms Teacher User
+      context: []
+      icon: homepage
+      _links: {}
+    - id: 2
+      type: page.other
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/homepage/2
+      title: A folder page
+      image: ~
+      description: ~
+      creator:
+        id: 3
+        title: Mr
+        firstName: Staff
+        lastName: User
+        fullName: Mr Staff User
+      context: []
+      icon: folder
+      _links: {}
+    - id: 2
+      type: user.staff
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/search/user/2
+      title: Ms Teacher User
+      image: https://{hostname}.{domain}/portrait.php?id=2&size=square72
+      description: ~
+      creator: ~
+      context: []
+      icon: user
+      _links: {}
+    - id: 4
+      type: user.parent
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/search/user/4
+      title: Ms Parent User
+      image: https://{hostname}.{domain}/portrait.php?id=4&size=square72
+      description: ~
+      creator:
+        id: 1
+        firstName: Schoolbox
+        lastName: Admin
+        fullName: Schoolbox Admin
+      context: []
+      icon: user
+      _links: {}
   metadata:
     cursor:
       current: 12345

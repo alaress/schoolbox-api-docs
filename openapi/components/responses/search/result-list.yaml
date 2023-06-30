@@ -3,3 +3,6 @@ content:
   application/json:
     schema:
       $ref: ../../schemas/search/result-item.yaml
+    examples:
+      One of each:
+        $ref: ../../examples/search/result.yaml
