@@ -9,10 +9,10 @@ allOf:
         # Search types within a folder
         assessment: ./resultTypes/assessment.yaml
         file: ./resultTypes/file.yaml
-#        forum: ./resultTypes/forum.yaml
-#        link: ./resultTypes/link.yaml
-#        textBox: ./resultTypes/textBox.yaml
-#        tile: ./resultTypes/tile.yaml
+        forum: ./resultTypes/forum.yaml
+        link: ./resultTypes/link.yaml
+        textBox: ./resultTypes/textBox.yaml
+        tile: ./resultTypes/tile.yaml
 
         # Search types not within a folder
 #        badge: ./resultTypes/badge.yaml
@@ -26,10 +26,10 @@ allOf:
 #      - $ref: ./resultTypes/badge.yaml
 #      - $ref: ./resultTypes/event.yaml
       - $ref: ./resultTypes/file.yaml
-#      - $ref: ./resultTypes/forum.yaml
-#      - $ref: ./resultTypes/link.yaml
+      - $ref: ./resultTypes/forum.yaml
+      - $ref: ./resultTypes/link.yaml
       - $ref: ./resultTypes/news.yaml
-#      - $ref: ./resultTypes/textBox.yaml
+      - $ref: ./resultTypes/textBox.yaml
       - $ref: ./resultTypes/page.yaml
-#      - $ref: ./resultTypes/tile.yaml
+      - $ref: ./resultTypes/tile.yaml
       - $ref: ./resultTypes/user.yaml
