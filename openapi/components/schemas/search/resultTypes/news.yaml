@@ -1,8 +1,7 @@
 allOf:
   - $ref: ./common.yaml
-  # TODO consider a common format for search results, instead of the raw object
-  - $ref: ../../file.yaml
   - type: object
+    title: News search result
     properties:
       type:
         type: string

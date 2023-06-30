@@ -1,11 +1,8 @@
 allOf:
   - $ref: ./common.yaml
-  # TODO remove some details, should need only:
-  #      id, date, title, assessment type, work type, context
-  - $ref: ../../assessment-item.yaml
   - type: object
+    title: Assessment search result
     properties:
       type:
         type: string
         enum: [assessment]
-

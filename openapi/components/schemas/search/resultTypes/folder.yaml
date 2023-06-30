@@ -1,8 +1,7 @@
 allOf:
   - $ref: ./common.yaml
-  # TODO add more than the folder's name? e.g. their parentage
-  - $ref: ../../folder.yaml
   - type: object
+    title: Folder search result
     properties:
       type:
         type: string

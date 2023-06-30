@@ -1,8 +1,7 @@
 allOf:
   - $ref: ./common.yaml
-  # TODO this is just storage files? this should return SBFS files
-  - $ref: ../../file.yaml
   - type: object
+    title: File search result
     properties:
       type:
         type: string
