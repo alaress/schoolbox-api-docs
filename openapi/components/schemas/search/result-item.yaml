@@ -11,7 +11,7 @@ allOf:
         file: ./resultTypes/file.yaml
 #        forum: ./resultTypes/forum.yaml
 #        link: ./resultTypes/link.yaml
-#        textbox: ./resultTypes/textbox.yaml
+#        textBox: ./resultTypes/textBox.yaml
 #        tile: ./resultTypes/tile.yaml
 
         # Search types not within a folder
@@ -30,6 +30,6 @@ allOf:
 #      - $ref: ./resultTypes/forum.yaml
 #      - $ref: ./resultTypes/link.yaml
       - $ref: ./resultTypes/news.yaml
-#      - $ref: ./resultTypes/textbox.yaml
+#      - $ref: ./resultTypes/textBox.yaml
 #      - $ref: ./resultTypes/tile.yaml
       - $ref: ./resultTypes/user.yaml
