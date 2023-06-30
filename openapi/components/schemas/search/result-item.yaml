@@ -15,16 +15,16 @@ allOf:
         tile: ./resultTypes/tile.yaml
 
         # Search types not within a folder
-#        badge: ./resultTypes/badge.yaml
-#        event: ./resultTypes/event.yaml
+        badge: ./resultTypes/badge.yaml
+        event: ./resultTypes/event.yaml
         news: ./resultTypes/news.yaml
         page: ./resultTypes/page.yaml
         user: ./resultTypes/user.yaml
 
   - anyOf:
       - $ref: ./resultTypes/assessment.yaml
-#      - $ref: ./resultTypes/badge.yaml
-#      - $ref: ./resultTypes/event.yaml
+      - $ref: ./resultTypes/badge.yaml
+      - $ref: ./resultTypes/event.yaml
       - $ref: ./resultTypes/file.yaml
       - $ref: ./resultTypes/forum.yaml
       - $ref: ./resultTypes/link.yaml
