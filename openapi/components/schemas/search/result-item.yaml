@@ -1,20 +1,15 @@
 allOf:
   - title: Search result
-    description: A single search result
+    description: |
+      A single search result.
+
+      This contains only search results which are not contained within a page:
+      pages contain their own list of sub-results.
     readOnly: true
     type: object
     discriminator:
       propertyName: type
       mapping:
-        # Search types within a folder
-        assessment: ./resultTypes/assessment.yaml
-        file: ./resultTypes/file.yaml
-        forum: ./resultTypes/forum.yaml
-        link: ./resultTypes/link.yaml
-        textBox: ./resultTypes/textBox.yaml
-        tile: ./resultTypes/tile.yaml
-
-        # Search types not within a folder
         badge: ./resultTypes/badge.yaml
         event: ./resultTypes/event.yaml
         news: ./resultTypes/news.yaml
@@ -22,14 +17,8 @@ allOf:
         user: ./resultTypes/user.yaml
 
   - anyOf:
-      - $ref: ./resultTypes/assessment.yaml
       - $ref: ./resultTypes/badge.yaml
       - $ref: ./resultTypes/event.yaml
-      - $ref: ./resultTypes/file.yaml
-      - $ref: ./resultTypes/forum.yaml
-      - $ref: ./resultTypes/link.yaml
       - $ref: ./resultTypes/news.yaml
-      - $ref: ./resultTypes/textBox.yaml
       - $ref: ./resultTypes/page.yaml
-      - $ref: ./resultTypes/tile.yaml
       - $ref: ./resultTypes/user.yaml
