@@ -6,6 +6,13 @@ allOf:
       type:
         enum: [user]
       subtype:
+        description: |
+          The subtype for this user. (Users are subtyped by role type.)
+
+          - user.guest: this is a guest user
+          - user.parent: this is a parent user
+          - user.staff: this is a staff user
+          - user.student: this is a student user
         enum:
           - user.guest
           - user.parent

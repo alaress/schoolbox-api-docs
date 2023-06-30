@@ -6,6 +6,15 @@ allOf:
       type:
         enum: [assessment]
       subtype:
+        description: |
+          The subtype for this assessment.
+
+          - assessment.dueWork: this is a due work
+          - assessment.lessonPlan: this is a lesson plan
+          - assessment.project: this is a project
+            (activities within the project are not fetched)
+          - assessment.task: this is a task
+          - assessment.quiz: this is a quiz
         enum:
           - assessment.dueWork
           - assessment.lessonPlan
