@@ -4,5 +4,11 @@ allOf:
     title: Assessment search result
     properties:
       type:
-        type: string
         enum: [assessment]
+      subtype:
+        enum:
+          - assessment.dueWork
+          - assessment.lessonPlan
+          - assessment.project
+          - assessment.task
+          - assessment.quiz

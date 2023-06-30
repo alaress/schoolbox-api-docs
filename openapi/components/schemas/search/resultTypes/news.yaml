@@ -4,5 +4,4 @@ allOf:
     title: News search result
     properties:
       type:
-        type: string
         enum: [news]

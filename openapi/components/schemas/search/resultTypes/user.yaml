@@ -4,5 +4,10 @@ allOf:
     title: User search result
     properties:
       type:
-        type: string
         enum: [user]
+      subtype:
+        enum:
+          - user.guest
+          - user.parent
+          - user.staff
+          - user.student

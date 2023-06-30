@@ -4,5 +4,11 @@ allOf:
     title: Page search result
     properties:
       type:
-        type: string
         enum: [page]
+      subtype:
+        enum:
+          - page.class
+          - page.course
+          - page.unit
+          - page.homepage
+          - page.other

@@ -4,5 +4,11 @@ allOf:
     title: File search result
     properties:
       type:
-        type: string
         enum: [file]
+      subtype:
+        enum:
+          - file.audio
+          - file.document
+          - file.image
+          - file.video
+          - file.other
