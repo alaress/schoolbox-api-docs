@@ -6,20 +6,30 @@ allOf:
     discriminator:
       propertyName: type
       mapping:
-        user: ./resultTypes/user.yaml
-#    #    tile: ./resultTypes/tile.yaml
-        folder: ./resultTypes/folder.yaml
-        file: ./resultTypes/file.yaml
-#    #    event: ./resultTypes/event.yaml
+        # Search types within a folder
         assessment: ./resultTypes/assessment.yaml
+        file: ./resultTypes/file.yaml
+#        forum: ./resultTypes/forum.yaml
+#        link: ./resultTypes/link.yaml
+#        textbox: ./resultTypes/textbox.yaml
+#        tile: ./resultTypes/tile.yaml
+
+        # Search types not within a folder
+#        badge: ./resultTypes/badge.yaml
+#        event: ./resultTypes/event.yaml
+        folder: ./resultTypes/folder.yaml
         news: ./resultTypes/news.yaml
-#    #    forum: ./resultTypes/forum.yaml
+        user: ./resultTypes/user.yaml
+
   - anyOf:
-      - $ref: ./resultTypes/user.yaml
-#      #    - $ref: ./resultTypes/tile.yaml
-      - $ref: ./resultTypes/folder.yaml
-      - $ref: ./resultTypes/file.yaml
-#      #    - $ref: ./resultTypes/event.yaml
       - $ref: ./resultTypes/assessment.yaml
+#      - $ref: ./resultTypes/badge.yaml
+#      - $ref: ./resultTypes/event.yaml
+      - $ref: ./resultTypes/file.yaml
+      - $ref: ./resultTypes/folder.yaml
+#      - $ref: ./resultTypes/forum.yaml
+#      - $ref: ./resultTypes/link.yaml
       - $ref: ./resultTypes/news.yaml
-#        #    - $ref: ./resultTypes/forum.yaml
+#      - $ref: ./resultTypes/textbox.yaml
+#      - $ref: ./resultTypes/tile.yaml
+      - $ref: ./resultTypes/user.yaml
