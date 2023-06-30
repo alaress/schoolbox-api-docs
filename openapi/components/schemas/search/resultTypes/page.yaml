@@ -1,8 +1,8 @@
 allOf:
   - $ref: ./common.yaml
   - type: object
-    title: Folder search result
+    title: Page search result
     properties:
       type:
         type: string
-        enum: [folder]
+        enum: [page]

@@ -26,15 +26,15 @@ schema:
           - file.image
           - file.video
           - file.other
-          - folder
-          - folder.class
-          - folder.course
-          - folder.unit
-          - folder.homepage
-          - folder.other
           - forum
           - link
           - news
+          - page
+          - page.class
+          - page.course
+          - page.unit
+          - page.homepage
+          - page.other
           - textBox
           - tile
           - user

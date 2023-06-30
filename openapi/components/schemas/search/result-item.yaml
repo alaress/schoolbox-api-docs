@@ -17,8 +17,8 @@ allOf:
         # Search types not within a folder
 #        badge: ./resultTypes/badge.yaml
 #        event: ./resultTypes/event.yaml
-        folder: ./resultTypes/folder.yaml
         news: ./resultTypes/news.yaml
+        page: ./resultTypes/page.yaml
         user: ./resultTypes/user.yaml
 
   - anyOf:
@@ -26,10 +26,10 @@ allOf:
 #      - $ref: ./resultTypes/badge.yaml
 #      - $ref: ./resultTypes/event.yaml
       - $ref: ./resultTypes/file.yaml
-      - $ref: ./resultTypes/folder.yaml
 #      - $ref: ./resultTypes/forum.yaml
 #      - $ref: ./resultTypes/link.yaml
       - $ref: ./resultTypes/news.yaml
 #      - $ref: ./resultTypes/textBox.yaml
+      - $ref: ./resultTypes/page.yaml
 #      - $ref: ./resultTypes/tile.yaml
       - $ref: ./resultTypes/user.yaml
