@@ -6,15 +6,6 @@ properties:
     type: string
     description: |
       The type of search result.
-    enum:
-      - user
-      - tile
-      - folder
-      - file
-      - event
-      - assessment
-      - news
-      - forum
   date:
     type: string
     format: date-time

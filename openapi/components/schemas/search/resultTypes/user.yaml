@@ -1,8 +1,7 @@
 allOf:
   - $ref: ./common.yaml
-  # TODO add more than the user's name? e.g. their role?
-  - $ref: ../../userAuthor.yaml
   - type: object
+    title: User search result
     properties:
       type:
         type: string
