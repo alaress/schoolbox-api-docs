@@ -75,7 +75,81 @@ value:
       icon: homepage
       _links:
         subResults: https://{hostname}.{domain}/api/search/folder/10
-      _subResults: []
+      _subResults:
+        data:
+          - id: 1
+            type: assessment.dueWork
+            date: 2022-01-30T21:00:00Z
+            url: https://{hostname}.{domain}/learning/assessments/1
+            title: A due work
+            image: ~
+            description: |
+              A due work assessment in this Schoolbox instance.
+            creator:
+              id: 1
+              firstName: Schoolbox
+              lastName: Admin
+              fullName: Schoolbox Admin
+            context:
+              - id: 2
+                name: Classes
+                url: https://{hostname}.{domain}/homepage/2
+              - id: 3
+                name: Year 1
+                url: https://{hostname}.{domain}/homepage/3
+            icon: due-work
+            _links: { }
+          - id: 1
+            type: file.audio
+            date: 2022-01-30T21:00:00Z
+            url: https://{hostname}.{domain}/send.php?id=1&save=1
+            title: An audio file
+            image: ~
+            description: |
+              An audio file in this Schoolbox instance.
+            creator:
+              id: 1
+              firstName: Schoolbox
+              lastName: Admin
+              fullName: Schoolbox Admin
+            context:
+              - id: 2
+                name: Classes
+                url: https://{hostname}.{domain}/homepage/2
+              - id: 3
+                name: Year 1
+                url: https://{hostname}.{domain}/homepage/3
+            icon: audio
+            _links:
+              stream: https://{hostname}.{domain}/cms/sendVideo.php?type=sbfs&id=1
+          - id: 2
+            type: file.video
+            date: 2022-01-30T21:00:00Z
+            url: https://{hostname}.{domain}/send.php?id=2&save=1
+            title: A video file
+            image: https://{hostname}.{domain}/cms/videoThumb.php?type=sbfs&id=2
+            description: |
+              A video file in this Schoolbox instance.
+            creator:
+              id: 1
+              firstName: Schoolbox
+              lastName: Admin
+              fullName: Schoolbox Admin
+            context:
+              - id: 2
+                name: Classes
+                url: https://{hostname}.{domain}/homepage/2
+              - id: 3
+                name: Year 1
+                url: https://{hostname}.{domain}/homepage/3
+            icon: video
+            _links:
+              stream: https://{hostname}.{domain}/cms/sendVideo.php?type=sbfs&id=2
+              poster: https://{hostname}.{domain}/cms/videoThumb.php?type=sbfs&id=2&size=poster
+        metadata:
+          cursor:
+            current: 67890
+            next: 78901
     - id: 20
       type: page.other
       date: 2022-01-30T21:00:00Z
@@ -96,7 +170,12 @@ value:
       icon: folder
       _links:
         subResults: https://{hostname}.{domain}/api/search/folder/20
-      _subResults: []
+      _subResults:
+        data: []
+        metadata:
+          cursor:
+            current: 67890
+            next: 78901
     - id: 2
       type: user.staff
       date: 2022-01-30T21:00:00Z

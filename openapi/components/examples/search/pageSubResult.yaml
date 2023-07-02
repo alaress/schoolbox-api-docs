@@ -228,3 +228,7 @@ value:
       icon: tiles
       _links:
         target: https://example.com
+  metadata:
+    cursor:
+      current: 67890
+      next: 78901
