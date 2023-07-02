@@ -7,8 +7,7 @@ get:
   security: []
   responses:
     '200':
-      # Eventually will return a different type of result to standard search
-      $ref: ../components/responses/search/result-list.yaml
+      $ref: ../components/responses/search/subResult-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
