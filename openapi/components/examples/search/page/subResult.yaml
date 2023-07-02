@@ -135,3 +135,96 @@ value:
           url: https://{hostname}.{domain}/homepage/3
       icon: files
       _links: {}
+    - id: 1-10
+      type: forum
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/forum/thread/1#10
+      title: A post in a forum thread
+      image: https://{hostname}.{domain}/portrait.php?id=2&size=square72
+      description: |
+        A forum thread post in this Schoolbox instance.
+      creator:
+        id: 2
+        title: Ms
+        firstName: Teacher
+        lastName: User
+        fullName: Ms Teacher User
+      context:
+        - id: 2
+          name: Classes
+          url: https://{hostname}.{domain}/homepage/2
+        - id: 3
+          name: Year 1
+          url: https://{hostname}.{domain}/homepage/3
+      icon: forum
+      _links: {}
+    - id: 1
+      type: link
+      date: 2022-01-30T21:00:00Z
+      url: https://example.com
+      title: A link to something
+      image: ~
+      description: |
+        A link in this Schoolbox instance.
+      creator:
+        id: 2
+        title: Ms
+        firstName: Teacher
+        lastName: User
+        fullName: Ms Teacher User
+      context:
+        - id: 2
+          name: Classes
+          url: https://{hostname}.{domain}/homepage/2
+        - id: 3
+          name: Year 1
+          url: https://{hostname}.{domain}/homepage/3
+      icon: link
+      _links: {}
+    - id: 1
+      type: textBox
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/homepage/3#component1
+      title: A text box
+      image: ~
+      description: |
+        A text box in a Schoolbox instance.
+      creator:
+        id: 2
+        title: Ms
+        firstName: Teacher
+        lastName: User
+        fullName: Ms Teacher User
+      context:
+        - id: 2
+          name: Classes
+          url: https://{hostname}.{domain}/homepage/2
+        - id: 3
+          name: Year 1
+          url: https://{hostname}.{domain}/homepage/3
+      icon: textbox
+      _links: {}
+    - id: 1
+      type: tile
+      date: 2022-01-30T21:00:00Z
+      url: https://{hostname}.{domain}/homepage/3#component2
+      title: A tile
+      image: https://{hostname}.{domain}/storage/image.php?size=maxsize&hash=1234567890
+      description: |
+        A tile in a Schoolbox instance.
+      creator:
+        id: 2
+        title: Ms
+        firstName: Teacher
+        lastName: User
+        fullName: Ms Teacher User
+      context:
+        - id: 2
+          name: Classes
+          url: https://{hostname}.{domain}/homepage/2
+        - id: 3
+          name: Year 1
+          url: https://{hostname}.{domain}/homepage/3
+      icon: tiles
+      _links:
+        target: https://example.com
