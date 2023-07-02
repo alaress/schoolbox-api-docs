@@ -33,4 +33,4 @@ allOf:
               `_subResults.metadata.cursor.next` to find the next page of
               results.
       _subResults:
-        $ref: ./page/subResult-list.yaml
+        $ref: ../pageSubResult-list.yaml

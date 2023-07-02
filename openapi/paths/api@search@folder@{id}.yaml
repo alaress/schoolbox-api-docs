@@ -7,7 +7,7 @@ get:
   security: []
   responses:
     '200':
-      $ref: ../components/responses/search/subResult-list.yaml
+      $ref: ../components/responses/search/pageSubResult-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

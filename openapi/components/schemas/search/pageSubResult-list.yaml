@@ -7,6 +7,6 @@ properties:
   data:
     type: array
     items:
-      $ref: ./subResult-item.yaml
+      $ref: ./pageSubResult-item.yaml
   metadata:
-    $ref: ../../../listMetadata.yaml
+    $ref: ../listMetadata.yaml

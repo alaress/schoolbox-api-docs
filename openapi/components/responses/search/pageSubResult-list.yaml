@@ -1,0 +1,8 @@
+description: A list of search results for a page
+content:
+  application/json:
+    schema:
+      $ref: ../../schemas/search/pageSubResult-list.yaml
+    examples:
+      One of each:
+        $ref: ../../examples/search/pageSubResult.yaml

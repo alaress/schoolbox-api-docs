@@ -1,0 +1,23 @@
+allOf:
+  - title: Page search sub-result
+    description: |
+      A single search result within this page.
+    readOnly: true
+    type: object
+    discriminator:
+      propertyName: type
+      mapping:
+        assessment: ./resultTypes/assessment.yaml
+        file: ./resultTypes/file.yaml
+        forum: ./resultTypes/forum.yaml
+        link: ./resultTypes/link.yaml
+        textBox: ./resultTypes/textBox.yaml
+        tile: ./resultTypes/tile.yaml
+
+  - anyOf:
+      - $ref: ./resultTypes/assessment.yaml
+      - $ref: ./resultTypes/file.yaml
+      - $ref: ./resultTypes/forum.yaml
+      - $ref: ./resultTypes/link.yaml
+      - $ref: ./resultTypes/textBox.yaml
+      - $ref: ./resultTypes/tile.yaml
