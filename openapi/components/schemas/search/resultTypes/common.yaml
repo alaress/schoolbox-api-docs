@@ -59,7 +59,14 @@ properties:
       which the search result actually exists, but does not need to contain the
       entire folder hierarchy.
     items:
-      $ref: ../../folder.yaml
+      allOf:
+        - $ref: ../../folder.yaml
+        - properties:
+            url:
+              type: string
+              format: uri
+              description: |
+                A link to this folder.
   icon:
     type: string
     description: |

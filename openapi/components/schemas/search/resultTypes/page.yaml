@@ -21,5 +21,16 @@ allOf:
           - page.unit
           - page.homepage
           - page.other
-      subResults:
+      _links:
+        properties:
+          subResults:
+            type: string
+            format: uri
+            description: |
+              A link for retrieving search results within this page.
+
+              This link does not contain a cursor: use the cursor within
+              `_subResults.metadata.cursor.next` to find the next page of
+              results.
+      _subResults:
         $ref: ./page/subResult-list.yaml

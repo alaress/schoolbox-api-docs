@@ -52,11 +52,11 @@ value:
       context: []
       icon: news
       _links: {}
-    - id: 1
+    - id: 10
       type: page.class
       date: 2022-01-30T21:00:00Z
-      url: https://{hostname}.{domain}/homepage/1
-      title: A class page
+      url: https://{hostname}.{domain}/homepage/10
+      title: A class page (CLASSCODE)
       image: https://{hostname}.{domain}/storage/image.php?hash=1234567890&size=coverPhoto
       description: ~
       creator:
@@ -65,13 +65,21 @@ value:
         firstName: Teacher
         lastName: User
         fullName: Ms Teacher User
-      context: []
+      context:
+        - id: 2
+          name: Classes
+          url: https://{hostname}.{domain}/homepage/2
+        - id: 3
+          name: Year 1
+          url: https://{hostname}.{domain}/homepage/3
       icon: homepage
-      _links: {}
-    - id: 2
+      _links:
+        subResults: https://{hostname}.{domain}/api/search/folder/10
+      _subResults: []
+    - id: 20
       type: page.other
       date: 2022-01-30T21:00:00Z
-      url: https://{hostname}.{domain}/homepage/2
+      url: https://{hostname}.{domain}/homepage/20
       title: A folder page
       image: ~
       description: ~
@@ -81,9 +89,14 @@ value:
         firstName: Staff
         lastName: User
         fullName: Mr Staff User
-      context: []
+      context:
+        - id: 5
+          name: Resources
+          url: https://{hostname}.{domain}/homepage/5
       icon: folder
-      _links: {}
+      _links:
+        subResults: https://{hostname}.{domain}/api/search/folder/20
+      _subResults: []
     - id: 2
       type: user.staff
       date: 2022-01-30T21:00:00Z
