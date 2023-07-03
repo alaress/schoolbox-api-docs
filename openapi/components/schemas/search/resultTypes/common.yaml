@@ -1,4 +1,9 @@
 type: object
+required:
+  - id
+  - type
+  - url
+  - title
 properties:
   id:
     $ref: ../../id.yaml
@@ -6,10 +11,6 @@ properties:
     type: string
     description: |
       The type of search result.
-  subtype:
-    type: string
-    description: |
-      The sub-type of search result, if applicable.
   date:
     type: string
     format: date-time
