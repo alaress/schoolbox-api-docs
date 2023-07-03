@@ -1,4 +1,4 @@
-allOf:
+anyOf:
   - $ref: ./common.yaml
   - type: object
     title: News search result

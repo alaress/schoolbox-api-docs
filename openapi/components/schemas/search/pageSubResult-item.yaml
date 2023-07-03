@@ -5,6 +5,21 @@ readOnly: true
 type: object
 discriminator:
   propertyName: type
+  mapping:
+    assessment.dueWork: ./resultTypes/assessment.yaml
+    assessment.lessonPlan: ./resultTypes/assessment.yaml
+    assessment.project: ./resultTypes/assessment.yaml
+    assessment.task: ./resultTypes/assessment.yaml
+    assessment.quiz: ./resultTypes/assessment.yaml
+    file.audio: ./resultTypes/file.yaml
+    file.document: ./resultTypes/file.yaml
+    file.image: ./resultTypes/file.yaml
+    file.video: ./resultTypes/file.yaml
+    file.other: ./resultTypes/file.yaml
+    forum: ./resultTypes/forum.yaml
+    link: ./resultTypes/link.yaml
+    textBox: ./resultTypes/textBox.yaml
+    tile: ./resultTypes/tile.yaml
 oneOf:
   - $ref: ./resultTypes/assessment.yaml
   - $ref: ./resultTypes/file.yaml

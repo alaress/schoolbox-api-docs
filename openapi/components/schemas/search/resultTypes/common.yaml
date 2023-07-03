@@ -35,6 +35,7 @@ properties:
   image:
     type: string
     format: uri
+    nullable: true
     description: |
       A link to an image to display next to this search result.
 

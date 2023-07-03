@@ -12,18 +12,15 @@ discriminator:
     badge: ./resultTypes/badge.yaml
     event: ./resultTypes/event.yaml
     news: ./resultTypes/news.yaml
-    page: ./resultTypes/page.yaml
-    user: ./resultTypes/user.yaml
-#    'user.student': ./resultTypes/user.yaml
-#    'page.class': ./resultTypes/page.yaml
-#    'page.course': ./resultTypes/page.yaml
-#    'page.unit': ./resultTypes/page.yaml
-#    'page.homepage': ./resultTypes/page.yaml
-#    'page.other': ./resultTypes/page.yaml
-#    'user.guest': ./resultTypes/user.yaml
-#    'user.parent': ./resultTypes/user.yaml
-#    'user.staff': ./resultTypes/user.yaml
-#    'user.student': ./resultTypes/user.yaml
+    page.class: ./resultTypes/page.yaml
+    page.course: ./resultTypes/page.yaml
+    page.unit: ./resultTypes/page.yaml
+    page.homepage: ./resultTypes/page.yaml
+    page.other: ./resultTypes/page.yaml
+    user.guest: ./resultTypes/user.yaml
+    user.parent: ./resultTypes/user.yaml
+    user.staff: ./resultTypes/user.yaml
+    user.student: ./resultTypes/user.yaml
 oneOf:
   - $ref: ./resultTypes/badge.yaml
   - $ref: ./resultTypes/event.yaml
