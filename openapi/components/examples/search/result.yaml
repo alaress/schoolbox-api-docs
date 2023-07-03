@@ -53,7 +53,8 @@ value:
       icon: news
       _links: {}
     - id: 10
-      type: page.class
+      type: page
+      subType: page.class
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/homepage/10
       title: A class page (CLASSCODE)
@@ -78,7 +79,8 @@ value:
       _subResults:
         data:
           - id: 1
-            type: assessment.dueWork
+            type: assessment
+            subType: assessment.dueWork
             date: 2022-01-30T21:00:00Z
             url: https://{hostname}.{domain}/learning/assessments/1
             title: A due work
@@ -100,7 +102,8 @@ value:
             icon: due-work
             _links: { }
           - id: 1
-            type: file.audio
+            type: file
+            subType: file.audio
             date: 2022-01-30T21:00:00Z
             url: https://{hostname}.{domain}/send.php?id=1&save=1
             title: An audio file
@@ -123,7 +126,8 @@ value:
             _links:
               stream: https://{hostname}.{domain}/cms/sendVideo.php?type=sbfs&id=1
           - id: 2
-            type: file.video
+            type: file
+            subType: file.video
             date: 2022-01-30T21:00:00Z
             url: https://{hostname}.{domain}/send.php?id=2&save=1
             title: A video file
@@ -151,7 +155,8 @@ value:
             current: 67890
             next: 78901
     - id: 20
-      type: page.other
+      type: page
+      subType: page.other
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/homepage/20
       title: A folder page
@@ -177,7 +182,8 @@ value:
             current: 67890
             next: 78901
     - id: 2
-      type: user.staff
+      type: user
+      subType: user.staff
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/search/user/2
       title: Ms Teacher User
@@ -188,7 +194,8 @@ value:
       icon: user
       _links: {}
     - id: 4
-      type: user.parent
+      type: user
+      subType: user.parent
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/search/user/4
       title: Ms Parent User

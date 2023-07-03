@@ -11,6 +11,10 @@ properties:
     type: string
     description: |
       The type of search result.
+  subType:
+    type: string
+    description: |
+      The sub-type of search result, if applicable.
   date:
     type: string
     format: date-time
