@@ -4,10 +4,9 @@ allOf:
     title: Page search result
     properties:
       type:
-        enum: [page]
-      subtype:
         description: |
-          The subtype for this page.
+          The type for this page. Pages are sub-typed according to their class
+          or homepage status:
 
           - page.class: this is a page with a class attached
           - page.course: this is a page with a course specification attached

@@ -4,10 +4,9 @@ allOf:
     title: File search result
     properties:
       type:
-        enum: [file]
-      subtype:
         description: |
-          The subtype for this file.
+          The type for this file. Files are sub-typed according to their
+          classification:
 
           - file.audio: audio files
           - file.document: text and other documents

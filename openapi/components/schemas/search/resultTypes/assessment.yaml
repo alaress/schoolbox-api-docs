@@ -4,10 +4,9 @@ allOf:
     title: Assessment search result
     properties:
       type:
-        enum: [assessment]
-      subtype:
         description: |
-          The subtype for this assessment.
+          The type for this assessment. Assessments are sub-typed according to
+          their assessment type:
 
           - assessment.dueWork: this is a due work
           - assessment.lessonPlan: this is a lesson plan

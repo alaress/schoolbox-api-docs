@@ -4,10 +4,8 @@ allOf:
     title: User search result
     properties:
       type:
-        enum: [user]
-      subtype:
         description: |
-          The subtype for this user. (Users are subtyped by role type.)
+          The type of this user. (Users are subtyped by role type.)
 
           - user.guest: this is a guest user
           - user.parent: this is a parent user
