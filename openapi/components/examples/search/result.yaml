@@ -152,8 +152,8 @@ value:
               poster: https://{hostname}.{domain}/cms/videoThumb.php?type=sbfs&id=2&size=poster
         metadata:
           cursor:
-            current: 67890
-            next: 78901
+            current: '67890'
+            next: '78901'
     - id: 20
       type: page
       subType: page.other
@@ -179,8 +179,8 @@ value:
         data: []
         metadata:
           cursor:
-            current: 67890
-            next: 78901
+            current: '67890'
+            next: '78901'
     - id: 2
       type: user
       subType: user.staff
@@ -211,5 +211,5 @@ value:
       _links: {}
   metadata:
     cursor:
-      current: 12345
-      next: 23456
+      current: '12345'
+      next: '23456'

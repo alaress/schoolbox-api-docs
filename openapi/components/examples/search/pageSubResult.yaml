@@ -236,5 +236,5 @@ value:
         target: https://example.com
   metadata:
     cursor:
-      current: 67890
-      next: 78901
+      current: '67890'
+      next: '78901'
