@@ -14,5 +14,4 @@ get:
     - $ref: ../components/parameters/id.yaml
     - $ref: ../components/parameters/search/keyword.yaml
     - $ref: ../components/parameters/search/filter.yaml
-    - $ref: ../components/parameters/jwt.yaml
     - $ref: ../components/parameters/cursor.yaml
