@@ -1,24 +1,16 @@
-allOf:
-  - title: Search result
-    description: |
-      A single search result.
+title: Search result
+description: |
+  A single search result.
 
-      This contains only search results which are not contained within a page:
-      pages contain their own list of sub-results.
-    readOnly: true
-    type: object
-    discriminator:
-      propertyName: type
-      mapping:
-        badge: ./resultTypes/badge.yaml
-        event: ./resultTypes/event.yaml
-        news: ./resultTypes/news.yaml
-        page: ./resultTypes/page.yaml
-        user: ./resultTypes/user.yaml
-
-  - anyOf:
-      - $ref: ./resultTypes/badge.yaml
-      - $ref: ./resultTypes/event.yaml
-      - $ref: ./resultTypes/news.yaml
-      - $ref: ./resultTypes/page.yaml
-      - $ref: ./resultTypes/user.yaml
+  This contains only search results which are not contained within a page:
+  pages contain their own list of sub-results.
+readOnly: true
+type: object
+discriminator:
+  propertyName: type
+oneOf:
+  - $ref: ./resultTypes/badge.yaml
+  - $ref: ./resultTypes/event.yaml
+  - $ref: ./resultTypes/news.yaml
+  - $ref: ./resultTypes/page.yaml
+  - $ref: ./resultTypes/user.yaml
