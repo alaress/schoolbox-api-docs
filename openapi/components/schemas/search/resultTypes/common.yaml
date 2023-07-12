@@ -67,7 +67,8 @@ properties:
     items:
       allOf:
         - $ref: ../../folder.yaml
-        - properties:
+        - type: object
+          properties:
             url:
               type: string
               format: uri
