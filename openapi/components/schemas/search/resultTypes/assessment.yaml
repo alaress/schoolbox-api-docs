@@ -1,4 +1,4 @@
-anyOf:
+allOf:
   - $ref: ./common.yaml
   - type: object
     title: Assessment search result
