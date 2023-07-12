@@ -1,8 +1,7 @@
 value:
   data:
     - id: 1
-      type: assessment
-      subType: assessment.dueWork
+      type: assessment.dueWork
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/learning/assessments/1
       title: A due work
@@ -24,8 +23,7 @@ value:
       icon: due-work
       _links: {}
     - id: 1
-      type: file
-      subType: file.audio
+      type: file.audio
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=1&save=1
       title: An audio file
@@ -48,8 +46,7 @@ value:
       _links:
         stream: https://{hostname}.{domain}/cms/sendVideo.php?type=sbfs&id=1
     - id: 2
-      type: file
-      subType: file.video
+      type: file.video
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=2&save=1
       title: A video file
@@ -73,8 +70,7 @@ value:
         stream: https://{hostname}.{domain}/cms/sendVideo.php?type=sbfs&id=2
         poster: https://{hostname}.{domain}/cms/videoThumb.php?type=sbfs&id=2&size=poster
     - id: 3
-      type: file
-      subType: file.image
+      type: file.image
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=3&save=1
       title: An image file
@@ -96,8 +92,7 @@ value:
       icon: image
       _links: {}
     - id: 4
-      type: file
-      subType: file.document
+      type: file.document
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=4&save=1
       title: An image file
@@ -119,8 +114,7 @@ value:
       icon: document
       _links: {}
     - id: 5
-      type: file
-      subType: file.other
+      type: file.other
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=5&save=1
       title: A file which is neither a document, image, audio or video file

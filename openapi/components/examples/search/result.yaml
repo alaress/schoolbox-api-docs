@@ -54,7 +54,6 @@ value:
       _links: {}
     - id: 10
       type: page.class
-      subType: page.class
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/homepage/10
       title: A class page (CLASSCODE)
@@ -79,8 +78,7 @@ value:
       _subResults:
         data:
           - id: 1
-            type: assessment
-            subType: assessment.dueWork
+            type: assessment.dueWork
             date: 2022-01-30T21:00:00Z
             url: https://{hostname}.{domain}/learning/assessments/1
             title: A due work
@@ -102,8 +100,7 @@ value:
             icon: due-work
             _links: { }
           - id: 1
-            type: file
-            subType: file.audio
+            type: file.audio
             date: 2022-01-30T21:00:00Z
             url: https://{hostname}.{domain}/send.php?id=1&save=1
             title: An audio file
@@ -126,8 +123,7 @@ value:
             _links:
               stream: https://{hostname}.{domain}/cms/sendVideo.php?type=sbfs&id=1
           - id: 2
-            type: file
-            subType: file.video
+            type: file.video
             date: 2022-01-30T21:00:00Z
             url: https://{hostname}.{domain}/send.php?id=2&save=1
             title: A video file
@@ -156,7 +152,6 @@ value:
             next: '78901'
     - id: 20
       type: page.other
-      subType: page.other
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/homepage/20
       title: A folder page
@@ -183,7 +178,6 @@ value:
             next: '78901'
     - id: 2
       type: user.staff
-      subType: user.staff
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/search/user/2
       title: Ms Teacher User
@@ -195,7 +189,6 @@ value:
       _links: {}
     - id: 4
       type: user.parent
-      subType: user.parent
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/search/user/4
       title: Ms Parent User
