@@ -14,3 +14,4 @@ get:
     - $ref: ../components/parameters/search/keyword.yaml
     - $ref: ../components/parameters/search/filter.yaml
     - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/limit.yaml
