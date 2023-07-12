@@ -244,8 +244,8 @@ paths:
   /api/search:
     $ref: 'paths/api@search.yaml'
 
-#  /api/search/folder/{id}:
-#    $ref: 'paths/api@search@folder@{id}.yaml'
+  /api/search/folder/{id}:
+    $ref: 'paths/api@search@folder@{id}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
