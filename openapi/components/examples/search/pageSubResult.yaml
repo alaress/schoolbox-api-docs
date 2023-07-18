@@ -5,6 +5,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/learning/assessments/1
       title: A due work
+      meta: Assessment Task
       image: ~
       description: |
         A due work assessment in this Schoolbox instance.
@@ -27,6 +28,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=1&save=1
       title: An audio file
+      meta: ~
       image: ~
       description: |
         An audio file in this Schoolbox instance.
@@ -50,6 +52,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=2&save=1
       title: A video file
+      meta: ~
       image: https://{hostname}.{domain}/cms/videoThumb.php?type=sbfs&id=2
       description: |
         A video file in this Schoolbox instance.
@@ -74,6 +77,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=3&save=1
       title: An image file
+      meta: ~
       image: https://{hostname}.{domain}/cms/image.php?id=3&width=64&height=64
       description: |
         An image file in this Schoolbox instance.
@@ -95,7 +99,8 @@ value:
       type: file.document
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=4&save=1
-      title: An image file
+      title: A document
+      meta: ~
       image: https://{hostname}.{domain}/static/images/mime/application-msword.svg
       description: |
         A document file in this Schoolbox instance.
@@ -118,6 +123,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/send.php?id=5&save=1
       title: A file which is neither a document, image, audio or video file
+      meta: ~
       image: https://{hostname}.{domain}/static/images/mime/application-octet-stream.svg
       description: |
         A file in this Schoolbox instance.
@@ -140,6 +146,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/forum/thread/1#10
       title: A post in a forum thread
+      meta: ~
       image: https://{hostname}.{domain}/portrait.php?id=2&size=square72
       description: |
         A forum thread post in this Schoolbox instance.
@@ -163,6 +170,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://example.com
       title: A link to something
+      meta: ~
       image: ~
       description: |
         A link in this Schoolbox instance.
@@ -186,6 +194,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/homepage/3#component1
       title: A text box
+      meta: ~
       image: ~
       description: |
         A text box in a Schoolbox instance.
@@ -209,6 +218,7 @@ value:
       date: 2022-01-30T21:00:00Z
       url: https://{hostname}.{domain}/homepage/3#component2
       title: A tile
+      meta: ~
       image: https://{hostname}.{domain}/storage/image.php?size=maxsize&hash=1234567890
       description: |
         A tile in a Schoolbox instance.

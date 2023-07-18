@@ -28,6 +28,13 @@ properties:
       The title of the search result.
 
       Intended to be used as the content of the main link to the search result.
+  meta:
+    type: string
+    description: |
+      An optional brief line of context for the search result.
+
+      Intended to be displayed directly underneath the title, in order to
+      quickly describe the result.
   image:
     type: string
     format: uri
