@@ -1,0 +1,16 @@
+allOf:
+  - $ref: ./common.yaml
+  - type: object
+    title: Tile search result
+    properties:
+      type:
+        enum: [tile]
+      _links:
+        properties:
+          target:
+            type: string
+            format: uri
+            description: |
+              The target URL of the tile, if there is one.
+
+              (The result URL points to the tile's location within the page.)

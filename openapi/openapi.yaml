@@ -86,7 +86,12 @@ tags:
     x-displayName: Pastoral
     description: |
       Create and manage pastoral records.
-    
+
+  - name: search
+    x-displayName: Search
+    description: |
+      Search for content within Schoolbox.
+
   - name: session
     x-displayName: Session management
     description: |
@@ -235,6 +240,12 @@ paths:
 
   /api/curriculum/usage/{id}:
     $ref: 'paths/api@curriculum@usage@{id}.yaml'
+
+  /api/search:
+    $ref: 'paths/api@search.yaml'
+
+  /api/search/folder/{id}:
+    $ref: 'paths/api@search@folder@{id}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

@@ -1,0 +1,17 @@
+get:
+  operationId: apiSearchGet
+  tags: [search]
+  summary: Search for content
+  description: |
+    Search for content
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/search/result-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/search/keyword.yaml
+    - $ref: ../components/parameters/search/filter.yaml
+    - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/limit.yaml

@@ -1,0 +1,7 @@
+allOf:
+  - $ref: ./common.yaml
+  - type: object
+    title: Event search result
+    properties:
+      type:
+        enum: [event]

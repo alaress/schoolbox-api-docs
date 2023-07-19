@@ -1,0 +1,35 @@
+allOf:
+  - $ref: ./common.yaml
+  - type: object
+    title: Page search result
+    properties:
+      type:
+        description: |
+          The type for this page. Pages are sub-typed according to their class
+          or homepage status:
+
+          - page.class: this is a page with a class attached
+          - page.course: this is a page with a course specification attached
+          - page.unit: this is a page with a unit specification attached
+          - page.homepage: this is a page with neither a class, course or unit,
+            but which still has a homepage
+          - page.other: this is a folder which has no homepage
+        enum:
+          - page.class
+          - page.course
+          - page.unit
+          - page.homepage
+          - page.other
+      _links:
+        properties:
+          subResults:
+            type: string
+            format: uri
+            description: |
+              A link for retrieving search results within this page.
+
+              This link does not contain a cursor: use the cursor within
+              `_subResults.metadata.cursor.next` to find the next page of
+              results.
+      _subResults:
+        $ref: ../pageSubResult-list.yaml

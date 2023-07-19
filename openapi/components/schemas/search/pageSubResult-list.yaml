@@ -1,0 +1,12 @@
+title: Page search sub-result list
+description: |
+  A list of search results found within this page.
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./pageSubResult-item.yaml
+  metadata:
+    $ref: ../listMetadata.yaml

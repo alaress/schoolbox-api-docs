@@ -1,0 +1,11 @@
+title: Search result list
+description: A list of search results
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./result-item.yaml
+  metadata:
+    $ref: ../listMetadata.yaml

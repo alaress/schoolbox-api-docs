@@ -1,0 +1,8 @@
+description: A list of search results
+content:
+  application/json:
+    schema:
+      $ref: ../../schemas/search/result-list.yaml
+    examples:
+      One of each:
+        $ref: ../../examples/search/result.yaml
