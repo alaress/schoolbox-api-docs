@@ -1,0 +1,18 @@
+get:
+  operationId: apiSearchFolderGet
+  tags: [search]
+  summary: Search for content within a folder
+  description: |
+    Search for content within a folder
+  security: []
+  responses:
+    '200':
+      $ref: ../components/responses/search/pageSubResult-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - $ref: ../components/parameters/id.yaml
+    - $ref: ../components/parameters/search/keyword.yaml
+    - $ref: ../components/parameters/search/filter.yaml
+    - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/limit.yaml

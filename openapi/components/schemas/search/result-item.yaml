@@ -1,0 +1,29 @@
+title: Search result
+description: |
+  A single search result.
+
+  This contains only search results which are not contained within a page:
+  pages contain their own list of sub-results.
+readOnly: true
+type: object
+discriminator:
+  propertyName: type
+  mapping:
+    badge: ./resultTypes/badge.yaml
+    event: ./resultTypes/event.yaml
+    news: ./resultTypes/news.yaml
+    page.class: ./resultTypes/page.yaml
+    page.course: ./resultTypes/page.yaml
+    page.unit: ./resultTypes/page.yaml
+    page.homepage: ./resultTypes/page.yaml
+    page.other: ./resultTypes/page.yaml
+    user.guest: ./resultTypes/user.yaml
+    user.parent: ./resultTypes/user.yaml
+    user.staff: ./resultTypes/user.yaml
+    user.student: ./resultTypes/user.yaml
+oneOf:
+  - $ref: ./resultTypes/badge.yaml
+  - $ref: ./resultTypes/event.yaml
+  - $ref: ./resultTypes/news.yaml
+  - $ref: ./resultTypes/page.yaml
+  - $ref: ./resultTypes/user.yaml

@@ -1,0 +1,91 @@
+type: object
+required:
+  - id
+  - type
+  - url
+  - title
+properties:
+  id:
+    $ref: ../../id.yaml
+  type:
+    type: string
+    description: |
+      The type of search result.
+  date:
+    type: string
+    format: date-time
+    description: |
+      The date of the search result.
+    example: 2022-01-30T21:00:00Z
+  url:
+    type: string
+    format: uri
+    description: |
+      A link to the search result.
+  title:
+    type: string
+    description: |
+      The title of the search result.
+
+      Intended to be used as the content of the main link to the search result.
+  meta:
+    type: string
+    description: |
+      An optional brief line of context for the search result.
+
+      Intended to be displayed directly underneath the title, in order to
+      quickly describe the result.
+  image:
+    type: string
+    format: uri
+    nullable: true
+    description: |
+      A link to an image to display next to this search result.
+
+      If not provided: this result's `type` should be used to determine an icon
+      to display next to the result.
+  description:
+    type: string
+    description: |
+      An optional further description of the search result.
+
+      Intended to be displayed beneath the main link to the search result,
+      and to provide further context for the search user.
+
+      For example: for a news article, this may be a truncated version of the
+      article, cut so that it contains a match on the search keyword.
+  creator:
+    allOf:
+      - description: |
+          An optional creator of this search result.
+      - $ref: ../../userAuthor.yaml
+  context:
+    type: array
+    description: |
+      An optional list of folders which point to this search result.
+
+      This list will be ordered from the top-most folder down to the folder in
+      which the search result actually exists, but does not need to contain the
+      entire folder hierarchy.
+    items:
+      allOf:
+        - $ref: ../../folder.yaml
+        - type: object
+          properties:
+            url:
+              type: string
+              format: uri
+              description: |
+                A link to this folder.
+  icon:
+    type: string
+    description: |
+      The name of an icon to display next to this search result.
+
+      Intended as a fallback, if the search result does not have an associated
+      image URL.
+  _links:
+    type: object
+    description: |
+      A set of supplementary contextual links for this search result, for
+      actions which the search user may perform on or for that result.

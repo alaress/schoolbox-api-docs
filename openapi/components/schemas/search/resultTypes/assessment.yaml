@@ -1,0 +1,22 @@
+allOf:
+  - $ref: ./common.yaml
+  - type: object
+    title: Assessment search result
+    properties:
+      type:
+        description: |
+          The type for this assessment. Assessments are sub-typed according to
+          their assessment type:
+
+          - assessment.dueWork: this is a due work
+          - assessment.lessonPlan: this is a lesson plan
+          - assessment.project: this is a project
+            (activities within the project are not fetched)
+          - assessment.task: this is a task
+          - assessment.quiz: this is a quiz
+        enum:
+          - assessment.dueWork
+          - assessment.lessonPlan
+          - assessment.project
+          - assessment.task
+          - assessment.quiz
