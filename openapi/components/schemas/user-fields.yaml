@@ -73,20 +73,12 @@ properties:
       The user's job or position title within the school which owns the
       Schoolbox instance.
 
-  isBoarder:
-    type: boolean
-    description: Is this user a boarder?
-
   flags:
     type: object
     description: |
       A set of flags which control the behavior of a user's Schoolbox
       session.
     properties:
-      showWebmailTab:
-        type: boolean
-        default: false
-        description: Does the Webmail tab display for this user?
       showContacts:
         type: boolean
         description: Does this user's contacts get shown to other users?
