@@ -9,6 +9,7 @@ rules:
   no-empty-servers: off
   info-license: off
   operation-4xx-response: off
+  no-invalid-media-type-examples: off
 features.openapi:
   htmlTemplate: ./docs/template.html
   theme:
