@@ -59,10 +59,11 @@ properties:
     nullable: true
   creator:
     allOf:
-      - description: |
+      - type: object
+        description: |
           An optional creator of this search result.
+        nullable: true
       - $ref: ../../userAuthor.yaml
-    nullable: true
   context:
     type: array
     description: |
