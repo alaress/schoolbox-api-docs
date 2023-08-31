@@ -19,6 +19,7 @@ schema:
           - assessment.task
           - assessment.quiz
           - badge
+          - blog
           - event
           - file
           - file.audio

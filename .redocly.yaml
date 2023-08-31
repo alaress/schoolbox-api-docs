@@ -10,9 +10,10 @@ rules:
   info-license: off
   operation-4xx-response: off
   no-invalid-media-type-examples: off
-features.openapi:
-  htmlTemplate: ./docs/template.html
-  theme:
-    colors:
-      primary:
-        main: "#32329f"
+theme:
+  openapi:
+    htmlTemplate: ./docs/template.html
+    theme:
+      colors:
+        primary:
+          main: "#32329f"
