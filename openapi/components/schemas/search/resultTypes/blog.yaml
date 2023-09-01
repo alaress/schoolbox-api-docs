@@ -1,0 +1,7 @@
+allOf:
+  - $ref: ./common.yaml
+  - type: object
+    title: Blog search result
+    properties:
+      type:
+        enum: [blog]

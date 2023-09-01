@@ -11,6 +11,7 @@ discriminator:
     assessment.project: ./resultTypes/assessment.yaml
     assessment.task: ./resultTypes/assessment.yaml
     assessment.quiz: ./resultTypes/assessment.yaml
+    blog: ./resultTypes/blog.yaml
     file.audio: ./resultTypes/result-file.yaml
     file.document: ./resultTypes/result-file.yaml
     file.image: ./resultTypes/result-file.yaml
@@ -22,6 +23,7 @@ discriminator:
     tile: ./resultTypes/tile.yaml
 oneOf:
   - $ref: ./resultTypes/assessment.yaml
+  - $ref: ./resultTypes/blog.yaml
   - $ref: ./resultTypes/result-file.yaml
   - $ref: ./resultTypes/forum.yaml
   - $ref: ./resultTypes/result-link.yaml
