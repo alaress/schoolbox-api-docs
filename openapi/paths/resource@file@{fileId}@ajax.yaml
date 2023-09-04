@@ -1,7 +1,7 @@
 patch:
   operationId: filePatch
   tags: [file]
-  summary: Partially update a file.
+  summary: Update visibility of a file
   parameters:
     - name: fileId
       in: path
@@ -15,4 +15,11 @@ patch:
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    $ref: ../components/requestBodies/file-item.yaml
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            hidden:
+              type: boolean
+              example: false
