@@ -23,9 +23,10 @@ properties:
         enum:
         - dueWork
         - project
-        - ltiAssessment
+        - lti
         - quiz
         - task
+        - lessonPlan
       unit:
         $ref: ./curriculumNodeUsage-unitItem.yaml
       project:
