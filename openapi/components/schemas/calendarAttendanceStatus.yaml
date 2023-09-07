@@ -8,3 +8,4 @@ description: |
 type: integer
 minimum: 1
 maximum: 3
+nullable: true

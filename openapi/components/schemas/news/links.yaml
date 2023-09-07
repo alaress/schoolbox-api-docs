@@ -2,22 +2,22 @@ type: object
 properties:
   saveForLater:
     allOf:
-      - description: |
-          Endpoint for [saving this article for later](#operation/commsNewsSaveForLater.postAdd).
       - $ref: ../link.yaml
+      - description: |
+          Endpoint for [saving this article for later](#post-/news/saved/-id-/add).
   unsaveForLater:
     allOf:
+      - $ref: ../link.yaml
       - description: |
           Endpoint for [removing this article from the save
-          for later list](#operation/commsNewsSaveForLater.postRemove).
-      - $ref: ../link.yaml
+          for later list](#post-/news/saved/-id-/remove).
   self:
     allOf:
-      - description: |
-          Endpoint for [viewing this article](#operation/commsNews.getDetail).
       - $ref: ../link.yaml
+      - description: |
+          Endpoint for [viewing this article](#get-/news/-id-).
   update:
     allOf:
+      - $ref: ../link.yaml
       - description: |
           Endpoint for viewing a HTML form for updating this article.
-      - $ref: ../link.yaml
