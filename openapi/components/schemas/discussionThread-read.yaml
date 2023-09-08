@@ -11,6 +11,19 @@ properties:
     $ref: ./dateTime.yaml
   updatedAt:
     $ref: ./dateTime.yaml
+  _links:
+    type: object
+    properties:
+      getComments:
+        allOf:
+          - $ref: ./link.yaml
+          - description: |
+              Endpoint for [get comments for a thread](#get-/discussion/-contextType-/-contextId-/threads/-id-/comments).
+      createComment:
+        allOf:
+          - $ref: ./link.yaml
+          - description: |
+              Endpoint for [create a new comment on a thread](#post-/discussion/-contextType-/-contextId-/threads/-id-/comments).
   children:
     allOf:
       - $ref: ./discussionComment-readList.yaml

@@ -15,6 +15,7 @@ properties:
     type: string
   featureImage:
     type: object
+    nullable: true
     description: |
       Feature image of this article.
     properties:
