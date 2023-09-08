@@ -1,4 +1,4 @@
-get:
+post:
   operationId: commsNewsSaveForLater.postRemove
   tags: [news]
   summary: Remove an article from the saved for later list
