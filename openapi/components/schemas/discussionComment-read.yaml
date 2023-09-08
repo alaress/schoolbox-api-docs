@@ -10,9 +10,9 @@ properties:
     $ref: ./user-read.yaml
   content:
     type: string
-  created:
+  createdAt:
     $ref: ./dateTime.yaml
-  updated:
+  updatedAt:
     $ref: ./dateTime.yaml
   parent:
     $ref: ./discussionComment-read.yaml
@@ -36,5 +36,5 @@ properties:
         - student
 required:
   - id
-  - thread
+  - author
   - content

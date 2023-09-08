@@ -9,9 +9,11 @@ rules:
   no-empty-servers: off
   info-license: off
   operation-4xx-response: off
-features.openapi:
-  htmlTemplate: ./docs/template.html
-  theme:
-    colors:
-      primary:
-        main: "#32329f"
+  no-invalid-media-type-examples: off
+theme:
+  openapi:
+    htmlTemplate: ./docs/template.html
+    theme:
+      colors:
+        primary:
+          main: "#32329f"

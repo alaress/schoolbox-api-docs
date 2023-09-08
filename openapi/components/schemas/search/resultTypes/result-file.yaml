@@ -1,0 +1,21 @@
+allOf:
+  - $ref: ./common.yaml
+  - type: object
+    title: File search result
+    properties:
+      type:
+        description: |
+          The type for this file. Files are sub-typed according to their
+          classification:
+
+          - file.audio: audio files
+          - file.document: text and other documents
+          - file.image: images
+          - file.video: videos
+          - file.other: any type of file which doesn't fit one of the above
+        enum:
+          - file.audio
+          - file.document
+          - file.image
+          - file.video
+          - file.other

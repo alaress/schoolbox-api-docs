@@ -17,6 +17,7 @@ properties:
     description: |
       The date of the search result.
     example: 2022-01-30T21:00:00Z
+    nullable: true
   url:
     type: string
     format: uri
@@ -35,6 +36,7 @@ properties:
 
       Intended to be displayed directly underneath the title, in order to
       quickly describe the result.
+    nullable: true
   image:
     type: string
     format: uri
@@ -54,10 +56,13 @@ properties:
 
       For example: for a news article, this may be a truncated version of the
       article, cut so that it contains a match on the search keyword.
+    nullable: true
   creator:
     allOf:
-      - description: |
+      - type: object
+        description: |
           An optional creator of this search result.
+        nullable: true
       - $ref: ../../userAuthor.yaml
   context:
     type: array

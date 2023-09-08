@@ -25,7 +25,6 @@ properties:
       status:
         allOf:
         - $ref: ./calendarAttendanceStatus.yaml
-        - nullable: true
       canModify:
         description: |
           Can the authenticated user modify the event?
