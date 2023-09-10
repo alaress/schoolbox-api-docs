@@ -10,7 +10,8 @@ properties:
     description: The mark in its original form.  For example this could be a letter grade or a percentage or a rubric.
     example: 'A'
   normalisedMark:
-    type: integer
+    type: number
+    format: float
     example: 85
     description: The mark in numeric form
   comment:
