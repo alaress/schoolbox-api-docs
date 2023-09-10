@@ -1,0 +1,38 @@
+title: User
+type: object
+properties:
+
+  id:
+    $ref: ./id.yaml
+
+  title:
+    type: string
+    nullable: true
+    description: The user's title (Mr., Ms., etc.).
+    example: Ms
+
+  firstName:
+    type: string
+    nullable: false
+    description: |
+      The user's first name.
+
+      Schoolbox doesn't distinguish between a person's actual first name
+      and any other names, and in any case is not the definitive source of
+      naming information; therefore in practice this will usually be the
+      user's given name.
+    example: Rebecca
+
+  preferredName:
+    type: string
+    nullable: true
+    description: The user's preferred name.
+  
+  lastName:
+    type: string
+    nullable: true
+    description: The user's surname.
+    example: White
+
+  externalId:
+    $ref: ./externalId.yaml

@@ -5,7 +5,7 @@ type: object
 properties:
   learner:
     allOf:
-      - $ref: ./userAuthor.yaml
+      - $ref: ./assessment-user.yaml
       - description: |
           The user who is participating in the assessment: usually a student.
   response:
@@ -28,7 +28,7 @@ properties:
           $ref: ./file.yaml
       submitter:
         allOf:
-          - $ref: ./userAuthor.yaml
+          - $ref: ./assessment-user.yaml
           - description: |
               The user who submitted the due response.
               
@@ -58,14 +58,15 @@ properties:
         example: A
         description: A human readable mark.
       normalisedMark:
-        type: integer
+        type: number
+        format: float
         example: 36
         description: The mark in numeric form.
       rubric:
         $ref: ./assessment-rubric-feedback.yaml
       instructor:
         allOf:
-          - $ref: ./userAuthor.yaml
+          - $ref: ./assessment-user.yaml
           - description: |
               The user who gave the feedback to the learner: usually a teacher.
   comment:
@@ -101,7 +102,7 @@ properties:
           An Assessment Rubric item. (Deprecated: moved to the `feedback` object.)
   instructor:
     allOf:
-      - $ref: ./userAuthor.yaml
+      - $ref: ./assessment-user.yaml
       - deprecated: true
         description: |
           The user who gave the feedback to the learner: usually a teacher.
