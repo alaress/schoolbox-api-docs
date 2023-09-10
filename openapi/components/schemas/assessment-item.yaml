@@ -33,12 +33,13 @@ properties:
         description: Class Codes associated with the folder.
         oneOf:
           - type: string
+            nullable: true
           - type: array
             items:
               type: string
       yearLevel:
         description: |
-          A year level which the folder is associated with.
+          Year levels which the folder is associated with.
         type: array
         nullable: true
         items:
@@ -49,6 +50,11 @@ properties:
             name:
               type: string
               description: The name of the year level.
+  subjectCode:
+    type: string
+    nullable: true
+    description: |
+      The Course Subject Code
   commonAssessment:
     type: boolean
     nullable: true
@@ -80,14 +86,16 @@ properties:
       Not applicable to assessmentTypes 'lessonPlan' and 'task' (so value will be null in those cases).
   dueDate:
     type: string
+    nullable: true
     format: date-time
     description: |
-      The due date of the assessment as a RFC3339 string.
+      The due date of the assessment as a RFC3339 string. This can be null for assessments in a course.
     example: 2022-01-30T21:00:00.000Z
   rubric:
     $ref: ./assessment-rubric.yaml
   project:
     type: object
+    nullable: true
     properties:
       id:
         type: integer
