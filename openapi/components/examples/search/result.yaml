@@ -75,7 +75,7 @@ value:
         - id: 3
           name: Year 1
           url: https://{hostname}.{domain}/homepage/3
-      icon: homepage
+      icon: home
       _links:
         subResults: https://{hostname}.{domain}/api/search/folder/10
       _subResults:
