@@ -8,6 +8,7 @@ discriminator:
   mapping:
     assessment.dueWork: ./resultTypes/assessment.yaml
     assessment.lessonPlan: ./resultTypes/assessment.yaml
+    assessment.lti: ./resultTypes/assessment.yaml
     assessment.project: ./resultTypes/assessment.yaml
     assessment.task: ./resultTypes/assessment.yaml
     assessment.quiz: ./resultTypes/assessment.yaml
