@@ -4,7 +4,7 @@ value:
       type: badge
       date: 2022-01-30T21:00:00Z
       # TODO add a proper homepage for a badge
-      url: https://{hostname}.{domain}/badge/1/update
+      url: ''
       title: A badge
       meta: Badge Category 1
       image: https://{hostname}.{domain}/static/images/badges/ui/25.svg
@@ -75,7 +75,7 @@ value:
         - id: 3
           name: Year 1
           url: https://{hostname}.{domain}/homepage/3
-      icon: homepage
+      icon: home
       _links:
         subResults: https://{hostname}.{domain}/api/search/folder/10
       _subResults:
