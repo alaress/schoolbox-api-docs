@@ -85,14 +85,15 @@ properties:
       - id: 69
         externalId: 69
         title: null
-        firstName: "Eden"
-        preferredName: "Reed"
-        givenName: "Eden"
-        lastName: "Reed"
-        fullName: "Eden Reed"
+        firstName: Eden
+        preferredName: Reed
+        givenName: Eden
+        lastName: Reed
+        fullName: Eden Reed
         role:
           id: 5
           name: Junior Student
+          type: student
         yearLevel:
           id: 4
           name: "3"
