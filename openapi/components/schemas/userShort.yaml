@@ -48,3 +48,9 @@ properties:
     nullable: false
     description: The user's formatted full name.
     example: Ms Rebecca White
+
+  role:
+    $ref: ./role.yaml
+
+  yearLevel:
+    $ref: ./yearLevel.yaml
