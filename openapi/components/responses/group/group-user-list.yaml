@@ -1,0 +1,101 @@
+description: A list of users who belong to a group
+content:
+  application/json:
+    schema:
+      title: User list
+      description: A list of users
+      readOnly: true
+      type: object
+      properties:
+        metadata:
+          $ref: ../../schemas/listMetadata.yaml
+        data:
+          type: array
+          uniqueItems: true
+          items:
+            title: User
+            type: object
+            properties:
+
+              id:
+                $ref: ../../schemas/id.yaml
+
+              _links:
+                type: object
+                properties:
+                  profile:
+                    type: string
+                    example: /search/user/2
+                  avatar:
+                    type: string
+                    example: /portrait.php?id=2&size=square64
+
+              title:
+                type: string
+                nullable: true
+                description: The user's title (Mr., Ms., etc.).
+                example: Ms
+
+              firstName:
+                type: string
+                description: |
+                  The user's first name.
+                  
+                  Schoolbox doesn't distinguish between a person's actual first name
+                  and any other names, and in any case is not the definitive source of
+                  naming information; therefore in practice this will usually be the
+                  user's given name.
+                example: Rebecca
+
+              preferredName:
+                type: string
+                nullable: true
+                description: The user's preferred name.
+
+              givenName:
+                type: string
+                nullable: false
+                description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
+                example: John
+
+              lastName:
+                type: string
+                nullable: true
+                description: The user's surname.
+                example: White
+
+              fullName:
+                type: string
+                description: |
+                  The user's full name: usually, this is the title, first name and last
+                  name joined together.
+                example: Mr John Smith
+
+              role:
+                type: string
+                description: The name of the Role, may not be unique.
+                example: Staff
+
+              isStaff:
+                type: boolean
+                example: true
+
+              campus:
+                type: string
+                description: Comma-separated list of campuses to which the user belongs.
+                example: Senior, Junior
+
+              yearLevel:
+                type: string
+                description: Name of the year level to which the user belongs, or blank if not applicable.
+                example: Year 9
+
+              house:
+                type: string
+                description: Name of the school house to which the user belongs, or blank if not applicable.
+                example: Griffindor
+
+              accessType:
+                type: string
+                description: The type of access the user has to the group - read, write, or admin.
+                example: read
