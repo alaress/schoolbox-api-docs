@@ -1,4 +1,4 @@
-description: A list of users who belong to a group
+description: Information about a group, including a list of users belonging to the group.
 content:
   application/json:
     schema:
@@ -7,9 +7,52 @@ content:
       readOnly: true
       type: object
       properties:
-        metadata:
-          $ref: ../../schemas/listMetadata.yaml
-        data:
+
+        groupId:
+          $ref: ../../schemas/id.yaml
+
+        groupName:
+          type: string
+          description: The name of the group.
+
+        settings:
+          type: object
+          properties:
+
+            new:
+              type: string
+              description: TODO: Find the purpose of this field.
+
+            access:
+              type: string
+              description: |
+                The level of access that users have to this group.
+
+                * `private`: membership is by invitation only
+                * `moderated`: users may apply for membership, but must be approved
+                * `free`: users may join and leave at any time
+                type: string
+                enum:
+                - private
+                - moderated
+                - free
+
+            isNotificationsEnabled:
+              type: boolean
+              description: Whether notifications are enabled for this group.
+              example: true
+
+            isForceFollow:
+              description: |
+                The level of subscription that is allowed to this group.
+
+                * `false`: users may subscribe to this group's events
+                * `true`: users must subscribe to this group's events, and may not
+                  unsubscribe
+              type: boolean
+              example: true
+
+        members:
           type: array
           uniqueItems: true
           items:
