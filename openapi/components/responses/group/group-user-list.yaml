@@ -20,9 +20,11 @@ content:
           properties:
 
             new:
-              type: string
+              type:
+                integer
               description: |
                 Either the ?new value from the request URL, or 0 (if ?new does not exist).
+              example: 0
 
             access:
               type: string
@@ -37,6 +39,7 @@ content:
                 - private
                 - moderated
                 - free
+              example: private
 
             isNotificationsEnabled:
               type: boolean
