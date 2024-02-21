@@ -21,7 +21,8 @@ content:
 
             new:
               type: string
-              description: TODO: Find the purpose of this field.
+              description: |
+                Ignore this field.
 
             access:
               type: string
