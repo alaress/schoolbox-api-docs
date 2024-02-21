@@ -70,10 +70,15 @@ properties:
     nullable: true
     example: [ ]
 
+  impersonableUser:
+    description: |
+      Replaced by impersonableUsers.
+    deprecated: true
+
   impersonableUsers:
     description: |
       The users whom this user may impersonate within a Schoolbox session.
-      
+
       This relation is asymmetric: A may impersonate B, but that does not
       imply that B may impersonate A.
     type: array
@@ -82,15 +87,22 @@ properties:
       $ref: ./userShort.yaml
     nullable: false
     example:
-      - id: 6
+      - id: 69
+        externalId: 69
+        title: null
+        firstName: Eden
+        preferredName: Reed
+        givenName: Eden
+        lastName: Reed
         fullName: Eden Reed
-        yearLevel:
-          id: 3
-          name: 3
         role:
           id: 5
-          name: Primary Student
-  
+          name: Junior Student
+          type: student
+        yearLevel:
+          id: 4
+          name: "3"
+
   email:
     type: string
     format: email
