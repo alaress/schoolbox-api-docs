@@ -82,15 +82,22 @@ properties:
       $ref: ./userShort.yaml
     nullable: false
     example:
-      - id: 6
+      - id: 69
+        externalId: 69
+        title: null
+        firstName: Eden
+        preferredName: Reed
+        givenName: Eden
+        lastName: Reed
         fullName: Eden Reed
-        yearLevel:
-          id: 3
-          name: 3
         role:
           id: 5
-          name: Primary Student
-  
+          name: Junior Student
+          type: student
+        yearLevel:
+          id: 4
+          name: "3"
+
   email:
     type: string
     format: email
