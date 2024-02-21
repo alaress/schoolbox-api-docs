@@ -22,7 +22,7 @@ content:
             new:
               type: string
               description: |
-                Ignore this field.
+                Either the ?new value from the request URL, or 0 (if ?new does not exist).
 
             access:
               type: string
