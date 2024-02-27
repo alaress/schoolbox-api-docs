@@ -27,15 +27,14 @@ content:
               example: 0
 
             access:
-              type: string
               description: |
                 The level of access that users have to this group.
 
                 * `private`: membership is by invitation only
                 * `moderated`: users may apply for membership, but must be approved
                 * `free`: users may join and leave at any time
-                type: string
-                enum:
+              type: string
+              enum:
                 - private
                 - moderated
                 - free
