@@ -1,0 +1,14 @@
+get:
+  operationId: groupGetUsersInGroup
+  tags: [group, user]
+  summary: Get all users belonging to a group
+  description: |
+    This will provide a list of the users that belong to the specified group.  This endpoint is only available to superusers.
+  responses:
+    '200':
+      $ref: ../components/responses/group/group-user-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
