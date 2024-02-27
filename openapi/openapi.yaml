@@ -247,6 +247,9 @@ paths:
   /api/search/folder/{id}:
     $ref: 'paths/api@search@folder@{id}.yaml'
 
+  /group/getData/{id}:
+    $ref: 'paths/group@getData@{id}.yaml'
+
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:
   # therefore, no scopes are defined for any security scheme.
