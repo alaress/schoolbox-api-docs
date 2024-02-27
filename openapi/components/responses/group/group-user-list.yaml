@@ -142,6 +142,10 @@ content:
                 example: Griffindor
 
               accessType:
-                type: string
                 description: The type of access the user has to the group - read, write, or admin.
+                type: string
+                enum:
+                  - read
+                  - write
+                  - admin
                 example: read
