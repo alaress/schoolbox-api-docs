@@ -70,10 +70,15 @@ properties:
     nullable: true
     example: [ ]
 
+  impersonableUser:
+    description: |
+      Replaced by impersonableUsers.
+    deprecated: true
+
   impersonableUsers:
     description: |
       The users whom this user may impersonate within a Schoolbox session.
-      
+
       This relation is asymmetric: A may impersonate B, but that does not
       imply that B may impersonate A.
     type: array
