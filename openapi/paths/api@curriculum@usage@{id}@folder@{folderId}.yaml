@@ -18,7 +18,7 @@ post:
 delete:
   operationId: curriculumApiUsageFolder.deleteSingleFolderUsage
   tags: [curriculum]
-  summary: Remove curriculum node to a folder
+  summary: Remove curriculum node from a folder
   description: |
     Remove a single curriculum node from a folder.
 
