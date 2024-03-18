@@ -1,0 +1,27 @@
+post:
+  operationId: curriculumApiUsageFolder.postFolderUsage
+  tags: [curriculum]
+  summary: Set curriculum nodes associated with a folder
+  description: |
+    Set the curriculum nodes associated with a folder.
+
+    Returns a 204 response if the node were set, or a 404 if any node to be 
+    added was not found.
+  responses:
+    '204':
+      description: The curriculum node was added successfully.
+    '404':
+      description: One or more curriculum nodes to be added were not found.
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - name: folderId
+    in: path
+    description: |
+      The ID of the folder to modify curriculum nodes for.
+    required: true
+    schema:
+      type: integer
+      format: int32
+      minimum: 1
