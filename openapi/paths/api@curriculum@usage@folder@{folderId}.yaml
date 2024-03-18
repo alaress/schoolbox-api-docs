@@ -8,15 +8,16 @@ post:
     Returns a 204 response if the node were set, or a 404 if any node to be 
     added was not found.
   requestBody:
-    description: |
-      An array of curriculum nodes to associate with the folder.
-
-      This will override the folder's current association completely: any nodes
-      not in this list will be disassociated from the folder.
-      (If this is an empty list, the folder will have no nodes associated.)
     content:
       application/json:
         schema:
+          description: |
+            An array of curriculum nodes to associate with the folder.
+
+            This will override the folder's current association completely: any
+            nodes not in this list will be disassociated from the folder.
+            (If this is empty, the folder will have no nodes associated.)
+
           type: array
           items:
             $ref: ../components/schemas/curriculumItem.yaml
