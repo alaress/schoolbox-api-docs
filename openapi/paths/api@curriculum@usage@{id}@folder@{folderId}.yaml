@@ -43,6 +43,3 @@ parameters:
       type: integer
       format: int32
       minimum: 1
-
-  - $ref: ../components/parameters/cursor.yaml
-  - $ref: ../components/parameters/limit.yaml
