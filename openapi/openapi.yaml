@@ -241,6 +241,9 @@ paths:
   /api/curriculum/usage/{id}:
     $ref: 'paths/api@curriculum@usage@{id}.yaml'
 
+  /api/curriculum/usage/{id}/folder/{folderId}:
+    $ref: 'paths/api@curriculum@usage@{id}@folder@{folderId}.yaml'
+
   /api/search:
     $ref: 'paths/api@search.yaml'
 
