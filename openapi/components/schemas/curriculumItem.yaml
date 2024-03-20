@@ -11,3 +11,9 @@ properties:
   code:
     type: string
     example: GCPSC-SEA
+  children:
+    description: |
+      Optional list of child nodes of this curriculum node.
+    type: array
+    items:
+      $ref: ./curriculumItem.yaml

@@ -24,17 +24,7 @@ post:
 
   responses:
     '200':
-      description: |
-        The new list of curriculum nodes for this folder.
-        
-        If parameter `returnFormat` is `tree`, then this will return a tree
-        beginning from the topmost node,
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: ../components/schemas/curriculumItem.yaml
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
     '404':
       description: One or more curriculum nodes to be added were not found.
     default:
