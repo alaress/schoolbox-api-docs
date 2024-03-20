@@ -5,8 +5,8 @@ post:
   description: |
     Add a single curriculum node to a folder.
 
-    Returns a 204 response if the node was added, or a 409 if it was already on
-    the folder.
+    Returns a 200 response with the new structure if the node was added,
+    or a 409 if it was already on the folder.
   responses:
     '204':
       description: The curriculum node was added successfully.
@@ -22,8 +22,8 @@ delete:
   description: |
     Remove a single curriculum node from a folder.
 
-    Returns a 204 response if the node was removed, or a 404 if it did not
-    already exist on the folder.
+    Returns a 200 response with the new structure if the node was removed,
+    or a 404 if it did not already exist on the folder.
   responses:
     '204':
       description: The curriculum node was removed successfully.

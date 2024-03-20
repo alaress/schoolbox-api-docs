@@ -1,7 +1,16 @@
 name: returnFormat
 in: query
 description: |
-  The format to return the folder's ancestry in.
+  The format to return the folder's curriculum nodes in.
+  * tree: return a response containing the below relations, reduced to a single
+    tree structure:
+    * all top-level curriculum nodes which are ancestors of the folder's nodes
+      (up to `ancestors` levels up)
+    * the folder's actual curriculum nodes
+    * all descendants of the folder's curriculum nodes
+      (up to `descendants` levels down)
+  * list: return a response containing only the folder's curriculum nodes, in a
+    flat structure
 schema:
   type: string
   enum:

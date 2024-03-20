@@ -5,8 +5,8 @@ post:
   description: |
     Set the curriculum nodes associated with a folder.
 
-    Returns a 204 response if the node were set, or a 404 if any node to be 
-    added was not found.
+    Returns a 200 response with the new structure the nodes were set,
+    or a 404 if any node to be added was not found.
   requestBody:
     content:
       application/json:
@@ -23,8 +23,18 @@ post:
             $ref: ../components/schemas/curriculumItem.yaml
 
   responses:
-    '204':
-      description: The curriculum node was added successfully.
+    '200':
+      description: |
+        The new list of curriculum nodes for this folder.
+        
+        If parameter `returnFormat` is `tree`, then this will return a tree
+        beginning from the topmost node,
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/curriculumItem.yaml
     '404':
       description: One or more curriculum nodes to be added were not found.
     default:
