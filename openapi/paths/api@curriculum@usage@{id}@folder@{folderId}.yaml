@@ -34,12 +34,7 @@ delete:
 
 parameters:
   - $ref: ../components/parameters/id.yaml
-  - name: folderId
-    in: path
-    description: |
-      The ID of the folder to modify curriculum nodes for.
-    required: true
-    schema:
-      type: integer
-      format: int32
-      minimum: 1
+  - $ref: ../components/parameters/curriculum-folderId.yaml
+  - $ref: ../components/parameters/curriculum-ancestors.yaml
+  - $ref: ../components/parameters/curriculum-descendants.yaml
+  - $ref: ../components/parameters/curriculum-returnFormat.yaml

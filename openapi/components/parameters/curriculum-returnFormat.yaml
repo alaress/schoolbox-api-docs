@@ -1,0 +1,10 @@
+name: returnFormat
+in: query
+description: |
+  The format to return the folder's ancestry in.
+schema:
+  type: string
+  enum:
+    - tree
+    - list
+  default: list
