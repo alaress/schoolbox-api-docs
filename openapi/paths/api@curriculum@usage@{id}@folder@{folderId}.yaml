@@ -8,8 +8,8 @@ post:
     Returns a 200 response with the new structure if the node was added,
     or a 409 if it was already on the folder.
   responses:
-    '204':
-      description: The curriculum node was added successfully.
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
     '409':
       description: The curriculum node already exists on the folder.
     default:
@@ -25,8 +25,8 @@ delete:
     Returns a 200 response with the new structure if the node was removed,
     or a 404 if it did not already exist on the folder.
   responses:
-    '204':
-      description: The curriculum node was removed successfully.
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
     '404':
       description: The curriculum node does not exist on the folder.
     default:

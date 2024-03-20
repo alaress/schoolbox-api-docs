@@ -1,5 +1,5 @@
 title: a Curriculum Code
-description: A Curriculm Code
+description: A Curriculum Code
 readOnly: true
 type: object
 properties:
@@ -11,3 +11,9 @@ properties:
   code:
     type: string
     example: GCPSC-SEA
+  children:
+    description: |
+      Optional list of child nodes of this curriculum node.
+    type: array
+    items:
+      $ref: ./curriculumItem.yaml

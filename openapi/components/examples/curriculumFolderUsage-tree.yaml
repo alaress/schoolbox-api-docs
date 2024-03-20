@@ -1,0 +1,20 @@
+value:
+  - id: 1
+    name: Traits
+    children:
+    - id: 100
+      name: Self-awareness
+      code: GCPSC-SEA
+      children:
+        - id: 101
+          name: Test 1
+        - id: 102
+          name: Test 2
+    - id: 200
+      name: Self-discipline
+      code: GCPSC-SED
+      children:
+        - id: 201
+          name: Test 1
+        - id: 202
+          name: Test 2
