@@ -1,0 +1,13 @@
+post:
+  operationId: calendarEvent.postCreate
+  tags: [news]
+  summary: Create a news article
+  description: |
+    Creates a new calendar event.
+#  responses:
+#    '200':
+#      $ref: ../components/responses/
+#    default:
+#      $ref: ../components/responses/
+  requestBody:
+    $ref: ../components/requestBodies/event-item.yaml
