@@ -205,6 +205,9 @@ paths:
   /calendar/event/attendance/{id}:
     $ref: 'paths/calendar@event@attendance@{id}.yaml'
 
+  /calendar/event/create:
+    $ref: 'paths/calendar@event@create.yaml'
+
   /calendar/event/attendance/{id}/create:
     $ref: 'paths/calendar@event@attendance@{id}@create.yaml'
 
