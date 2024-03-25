@@ -6,86 +6,83 @@ content:
       type: object
       properties:
         id:
-          type: string
-          description: Blank when creating.
-          example: "",
+          $ref: ./../schemas/id.yaml
         userId:
-          type:
-          example: "1",
-          description:
+          $ref: ./../schemas/id.yaml
         authorId:
-          type:
-          example: "1",
-          description:
+          $ref: ./../schemas/id.yaml
         allDay:
-          type:
-          example: "0",
-          description:
+          type: integer
+          example: 0
+          description: Whether the event is an all day event.
+          nullable: false
         efficacy:
-          type:
-          example: "self",
-          description:
+          type: string
+          example: "self"
+          description: TODO find out what this is.
         title:
-          type:
-          example: "Senior School Parent Teacher Interviews",
-          description:
+          type: string
+          example: "Senior School Parent Teacher Interviews"
+          description: Title of event.
         startDate:
-          type:
-          example: "09\/03\/2024 4:00pm",
-          description:
+          type: string
+          example: "09\/03\/2024 4:00pm"
+          description: Start date of event.
         endDate:
-          type:
-          example: "09\/03\/2024 8:00pm",
-          description:
+          type: string
+          example: "09\/03\/2024 8:00pm"
+          description: End date of event.
         repeat:
-          type:
-          example: ""
-          description:
+          type: string
+          example: "weekly"
+          enum: ["", "daily", "weekly", "fortnightly", "monthly", "yearly"]
+          description: Blank for single event.
         repeat_until:
-          type:
-          example: ""
-          description:
+          type: string
+          example: "09\/03\/2025 8:00pm"
+          description: "Date event repeats until."
         type:
-          type:
-          example: "5",
-          description:
+          type: integer
+          example: 5
+          description: Event type ID (references lu_event_type database table.
         location:
-          type:
-          example: "",
-          description:
+          type: string
+          example: "Meeting room 1"
+          description: Location name or description.
         detail:
-          type:
-          example: "Meeting to discuss things",
-          description:
+          type: string
+          example: "Meeting to discuss things"
+          description: More details about event.
         publishDate:
-          type:
-          example: "04\/02\/2016 12:00am",
-          description:
+          type: string
+          example: "04\/02\/2016 12:00am"
+          description: Date at which event becomes public.
         level:
-          type:
-          example: "2",
-          description:
-        folder:
-          type:
-          example: ["64","167","169","170"],
-          description:
+          type: integer
+          example: 2
+          description: Event level ID.  1 for Personal, 2 for Group, 3 for Campus.
+          enum: [1, 2, 3]
+        roles:
+          type: array
+          example: [64,167,169,170]
+          description: Array of role IDs. TODO Find table.
         campus:
-          type:
-          example: ["1"],
-          description:
+          type: array
+          example: [1,2]
+          description: Array of campus IDs. TODO Find table.
         attendance:
-          type:
-          example: "0",
-          description:
+          type: integer
+          example: 0
+          description: Whether attendance is enabled.
         guests:
-          type:
-          example: "",
-          description:
+          type: string
+          example: "45,27"
+          description: Comma-separated string of user IDs.
         maxAttendees:
-          type:
-          example: "",
-          description:
+          type: integer
+          example: 5
+          description: The maximum number of guests who may attend this event.
         showAttendees:
-          type:
-          example: "1"
-          description:
+          type: integer
+          example: 1
+          description: Whether the list of attendees will show visible to guests.
