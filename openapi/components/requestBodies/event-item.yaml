@@ -18,8 +18,13 @@ content:
           nullable: false
         efficacy:
           type: string
+          enum:
+            - self
+            - series
           example: "self"
-          description: TODO find out what this is.
+          description: \
+            Whether the requested change should apply only to the event with the given 'id', or to all events in the
+            series of which event 'id' is a member.
         title:
           type: string
           example: "Senior School Parent Teacher Interviews"
