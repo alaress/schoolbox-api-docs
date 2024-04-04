@@ -12,7 +12,7 @@ post:
         schema:
           type: array
           items:
-            $ref: ../components/schemas/eventCommonFields.yaml
+            $ref: ../components/schemas/calendar/eventRequestFieldsMinusId.yaml
   responses:
     '200':
       description: |
@@ -20,14 +20,6 @@ post:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              # The response is all the fields from tne request, plus the new event id.
-              allOf:
-                - type: object
-                  properties:
-                    id:
-                      $ref: ../components/schemas/id.yaml
-                - $ref: ../components/schemas/eventCommonFields.yaml
+            $ref: ../components/schemas/calendar/eventResponseFields.yaml
     default:
       $ref: ../components/responses/problem.yaml
