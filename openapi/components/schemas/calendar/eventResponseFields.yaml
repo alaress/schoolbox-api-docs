@@ -21,7 +21,7 @@ allOf:
         type: array
         description: Array of folder objects
         items:
-          $ref: ../../schemas/folder.yaml # TODO: Create new file ../../schemas/folderLinkOnly.yaml
+          $ref: ../../schemas/folderLinkOnly.yaml
       guests:
         type: array
         description: Array of user objects
