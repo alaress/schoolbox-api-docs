@@ -1,6 +1,6 @@
 post:
   operationId: postCalendarEventAttendanceCreate
-  tags: [calendar]
+  tags: [calendar, event]
   summary: Invite attendees to an event
   description: |
     Create invitations to the given event, for the given set of users.

@@ -1,6 +1,6 @@
 post:
   operationId: postCalendarEventAttendanceDecline
-  tags: [calendar]
+  tags: [calendar, event]
   summary: Decline event invitation
   description: |
     As the authenticated user, declines the invitation to attend the given
