@@ -1,7 +1,7 @@
 description: |
   Calendar event information.
 content:
-  application/json:
+  application/x-www-form-urlencoded:
     schema:
       type: object
       properties:
@@ -22,7 +22,7 @@ content:
             - self
             - series
           example: "self"
-          description:
+          description: \
             Whether the requested change should apply only to the event with the given 'id', or to all events in the
             series of which event 'id' is a member.
         title:
