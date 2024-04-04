@@ -4,6 +4,15 @@ post:
   summary: Create a calendar event
   description: |
     Creates a calendar event
+  requestBody:
+    description: |
+      The event to create
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: ../components/schemas/eventCommonFields.yaml
   responses:
     '200':
       description: |
@@ -22,12 +31,3 @@ post:
                 - $ref: ../components/schemas/eventCommonFields.yaml
     default:
       $ref: ../components/responses/problem.yaml
-  requestBody:
-    description: |
-      The event to create
-    content:
-      application/json:
-        schema:
-          type: array
-          items:
-            $ref: ../components/schemas/eventCommonFields.yaml
