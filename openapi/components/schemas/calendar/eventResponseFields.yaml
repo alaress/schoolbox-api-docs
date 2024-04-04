@@ -26,4 +26,4 @@ allOf:
         type: array
         description: Array of user objects
         items:
-          $ref: ../../schemas/userShort.yaml # TODO: userShort.yaml includes role and yearlevel, which are not included in the response.  Fix by adding to response.
+          $ref: ../../schemas/userShort.yaml
