@@ -1,19 +1,18 @@
 post:
-  operationId: calendarEvent.postCreate
+  operationId: calendarEvent.postModify
   tags: [calendar, event]
-  summary: Create a calendar event
+  summary: Modify a calendar event
   description: |
-    Creates a calendar event
+    Modifies a calendar event
   responses:
     '200':
       description: |
-        The created event
+        The modified event
       content:
         application/json:
           schema:
             type: array
             items:
-              # The response is all the fields from tne request, plus the new event id.
               allOf:
                 - type: object
                   properties:
@@ -24,10 +23,17 @@ post:
       $ref: ../components/responses/problem.yaml
   requestBody:
     description: |
-      The event to create
+      The event including desired modifications
     content:
       application/json:
         schema:
           type: array
           items:
-            $ref: ../components/schemas/eventCommonFields.yaml
+            allOf:
+              - type: object
+                properties:
+                  id:
+                    $ref: ../components/schemas/id.yaml
+              - $ref: ../components/schemas/eventCommonFields.yaml
+parameters:
+  - $ref: ../components/parameters/id.yaml

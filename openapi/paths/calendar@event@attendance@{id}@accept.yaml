@@ -1,6 +1,6 @@
 post:
   operationId: postCalendarEventAttendanceAccept
-  tags: [calendar]
+  tags: [calendar, event]
   summary: Accept event invitation
   description: |
     This allows a user to accept an invitation.  Note that not all events will allow the user to accept an invitation.  They must either have been invited, or have the ability to invite themselves.

@@ -1,0 +1,29 @@
+post:
+  operationId: calendarEvent.postDelete
+  tags: [calendar, event]
+  summary: Delete a calendar event
+  description: |
+    Deletes a calendar event
+  responses:
+    '204':
+      description: |
+        Empty body
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            efficacy:
+              type: string
+              enum:
+                - self
+                - series
+              example: self
+              description: |
+                Either 'self' (to delete only the one event), or 'series' (to delete all events in the series).
+              nullable: false
+parameters:
+  - $ref: ../components/parameters/id.yaml
