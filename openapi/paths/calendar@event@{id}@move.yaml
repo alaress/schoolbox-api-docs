@@ -1,15 +1,11 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
 post:
   operationId: calendarEvent.postMove
   tags: [calendar, event]
   summary: Move a calendar event
   description: |
     Moves a calendar event
-  responses:
-    '200':
-      description: |
-        Empty body
-    default:
-      $ref: ../components/responses/problem.yaml
   requestBody:
     content:
       application/json:
@@ -36,5 +32,9 @@ post:
               example: 0
               description: Whether the event is an all day event - 1 means 'all day', 0 means 'not all day'.
               nullable: false
-parameters:
-  - $ref: ../components/parameters/id.yaml
+  responses:
+    '200':
+      description: |
+        Empty body
+    default:
+      $ref: ../components/responses/problem.yaml

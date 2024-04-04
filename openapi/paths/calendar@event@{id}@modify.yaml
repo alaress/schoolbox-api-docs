@@ -1,9 +1,25 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
 post:
   operationId: calendarEvent.postModify
   tags: [calendar, event]
   summary: Modify a calendar event
   description: |
     Modifies a calendar event
+  requestBody:
+    description: |
+      The event including desired modifications
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            allOf:
+              - type: object
+                properties:
+                  id:
+                    $ref: ../components/schemas/id.yaml
+              - $ref: ../components/schemas/eventCommonFields.yaml
   responses:
     '200':
       description: |
@@ -21,19 +37,3 @@ post:
                 - $ref: ../components/schemas/eventCommonFields.yaml
     default:
       $ref: ../components/responses/problem.yaml
-  requestBody:
-    description: |
-      The event including desired modifications
-    content:
-      application/json:
-        schema:
-          type: array
-          items:
-            allOf:
-              - type: object
-                properties:
-                  id:
-                    $ref: ../components/schemas/id.yaml
-              - $ref: ../components/schemas/eventCommonFields.yaml
-parameters:
-  - $ref: ../components/parameters/id.yaml
