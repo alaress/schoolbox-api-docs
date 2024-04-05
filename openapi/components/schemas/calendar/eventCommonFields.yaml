@@ -14,47 +14,47 @@ properties:
     enum:
       - self
       - series
-    example: "self"
+    example: self
     description:
       Whether the requested change should apply only to the event with the given 'id', or to all events in the
       series of which event 'id' is a member.
   title:
     type: string
-    example: "The Yalta Conference"
+    example: The Yalta Conference
     description: Title of event.
   startDate:
     type: string
-    example: "09\/03\/2024 4:00pm"
-    description: Start date of event.
+    example: 2024-03-05T19:00+10:00
+    description: Start date and time of event in RFC3339 format.
   endDate:
     type: string
-    example: "09\/03\/2024 8:00pm"
-    description: End date of event.
+    example: 2024-03-05T19:30+10:00
+    description: End date and time of event in RFC3339 format.
   repeat:
     type: string
-    example: "weekly"
-    enum: ["", "daily", "weekly", "fortnightly", "monthly", "yearly"]
+    example: weekly
+    enum: ["", daily, weekly, fortnightly, monthly, yearly]
     description: Blank for single event.
   repeat_until:
     type: string
-    example: "09\/03\/2025 8:00pm"
-    description: "Date event repeats until."
+    example: 09\/03\/2025 8:00pm
+    description: Date event repeats until
   type:
     type: integer
     example: 5
     description: Event type ID (references lu_event_type database table.
   location:
     type: string
-    example: "Meeting room 1"
+    example: Meeting room 1
     description: Location name or description.
   detail:
     type: string
-    example: "Meeting to discuss things"
+    example: Meeting to discuss things
     description: More details about event.
   publishDate:
     type: string
-    example: "04\/02\/2016 12:00am"
-    description: Date at which event becomes public.
+    example: 2024-03-05T19:30+10:00
+    description: Date and time at which the event becomes public in RFC3339 format.
   level:
     type: integer
     example: 2
