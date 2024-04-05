@@ -42,7 +42,7 @@ properties:
   type:
     type: integer
     example: 5
-    description: Event type ID (references lu_event_type database table.
+    description: Event type ID (references luEventType database table).
   location:
     type: string
     example: Meeting room 1
