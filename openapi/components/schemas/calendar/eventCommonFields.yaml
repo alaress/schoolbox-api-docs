@@ -5,8 +5,8 @@ properties:
   authorId:
     $ref: ../../schemas/id.yaml
   allDay:
-    type: integer
-    example: 0
+    type: boolean
+    example: false
     description: Whether the event is an all day event.
     nullable: false
   efficacy:
