@@ -5,10 +5,14 @@ properties:
   authorId:
     $ref: ../../schemas/id.yaml
   allDay:
-    type: boolean
-    example: false
+    oneOf:
+      - type: boolean
+        example: false
+        nullable: false
+      - type: integer
+        example: 0
+        nullable: false
     description: Whether the event is an all day event.
-    nullable: false
   efficacy:
     type: string
     enum:
