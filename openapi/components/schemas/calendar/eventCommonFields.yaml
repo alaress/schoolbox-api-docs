@@ -2,8 +2,20 @@ type: object
 properties:
   userId:
     $ref: ../../schemas/id.yaml
+  user:
+    type: object
+    description: An alternative to userId for specifying a user.  Supply either 'userId' or the 'user' object stub.
+    properties:
+      id:
+        $ref: ./../../schemas/id.yaml
   authorId:
     $ref: ../../schemas/id.yaml
+  author:
+    type: object
+    description: An alternative to authorId for specifying an author.  Supply either 'authorId' or the 'author' object stub.
+    properties:
+      id:
+        $ref: ./../../schemas/id.yaml
   allDay:
     oneOf:
       - type: boolean
@@ -44,9 +56,15 @@ properties:
     example: 09\/03\/2025 8:00pm
     description: Date event repeats until
   type:
-    type: integer
-    example: 5
-    description: Event type ID (references luEventType database table).
+    oneOf:
+      - type: integer
+        example: 5
+        description: Event type ID (references luEventType database table).
+      - type: object
+        description: Type as an object stub.
+        properties:
+          id:
+            $ref: ./../../schemas/id.yaml
   location:
     type: string
     example: Meeting room 1
