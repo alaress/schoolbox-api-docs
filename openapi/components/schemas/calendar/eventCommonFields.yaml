@@ -53,8 +53,8 @@ properties:
     description: Blank for single event.
   repeat_until:
     type: string
-    example: 09\/03\/2025 8:00pm
-    description: Date event repeats until
+    example: 2024-04-05T19:30:00+10:00
+    description: Date event repeats until, in RFC3339 format.
   type:
     oneOf:
       - type: integer
