@@ -1,0 +1,29 @@
+# The response is all the fields from tne request, plus the new event id.
+allOf:
+  - type: object
+    properties:
+      id:
+        $ref: ../../schemas/id.yaml
+  - $ref: ./eventCommonFields.yaml
+  - type: object
+    properties:
+      roles:
+        type: array
+        description: Array of role objects
+        items:
+          $ref: ../../schemas/role.yaml
+      campuses:
+        type: array
+        description: Array of campus objects
+        items:
+          $ref: ../../schemas/campus.yaml
+      folders:
+        type: array
+        description: Array of folder objects
+        items:
+          $ref: ../../schemas/folderLinkOnly.yaml
+      guests:
+        type: array
+        description: Array of user objects
+        items:
+          $ref: ../../schemas/userShort.yaml

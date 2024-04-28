@@ -1,3 +1,4 @@
+# This is intended to document User objects that have been generated using User/Translator/ModelToArray->convertLinkedUser().
 title: User
 description: Short fields for users
 type: object

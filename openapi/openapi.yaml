@@ -205,6 +205,18 @@ paths:
   /calendar/event/attendance/{id}:
     $ref: 'paths/calendar@event@attendance@{id}.yaml'
 
+  /calendar/event/create:
+    $ref: 'paths/calendar@event@create.yaml'
+
+  /calendar/event/{id}/modify:
+    $ref: 'paths/calendar@event@{id}@modify.yaml'
+
+  /calendar/event/{id}/move:
+    $ref: 'paths/calendar@event@{id}@move.yaml'
+
+  /calendar/event/{id}/delete:
+    $ref: 'paths/calendar@event@{id}@delete.yaml'
+
   /calendar/event/attendance/{id}/create:
     $ref: 'paths/calendar@event@attendance@{id}@create.yaml'
 
