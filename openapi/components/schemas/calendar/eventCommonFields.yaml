@@ -40,10 +40,12 @@ properties:
     description: Title of event.
   startDate:
     type: string
+    format: date-time
     example: 2024-03-05T19:00:00+10:00
     description: Start date and time of event in RFC3339 format.
   endDate:
     type: string
+    format: date-time
     example: 2024-03-05T19:30:00+10:00
     description: End date and time of event in RFC3339 format.
   repeat:
@@ -72,6 +74,7 @@ properties:
     description: More details about event.
   publishDate:
     type: string
+    format: date-time
     example: 2024-03-05T19:30:00+10:00
     description: Date and time at which the event becomes public in RFC3339 format.
   level:
