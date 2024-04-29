@@ -16,7 +16,7 @@ allOf:
             description: An alternative to userId for specifying a user.  Supply either 'userId' or the 'user' object stub.
             properties:
               id:
-                $ref: ./../../schemas/id.yaml
+                $ref: ../../schemas/id.yaml
   - oneOf:
       - type: object
         properties:
@@ -29,7 +29,7 @@ allOf:
             description: An alternative to authorId for specifying an author.  Supply either 'authorId' or the 'author' object stub.
             properties:
               id:
-                $ref: ./../../schemas/id.yaml
+                $ref: ../../schemas/id.yaml
   - $ref: ./eventCommonFields.yaml
   - type: object
     properties:
@@ -40,7 +40,7 @@ allOf:
           type: object
           properties:
             id:
-              $ref: ./../../schemas/id.yaml
+              $ref: ../../schemas/id.yaml
       campuses:
         type: array
         description: Array of campus object stubs.
@@ -50,8 +50,8 @@ allOf:
             - type: object
               properties:
                 id:
-                  $ref: ./../../schemas/id.yaml
-            - $ref: ./../../schemas/id.yaml
+                  $ref: ../../schemas/id.yaml
+            - $ref: ../../schemas/id.yaml
       folders:
         type: array
         description: Array of folder object stubs.
@@ -61,8 +61,8 @@ allOf:
             - type: object
               properties:
                 id:
-                  $ref: ./../../schemas/id.yaml
-            - $ref: ./../../schemas/id.yaml
+                  $ref: ../../schemas/id.yaml
+            - $ref: ../../schemas/id.yaml
       guests:
         type: array
         description: Array of user object stubs.
@@ -72,5 +72,5 @@ allOf:
             - type: object
               properties:
                 id:
-                  $ref: ./../../schemas/id.yaml
-            - $ref: ./../../schemas/id.yaml
+                  $ref: ../../schemas/id.yaml
+            - $ref: ../../schemas/id.yaml
