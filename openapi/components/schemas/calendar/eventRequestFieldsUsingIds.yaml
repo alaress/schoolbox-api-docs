@@ -1,0 +1,37 @@
+# The request is allOf:
+#  * userId int
+#  * authorId int
+#  * arrays of object ids for each of {roles, campuses, folders, guests}.
+#  * all the common event properties,
+allOf:
+  - type: object
+    properties:
+      userId:
+        $ref: ../../schemas/id.yaml
+      authorId:
+        $ref: ../../schemas/id.yaml
+      roles:
+        type: array
+        description: Array of role ids
+        example: [1,2,3]
+        items:
+          $ref: ../../schemas/id.yaml
+      campuses:
+        type: array
+        description: Array of campus ids
+        example: [1,2,3]
+        items:
+          $ref: ../../schemas/id.yaml
+      folders:
+        type: array
+        description: Array of folder ids
+        example: [1,2,3]
+        items:
+          $ref: ../../schemas/id.yaml
+      guests:
+        type: array
+        description: Array of user object ids.
+        example: [1,2,3]
+        items:
+          $ref: ../../schemas/id.yaml
+  - $ref: ./eventCommonFields.yaml
