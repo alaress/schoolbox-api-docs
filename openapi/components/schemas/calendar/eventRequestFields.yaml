@@ -2,7 +2,7 @@
 #  * oneOf {'userId' int or 'user' object stub}
 #  * oneOf {'authorId' int or 'author' object stub}
 #  * all the common event properties,
-#  * arrays of object stubs for each of {roles, campuses, folders, guests}.
+#  * arrays of object stubs or ids for each of {roles, campuses, folders, guests}.
 allOf:
   - oneOf:
       - type: object
@@ -35,15 +35,17 @@ allOf:
     properties:
       roles:
         type: array
-        description: Array of role objects.
+        description: Array of role object stubs or ids.
         items:
-          type: object
-          properties:
-            id:
-              $ref: ../../schemas/id.yaml
+          oneOf:
+            - type: object
+              properties:
+                id:
+                  $ref: ../../schemas/id.yaml
+            - $ref: ../../schemas/id.yaml
       campuses:
         type: array
-        description: Array of campus object stubs.
+        description: Array of campus object stubs or ids.
         example: [{"id":123}, {"id":456}]
         items:
           oneOf:
@@ -54,7 +56,7 @@ allOf:
             - $ref: ../../schemas/id.yaml
       folders:
         type: array
-        description: Array of folder object stubs.
+        description: Array of folder object stubs or ids.
         example: [{"id":123}, {"id":456}]
         items:
           oneOf:
@@ -65,7 +67,7 @@ allOf:
             - $ref: ../../schemas/id.yaml
       guests:
         type: array
-        description: Array of user object stubs.
+        description: Array of user object stubs or ids.
         example: [{"id":123}, {"id":456}]
         items:
           oneOf:
