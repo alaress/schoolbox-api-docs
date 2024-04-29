@@ -1,107 +1,80 @@
-allOf:
-  - oneOf:
-      - type: object
-        properties:
-          userId:
-            $ref: ../../schemas/id.yaml
-      - type: object
-        properties:
-          user:
-            type: object
-            description: An alternative to userId for specifying a user.  Supply either 'userId' or the 'user' object stub.
-            properties:
-              id:
-                $ref: ./../../schemas/id.yaml
-  - oneOf:
-      - type: object
-        properties:
-          authorId:
-            $ref: ../../schemas/id.yaml
-      - type: object
-        properties:
-          author:
-            type: object
-            description: An alternative to authorId for specifying an author.  Supply either 'authorId' or the 'author' object stub.
-            properties:
-              id:
-                $ref: ./../../schemas/id.yaml
-  - type: object
-    properties:
-      allDay:
-        oneOf:
-          - type: boolean
-            example: false
-            nullable: false
-          - type: integer
-            example: 0
-            nullable: false
-        description: Whether the event is an all day event.
-      efficacy:
-        type: string
-        enum:
-          - self
-          - series
-        example: self
-        description:
-          Whether the requested change should apply only to the event with the given 'id', or to all events in the
-          series of which event 'id' is a member.
-      title:
-        type: string
-        example: The Yalta Conference
-        description: Title of event.
-      startDate:
-        type: string
-        format: date-time
-        example: 2024-03-05T19:00:00+10:00
-        description: Start date and time of event in RFC3339 format.
-      endDate:
-        type: string
-        format: date-time
-        example: 2024-03-05T19:30:00+10:00
-        description: End date and time of event in RFC3339 format.
-      repeat:
-        type: string
-        example: weekly
-        enum: ["", daily, weekly, fortnightly, monthly, yearly]
-        description: Blank for single event.
-      repeat_until:
-        type: string
-        format: date
-        example: 2024-04-05
-        description: Date event repeats until, in RFC3339 format.
-      type:
-        type: object
-        description: Type as an object stub.
-        properties:
-          id:
-            $ref: ./../../schemas/id.yaml
-      location:
-        type: string
-        example: Meeting room 1
-        description: Location name or description.
-      detail:
-        type: string
-        example: Meeting to discuss things
-        description: More details about event.
-      publishDate:
-        type: string
-        format: date-time
-        example: 2024-03-05T19:30:00+10:00
-        description: Date and time at which the event becomes public in RFC3339 format.
-      level:
-        type: integer
-        example: 2
-        description: Event level ID.  1 for Personal, 2 for Group, 3 for Campus.
-        enum: [1, 2, 3]
-      attendance:
-        type: integer
+type: object
+properties:
+  allDay:
+    oneOf:
+      - type: boolean
+        example: false
+        nullable: false
+      - type: integer
         example: 0
-        description: Whether attendance is enabled.
-      maxAttendees:
-        type: integer
-        example: 5
-        description: The maximum number of guests who may attend this event.
-      showAttendees:
-        type: integer
-        example: 1
-        description: Whether the list of attendees will show visible to guests.
+        nullable: false
+    description: Whether the event is an all day event.
+  efficacy:
+    type: string
+    enum:
+      - self
+      - series
+    example: self
+    description:
+      Whether the requested change should apply only to the event with the given 'id', or to all events in the
+      series of which event 'id' is a member.
+  title:
+    type: string
+    example: The Yalta Conference
+    description: Title of event.
+  startDate:
+    type: string
+    format: date-time
+    example: 2024-03-05T19:00:00+10:00
+    description: Start date and time of event in RFC3339 format.
+  endDate:
+    type: string
+    format: date-time
+    example: 2024-03-05T19:30:00+10:00
+    description: End date and time of event in RFC3339 format.
+  repeat:
+    type: string
+    example: weekly
+    enum: ["", daily, weekly, fortnightly, monthly, yearly]
+    description: Blank for single event.
+  repeat_until:
+    type: string
+    format: date
+    example: 2024-04-05
+    description: Date event repeats until, in RFC3339 format.
+  type:
+    type: object
+    description: Type as an object stub.
+    properties:
+      id:
+        $ref: ./../../schemas/id.yaml
+  location:
+    type: string
+    example: Meeting room 1
+    description: Location name or description.
+  detail:
+    type: string
+    example: Meeting to discuss things
+    description: More details about event.
+  publishDate:
+    type: string
+    format: date-time
+    example: 2024-03-05T19:30:00+10:00
+    description: Date and time at which the event becomes public in RFC3339 format.
+  level:
+    type: integer
+    example: 2
+    description: Event level ID.  1 for Personal, 2 for Group, 3 for Campus.
+    enum: [1, 2, 3]
+  attendance:
+    type: integer
+    example: 0
+    description: Whether attendance is enabled.
+  maxAttendees:
+    type: integer
+    example: 5
+    description: The maximum number of guests who may attend this event.
+  showAttendees:
+    type: integer
+    example: 1
+    description: Whether the list of attendees will show visible to guests.

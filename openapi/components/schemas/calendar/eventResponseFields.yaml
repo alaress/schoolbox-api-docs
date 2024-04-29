@@ -1,12 +1,22 @@
-# The response is:
-#  * all the fields common to the event,
-#  * plus the event id,
-#  * plus arrays of objects for each of {roles, campuses, folders, guests}.
+# The response is allOf:
+#  * the event id,
+#  * a user object,
+#  * an author object,
+#  * all the common event properties,
+#  * arrays of objects for each of {roles, campuses, folders, guests}.
 allOf:
   - type: object
     properties:
       id:
         $ref: ../../schemas/id.yaml
+  - type: object
+    properties:
+      user:
+        $ref: ../../schemas/userShort.yaml
+  - type: object
+    properties:
+      author:
+        $ref: ../../schemas/userShort.yaml
   - $ref: ./eventCommonFields.yaml
   - type: object
     properties:

@@ -6,6 +6,9 @@ post:
   summary: Modify a calendar event
   description: |
     Modifies a calendar event
+    Notes:
+     * 'user' or 'userId' refers to the user who owns the event
+     * 'author' or 'authorId' refers to the user who authored the event
   requestBody:
     description: |
       The event including desired modifications

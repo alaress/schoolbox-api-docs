@@ -1,7 +1,35 @@
-# The request is:
-#  * all the fields common to the event,
-#  * plus arrays of object stubs for each of {roles, campuses, folders, guests}.
+# The request is allOf:
+#  * oneOf {'userId' int or 'user' object stub}
+#  * oneOf {'authorId' int or 'author' object stub}
+#  * all the common event properties,
+#  * arrays of object stubs for each of {roles, campuses, folders, guests}.
 allOf:
+  - oneOf:
+      - type: object
+        properties:
+          userId:
+            $ref: ../../schemas/id.yaml
+      - type: object
+        properties:
+          user:
+            type: object
+            description: An alternative to userId for specifying a user.  Supply either 'userId' or the 'user' object stub.
+            properties:
+              id:
+                $ref: ./../../schemas/id.yaml
+  - oneOf:
+      - type: object
+        properties:
+          authorId:
+            $ref: ../../schemas/id.yaml
+      - type: object
+        properties:
+          author:
+            type: object
+            description: An alternative to authorId for specifying an author.  Supply either 'authorId' or the 'author' object stub.
+            properties:
+              id:
+                $ref: ./../../schemas/id.yaml
   - $ref: ./eventCommonFields.yaml
   - type: object
     properties:
