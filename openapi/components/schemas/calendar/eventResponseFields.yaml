@@ -1,4 +1,7 @@
-# The response is all the fields from tne request, plus the new event id.
+# The response is:
+#  * all the fields common to the event,
+#  * plus the event id,
+#  * plus arrays of objects for each of {roles, campuses, folders, guests}.
 allOf:
   - type: object
     properties:
