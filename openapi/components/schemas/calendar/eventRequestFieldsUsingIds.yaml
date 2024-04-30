@@ -2,6 +2,7 @@
 #  * userId int
 #  * authorId int
 #  * arrays of object ids for each of {roles, campuses, folders, guests}.
+#  * allDay specified as integer
 #  * all the common event properties,
 allOf:
   - type: object
@@ -34,4 +35,9 @@ allOf:
         example: [1,2,3]
         items:
           $ref: ../../schemas/id.yaml
-  - $ref: ./eventCommonFields.yaml
+      allDay:
+        type: integer
+        example: 0
+        nullable: false
+        description: Whether the event is an all day event.
+  - $ref: ./eventCommonProps.yaml

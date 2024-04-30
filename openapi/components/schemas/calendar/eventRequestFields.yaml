@@ -30,7 +30,7 @@ allOf:
             properties:
               id:
                 $ref: ../../schemas/id.yaml
-  - $ref: ./eventCommonFields.yaml
+  - $ref: ./eventCommonProps.yaml
   - type: object
     properties:
       roles:

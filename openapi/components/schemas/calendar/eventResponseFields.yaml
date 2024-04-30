@@ -2,24 +2,17 @@
 #  * the event id,
 #  * a user object,
 #  * an author object,
-#  * all the common event properties,
 #  * arrays of objects for each of {roles, campuses, folders, guests}.
+#  * all the common event properties,
 allOf:
   - type: object
     properties:
       id:
         $ref: ../../schemas/id.yaml
-  - type: object
-    properties:
       user:
         $ref: ../../schemas/userShort.yaml
-  - type: object
-    properties:
       author:
         $ref: ../../schemas/userShort.yaml
-  - $ref: ./eventCommonFields.yaml
-  - type: object
-    properties:
       roles:
         type: array
         description: Array of role objects
@@ -40,3 +33,9 @@ allOf:
         description: Array of user objects
         items:
           $ref: ../../schemas/userShort.yaml
+      allDay:
+        type: boolean
+        example: false
+        nullable: false
+        description: Whether the event is an all day event.
+  - $ref: ./eventCommonProps.yaml
