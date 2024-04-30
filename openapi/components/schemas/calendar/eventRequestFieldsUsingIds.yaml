@@ -1,6 +1,7 @@
 # The request is allOf:
 #  * userId int
 #  * authorId int
+#  * type int
 #  * arrays of object ids for each of {roles, campuses, folders, guests}.
 #  * allDay specified as integer
 #  * all the common event properties,
@@ -11,6 +12,8 @@ allOf:
         $ref: ../../schemas/id.yaml
       authorId:
         $ref: ../../schemas/id.yaml
+      type:
+        $ref: ./../../schemas/id.yaml
       roles:
         type: array
         description: Array of role ids

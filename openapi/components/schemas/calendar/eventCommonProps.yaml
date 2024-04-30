@@ -33,12 +33,6 @@ properties:
     format: date
     example: 2024-04-05
     description: Date event repeats until, in RFC3339 format.
-  type:
-    type: object
-    description: Type as an object stub.
-    properties:
-      id:
-        $ref: ./../../schemas/id.yaml
   location:
     type: string
     example: Meeting room 1

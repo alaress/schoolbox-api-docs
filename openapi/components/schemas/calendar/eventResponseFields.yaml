@@ -13,6 +13,20 @@ allOf:
         $ref: ../../schemas/userShort.yaml
       author:
         $ref: ../../schemas/userShort.yaml
+      type:
+        type: object
+        description: Type as an object.
+        properties:
+          id:
+            $ref: ./../../schemas/id.yaml
+          type:
+            type: string
+            description: Name of event type
+            example: Excursion
+          color:
+            type: string
+            description: CSS colour string
+            example: #ff7537
       roles:
         type: array
         description: Array of role objects

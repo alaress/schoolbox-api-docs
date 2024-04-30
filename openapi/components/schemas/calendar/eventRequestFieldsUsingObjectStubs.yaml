@@ -1,6 +1,7 @@
 # The request is allOf:
 #  * user object stub
 #  * author object stub
+#  * type object stub
 #  * arrays of object stubs for each of {roles, campuses, folders, guests}.
 #  * allDay specified as boolean
 #  * all the common event properties,
@@ -19,6 +20,12 @@ allOf:
         properties:
           id:
             $ref: ../../schemas/id.yaml
+      type:
+        type: object
+        description: Type as an object stub.
+        properties:
+          id:
+            $ref: ./../../schemas/id.yaml
       roles:
         type: array
         description: Array of role object stubs.
