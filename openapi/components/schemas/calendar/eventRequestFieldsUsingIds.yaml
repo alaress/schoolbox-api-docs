@@ -7,6 +7,7 @@
 #  * all the common event properties,
 allOf:
   - type: object
+    description: This schema is maintained for backward-compatibility reasons.
     properties:
       userId:
         $ref: ../../schemas/id.yaml

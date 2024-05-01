@@ -7,6 +7,7 @@
 #  * all the common event properties,
 allOf:
   - type: object
+    description: This is the preferred request schema.
     properties:
       user:
         type: object
