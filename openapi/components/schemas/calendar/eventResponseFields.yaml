@@ -1,10 +1,9 @@
 # The response is allOf:
-#  * the event id,
-#  * a user object,
-#  * an author object,
-#  * a type object,
+#  * event id,
+#  * user object,
+#  * author object,
+#  * type object,
 #  * arrays of objects for each of {roles, campuses, folders, guests},
-#  * allDay as a boolean,
 #  * all the common event properties,
 allOf:
   - type: object
@@ -49,9 +48,4 @@ allOf:
         description: Array of user objects
         items:
           $ref: ../../schemas/userShort.yaml
-      allDay:
-        type: boolean
-        example: false
-        nullable: false
-        description: Whether the event is an all day event.
   - $ref: ./eventCommonProps.yaml

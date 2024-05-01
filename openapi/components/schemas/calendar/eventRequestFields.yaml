@@ -3,7 +3,6 @@
 #  * author object stub
 #  * type object stub
 #  * arrays of object stubs for each of {roles, campuses, folders, guests}.
-#  * allDay specified as boolean
 #  * all the common event properties,
 allOf:
   - type: object
@@ -63,9 +62,4 @@ allOf:
           properties:
             id:
               $ref: ../../schemas/id.yaml
-      allDay:
-        type: boolean
-        example: false
-        nullable: false
-        description: Whether the event is an all day event.
   - $ref: ./eventCommonProps.yaml

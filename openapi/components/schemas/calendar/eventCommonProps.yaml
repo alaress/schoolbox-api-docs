@@ -1,5 +1,10 @@
 type: object
 properties:
+  allDay:
+    type: boolean
+    example: false
+    nullable: false
+    description: Whether the event is an all day event.
   efficacy:
     type: string
     enum:
