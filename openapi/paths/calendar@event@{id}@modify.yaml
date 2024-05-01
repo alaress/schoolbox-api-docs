@@ -12,9 +12,7 @@ post:
     content:
       application/json:
         schema:
-          oneOf:
-            - $ref: ../components/schemas/calendar/eventRequestFieldsUsingObjectStubs.yaml
-            - $ref: ../components/schemas/calendar/eventRequestFieldsUsingIds.yaml
+          $ref: ../components/schemas/calendar/eventRequestFieldsUsingObjectStubs.yaml
   responses:
     '200':
       description: |
