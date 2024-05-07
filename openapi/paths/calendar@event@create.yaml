@@ -10,9 +10,7 @@ post:
     content:
       application/json:
         schema:
-          type: array
-          items:
-            $ref: ../components/schemas/calendar/eventRequestFieldsMinusId.yaml
+          $ref: ../components/schemas/calendar/eventRequestFields.yaml
   responses:
     '200':
       description: |

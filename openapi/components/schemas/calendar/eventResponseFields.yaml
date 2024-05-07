@@ -1,12 +1,33 @@
-# The response is all the fields from tne request, plus the new event id.
+# The response is allOf:
+#  * event id,
+#  * user object,
+#  * author object,
+#  * type object,
+#  * arrays of objects for each of {roles, campuses, folders, guests},
+#  * all the common event properties,
 allOf:
   - type: object
     properties:
       id:
         $ref: ../../schemas/id.yaml
-  - $ref: ./eventCommonFields.yaml
-  - type: object
-    properties:
+      user:
+        $ref: ../../schemas/userShort.yaml
+      author:
+        $ref: ../../schemas/userShort.yaml
+      type:
+        type: object
+        description: Type as an object.
+        properties:
+          id:
+            $ref: ./../../schemas/id.yaml
+          type:
+            type: string
+            description: Name of event type
+            example: Excursion
+          color:
+            type: string
+            description: CSS colour string
+            example: #ff7537
       roles:
         type: array
         description: Array of role objects
@@ -27,3 +48,4 @@ allOf:
         description: Array of user objects
         items:
           $ref: ../../schemas/userShort.yaml
+  - $ref: ./eventCommonProps.yaml
