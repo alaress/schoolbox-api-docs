@@ -1,5 +1,9 @@
 [
   {
+    "label": "24.0.0-beta3",
+    "value": "24.0.0-beta3"
+  },
+  {
     "label": "23.1.8",
     "value": "23.1.8",
     "selected": true

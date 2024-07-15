@@ -56,14 +56,14 @@ schema:
           type: string
           format: date-time
           description: |
-            An RFC3339 time string including timezone.
-          example: '2023-01-01T00:00:00Z'
+            A date in YYYY-MM-DD format.
+          example: '2023-01-01'
         to:
           type: string
           format: date-time
           description: |
-            An RFC3339 time string including timezone.
-          example: '2023-12-31T23:59:59Z'
+            A date in YYYY-MM-DD format.
+          example: '2023-12-31'
 
     creator:
       type: object
