@@ -1,0 +1,23 @@
+post:
+  operationId: calendarEvent.postCreate
+  tags: [calendar, event]
+  summary: Create a calendar event
+  description: |
+    Creates a calendar event
+  requestBody:
+    description: |
+      The event to create
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/calendar/eventRequestFields.yaml
+  responses:
+    '200':
+      description: |
+        The created event
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/calendar/eventResponseFields.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

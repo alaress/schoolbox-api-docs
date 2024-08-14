@@ -1,0 +1,65 @@
+# The request is allOf:
+#  * user object stub
+#  * author object stub
+#  * type object stub
+#  * arrays of object stubs for each of {roles, campuses, folders, guests}.
+#  * all the common event properties,
+allOf:
+  - type: object
+    description: This is the preferred request schema.
+    properties:
+      user:
+        type: object
+        description: An object stub for specifying a user.
+        properties:
+          id:
+            $ref: ../../schemas/id.yaml
+      author:
+        type: object
+        description: An object stub for specifying an author.
+        properties:
+          id:
+            $ref: ../../schemas/id.yaml
+      type:
+        type: object
+        description: Type as an object stub.
+        properties:
+          id:
+            $ref: ./../../schemas/id.yaml
+      roles:
+        type: array
+        description: Array of role object stubs.
+        example: [{"id":123}, {"id":456}]
+        items:
+          type: object
+          properties:
+            id:
+              $ref: ../../schemas/id.yaml
+      campuses:
+        type: array
+        description: Array of campus object stubs.
+        example: [{"id":123}, {"id":456}]
+        items:
+          type: object
+          properties:
+            id:
+              $ref: ../../schemas/id.yaml
+      folders:
+        type: array
+        description: Array of folder object stubs.
+        example: [{"id":123}, {"id":456}]
+        items:
+          type: object
+          properties:
+            id:
+              $ref: ../../schemas/id.yaml
+      guests:
+        type: array
+        description: Array of user object stubs.
+        example: [{"id":123}, {"id":456}]
+        items:
+          type: object
+          properties:
+            id:
+              $ref: ../../schemas/id.yaml
+  - $ref: ./eventCommonProps.yaml

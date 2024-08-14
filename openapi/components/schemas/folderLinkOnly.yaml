@@ -1,0 +1,39 @@
+# This is intended to document folder arrays created using Folder/Translator/ModelToArray/LinkOnly.php (Schoolbox codebase).
+title: Folder
+description: |
+type: object
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    type: string
+    description: The name of the Folder.
+  title:
+    type: string
+    description: The name of the folder with any class codes appended in brackets.
+  codes:
+    type: string
+    description: |
+      Schoolbox Class Codes
+  parent:
+    description: Parent folder object stub.
+    type: object
+    properties:
+      id:
+        $ref: id.yaml
+  _links:
+    description: Object containing names as keys and URLs as values
+    type: object
+example:
+  id: 83
+  name: 9A English
+  title: 9A English (9ENGA)
+  codes: [
+    9ENGA
+  ]
+  parent: {
+    id: 2
+  }
+  _links: {
+    view: \/homepage\/83
+  }

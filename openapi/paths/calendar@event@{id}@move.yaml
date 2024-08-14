@@ -1,0 +1,40 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
+post:
+  operationId: calendarEvent.postMove
+  tags: [calendar, event]
+  summary: Move a calendar event
+  description: |
+    Moves a calendar event
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            start:
+              type: string
+              description: |
+                The new start date as a RFC3339 string. Eg. "2018-01-28T00:00:00+11:00".
+              example: "2018-01-28T00:00:00+11:00"
+              nullable: false
+            end:
+              type: string
+              description: |
+                The new end date as a RFC3339 string. Eg. "2018-01-28T00:00:00+11:00".
+              example: "2018-01-28T00:00:00+11:00"
+              nullable: false
+            allDay:
+              type: integer
+              enum:
+                - 0
+                - 1
+              example: 0
+              description: Whether the event is an all day event - 1 means 'all day', 0 means 'not all day'.
+              nullable: false
+  responses:
+    '200':
+      description: |
+        Empty body
+    default:
+      $ref: ../components/responses/problem.yaml
