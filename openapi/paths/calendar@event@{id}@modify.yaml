@@ -12,7 +12,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/calendar/eventRequestFields.yaml
+          $ref: ../components/schemas/calendar/eventRequestFieldsForModify.yaml
   responses:
     '200':
       description: |

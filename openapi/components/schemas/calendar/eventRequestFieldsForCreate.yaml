@@ -1,0 +1,13 @@
+required:
+  - title
+  - detail
+  - location
+  - publishDate
+  - startDate
+  - endDate
+  - type
+  - user
+allOf:
+  - type: object
+  - $ref: eventRequestFieldsForModify.yaml
+  - $ref: ./eventCommonProps.yaml
