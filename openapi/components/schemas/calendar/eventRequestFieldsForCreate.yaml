@@ -10,4 +10,3 @@ required:
 allOf:
   - type: object
   - $ref: eventRequestFieldsForModify.yaml
-  - $ref: ./eventCommonProps.yaml
