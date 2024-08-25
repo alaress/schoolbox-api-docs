@@ -62,9 +62,10 @@ properties:
     description: Whether attendance is enabled.
   maxAttendees:
     type: integer
+    nullable: true
     example: 5
-    description: The maximum number of guests who may attend this event.
+    description: The maximum number of guests who may attend this event.  Null means no maximum.
   showAttendees:
-    type: integer
-    example: 1
+    type: boolean
+    example: false
     description: Whether the list of attendees will show visible to guests.
