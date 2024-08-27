@@ -60,6 +60,7 @@ properties:
     type: integer
     example: 2
     description: Integer representing the type of attendance that is enabled. 0 means 'None', 1 means 'Invitation Only', and 2 means 'Open'.
+    enum: [0, 1, 2]
   maxAttendees:
     type: integer
     nullable: true
