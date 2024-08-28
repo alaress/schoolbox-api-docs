@@ -46,7 +46,7 @@ allOf:
               $ref: ../../schemas/id.yaml
       folders:
         type: array
-        description: Array of folder object stubs.
+        description: Array of folder object stubs.  These specify the groups that should see the event (for group-level events).
         example: [{"id":123}, {"id":456}]
         items:
           type: object
