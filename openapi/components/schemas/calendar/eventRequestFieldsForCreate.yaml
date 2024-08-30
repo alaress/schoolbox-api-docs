@@ -1,12 +1,10 @@
 required:
   - title
-  - detail
-  - location
-  - publishDate
   - startDate
   - endDate
+  - publishDate
   - type
-  - user
+  - level
 allOf:
   - type: object
   - $ref: eventRequestFieldsForModify.yaml
