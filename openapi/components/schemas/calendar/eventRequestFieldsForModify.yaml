@@ -10,13 +10,19 @@ allOf:
     properties:
       user:
         type: object
-        description: An object stub for specifying a user.
+        description:
+          An object stub for specifying a user.  This specifies the owner of the event.
+          When an event is created, if this is not supplied the logged-in user will
+          become the owner.
         properties:
           id:
             $ref: ../../schemas/id.yaml
       author:
         type: object
-        description: An object stub for specifying an author.
+        description:
+          An object stub for specifying an author.
+          When an event is created, if this is not supplied the logged-in user will
+          become the author.
         properties:
           id:
             $ref: ../../schemas/id.yaml
