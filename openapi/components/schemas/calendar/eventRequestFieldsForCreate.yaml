@@ -6,6 +6,16 @@ required:
   - publishDate
   - type
   - level
+properties:
+  user:
+    type: object
+    description:
+      An object stub for specifying a user.  This specifies the owner of the event.
+      When an event is created, if this is not supplied the logged-in user will
+      become the owner.  Note the owner may not be changed after event creation.
+    properties:
+      id:
+        $ref: ../../schemas/id.yaml
 allOf:
   - type: object
   - $ref: eventRequestFieldsForModify.yaml
