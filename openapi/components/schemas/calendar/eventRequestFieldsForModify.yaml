@@ -8,15 +8,12 @@ allOf:
   - type: object
     description: This is the preferred request schema.
     properties:
-      user:
-        type: object
-        description: An object stub for specifying a user.
-        properties:
-          id:
-            $ref: ../../schemas/id.yaml
       author:
         type: object
-        description: An object stub for specifying an author.
+        description:
+          An object stub for specifying an author.
+          When an event is created, if this is not supplied the logged-in user will
+          become the author.
         properties:
           id:
             $ref: ../../schemas/id.yaml
@@ -37,7 +34,7 @@ allOf:
               $ref: ../../schemas/id.yaml
       campuses:
         type: array
-        description: Array of campus object stubs.
+        description: Array of campus object stubs.  Required when creating campus-level events.
         example: [{"id":123}, {"id":456}]
         items:
           type: object
@@ -46,7 +43,9 @@ allOf:
               $ref: ../../schemas/id.yaml
       folders:
         type: array
-        description: Array of folder object stubs.
+        description:
+          Array of folder object stubs.  These specify the groups that should see the event (for
+          group-level events).  Required when creating group-level events.
         example: [{"id":123}, {"id":456}]
         items:
           type: object
