@@ -1,8 +1,12 @@
 [
   {
-    "label": "24.0.0",
-    "value": "24.0.0",
+    "label": "24.0.6",
+    "value": "24.0.6",
     "selected": true
+  },
+  {
+    "label": "24.0.0",
+    "value": "24.0.0"
   },
   {
     "label": "24.0.0-beta3",
