@@ -1,0 +1,37 @@
+post:
+  operationId: curriculumApiUsageFolder.postFolderUsage
+  tags: [curriculum]
+  summary: Set curriculum nodes associated with a folder
+  description: |
+    Set the curriculum nodes associated with a folder.
+
+    Returns a 200 response with the new structure the nodes were set,
+    or a 404 if any node to be added was not found.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          description: |
+            An array of curriculum nodes to associate with the folder.
+
+            This will override the folder's current association completely: any
+            nodes not in this list will be disassociated from the folder.
+            (If this is empty, the folder will have no nodes associated.)
+
+          type: array
+          items:
+            $ref: ../components/schemas/curriculumItem.yaml
+
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
+    '404':
+      description: One or more curriculum nodes to be added were not found.
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/curriculum-folderId.yaml
+  - $ref: ../components/parameters/curriculum-ancestors.yaml
+  - $ref: ../components/parameters/curriculum-descendants.yaml
+  - $ref: ../components/parameters/curriculum-returnFormat.yaml
