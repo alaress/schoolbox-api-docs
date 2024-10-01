@@ -1,0 +1,28 @@
+title: A course folder
+description: A course folder
+readOnly: true
+type: object
+nullable: true
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    type: string
+    description: The name of the folder.
+  title:
+    type: string
+    description: The name of the folder, including any class codes.
+  codes:
+    type: array
+    items:
+      type: string
+    description: A list of class codes (if any) associated with this folder.
+  parent:
+    $ref: ./courseFolderItem.yaml
+  _links:
+    type: object
+    properties:
+      view:
+        type: string
+        format: uri-reference
+        description: A link to the homepage for this folder.

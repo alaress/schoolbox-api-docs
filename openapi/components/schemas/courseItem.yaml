@@ -1,0 +1,34 @@
+title: A Course item
+description: A Course item
+readOnly: true
+type: array
+properties:
+  course:
+    type: object
+    properties:
+      id:
+        $ref: id.yaml
+      title:
+        type: string
+      subjectCode:
+        type: string
+        description: The course's subject code.
+      frameworkId:
+        type: integer
+        nullable: true
+        description: The course's framework ID
+      folder:
+        $ref: ./courseFolderItem.yaml
+      _links:
+        type: object
+        properties:
+          view:
+            type: string
+            format: uri-reference
+            description: |
+              A link to view this course: contains a modify form.
+          delete:
+            type: string
+            format: uri-reference
+            description: |
+              A link to delete this course

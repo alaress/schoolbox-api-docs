@@ -1,0 +1,23 @@
+get:
+  operationId: searchCourses
+  tags: [course]
+  summary: Get a list of courses
+  description: |
+    This allows you to search for courses get details about the course. The search filter attributes are all optional.
+    If the limit query parameter is not provided, the number of courses returned is defaulted to 100.
+    This endpoint is only available to superusers and staff
+
+  responses:
+    '200':
+      $ref: ../components/responses/course-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: query
+      in: query
+      description: |
+        Will do a fuzzy match on the `course` name
+      schema:
+        type: string
+    - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/limit.yaml
