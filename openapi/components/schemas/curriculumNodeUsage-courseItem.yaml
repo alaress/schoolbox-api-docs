@@ -17,6 +17,10 @@ properties:
       subjectCode:
         type: string
         description: The course's subject code.
+      frameworkId:
+        type: integer
+        nullable: true
+        description: The course's framework ID
       folder:
         $ref: ./curriculumNodeUsage-folderItem.yaml
       _links:
@@ -27,3 +31,8 @@ properties:
             format: uri-reference
             description: |
               A link to view this course: contains a modify form.
+          delete:
+            type: string
+            format: uri-reference
+            description: |
+              A link to delete this course
