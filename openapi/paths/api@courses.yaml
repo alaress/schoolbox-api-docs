@@ -19,5 +19,11 @@ get:
         Will do a fuzzy match on the `course` name
       schema:
         type: string
+    - name: folder
+      in: query
+      description: |
+        Passing folder ID will return related courses as suggestions
+      schema:
+        type: integer
     - $ref: ../components/parameters/cursor.yaml
     - $ref: ../components/parameters/limit.yaml
