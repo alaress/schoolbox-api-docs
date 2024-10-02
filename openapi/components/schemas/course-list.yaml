@@ -3,10 +3,10 @@ properties:
   data:
     type: array
     properties:
-      courses:
-        $ref: ./courseItem.yaml
-      suggestion:
-        $ref: ./courseItem.yaml
+        courses:
+         $ref: ./courseItem.yaml
+        suggestions:
+         $ref: ./courseItem.yaml
 
   metadata:
     $ref: ./listMetadata.yaml

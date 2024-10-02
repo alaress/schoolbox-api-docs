@@ -1,0 +1,9 @@
+value:
+  data:
+    courses: []
+    suggestions: []
+  metadata:
+    count: 0
+    cursor:
+      current: null
+      next: null
