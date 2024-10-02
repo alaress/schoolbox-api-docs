@@ -253,7 +253,7 @@ paths:
   /api/curriculum/usage/{id}:
     $ref: 'paths/api@curriculum@usage@{id}.yaml'
 
-  /api/course:
+  /api/courses:
     $ref: 'paths/api@courses.yaml'
 
   /api/search:
