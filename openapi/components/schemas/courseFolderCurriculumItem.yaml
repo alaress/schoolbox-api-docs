@@ -45,8 +45,19 @@ properties:
     description: |
       The date as a RFC3339 string.
   _usageCounts:
-    type: integer
+    type: object
     nullable: true
+    properties:
+      course:
+        type: integer
+      unit:
+        type: integer
+      assessment:
+        type: integer
+      folder:
+        type: integer
+      badge:
+        type: integer
   _links:
     type: array
     properties:
