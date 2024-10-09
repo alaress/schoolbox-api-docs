@@ -17,6 +17,8 @@ properties:
     items:
       type: string
     description: A list of class codes (if any) associated with this folder.
+  curriculumNodes:
+    $ref: ./courseFolderCurriculumItem.yaml
   parent:
     $ref: ./courseFolderItem.yaml
   _links:

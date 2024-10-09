@@ -1,0 +1,68 @@
+title: A curriculum node
+description: A curriculum node
+readOnly: true
+type: array
+nullable: true
+properties:
+  id:
+    $ref: id.yaml
+  name:
+    type: string
+    description: The name of the curriculum node
+  code:
+    type: string
+    description: The code of the curriculum node
+  reference:
+    type: string
+  enabled:
+    type: boolean
+  parent:
+    type: array
+    nullable: true
+    items:
+      anyOf:
+       - type: array
+         items:
+          properties:
+            id:
+              type: integer
+       - $ref: ./courseFolderCurriculumItem.yaml
+  children:
+    type: array
+    nullable: true
+    items:
+      $ref: ./courseFolderCurriculumItem.yaml
+  order:
+    type: integer
+  createdAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+  modifiedAt:
+    type: string
+    format: date-time
+    description: |
+      The date as a RFC3339 string.
+  _usageCounts:
+    type: integer
+    nullable: true
+  _links:
+    type: array
+    properties:
+      read:
+        type: string
+        format: uri-reference
+        description: A link to view the curriculum node
+      update:
+        type: string
+        format: uri-reference
+        description: A link to modify the curriculum node
+      delete:
+        type: string
+        format: uri-reference
+        description: A link to delete the curriculum node
+      getUsage:
+        type: string
+        format: uri-reference
+        description: A link to view the curriculum node usage
