@@ -1,0 +1,61 @@
+value:
+  data:
+    courses:
+      - id: 1
+        title: "string"
+        subjectCode: ""
+        frameworkId: null
+        folder:
+          id: 2
+          name: "string"
+          title: "string"
+          codes: []
+          parent:
+            id: 6
+            name: "string"
+            title: "string"
+            codes: [ ]
+            parent: null
+            _links:
+              view: "string"
+          _links:
+            view: "string"
+        _links:
+          view: "string"
+          delete: "string"
+      - id: 2
+        title: "string"
+        subjectCode: ""
+        frameworkId: null
+        folder:
+          id: 4
+          name: "string"
+          title: "string"
+          codes: [ ]
+          parent: null
+          _links:
+            view: "string"
+        _links:
+          view: "string"
+          delete: "string"
+    suggestions:
+      - id: 7
+        title: "string"
+        subjectCode: "EN429"
+        frameworkId: null
+        folder:
+          id: 9
+          name: "string"
+          title: "string"
+          codes: [ ]
+          parent: null
+          _links:
+            view: "string"
+        _links:
+          view: "string"
+          delete: "string"
+  metadata:
+    count: 2
+    cursor:
+      current: null
+      next: null
