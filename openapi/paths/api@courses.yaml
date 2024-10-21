@@ -22,8 +22,9 @@ get:
     - name: folder
       in: query
       description: |
-        Passing folder ID will return related courses as suggestions. **_You may only define either query or folder 
-        at a time._**
+        Passing folder ID will return related courses as suggestions. If the folder contains curriculum code(s), the
+        suggestions will return a list of other courses that fulfils the same curriculum code(s).
+        **_You may only define either query or folder at a time._**
       schema:
         type: integer
     - $ref: ../components/parameters/cursor.yaml
