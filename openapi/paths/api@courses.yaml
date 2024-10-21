@@ -4,8 +4,8 @@ get:
   summary: Get a list of courses
   description: |
     This allows you to search for courses get details about the course. The search filter attributes are all optional.
-    If the limit query parameter is not provided, the number of courses returned is defaulted to 100.
-    This endpoint is only available to superusers and staff
+    You may only set either **query** or **folder** at **_one time_**. If the limit query parameter is not provided, the 
+    number of courses returned is defaulted to 100. This endpoint is only available to superusers and staff
 
   responses:
     '200':
@@ -16,13 +16,14 @@ get:
     - name: query
       in: query
       description: |
-        Will do a fuzzy match on the `course` name
+        Will do a fuzzy match on the `course` name. **_You may only define either query or folder at a time._**
       schema:
         type: string
     - name: folder
       in: query
       description: |
-        Passing folder ID will return related courses as suggestions
+        Passing folder ID will return related courses as suggestions. **_You may only define either query or folder 
+        at a time._**
       schema:
         type: integer
     - $ref: ../components/parameters/cursor.yaml
