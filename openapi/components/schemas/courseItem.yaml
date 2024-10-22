@@ -1,19 +1,15 @@
-title: A course usage
-description: A course usage
+title: A Course item
+description: A Course item
 readOnly: true
-type: object
+type: array
 properties:
-  discriminator:
-    type: string
-    enum: [course]
-  object:
+  course:
     type: object
     properties:
       id:
         $ref: id.yaml
       title:
         type: string
-        description: The name of the course.
       subjectCode:
         type: string
         description: The course's subject code.
@@ -22,7 +18,7 @@ properties:
         nullable: true
         description: The course's framework ID
       folder:
-        $ref: ./curriculumNodeUsage-folderItem.yaml
+        $ref: ./courseFolderItem.yaml
       _links:
         type: object
         properties:

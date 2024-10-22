@@ -1,0 +1,12 @@
+description: A list of courses
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/course-list.yaml
+    examples:
+      Empty:
+        $ref: ../examples/course-listEmpty.yaml
+      Example 1:
+        $ref: ../examples/course-listNoSuggestion.yaml
+      Example 2:
+        $ref: ../examples/course-listMultiple.yaml
