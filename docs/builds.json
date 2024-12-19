@@ -1,5 +1,9 @@
 [
   {
+    "label": "24.1.0-beta5",
+    "value": "24.1.0-beta5"
+  },
+  {
     "label": "24.0.6",
     "value": "24.0.6",
     "selected": true
