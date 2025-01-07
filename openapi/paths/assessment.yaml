@@ -5,6 +5,7 @@ get:
   description: |
     This endpoint will return assessments and their results that match the filter provided. 
     The number of assessments returned is 5 by default, if the limit query parameter is not provided.
+    There is a maximum limit of 500 assessments per request.
     We strongly recommend the use of due date filters, to ensure you only get relevant assessments from the current period.
     For example a common request may be to get assessments of work type 'major' that are due in the current year. 
     
