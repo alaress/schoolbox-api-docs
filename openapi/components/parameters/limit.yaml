@@ -12,5 +12,8 @@ schema:
 
     Each endpoint whose data accepts a limit will limit
     their results to that number.
+
+    Note a maximum limit may also apply, depending on the
+    specific type of request.
   type: integer
 
