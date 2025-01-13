@@ -49,6 +49,16 @@ Validates the definition.
 
 ## Contribution Guide
 
+### Updating the document
+
+See:
+- [./openapi/README.md](./openapi/README.md) for a guide on updating the
+  document
+- [./openapi/paths/README.md](/openapi/paths/README.md) for a guide on adding
+  paths to the API
+- [./openapi/components/README.md](/openapi/components/README.md) for a guide on
+  adding components to the API, for reuse within multiple paths
+
 ### Updating the API
 
 Create a new release whose version number matches the Schoolbox version number
