@@ -1,19 +1,14 @@
 name:        limit
 in:          query
 description: |
-  Limit the returned results to this count.
+  An option to limit the returned results.
 
   Each endpoint whose data accepts a limit will limit
   their results to that number.
+
+  Note a maximum limit may also apply, depending on the
+  specific type of request.
 schema:
   title: Limit
-  description: |
-    An option to limit the returned results.
-
-    Each endpoint whose data accepts a limit will limit
-    their results to that number.
-
-    Note a maximum limit may also apply, depending on the
-    specific type of request.
   type: integer
 
