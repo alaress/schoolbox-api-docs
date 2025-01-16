@@ -1,12 +1,16 @@
 [
   {
+    "label": "24.1.2",
+    "value": "24.1.2",
+    "selected": true
+  },
+  {
     "label": "24.1.0-beta5",
     "value": "24.1.0-beta5"
   },
   {
     "label": "24.0.6",
-    "value": "24.0.6",
-    "selected": true
+    "value": "24.0.6"
   },
   {
     "label": "24.0.0",
