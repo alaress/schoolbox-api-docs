@@ -75,7 +75,7 @@ parameters:
             - type: object
               deprecated: true
               description: |
-                Select a folder ID to filter on:
+                (Deprecated)
               properties:
                 id:
                   type: integer
