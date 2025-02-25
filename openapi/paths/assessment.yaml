@@ -52,29 +52,36 @@ parameters:
           example: dueWork
         folder:
           oneOf:
-          - type: array
-            description: Array for folders to filter assessments on.
-            items:
-              type: object
+            - type: array
+              description: Array for folders to filter assessments on.
+              items:
+                oneOf:
+                  - type: object
+                    properties:
+                      id:
+                        description: ID of the folder containing the assessment.
+                        type: integer
+                        example: 80
+                    required:
+                      - id
+                  - type: object
+                    properties:
+                      code:
+                        description: Code of the folder containing the assessment.
+                        type: string
+                        example: 9ENGA
+                    required:
+                      - code
+            - type: object
               description: |
-                Select either one of the following fields to filter on:
+                Select a folder ID to filter on:
               properties:
                 id:
                   type: integer
                   description: ID of the folder containing the assessment.
                   example: 80
-                code:
-                  type: string
-                  description: Code of the folder containing the assessment.
-                  example: 9ENGA
-          - type: object
-            description: |
-              Select a folder ID to filter on:
-            properties:
-              id:
-                type: integer
-                description: ID of the folder containing the assessment.
-                example: 80
+              required:
+                - id
         subjectCode:
           type: array
           items:
