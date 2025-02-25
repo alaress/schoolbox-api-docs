@@ -73,6 +73,7 @@ parameters:
                     required:
                       - code
             - type: object
+              deprecated: true
               description: |
                 Select a folder ID to filter on:
               properties:
