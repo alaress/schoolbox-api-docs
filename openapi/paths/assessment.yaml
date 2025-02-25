@@ -21,12 +21,12 @@ parameters:
     in: query
     required: true
     description: |
-      Json encoded object of fields and values to filter assessments on. \
+      JSON encoded object of fields and values to filter assessments on. \
       For example, to get assessment with ID 676: \
       `filter=%7b%22assessmentId%22%3a676%7d`
       
       Filter string to filter on all the fields would look like: \
-      `{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2017-10-12T14:20:50+10:00","to": "2019-10-12T14:20:50+10:00"},"yearLevel": {"id": 6,"name": "Year 6"}}`
+      `{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": [{id: 80}],"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2017-10-12T14:20:50+10:00","to": "2019-10-12T14:20:50+10:00"},"yearLevel": {"id": 6,"name": "Year 6"}}`
     schema:
       type: object
       properties:
