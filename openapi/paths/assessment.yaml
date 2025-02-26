@@ -53,7 +53,8 @@ parameters:
         folder:
           oneOf:
             - type: array
-              description: Array for folders to filter assessments on.
+              description: |
+                An array of objects, each of which specifies either an "id" or a "code".
               items:
                 oneOf:
                   - type: object
