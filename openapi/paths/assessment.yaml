@@ -21,12 +21,12 @@ parameters:
     in: query
     required: true
     description: |
-      Json encoded object of fields and values to filter assessments on. \
+      JSON encoded object of fields and values to filter assessments on. \
       For example, to get assessment with ID 676: \
       `filter=%7b%22assessmentId%22%3a676%7d`
       
       Filter string to filter on all the fields would look like: \
-      `{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": {id: 80},"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2017-10-12T14:20:50+10:00","to": "2019-10-12T14:20:50+10:00"},"yearLevel": {"id": 6,"name": "Year 6"}}`
+      `{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": [{id: 80}],"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2017-10-12T14:20:50+10:00","to": "2019-10-12T14:20:50+10:00"},"yearLevel": {"id": 6,"name": "Year 6"}}`
     schema:
       type: object
       properties:
@@ -52,29 +52,38 @@ parameters:
           example: dueWork
         folder:
           oneOf:
-          - type: array
-            description: Array for folders to filter assessments on.
-            items:
-              type: object
+            - type: array
               description: |
-                Select either one of the following fields to filter on:
+                An array of objects, each of which specifies either an "id" or a "code".
+              items:
+                oneOf:
+                  - type: object
+                    properties:
+                      id:
+                        description: ID of the folder containing the assessment.
+                        type: integer
+                        example: 80
+                    required:
+                      - id
+                  - type: object
+                    properties:
+                      code:
+                        description: Code of the folder containing the assessment.
+                        type: string
+                        example: 9ENGA
+                    required:
+                      - code
+            - type: object
+              deprecated: true
+              description: |
+                (Deprecated)
               properties:
                 id:
                   type: integer
                   description: ID of the folder containing the assessment.
                   example: 80
-                code:
-                  type: string
-                  description: Code of the folder containing the assessment.
-                  example: 9ENGA
-          - type: object
-            description: |
-              Select a folder ID to filter on:
-            properties:
-              id:
-                type: integer
-                description: ID of the folder containing the assessment.
-                example: 80
+              required:
+                - id
         subjectCode:
           type: array
           items:
