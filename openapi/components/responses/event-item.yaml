@@ -44,7 +44,7 @@ content:
           description: Blank for single event.
         repeat_until:
           type: string
-          example: "09\/03\/2025 8:00pm"
+          example: "09\/03\/2025"
           description: "Date event repeats until."
         type:
           type: integer

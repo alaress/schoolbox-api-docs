@@ -37,7 +37,7 @@ properties:
     type: string
     format: date
     example: 2024-04-05
-    description: Date event repeats until, in RFC3339 format.
+    description: Date event repeats until, in either YYYY-MM-DD as well as DD/MM/YYYY formats.
   location:
     type: string
     example: Meeting room 1
