@@ -1,6 +1,6 @@
 post:
   operationId: postCalendarEventAttendanceDelete
-  tags: [calendar, event]
+  tags: [calendar]
   summary: Uninvite attendees from an event
   description: |
     Deletes invitations to the given event, for the given user.
