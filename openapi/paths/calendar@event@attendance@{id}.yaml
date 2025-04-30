@@ -1,6 +1,6 @@
 get:
   operationId: getCalendarEventAttendance
-  tags: [calendar, event]
+  tags: [calendar]
   summary: Get an event's attendees
   description: |
     This will return a list of people that have been invited or RSVP to an an event.  It will include the status of their invitation and if they have accepted the invitation.
