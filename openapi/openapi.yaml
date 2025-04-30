@@ -153,7 +153,6 @@ paths:
   /discussion/{contextType}/{contextId}/comments/{id}/comments:
     $ref: 'paths/discussion@{contextType}@{contextId}@comments@{id}@comments.yaml'
 
-
   /api/session:
     $ref: 'paths/api@session.yaml'
 
@@ -202,9 +201,6 @@ paths:
   /news/lists/folder/{id}:
     $ref: 'paths/news@lists@folder@{id}.yaml'
 
-  /calendar/event/attendance/{id}:
-    $ref: 'paths/calendar@event@attendance@{id}.yaml'
-
   /calendar/event/create:
     $ref: 'paths/calendar@event@create.yaml'
 
@@ -216,6 +212,9 @@ paths:
 
   /calendar/event/{id}/delete:
     $ref: 'paths/calendar@event@{id}@delete.yaml'
+
+  /calendar/event/attendance/{id}:
+    $ref: 'paths/calendar@event@attendance@{id}.yaml'
 
   /calendar/event/attendance/{id}/create:
     $ref: 'paths/calendar@event@attendance@{id}@create.yaml'
