@@ -2,7 +2,7 @@ parameters:
   - $ref: ../components/parameters/id.yaml
 post:
   operationId: calendarEvent.postModify
-  tags: [calendar, event]
+  tags: [calendar]
   summary: Modify a calendar event
   description: |
     Modifies a calendar event
