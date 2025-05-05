@@ -2,7 +2,7 @@ parameters:
   - $ref: ../components/parameters/id.yaml
 post:
   operationId: calendarEvent.postDelete
-  tags: [calendar, event]
+  tags: [calendar]
   summary: Delete a calendar event
   description: |
     Deletes a calendar event
