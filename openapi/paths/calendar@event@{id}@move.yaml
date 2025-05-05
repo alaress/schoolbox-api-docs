@@ -2,7 +2,7 @@ parameters:
   - $ref: ../components/parameters/id.yaml
 post:
   operationId: calendarEvent.postMove
-  tags: [calendar, event]
+  tags: [calendar]
   summary: Move a calendar event
   description: |
     Moves a calendar event

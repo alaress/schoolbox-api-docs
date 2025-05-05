@@ -1,6 +1,6 @@
 post:
   operationId: calendarEvent.postCreate
-  tags: [calendar, event]
+  tags: [calendar]
   summary: Create a calendar event
   description: |
     Creates a calendar event
