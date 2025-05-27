@@ -11,6 +11,7 @@ properties:
     example: 'A'
   normalisedMark:
     type: number
+    deprecated: true
     format: float
     example: 85
     description: The mark in numeric form
