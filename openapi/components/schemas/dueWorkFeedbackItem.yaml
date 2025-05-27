@@ -15,6 +15,11 @@ properties:
     format: float
     example: 85
     description: The mark in numeric form
+  gradientMark:
+    type: string
+    nullable: true
+    description: The gradient colour equivalent of the mark. "none" if gradient marks are disabled.
+    example: '5'
   comment:
     type: string
     description: Comments about the work or the mark, by the user who assessed the work and gave the mark.
