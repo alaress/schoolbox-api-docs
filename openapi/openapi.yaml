@@ -17,7 +17,7 @@ info:
 
     **cURL:** Get User id 1
     ```
-    curl -X GET --location "https://demo.schoolbox.com.au/api/user/1" \
+    curl -X GET --location "https://demo.schoolbox.education/api/user/1" \
         -H "Content-Type: application/json" \
         -H "Accept: application/json" \
         -H "Authorization: Bearer {{Add your JWT here}}"
@@ -34,7 +34,7 @@ info:
       "Accept": "application/json",
       "Content-Type": "application/json"
     }
-    req = requests.request('PATCH', 'https://demo.schoolbox.com.au/api/user/1', json=data, headers=headers)
+    req = requests.request('PATCH', 'https://demo.schoolbox.education/api/user/1', json=data, headers=headers)
 
     print(req.json())
     ```
@@ -42,8 +42,8 @@ info:
   x-audience:  external-partner
   contact:
     name:  Schoolbox Team
-    url:   https://schoolbox.com.au
-    email: developers@schoolbox.com.au
+    url:   https://schoolbox.education
+    email: developers@schoolbox.education
   x-logo:
     url: './logo.png'
 
@@ -110,7 +110,7 @@ servers:
         default: demo
       domain:
         description: The school's domain name.
-        default: schoolbox.com.au
+        default: schoolbox.education
 
 paths:
 
