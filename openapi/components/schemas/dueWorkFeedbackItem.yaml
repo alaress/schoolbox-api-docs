@@ -18,7 +18,7 @@ properties:
   gradientMark:
     type: string
     nullable: true
-    description: The gradient colour equivalent of the mark. "none" if gradient marks are disabled.
+    description: A string intended to correspond to a css class that represents a numeric value visually, if possible. Returns null if there's no corresponding colour visualisation, including when it's disabled via admin.
     example: '5'
   comment:
     type: string
