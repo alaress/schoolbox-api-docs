@@ -10,8 +10,22 @@ content:
           type: string
           description: |
             The content of the notification message.
+
+            May contain placeholder values, preceded with a `:` character
+            (e.g. `:placeholderName`): these will be replaced with the
+            corresponding value in `messageParams`.
           example: |
-            Checkout the 22.1 Release notes
+            Checkout the :version Release notes
+        messageParams:
+          type: object
+          additionalProperties:
+            type: string
+          description: |
+            A set of key-value pairs: each key should match a placeholder in
+            `message`, and its corresponding value will replace that placeholder
+            in the final message.
+          example:
+            version: '25.0'
         from:
           type: object
           properties:
