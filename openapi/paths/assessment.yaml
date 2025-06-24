@@ -41,8 +41,8 @@ parameters:
       
       --
 
-      The full URL to use either of the above examples will look like this:
-      [base URL]/api/assessment?filter=[URL-encoded JSON filter]
+      The full URL to use either of the above examples will look like this: \
+      `[base URL]/api/assessment?filter=[URL-encoded JSON filter]`
     schema:
       type: object
       properties:
