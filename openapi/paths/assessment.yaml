@@ -34,10 +34,10 @@ parameters:
       Example 2:
 
       JSON filter: \
-      `{"assessmentId": 256,"title": "English 3/4 [Final]","assessmentType": "dueWork","folder": [{“id”: 80}],"weighted": false,"workType": {"id": 1,"name": "Formative Assessment"},"dueDate": {"from": "2017-10-12T14:20:50+10:00","to": "2019-10-12T14:20:50+10:00"},"yearLevel": {"id": 6,"name": "Year 6"}}`
+      `{"assessmentId":256,"title":"English 3/4 [Final]","assessmentType":"dueWork","folder":[{"id":80}],"weighted":false,"workType":{"id":1,"name":"Formative Assessment"},"dueDate":{"from":"2017-10-12T14:20:50+10:00","to":"2019-10-12T14:20:50+10:00"},"yearLevel":{"id":6,"name":"Year 6"}}`
 
       URL-encoded JSON filter: \
-      `%7B%22assessmentId%22%3A%20256%2C%22title%22%3A%20%22English%203%2F4%20%5BFinal%5D%22%2C%22assessmentType%22%3A%20%22dueWork%22%2C%22folder%22%3A%20%5B%7B%22id%22%3A%2080%7D%5D%2C%22weighted%22%3A%20false%2C%22workType%22%3A%20%7B%22id%22%3A%201%2C%22name%22%3A%20%22Formative%20Assessment%22%7D%2C%22dueDate%22%3A%20%7B%22from%22%3A%20%222017-10-12T14%3A20%3A50%2B10%3A00%22%2C%22to%22%3A%20%222019-10-12T14%3A20%3A50%2B10%3A00%22%7D%2C%22yearLevel%22%3A%20%7B%22id%22%3A%206%2C%22name%22%3A%20%22Year%206%22%7D%7D`
+      `%7B%22assessmentId%22%3A256%2C%22title%22%3A%22English%203%2F4%20%5BFinal%5D%22%2C%22assessmentType%22%3A%22dueWork%22%2C%22folder%22%3A%5B%7B%22id%22%3A80%7D%5D%2C%22weighted%22%3Afalse%2C%22workType%22%3A%7B%22id%22%3A1%2C%22name%22%3A%22Formative%20Assessment%22%7D%2C%22dueDate%22%3A%7B%22from%22%3A%222017-10-12T14%3A20%3A50%2B10%3A00%22%2C%22to%22%3A%222019-10-12T14%3A20%3A50%2B10%3A00%22%7D%2C%22yearLevel%22%3A%7B%22id%22%3A6%2C%22name%22%3A%22Year%206%22%7D%7D`
       
       --
 
