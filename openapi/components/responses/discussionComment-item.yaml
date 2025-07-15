@@ -77,9 +77,9 @@ content:
         content:
           type: string
         createdAt:
-          $ref: ../schemas/dateTime.yaml
+          $ref: ../schemas/dateTimeString.yaml
         updatedAt:
-          $ref: ../schemas/dateTime.yaml
+          $ref: ../schemas/dateTimeString.yaml
         _links:
           type: object
           properties:

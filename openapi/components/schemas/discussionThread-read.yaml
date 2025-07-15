@@ -8,9 +8,9 @@ properties:
     type: boolean
     description: Is the thread open for further comments?
   createdAt:
-    $ref: ./dateTime.yaml
+    $ref: ./dateTimeString.yaml
   updatedAt:
-    $ref: ./dateTime.yaml
+    $ref: ./dateTimeString.yaml
   _links:
     type: object
     properties:

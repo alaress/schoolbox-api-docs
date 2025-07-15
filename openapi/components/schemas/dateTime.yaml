@@ -1,9 +1,0 @@
-title: Datetime
-description: |
-  A JSON representation of a datetime.
-  For compatibility with existing code, can be defined as either:
-  * a RFC3339 string
-  * an object, which contains a datetime in several formats
-oneOf:
-  - $ref: dateTimeString.yaml
-  - $ref: dateTimeObject.yaml
