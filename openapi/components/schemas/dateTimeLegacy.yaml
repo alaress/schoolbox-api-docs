@@ -1,0 +1,13 @@
+title: Datetime (Legacy)
+description: |
+  A JSON representation of a datetime.
+  For compatibility with existing code, can be defined as either:
+  * a RFC3339 string
+  * an object, which contains a datetime in several formats
+
+  Code using this representation should support both formats, with the knowledge
+  that the object representation is deprecated and will be removed eventually.
+deprecated: true
+oneOf:
+  - $ref: dateTimeString.yaml
+  - $ref: dateTimeLegacyObject.yaml

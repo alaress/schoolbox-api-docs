@@ -77,8 +77,12 @@ content:
         content:
           type: string
         createdAt:
-          $ref: ../schemas/dateTimeString.yaml
+          $ref: ../schemas/dateTimeLegacy.yaml
         updatedAt:
+          $ref: ../schemas/dateTimeLegacy.yaml
+        createdAtJson:
+          $ref: ../schemas/dateTimeString.yaml
+        updatedAtJson:
           $ref: ../schemas/dateTimeString.yaml
         _links:
           type: object

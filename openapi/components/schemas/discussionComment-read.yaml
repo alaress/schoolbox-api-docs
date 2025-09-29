@@ -11,9 +11,13 @@ properties:
   content:
     type: string
   createdAt:
-    $ref: ./dateTimeString.yaml
+    $ref: ../schemas/dateTimeLegacy.yaml
   updatedAt:
-    $ref: ./dateTimeString.yaml
+    $ref: ../schemas/dateTimeLegacy.yaml
+  createdAtJson:
+    $ref: ../schemas/dateTimeString.yaml
+  updatedAtJson:
+    $ref: ../schemas/dateTimeString.yaml
   parent:
     $ref: ./discussionComment-read.yaml
   children:
