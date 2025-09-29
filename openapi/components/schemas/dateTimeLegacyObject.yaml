@@ -28,3 +28,15 @@ properties:
     description: |
       The date as a RFC3339 string. Eg. "2018-01-28T00:00:00+11:00".
     example: "2018-01-28T00:00:00+11:00"
+  long:
+    type: string
+    description: |
+      A string representation of the date, localized to the Schoolbox instance's
+      settings.  Eg. "Sunday, 28 January 2018 12:00am".
+    example: "Sunday, 28 January 2018 12:00am"
+  relativeTime:
+    type: string
+    description: |
+      A human-friendly relative time representation of the date.
+      Eg. "2 years ago".
+    example: "2 years ago"
