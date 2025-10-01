@@ -11,16 +11,12 @@ content:
         student_id:
           description: The ID of a student to create this pastoral record for.
           type: integer
-        duplicateIds:
-          description: A comma separated list of IDs of students to create this pastoral record for.
-          type: string
-          nullable: true
         heading:
           description: Pastoral record title.
           type: string
           maxLength: 255
         occurredOn:
-          description: The date on which this is occurred in the format configured in your Admin area.
+          description: The date on which this is occurred in the format configured in your Admin area. This also accepts RFC3339 format such as 2021-06-22T01:23:45+10:00
           type: string
           format: date
           example: 22/06/2021
@@ -56,46 +52,6 @@ content:
             The following tokens will be substituted with the students details on creation: [firstname], [preferredname], [surname], [fullname], [year], [house].
           type: string
           maxLength: 65535
-          nullable: true
-        public_attachments[]:
-          description: |
-            Files to attach to general content of the pastoral record, supplied as pointers to a file in Schoolbox.\
-            Each pointer will be in the format:\
-            `$locator:$location:$filename`
-            The variables within the pointer have this meaning:
-            * `$locator` represents the strategy for finding the file:
-              * `store` for files uploaded to Schoolbox's storage
-              * `browse` finds files in Schoolbox's resource browser
-              * `myfile` finds files in a Schoolbox user's My Files browser
-              * `office365` finds files in an Office365 store
-            * `$location` is the location of the file within `$locator`:
-              * for `store` this is a file's unique hash
-              * for `browse` and `myfile` this is a file ID
-             * for `office365` this is the file's unique node
-            * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
-
-            See the [Upload a file](#post-/storage/asyncUpload.php) endpoint for details on how to upload a file, and receive a file pointer from that upload.
-          type: array
-          nullable: true
-        private_attachments[]:
-          description: |
-            Files to attach to confidential content of the pastoral record, supplied as pointers to a file in Schoolbox.\
-            Each pointer will be in the format:\
-            `$locator:$location:$filename`
-            The variables within the pointer have this meaning:
-            * `$locator` represents the strategy for finding the file:
-              * `store` for files uploaded to Schoolbox's storage
-              * `browse` finds files in Schoolbox's resource browser
-              * `myfile` finds files in a Schoolbox user's My Files browser
-              * `office365` finds files in an Office365 store
-            * `$location` is the location of the file within `$locator`:
-              * for `store` this is a file's unique hash
-              * for `browse` and `myfile` this is a file ID
-             * for `office365` this is the file's unique node
-            * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
-
-            See the [Upload a file](#post-/storage/asyncUpload.php) endpoint for details on how to upload a file, and receive a file pointer from that upload.
-          type: array
           nullable: true
         actions[]:
           description: |
