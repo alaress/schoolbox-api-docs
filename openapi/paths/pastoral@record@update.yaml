@@ -1,0 +1,26 @@
+post:
+  operationId: pastoral.patchRecordUpdate
+  tags: [pastoral]
+  summary: Update an existing pastoral record with a partial set of changes.
+  description: |
+    Updates an existing pastoral record with a partial set of changes for brevity, such as updating a heading without needing to specify everything about the pastoral record explicitly.
+    Only some fields are supported by this endpoint, described below. Any fields outside of this set are disregarded.
+    Any fields omitted remain unchanged. Note that for updating Pastoral Actions you need to enable the config setting in admin.
+    
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with Pastoral Moderator service permission
+    * Users with a role of Staff role type with Access Pastoral Care permission
+  responses:
+    '200':
+      description: Successfully updated a pastoral record
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/pastoral-partial-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  requestBody:
+    $ref: ../components/requestBodies/pastoral-partial-item.yaml
