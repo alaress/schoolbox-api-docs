@@ -1,0 +1,168 @@
+description: |
+  Pastoral record
+content:
+  application/x-www-form-urlencoded:
+    schema:
+      type: object
+      properties:
+        id:
+          description: The ID of an existing pastoral record that you wish to partially update.
+          type: integer
+        student_id:
+          description: The ID of a student to create this pastoral record for.
+          type: integer
+        duplicateIds:
+          description: A comma separated list of IDs of students to create this pastoral record for.
+          type: string
+          nullable: true
+        heading:
+          description: Pastoral record title.
+          type: string
+          maxLength: 255
+        occurredOn:
+          description: The date on which this is occurred in the format configured in your Admin area.
+          type: string
+          format: date
+          example: 22/06/2021
+          nullable: true
+        typeId:
+          description: The ID of a pastoral type to associate with this pastoral record.
+          type: integer
+          nullable: false
+        subtypeId:
+          description: |
+            The ID of a pastoral sub-type to associate to this pastoral record.\
+            The sub-type must already be associated with the type provided as typeId.\
+            This can be null, if the pastoral type does not have any sub-type.\
+            This cannot be null, if the pastoral type has sub-type(s).
+          type: integer
+          nullable: true
+        severityId:
+          description: |
+            The ID of a pastoral severity to associate with this pastoral record.\
+            Required only if Allow specification of severity on pastoral records config is ON.
+          type: integer
+          nullable: true
+        body_public:
+          description: |
+            General content of this pastoral record in raw HTML.\
+            The following tokens will be substituted with the students details on creation: [firstname], [preferredname], [surname], [fullname], [year], [house].
+          type: string
+          maxLength: 65535
+          nullable: true
+        body_private:
+          description: |
+            Confidential content of this pastoral record in raw HTML.\
+            The following tokens will be substituted with the students details on creation: [firstname], [preferredname], [surname], [fullname], [year], [house].
+          type: string
+          maxLength: 65535
+          nullable: true
+        public_attachments[]:
+          description: |
+            Files to attach to general content of the pastoral record, supplied as pointers to a file in Schoolbox.\
+            Each pointer will be in the format:\
+            `$locator:$location:$filename`
+            The variables within the pointer have this meaning:
+            * `$locator` represents the strategy for finding the file:
+              * `store` for files uploaded to Schoolbox's storage
+              * `browse` finds files in Schoolbox's resource browser
+              * `myfile` finds files in a Schoolbox user's My Files browser
+              * `office365` finds files in an Office365 store
+            * `$location` is the location of the file within `$locator`:
+              * for `store` this is a file's unique hash
+              * for `browse` and `myfile` this is a file ID
+             * for `office365` this is the file's unique node
+            * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
+
+            See the [Upload a file](#post-/storage/asyncUpload.php) endpoint for details on how to upload a file, and receive a file pointer from that upload.
+          type: array
+          nullable: true
+        private_attachments[]:
+          description: |
+            Files to attach to confidential content of the pastoral record, supplied as pointers to a file in Schoolbox.\
+            Each pointer will be in the format:\
+            `$locator:$location:$filename`
+            The variables within the pointer have this meaning:
+            * `$locator` represents the strategy for finding the file:
+              * `store` for files uploaded to Schoolbox's storage
+              * `browse` finds files in Schoolbox's resource browser
+              * `myfile` finds files in a Schoolbox user's My Files browser
+              * `office365` finds files in an Office365 store
+            * `$location` is the location of the file within `$locator`:
+              * for `store` this is a file's unique hash
+              * for `browse` and `myfile` this is a file ID
+             * for `office365` this is the file's unique node
+            * `$filename` is the filename that the file will be given once it is uploaded to wherever it is being uploaded
+
+            See the [Upload a file](#post-/storage/asyncUpload.php) endpoint for details on how to upload a file, and receive a file pointer from that upload.
+          type: array
+          nullable: true
+        actions[]:
+          description: |
+            An array of IDs of pastoral action.\
+            Available only if Enable Pastoral Actions config is ON.
+          type: array
+          nullable: true
+          items:
+            type: integer
+        tags:
+          description: |
+            Comma separated IDs of existing Pastoral Record Tags.\
+            If non numerical string is provided, it'll be silently discarded.\
+            To provide a name to create a new tag, use tagNames instead.
+          type: string
+          nullable: true
+        tagNames:
+          description: |
+            Comma separated names of Pastoral Record Tags.\
+            If Allow Staff to Create Pastoral Care Tags config is ON, attempts to create a new tag, if not alraeady exists.\
+            The max length of a tag name is 255 chars.
+          type: string
+          nullable: true
+        points:
+          description: Points of this pastoral record.
+          type: number
+          format: float
+          minimum: -100000
+          maximum: 100000
+          nullable: true
+        role:
+          description: |
+            An array of pairs of a role and its access level to this pastoral record in the format of:\
+            `$roleId => $accessLevel`
+            * `$roleId` is one of the following:
+              * The ID of a role of Staff Role Type with Access Pastoral Care permission
+              * 'role-type-parent' (requires Allow Parent Pastoral Access config enabled)
+              * 'role-type-student' (requires Allow Student Pastoral Access config enabled)
+            * `$accessLevel` is an integer representation of access level of the $roleId
+              * 0 - Deny
+              * 1 - General
+              * 2 - General + Confidential
+          type: array
+          nullable: true
+        group:
+          description: |
+            An array of pairs of a pastoral group and its access level to this pastoral record in the format of:\
+            `$pastoralGroupId => $accessLevel`
+            * `$pastoralGroupId` is the ID of a pastoral group to set access level to
+            * `$accessLevel` is an integer representation of access level of the $roleId
+              * 0 - Deny
+              * 1 - General
+              * 2 - General + Confidential
+          type: array
+          nullable: true
+        user:
+          description: |
+            An array of pairs of a user and its access level to this pastoral record in the format of:\
+            `$userId => $accessLevel`
+            * `$userId` is ID of a user to set access level to. The user must be one of:
+              * a staff with pastoral access
+              * a parent of the student (requires Allow Parent Pastoral Access enabled)
+            * `$accessLevel` is an integer representation of access level of the $roleId
+              * 0 - Deny
+              * 1 - General
+              * 2 - General + Confidential
+          type: array
+          nullable: true
+      required:
+        - id
