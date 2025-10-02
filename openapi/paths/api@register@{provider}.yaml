@@ -31,3 +31,41 @@ post:
     default:
       $ref: ../components/responses/problem.yaml
 
+delete:
+  operationId: mobileDeregister
+  tags: [mobile]
+  summary: Deregister mobile device
+  security: []
+  description: |
+    Removes a registered device from receiving push notifications.    
+  parameters:
+    - name: provider
+      in: path
+      description: |
+        The type of device that is connecting to the service.
+
+        Only "Firebase" is currently supported for deregistration.
+      required: true
+      example: 'Firebase'
+      schema:
+        type: string
+        enum:
+          - Firebase
+  requestBody:
+    $ref: ../components/requestBodies/mobile-deregistration.yaml
+  responses:
+    '200':
+      description: Device successfully deregistered
+      content:
+        text/plain:
+          schema:
+            type: string
+    '404':
+      description: Unable to find app registration
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../components/schemas/problem.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
