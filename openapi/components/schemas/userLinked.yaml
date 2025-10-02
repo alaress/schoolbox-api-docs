@@ -1,0 +1,57 @@
+# This represents linked user objects (eg students, guardians, impersonableUsers) as returned by the API
+# Ideally this would just use userShort, but this doesn't match the API response and too many clients will depend on the actual response structure.
+# so please don't change the API, unless adding additional fields.
+title: Linked User
+type: object
+properties:
+
+  id:
+    $ref: ./id.yaml
+
+  externalId:
+    $ref: ./externalId.yaml
+
+  title:
+    type: string
+    nullable: true
+    description: The user's title (Mr., Ms., etc.).
+    example: ""
+
+  firstname:
+    type: string
+    nullable: false
+    description: |
+      The user's first name.
+
+      Schoolbox doesn't distinguish between a person's actual first name
+      and any other names, and in any case is not the definitive source of
+      naming information; therefore in practice this will usually be the
+      user's given name.
+    example: Sam
+
+  preferredName:
+    type: string
+    nullable: true
+    description: The user's preferred name.
+  
+  givenName:
+    type: string
+    nullable: false
+    description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
+    example: Sam
+  
+  lastname:
+    type: string
+    nullable: false
+    description: The user's surname.
+    example: Reed
+
+  fullName:
+    type: string
+    nullable: false
+    description: The user's formatted full name.
+    example: Sam Reed
+
+  role:
+    $ref: ./role.yaml
+
