@@ -10,17 +10,16 @@ post:
       description: |
         The type of device that is connecting to the service.
 
-        As of this version, this is expected to always be "Digistorm". Apple
-        (APNS) or Google Android (GCM) are still supported, but deprecated: the
-        Digistorm provider will handle the sending of notifications via APNS or
-        GCM internally.
+        As of this version, this is expected to always be "Firebase". Apple
+        (APNS), Google Android (GCM), or Digistorm remain supported.
       required: true
-      example: 'Digistorm'
+      example: 'Firebase'
       schema:
         type: string
         enum:
           - GCM
           - APNS
+          - Firebase
           - Digistorm
   requestBody:
     $ref: ../components/requestBodies/registration.yaml
@@ -29,6 +28,44 @@ post:
       $ref: ../components/responses/authentication-successUser.yaml
     '401':
       $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+delete:
+  operationId: mobileDeregister
+  tags: [mobile]
+  summary: Deregister mobile device
+  security: []
+  description: |
+    Removes a registered device from receiving push notifications.    
+  parameters:
+    - name: provider
+      in: path
+      description: |
+        The type of device that is connecting to the service.
+
+        Only "Firebase" is currently supported for deregistration.
+      required: true
+      example: 'Firebase'
+      schema:
+        type: string
+        enum:
+          - Firebase
+  requestBody:
+    $ref: ../components/requestBodies/mobile-deregistration.yaml
+  responses:
+    '200':
+      description: Device successfully deregistered
+      content:
+        text/plain:
+          schema:
+            type: string
+    '404':
+      description: Unable to find app registration
+      content:
+        application/problem+json:
+          schema:
+            $ref: ../components/schemas/problem.yaml
     default:
       $ref: ../components/responses/problem.yaml
 
