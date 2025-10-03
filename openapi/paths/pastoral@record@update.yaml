@@ -2,6 +2,8 @@ patch:
   operationId: pastoral.patchRecordUpdate
   tags: [pastoral]
   summary: Update an existing pastoral record with a partial set of changes
+  parameters:
+    - $ref: ../components/parameters/id.yaml
   description: |
     Updates an existing pastoral record with a partial set of changes for brevity, such as updating a heading without needing to specify everything about the pastoral record explicitly.
     Only some fields are supported by this endpoint, described below. Any fields outside of this set are disregarded.
