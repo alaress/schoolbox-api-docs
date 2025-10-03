@@ -6,6 +6,16 @@ properties:
   id:
     $ref: ./id.yaml
 
+  _links:
+    type: object
+    properties:
+      profile:
+        type: string
+        description: URL for a link to the user's profile page.
+      avatar:
+        type: string
+        description: URL for a link to the user's avatar image.
+
   title:
     type: string
     nullable: true
@@ -28,6 +38,10 @@ properties:
     type: string
     nullable: true
     description: The user's preferred name.
+
+  pronoun:
+    type: string
+    nullable: true
   
   lastName:
     type: string
