@@ -1,0 +1,18 @@
+get:
+  operationId: evidenceCohortPayload
+  tags: [Learning Moment]
+  summary: Get a list of Learning Moments that belong to students in a particular cohort
+  description: |
+    Detailed description goes here TODO
+  responses:
+    '200':
+      $ref: ../components/responses/evidence-cohort-payload.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the folder that defines the cohort (e.g. class, unit, or course folder).
+      required: true
+      schema:
+        type: integer
