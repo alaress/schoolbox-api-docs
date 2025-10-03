@@ -5,12 +5,6 @@ content:
     schema:
       type: object
       properties:
-        id:
-          description: The ID of an existing pastoral record that you wish to partially update.
-          type: integer
-        student_id:
-          description: The ID of a student to create this pastoral record for.
-          type: integer
         heading:
           description: Pastoral record title.
           type: string
