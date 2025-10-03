@@ -290,7 +290,7 @@ paths:
   /pastoral/record/insert:
     $ref: 'paths/pastoral@record@insert.yaml'
 
-  /pastoral/record/update:
+  /pastoral/record/{id}/update:
     $ref: 'paths/pastoral@record@update.yaml'
 
   /api/curriculum/usage/{id}:
