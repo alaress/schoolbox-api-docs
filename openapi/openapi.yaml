@@ -245,6 +245,9 @@ paths:
 
   /learning/evidenceFeed/user/{id}:
     $ref: 'paths/evidenceFeed@user@{id}.yaml'
+
+  /learning/evidence/cohort/{id}/payload:
+    $ref: 'paths/evidence@cohort@{id}@payload.yaml'
     
   /pastoral/record/insert:
     $ref: 'paths/pastoral@record@insert.yaml'
