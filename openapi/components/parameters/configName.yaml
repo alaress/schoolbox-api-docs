@@ -1,0 +1,7 @@
+name: configName
+in: path
+required: true
+description: The unique name/key of the configuration setting
+schema:
+  type: string
+example: site_name
