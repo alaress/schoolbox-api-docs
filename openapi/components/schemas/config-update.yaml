@@ -1,0 +1,13 @@
+type: object
+required:
+  - value
+properties:
+  value:
+    oneOf:
+      - type: string
+      - type: number
+      - type: boolean
+      - type: object
+      - type: array
+    description: The new configuration value. Can be any valid JSON type depending on the config setting.
+    example: "Updated School Name"

@@ -1,0 +1,37 @@
+get:
+  operationId: configGet
+  tags: [config]
+  summary: Get a configuration value
+  description: |
+    Returns the value of a specific configuration setting. Only returns configurations that the authenticated user has permission to access.
+  responses:
+    '200':
+      $ref: ../components/responses/config-item.yaml
+    '404':
+      $ref: ../components/responses/problem.yaml
+      description: Configuration not found or access denied
+    default:
+      $ref: ../components/responses/problem.yaml
+
+patch:
+  operationId: configPatch
+  tags: [config]
+  summary: Update a configuration value
+  description: |
+    Updates the value of a specific configuration setting. Only configurations that the authenticated user has permission to edit can be updated. The value will be validated according to the configuration's type and constraints.
+  requestBody:
+    $ref: ../components/requestBodies/config-update.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/config-item.yaml
+    '400':
+      $ref: ../components/responses/problem.yaml
+      description: Invalid request body or validation error
+    '404':
+      $ref: ../components/responses/problem.yaml
+      description: Configuration not found or access denied
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/configName.yaml
