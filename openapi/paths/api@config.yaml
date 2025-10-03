@@ -3,7 +3,7 @@ patch:
   tags: [config]
   summary: Update multiple configuration values
   description: |
-    Updates multiple configuration settings in a single request. Each configuration is processed independently - some may succeed while others fail. Only configurations that the authenticated user has permission to edit can be updated. Each value will be validated according to the configuration's type and constraints.
+    Updates multiple configuration settings in a single request. Each configuration is processed independently - some may succeed while others fail.
     
     The response includes detailed results for each configuration update attempt, including which ones succeeded and which ones failed with their respective error messages.
   requestBody:
