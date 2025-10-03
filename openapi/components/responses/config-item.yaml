@@ -1,0 +1,5 @@
+description: Configuration item response
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/config-item.yaml
