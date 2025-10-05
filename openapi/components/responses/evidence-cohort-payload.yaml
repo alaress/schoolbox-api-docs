@@ -59,6 +59,8 @@ content:
               curriculumNodes:
                 type: array
                 description: Currently an empty array.  Will contain an array of curriculum node objects.
+                items:
+                  type: object
               _links:
                 type: object
               _labels:
