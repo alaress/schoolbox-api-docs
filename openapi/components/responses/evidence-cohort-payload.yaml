@@ -63,6 +63,34 @@ content:
                   type: object
               _links:
                 type: object
+                properties:
+                   createThread:
+                     type: string
+                     format: uri
+                   detail:
+                     type: string
+                     format: uri
+                   modifyForm:
+                     type: string
+                     format: uri
+                   put:
+                     type: string
+                     format: uri
+                   draft:
+                     type: string
+                     format: uri
+                   submit:
+                     type: string
+                     format: uri
+                   publish:
+                     type: string
+                     format: uri
+                   reject:
+                     type: string
+                     format: uri
+                   delete:
+                     type: string
+                     format: uri
               _labels:
                 type: object
                 properties:
