@@ -54,3 +54,8 @@ properties:
         description: |
           A poster URL for the file (if it's a video).
         format: uri
+      fetch:
+        type: string
+        description: |
+          A URL from which the file may be fetched.
+        format: uri
