@@ -27,7 +27,7 @@ content:
                 type: array
                 description: Array of file objects
                 items:
-                  $ref: ../schemas/evidenceItem.yaml
+                  $ref: ../schemas/file.yaml
               recipient:
                 $ref: ../schemas/userAuthor.yaml
               creator:
