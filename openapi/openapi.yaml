@@ -246,9 +246,39 @@ paths:
   /learning/evidenceFeed/user/{id}:
     $ref: 'paths/evidenceFeed@user@{id}.yaml'
 
+#  /learning/evidence/user/{userIds}/draft:       #postDraft                mass drafts a learning moment for multiple people
+#    $ref: 'paths/evidence@user@{ids}@draft.yaml'
+#
+#  /learning/evidence/user/{userIds}/submit:      #postSubmit               mass submits a learning moment for multiple people
+#    $ref: 'paths/evidence@user@{ids}@submit.yaml'
+#
+#  /learning/evidence/user/{userIds}/publish:     #postPublish              mass publishes a learning moment for multiple people
+#    $ref: 'paths/evidence@user@{ids}@publish.yaml'
+#
+#  /learning/evidence/{evidenceId:\d+}/draft:     #putDraft                 places a particular moment into a Draft state
+#    $ref: 'paths/evidence@{id}@draft.yaml'
+#
+#  /learning/evidence/{evidenceId:\d+}/submit:    #putSubmit                places a particular moment into a Submitted state
+#    $ref: 'paths/evidence@{id}@submit.yaml'
+#
+#  /learning/evidence/{evidenceId:\d+}/publish:   #putPublish               places a particular moment into a Published state
+#    $ref: 'paths/evidence@{id}@publish.yaml'
+
   /learning/evidence/cohort/{id}/payload:
     $ref: 'paths/evidence@cohort@{id}@payload.yaml'
-    
+
+#  /learning/evidence/cohort/{folderId}:          #getCohortReport          Loads the Cohort Overview for a particular folder
+#    $ref: 'paths/evidence@cohort@{id}.yaml'
+#
+#  /learning/evidence/bulk/publish:               #putBulkPublish           (Moderation workflow) mass publishes a set of learning moments from the Cohort Overview
+#    $ref: 'paths/evidence@bulk@publish.yaml'
+#
+#  /learning/evidence/{evidenceId:\d+}/reject:    #putReject                (Moderation workflow) places a particular moment into Rejected state along with a rejection reason
+#    $ref: 'paths/evidence@{id}@reject.yaml'
+#
+#  /learning/evidence/bulk/reject:                #putBulkReject            (Moderation workflow) mass rejects a set of learning moments with a rejection reason that’s assigned to everyone’s learning moment. Rejections appear in the comment thread of an Activity Feed.
+#    $ref: 'paths/evidence@bulk@reject.yaml'
+
   /pastoral/record/insert:
     $ref: 'paths/pastoral@record@insert.yaml'
 
