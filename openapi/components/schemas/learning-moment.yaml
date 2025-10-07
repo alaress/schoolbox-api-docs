@@ -24,9 +24,9 @@ properties:
   creator:
     $ref: ../schemas/userAuthor.yaml
   createdAt:
-    $ref: ../schemas/dateObject.yaml
+    $ref: ../schemas/date-object.yaml
   updatedAt:
-    $ref: ../schemas/dateObject.yaml
+    $ref: ../schemas/date-object.yaml
   hasComments:
     description: Whether the learning moment has any comments.
     type: boolean
