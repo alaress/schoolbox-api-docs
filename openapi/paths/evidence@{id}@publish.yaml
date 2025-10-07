@@ -1,8 +1,8 @@
 put:
-  operationId: putEvidenceDraft
+  operationId: putEvidencePublish
   tags: [Learning Moment]
-  summary: Put Learning Moment into 'draft' state
-  description: Save a Learning Moment and leave it in a 'draft' state.
+  summary: Put Learning Moment into 'published' state
+  description: Save a Learning Moment and leave it in a 'published' state.
   requestBody:
     description: |
       The learning moment to save.  Only fields to be updated need to be included in the request.
@@ -22,7 +22,7 @@ put:
   parameters:
     - name: id
       in: path
-      description: The ID of the learning moment you wish to put into a 'draft' state.
+      description: The ID of the learning moment you wish to put into a 'published' state.
       required: true
       schema:
         type: integer

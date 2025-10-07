@@ -264,17 +264,17 @@ paths:
   /learning/evidence/{id}:
     $ref: 'paths/evidence@{id}.yaml'
 
-  /learning/evidence/{id}/draft:         #putDraft                 places a particular moment into a Draft state
+  /learning/evidence/{id}/draft:
     $ref: 'paths/evidence@{id}@draft.yaml'
 
-  #  /learning/evidence/{id}/publish:       #putPublish               places a particular moment into a Published state
-  #    $ref: 'paths/evidence@{id}@publish.yaml'
+  /learning/evidence/{id}/publish:
+    $ref: 'paths/evidence@{id}@publish.yaml'
 
-  #  /learning/evidence/{id}/reject:        #putReject                (Moderation workflow) places a particular moment into Rejected state along with a rejection reason
-  #    $ref: 'paths/evidence@{id}@reject.yaml'
+  /learning/evidence/{id}/reject:
+    $ref: 'paths/evidence@{id}@reject.yaml'
 
-  #  /learning/evidence/{id}/submit:        #putSubmit                places a particular moment into a Submitted state
-  #    $ref: 'paths/evidence@{id}@submit.yaml'
+  /learning/evidence/{id}/submit:
+    $ref: 'paths/evidence@{id}@submit.yaml'
 
   /learning/evidenceFeed/user/{id}:
     $ref: 'paths/evidenceFeed@user@{id}.yaml'
