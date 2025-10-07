@@ -1,0 +1,28 @@
+put:
+  operationId: putEvidenceDraft
+  tags: [Learning Moment]
+  summary: Put Learning Moment into 'draft' state
+  description: Save a Learning Moment and leave it in a 'draft' state.
+  requestBody:
+    description: |
+      The learning moment to save.  Only fields to be updated need to be included in the request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/learning-moment-request.yaml
+  responses:
+    '200':
+      description: Successfully updated a learning moment.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/learning-moment-response.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the learning moment you wish to put into a draft state.
+      required: true
+      schema:
+        type: integer
