@@ -7,7 +7,7 @@ content:
         data:
           type: array
           items:
-            $ref: ../schemas/learningMoment.yaml
+            $ref: ../schemas/learning-moment.yaml
           minItems: 0
         metadata:
           $ref: ../schemas/listMetadata.yaml
