@@ -34,21 +34,9 @@ properties:
         type: object
         properties:
           getComments:
-            type: object
-            properties:
-              href:
-                type: string
-                format: uri
-              auth:
-                type: boolean
+            $ref: ./link.yaml
           createComment:
-            type: object
-            properties:
-              href:
-                type: string
-                format: uri
-              auth:
-                type: boolean
+            $ref: ./link.yaml
   recipient:
     $ref: ../schemas/userAuthor.yaml
   evidence:
