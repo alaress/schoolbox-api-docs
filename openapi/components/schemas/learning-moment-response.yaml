@@ -70,14 +70,7 @@ properties:
     type: array
     description: Array of curriculum node objects.
     items:
-      type: object
-      properties:
-        id:
-          $ref: ../schemas/id.yaml
-        name:
-          type: string
-        code:
-          type: string
+      $ref: ./curriculumItem.yaml
   tags:
     type: array
     description: Array of tag objects
