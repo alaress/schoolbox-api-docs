@@ -2,7 +2,7 @@ post:
   operationId: postEvidencePublishMultiUser
   tags: [Learning Moment]
   summary: Publish a learning moment for multiple users
-  description: Save a Learning Moment and leave it in a 'published' state for multiple students
+  description: Update a learning moment and leave it in a 'published' state for multiple users.
   requestBody:
     description: |
       The learning moment to save.  Only fields to be updated need to be included in the request.
