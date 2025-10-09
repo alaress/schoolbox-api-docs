@@ -2,6 +2,7 @@ put:
   operationId: putEvidence
   tags: [Learning Moment]
   summary: Update Learning Moment
+  deprecated: true
   description: |
     Update Learning Moment
   responses:
