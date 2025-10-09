@@ -2,6 +2,7 @@ post:
   operationId: learningMomentEvidence.postMomentForUsers
   tags: [Learning Moment]
   summary: Create a Learning moment for users
+  deprecated: true
   description: |
     Share Learning Moment.
   responses:
