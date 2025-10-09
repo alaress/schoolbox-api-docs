@@ -232,15 +232,15 @@ paths:
     $ref: 'paths/assessment.yaml'
 
   /api/assessment/{id}:
-      $ref: 'paths/assessment@{id}.yaml'
+    $ref: 'paths/assessment@{id}.yaml'
 
   /api/user/{id}/notify:
-      $ref: 'paths/api@user@{id}@notify.yaml'
+    $ref: 'paths/api@user@{id}@notify.yaml'
 
-  #  /learning/evidence/bulk/publish:               #putBulkPublish           (Moderation workflow) mass publishes a set of learning moments from the Cohort Overview
-  #    $ref: 'paths/evidence@bulk@publish.yaml'
+  /learning/evidence/bulk/publish:
+    $ref: 'paths/evidence@bulk@publish.yaml'
 
-  #  /learning/evidence/bulk/reject:                #putBulkReject            (Moderation workflow) mass rejects a set of learning moments with a rejection reason that’s assigned to everyone’s learning moment. Rejections appear in the comment thread of an Activity Feed.
+  #  /learning/evidence/bulk/reject:
   #    $ref: 'paths/evidence@bulk@reject.yaml'
 
   #  /learning/evidence/cohort/{folderId}:          #getCohortReport          Loads the Cohort Overview for a particular folder
