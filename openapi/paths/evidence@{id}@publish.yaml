@@ -1,7 +1,7 @@
 put:
   operationId: putEvidencePublish
   tags: [Learning Moment]
-  summary: Put Learning Moment into 'published' state
+  summary: Publish a learning moment
   description: Save a Learning Moment and leave it in a 'published' state.
   requestBody:
     description: |

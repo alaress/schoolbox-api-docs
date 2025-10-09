@@ -1,7 +1,7 @@
 put:
   operationId: putEvidenceSubmit
   tags: [Learning Moment]
-  summary: Put Learning Moment into 'submitted' state
+  summary: Submit a learning moment
   description: Save a Learning Moment and leave it in a 'submitted' state.
   requestBody:
     description: |
