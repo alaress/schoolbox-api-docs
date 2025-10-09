@@ -2,7 +2,7 @@ put:
   operationId: putEvidenceDraft
   tags: [Learning Moment]
   summary: Draft a learning moment
-  description: Save a Learning Moment and leave it in a 'draft' state.
+  description: Update a learning moment and leave it in a 'draft' state.
   requestBody:
     description: |
       The learning moment to save.  Only fields to be updated need to be included in the request.
