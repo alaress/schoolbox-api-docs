@@ -1,0 +1,28 @@
+put:
+  operationId: putEvidencePublishMultiUser
+  tags: [Learning Moment]
+  summary: Put Learning Moment into 'published' state for multiple users
+  description: Save a Learning Moment and leave it in a 'published' state for multiple students
+  requestBody:
+    description: |
+      The learning moment to save.  Only fields to be updated need to be included in the request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/learning-moment-request.yaml
+  responses:
+    '200':
+      description: Successfully updated a learning moment.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/learning-moment-response-array.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: ids
+      in: path
+      description: A comma-separated list of userIds for whom the learning moment should be published.
+      required: true
+      schema:
+        type: string
