@@ -1,13 +1,13 @@
 put:
   operationId: putEvidence
   tags: [Learning Moment]
-  summary: Update Learning Moment
+  summary: Update learning moment
   deprecated: true
   description: |
-    Update Learning Moment
+    Update learning moment
   responses:
     '200':
-      description: Successfully Updated a Learning moment
+      description: Successfully updated a learning moment
       content:
         application/json:
           schema:
