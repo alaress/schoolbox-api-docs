@@ -243,9 +243,6 @@ paths:
   /learning/evidence/bulk/reject:
     $ref: 'paths/evidence@bulk@reject.yaml'
 
-  #  /learning/evidence/cohort/{folderId}:          #getCohortReport          Loads the Cohort Overview for a particular folder
-  #    $ref: 'paths/evidence@cohort@{id}.yaml'
-
   /learning/evidence/cohort/{id}/payload:
     $ref: 'paths/evidence@cohort@{id}@payload.yaml'
 
