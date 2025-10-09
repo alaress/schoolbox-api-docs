@@ -1,0 +1,28 @@
+put:
+  operationId: putEvidenceBulkReject
+  tags: [Learning Moment]
+  summary: Reject multiple learning moments
+  description: Reject multiple learning moments (meaning refuse to publish them), and optionally supply a reason for the rejection.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            momentIds:
+              type: array
+              description: Array of learning moment ids.
+              items:
+                $ref: ../components/schemas/id.yaml
+            rejectionReason:
+              type: string
+              example: "Please add more detail to your descriptions."
+  responses:
+    '200':
+      description: Successfully deleted learning moments.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/learning-moment-response-array.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
