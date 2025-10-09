@@ -1,0 +1,4 @@
+type: array
+description: An array of learning moments.
+items:
+  $ref: ./learning-moment-response.yaml
