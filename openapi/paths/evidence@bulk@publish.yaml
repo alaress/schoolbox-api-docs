@@ -1,8 +1,8 @@
 put:
   operationId: putEvidenceBulkPublish
   tags: [Learning Moment]
-  summary: Put multiple learning moments into a 'published' state
-  description: Put multiple learning moments into a 'published' state.
+  summary: Publish multiple learning moments
+  description: Publish multiple learning moments and optionally delete any comments before publishing.
   requestBody:
     content:
       application/json:
