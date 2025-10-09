@@ -1,0 +1,29 @@
+put:
+  operationId: putEvidenceBulkPublish
+  tags: [Learning Moment]
+  summary: Put multiple learning moments into a 'published' state
+  description: Put multiple learning moments into a 'published' state.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            momentIds:
+              type: array
+              description: Array of learning moment ids.
+              items:
+                $ref: ../components/schemas/id.yaml
+            deleteComments:
+              type: boolean
+              description: Whether comments on the learning moments should be deleted before the learning moments are published.
+              example: false
+  responses:
+    '200':
+      description: Successfully updated learning moments.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/learning-moment-response-array.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
