@@ -3,7 +3,7 @@ get:
   tags: [Learning Moment]
   summary: Get learning moments for a cohort
   description: |
-    Detailed description goes here TODO
+    Get all learning moments for users in a cohort defined by a folderId.
   responses:
     '200':
       $ref: ../components/responses/evidence-cohort-payload.yaml
