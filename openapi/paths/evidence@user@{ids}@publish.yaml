@@ -1,5 +1,5 @@
-put:
-  operationId: putEvidencePublishMultiUser
+post:
+  operationId: postEvidencePublishMultiUser
   tags: [Learning Moment]
   summary: Put Learning Moment into 'published' state for multiple users
   description: Save a Learning Moment and leave it in a 'published' state for multiple students
