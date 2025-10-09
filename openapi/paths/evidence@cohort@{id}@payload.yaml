@@ -1,7 +1,7 @@
 get:
   operationId: evidenceCohortPayload
   tags: [Learning Moment]
-  summary: Get a list of Learning Moments that belong to students in a particular cohort
+  summary: Get learning moments for a cohort
   description: |
     Detailed description goes here TODO
   responses:
