@@ -23,6 +23,7 @@ delete:
   operationId: deleteEvidence
   tags: [Learning Moment]
   summary: Delete Learning Moment
+  deprecated: true
   description: |
     Delete Learning Moment
   responses:
