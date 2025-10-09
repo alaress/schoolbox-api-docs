@@ -1,5 +1,5 @@
-put:
-  operationId: putEvidenceDraftMultiUser
+post:
+  operationId: postEvidenceDraftMultiUser
   tags: [Learning Moment]
   summary: Put Learning Moment into 'draft' state for multiple users
   description: Save a Learning Moment and leave it in a 'draft' state for multiple students
