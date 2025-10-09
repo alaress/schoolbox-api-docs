@@ -237,9 +237,6 @@ paths:
   /api/user/{id}/notify:
     $ref: 'paths/api@user@{id}@notify.yaml'
 
-  /learning/evidence/bulk/delete:
-    $ref: 'paths/evidence@bulk@delete.yaml'
-
   /learning/evidence/bulk/publish:
     $ref: 'paths/evidence@bulk@publish.yaml'
 
