@@ -20,15 +20,14 @@ put:
     - $ref: ../components/parameters/id.yaml
 
 delete:
-  operationId: deleteEvidence
+  operationId: deleteLearningMoment
   tags: [Learning Moment]
-  summary: Delete Learning Moment
-  deprecated: true
+  summary: Delete learning moment
   description: |
-    Delete Learning Moment
+    Delete learning moment
   responses:
     '204':
-      description: The Learning Moment was deleted successfully.
+      description: The learning moment was deleted successfully.
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
