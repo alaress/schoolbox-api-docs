@@ -12,7 +12,7 @@ post:
           $ref: ../components/schemas/learning-moment-request.yaml
   responses:
     '200':
-      description: Successfully updated a learning moment.
+      description: Successfully drafted a learning moment.
       content:
         application/json:
           schema:
