@@ -1,7 +1,7 @@
 patch:
   operationId: pastoral.patchRecordUpdate
   tags: [pastoral]
-  summary: Update an existing pastoral record with a partial set of changes
+  summary: Partially update a pastoral record
   parameters:
     - $ref: ../components/parameters/id.yaml
   description: |
