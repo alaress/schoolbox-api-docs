@@ -12,7 +12,7 @@ put:
           $ref: ../components/schemas/learning-moment-request.yaml
   responses:
     '200':
-      description: Successfully updated a learning moment.
+      description: Successfully rejected a learning moment.
       content:
         application/json:
           schema:

@@ -19,7 +19,7 @@ put:
               example: "Please add more detail to your descriptions."
   responses:
     '200':
-      description: Successfully deleted learning moments.
+      description: Successfully rejected learning moments.
       content:
         application/json:
           schema:

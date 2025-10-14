@@ -20,7 +20,7 @@ put:
               example: false
   responses:
     '200':
-      description: Successfully updated learning moments.
+      description: Successfully published learning moments.
       content:
         application/json:
           schema:
