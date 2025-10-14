@@ -9,7 +9,7 @@ properties:
   blurb:
     type: string
     example: "I learned to tie my shoelaces."
-    description: Short version of body text.  Not HTML.
+    description: Short version of body text, automatically generated from body.  Not HTML.
   showReadMore:
     description: Whether to show a 'Read more' link after the blurb text.
     type: boolean
