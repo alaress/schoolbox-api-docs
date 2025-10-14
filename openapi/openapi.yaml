@@ -249,6 +249,9 @@ paths:
   /pastoral/record/insert:
     $ref: 'paths/pastoral@record@insert.yaml'
 
+  /pastoral/record/{id}/update:
+    $ref: 'paths/pastoral@record@update.yaml'
+
   /api/curriculum/usage/{id}:
     $ref: 'paths/api@curriculum@usage@{id}.yaml'
 
