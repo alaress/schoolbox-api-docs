@@ -12,7 +12,8 @@ get:
   parameters:
     - name: id
       in: path
-      description: The ID of the folder that defines the cohort (e.g. class, unit, or course folder).
+      description: |
+        The ID of a class or group folder.  The cohort is the set of users involved in that class or group.
       required: true
       schema:
         type: integer
