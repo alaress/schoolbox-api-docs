@@ -4,7 +4,8 @@ put:
   summary: Update learning moment
   deprecated: true
   description: |
-    Update learning moment
+    Update a learning moment (Deprecated).
+    Use one of the 'Draft/Publish/Submit a learning moment' PUT endpoints instead.
   responses:
     '200':
       description: Successfully updated a learning moment

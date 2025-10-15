@@ -4,7 +4,8 @@ post:
   summary: Create a learning moment for users
   deprecated: true
   description: |
-    Share Learning Moment.
+    Share a learning moment (Deprecated).
+    Use one of the 'Draft/Publish/Submit a learning moment for multiple users' POST endpoints instead.
   responses:
     '201':
       description: Successfully created a learning moment.
