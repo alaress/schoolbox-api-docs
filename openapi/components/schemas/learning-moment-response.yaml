@@ -64,7 +64,6 @@ properties:
           type: string
   currentState:
     type: string
-    example: "draft"
     enum: ["draft", "submitted", "published", "rejected"]
   curriculumNodes:
     type: array
