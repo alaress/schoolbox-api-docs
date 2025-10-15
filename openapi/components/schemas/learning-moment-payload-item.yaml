@@ -54,6 +54,10 @@ properties:
       type: object
   _links:
     type: object
+    description: |
+      An array of links used to perform actions relating to this learning moment.
+      Whether a particular link will be present depends on the state of the learning moment.
+      For example, createThread will only be present if a discussionThread has not already been created.
     properties:
       createThread:
         type: string
