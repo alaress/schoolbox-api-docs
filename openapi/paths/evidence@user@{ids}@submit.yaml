@@ -2,10 +2,10 @@ post:
   operationId: postEvidenceSubmitMultiUser
   tags: [Learning Moment]
   summary: Submit a learning moment for multiple users
-  description: Create or update a learning moment and leave it in a 'submitted' state for multiple users.
+  description: Create a learning moment and leave it in a 'submitted' state for multiple users.
   requestBody:
     description: |
-      The learning moment to save.  Only fields to be updated need to be included in the request.
+      The content of the learning moment to save.
     content:
       application/json:
         schema:
