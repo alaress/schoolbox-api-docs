@@ -16,7 +16,16 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/learning-moment-response-array.yaml
+            type: array
+            description: An array of learning moments.
+            items:
+              # Use the learning-moment-response schema, but override the example value for currentState.
+              allOf:
+                - $ref: ../components/schemas/learning-moment-response.yaml
+                - type: object
+                  properties:
+                    currentState:
+                      example: "published"
     default:
       $ref: ../components/responses/problem.yaml
   parameters:
