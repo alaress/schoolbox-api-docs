@@ -11,7 +11,20 @@ put:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/learning-moment-request.yaml
+#          $ref: ../components/schemas/learning-moment-request.yaml
+
+          # Use the learning-moment-request schema, but add a rejectionResponse parameter.
+          allOf:
+            - $ref: ../components/schemas/learning-moment-request.yaml
+            - type: object
+              properties:
+                rejectionReason:
+                  type: string
+                  description: |
+                    The reason for the decision not to publish the learning moment in its current state.
+                    Note this will appear in a comment in the discussion thread of the rejected learning moment.
+                  example: "Please add more detail to your descriptions."
+
   responses:
     '200':
       description: Successfully rejected a learning moment.
