@@ -30,3 +30,10 @@ properties:
     description: Array of folder ids.
     items:
         $ref: ../schemas/id.yaml
+  rejectionReason:
+    type: string
+    description: |
+      Only used in the 'reject' request variant.  Ignored in other variants.
+      The reason for the decision not to publish the learning moment in its current state.
+      Note this will appear in a comment in the discussion thread of the rejected learning moment.
+    example: "Please add more detail to your descriptions."
