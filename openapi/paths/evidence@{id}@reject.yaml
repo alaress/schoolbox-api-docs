@@ -2,7 +2,9 @@ put:
   operationId: putEvidenceReject
   tags: [Learning Moment]
   summary: Reject a learning moment
-  description: Update a learning moment and leave it in a 'rejected' state.
+  description: |
+    Update a learning moment and leave it in a 'rejected' state, and optionally supply a reason for the rejection.
+    note the rejection reason will appear in a comment in the discussion thread of each rejected learning moment.
   requestBody:
     description: |
       The learning moment to save.  Only fields to be updated need to be included in the request.
