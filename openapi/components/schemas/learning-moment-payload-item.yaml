@@ -49,7 +49,7 @@ properties:
           description: Short text tag to help with searching.
   curriculumNodes:
     type: array
-    description: Currently an empty array.  Will contain an array of curriculum node objects.
+    description: Currently an empty array.  Return of curriculum nodes and filtering by curriculum nodes is planned for a future version.
     items:
       type: object
   _links:
