@@ -11,8 +11,6 @@ put:
     content:
       application/json:
         schema:
-#          $ref: ../components/schemas/learning-moment-request.yaml
-
           # Use the learning-moment-request schema, but add a rejectionResponse parameter.
           allOf:
             - $ref: ../components/schemas/learning-moment-request.yaml
