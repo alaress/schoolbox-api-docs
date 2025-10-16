@@ -8,10 +8,9 @@ post:
     - name: provider
       in: path
       description: |
-        The type of device that is connecting to the service.
+        The provider that will handle the sending of push notifications to the device.
 
-        As of this version, this is expected to always be "Firebase". Apple
-        (APNS), Google Android (GCM), or Digistorm remain supported.
+        While Apple (APNS) and Google Android (GCM) are deprecated, both providers continue to be supported.
       required: true
       example: 'Firebase'
       schema:
