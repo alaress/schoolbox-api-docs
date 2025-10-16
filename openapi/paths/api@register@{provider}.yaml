@@ -32,7 +32,22 @@ post:
         text/plain:
           schema:
             type: string
-            example: "Invalid provider: 'invalid_slug'. Accepted providers are: APNS, GCM, Digistorm, Firebase"
+          examples:
+            invalidProvider:
+              summary: Invalid provider
+              value: "Invalid provider: 'invalid_slug'. Accepted providers are: APNS, GCM, Digistorm, Firebase"
+        application/json:
+          schema:
+            type: object
+            properties:
+              required:
+                type: string
+                description: Error message indicating required fields
+          examples:
+            missingCredentials:
+              summary: Missing authentication credentials
+              value:
+                required: "Either the \"username\" and \"password\" or the \"jwt\" POST fields must be set"
     '401':
       $ref: ../components/responses/authentication-failed.yaml
     default:
