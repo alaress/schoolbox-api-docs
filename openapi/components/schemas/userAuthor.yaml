@@ -12,10 +12,14 @@ properties:
     properties:
       profile:
         type: string
+        format: uri
         description: URL for a link to the user's profile page.
+        example: "/search/user/25"
       avatar:
         type: string
+        format: uri
         description: URL for a link to the user's avatar image.
+        example: "/portrait.php?id=25&size=square64"
 
   title:
     type: string
