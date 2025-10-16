@@ -1,6 +1,6 @@
 get:
   operationId: groupGetUsersInGroup
-  tags: [group, user]
+  tags: [user]
   summary: Get all users belonging to a group
   description: |
     This will provide a list of the users that belong to the specified group.  This endpoint is only available to superusers.
