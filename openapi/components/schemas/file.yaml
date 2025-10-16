@@ -39,23 +39,28 @@ properties:
         description: |
           An icon for the file's mimetype.
         format: uri
+        example: "/static/images/mime/application-image-jpg.svg"
       image:
         type: string
         description: |
           An image URL for the file (if it's an image).
         format: uri
+        example: "/storage/image.php?hash=a5e2262c38739a80255cc97e50e97b5d3030e749"
       stream:
         type: string
         description: |
           A stream URL for the file (if it's audio or video).
         format: uri
+        example: "/cms/sendVideo.php?id=&a5e2262c38739a80255cc97e50e97b5d3030e749type=storage"
       poster:
         type: string
         description: |
           A poster URL for the file (if it's a video).
         format: uri
+        example: "/cms/videoThumb.php?size=poster&id=&a5e2262c38739a80255cc97e50e97b5d3030e749type=storage"
       fetch:
         type: string
         description: |
           A URL from which the file may be fetched.
         format: uri
+        example: "/storage/fetch.php?hash=a5e2262c38739a80255cc97e50e97b5d3030e749"
