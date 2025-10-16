@@ -26,6 +26,14 @@ post:
   responses:
     '201':
       $ref: ../components/responses/authentication-successUser.yaml
+    '400':
+      description: |
+        This error occurs when the registration request cannot be processed due to a missing or invalid parameter.
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: "Invalid provider: 'invalid_slug'. Accepted providers are: APNS, GCM, Digistorm, Firebase"
     '401':
       $ref: ../components/responses/authentication-failed.yaml
     default:
@@ -61,11 +69,21 @@ delete:
           schema:
             type: string
     '400':
-      description: Unable to find app registration
+      description: |
+        This error occurs when the deregistration request cannot be processed. Common causes include:
+        - An unsupported provider specified in the path parameter
+        - No matching registration found for the provided device token and app ID combination
       content:
-        application/problem+json:
+        text/plain:
           schema:
-            $ref: ../components/schemas/problem.yaml
+            type: string
+          examples:
+            invalidProvider:
+              summary: Invalid provider
+              value: "Invalid provider: 'invalid_slug'. Accepted providers are: APNS, GCM, Digistorm, Firebase"
+            notFound:
+              summary: Registration not found
+              value: "Unable to find app registration"
     default:
       $ref: ../components/responses/problem.yaml
 
