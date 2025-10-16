@@ -57,7 +57,10 @@ delete:
       schema:
         type: string
         enum:
+          - GCM
+          - APNS
           - Firebase
+          - Digistorm
   requestBody:
     $ref: ../components/requestBodies/mobile-deregistration.yaml
   responses:
