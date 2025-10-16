@@ -1,0 +1,37 @@
+post:
+  operationId: postEvidenceSubmitMultiUser
+  tags: [Learning Moment]
+  summary: Submit a learning moment for multiple users
+  description: Create a learning moment and leave it in a 'submitted' state for multiple users.
+  requestBody:
+    description: |
+      The content of the learning moment to save.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/learning-moment-request.yaml
+  responses:
+    '200':
+      description: Successfully submitted a learning moment.
+      content:
+        application/json:
+          schema:
+            type: array
+            description: An array of learning moments.
+            items:
+              # Use the learning-moment-response schema, but override the example value for currentState.
+              allOf:
+                - $ref: ../components/schemas/learning-moment-response.yaml
+                - type: object
+                  properties:
+                    currentState:
+                      example: "submitted"
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: ids
+      in: path
+      description: A comma-separated list of userIds for whom the learning moment should be submitted.
+      required: true
+      schema:
+        type: string

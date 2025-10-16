@@ -1,0 +1,74 @@
+get:
+  operationId: evidenceCohortPayload
+  tags: [Learning Moment]
+  summary: Get learning moments for a cohort
+  description: |
+    Get all learning moments for users in a cohort defined by a folderId.
+  responses:
+    '200':
+      $ref: ../components/responses/evidence-cohort-payload.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: id
+      in: path
+      description: |
+        The ID of a class or group folder.  The cohort is the set of users involved in that class or group.
+      required: true
+      schema:
+        type: integer
+    - name: userIds
+      in: query
+      description: |
+        Comma-separated list of integer userIds (referring to owners) for filtering to specific learning moment owners.
+        Or an array of userIds as URL parameters (e.g. 'userIds[]=1&userIds=2...')
+      required: false
+      schema:
+        type: string
+    - name: authorIds
+      in: query
+      description: |
+        Comma-separated list of integer userIds (referring to authors) for filtering to specific learning moment authors.
+        Or an array of authorIds as URL parameters (e.g. 'authorIds[]=1&authorIds=2...')
+      required: false
+      schema:
+        type: string
+    - name: folderIds
+      in: query
+      description: |
+        Comma-separated list of integer folderIds for filtering to learning moments linked to specific folders.
+        Or an array of folderIds as URL parameters (e.g. 'folderIds[]=1&folderIds=2...')
+      required: false
+      schema:
+        type: string
+    - name: tagIds
+      in: query
+      description: |
+        Comma-separated list of integer tagIds for filtering to learning moments having specific tags.
+        Or an array of tagIds as URL parameters (e.g. 'tagIds[]=1&tagIds=2...')
+      required: false
+      schema:
+        type: string
+    - name: states
+      in: query
+      description: |
+        Comma-separated list of states for filtering to learning moments in specific states.
+        Or an array of states as URL parameters (e.g. 'states[]=rejected&states=draft...')
+      required: false
+      schema:
+        type: string
+        enum: ["draft", "submitted", "published", "rejected"]
+    - name: from
+      in: query
+      description: A date in YYYY-MM-DD format.
+      example: '2025-10-15'
+      required: false
+      schema:
+        type: string
+    - name: to
+      in: query
+      description: A date in YYYY-MM-DD format.
+      example: '2025-10-15'
+      required: false
+      schema:
+        type: string

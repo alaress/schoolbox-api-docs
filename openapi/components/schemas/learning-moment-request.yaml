@@ -1,0 +1,32 @@
+type: object
+properties:
+  body:
+    type: string
+    example: "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
+    description: Body text of learning moment as HTML.
+  evidence:
+    type: array
+    description: Array of evidence objects.
+    items:
+      type: object
+      properties:
+        file:
+          $ref: ../schemas/filePointer.yaml
+  curriculumNodes:
+    type: array
+    description: Array of curriculum node ids.
+    items:
+      $ref: ../schemas/id.yaml
+  tags:
+    type: array
+    description: Array of tag object stubs (containing id only).
+    items:
+      type: object
+      properties:
+        id:
+          $ref: ../schemas/id.yaml
+  folders:
+    type: array
+    description: Array of folder ids.
+    items:
+        $ref: ../schemas/id.yaml

@@ -1,0 +1,61 @@
+type: object
+properties:
+  id:
+    $ref: ../schemas/id.yaml
+  body:
+    type: string
+    example: "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
+    description: Body text of learning moment as HTML.
+  blurb:
+    type: string
+    example: "I learned to tie my shoelaces."
+    description: Short version of body text, automatically generated from body.  Not HTML.
+  showReadMore:
+    description: Whether to show a 'Read more' link after the blurb text.
+    type: boolean
+    example: false
+  files:
+    type: array
+    description: Array of file objects
+    items:
+      $ref: ../schemas/file.yaml
+  recipient:
+    $ref: ../schemas/userAuthor.yaml
+  creator:
+    $ref: ../schemas/userAuthor.yaml
+  createdAt:
+    $ref: ../schemas/date-object.yaml
+  updatedAt:
+    $ref: ../schemas/date-object.yaml
+  hasComments:
+    description: Whether the learning moment has any comments.
+    type: boolean
+    example: false
+  currentState:
+    type: string
+    example: "draft"
+    enum: ["draft", "submitted", "published", "rejected"]
+  tags:
+    type: array
+    description: Array of tag objects
+    items:
+      type: object
+      properties:
+        id:
+          $ref: ../schemas/id.yaml
+        name:
+          type: string
+          example: "Class Work"
+          description: Short text tag to help with searching.
+  curriculumNodes:
+    type: array
+    description: Currently an empty array.  Return of curriculum nodes and filtering by curriculum nodes is planned for a future version.
+    items:
+      type: object
+  _links:
+    $ref: ../schemas/learning-moment-links.yaml
+  _labels:
+    type: object
+    properties:
+      publish:
+        type: string
