@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "redocly lint && redocly bundle -o docs/builds/${npm_config_build_version}.yaml && ./scripts/addBuild.js ${npm_config_build_version} ${npm_config_selected} && ./scripts/applyVersion.js ${npm_config_build_version} docs/builds/${npm_config_build_version}.yaml",
+    "build": "redocly lint && redocly bundle main -o docs/builds/${npm_config_build_version}.yaml && ./scripts/addBuild.js ${npm_config_build_version} ${npm_config_selected} && ./scripts/applyVersion.js ${npm_config_build_version} docs/builds/${npm_config_build_version}.yaml",
     "rebuild-builds-list": "./scripts/rebuildBuildsList.js",
     "test": "redocly lint"
   }
