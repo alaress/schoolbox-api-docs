@@ -60,7 +60,7 @@ delete:
         text/plain:
           schema:
             type: string
-    '404':
+    '400':
       description: Unable to find app registration
       content:
         application/problem+json:
