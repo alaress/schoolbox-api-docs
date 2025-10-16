@@ -1,0 +1,19 @@
+description: |
+  Request body for deregistering a device from receiving push notifications.
+
+  Requires JSON content type.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        token:
+          description: The device token to deregister
+          type: string
+        appId:
+          description: The app identifier
+          type: string
+      required:
+        - token
+        - appId
+
