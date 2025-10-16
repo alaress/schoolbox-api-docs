@@ -86,6 +86,9 @@ delete:
             notFound:
               summary: Registration not found
               value: "Unable to find app registration"
+            missingBody:
+              summary: Missing request body
+              value: "We should have done something before this..."
     default:
       $ref: ../components/responses/problem.yaml
 
