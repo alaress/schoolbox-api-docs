@@ -8,27 +8,102 @@ post:
     - name: provider
       in: path
       description: |
-        The type of device that is connecting to the service.
+        The provider that will handle the sending of push notifications to the device.
 
-        As of this version, this is expected to always be "Digistorm". Apple
-        (APNS) or Google Android (GCM) are still supported, but deprecated: the
-        Digistorm provider will handle the sending of notifications via APNS or
-        GCM internally.
+        While Apple (APNS) and Google Android (GCM) are still supported, they are deprecated.
       required: true
-      example: 'Digistorm'
+      example: 'Firebase'
       schema:
         type: string
         enum:
           - GCM
           - APNS
+          - Firebase
           - Digistorm
   requestBody:
     $ref: ../components/requestBodies/registration.yaml
   responses:
     '201':
       $ref: ../components/responses/authentication-successUser.yaml
+    '400':
+      description: |
+        This error occurs when the registration request cannot be processed due to a missing or invalid parameter.
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            invalidProvider:
+              summary: Invalid provider
+              value: "Invalid provider: 'invalid_slug'. Accepted providers are: APNS, GCM, Digistorm, Firebase"
+        application/json:
+          schema:
+            type: object
+            properties:
+              required:
+                type: string
+                description: Error message indicating required fields
+          examples:
+            missingCredentials:
+              summary: Missing authentication credentials
+              value:
+                required: "Either the \"username\" and \"password\" or the \"jwt\" POST fields must be set"
     '401':
       $ref: ../components/responses/authentication-failed.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+delete:
+  operationId: mobileDeregister
+  tags: [mobile]
+  summary: Deregister mobile device
+  security: []
+  description: |
+    Removes a registered device from receiving push notifications.    
+  parameters:
+    - name: provider
+      in: path
+      description: |
+        The type of device that is connecting to the service.
+
+        Only "Firebase" is currently supported for deregistration.
+      required: true
+      example: 'Firebase'
+      schema:
+        type: string
+        enum:
+          - GCM
+          - APNS
+          - Firebase
+          - Digistorm
+  requestBody:
+    $ref: ../components/requestBodies/mobile-deregistration.yaml
+  responses:
+    '200':
+      description: Device successfully deregistered
+      content:
+        text/plain:
+          schema:
+            type: string
+    '400':
+      description: |
+        This error occurs when the deregistration request cannot be processed. Common causes include:
+        - An unsupported provider specified in the path parameter
+        - No matching registration found for the provided device token and app ID combination
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            invalidProvider:
+              summary: Invalid provider
+              value: "Invalid provider: 'invalid_slug'. Accepted providers are: APNS, GCM, Digistorm, Firebase"
+            notFound:
+              summary: Registration not found
+              value: "Unable to find app registration"
+            missingBody:
+              summary: Missing request body
+              value: "We should have done something before this..."
     default:
       $ref: ../components/responses/problem.yaml
 
