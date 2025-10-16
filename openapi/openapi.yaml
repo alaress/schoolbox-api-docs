@@ -234,6 +234,12 @@ paths:
   /api/assessment/{id}:
       $ref: 'paths/assessment@{id}.yaml'
 
+  /learning/assessments/{assessmentId}/{studentId}/feedback:
+    $ref: 'paths/learning@assessments@{assessmentId}@{studentId}@feedback.yaml'
+
+  /learning/assessments/{assessmentId}/{studentId}/submit:
+    $ref: 'paths/learning@assessments@{assessmentId}@{studentId}@submit.yaml'
+
   /api/user/{id}/notify:
       $ref: 'paths/api@user@{id}@notify.yaml'
 
@@ -248,6 +254,9 @@ paths:
     
   /pastoral/record/insert:
     $ref: 'paths/pastoral@record@insert.yaml'
+
+  /pastoral/record/{id}/update:
+    $ref: 'paths/pastoral@record@update.yaml'
 
   /api/curriculum/usage/{id}:
     $ref: 'paths/api@curriculum@usage@{id}.yaml'
