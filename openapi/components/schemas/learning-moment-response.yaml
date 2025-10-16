@@ -34,9 +34,21 @@ properties:
         type: object
         properties:
           getComments:
-            $ref: ./link.yaml
+            # Use the link.yaml schema, but override the example value.
+            allOf:
+             - $ref: ./link.yaml
+             - type: object
+               properties:
+                 href:
+                   example: "/discussion/evidence/19/threads/27/comments"
           createComment:
-            $ref: ./link.yaml
+            # Use the link.yaml schema, but override the example value.
+            allOf:
+              - $ref: ./link.yaml
+              - type: object
+                properties:
+                  href:
+                    example: "/discussion/evidence/19/threads/27/comments"
   recipient:
     $ref: ../schemas/userAuthor.yaml
   evidence:
