@@ -2,9 +2,8 @@
   "name": "schoolbox-api",
   "version": "1.2.10",
   "dependencies": {
-    "@redocly/cli": "^1.0.2",
-    "@redocly/openapi-core": "^1.0.0-beta.109",
-    "semver": "^7.3.7"
+    "@redocly/cli": "^1.34.5",
+    "semver": "^7.7.3"
   },
   "private": true,
   "scripts": {
