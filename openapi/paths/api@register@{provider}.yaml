@@ -10,7 +10,7 @@ post:
       description: |
         The provider that will handle the sending of push notifications to the device.
 
-        While Apple (APNS) and Google Android (GCM) are deprecated, both providers continue to be supported.
+        While Apple (APNS) and Google Android (GCM) are still supported, they are deprecated.
       required: true
       example: 'Firebase'
       schema:
