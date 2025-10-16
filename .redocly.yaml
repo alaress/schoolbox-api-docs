@@ -5,6 +5,7 @@ extends:
 apis:
   main:
     root: openapi/openapi.yaml
+    output: ./docs/
 rules:
   no-empty-servers: off
   info-license: off
