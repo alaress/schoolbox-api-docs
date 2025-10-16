@@ -1,12 +1,14 @@
 put:
   operationId: putEvidence
   tags: [Learning Moment]
-  summary: Update Learning Moment
+  summary: Update learning moment
+  deprecated: true
   description: |
-    Update Learning Moment
+    Update a learning moment (Deprecated).
+    Use one of the 'Draft/Publish/Submit a learning moment' PUT endpoints instead.
   responses:
     '200':
-      description: Successfully Updated a Learning moment
+      description: Successfully updated a learning moment
       content:
         application/json:
           schema:
@@ -19,14 +21,14 @@ put:
     - $ref: ../components/parameters/id.yaml
 
 delete:
-  operationId: deleteEvidence
+  operationId: deleteLearningMoment
   tags: [Learning Moment]
-  summary: Delete Learning Moment
+  summary: Delete learning moment
   description: |
-    Delete Learning Moment
+    Delete learning moment
   responses:
     '204':
-      description: The Learning Moment was deleted successfully.
+      description: Successfully deleted a learning moment.
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

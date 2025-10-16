@@ -1,0 +1,47 @@
+put:
+  operationId: putEvidenceReject
+  tags: [Learning Moment]
+  summary: Reject a learning moment
+  description: |
+    Update a learning moment and leave it in a 'rejected' state, and optionally supply a reason for the rejection.
+    note the rejection reason will appear in a comment in the discussion thread of each rejected learning moment.
+  requestBody:
+    description: |
+      The learning moment to save.  Only fields to be updated need to be included in the request.
+    content:
+      application/json:
+        schema:
+          # Use the learning-moment-request schema, but add a rejectionResponse parameter.
+          allOf:
+            - $ref: ../components/schemas/learning-moment-request.yaml
+            - type: object
+              properties:
+                rejectionReason:
+                  type: string
+                  description: |
+                    The reason for the decision not to publish the learning moment in its current state.
+                    Note this will appear in a comment in the discussion thread of the rejected learning moment.
+                  example: "Please add more detail to your descriptions."
+
+  responses:
+    '200':
+      description: Successfully rejected a learning moment.
+      content:
+        application/json:
+          schema:
+            # Use the learning-moment-response schema, but override the example value for currentState.
+            allOf:
+              - $ref: ../components/schemas/learning-moment-response.yaml
+              - type: object
+                properties:
+                  currentState:
+                    example: "rejected"
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the learning moment you wish to put into a 'rejected' state.
+      required: true
+      schema:
+        type: integer

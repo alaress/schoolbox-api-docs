@@ -1,3 +1,4 @@
+# This is intended to document folder arrays created using User/Translator/Author/ModelToArray.php (Schoolbox codebase).
 title: User
 description: Short fields for users
 type: object
@@ -5,6 +6,20 @@ properties:
 
   id:
     $ref: ./id.yaml
+
+  _links:
+    type: object
+    properties:
+      profile:
+        type: string
+        format: uri
+        description: URL for a link to the user's profile page.
+        example: "/search/user/25"
+      avatar:
+        type: string
+        format: uri
+        description: URL for a link to the user's avatar image.
+        example: "/portrait.php?id=25&size=square64"
 
   title:
     type: string
@@ -28,6 +43,10 @@ properties:
     type: string
     nullable: true
     description: The user's preferred name.
+
+  pronoun:
+    type: string
+    nullable: true
   
   lastName:
     type: string
