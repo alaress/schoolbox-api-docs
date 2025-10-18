@@ -1,0 +1,26 @@
+type: object
+required:
+  - configs
+properties:
+  configs:
+    type: array
+    description: Array of configuration updates to process
+    items:
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
+          type: string
+          description: The unique name/key of the configuration setting
+          example: "site_name"
+        value:
+          oneOf:
+            - type: string
+            - type: number
+            - type: boolean
+            - type: object
+            - type: array
+          description: The new configuration value
+          example: "Updated School Name"
