@@ -18,11 +18,11 @@ properties:
     description: |
       The identifying code for the campus in the school's SIS.
   days:
-    type: string
+    type: number
     description: The number of days in a cycle for this campus' timetable.
 readOnly: true
 example:
   id: 1
   name: Secondary
   code: SEC
-  days: "5"
+  days: 5
