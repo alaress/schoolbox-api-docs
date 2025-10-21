@@ -58,6 +58,11 @@ tags:
     description: |
       Create and manage calendar events.
 
+  - name: config
+    x-displayName: Configuration
+    description: |
+      Get and update system configuration values.
+
   - name: discussion
     x-displayName: Discussions
     description: |
@@ -299,6 +304,12 @@ paths:
 
   /api/search/folder/{id}:
     $ref: 'paths/api@search@folder@{id}.yaml'
+
+  /api/config:
+    $ref: 'paths/api@config.yaml'
+
+  /api/config/{configName}:
+    $ref: 'paths/api@config@{configName}.yaml'
 
   /group/getData/{id}:
     $ref: 'paths/group@getData@{id}.yaml'
