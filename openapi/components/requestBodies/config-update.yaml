@@ -1,0 +1,6 @@
+description: Configuration update request
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/config-update.yaml

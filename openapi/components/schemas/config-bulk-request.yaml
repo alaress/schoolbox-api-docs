@@ -1,0 +1,50 @@
+type: object
+required:
+  - configs
+properties:
+  configs:
+    type: array
+    description: Array of configuration updates to process
+    items:
+      type: object
+      required:
+        - name
+        - value
+      properties:
+        name:
+          type: string
+          description: The unique name/key of the configuration setting
+          example: "site_name"
+        value:
+          oneOf:
+            - type: string
+            - type: number
+            - type: boolean
+            - type: object
+              additionalProperties: true
+            - type: array
+              items: {}
+          description: The new configuration value
+          example:
+            string_value: "Updated School Name"
+            number_value: 52428800
+            boolean_value: true
+            object_value:
+              primaryColor: "#2563eb"
+              darkMode: true
+            array_value: ["pdf", "doc", "jpg"]
+example:
+  configs:
+    - name: "site_name"
+      value: "My Updated School"
+    - name: "theme_settings"
+      value:
+        primaryColor: "#2563eb"
+        secondaryColor: "#64748b"
+        darkMode: true
+    - name: "allowed_file_types"
+      value: ["pdf", "doc", "docx", "jpg", "png"]
+    - name: "max_file_size"
+      value: 52428800
+    - name: "enable_notifications"
+      value: false

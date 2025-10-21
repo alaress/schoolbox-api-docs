@@ -1,0 +1,88 @@
+type: object
+required:
+  - results
+  - errors
+  - total_processed
+  - successful
+  - failed
+properties:
+  results:
+    type: array
+    description: Array of results for each config update attempt
+    items:
+      oneOf:
+        - allOf:
+            - $ref: ./config-item.yaml
+            - type: object
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum: ["success"]
+                  example: "success"
+        - type: object
+          required:
+            - name
+            - status
+            - error
+          properties:
+            name:
+              type: string
+              description: The config name that failed to update
+              example: "invalid_config"
+            status:
+              type: string
+              enum: ["failed"]
+              example: "failed"
+            error:
+              type: string
+              description: Error message explaining why the update failed
+              example: "Config 'invalid_config' not found"
+  errors:
+    type: array
+    items:
+      type: string
+    description: Array of error messages for failed updates
+    example: ["Config 'invalid_config' not found"]
+  total_processed:
+    type: integer
+    description: Total number of config updates attempted
+    example: 5
+  successful:
+    type: integer
+    description: Number of config updates that succeeded
+    example: 4
+  failed:
+    type: integer
+    description: Number of config updates that failed
+    example: 1
+example:
+  results:
+    - name: "site_name"
+      value: "My Updated School"
+      description: "The name of the school displayed in the header"
+      status: "success"
+    - name: "theme_settings"
+      value:
+        primaryColor: "#2563eb"
+        secondaryColor: "#64748b"
+        darkMode: true
+      description: "Theme configuration object"
+      status: "success"
+    - name: "allowed_file_types"
+      value: ["pdf", "doc", "docx", "jpg", "png"]
+      description: "Array of allowed file extensions"
+      status: "success"
+    - name: "enable_notifications"
+      value: true
+      description: "Whether to enable push notifications"
+      status: "success"
+    - name: "invalid_config"
+      status: "failed"
+      error: "Config 'invalid_config' not found"
+  errors:
+    - "Config 'invalid_config' not found"
+  total_processed: 5
+  successful: 4
+  failed: 1
