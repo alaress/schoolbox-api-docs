@@ -1,0 +1,22 @@
+type: object
+required:
+  - name
+  - value
+properties:
+  name:
+    type: string
+    description: The unique name/key of the configuration setting
+    example: "site_name"
+  value:
+    oneOf:
+      - type: string
+      - type: number
+      - type: boolean
+      - type: object
+      - type: array
+    description: The configuration value. Can be any valid JSON type depending on the config setting.
+    example: "My School"
+  description:
+    type: string
+    description: Optional description of what this configuration setting controls
+    example: "The name of the school displayed in the header"
