@@ -1,0 +1,42 @@
+type: object
+description: |
+  An array of links used to perform actions relating to this learning moment.
+  Whether a particular link will be present depends on the state of the learning moment.
+  For example, createThread will only be present if a discussionThread has not already been created.
+properties:
+  createThread:
+    type: string
+    format: uri
+    example: "/discussion/evidence/19/threads"
+  detail:
+    type: string
+    format: uri
+    example: "/learning/evidence/19"
+  modifyForm:
+    type: string
+    format: uri
+    example: "/learning/evidence/19/modify"
+  put:
+    type: string
+    format: uri
+    example: "/learning/evidence/19"
+  draft:
+    type: string
+    format: uri
+    example: "/learning/evidence/19/draft"
+  submit:
+    type: string
+    format: uri
+    example: "/learning/evidence/19/submit"
+  publish:
+    type: string
+    format: uri
+    example: "/learning/evidence/19/publish"
+  reject:
+    type: string
+    format: uri
+    example: "/learning/evidence/19/reject"
+  delete:
+    type: string
+    format: uri
+    example: "/learning/evidence/19/delete"

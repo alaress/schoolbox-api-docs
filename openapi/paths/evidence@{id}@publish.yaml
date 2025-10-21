@@ -1,0 +1,34 @@
+put:
+  operationId: putEvidencePublish
+  tags: [Learning Moment]
+  summary: Publish a learning moment
+  description: Update a learning moment and leave it in a 'published' state.
+  requestBody:
+    description: |
+      The learning moment to save.  Only fields to be updated need to be included in the request.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/learning-moment-request.yaml
+  responses:
+    '200':
+      description: Successfully published a learning moment.
+      content:
+        application/json:
+          schema:
+            # Use the learning-moment-response schema, but override the example value for currentState.
+            allOf:
+              - $ref: ../components/schemas/learning-moment-response.yaml
+              - type: object
+                properties:
+                  currentState:
+                    example: "published"
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: id
+      in: path
+      description: The ID of the learning moment you wish to put into a 'published' state.
+      required: true
+      schema:
+        type: integer

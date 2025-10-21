@@ -1,0 +1,14 @@
+type: object
+properties:
+  timestamp:
+    type: integer
+    example: 1759472154
+    description: Unix timestamp
+  displayAs:
+    type: string
+    description: The date as it is intended to be displayed in this context.
+    example: "Oct 3, 2025"
+  "rfc":
+    type: string
+    description: Date in RFC3339 format.
+    example: 2025-10-03T16:09:06+10:00
