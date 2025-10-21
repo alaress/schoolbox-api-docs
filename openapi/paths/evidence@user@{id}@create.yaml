@@ -1,12 +1,14 @@
 post:
   operationId: learningMomentEvidence.postMomentForUsers
   tags: [Learning Moment]
-  summary: Create a Learning moment for users
+  summary: Create a learning moment for users
+  deprecated: true
   description: |
-    Share Learning Moment.
+    Share a learning moment (Deprecated).
+    Use one of the 'Draft/Publish/Submit a learning moment for multiple users' POST endpoints instead.
   responses:
     '201':
-      description: Successfully Created a Learning moment.
+      description: Successfully created a learning moment.
       content:
         application/json:
           schema:
