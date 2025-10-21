@@ -1,0 +1,42 @@
+put:
+  operationId: putEvidenceBulkReject
+  tags: [Learning Moment]
+  summary: Reject multiple learning moments
+  description: |
+    Reject multiple learning moments (meaning refuse to publish them), and optionally supply a reason for the rejection.
+    Note the rejection reason will appear in a comment in the discussion thread of each rejected learning moment.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            momentIds:
+              type: array
+              description: Array of learning moment ids.
+              items:
+                $ref: ../components/schemas/id.yaml
+            rejectionReason:
+              type: string
+              description: |
+                The reason for the decision not to publish the learning moment in its current state.
+                Note this will appear in a comment in the discussion thread of the rejected learning moment.
+              example: "Please add more detail to your descriptions."
+  responses:
+    '200':
+      description: Successfully rejected learning moments.
+      content:
+        application/json:
+          schema:
+            type: array
+            description: An array of learning moments.
+            items:
+              # Use the learning-moment-response schema, but override the example value for currentState.
+              allOf:
+                - $ref: ../components/schemas/learning-moment-response.yaml
+                - type: object
+                  properties:
+                    currentState:
+                      example: "rejected"
+    default:
+      $ref: ../components/responses/problem.yaml

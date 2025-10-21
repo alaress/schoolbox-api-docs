@@ -1,0 +1,103 @@
+type: object
+properties:
+  id:
+    $ref: ../schemas/id.yaml
+  createdAt:
+    $ref: ../schemas/dateTimeString.yaml
+  updatedAt:
+    $ref: ../schemas/dateTimeString.yaml
+  body:
+    type: string
+    example: "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
+    description: Body text of learning moment as HTML.
+  creator:
+    $ref: ../schemas/userAuthor.yaml
+  discussionThread:
+    type: object
+    nullable: true
+    properties:
+      id:
+        $ref: ../schemas/id.yaml
+      open:
+        description: Whether the discussion thread is open to new comments or not.
+        type: boolean
+        nullable: true
+      createdAt:
+        type: string
+        description: Currently null, but in the future will be a datetime string.
+        nullable: true
+      updatedAt:
+        type: string
+        description: Currently null, but in the future will be a datetime string.
+        nullable: true
+      _links:
+        type: object
+        properties:
+          getComments:
+            # Use the link.yaml schema, but override the example value.
+            allOf:
+             - $ref: ./link.yaml
+             - type: object
+               properties:
+                 href:
+                   example: "/discussion/evidence/19/threads/27/comments"
+          createComment:
+            # Use the link.yaml schema, but override the example value.
+            allOf:
+              - $ref: ./link.yaml
+              - type: object
+                properties:
+                  href:
+                    example: "/discussion/evidence/19/threads/27/comments"
+  recipient:
+    $ref: ../schemas/userAuthor.yaml
+  evidence:
+    type: array
+    description: Array of evidence objects.
+    items:
+      type: object
+      properties:
+        storage:
+          $ref: ../schemas/file.yaml
+        filename:
+          type: string
+          example: photo.jpeg
+  folders:
+    type: array
+    description: Array of folder objects.
+    items:
+      type: object
+      properties:
+        id:
+          $ref: ../schemas/id.yaml
+        name:
+          type: string
+        code:
+          type: string
+  currentState:
+    type: string
+    enum: ["draft", "submitted", "published", "rejected"]
+  curriculumNodes:
+    type: array
+    description: Array of curriculum node objects.
+    items:
+      $ref: ./curriculumItem.yaml
+  tags:
+    type: array
+    description: Array of tag objects
+    items:
+      type: object
+      properties:
+        id:
+          $ref: ../schemas/id.yaml
+        name:
+          type: string
+          example: "Class Work"
+          description: Short text tag to help with searching.
+  _links:
+    $ref: ../schemas/learning-moment-links.yaml
+  _labels:
+    type: object
+    properties:
+      publish:
+        type: string
