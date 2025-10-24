@@ -3,7 +3,7 @@ type: object
 properties:
   discriminator:
     type: string
-    description: evidence - discriminator for Evidence object
+    description: moment - discriminator for learning moment object
     example: evidence
   object:
     $ref: ./evidenceItem.yaml
