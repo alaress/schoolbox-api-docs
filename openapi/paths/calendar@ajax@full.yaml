@@ -3,7 +3,7 @@ get:
   tags: [calendar]
   summary: Get calendar events
   description: |
-    Retrieve calendar events for a given user and date range.
+    Retrieve calendar events for a given user and date range.  Maximum recommended range is 1 month.
 
     This mirrors the data returned by the calendar ajax endpoint and is
     used to populate the calendar UI. Results include timetable, resource booking, school and individual events.
