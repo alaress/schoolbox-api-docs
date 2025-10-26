@@ -1,0 +1,11 @@
+name:        folderId
+in:          query
+description: |
+  Optional folder ID. When supplied, the endpoint will only include events
+  associated with the group identified by this folderId.
+schema:
+  type: integer
+  minimum: 1
+  example: 42
+required: false
+
