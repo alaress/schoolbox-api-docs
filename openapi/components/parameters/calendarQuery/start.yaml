@@ -1,0 +1,11 @@
+name:        start
+in:          query
+description: |
+  Start of the date range (inclusive) as a UNIX timestamp in seconds.
+
+  This is used to bound the range of calendar events returned.
+schema:
+  type: integer
+  example: 1758981600
+required: true
+

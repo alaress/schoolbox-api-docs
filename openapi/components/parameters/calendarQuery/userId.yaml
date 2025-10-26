@@ -1,0 +1,9 @@
+name:        userId
+in:          query
+description: |
+  The user ID whose calendar events should be retrieved.
+schema:
+  type: integer
+  minimum: 1
+  example: 1
+required: true
