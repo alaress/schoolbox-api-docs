@@ -1,0 +1,11 @@
+name:        end
+in:          query
+description: |
+  End of the date range (exclusive) as a UNIX timestamp in seconds.
+
+  This is used to bound the range of calendar events returned.
+schema:
+  type: integer
+  example: 1762606800
+required: true
+
