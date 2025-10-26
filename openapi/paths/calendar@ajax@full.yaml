@@ -1,0 +1,19 @@
+get:
+  operationId: calendarAjax.getFull
+  tags: [calendar]
+  summary: Get calendar events
+  description: |
+    Retrieve calendar events for a given user and date range.
+
+    This mirrors the data returned by the calendar ajax endpoint and is
+    used to populate the calendar UI. Results include timetable, resource booking, school and individual events.
+  parameters:
+    - $ref: ../components/parameters/calendarQuery/start.yaml
+    - $ref: ../components/parameters/calendarQuery/end.yaml
+    - $ref: ../components/parameters/calendarQuery/userId.yaml
+    - $ref: ../components/parameters/calendarQuery/folderId.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/calendarAjaxEvent-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

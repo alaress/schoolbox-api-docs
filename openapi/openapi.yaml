@@ -206,6 +206,9 @@ paths:
   /news/lists/folder/{id}:
     $ref: 'paths/news@lists@folder@{id}.yaml'
 
+  /calendar/ajax/full:
+    $ref: 'paths/calendar@ajax@full.yaml'
+
   /calendar/event/create:
     $ref: 'paths/calendar@event@create.yaml'
 
