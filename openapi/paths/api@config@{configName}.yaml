@@ -7,9 +7,6 @@ get:
   responses:
     '200':
       $ref: ../components/responses/config-item.yaml
-    '404':
-      $ref: ../components/responses/problem.yaml
-      description: Configuration not found or access denied
     default:
       $ref: ../components/responses/problem.yaml
 
@@ -24,12 +21,6 @@ patch:
   responses:
     '200':
       $ref: ../components/responses/config-item.yaml
-    '400':
-      $ref: ../components/responses/problem.yaml
-      description: Invalid request body or validation error
-    '404':
-      $ref: ../components/responses/problem.yaml
-      description: Configuration not found or access denied
     default:
       $ref: ../components/responses/problem.yaml
 

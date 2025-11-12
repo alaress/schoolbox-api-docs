@@ -9,3 +9,33 @@ properties:
 
       This token is passed to the Schoolbox API according to the "BearerAuth"
       security scheme (i.e. in a HTTP header `Authorization: Bearer $token`).
+    example: 3MiOiJ2YWdyYW50LmRldi5zY2hvb2xib3guY2xvdWQiLCJzdWIiOiJhbGFyZXNzIiwianRpIjoiZDM1N...
+  createdAt:
+    type: string
+    description: |
+      The creation datetime for the token.
+    example: Nov 11, 2025 2:45pm
+  expiry:
+    type: string
+    description: |
+      The datetime when the token expires. Will be `null` for indefinite token lifetime.
+    example: Dec 25, 2025 3:45pm
+  createdBy:
+    type: string
+    description: |
+      The user who created the token.
+    example: John Smith
+  jwtId:
+    type: string
+    description: |
+      The identifier of the JWT.
+    example: u82jddg5-ky61-z9w3-0098-334hxb27dhg0
+  showExisting:
+    type: boolean
+    description: |
+      This is `true` when a JWT was either generated for the user, or it already existed for the user.
+    example: true
+      
+      
+      
+    
