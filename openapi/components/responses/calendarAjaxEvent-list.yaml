@@ -1,0 +1,6 @@
+description: A list of calendar events for the requested date range.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/calendar/ajaxEventList.yaml
+
