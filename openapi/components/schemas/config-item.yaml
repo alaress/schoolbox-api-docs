@@ -13,18 +13,9 @@ properties:
       - type: number
       - type: boolean
       - type: object
-        additionalProperties: true
       - type: array
-        items: {}
     description: The configuration value. Can be any valid JSON type depending on the config setting.
-    example:
-      string_value: "My School"
-      number_value: 52428800
-      boolean_value: true
-      object_value:
-        primaryColor: "#2563eb"
-        darkMode: true
-      array_value: ["pdf", "doc", "jpg"]
+    example: "My School"
   description:
     type: string
     description: Optional description of what this configuration setting controls
