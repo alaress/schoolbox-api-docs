@@ -57,3 +57,32 @@ properties:
     type: integer
     description: Number of config updates that failed
     example: 1
+example:
+  results:
+    - name: "site_name"
+      value: "My Updated School"
+      description: "The name of the school displayed in the header"
+      status: "success"
+    - name: "theme_settings"
+      value:
+        primaryColor: "#2563eb"
+        secondaryColor: "#64748b"
+        darkMode: true
+      description: "Theme configuration object"
+      status: "success"
+    - name: "allowed_file_types"
+      value: ["pdf", "doc", "docx", "jpg", "png"]
+      description: "Array of allowed file extensions"
+      status: "success"
+    - name: "enable_notifications"
+      value: true
+      description: "Whether to enable push notifications"
+      status: "success"
+    - name: "invalid_config"
+      status: "failed"
+      error: "Config 'invalid_config' not found"
+  errors:
+    - "Config 'invalid_config' not found"
+  total_processed: 5
+  successful: 4
+  failed: 1
