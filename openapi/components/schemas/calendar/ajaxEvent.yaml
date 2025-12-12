@@ -1,0 +1,162 @@
+type: object
+required:
+  - title
+  - start
+  - end
+  - editable
+  - allDay
+  - color
+  - className
+  - data
+properties:
+  resourceId:
+    description: Optional resource identifier for resource-timeline views.
+    nullable: true
+    type: string
+    oneOf:
+      - type: integer
+      - type: string
+  title:
+    type: string
+    description: Display title of the event.
+    example: Staff Meeting
+  start:
+    type: string
+    description: Start in RFC3339 date-time or date (YYYY-MM-DD) format if all day.
+    example: 2025-10-01T16:00:00+11:00
+  end:
+    type: string
+    description: End in RFC3339 date-time or date (YYYY-MM-DD) format if all day.
+    example: 2025-10-01T17:00:00+11:00
+  editable:
+    type: boolean
+    description: Whether the event is editable for the current user.
+    example: true
+  allDay:
+    type: boolean
+    description: Whether the event spans the whole day.
+    example: false
+  color:
+    type: string
+    description: CSS color string for the event.
+    example: "#29839e"
+  className:
+    type: string
+    description: Space-separated CSS classes that describe the event source/type/level.  Useful for client side filtering.
+    example: source1 type3 campus1
+  data:
+    type: object
+    description: Additional metadata and links used by the calendar UI.
+    properties:
+      meta:
+        type: object
+        description: Event metadata used by the UI and links.
+        properties:
+          editable:
+            type: boolean
+            description: Whether this event is editable by the current user.
+            example: true
+          eventId:
+            description: Identifier of the event (may be an integer id or external string id).
+            oneOf:
+              - type: integer
+              - type: string
+            example: 178
+          time:
+            type: string
+            description: Human-readable time range.
+            example: 4:00pm&ndash;5:00pm
+          detail:
+            type: string
+            description: Additional details for the event. May contain HTML markup.
+          location:
+            type: string
+            description: Location or room for the event.
+            example: Staffroom
+          eventTypeId:
+            type: integer
+            description: Event type id.
+            example: 3
+          eventType:
+            type: string
+            description: Event type code as a CSS class string.
+            example: type3
+          variant:
+            type: string
+            description: Variant of the item. Typically "event".
+            example: event
+          type:
+            type: string
+            description: Friendly type or category label.
+            example: Meeting
+          author:
+            type: string
+            description: Name of the event author, if any.
+            example: Cecilia Cordonnier
+          authorId:
+            type: integer
+            description: Author id, or -1 if not applicable.
+            example: 12
+          level:
+            type: string
+            description: Encoded classification e.g. source/type/level classes.
+            example: source1 type3 campus1
+          completed:
+            type: boolean
+            description: Whether the event has been completed (for task-like events).
+            example: false
+          seriesId:
+            nullable: true
+            type: integer
+            oneOf:
+              - type: integer
+              - type: string
+            description: Series identifier when part of a repeating series.
+            example: 8
+      links:
+        type: object
+        description: Related links for the event.
+        properties:
+          category:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: -1
+              name:
+                type: string
+                example: ""
+          path:
+            type: string
+            nullable: true
+            description: Internal path to the event details page, if available.
+            example: "/calendar/event/178"
+      styles:
+        type: object
+        properties:
+          visible:
+            type: string
+            description: Extra style flags.
+            example: ""
+      attendance:
+        type: object
+        description: Attendance information when applicable.
+        properties:
+          hasAttendance:
+            type: boolean
+            example: false
+          status:
+            type: object
+            properties:
+              current:
+                $ref: ../calendarAttendanceStatus.yaml
+      classAttendance:
+        type: object
+        description: Class attendance link info, present for class events.
+        properties:
+          url:
+            type: string
+            nullable: true
+          target:
+            type: string
+            nullable: true
