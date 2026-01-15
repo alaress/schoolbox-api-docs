@@ -1,12 +1,16 @@
 [
   {
+    "label": "26.0.0",
+    "value": "26.0.0",
+    "selected": true
+  },
+  {
     "label": "26.0.0-beta3",
     "value": "26.0.0-beta3"
   },
   {
     "label": "25.1.5",
-    "value": "25.1.5",
-    "selected": true
+    "value": "25.1.5"
   },
   {
     "label": "25.1.4",
