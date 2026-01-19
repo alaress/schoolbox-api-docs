@@ -70,7 +70,7 @@ content:
           type: string
           nullable: true
         points:
-          description: Points of this pastoral record.
+          description: Points of this pastoral record. Setting this to null will remove the points value from the pastoral record.
           type: number
           format: float
           minimum: -100000
