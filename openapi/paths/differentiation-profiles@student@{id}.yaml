@@ -40,3 +40,31 @@ post:
                 example: "2022-08-30 10:09:09"
     default:
       $ref: ../components/responses/problem.yaml
+
+put:
+  operationId: updateDifferentiationProfiles
+  tags: [differentiation]
+  summary: Update a differentiation profile
+  description: |
+      Update an existing differentiation profile.
+  requestBody:
+      $ref: ../components/requestBodies/differentiation.yaml
+  responses:
+      '200':
+        description: Response from updating differentiation profile object
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: id
+                  example: 4
+                updated_at:
+                  type: string
+                  description: datetime in the shortened date format
+                  format: date-time
+                  example: "2022-08-30 10:09:09"
+      default:
+          $ref: ../components/responses/problem.yaml
