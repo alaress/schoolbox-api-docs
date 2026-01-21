@@ -107,6 +107,11 @@ tags:
     description: |
       Create and manage users.
 
+  - name: differentiation
+    x-displayName: Differentiation
+    description: |
+      Create and manage differentiation profiles.
+
 servers:
   - url: https://{hostname}.{domain}
     variables:
@@ -313,6 +318,9 @@ paths:
 
   /group/getData/{id}:
     $ref: 'paths/group@getData@{id}.yaml'
+
+  /differentiation-profiles/student/{id}:
+    $ref: 'paths/differentiation-profiles@student@{id}.yaml'
 
 security:
   # Authorization is handled by Schoolbox itself once a user is authenticated:

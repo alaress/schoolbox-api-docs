@@ -1,0 +1,145 @@
+title: an Differentiation Profile
+description: a Differentiation Profile object
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  status:
+    type: array
+    readOnly: true
+    description: Status flags for the differentiation profile
+    items:
+      type: string
+      enum:
+        - unpopulated
+        - expired
+        - out-of-date
+    example: []
+  student:
+    type: object
+    description: The student associated with the differentiation profile
+    properties:
+      id:
+        type: integer
+        example: 69
+      fullName:
+        type: string
+        example: "Eden Reed"
+      givenName:
+        type: string
+        example: "Eden"
+      lastName:
+        type: string
+        example: "Reed"
+      yearLevel:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 4
+          name:
+            type: string
+            example: "3"
+      _links:
+        type: object
+        properties:
+          profile:
+            type: string
+            example: "/search/user/69"
+  adjustment_category:
+    type: array
+    nullable: true
+    description: Array of adjustment categories (if applicable)
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    example:
+      - id: 1
+        name: "Physical"
+      - id: 2
+        name: "Cognitive"
+  adjustment_level:
+    type: array
+    nullable: true
+    description: Array of adjustment levels (if applicable)
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    example:
+      - id: 1
+        name: "Extensive"
+  overview:
+    type: string
+    nullable: true
+    description: Overview of the differentiation profile (if applicable)
+    example: null
+  interests_strengths:
+    type: string
+    nullable: true
+    description: Interests and strengths (if applicable)
+    example: null
+  needs_challenges:
+    type: string
+    nullable: true
+    description: Needs and challenges (if applicable)
+    example: null
+  strategies_adjustments:
+    type: string
+    nullable: true
+    description: Strategies and adjustments (if applicable)
+    example: null
+  goals:
+    type: string
+    nullable: true
+    description: Goals for the student (if applicable)
+    example: 'Goal 1: Improve reading comprehension.'
+  _routes:
+    type: object
+    description: Related routes for the differentiation profile
+    properties:
+      linkedRecords:
+        type: string
+        nullable: true
+        example: "/differentiation-profiles/linkedRecords/69"
+      create:
+        type: string
+        nullable: true
+        example: "/differentiation-profiles/create/69"
+      edit:
+        type: string
+        nullable: true
+        example: "/differentiation-profiles/edit/69"
+  created_at:
+    type: string
+    description: When the profile was created
+    example: "Jan 19, 2026 12:13pm"
+  created_by:
+    type: string
+    description: Who created the profile
+    example: "Mr John Smith"
+  updated_at:
+    type: string
+    description: When the profile was last updated
+    example: "Jan 19, 2026 12:14pm"
+  updated_by:
+    type: string
+    description: Who last updated the profile
+    example: "Mr John Smith"
+  deleted_at:
+    type: string
+    nullable: true
+    description: When the profile was deleted (if applicable)
+    example: null
+
+required:
+  - id
+  - status
+  - student

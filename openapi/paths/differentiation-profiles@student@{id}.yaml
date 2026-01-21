@@ -1,0 +1,42 @@
+get:
+  operationId: getDifferentiationProfiles
+  tags: [differentiation]
+  summary: Get differentiation profiles
+  description: |
+    Retrieve a list of differentiation profiles.
+  responses:
+    '200':
+      $ref: ../components/responses/differentiationProfile.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
+
+post:
+  operationId: createDifferentiationProfiles
+  tags: [differentiation]
+  summary: Create a differentiation profile
+  description: |
+    Create a new differentiation profile.
+  requestBody:
+    $ref: ../components/requestBodies/differentiation.yaml
+  responses:
+    '201':
+      description: Response from creating differentiation profile object
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                format: id
+                example: 4
+              updated_at:
+                type: string
+                description: datetime in the shortened date format
+                format: date-time
+                example: "2022-08-30 10:09:09"
+    default:
+      $ref: ../components/responses/problem.yaml
