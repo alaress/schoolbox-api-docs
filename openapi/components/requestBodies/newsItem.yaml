@@ -120,12 +120,11 @@ content:
 
             The variables within each audience string have this meaning:
             * `$entityType` is the type of audience: currently out of
-              `campus`, 'fixturesteam', `folder`, `role`, `school_house`, `user`, `year`
+              `campus`, `folder`, `role`, `school_house`, `year`
             * `$entityValue` is the identifier for the audience, JSON-encoded
               then base64-encoded
             * `$relationship` is the users who are actually in the identified
               audience:
-            
               * `self` for the users associated directly with the audience
               * `teachers_of` for the teachers of users in the audience
               * `parents_of` for the parents of users in the audience
@@ -136,7 +135,6 @@ content:
             Examples:
             * `campus:IjEi:self` is a simple audience, targeting users in campus
               ID 1
-            * `user:IjIi:self,user:IjI4Ig==:self` is a simple audience, targeting user ID 2 and user ID 28
             * `folder:IjU1Ig==:parents_of` is a simple audience, targeting
               parents of users in folder ID 55
             * `folder:IjU1Ig==:parents_of` is a simple audience, targeting
