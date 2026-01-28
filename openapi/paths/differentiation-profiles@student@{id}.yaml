@@ -23,21 +23,7 @@ post:
     $ref: ../components/requestBodies/differentiation.yaml
   responses:
     '201':
-      description: Response from creating differentiation profile object
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              id:
-                type: integer
-                format: id
-                example: 4
-              updated_at:
-                type: string
-                description: datetime in the shortened date format
-                format: date-time
-                example: "2022-08-30 10:09:09"
+      $ref: ../components/responses/differentiationProfile.yaml
     default:
       $ref: ../components/responses/problem.yaml
 
@@ -51,20 +37,6 @@ put:
       $ref: ../components/requestBodies/differentiation.yaml
   responses:
       '200':
-        description: Response from updating differentiation profile object
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  format: id
-                  example: 4
-                updated_at:
-                  type: string
-                  description: datetime in the shortened date format
-                  format: date-time
-                  example: "2022-08-30 10:09:09"
+        $ref: ../components/responses/differentiationProfile.yaml
       default:
           $ref: ../components/responses/problem.yaml

@@ -118,25 +118,23 @@ properties:
         nullable: true
         example: "/differentiation-profiles/edit/69"
   created_at:
-    type: string
-    description: When the profile was created
-    example: "Jan 19, 2026 12:13pm"
+    $ref: ./dateTimeString.yaml
   created_by:
     type: string
     description: Who created the profile
     example: "Mr John Smith"
   updated_at:
-    type: string
-    description: When the profile was last updated
-    example: "Jan 19, 2026 12:14pm"
+    $ref: ./dateTimeString.yaml
   updated_by:
     type: string
     description: Who last updated the profile
     example: "Mr John Smith"
   deleted_at:
+    title: Datetime
     type: string
     nullable: true
-    description: When the profile was deleted (if applicable)
+    description: When the profile was deleted (if applicable). The date as a RFC3339 string.
+    format: date-time
     example: null
 
 required:
