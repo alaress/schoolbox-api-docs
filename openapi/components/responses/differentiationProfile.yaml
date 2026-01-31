@@ -1,0 +1,5 @@
+description: A differentiation profile object.
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/differentiation.yaml"
