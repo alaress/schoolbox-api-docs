@@ -1,9 +1,9 @@
 get:
-  operationId: getDifferentiationProfiles
+  operationId: getDifferentiationProfile
   tags: [differentiation]
-  summary: Get differentiation profiles
+  summary: Get a differentiation profile
   description: |
-    Retrieve a list of differentiation profiles.
+    Retrieve the differentiation profile for a specific student.
   responses:
     '200':
       $ref: ../components/responses/differentiationProfile.yaml
@@ -14,7 +14,7 @@ parameters:
   - $ref: ../components/parameters/id.yaml
 
 post:
-  operationId: createDifferentiationProfiles
+  operationId: createDifferentiationProfile
   tags: [differentiation]
   summary: Create a differentiation profile
   description: |
@@ -28,15 +28,15 @@ post:
       $ref: ../components/responses/problem.yaml
 
 put:
-  operationId: updateDifferentiationProfiles
+  operationId: updateDifferentiationProfile
   tags: [differentiation]
   summary: Update a differentiation profile
   description: |
-      Update an existing differentiation profile.
+    Update an existing differentiation profile.
   requestBody:
-      $ref: ../components/requestBodies/differentiation.yaml
+    $ref: ../components/requestBodies/differentiation.yaml
   responses:
-      '200':
-        $ref: ../components/responses/differentiationProfile.yaml
-      default:
-          $ref: ../components/responses/problem.yaml
+    '200':
+      $ref: ../components/responses/differentiationProfile.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
