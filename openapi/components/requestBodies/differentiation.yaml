@@ -3,52 +3,52 @@ description: |
 content:
   application/json:
     schema:
-        type: object
-        properties:
-          adjustment_category:
-            type: array
-            nullable: true
-            description: Array of adjustment category ids
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  example: 1
-          adjustment_level:
-            type: array
-            nullable: true
-            description: Array of adjustment level ids
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-              example:
-                - id: 3
-                - id: 4
-          overview:
-            type: string
-            nullable: true
-            description: Overview of the differentiation profile (if applicable)
-            example: null
-          interests_strengths:
-            type: string
-            nullable: true
-            description: Interests and strengths (if applicable)
-            example: null
-          needs_challenges:
-            type: string
-            nullable: true
-            description: Needs and challenges (if applicable)
-            example: null
-          strategies_adjustments:
-            type: string
-            nullable: true
-            description: Strategies and adjustments (if applicable)
-            example: null
-          goals:
-            type: string
-            nullable: true
-            description: Goals for the student (if applicable)
-            example: 'Goal 1: Improve reading comprehension.'
+      type: object
+      properties:
+        adjustment_category:
+          type: array
+          nullable: true
+          description: Array of adjustment category ids
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+        adjustment_level:
+          type: array
+          nullable: true
+          description: Array of adjustment level ids
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+          example:
+            - id: 3
+            - id: 4
+        overview:
+          type: string
+          nullable: true
+          description: Overview of the differentiation profile (if applicable)
+          example: null
+        interests_strengths:
+          type: string
+          nullable: true
+          description: Interests and strengths (if applicable)
+          example: null
+        needs_challenges:
+          type: string
+          nullable: true
+          description: Needs and challenges (if applicable)
+          example: null
+        strategies_adjustments:
+          type: string
+          nullable: true
+          description: Strategies and adjustments (if applicable)
+          example: null
+        goals:
+          type: string
+          nullable: true
+          description: Goals for the student (if applicable)
+          example: 'Goal 1: Improve reading comprehension.'
