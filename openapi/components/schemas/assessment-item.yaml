@@ -17,6 +17,7 @@ properties:
       - project
       - LTI
       - lessonPlan
+      - dialogAgent
     example: task
   folder:
     description: |
