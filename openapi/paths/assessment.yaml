@@ -65,6 +65,7 @@ parameters:
             - dueWork
             - LTI
             - project
+            - dialogAgent
           example: dueWork
         folder:
           oneOf:
