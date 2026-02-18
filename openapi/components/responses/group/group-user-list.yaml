@@ -122,6 +122,18 @@ content:
                 description: The name of the Role, may not be unique.
                 example: Staff
 
+              roleType:
+                type: string
+                nullable: false
+                description: |
+                  The type of this role. Different role types have different levels of
+                  access to different parts of Schoolbox.
+                enum:
+                  - staff
+                  - student
+                  - parent
+                  - guest
+
               isStaff:
                 type: boolean
                 example: true
