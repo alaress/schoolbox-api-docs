@@ -1,0 +1,47 @@
+description: A paginated list of groups
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: The group's unique identifier.
+                example: 123
+              name:
+                type: string
+                description: The group's name.
+                example: First XI Basketball
+              codes:
+                type: array
+                description: All codes associated with the group. May be empty.
+                items:
+                  type: string
+                example: [BASK-01]
+              type:
+                type: string
+                enum: [private, moderated, free]
+                description: The group's join type.
+                example: moderated
+              url:
+                type: string
+                description: Relative URL to the group's homepage.
+                example: /groups/123
+              memberCount:
+                type: integer
+                description: |
+                  Number of active members. Excludes pending and denied users.
+                example: 15
+        next:
+          type: string
+          nullable: true
+          description: |
+            Opaque cursor for the next page of results.
+            Pass this value as the `cursor` parameter on the next request.
+            `null` when there are no further results.
+          example: eyJpZCI6MTIzfQ==

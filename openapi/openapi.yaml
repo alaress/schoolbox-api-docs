@@ -73,6 +73,11 @@ tags:
     description: |
       Upload files.
 
+  - name: group
+    x-displayName: Groups
+    description: |
+      Search and manage groups.
+
   - name: Learning Moment
     x-displayName: Learning Moment
     description: |
@@ -310,6 +315,9 @@ paths:
 
   /api/config/{configName}:
     $ref: 'paths/api@config@{configName}.yaml'
+
+  /groups/search:
+    $ref: 'paths/groups@search.yaml'
 
   /group/getData/{id}:
     $ref: 'paths/group@getData@{id}.yaml'
