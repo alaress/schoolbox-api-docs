@@ -108,3 +108,42 @@ properties:
     items:
       $ref: ./assessment-participation-item.yaml
     description: Not applicable to assessmentType 'lessonPlan' (so value will be null in that case).
+  specificationAssessmentId:
+    type: integer
+    nullable: true
+    description: |
+      The ID of the specification assessment that this assessment was created from.
+      Enables identifying common assessments across classes.
+      Null if this assessment has no specification link.
+    example: 42
+  markVisibility:
+    type: string
+    nullable: true
+    enum:
+      - staffOnly
+      - staffAndStudent
+      - staffAndParent
+      - staffStudentAndParent
+    description: |
+      Controls who can view the mark for this assessment.
+      - `staffOnly`: Staff Only
+      - `staffAndStudent`: Staff & Student
+      - `staffAndParent`: Staff & Parents
+      - `staffStudentAndParent`: Staff, Student & Parent
+      Applicable to assessmentTypes 'dueWork', 'quiz', 'project', and 'LTI' (null for other types).
+    example: staffAndStudent
+  markType:
+    type: string
+    nullable: true
+    enum:
+      - percent
+      - letter
+      - raw
+      - free
+      - rubric
+      - none
+      - completion
+    description: |
+      The type of mark used for this assessment.
+      Applicable to assessmentTypes 'dueWork', 'quiz', and 'project' (null for other types).
+    example: percent
