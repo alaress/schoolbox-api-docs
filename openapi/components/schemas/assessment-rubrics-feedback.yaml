@@ -1,0 +1,18 @@
+title: A set of marked Assessment Rubrics
+description: The marked rubrics for a feedback item. Empty when the feedback has no rubric marks.
+readOnly: true
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+      description: The rubric instance ID.
+    title:
+      type: string
+      nullable: true
+      example: Written
+      description: The title of this rubric.
+    capabilities:
+      $ref: ./assessment-rubric-feedback.yaml#/properties/capabilities

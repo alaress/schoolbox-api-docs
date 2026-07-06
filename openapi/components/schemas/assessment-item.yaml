@@ -18,6 +18,7 @@ properties:
       - LTI
       - lessonPlan
       - dialogAgent
+      - reporting
     example: task
   folder:
     description: |
@@ -93,7 +94,15 @@ properties:
       The due date of the assessment as a RFC3339 string. This can be null for assessments in a course.
     example: 2022-01-30T21:00:00.000Z
   rubric:
-    $ref: ./assessment-rubric.yaml
+    allOf:
+      - $ref: ./assessment-rubric.yaml
+      - deprecated: true
+        description: |
+          A single Assessment Rubric item.
+          (Deprecated: use `rubrics`. This carries only the first rubric and will be removed
+          after a 6-month migration window.)
+  rubrics:
+    $ref: ./assessment-rubrics.yaml
   project:
     type: object
     nullable: true

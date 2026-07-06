@@ -63,7 +63,15 @@ properties:
         example: 36
         description: The mark in numeric form.
       rubric:
-        $ref: ./assessment-rubric-feedback.yaml
+        allOf:
+          - $ref: ./assessment-rubric-feedback.yaml
+          - deprecated: true
+            description: |
+              A single marked Assessment Rubric item.
+              (Deprecated: use `rubrics`. This carries only the first rubric and will be removed
+              after a 6-month migration window.)
+      rubrics:
+        $ref: ./assessment-rubrics-feedback.yaml
       instructor:
         allOf:
           - $ref: ./assessment-user.yaml

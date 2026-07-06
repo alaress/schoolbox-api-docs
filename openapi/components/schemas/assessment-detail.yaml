@@ -1,0 +1,17 @@
+title: Assessment detail
+description: |
+  A single assessment, as returned by GET /api/assessment/{id}.
+  Identical to an assessment list item, plus the (potentially large) `description` field, which is
+  omitted from the list endpoint to keep that payload small.
+readOnly: true
+allOf:
+  - $ref: ./assessment-item.yaml
+  - type: object
+    properties:
+      description:
+        type: string
+        nullable: true
+        description: |
+          A longer description of the assessment. Null if no description has been set.
+          Only returned by the single-assessment endpoint (GET /api/assessment/{id}); never by the list.
+        example: "Write a 500 word essay on the causes of WW1."

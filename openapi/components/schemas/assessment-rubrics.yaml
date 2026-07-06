@@ -1,0 +1,23 @@
+title: A set of Assessment Rubrics
+description: The rubrics attached to an assessment. Empty when the assessment has no rubrics.
+readOnly: true
+type: array
+items:
+  type: object
+  properties:
+    id:
+      type: integer
+      example: 1
+      description: The rubric instance ID.
+    title:
+      type: string
+      nullable: true
+      example: Written
+      description: The title of this rubric.
+    weight:
+      type: number
+      nullable: true
+      example: 60
+      description: How much this rubric contributes to the assessment's overall mark.
+    capabilities:
+      $ref: ./assessment-rubric.yaml#/properties/capabilities
