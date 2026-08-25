@@ -16,6 +16,20 @@ properties:
     properties:
       id:
         $ref: ../../schemas/id.yaml
+  resources:
+    type: array
+    description: |
+      Array of Resource Booking item object stubs to book against the new event.
+      Resource Booking must be enabled, and the authenticated user must have
+      permission to book each supplied resource.
+    example: [{"id": 42}, {"id": 57}]
+    items:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          $ref: ../../schemas/id.yaml
 allOf:
   - type: object
   - $ref: eventRequestFieldsForModify.yaml
