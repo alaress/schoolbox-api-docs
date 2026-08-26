@@ -43,14 +43,20 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ./userShort.yaml
+      $ref: ./userLinked.yaml
     nullable: true
     example:
       - id: 25
+        externalId: "25001"
+        title: ""
+        firstname: Janna
+        preferredName: null
+        givenName: Janna
+        lastname: Reed
         fullName: Janna Reed
-        yearLevel: [ ]
         role:
           id: 3
+          type: parent
           name: Parent
   
   students:
@@ -66,9 +72,33 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ./userShort.yaml
+      $ref: ./userLinked.yaml
     nullable: true
-    example: [ ]
+    example:
+      - id: 4690
+        externalId: "4690"
+        title: ""
+        firstname: Sam
+        preferredName: null
+        givenName: Sam
+        lastname: Reed
+        fullName: Sam Reed
+        role:
+          id: 13
+          type: student
+          name: Secondary Student
+      - id: 4999
+        externalId: "4999"
+        title: ""
+        firstname: Jordan
+        preferredName: ""
+        givenName: Jordan
+        lastname: Reed
+        fullName: Jordan Reed
+        role:
+          id: 8
+          type: student
+          name: Primary Student
 
   impersonableUsers:
     description: |
@@ -79,24 +109,21 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ./userShort.yaml
+      $ref: ./userLinked.yaml
     nullable: false
     example:
-      - id: 69
-        externalId: 69
-        title: null
-        firstName: Eden
-        preferredName: Reed
-        givenName: Eden
-        lastName: Reed
-        fullName: Eden Reed
+      - id: 5001
+        externalId: "5001"
+        title: ""
+        firstname: Jamie
+        preferredName: null
+        givenName: Jamie
+        lastname: White
+        fullName: Jamie White
         role:
           id: 5
-          name: Junior Student
           type: student
-        yearLevel:
-          id: 4
-          name: "3"
+          name: Junior Student
 
   email:
     type: string
