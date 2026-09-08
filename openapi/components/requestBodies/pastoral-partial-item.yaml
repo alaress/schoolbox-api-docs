@@ -2,9 +2,36 @@ description: |
   Pastoral record
 content:
   application/json:
+    examples:
+      replaceLinks:
+        summary: Replace the linked classes/groups
+        value:
+          id: 77
+          linkedFolderIds: [80, 81]
+      clearLinks:
+        summary: Remove all linked classes/groups
+        value:
+          id: 77
+          linkedFolderIds: []
     schema:
       type: object
       properties:
+        linkedFolderIds:
+          description: |
+            Replace the record's linked classes/groups with these folder IDs. Omit the field to leave links unchanged;
+            send an empty array to remove all links. A comma-separated string is also accepted.
+            New links must be active classes the student is enrolled in via SIS or groups they currently belong to.
+            Existing links may be retained even if the folder is archived or the student is no longer eligible.
+            Once removed, an ineligible or archived link cannot be added again.
+            Invalid or ineligible new IDs reject the request. Changes are included in record revision history.
+            Linked folders are not sent to external pastoral synchronisation integrations.
+          oneOf:
+            - type: array
+              items:
+                type: integer
+                minimum: 1
+            - type: string
+          example: [80, 81]
         heading:
           description: Pastoral record title.
           type: string

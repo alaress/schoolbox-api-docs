@@ -1,0 +1,28 @@
+description: |
+  Classes and groups explicitly linked to this record, including retained archived links.
+  Folder IDs identify the linked folders; a reused class code does not transfer a link to a new folder.
+  Codes are the codes currently attached to that folder and may be empty for a group or archived folder.
+type: array
+items:
+  type: object
+  properties:
+    id:
+      $ref: ./id.yaml
+    name:
+      type: string
+      description: The folder name.
+    codes:
+      type: array
+      items:
+        type: string
+  required:
+    - id
+    - name
+    - codes
+example:
+  - id: 80
+    name: Year 9 English
+    codes: [9ENGA]
+  - id: 81
+    name: Debating
+    codes: []
