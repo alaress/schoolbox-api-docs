@@ -57,6 +57,8 @@ items:
     heading:
       description: Heading of the pastoral record.
       type: string
+    linkedFolders:
+      $ref: ./pastoral-linkedFolders.yaml
     type:
       description: Type of the pastoral record.
       type: object
@@ -219,6 +221,13 @@ items:
       isDeleted: false
       externalId: 507
     heading: Academic Achievement Award - Semester 2
+    linkedFolders:
+      - id: 80
+        name: Year 9 English
+        codes: [9ENGA]
+      - id: 81
+        name: Debating
+        codes: []
     type:
       id: 1
       name: Academic
