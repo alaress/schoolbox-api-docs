@@ -1,6 +1,6 @@
 post:
   operationId: postEvidenceSubmitMultiUser
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Submit a learning moment for multiple users
   description: Create a learning moment and leave it in a 'submitted' state for multiple users.
   requestBody:

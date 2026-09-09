@@ -1,41 +1,84 @@
 type: object
 properties:
-  token:
+  name:
     type: string
+    nullable: true
     description: |
-      A JSON Web Token (JWT) which authenticates the bearer as a particular
-      user, and allows the bearer to perform API calls within the context of
-      that user.
+      An optional name for this token.
 
-      This token is passed to the Schoolbox API according to the "BearerAuth"
-      security scheme (i.e. in a HTTP header `Authorization: Bearer $token`).
-    example: 3MiOiJ2YWdyYW50LmRldi5zY2hvb2xib3guY2xvdWQiLCJzdWIiOiJhbGFyZXNzIiwianRpIjoiZDM1N...
-  createdAt:
-    type: string
-    description: |
-      The creation datetime for the token.
-    example: Nov 11, 2025 2:45pm
-  expiry:
-    type: string
-    description: |
-      The datetime when the token expires. Will be `null` for indefinite token lifetime.
-    example: Dec 25, 2025 3:45pm
-  createdBy:
-    type: string
-    description: |
-      The user who created the token.
-    example: John Smith
+      It should be used to identify the application which uses this
+      token, or the purpose for which it is used.
+  user:
+    allOf:
+      - $ref: ./userAuthor.yaml
+      - description: |
+          The user which is the subject of the token.
   jwtId:
     type: string
     description: |
-      The identifier of the JWT.
+      The automatically generated identifier of the token.
+
+      Will be passed as the `jti` (JWT ID) claim in the JWT, and used to:
+      - track usage of the token
+      - verify that it is not expired
+      - (in future) verify that the scopes in the JWT match what was allowed
+        when setting up the token
     example: u82jddg5-ky61-z9w3-0098-334hxb27dhg0
+  createdAt:
+    oneOf:
+      - type: string
+        format: date-time
+        description: |
+          The creation datetime for the token, as a standard datetime string.
+        example: 2025-11-11T14:45:00Z
+      - type: string
+        deprecated: true
+        description: |
+          The creation datetime for the token, as a human-readable date.
+        example: Nov 11, 2025 2:45pm
+  updatedAt:
+    type: string
+    format: date-time
+    description: |
+      The last updated datetime for the token, as a standard datetime string.
+    example: 2025-11-11T14:45:00Z
+  expiry:
+    oneOf:
+      - type: string
+        format: date-time
+        description: |
+          The datetime when the token expires, as a standard datetime string.
+        example: 2025-12-25T15:45:00Z
+      - type: string
+        deprecated: true
+        description: |
+          The datetime when the token expires, as a human-readable date.
+
+          May no longer be null: tokens will always have an expiry.
+        example: Dec 25, 2025 3:45pm
+  createdBy:
+    oneOf:
+      - allOf:
+        - $ref: ./userAuthor.yaml
+        - description: |
+            The user who created the token.
+      - type: string
+        deprecated: true
+        description: |
+          The full name of the user who created the token.
+        example: John Smith
+  updatedBy:
+    allOf:
+      - $ref: ./userAuthor.yaml
+      - description: |
+          The user who last updated the token.
   showExisting:
+    deprecated: true
     type: boolean
     description: |
-      This is `true` when a JWT was either generated for the user, or it already existed for the user.
+      This was `true` when a JWT ID was either generated for the user, or it
+      already existed for the user.
+
+      Since a JWT ID is always generated now, this parameter is deprecated and
+      no longer provided.
     example: true
-      
-      
-      
-    

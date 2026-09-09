@@ -1,6 +1,6 @@
 put:
   operationId: putEvidenceBulkReject
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Reject multiple learning moments
   description: |
     Reject multiple learning moments (meaning refuse to publish them), and optionally supply a reason for the rejection.

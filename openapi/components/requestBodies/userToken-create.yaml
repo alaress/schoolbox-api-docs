@@ -1,0 +1,32 @@
+description: |
+  Fields allowed when creating a user token.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            An optional name for this token.
+
+            It should be used to identify the application which uses this
+            token, or the purpose for which it is used.
+        expiry:
+          type: string
+          format: date-time
+          description: |
+            The time after which the token will expire, and be no longer usable.
+
+            Will default to 6 months in the future, and may not be more than 12:
+            otherwise, an error will be raised.
+        expiryInterval:
+          type: integer
+          minimum: 1
+          maximum: 12
+          description: |
+            The number of months after which the token will expire, and be
+            no longer usable.
+
+            May be provided as an alternative to `expiry`, but is still
+            bound to a maximum of 12 months.

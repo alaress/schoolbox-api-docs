@@ -1,0 +1,46 @@
+put:
+  operationId: userUpdateToken
+  tags: [userToken]
+  summary: Update an authentication token
+  description: |
+    Update an already-created authentication token.
+
+    Only the token's subject, or a superuser, may update a token: also, only the
+    token's name may be updated.
+  requestBody:
+    $ref: ../components/requestBodies/userToken-update.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/userToken.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: jwtId
+      in: path
+      description: |
+        The JWT ID of a token to act upon.
+      required: true
+      schema:
+        type: string
+
+delete:
+  operationId: userDeleteToken
+  tags: [userToken]
+  summary: Delete an authentication token
+  description: |
+    Delete an already-created authentication token.
+
+    Only the token's subject, or a superuser, may delete a token.
+  responses:
+    '204':
+      description: The token was deleted successfully.
+    default:
+      $ref: ../components/responses/problem.yaml
+  parameters:
+    - name: jwtId
+      in: path
+      description: |
+        The JWT ID of a token to act upon.
+      required: true
+      schema:
+        type: string

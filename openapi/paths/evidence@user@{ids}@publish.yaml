@@ -1,6 +1,6 @@
 post:
   operationId: postEvidencePublishMultiUser
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Publish a learning moment for multiple users
   description: Create a learning moment and leave it in a 'published' state for multiple users.
   requestBody:

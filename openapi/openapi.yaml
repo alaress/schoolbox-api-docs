@@ -78,7 +78,7 @@ tags:
     description: |
       Search and manage groups.
 
-  - name: Learning Moment
+  - name: learningMoment
     x-displayName: Learning Moment
     description: |
       Create and manage Learning Moments.
@@ -112,10 +112,25 @@ tags:
     description: |
       Create and manage users.
 
+  - name: userToken
+    x-displayName: User tokens
+    description: |
+      Create and manage user tokens, for authenticating at a later time.
+
   - name: differentiation
     x-displayName: Differentiation
     description: |
       Create and manage differentiation profiles.
+
+  - name: curriculum
+    x-displayName: Curriculum
+    description: |
+      Create and manage curriculum data.
+
+  - name: course
+    x-displayName: Course
+    description: |
+      Create and manage course data.
 
 servers:
   - url: https://{hostname}.{domain}
@@ -134,6 +149,9 @@ paths:
 
   /user/token/{id}:
     $ref: 'paths/user@token@{id}.yaml'
+
+  /user/token/manage/{jwtId}:
+    $ref: 'paths/user@token@manage@{jwtId}.yaml'
 
   /api/user/{id}:
     $ref: 'paths/user@{id}.yaml'

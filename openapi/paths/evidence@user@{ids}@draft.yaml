@@ -1,6 +1,6 @@
 post:
   operationId: postEvidenceDraftMultiUser
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Draft a learning moment for multiple users
   description: Create a learning moment and leave it in a 'draft' state for multiple users.
   requestBody:

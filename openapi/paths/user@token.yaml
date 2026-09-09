@@ -1,9 +1,11 @@
 get:
   operationId: userGetTokenForSelf
-  tags: [user]
+  deprecated: true
+  tags: [userToken]
   summary: Get an authentication token
   description: |
-    Retrieve an authentication token for the user
+    Retrieve an authentication token for the user: deprecated in favour of the
+    `POST` variant.
 
     This endpoint is intended so that in-browser API calls performed within
     a Schoolbox instance may be performed in a manner more in common with
@@ -17,5 +19,29 @@ get:
   responses:
     '200':
       $ref: ../components/responses/userToken.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+post:
+  operationId: userCreateTokenForSelf
+  tags: [userToken]
+  summary: Create an authentication token
+  description: |
+    Create an authentication token for the user.
+
+    This endpoint is intended so that in-browser API calls performed within
+    a Schoolbox instance may be performed in a manner more in common with
+    calls to a remote API.
+
+    This endpoint only makes sense for users authenticated with the "session"
+    security scheme, as it returns a token which is used by the "bearerAuth"
+    scheme.
+  security:
+    - session: []
+  requestBody:
+    $ref: ../components/requestBodies/userToken-create.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/userToken-created.yaml
     default:
       $ref: ../components/responses/problem.yaml

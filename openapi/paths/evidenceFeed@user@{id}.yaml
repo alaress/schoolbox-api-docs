@@ -1,6 +1,6 @@
 get:
   operationId: evidenceFeed
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: List the Learning Moments, Badges and Due Work feedback for the specified User
   description: |
     This endpoint will return a list of all evidence objects achieved or received by the user

@@ -1,6 +1,6 @@
 post:
   operationId: learningMomentEvidence.postMomentForUsers
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Create a learning moment for users
   deprecated: true
   description: |

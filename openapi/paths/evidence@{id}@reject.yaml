@@ -1,6 +1,6 @@
 put:
   operationId: putEvidenceReject
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Reject a learning moment
   description: |
     Update a learning moment and leave it in a 'rejected' state, and optionally supply a reason for the rejection.

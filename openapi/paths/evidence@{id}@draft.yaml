@@ -1,6 +1,6 @@
 put:
   operationId: putEvidenceDraft
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Draft a learning moment
   description: Update a learning moment and leave it in a 'draft' state.
   requestBody:

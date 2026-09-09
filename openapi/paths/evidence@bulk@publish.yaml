@@ -1,6 +1,6 @@
 put:
   operationId: putEvidenceBulkPublish
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Publish multiple learning moments
   description: Publish multiple learning moments and optionally delete any comments before publishing.
   requestBody:
