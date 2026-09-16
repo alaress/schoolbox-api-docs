@@ -1,6 +1,6 @@
 {
   "name": "schoolbox-api",
-  "version": "1.2.10",
+  "version": "1.3.0",
   "dependencies": {
     "@redocly/cli": "^2.53.2",
     "semver": "^7.8.5"
