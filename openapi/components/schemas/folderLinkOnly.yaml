@@ -28,12 +28,8 @@ examples:
   - id: 83
     name: 9A English
     title: 9A English (9ENGA)
-    codes: [
-      9ENGA
-    ]
-    parent: {
+    codes: [9ENGA]
+    parent:
       id: 2
-    }
-    _links: {
+    _links:
       view: \/homepage\/83
-    }
