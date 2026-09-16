@@ -1,7 +1,7 @@
 title: A curriculum node
 description: A curriculum node
 readOnly: true
-type: [array, 'null']
+type: [object, 'null']
 properties:
   id:
     $ref: id.yaml
@@ -55,7 +55,7 @@ properties:
       badge:
         type: integer
   _links:
-    type: array
+    type: object
     properties:
       read:
         type: string

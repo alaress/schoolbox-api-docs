@@ -1,7 +1,7 @@
 title: A Course item
 description: A Course item
 readOnly: true
-type: array
+type: object
 properties:
   course:
     type: object
