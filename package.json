@@ -3,7 +3,7 @@
   "version": "1.2.10",
   "dependencies": {
     "@redocly/cli": "^2.53.2",
-    "semver": "^7.7.3"
+    "semver": "^7.8.5"
   },
   "private": true,
   "scripts": {
