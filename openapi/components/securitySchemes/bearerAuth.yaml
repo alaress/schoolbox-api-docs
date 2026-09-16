@@ -1,3 +1,13 @@
+# Operations list the scopes they accept in their `security` requirement.
+# Each scope gets its own entry, so that any one of them is sufficient
+# (scopes listed under a single entry must ALL be present):
+#
+#   security:
+#     - session: []
+#     - bearerAuth:
+#         - https://schoolbox.education/scope/assessment
+#     - bearerAuth:
+#         - https://schoolbox.education/scope/assessment:readonly
 type:         http
 scheme:       bearer
 bearerFormat: JWT
