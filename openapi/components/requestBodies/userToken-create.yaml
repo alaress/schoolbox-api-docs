@@ -30,3 +30,42 @@ content:
 
             May be provided as an alternative to `expiry`, but is still
             bound to a maximum of 12 months.
+        scopes:
+          type: array
+          description: |
+            One or more scopes for this token, corresponding to actions which
+            are allowed to this token.
+          items:
+            type: string
+            enum:
+              - https://schoolbox.education/scope/assessment
+              - https://schoolbox.education/scope/assessment:readonly
+              - https://schoolbox.education/scope/calendar
+              - https://schoolbox.education/scope/calendar:readonly
+              - https://schoolbox.education/scope/config
+              - https://schoolbox.education/scope/config:readonly
+              - https://schoolbox.education/scope/upload
+              - https://schoolbox.education/scope/group
+              - https://schoolbox.education/scope/group:readonly
+              - https://schoolbox.education/scope/learningMoment
+              - https://schoolbox.education/scope/learningMoment:readonly
+              - https://schoolbox.education/scope/learningMoment.comment
+              - https://schoolbox.education/scope/learningMoment.comment:readonly
+              - https://schoolbox.education/scope/news
+              - https://schoolbox.education/scope/news:readonly
+              - https://schoolbox.education/scope/news.comment
+              - https://schoolbox.education/scope/news.comment:readonly
+              - https://schoolbox.education/scope/pastoral
+              - https://schoolbox.education/scope/pastoral:readonly
+              - https://schoolbox.education/scope/search
+              - https://schoolbox.education/scope/session
+              - https://schoolbox.education/scope/user
+              - https://schoolbox.education/scope/user:readonly
+              - https://schoolbox.education/scope/user.token
+              - https://schoolbox.education/scope/user.notification
+              - https://schoolbox.education/scope/differentiation
+              - https://schoolbox.education/scope/differentiation:readonly
+              - https://schoolbox.education/scope/curriculum
+              - https://schoolbox.education/scope/curriculum:readonly
+              - https://schoolbox.education/scope/course
+              - https://schoolbox.education/scope/course:readonly
