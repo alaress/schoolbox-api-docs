@@ -24,8 +24,7 @@ properties:
     default: true
 
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
     example: Ms
 
@@ -41,14 +40,12 @@ properties:
     example: Rebecca
 
   lastName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's surname.
     example: White
 
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's preferred name.
   
   isEmailDerived:
@@ -58,17 +55,15 @@ properties:
       and the host name of the Schoolbox instance?
 
   altEmail:
-    type: string
+    type: [string, 'null']
     format: email
-    nullable: true
     description: |
       The user's email address, if it is not derived from their username
       and hostname.
     example: rwhite@example.com.au
 
   positionTitle:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: |
       The user's job or position title within the school which owns the
       Schoolbox instance.

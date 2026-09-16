@@ -22,14 +22,12 @@ properties:
         example: "/portrait.php?id=25&size=square64"
 
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
     example: Ms
 
   firstName:
     type: string
-    nullable: false
     description: |
       The user's first name.
 
@@ -40,26 +38,21 @@ properties:
     example: Rebecca
 
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's preferred name.
 
   pronoun:
-    type: string
-    nullable: true
+    type: [string, 'null']
   
   lastName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's surname.
     example: White
 
   fullName:
     type: string
-    nullable: false
     description: The user's formatted full name.
 
   isDeleted:
     type: boolean
-    nullable: false
     description: Whether the user is deleted or not.

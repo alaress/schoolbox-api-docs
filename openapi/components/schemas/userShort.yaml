@@ -11,14 +11,12 @@ properties:
     $ref: ./externalId.yaml
 
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
     example: Ms
 
   firstName:
     type: string
-    nullable: false
     description: |
       The user's first name.
 
@@ -29,24 +27,20 @@ properties:
     example: Rebecca
 
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's preferred name.
   
   givenName:
     type: string
-    nullable: false
     description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
   
   lastName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's surname.
     example: White
 
   fullName:
     type: string
-    nullable: false
     description: The user's formatted full name.
     example: Ms Rebecca White
 

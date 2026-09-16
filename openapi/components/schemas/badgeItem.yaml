@@ -19,13 +19,11 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
         example: Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
           
@@ -36,8 +34,7 @@ properties:
         example: Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
         example: White
       _links:
@@ -66,13 +63,11 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
         example: Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
           
@@ -83,8 +78,7 @@ properties:
         example: Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
         example: White
       _links:
@@ -108,8 +102,7 @@ properties:
     description: |
       The content of the Learning Moment
   image:
-    type: string
-    nullable: true
+    type: [string, 'null']
   icon:
     type: string
     description: |
@@ -135,28 +128,24 @@ properties:
         example: |
           Extra-Curricular
   achievementExpiry:
-    nullable: true
-    type: string
+    type: [string, 'null']
     format: date-time
     description: |
       The date as a RFC3339 string.
     example: null
   goalExpiry:
-    nullable: true
-    type: string
+    type: [string, 'null']
     format: date-time
     description: |
       The date as a RFC3339 string.
     example: null
   curriculumNodes:
-    nullable: true
-    type: array
+    type: [array, 'null']
     items:
       $ref: ./curriculumItem.yaml
   tags:
-    nullable: true
     example: null
-    type: object
+    type: [object, 'null']
     description: |
       System configurable in your Admin Lists Learning Moment area
     properties:

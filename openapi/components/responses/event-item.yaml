@@ -15,7 +15,6 @@ content:
           type: integer
           example: 0
           description: Whether the event is an all day event.
-          nullable: false
         efficacy:
           type: string
           enum:

@@ -13,23 +13,19 @@ properties:
   creator:
     $ref: ../schemas/userAuthor.yaml
   discussionThread:
-    type: object
-    nullable: true
+    type: [object, 'null']
     properties:
       id:
         $ref: ../schemas/id.yaml
       open:
         description: Whether the discussion thread is open to new comments or not.
-        type: boolean
-        nullable: true
+        type: [boolean, 'null']
       createdAt:
-        type: string
+        type: [string, 'null']
         description: Currently null, but in the future will be a datetime string.
-        nullable: true
       updatedAt:
-        type: string
+        type: [string, 'null']
         description: Currently null, but in the future will be a datetime string.
-        nullable: true
       _links:
         type: object
         properties:

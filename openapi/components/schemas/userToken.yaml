@@ -1,8 +1,7 @@
 type: object
 properties:
   name:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: |
       An optional name for this token.
 

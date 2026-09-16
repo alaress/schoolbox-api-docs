@@ -9,18 +9,15 @@ content:
           example:
             <p>I can count forwards and backwards by 2s.</p>\n
         file:
-          nullable: true
-          type: string
+          type: [string, 'null']
           example: store:1f8f836cce05750ac98302c74d4081f99fdd443f
           description: hash as returned by asyncUpload.php
         curriculumNodes:
-          nullable: true
-          type: array
+          type: [array, 'null']
           items:
             $ref: ../schemas/curriculumItem.yaml
         tags:
-          nullable: true
-          type: array
+          type: [array, 'null']
           items:
             type: object
             description: |

@@ -8,8 +8,7 @@ items:
       $ref: ./id.yaml
     externalId:
       description: The ID of SIS data corresponding to this pastoral record, if External Pastoral Synchronisation is ON.
-      type: string
-      nullable: true
+      type: [string, 'null']
     student:
       title: User
       description: Short fields for users
@@ -20,13 +19,11 @@ items:
         externalId:
           $ref: ./externalId.yaml
         title:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: The user's title (Mr., Ms., etc.).
           example: Ms
         firstName:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: |
             The user's first name.
       
@@ -36,13 +33,11 @@ items:
             user's given name.
           example: Rebecca
         lastName:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: The user's surname.
           example: White
         preferredName:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: The user's preferred name.
         _links:
           type: object
@@ -51,9 +46,8 @@ items:
               type: string
               format: uri-reference
             avatar:
-              type: string
+              type: [string, 'null']
               format: uri-reference
-              nullable: true
     heading:
       description: Heading of the pastoral record.
       type: string
@@ -120,9 +114,8 @@ items:
       type: string
       format: date-time
     points:
-      nullable: true
       description: Points of this pastoral record.
-      type: integer
+      type: [integer, 'null']
     tags:
       description: List of tag names.
       type: array
@@ -167,9 +160,8 @@ items:
       items:
         $ref: ./discussionComment-read.yaml
     recordActions:
-      nullable: true
       description: An array of pastoral actions.
-      type: array
+      type: [array, 'null']
       items:
         properties:
           id:

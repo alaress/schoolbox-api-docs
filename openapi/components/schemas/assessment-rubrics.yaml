@@ -10,13 +10,11 @@ items:
       example: 1
       description: The rubric instance ID.
     title:
-      type: string
-      nullable: true
+      type: [string, 'null']
       example: Written
       description: The title of this rubric.
     weight:
-      type: number
-      nullable: true
+      type: [number, 'null']
       example: 60
       description: How much this rubric contributes to the assessment's overall mark.
     capabilities:

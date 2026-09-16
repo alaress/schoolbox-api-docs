@@ -77,9 +77,8 @@ _links:
   type: object
   properties:
     homepage:
-      type: string
+      type: [string, 'null']
       format: uri-reference
       example: /homepage/83
-      nullable: true
       description: |
         Gives the homepage link to the group, or NULL if the group has no homepage.

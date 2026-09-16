@@ -47,8 +47,7 @@ properties:
             type: string
             example: "/search/user/69"
   adjustment_category:
-    type: array
-    nullable: true
+    type: [array, 'null']
     description: Array of adjustment categories (if applicable)
     items:
       type: object
@@ -63,8 +62,7 @@ properties:
       - id: 2
         name: "Cognitive"
   adjustment_level:
-    type: array
-    nullable: true
+    type: [array, 'null']
     description: Array of adjustment levels (if applicable)
     items:
       type: object
@@ -77,28 +75,23 @@ properties:
       - id: 1
         name: "Extensive"
   overview:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Overview of the differentiation profile (if applicable)
     example: null
   interests_strengths:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Interests and strengths (if applicable)
     example: null
   needs_challenges:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Needs and challenges (if applicable)
     example: null
   strategies_adjustments:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Strategies and adjustments (if applicable)
     example: null
   goals:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Goals for the student (if applicable)
     example: 'Goal 1: Improve reading comprehension.'
   _routes:
@@ -106,16 +99,13 @@ properties:
     description: Related routes for the differentiation profile
     properties:
       linkedRecords:
-        type: string
-        nullable: true
+        type: [string, 'null']
         example: "/differentiation-profiles/linkedRecords/69"
       create:
-        type: string
-        nullable: true
+        type: [string, 'null']
         example: "/differentiation-profiles/create/69"
       edit:
-        type: string
-        nullable: true
+        type: [string, 'null']
         example: "/differentiation-profiles/edit/69"
   created_at:
     $ref: ./dateTimeString.yaml
@@ -131,8 +121,7 @@ properties:
     example: "Mr John Smith"
   deleted_at:
     title: Datetime
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: When the profile was deleted (if applicable). The date as a RFC3339 string.
     format: date-time
     example: null

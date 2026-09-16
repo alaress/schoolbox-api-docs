@@ -10,8 +10,7 @@ items:
       example: 1
       description: The rubric instance ID.
     title:
-      type: string
-      nullable: true
+      type: [string, 'null']
       example: Written
       description: The title of this rubric.
     capabilities:

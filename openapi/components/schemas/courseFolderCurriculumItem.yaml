@@ -1,8 +1,7 @@
 title: A curriculum node
 description: A curriculum node
 readOnly: true
-type: array
-nullable: true
+type: [array, 'null']
 properties:
   id:
     $ref: id.yaml
@@ -17,8 +16,7 @@ properties:
   enabled:
     type: boolean
   parent:
-    type: array
-    nullable: true
+    type: [array, 'null']
     items:
       anyOf:
        - type: array
@@ -28,8 +26,7 @@ properties:
               type: integer
        - $ref: ./courseFolderCurriculumItem.yaml
   children:
-    type: array
-    nullable: true
+    type: [array, 'null']
     items:
       $ref: ./courseFolderCurriculumItem.yaml
   order:
@@ -45,8 +42,7 @@ properties:
     description: |
       The date as a RFC3339 string.
   _usageCounts:
-    type: object
-    nullable: true
+    type: [object, 'null']
     properties:
       course:
         type: integer

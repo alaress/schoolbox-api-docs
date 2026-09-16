@@ -11,8 +11,7 @@ required:
 properties:
   resourceId:
     description: Optional resource identifier for resource-timeline views.
-    nullable: true
-    type: string
+    type: [string, 'null']
     oneOf:
       - type: integer
       - type: string
@@ -106,8 +105,7 @@ properties:
             description: Whether the event has been completed (for task-like events).
             example: false
           seriesId:
-            nullable: true
-            type: integer
+            type: [integer, 'null']
             oneOf:
               - type: integer
               - type: string
@@ -127,8 +125,7 @@ properties:
                 type: string
                 example: ""
           path:
-            type: string
-            nullable: true
+            type: [string, 'null']
             description: Internal path to the event details page, if available.
             example: "/calendar/event/178"
       styles:
@@ -155,8 +152,6 @@ properties:
         description: Class attendance link info, present for class events.
         properties:
           url:
-            type: string
-            nullable: true
+            type: [string, 'null']
           target:
-            type: string
-            nullable: true
+            type: [string, 'null']

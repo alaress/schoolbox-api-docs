@@ -14,8 +14,7 @@ properties:
         type: string
         description: The course's subject code.
       frameworkId:
-        type: integer
-        nullable: true
+        type: [integer, 'null']
         description: The course's framework ID
       folder:
         $ref: ./courseFolderItem.yaml

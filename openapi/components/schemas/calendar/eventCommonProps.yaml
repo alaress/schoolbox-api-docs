@@ -3,7 +3,6 @@ properties:
   allDay:
     type: boolean
     example: false
-    nullable: false
     description: Whether the event is an all day event.
   efficacy:
     type: string
@@ -62,8 +61,7 @@ properties:
     description: Integer representing the type of attendance that is enabled. 0 means 'None', 1 means 'Invitation Only', and 2 means 'Open'.
     enum: [0, 1, 2]
   maxAttendees:
-    type: integer
-    nullable: true
+    type: [integer, 'null']
     example: 5
     description: The maximum number of guests who may attend this event.  Null means no maximum.
   showAttendees:

@@ -6,8 +6,7 @@ content:
       type: object
       properties:
         adjustment_category:
-          type: array
-          nullable: true
+          type: [array, 'null']
           description: Array of adjustment category ids
           items:
             type: object
@@ -16,8 +15,7 @@ content:
                 type: integer
                 example: 1
         adjustment_level:
-          type: array
-          nullable: true
+          type: [array, 'null']
           description: Array of adjustment level ids
           items:
             type: object
@@ -28,27 +26,22 @@ content:
             - id: 3
             - id: 4
         overview:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: Overview of the differentiation profile (if applicable)
           example: null
         interests_strengths:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: Interests and strengths (if applicable)
           example: null
         needs_challenges:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: Needs and challenges (if applicable)
           example: null
         strategies_adjustments:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: Strategies and adjustments (if applicable)
           example: null
         goals:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: Goals for the student (if applicable)
           example: 'Goal 1: Improve reading comprehension.'

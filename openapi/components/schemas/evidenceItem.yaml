@@ -29,13 +29,11 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
         example: Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
 
@@ -46,8 +44,7 @@ properties:
         example: Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
         example: White
       _links:
@@ -70,13 +67,11 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
         example: Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
 
@@ -87,8 +82,7 @@ properties:
         example: Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
         example: White
       _links:
@@ -106,31 +100,24 @@ properties:
   discussionThread:
     $ref: ./discussionThread-read.yaml
   filename:
-    nullable: true
-    type: string
+    type: [string, 'null']
   storage:
-    nullable: true
-    type: object
+    type: [object, 'null']
     properties:
       hash:
-        nullable: true
-        type: string
+        type: [string, 'null']
         example: 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
       mime:
-        nullable: true
-        type: string
+        type: [string, 'null']
         example: image/jpeg
       type:
-        nullable: true
-        type: string
+        type: [string, 'null']
         example: image
       size:
-        nullable: true
-        type: integer
+        type: [integer, 'null']
         example: 3385989
       _links:
-        nullable: true
-        type: object
+        type: [object, 'null']
         description: |
           Will contain one of the following depending on what file type is attached
         properties:
@@ -148,13 +135,11 @@ properties:
             type: string
             example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
   curriculumNodes:
-    nullable: true
-    type: array
+    type: [array, 'null']
     items:
       $ref: ./curriculumItem.yaml
   tags:
-    nullable: true
-    type: object
+    type: [object, 'null']
     description: |
       System configurable in your Admin Lists Learning Moment area
     properties:

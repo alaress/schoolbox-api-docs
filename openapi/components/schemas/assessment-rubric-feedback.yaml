@@ -27,8 +27,7 @@ properties:
           example: 0
           description: The marked value for this capability.
         mark:
-          type: string
-          nullable: true
+          type: [string, 'null']
           example: null
           description: The human readable mark for this capability.
         indicators:

@@ -20,7 +20,6 @@ post:
               example: self
               description: |
                 Either 'self' (to delete only the one event), or 'series' (to delete all events in the series).
-              nullable: false
   responses:
     '204':
       description: |

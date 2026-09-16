@@ -40,11 +40,10 @@ properties:
       is not always the child's parent (e.g. they may be a foster parent
       or other relative), and a parent is not always the child's guardian
       (e.g. the family might have separated).
-    type: array
+    type: [array, 'null']
     uniqueItems: true
     items:
       $ref: ./userShort.yaml
-    nullable: true
     example:
       - id: 25
         fullName: Janna Reed
@@ -63,11 +62,10 @@ properties:
       
       Generally, the guardian => student relation is symmetrical to the
       student => guardian relation.
-    type: array
+    type: [array, 'null']
     uniqueItems: true
     items:
       $ref: ./userShort.yaml
-    nullable: true
     example: [ ]
 
   impersonableUsers:
@@ -80,7 +78,6 @@ properties:
     uniqueItems: true
     items:
       $ref: ./userShort.yaml
-    nullable: false
     example:
       - id: 69
         externalId: 69
@@ -116,9 +113,8 @@ properties:
         type: string
         format: uri-reference
       avatar:
-        type: string
+        type: [string, 'null']
         format: uri-reference
-        nullable: true
 
   yearLevel:
     $ref: ./yearLevel.yaml
@@ -129,8 +125,7 @@ properties:
     description: Is this user deleted?
   
   fullName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's formatted full name.
     example: Ms Rebecca White
     

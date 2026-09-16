@@ -38,8 +38,7 @@ content:
                   Number of active members. Excludes pending and denied users.
                 example: 15
         next:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: |
             Opaque cursor for the next page of results.
             Pass this value as the `cursor` parameter on the next request.
