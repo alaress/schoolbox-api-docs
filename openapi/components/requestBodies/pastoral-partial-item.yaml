@@ -13,7 +13,8 @@ content:
           description: The date on which this is occurred in the format configured in your Admin area. This also accepts RFC3339 format such as 2021-06-22T01:23:45+10:00
           type: [string, 'null']
           format: date
-          example: 2021-06-22T01:23:45+10:00
+          examples:
+            - 2021-06-22T01:23:45+10:00
         typeId:
           description: The ID of a pastoral type to associate with this pastoral record.
           type: integer

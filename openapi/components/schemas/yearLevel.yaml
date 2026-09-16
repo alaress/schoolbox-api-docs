@@ -11,6 +11,6 @@ properties:
 readOnly: true
 required:
   - id
-example:
-  id: 13
-  name: Year 12
+examples:
+  - id: 13
+    name: Year 12

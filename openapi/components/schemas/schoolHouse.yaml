@@ -11,6 +11,6 @@ properties:
 readOnly: true
 required:
   - id
-example:
-  id: 2
-  name: Prospect
+examples:
+  - id: 2
+    name: Prospect

@@ -17,7 +17,8 @@ put:
             deleteComments:
               type: boolean
               description: Whether comments on the learning moments should be deleted before the learning moments are published.
-              example: false
+              examples:
+                - false
   responses:
     '200':
       description: Successfully published learning moments.
@@ -33,6 +34,7 @@ put:
                 - type: object
                   properties:
                     currentState:
-                      example: "published"
+                      examples:
+                        - "published"
     default:
       $ref: ../components/responses/problem.yaml

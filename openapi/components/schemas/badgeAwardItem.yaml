@@ -12,13 +12,16 @@ properties:
     enum:
       - goal
       - achievement
-    example: goal
+    examples:
+      - goal
   reason:
     type: string
-    example: I saw it with my own eyes!
+    examples:
+      - I saw it with my own eyes!
   isGoal:
     type: boolean
-    example: true
+    examples:
+      - true
   award:
     $ref: ./badgeAwardItem.yaml
   recipient:
@@ -31,7 +34,8 @@ properties:
       title:
         type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
         type: [string, 'null']
         description: |
@@ -41,24 +45,29 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
         type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   awardedBy:
     type: object
     properties:
@@ -69,7 +78,8 @@ properties:
       title:
         type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
         type: [string, 'null']
         description: |
@@ -79,30 +89,36 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
         type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   awardedAt:
     type: string
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-27T12:49:11+10:00
+    examples:
+      - 2022-08-27T12:49:11+10:00
   reasonedBy:
     $ref: ./userShort.yaml
   reasonedAt:
@@ -110,31 +126,38 @@ properties:
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-27T12:49:11+10:00
+    examples:
+      - 2022-08-27T12:49:11+10:00
   expiresAt:
     type: [string, 'null']
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: null
+    examples:
+      - null
   viewedOn:
     type: [string, 'null']
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: null
+    examples:
+      - null
   _links:
     type: object
     properties:
       achievementWithdraw:
         type: string
-        example: /learning/badge/award/10/achievement/withdraw
+        examples:
+          - /learning/badge/award/10/achievement/withdraw
       goalWithdraw:
         type: string
-        example: /learning/badge/award/10/goal/withdraw
+        examples:
+          - /learning/badge/award/10/goal/withdraw
       goalAward:
         type: string
-        example: /learning/badge/award/10/achievement
+        examples:
+          - /learning/badge/award/10/achievement
       awardUpdate:
         type: string
-        example: /learning/badge/award/8/update
+        examples:
+          - /learning/badge/award/8/update

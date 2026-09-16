@@ -17,7 +17,8 @@ post:
               enum:
                 - self
                 - series
-              example: self
+              examples:
+                - self
               description: |
                 Either 'self' (to delete only the one event), or 'series' (to delete all events in the series).
   responses:

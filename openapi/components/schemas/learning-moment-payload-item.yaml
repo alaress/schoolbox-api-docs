@@ -4,16 +4,19 @@ properties:
     $ref: ../schemas/id.yaml
   body:
     type: string
-    example: "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
+    examples:
+      - "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
     description: Body text of learning moment as HTML.
   blurb:
     type: string
-    example: "I learned to tie my shoelaces."
+    examples:
+      - "I learned to tie my shoelaces."
     description: Short version of body text, automatically generated from body.  Not HTML.
   showReadMore:
     description: Whether to show a 'Read more' link after the blurb text.
     type: boolean
-    example: false
+    examples:
+      - false
   files:
     type: array
     description: Array of file objects
@@ -30,10 +33,12 @@ properties:
   hasComments:
     description: Whether the learning moment has any comments.
     type: boolean
-    example: false
+    examples:
+      - false
   currentState:
     type: string
-    example: "draft"
+    examples:
+      - "draft"
     enum: ["draft", "submitted", "published", "rejected"]
   tags:
     type: array
@@ -45,7 +50,8 @@ properties:
           $ref: ../schemas/id.yaml
         name:
           type: string
-          example: "Class Work"
+          examples:
+            - "Class Work"
           description: Short text tag to help with searching.
   curriculumNodes:
     type: array

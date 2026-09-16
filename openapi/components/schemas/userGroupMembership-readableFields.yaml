@@ -8,7 +8,8 @@ name:
     The name of the group.
 
     In this context, this is the name of the group's folder.
-  example: Basketball
+  examples:
+    - Basketball
 type:
   description: |
     The level of access that users have to this group.
@@ -29,7 +30,8 @@ isForceFollow:
     * `true`: users must subscribe to this group's events, and may not
       unsubscribe
   type: boolean
-  example: true
+  examples:
+    - true
 isFavourite:
   description: |
     Does the user have this group set as a favourite?
@@ -79,6 +81,7 @@ _links:
     homepage:
       type: [string, 'null']
       format: uri-reference
-      example: /homepage/83
+      examples:
+        - /homepage/83
       description: |
         Gives the homepage link to the group, or NULL if the group has no homepage.

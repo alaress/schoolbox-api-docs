@@ -25,10 +25,10 @@ properties:
     readOnly: true
     required:
       - id
-example:
-  id: 80
-  name: 9A English
-  code: 9ENGA
-  yearLevel:
-    id: 9
-    name: Year 10
+examples:
+  - id: 80
+    name: 9A English
+    code: 9ENGA
+    yearLevel:
+      id: 9
+      name: Year 10

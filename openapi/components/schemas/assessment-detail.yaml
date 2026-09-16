@@ -13,4 +13,5 @@ allOf:
         description: |
           A longer description of the assessment. Null if no description has been set.
           Only returned by the single-assessment endpoint (GET /api/assessment/{id}); never by the list.
-        example: "Write a 500 word essay on the causes of WW1."
+        examples:
+          - "Write a 500 word essay on the causes of WW1."

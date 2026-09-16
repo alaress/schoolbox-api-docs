@@ -22,7 +22,8 @@ put:
               - type: object
                 properties:
                   currentState:
-                    example: "submitted"
+                    examples:
+                      - "submitted"
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

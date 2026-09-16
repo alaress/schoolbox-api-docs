@@ -10,13 +10,15 @@ properties:
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-30T10:09:09+10:00
+    examples:
+      - 2022-08-30T10:09:09+10:00
   updatedAt:
     type: string
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-30T10:09:09+10:00
+    examples:
+      - 2022-08-30T10:09:09+10:00
   body:
     type: string
     description: |
@@ -31,7 +33,8 @@ properties:
       title:
         type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
         type: [string, 'null']
         description: |
@@ -41,24 +44,29 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
         type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   recipient:
     type: object
     properties:
@@ -69,7 +77,8 @@ properties:
       title:
         type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
         type: [string, 'null']
         description: |
@@ -79,24 +88,29 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
         type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   discussionThread:
     $ref: ./discussionThread-read.yaml
   filename:
@@ -106,16 +120,20 @@ properties:
     properties:
       hash:
         type: [string, 'null']
-        example: 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+        examples:
+          - 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
       mime:
         type: [string, 'null']
-        example: image/jpeg
+        examples:
+          - image/jpeg
       type:
         type: [string, 'null']
-        example: image
+        examples:
+          - image
       size:
         type: [integer, 'null']
-        example: 3385989
+        examples:
+          - 3385989
       _links:
         type: [object, 'null']
         description: |
@@ -123,17 +141,20 @@ properties:
         properties:
           icon:
             type: string
-            example: /static/images/mime/application-image-jpg.svg
+            examples:
+              - /static/images/mime/application-image-jpg.svg
           image:
             type: string
-            example: /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+            examples:
+              - /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
           stream:
             type: string
           poster:
             type: string
           fetch:
             type: string
-            example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+            examples:
+              - /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
   curriculumNodes:
     type: [array, 'null']
     items:
@@ -146,26 +167,33 @@ properties:
       id:
         type: integer
         description: the DB identifier of the Learning Moment Tags
-        example: 1
+        examples:
+          - 1
       name:
         type: string
         description: the name of the Learning Moment type, may not be unique
-        example: Class Work
+        examples:
+          - Class Work
   _links:
     type: object
     properties:
       createThread:
         type: string
-        example: /discussion/evidence/7/threads
+        examples:
+          - /discussion/evidence/7/threads
       delete:
         type: string
-        example: /learning/evidence/7
+        examples:
+          - /learning/evidence/7
       detail:
         type: string
-        example: /learning/evidence/7
+        examples:
+          - /learning/evidence/7
       modifyForm:
         type: string
-        example: /learning/evidence/7/modify
+        examples:
+          - /learning/evidence/7/modify
       put:
         type: string
-        example: /learning/evidence/7
+        examples:
+          - /learning/evidence/7

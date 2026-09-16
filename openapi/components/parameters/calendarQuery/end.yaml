@@ -6,6 +6,7 @@ description: |
   This is used to bound the range of calendar events returned.
 schema:
   type: integer
-  example: 1762606800
+  examples:
+    - 1762606800
 required: true
 

@@ -17,14 +17,17 @@ post:
             properties:
               success:
                 type: boolean
-                example: true
+                examples:
+                  - true
               message:
                 type: string
-                example: "OK"
+                examples:
+                  - "OK"
               id:
                 type: integer
                 description: The ID of the created submission
-                example: 102
+                examples:
+                  - 102
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
@@ -37,13 +40,15 @@ post:
             body:
               type: string
               description: HTML content of the submission
-              example: "<p>This is my submission for the assessment.</p>"
+              examples:
+                - "<p>This is my submission for the assessment.</p>"
             attachment:
               type: array
               description: Array of file references that were previously uploaded
               items:
                 type: string
-                example: "store:69f7efd490dd7679b105c21d1b00c3a84f8ba376:filename.doc"
+                examples:
+                  - "store:69f7efd490dd7679b105c21d1b00c3a84f8ba376:filename.doc"
           minProperties: 1
           additionalProperties: false
   parameters:
@@ -53,11 +58,13 @@ post:
       description: The ID of the assessment
       schema:
         type: integer
-        example: 123
+        examples:
+          - 123
     - name: studentId
       in: path
       required: true
       description: The ID of the student
       schema:
         type: integer
-        example: 456
+        examples:
+          - 456

@@ -23,11 +23,13 @@ allOf:
           type:
             type: string
             description: Name of event type
-            example: Excursion
+            examples:
+              - Excursion
           color:
             type: string
             description: CSS colour string
-            example: #ff7537
+            examples:
+              - '#ff7537'
       roles:
         type: array
         description: Array of role objects

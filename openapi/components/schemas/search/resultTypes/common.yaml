@@ -16,7 +16,8 @@ properties:
     format: date-time
     description: |
       The date of the search result.
-    example: 2022-01-30T21:00:00Z
+    examples:
+      - 2022-01-30T21:00:00Z
   url:
     type: string
     format: uri

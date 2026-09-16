@@ -21,8 +21,8 @@ properties:
     type: string
     description: The number of days in a cycle for this campus' timetable.
 readOnly: true
-example:
-  id: 1
-  name: Secondary
-  code: SEC
-  days: "5"
+examples:
+  - id: 1
+    name: Secondary
+    code: SEC
+    days: "5"

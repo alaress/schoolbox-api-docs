@@ -30,13 +30,16 @@ get:
         properties:
           externalId:
             type: string
-            example: 501
+            examples:
+              - 501
           username:
             type: string
-            example: jreed
+            examples:
+              - jreed
           email:
             type: string
-            example: jreed@schoolbox.com.au
+            examples:
+              - jreed@schoolbox.com.au
           year:
             description: A Year level to filter users with.
             oneOf:
@@ -45,13 +48,15 @@ get:
                   id:
                     type: integer
                     description: The DB identifier of the Year Level.
-                    example: 6
+                    examples:
+                      - 6
               - type: object
                 properties:
                   name:
                     type: string
                     description: The name of the Year Level, may not be unique.
-                    example: Year 6
+                    examples:
+                      - Year 6
           role:
             description: A role to filter users with.
             oneOf:
@@ -60,13 +65,15 @@ get:
                   id:
                     type: integer
                     description: The DB identifier of the Role.
-                    example: 1
+                    examples:
+                      - 1
               - type: object
                 properties:
                   name:
                     type: string
                     description: The name of the Role, may not be unique.
-                    example: Staff
+                    examples:
+                      - Staff
           roleType:
             type: string
             enum:
@@ -82,13 +89,15 @@ get:
                   id:
                     type: integer
                     description: The DB identifier of the Campus.
-                    example: 6
+                    examples:
+                      - 6
               - type: object
                 properties:
                   name:
                     type: string
                     description: The name of the Campus, may not be unique.
-                    example: Senior
+                    examples:
+                      - Senior
     - $ref: ../components/parameters/cursor.yaml
     - $ref: ../components/parameters/limit.yaml
 post:

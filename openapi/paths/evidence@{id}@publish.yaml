@@ -22,7 +22,8 @@ put:
               - type: object
                 properties:
                   currentState:
-                    example: "published"
+                    examples:
+                      - "published"
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

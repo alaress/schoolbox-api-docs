@@ -25,7 +25,8 @@ post:
                 - type: object
                   properties:
                     currentState:
-                      example: "draft"
+                      examples:
+                        - "draft"
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

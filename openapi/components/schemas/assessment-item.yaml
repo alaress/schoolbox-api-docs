@@ -7,7 +7,8 @@ properties:
     $ref: ./id.yaml
   title:
     type: string
-    example: Turning on the computer
+    examples:
+      - Turning on the computer
   assessmentType:
     type: string
     enum:
@@ -19,7 +20,8 @@ properties:
       - lessonPlan
       - dialogAgent
       - reporting
-    example: task
+    examples:
+      - task
   folder:
     description: |
       The folder where the assessment is found.
@@ -67,14 +69,17 @@ properties:
       id:
         type: integer
         description: The DB identifier of the worktype.
-        example: 1
+        examples:
+          - 1
       name:
         type: string
         description: The name of the work type, may not be unique.
-        example: Formative Assessment
+        examples:
+          - Formative Assessment
   weight:
     type: [integer, 'null']
-    example: 30
+    examples:
+      - 30
     description: |
       The value of how much this assessment's outcome contributes to the final overall grade -
       a value of 0 indicates this assessment has no impact on the overall grade.
@@ -85,7 +90,8 @@ properties:
     format: date-time
     description: |
       The due date of the assessment as a RFC3339 string. This can be null for assessments in a course.
-    example: 2022-01-30T21:00:00.000Z
+    examples:
+      - 2022-01-30T21:00:00.000Z
   rubric:
     allOf:
       - $ref: ./assessment-rubric.yaml
@@ -102,7 +108,8 @@ properties:
       id:
         type: integer
         description: ID of the parent assessment (project).
-        example: 255
+        examples:
+          - 255
   participants:
     type: [array, 'null']
     items:
@@ -114,7 +121,8 @@ properties:
       The ID of the specification assessment that this assessment was created from.
       Enables identifying common assessments across classes.
       Null if this assessment has no specification link.
-    example: 42
+    examples:
+      - 42
   markVisibility:
     type: [string, 'null']
     enum:
@@ -130,7 +138,8 @@ properties:
       - `staffAndParent`: Staff & Parents
       - `staffStudentAndParent`: Staff, Student & Parent
       Applicable to assessmentTypes 'dueWork', 'quiz', 'project', and 'LTI' (null for other types).
-    example: staffAndStudent
+    examples:
+      - staffAndStudent
   markType:
     type: [string, 'null']
     enum:
@@ -145,4 +154,5 @@ properties:
     description: |
       The type of mark used for this assessment.
       Applicable to assessmentTypes 'dueWork', 'quiz', and 'project' (null for other types).
-    example: percent
+    examples:
+      - percent

@@ -8,4 +8,5 @@ description: |
   * relationships with other users
   * class enrolments
   * timetabled classes
-example: 501
+examples:
+  - 501

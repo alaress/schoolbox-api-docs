@@ -7,11 +7,13 @@ items:
   properties:
     id:
       type: integer
-      example: 1
+      examples:
+        - 1
       description: The rubric instance ID.
     title:
       type: [string, 'null']
-      example: Written
+      examples:
+        - Written
       description: The title of this rubric.
     capabilities:
       $ref: ./assessment-rubric-feedback.yaml#/properties/capabilities

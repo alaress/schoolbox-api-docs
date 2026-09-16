@@ -50,12 +50,14 @@ parameters:
           description: |
             The ID of the assessment to search.
           type: integer
-          example: 256
+          examples:
+            - 256
         title:
           type: string
           description: |
             A part of title to filter assessments on.
-          example: English 3/4 [Final]
+          examples:
+            - English 3/4 [Final]
         assessmentType:
           description: The type of assessments to filter on.
           type: string
@@ -67,7 +69,8 @@ parameters:
             - project
             - dialogAgent
             - reporting
-          example: dueWork
+          examples:
+            - dueWork
         folder:
           oneOf:
             - type: array
@@ -80,7 +83,8 @@ parameters:
                       id:
                         description: ID of the folder containing the assessment.
                         type: integer
-                        example: 80
+                        examples:
+                          - 80
                     required:
                       - id
                   - type: object
@@ -88,7 +92,8 @@ parameters:
                       code:
                         description: Code of the folder containing the assessment.
                         type: string
-                        example: 9ENGA
+                        examples:
+                          - 9ENGA
                     required:
                       - code
             - type: object
@@ -99,7 +104,8 @@ parameters:
                 id:
                   type: integer
                   description: ID of the folder containing the assessment.
-                  example: 80
+                  examples:
+                    - 80
               required:
                 - id
         subjectCode:
@@ -110,7 +116,8 @@ parameters:
               The Course Subject Code.
         weighted:
           type: boolean
-          example: false
+          examples:
+            - false
           description: |
             Limit assessments to only those that have a weight set.
         workType:
@@ -121,11 +128,13 @@ parameters:
             id:
               type: integer
               description: The DB identifier of the worktype.
-              example: 1
+              examples:
+                - 1
             name:
               type: string
               description: The name of the work type, may not be unique.
-              example: Formative Assessment
+              examples:
+                - Formative Assessment
         dueDate:
           type: object
           properties:
@@ -134,13 +143,15 @@ parameters:
               format: date-time
               description: |
                 An RFC3339 time string including timezone eg. 2017-10-12T14:20:50+10:00
-              example: '2017-10-12T14:20:50+10:00'
+              examples:
+                - '2017-10-12T14:20:50+10:00'
             to:
               type: string
               format: date-time
               description: |
                 An RFC3339 time string including timezone eg. 2017-10-12T14:20:50+10:00
-              example: '2019-10-12T14:20:50+10:00'
+              examples:
+                - '2019-10-12T14:20:50+10:00'
         yearLevel:
           type: object
           description: |
@@ -149,17 +160,20 @@ parameters:
             id:
               type: integer
               description: The db identifier of the yearlevel.
-              example: 6
+              examples:
+                - 6
             name:
               type: string
               description: The name of the year level, may not be unique.
-              example: Year 6
+              examples:
+                - Year 6
         project:
           type: object
           properties:
             id:
               type: integer
               description: ID of the parent assessment (project).
-              example: 255
+              examples:
+                - 255
   - $ref: ../components/parameters/cursor.yaml
   - $ref: ../components/parameters/limit.yaml
