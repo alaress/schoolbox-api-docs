@@ -8,6 +8,19 @@
 #         - https://schoolbox.education/scope/assessment
 #     - bearerAuth:
 #         - https://schoolbox.education/scope/assessment:readonly
+#
+# OpenAPI's HTTP security scheme type has no way to declare the scopes it
+# supports (unlike the `scopes` map of an oauth2 scheme's flows): thus, they
+# are listed in the description.
+# Also, whilst each API endpoint's `security` property allows values to be
+# defined on a HTTP type scheme, they are considered arbitrary values and do not
+# refer back to anything: thus, they should also be mentioned in the description
+# of the endpoint, e.g.
+#
+#   This endpoint requires one of the following scopes when authorized using a
+#   bearer token:
+#   - https://schoolbox.education/scope/assessment
+#   - https://schoolbox.education/scope/assessment:readonly
 type:         http
 scheme:       bearer
 bearerFormat: JWT
