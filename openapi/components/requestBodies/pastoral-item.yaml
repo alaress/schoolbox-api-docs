@@ -2,6 +2,16 @@ description: |
   Pastoral record
 content:
   application/x-www-form-urlencoded:
+    examples:
+      linkedRecord:
+        summary: Create a record linked to two classes/groups
+        value:
+          student_id: 25
+          heading: Academic Achievement Award
+          typeId: 1
+          subtypeId: 1
+          severityId: 1
+          linkedFolderIds: '80,81'
     schema:
       type: object
       properties:
@@ -12,6 +22,22 @@ content:
           description: A comma separated list of IDs of students to create this pastoral record for.
           type: string
           nullable: true
+        linkedFolderIds:
+          description: |
+            Comma-separated IDs of classes or groups to link to the record. An array of IDs is also accepted.
+            Folders must be active classes or groups. For a single student, all selected folders must be
+            classes they are enrolled in via SIS or groups they currently belong to; otherwise the request is rejected.
+            For duplicate/bulk creation, each record receives only the selected folders that its student is eligible for.
+            Invalid, missing or archived folder IDs reject the request. Repeated IDs create only one link per record.
+            Omit this field or send an empty value to create records without links.
+            Linked folders are not sent to external pastoral synchronisation integrations.
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: integer
+                minimum: 1
+          example: '80,81'
         heading:
           description: Pastoral record title.
           type: string
