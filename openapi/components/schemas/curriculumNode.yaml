@@ -7,18 +7,16 @@ properties:
   id:
     $ref: ./id.yaml
   name:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The name of the node.
-    example: Self-awareness
+    examples: [Self-awareness]
   code:
     type: string
     description: |
       The node's curriculum code. An empty string if the node has no code.
-    example: GCPSC-SEA
+    examples: [GCPSC-SEA]
   reference:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: A reference for the node, such as a URL to the source framework.
   description:
     type: string
@@ -27,8 +25,6 @@ properties:
     type: boolean
     description: Whether the node is enabled.
   parent:
-    type: object
-    nullable: true
     description: |
       The parent node, or `null` for a top-level node.
 
@@ -37,9 +33,9 @@ properties:
     oneOf:
       - $ref: ./curriculumNode-reference.yaml
       - $ref: ./curriculumNode.yaml
+      - type: 'null'
   children:
-    type: array
-    nullable: true
+    type: [array, 'null']
     description: |
       The node's child nodes, down to the depth requested by the `descendants`
       parameter. `null` when descendants were not requested.
@@ -59,8 +55,7 @@ properties:
     readOnly: true
     description: When the node was last modified, as an RFC3339 string.
   _usageCounts:
-    type: object
-    nullable: true
+    type: [object, 'null']
     readOnly: true
     description: |
       How many items use this node, by type. `null` where counts were not
@@ -85,27 +80,22 @@ properties:
       not permitted to perform that action.
     properties:
       read:
-        type: string
+        type: [string, 'null']
         format: uri-reference
-        nullable: true
         description: A link to read the node.
       update:
-        type: string
+        type: [string, 'null']
         format: uri-reference
-        nullable: true
         description: A link to update the node.
       delete:
-        type: string
+        type: [string, 'null']
         format: uri-reference
-        nullable: true
         description: A link to delete the node.
       getUsage:
-        type: string
+        type: [string, 'null']
         format: uri-reference
-        nullable: true
         description: A link to read the node's usage.
       getExport:
-        type: string
+        type: [string, 'null']
         format: uri-reference
-        nullable: true
         description: A link to export the node and its descendants.

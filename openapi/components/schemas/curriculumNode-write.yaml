@@ -7,14 +7,13 @@ properties:
   name:
     type: string
     description: The name of the node.
-    example: Self-awareness
+    examples: [Self-awareness]
   code:
     type: string
     description: The node's curriculum code. Use an empty string for no code.
-    example: GCPSC-SEA
+    examples: [GCPSC-SEA]
   reference:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: A reference for the node, such as a URL to the source framework.
   description:
     type: string
@@ -23,12 +22,11 @@ properties:
     type: boolean
     description: Whether the node is enabled.
   parent:
-    type: object
-    nullable: true
     description: |
       The parent node. Omit or set to `null` for a top-level node.
-    allOf:
+    oneOf:
       - $ref: ./curriculumNode-reference.yaml
+      - type: 'null'
   order:
     type: integer
     description: The node's position among its siblings.
