@@ -1,25 +1,23 @@
-# This represents linked user objects (eg students, guardians, impersonableUsers) as returned by the API
-# Ideally this would just use userShort, but this doesn't match the API response and too many clients will depend on the actual response structure.
-# so please don't change the API, unless adding additional fields.
-title: Linked User
+# Documents the guardian and student objects on a user (the `guardians` and
+# `students` fields), as returned by the API. These use lower-case
+# `firstname`/`lastname`, unlike userShort (used for `impersonableUsers`),
+# because clients already depend on this response shape: please don't change
+# the API, except to add fields.
+title: Linked user
+description: A guardian or student linked to a user.
 type: object
 properties:
-
   id:
     $ref: ./id.yaml
-
   externalId:
     $ref: ./externalId.yaml
-
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
-    example: ""
-
+    examples:
+      - Mr
   firstname:
     type: string
-    nullable: false
     description: |
       The user's first name.
 
@@ -27,31 +25,40 @@ properties:
       and any other names, and in any case is not the definitive source of
       naming information; therefore in practice this will usually be the
       user's given name.
-    example: Sam
-
+    examples:
+      - Sam
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's preferred name.
-  
   givenName:
     type: string
-    nullable: false
     description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
-    example: Sam
-  
+    examples:
+      - Sam
   lastname:
     type: string
-    nullable: false
     description: The user's surname.
-    example: Reed
-
+    examples:
+      - Reed
   fullName:
     type: string
-    nullable: false
     description: The user's formatted full name.
-    example: Sam Reed
-
+    examples:
+      - Sam Reed
   role:
-    $ref: ./role.yaml
-
+    allOf:
+      - $ref: ./role.yaml
+      - type: object
+        properties:
+          student:
+            type: boolean
+            description: Whether the role's type is `student`.
+          staff:
+            type: boolean
+            description: Whether the role's type is `staff`.
+          parent:
+            type: boolean
+            description: Whether the role's type is `parent`.
+          guest:
+            type: boolean
+            description: Whether the role's type is `guest`.

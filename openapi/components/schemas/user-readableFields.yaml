@@ -43,14 +43,24 @@ properties:
     type: [array, 'null']
     uniqueItems: true
     items:
-      $ref: ./userShort.yaml
+      $ref: ./userLinked.yaml
     examples:
       - - id: 25
+          externalId: "25001"
+          title: ""
+          firstname: Janna
+          preferredName: null
+          givenName: Janna
+          lastname: Reed
           fullName: Janna Reed
-          yearLevel: [ ]
           role:
             id: 3
+            type: parent
             name: Parent
+            student: false
+            staff: false
+            parent: true
+            guest: false
   
   students:
     description: |
@@ -65,9 +75,24 @@ properties:
     type: [array, 'null']
     uniqueItems: true
     items:
-      $ref: ./userShort.yaml
+      $ref: ./userLinked.yaml
     examples:
-      - [ ]
+      - - id: 4690
+          externalId: "4690"
+          title: ""
+          firstname: Sam
+          preferredName: null
+          givenName: Sam
+          lastname: Reed
+          fullName: Sam Reed
+          role:
+            id: 13
+            type: student
+            name: Secondary Student
+            student: true
+            staff: false
+            parent: false
+            guest: false
 
   impersonableUsers:
     description: |
