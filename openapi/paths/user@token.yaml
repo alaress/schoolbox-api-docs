@@ -15,7 +15,7 @@ get:
     scheme used to authenticate the request:
     | Scheme | Scopes |
     |---|---|
-    | `bearerAuth` | Any scopes which exist on the JWT: if no valid scopes exist, the request will be rejected |
+    | `bearerAuth` | Any scopes which exist on the JWT, and are defined on this security scheme: if none exist, the request will be rejected |
     | `session` | The session scope `https://schoolbox.education/scope/session` |
   responses:
     '200':
@@ -38,8 +38,8 @@ post:
     depending on the security scheme used to authenticate the request:
     | Scheme | Scopes |
     |---|---|
-    | `bearerAuth` | Any scopes which exist on the JWT |
-    | `session` | Any allowed scope |
+    | `bearerAuth` | Any scopes which exist on the JWT, and are defined on this security scheme |
+    | `session` | Any scope defined on the `bearerAuth` security scheme |
 
     The allowed scopes may be further restricted based on the identified user's
     permissions.

@@ -13,8 +13,8 @@ post:
     request:
     | Scheme | Scopes |
     |---|---|
-    | `bearerAuth` | Any scopes which exist on the JWT |
-    | `session` | Any allowed scope |
+    | `bearerAuth` | Any scopes which exist on the JWT, and are defined on this security scheme |
+    | `session` | Any scope defined on the `bearerAuth` security scheme |
   requestBody:
     $ref: ../components/requestBodies/userToken-create.yaml
   responses:
