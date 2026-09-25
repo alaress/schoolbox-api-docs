@@ -1,0 +1,11 @@
+name: ancestors
+in: query
+description: |
+  The number of levels of ancestry to retrieve, if this endpoint is
+  returning a tree.
+schema:
+  type: integer
+  format: int32
+  minimum: 0
+  maximum: 50
+  default: 50

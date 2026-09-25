@@ -1,0 +1,29 @@
+summary: Tree format
+value:
+  - id: 1
+    name: Traits
+    code: GCPSC
+    description: ''
+    reference: null
+    enabled: true
+    breadcrumb: Traits
+    uuid: 0b7d9c11-2e4f-4a6b-8c0d-1e2f3a4b5c6d
+    children:
+      - id: 100
+        name: Self-awareness
+        code: GCPSC-SEA
+        description: ''
+        reference: null
+        enabled: true
+        breadcrumb: Traits > Self-awareness
+        uuid: 3f0c1b2a-8d4e-4c6f-9a1b-2e3d4c5b6a70
+        children:
+          - id: 101
+            name: Recognises emotions
+            code: GCPSC-SEA-01
+            description: ''
+            reference: null
+            enabled: true
+            breadcrumb: Traits > Self-awareness > Recognises emotions
+            uuid: 5c2e8f90-1a3b-4d5e-9f60-7a8b9c0d1e2f
+            children: []
