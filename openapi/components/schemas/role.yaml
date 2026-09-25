@@ -22,7 +22,7 @@ properties:
 required:
   - id
 readOnly: true
-example:
-  id:   4
-  name: Senior Students
-  type: student
+examples:
+  - id:   4
+    name: Senior Students
+    type: student

@@ -1,8 +1,74 @@
+# Operations list the scopes they accept in their `security` requirement.
+# Each scope gets its own entry, so that any one of them is sufficient
+# (scopes listed under a single entry must ALL be present):
+#
+#   security:
+#     - session: []
+#     - bearerAuth:
+#         - https://schoolbox.education/scope/assessment
+#     - bearerAuth:
+#         - https://schoolbox.education/scope/assessment:readonly
+#
+# OpenAPI's HTTP security scheme type has no way to declare the scopes it
+# supports (unlike the `scopes` map of an oauth2 scheme's flows): thus, they
+# are listed in the description.
+# Also, whilst each API endpoint's `security` property allows values to be
+# defined on a HTTP type scheme, they are considered arbitrary values and do not
+# refer back to anything: thus, they should also be mentioned in the description
+# of the endpoint, e.g.
+#
+#   This endpoint requires one of the following scopes when authorized using a
+#   bearer token:
+#   - https://schoolbox.education/scope/assessment
+#   - https://schoolbox.education/scope/assessment:readonly
 type:         http
 scheme:       bearer
 bearerFormat: JWT
 description: |
-  A JWT generated for a particular user.
+  A token generated for a particular user, in JWT format.
 
   This token allows the bearer to perform requests within the context of the
   user for whom the token was generated.
+  This user is identified depending on the source of the token:
+  | Source | Identifying claim |
+  |---|---|
+  | This instance | `sub` |
+  | Configured oAuth Identity Provider | Any of the claims in "oAuth Identifying Claims" |
+
+  Tokens which were issued by this instance directly may contain the following
+  scopes in its `scope` claim, which correspond to the following actions which
+  the bearer of this token may perform with it; actions which require a scope
+  the token does not have will be disallowed:
+  | Scope | Action |
+  |---|---|
+  | `https://schoolbox.education/scope/session` | Log in to Schoolbox with full privileges |
+  | `https://schoolbox.education/scope/assessment` | Read, create, update and delete assessments |
+  | `https://schoolbox.education/scope/assessment:readonly` | Read assessments |
+  | `https://schoolbox.education/scope/calendar` | Read, create, update and delete calendar events |
+  | `https://schoolbox.education/scope/calendar:readonly` | Read calendar events |
+  | `https://schoolbox.education/scope/config` | Read and update configuration settings |
+  | `https://schoolbox.education/scope/config:readonly` | Read configuration settings |
+  | `https://schoolbox.education/scope/upload` | Upload files for later use |
+  | `https://schoolbox.education/scope/group` | Read, create, update and delete groups |
+  | `https://schoolbox.education/scope/group:readonly` | Read groups |
+  | `https://schoolbox.education/scope/learningMoment` | Read, create, update and delete learning moments |
+  | `https://schoolbox.education/scope/learningMoment:readonly` | Read learning moments |
+  | `https://schoolbox.education/scope/learningMoment.comment` | Read, create, update and delete comments on learning moments |
+  | `https://schoolbox.education/scope/learningMoment.comment:readonly` | Read comments on learning moments |
+  | `https://schoolbox.education/scope/news` | Read, create, update and delete news articles |
+  | `https://schoolbox.education/scope/news:readonly` | Read news articles |
+  | `https://schoolbox.education/scope/news.comment` | Read, create, update and delete comments on news articles|
+  | `https://schoolbox.education/scope/news.comment:readonly` | Read comments on news articles|
+  | `https://schoolbox.education/scope/pastoral` | Read, create, update and delete pastoral records |
+  | `https://schoolbox.education/scope/pastoral:readonly` | Read pastoral records |
+  | `https://schoolbox.education/scope/search` | Search for content |
+  | `https://schoolbox.education/scope/user` | Read, create, update and delete users |
+  | `https://schoolbox.education/scope/user:readonly` | Read users|
+  | `https://schoolbox.education/scope/user.token` | Read, create, update and delete user tokens |
+  | `https://schoolbox.education/scope/user.notification` | Send notifications |
+  | `https://schoolbox.education/scope/differentiation` | Read, create, update and delete differentiation profiles |
+  | `https://schoolbox.education/scope/differentiation:readonly` | Read differentiation profiles |
+  | `https://schoolbox.education/scope/curriculum` | Read, create, update and delete curriculum data |
+  | `https://schoolbox.education/scope/curriculum:readonly` | Read curriculum data |
+  | `https://schoolbox.education/scope/course` | Read, create, update and delete courses |
+  | `https://schoolbox.education/scope/course:readonly` | Read courses |

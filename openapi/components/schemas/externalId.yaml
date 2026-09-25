@@ -1,6 +1,5 @@
 title: External ID
-type: string
-nullable: true
+type: [string, 'null']
 description: |
   This user's ID in the school's School Information System (SIS).
 
@@ -9,4 +8,5 @@ description: |
   * relationships with other users
   * class enrolments
   * timetabled classes
-example: 501
+examples:
+  - 501

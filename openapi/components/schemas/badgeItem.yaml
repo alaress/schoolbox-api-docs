@@ -10,7 +10,8 @@ properties:
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-30T10:09:09+10:00
+    examples:
+      - 2022-08-30T10:09:09+10:00
   createdBy:
     type: object
     properties:
@@ -19,13 +20,12 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
           
@@ -33,31 +33,36 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   updatedAt:
     type: string
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-30T10:09:09+10:00
+    examples:
+      - 2022-08-30T10:09:09+10:00
   updatedBy:
     type: object
     properties:
@@ -66,13 +71,12 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
           
@@ -80,48 +84,55 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   name:
     type: string
-    example: |
-      Jump Rope for Heart Team
+    examples:
+      - |
+        Jump Rope for Heart Team
   body:
     type: string
     description: |
       The content of the Learning Moment
   image:
-    type: string
-    nullable: true
+    type: [string, 'null']
   icon:
     type: string
     description: |
       The Badge Image, either system defined or selectable by the user
-    example: |
-      /images/badges/sport/23.svg
+    examples:
+      - |
+        /images/badges/sport/23.svg
   allowAsGoal:
     type: boolean
-    example: true
+    examples:
+      - true
   animate:
     type: boolean
-    example: true
+    examples:
+      - true
     description: |
       On First load of the achieved badge, should the badge be animated? flying stars, fly in...
   category:
@@ -129,45 +140,48 @@ properties:
     properties:
       id:
         type: integer
-        example: 4
+        examples:
+          - 4
       name:
         type: string
-        example: |
-          Extra-Curricular
+        examples:
+          - |
+            Extra-Curricular
   achievementExpiry:
-    nullable: true
-    type: string
+    type: [string, 'null']
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: null
+    examples:
+      - null
   goalExpiry:
-    nullable: true
-    type: string
+    type: [string, 'null']
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: null
+    examples:
+      - null
   curriculumNodes:
-    nullable: true
-    type: array
+    type: [array, 'null']
     items:
       $ref: ./curriculumItem.yaml
   tags:
-    nullable: true
-    example: null
-    type: object
+    examples:
+      - null
+    type: [object, 'null']
     description: |
       System configurable in your Admin Lists Learning Moment area
     properties:
       id:
         type: integer
         description: the DB identifier of the Learning Moment Tags
-        example: 1
+        examples:
+          - 1
       name:
         type: string
         description: the name of the Learning Moment type, may not be unique
-        example: Class Work
+        examples:
+          - Class Work
   _links:
     type: object
     properties:
@@ -175,26 +189,33 @@ properties:
         type: string
         description: |
           the link for the user to update the badge
-        example: /learning/badge/10/update
+        examples:
+          - /learning/badge/10/update
       delete:
         type: string
         description: |
           the link for the user to delete the badge
-        example: /learning/badge/10
+        examples:
+          - /learning/badge/10
       achievementRecipients:
         type: string
-        example: /learning/badge/award/10/achievement/recipients
+        examples:
+          - /learning/badge/award/10/achievement/recipients
       goalRecipients:
         type: string
-        example: /learning/badge/award/10/goal/recipients
+        examples:
+          - /learning/badge/award/10/goal/recipients
       achievementWithdraw:
         type: string
-        example: /learning/badge/award/10/achievement/withdraw
+        examples:
+          - /learning/badge/award/10/achievement/withdraw
       goalWithdraw:
         type: string
-        example: /learning/badge/award/10/goal/withdraw
+        examples:
+          - /learning/badge/award/10/goal/withdraw
       icon:
         type: string
         description: |
           The Badge Image, either system defined or selectable by the user
-        example: /static/images/badges/sport/23.svg
+        examples:
+          - /static/images/badges/sport/23.svg

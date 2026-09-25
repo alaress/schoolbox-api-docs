@@ -11,11 +11,12 @@ get:
     a Schoolbox instance may be performed in a manner more in common with
     calls to a remote API.
 
-    This endpoint only makes sense for users authenticated with the "session"
-    security scheme, as it returns a token which is used by the "bearerAuth"
-    scheme.
-  security:
-    - session: []
+    This endpoint will automatically assign scopes, depending on the security
+    scheme used to authenticate the request:
+    | Scheme | Scopes |
+    |---|---|
+    | `bearerAuth` | Any scopes which exist on the JWT, and are defined on this security scheme: if none exist, the request will be rejected |
+    | `session` | The session scope `https://schoolbox.education/scope/session` |
   responses:
     '200':
       $ref: ../components/responses/userToken.yaml
@@ -33,11 +34,15 @@ post:
     a Schoolbox instance may be performed in a manner more in common with
     calls to a remote API.
 
-    This endpoint only makes sense for users authenticated with the "session"
-    security scheme, as it returns a token which is used by the "bearerAuth"
-    scheme.
-  security:
-    - session: []
+    This endpoint will restrict the scopes which may be added to the new token,
+    depending on the security scheme used to authenticate the request:
+    | Scheme | Scopes |
+    |---|---|
+    | `bearerAuth` | Any scopes which exist on the JWT, and are defined on this security scheme |
+    | `session` | Any scope defined on the `bearerAuth` security scheme |
+
+    The allowed scopes may be further restricted based on the identified user's
+    permissions.
   requestBody:
     $ref: ../components/requestBodies/userToken-create.yaml
   responses:

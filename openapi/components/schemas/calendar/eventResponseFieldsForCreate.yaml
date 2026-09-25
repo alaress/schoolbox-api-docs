@@ -10,5 +10,5 @@ allOf:
           not mean that creation of the calendar event failed.
         items:
           type: string
-        example:
-          - You do not have permission to create bookings for resource 'Meeting Room 1'.
+        examples:
+          - - You do not have permission to create bookings for resource 'Meeting Room 1'.

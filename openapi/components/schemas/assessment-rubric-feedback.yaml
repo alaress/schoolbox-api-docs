@@ -11,25 +11,29 @@ properties:
       properties:
         id:
           type: integer
-          example: 47
+          examples:
+            - 47
           description: The ID in the DB of this field. To help identify different rubric capabilities.
         name:
           type: string
-          example: Skills
+          examples:
+            - Skills
           description: The description of the capability.
         maxValue:
           type: number
-          example: 0
+          examples:
+            - 0
           description: |
             By default, the maximum points for the capability is the sum of the highest descriptor values available in each indicator within that capability.
         value:
           type: number
-          example: 0
+          examples:
+            - 0
           description: The marked value for this capability.
         mark:
-          type: string
-          nullable: true
-          example: null
+          type: [string, 'null']
+          examples:
+            - null
           description: The human readable mark for this capability.
         indicators:
           description: The key skills that was assessed in the assessment.
@@ -39,21 +43,25 @@ properties:
             properties:
               id:
                 type: integer
-                example: 105
+                examples:
+                  - 105
                 description: The ID in the DB of this field. To help identify different rubric indicators.
               name:
                 type: string
-                example: |
-                  Communication
+                examples:
+                  - |
+                    Communication
                 description: The description of the indicator.
               maxValue:
                 type: number
-                example: 0
+                examples:
+                  - 0
                 description: |
                   By default, the maximum points for the indicator is the sum of the highest descriptor values available within the indicator.
               value:
                 type: number
-                example: 0
+                examples:
+                  - 0
                 description: The marked value for this indicator.
               descriptor:
                 description: Statement that explain what a student has achieved or demonstrated for this level.
@@ -61,19 +69,23 @@ properties:
                 properties:
                   id:
                     type: integer
-                    example: 628
+                    examples:
+                      - 628
                     description: The ID in the DB of this field. To help identify different rubric descriptors.
                   description:
                     type: string
-                    example: |
-                      Mostly listening, speaking on topic, reading appropriate materials, writing on-topic & using critical non-verbal communication.
+                    examples:
+                      - |
+                        Mostly listening, speaking on topic, reading appropriate materials, writing on-topic & using critical non-verbal communication.
                     description: The description of the descriptor.
                   maxValue:
                     type: number
-                    example: 0
+                    examples:
+                      - 0
                     description: |
                       If you are using the mark range, this will be the upper point value available for that particular descriptor.
                   sequence:
                     description: The order the descriptor was ordered in.
                     type: integer
-                    example: 4
+                    examples:
+                      - 4

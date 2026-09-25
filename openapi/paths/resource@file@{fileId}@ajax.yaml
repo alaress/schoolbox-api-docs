@@ -22,4 +22,5 @@ patch:
           properties:
             hidden:
               type: boolean
-              example: false
+              examples:
+                - false

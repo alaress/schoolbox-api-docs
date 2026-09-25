@@ -8,17 +8,21 @@ content:
           type: string
           description: |
             limit of 250 characters
-          example: 2022-School-Events
+          examples:
+            - 2022-School-Events
         title:
           type: string
-          example: School Events
+          examples:
+            - School Events
         description:
           type: string
           description: |
             limit of 255 characters
-          example: |
-            Current
-            Banner image for 2022 school events
+          examples:
+            - |
+              Current
+              Banner image for 2022 school events
         hidden:
           type: boolean
-          example: false
+          examples:
+            - false

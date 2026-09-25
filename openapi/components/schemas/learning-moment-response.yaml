@@ -8,28 +8,25 @@ properties:
     $ref: ../schemas/dateTimeString.yaml
   body:
     type: string
-    example: "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
+    examples:
+      - "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
     description: Body text of learning moment as HTML.
   creator:
     $ref: ../schemas/userAuthor.yaml
   discussionThread:
-    type: object
-    nullable: true
+    type: [object, 'null']
     properties:
       id:
         $ref: ../schemas/id.yaml
       open:
         description: Whether the discussion thread is open to new comments or not.
-        type: boolean
-        nullable: true
+        type: [boolean, 'null']
       createdAt:
-        type: string
+        type: [string, 'null']
         description: Currently null, but in the future will be a datetime string.
-        nullable: true
       updatedAt:
-        type: string
+        type: [string, 'null']
         description: Currently null, but in the future will be a datetime string.
-        nullable: true
       _links:
         type: object
         properties:
@@ -40,7 +37,8 @@ properties:
              - type: object
                properties:
                  href:
-                   example: "/discussion/evidence/19/threads/27/comments"
+                   examples:
+                     - "/discussion/evidence/19/threads/27/comments"
           createComment:
             # Use the link.yaml schema, but override the example value.
             allOf:
@@ -48,7 +46,8 @@ properties:
               - type: object
                 properties:
                   href:
-                    example: "/discussion/evidence/19/threads/27/comments"
+                    examples:
+                      - "/discussion/evidence/19/threads/27/comments"
   recipient:
     $ref: ../schemas/userAuthor.yaml
   evidence:
@@ -61,7 +60,8 @@ properties:
           $ref: ../schemas/file.yaml
         filename:
           type: string
-          example: photo.jpeg
+          examples:
+            - photo.jpeg
   folders:
     type: array
     description: Array of folder objects.
@@ -92,7 +92,8 @@ properties:
           $ref: ../schemas/id.yaml
         name:
           type: string
-          example: "Class Work"
+          examples:
+            - "Class Work"
           description: Short text tag to help with searching.
   _links:
     $ref: ../schemas/learning-moment-links.yaml

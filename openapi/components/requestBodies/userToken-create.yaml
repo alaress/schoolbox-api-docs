@@ -30,3 +30,14 @@ content:
 
             May be provided as an alternative to `expiry`, but is still
             bound to a maximum of 12 months.
+        scopes:
+          type: array
+          description: |
+            One or more scopes for this token, corresponding to actions which
+            are allowed to this token.
+
+            See the `bearerAuth` security scheme for more information on the
+            allowed scopes.
+          minItems: 1
+          items:
+            type: string

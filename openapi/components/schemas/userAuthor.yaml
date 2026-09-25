@@ -14,22 +14,23 @@ properties:
         type: string
         format: uri
         description: URL for a link to the user's profile page.
-        example: "/search/user/25"
+        examples:
+          - "/search/user/25"
       avatar:
         type: string
         format: uri
         description: URL for a link to the user's avatar image.
-        example: "/portrait.php?id=25&size=square64"
+        examples:
+          - "/portrait.php?id=25&size=square64"
 
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
-    example: Ms
+    examples:
+      - Ms
 
   firstName:
     type: string
-    nullable: false
     description: |
       The user's first name.
 
@@ -37,29 +38,26 @@ properties:
       and any other names, and in any case is not the definitive source of
       naming information; therefore in practice this will usually be the
       user's given name.
-    example: Rebecca
+    examples:
+      - Rebecca
 
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's preferred name.
 
   pronoun:
-    type: string
-    nullable: true
+    type: [string, 'null']
   
   lastName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's surname.
-    example: White
+    examples:
+      - White
 
   fullName:
     type: string
-    nullable: false
     description: The user's formatted full name.
 
   isDeleted:
     type: boolean
-    nullable: false
     description: Whether the user is deleted or not.

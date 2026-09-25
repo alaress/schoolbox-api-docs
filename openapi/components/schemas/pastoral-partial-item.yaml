@@ -8,8 +8,7 @@ items:
       $ref: ./id.yaml
     externalId:
       description: The ID of SIS data corresponding to this pastoral record, if External Pastoral Synchronisation is ON.
-      type: string
-      nullable: true
+      type: [string, 'null']
     student:
       title: User
       description: Short fields for users
@@ -20,13 +19,12 @@ items:
         externalId:
           $ref: ./externalId.yaml
         title:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: The user's title (Mr., Ms., etc.).
-          example: Ms
+          examples:
+            - Ms
         firstName:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: |
             The user's first name.
       
@@ -34,15 +32,15 @@ items:
             and any other names, and in any case is not the definitive source of
             naming information; therefore in practice this will usually be the
             user's given name.
-          example: Rebecca
+          examples:
+            - Rebecca
         lastName:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: The user's surname.
-          example: White
+          examples:
+            - White
         preferredName:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: The user's preferred name.
         _links:
           type: object
@@ -51,9 +49,8 @@ items:
               type: string
               format: uri-reference
             avatar:
-              type: string
+              type: [string, 'null']
               format: uri-reference
-              nullable: true
     heading:
       description: Heading of the pastoral record.
       type: string
@@ -120,9 +117,8 @@ items:
       type: string
       format: date-time
     points:
-      nullable: true
       description: Points of this pastoral record.
-      type: integer
+      type: [integer, 'null']
     tags:
       description: List of tag names.
       type: array
@@ -167,9 +163,8 @@ items:
       items:
         $ref: ./discussionComment-read.yaml
     recordActions:
-      nullable: true
       description: An array of pastoral actions.
-      type: array
+      type: [array, 'null']
       items:
         properties:
           id:
@@ -203,85 +198,85 @@ items:
         The date as a RFC3339 string.
     _links:
       type: object
-  example:
-    id: 77
-    externalId: null
-    student:
-      id: 25
-      _links:
-        profile: /search/user/25
-        avatar: /portrait.php?id=25&size=square64
-      title: Ms
-      firstName: Jana
-      preferredName: null
-      lastName: Reed
-      fullName: Ms Jana Reed
-      isDeleted: false
-      externalId: 507
-    heading: Academic Achievement Award - Semester 2
-    type:
-      id: 1
-      name: Academic
-      colour: null
-      icon: null
-      sentiment: neutral
-      sequence: 1
-    subType:
-      id: 1
-      name: Award/Achievement
-      colour: rgba(182, 74, 74, 1.000)
-      icon: achievement
-      sentiment: neutral
-      sequence: 1
-    severity:
-      id: 1
-      name: Low
-      sequence: 1
-      color: rgba(0, 128, 0, 1.000)
-    points: 50
-    tags:
-      - id: 26
-        name: test tag A
-      - id: 27
-        name: test tag B
-    bodyPrivate: null
-    bodyPublic: Public body\nPublic body.
-    attachmentsPrivate: []
-    attachmentsPublic:
-      - hash: 723b6e31c2979b33deea852cdbbad9c4b0e00b96
-        mime: image/jpeg
-        type: image
-        size: 279489
+  examples:
+    - id: 77
+      externalId: null
+      student:
+        id: 25
         _links:
-          fetch: /storage/fetch.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
-          icon: /static/images/mime/application-image-jpg.svg
-          image: /storage/image.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
-    commentsPrivate: []
-    commentsPublic: []
-    recordActions: []
-    createdBy:
-      id: 22
+          profile: /search/user/25
+          avatar: /portrait.php?id=25&size=square64
+        title: Ms
+        firstName: Jana
+        preferredName: null
+        lastName: Reed
+        fullName: Ms Jana Reed
+        isDeleted: false
+        externalId: 507
+      heading: Academic Achievement Award - Semester 2
+      type:
+        id: 1
+        name: Academic
+        colour: null
+        icon: null
+        sentiment: neutral
+        sequence: 1
+      subType:
+        id: 1
+        name: Award/Achievement
+        colour: rgba(182, 74, 74, 1.000)
+        icon: achievement
+        sentiment: neutral
+        sequence: 1
+      severity:
+        id: 1
+        name: Low
+        sequence: 1
+        color: rgba(0, 128, 0, 1.000)
+      points: 50
+      tags:
+        - id: 26
+          name: test tag A
+        - id: 27
+          name: test tag B
+      bodyPrivate: null
+      bodyPublic: Public body\nPublic body.
+      attachmentsPrivate: []
+      attachmentsPublic:
+        - hash: 723b6e31c2979b33deea852cdbbad9c4b0e00b96
+          mime: image/jpeg
+          type: image
+          size: 279489
+          _links:
+            fetch: /storage/fetch.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
+            icon: /static/images/mime/application-image-jpg.svg
+            image: /storage/image.php?hash=723b6e31c2979b33deea852cdbbad9c4b0e00b96
+      commentsPrivate: []
+      commentsPublic: []
+      recordActions: []
+      createdBy:
+        id: 22
+        _links:
+          profile: /search/user/165
+          avatar: /portrait.php?id=165&size=square64
+        title:
+        firstName: Jack
+        preferredName: null
+        lastName: Coles
+        fullName: Jack Coles
+        isDeleted: false
+      createdAt: 2022-11-14T15:08:21+11:00
+      updatedBy:
+        id: 22
+        _links:
+          profile: /search/user/165
+          avatar: /portrait.php?id=165&size=square64
+        title:
+        firstName: Jack
+        preferredName: null
+        lastName: Coles
+        fullName: Jack Coles
+        isDeleted: false
+      updatedAt: 2022-11-14T15:08:21+11:00
       _links:
-        profile: /search/user/165
-        avatar: /portrait.php?id=165&size=square64
-      title:
-      firstName: Jack
-      preferredName: null
-      lastName: Coles
-      fullName: Jack Coles
-      isDeleted: false
-    createdAt: 2022-11-14T15:08:21+11:00
-    updatedBy:
-      id: 22
-      _links:
-        profile: /search/user/165
-        avatar: /portrait.php?id=165&size=square64
-      title:
-      firstName: Jack
-      preferredName: null
-      lastName: Coles
-      fullName: Jack Coles
-      isDeleted: false
-    updatedAt: 2022-11-14T15:08:21+11:00
-    _links:
-      read: /pastoral/student/25/record/77
+        read: /pastoral/student/25/record/77

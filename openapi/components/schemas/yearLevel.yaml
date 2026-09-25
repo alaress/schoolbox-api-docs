@@ -1,8 +1,7 @@
 title: Year Level
 description: |
   A year level which a student may belong to.
-type: object
-nullable: true
+type: [object, 'null']
 properties:
   id:
     $ref: id.yaml
@@ -12,6 +11,6 @@ properties:
 readOnly: true
 required:
   - id
-example:
-  id: 13
-  name: Year 12
+examples:
+  - id: 13
+    name: Year 12

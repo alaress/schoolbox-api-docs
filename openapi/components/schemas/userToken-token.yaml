@@ -10,4 +10,5 @@ properties:
 
       This token is passed to the Schoolbox API according to the "BearerAuth"
       security scheme (i.e. in a HTTP header `Authorization: Bearer $token`).
-    example: 3MiOiJ2YWdyYW50LmRldi5zY2hvb2xib3guY2xvdWQiLCJzdWIiOiJhbGFyZXNzIiwianRpIjoiZDM1N...
+    examples:
+      - 3MiOiJ2YWdyYW50LmRldi5zY2hvb2xib3guY2xvdWQiLCJzdWIiOiJhbGFyZXNzIiwianRpIjoiZDM1N...

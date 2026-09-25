@@ -24,7 +24,6 @@ properties:
       The author's full name: usually, this is the title, first name and last
       name joined together.
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
   givenName:
     type: string

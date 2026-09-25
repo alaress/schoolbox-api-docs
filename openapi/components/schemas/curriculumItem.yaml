@@ -7,7 +7,9 @@ properties:
     $ref: ./id.yaml
   name:
     type: string
-    example: Self-awareness
+    examples:
+      - Self-awareness
   code:
     type: string
-    example: GCPSC-SEA
+    examples:
+      - GCPSC-SEA
