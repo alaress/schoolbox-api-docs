@@ -1,40 +1,44 @@
 post:
   operationId: curriculumApiUsageFolder.postSingleFolderUsage
   tags: [curriculum]
-  summary: Add curriculum node to a folder
+  summary: Add a curriculum node to a folder
   description: |
-    Add a single curriculum node to a folder.
+    Associate a single curriculum node with a folder.
 
-    Returns a 200 response with the new structure if the node was added,
-    or a 409 if it was already on the folder.
+    Returns the folder's new curriculum nodes, or a 409 with an empty body if
+    the node is already associated with the folder.
+
+    This endpoint requires write access to the folder.
   responses:
     '200':
       $ref: ../components/responses/curriculumFolderUsage-list.yaml
     '409':
-      description: The curriculum node already exists on the folder.
+      description: The node is already associated with the folder.
     default:
       $ref: ../components/responses/problem.yaml
 
 delete:
   operationId: curriculumApiUsageFolder.deleteSingleFolderUsage
   tags: [curriculum]
-  summary: Remove curriculum node from a folder
+  summary: Remove a curriculum node from a folder
   description: |
     Remove a single curriculum node from a folder.
 
-    Returns a 200 response with the new structure if the node was removed,
-    or a 404 if it did not already exist on the folder.
+    Returns the folder's remaining curriculum nodes, or a 404 with an empty
+    body if the node was not associated with the folder.
+
+    This endpoint requires write access to the folder.
   responses:
     '200':
       $ref: ../components/responses/curriculumFolderUsage-list.yaml
     '404':
-      description: The curriculum node does not exist on the folder.
+      description: The node is not associated with the folder.
     default:
       $ref: ../components/responses/problem.yaml
 
 parameters:
   - $ref: ../components/parameters/id.yaml
   - $ref: ../components/parameters/curriculum-folderId.yaml
-  - $ref: ../components/parameters/curriculum-ancestors.yaml
-  - $ref: ../components/parameters/curriculum-descendants.yaml
-  - $ref: ../components/parameters/curriculum-returnFormat.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-ancestors.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-descendants.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-returnFormat.yaml

@@ -1,7 +1,7 @@
 name: folderId
 in: path
 description: |
-  The ID of the folder to modify curriculum nodes for.
+  The ID of the folder.
 required: true
 schema:
   type: integer

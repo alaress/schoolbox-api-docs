@@ -1,37 +1,39 @@
-post:
-  operationId: curriculumApiUsageFolder.postFolderUsage
+get:
+  operationId: curriculumApiUsageFolder.getFolderUsage
   tags: [curriculum]
-  summary: Set curriculum nodes associated with a folder
+  summary: Get a folder's curriculum nodes
   description: |
-    Set the curriculum nodes associated with a folder.
+    Get the curriculum nodes associated with a folder, as a flat list or as a
+    tree (see `returnFormat`).
 
-    Returns a 200 response with the new structure the nodes were set,
-    or a 404 if any node to be added was not found.
-  requestBody:
-    content:
-      application/json:
-        schema:
-          description: |
-            An array of curriculum nodes to associate with the folder.
-
-            This will override the folder's current association completely: any
-            nodes not in this list will be disassociated from the folder.
-            (If this is empty, the folder will have no nodes associated.)
-
-          type: array
-          items:
-            $ref: ../components/schemas/curriculumItem.yaml
-
+    This endpoint requires write access to the folder.
   responses:
     '200':
       $ref: ../components/responses/curriculumFolderUsage-list.yaml
-    '404':
-      description: One or more curriculum nodes to be added were not found.
+    default:
+      $ref: ../components/responses/problem.yaml
+
+post:
+  operationId: curriculumApiUsageFolder.postFolderUsage
+  tags: [curriculum]
+  summary: Set a folder's curriculum nodes
+  description: |
+    Replace the curriculum nodes associated with a folder.
+
+    Returns the folder's new curriculum nodes, or a 404 if any node in the
+    request does not exist. Nothing is changed if a 404 is returned.
+
+    This endpoint requires write access to the folder.
+  requestBody:
+    $ref: ../components/requestBodies/curriculumFolderUsage-set.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
     default:
       $ref: ../components/responses/problem.yaml
 
 parameters:
   - $ref: ../components/parameters/curriculum-folderId.yaml
-  - $ref: ../components/parameters/curriculum-ancestors.yaml
-  - $ref: ../components/parameters/curriculum-descendants.yaml
-  - $ref: ../components/parameters/curriculum-returnFormat.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-ancestors.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-descendants.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-returnFormat.yaml
