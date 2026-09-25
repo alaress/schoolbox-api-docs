@@ -3,8 +3,9 @@
 # `firstname`/`lastname`, unlike userShort (used for `impersonableUsers`),
 # because clients already depend on this response shape: please don't change
 # the API, except to add fields.
-title: Linked user
-description: A guardian or student linked to a user.
+title: Related user
+description: |
+  A user related to another user, such as a parent, guardian or child.
 type: object
 properties:
   id:
