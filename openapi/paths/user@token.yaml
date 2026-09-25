@@ -40,6 +40,9 @@ post:
     |---|---|
     | `bearerAuth` | Any scopes which exist on the JWT |
     | `session` | Any allowed scope |
+
+    The allowed scopes may be further restricted based on the identified user's
+    permissions.
   requestBody:
     $ref: ../components/requestBodies/userToken-create.yaml
   responses:
