@@ -7,6 +7,14 @@ post:
 
     Only users which are authenticated as a superuser may request a token for
     another user.
+
+    In addition, this endpoint will restrict the scopes which may be added to
+    the new token, depending on the security scheme used to authenticate the
+    request:
+    | Scheme | Scopes |
+    |---|---|
+    | `bearerAuth` | Any scopes which exist on the JWT |
+    | `session` | Any allowed scope |
   requestBody:
     $ref: ../components/requestBodies/userToken-create.yaml
   responses:
