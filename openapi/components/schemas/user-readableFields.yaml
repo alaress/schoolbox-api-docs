@@ -43,7 +43,7 @@ properties:
     type: [array, 'null']
     uniqueItems: true
     items:
-      $ref: ./userRelations.yaml
+      $ref: ./userRelated.yaml
     examples:
       - - id: 25
           externalId: "25001"
@@ -75,7 +75,7 @@ properties:
     type: [array, 'null']
     uniqueItems: true
     items:
-      $ref: ./userRelations.yaml
+      $ref: ./userRelated.yaml
     examples:
       - - id: 4690
           externalId: "4690"
