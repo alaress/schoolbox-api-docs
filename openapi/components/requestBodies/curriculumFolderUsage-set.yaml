@@ -1,0 +1,15 @@
+description: |
+  The curriculum nodes to associate with the folder, by ID.
+
+  This replaces the folder's current nodes completely: any node not in this
+  list is removed from the folder. An empty list removes all nodes.
+required: true
+content:
+  application/json:
+    schema:
+      type: array
+      items:
+        $ref: ../schemas/curriculumNode-reference.yaml
+    example:
+      - id: 100
+      - id: 200

@@ -1,0 +1,44 @@
+post:
+  operationId: curriculumApiUsageFolder.postSingleFolderUsage
+  tags: [curriculum]
+  summary: Add a curriculum node to a folder
+  description: |
+    Associate a single curriculum node with a folder.
+
+    Returns the folder's new curriculum nodes, or a 409 with an empty body if
+    the node is already associated with the folder.
+
+    This endpoint requires write access to the folder.
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
+    '409':
+      description: The node is already associated with the folder.
+    default:
+      $ref: ../components/responses/problem.yaml
+
+delete:
+  operationId: curriculumApiUsageFolder.deleteSingleFolderUsage
+  tags: [curriculum]
+  summary: Remove a curriculum node from a folder
+  description: |
+    Remove a single curriculum node from a folder.
+
+    Returns the folder's remaining curriculum nodes, or a 404 with an empty
+    body if the node was not associated with the folder.
+
+    This endpoint requires write access to the folder.
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
+    '404':
+      description: The node is not associated with the folder.
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
+  - $ref: ../components/parameters/curriculum-folderId.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-ancestors.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-descendants.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-returnFormat.yaml

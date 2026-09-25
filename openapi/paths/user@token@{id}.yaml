@@ -1,15 +1,25 @@
 post:
   operationId: userGetTokenForUser
-  tags: [user]
-  summary: Get an authentication token for a user
+  tags: [userToken]
+  summary: Create an authentication token for a user
   description: |
     Retrieve an authentication token for another user.
 
     Only users which are authenticated as a superuser may request a token for
     another user.
+
+    In addition, this endpoint will restrict the scopes which may be added to
+    the new token, depending on the security scheme used to authenticate the
+    request:
+    | Scheme | Scopes |
+    |---|---|
+    | `bearerAuth` | Any scopes which exist on the JWT, and are defined on this security scheme |
+    | `session` | Any scope defined on the `bearerAuth` security scheme |
+  requestBody:
+    $ref: ../components/requestBodies/userToken-create.yaml
   responses:
     '200':
-      $ref: ../components/responses/userToken.yaml
+      $ref: ../components/responses/userToken-created.yaml
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

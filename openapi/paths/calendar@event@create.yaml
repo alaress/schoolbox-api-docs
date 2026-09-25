@@ -3,7 +3,16 @@ post:
   tags: [calendar]
   summary: Create a calendar event
   description: |
-    Creates a calendar event
+    Creates a calendar event.
+
+    When `resources` is supplied, Resource Booking must be enabled and the
+    authenticated user must have permission to book each supplied resource.
+    For a recurring event, Schoolbox attempts to book the resources for every
+    occurrence created in the series.
+
+    The event is created before its resource bookings are attempted.
+    Resource-booking failures are returned in `bookingErrors` and do not mean
+    that event creation failed.
   requestBody:
     description: |
       The event to create
@@ -11,13 +20,38 @@ post:
       application/json:
         schema:
           $ref: ../components/schemas/calendar/eventRequestFieldsForCreate.yaml
+        example:
+          author: {id: 1}
+          type: {id: 1}
+          roles: [{id: 123}, {id: 456}]
+          campuses: [{id: 123}, {id: 456}]
+          folders: [{id: 123}, {id: 456}]
+          guests: [{id: 123}, {id: 456}]
+          resources: [{id: 42}, {id: 57}]
+          allDay: false
+          efficacy: self
+          title: The Yalta Conference
+          startDate: "2024-03-05T19:00:00+10:00"
+          endDate: "2024-03-05T19:30:00+10:00"
+          repeat: weekly
+          repeat_until: "2024-04-05"
+          location: Meeting room 1
+          detail: Meeting to discuss things
+          publishDate: "2024-03-05T19:30:00+10:00"
+          level: 2
+          attendance: 2
+          maxAttendees: 5
+          showAttendees: false
+          user: {id: 1}
   responses:
     '200':
       description: |
-        The created event
+        The created event. If event creation succeeds but resource bookings
+        fail, the response remains HTTP 200 and details are returned in
+        `bookingErrors`.
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/calendar/eventResponseFields.yaml
+            $ref: ../components/schemas/calendar/eventResponseFieldsForCreate.yaml
     default:
       $ref: ../components/responses/problem.yaml

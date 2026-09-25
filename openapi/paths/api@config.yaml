@@ -1,0 +1,18 @@
+patch:
+  operationId: configBulkPatch
+  tags: [config]
+  summary: Update multiple configuration values
+  description: |
+    Updates multiple configuration settings in a single request. Each configuration is processed independently - some may succeed while others fail.
+    
+    The response includes detailed results for each configuration update attempt, including which ones succeeded and which ones failed with their respective error messages.
+  requestBody:
+    $ref: ../components/requestBodies/config-bulk.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/config-bulk.yaml
+    '400':
+      $ref: ../components/responses/problem.yaml
+      description: Invalid request body format
+    default:
+      $ref: ../components/responses/problem.yaml

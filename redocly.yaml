@@ -12,7 +12,6 @@ rules:
   no-invalid-media-type-examples: off
 theme:
   openapi:
-    htmlTemplate: ./docs/template.html
     theme:
       colors:
         primary:

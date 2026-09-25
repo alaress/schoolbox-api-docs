@@ -1,0 +1,14 @@
+description: |
+  Fields allowed when updating a user token.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          description: |
+            An optional name for this token.
+            
+            It should be used to identify the application which uses this
+            token, or the purpose for which it is used.

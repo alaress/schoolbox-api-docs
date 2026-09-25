@@ -1,0 +1,91 @@
+get:
+  operationId: curriculumApi.getNode
+  tags: [curriculum]
+  summary: Get a curriculum node
+  description: |
+    Get a curriculum node. Use `ancestors` and `descendants` to include its
+    parents and children.
+
+    This endpoint may be used by any logged-in user.
+  parameters:
+    - $ref: ../components/parameters/curriculumNode-ancestors.yaml
+    - $ref: ../components/parameters/curriculumNode-descendants.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNode-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+post:
+  operationId: curriculumApi.postChildNode
+  tags: [curriculum]
+  summary: Create a child curriculum node
+  description: |
+    Create a curriculum node as a child of the node `{id}`.
+
+    Returns the new node, without ancestors or descendants.
+
+    This endpoint may be used by superusers, users with write access to the
+    Curriculum service, or users with full access to the LMS service.
+  requestBody:
+    $ref: ../components/requestBodies/curriculumNode-write.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNode-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+put:
+  operationId: curriculumApi.putNode
+  tags: [curriculum]
+  summary: Replace a curriculum node
+  description: |
+    Replace a curriculum node's fields with those in the request. Fields that
+    are not supplied are not kept from the existing node, so supply every
+    field. To change only some fields, use `PATCH`.
+
+    This endpoint may be used by superusers, users with write access to the
+    Curriculum service, or users with full access to the LMS service.
+  requestBody:
+    $ref: ../components/requestBodies/curriculumNode-write.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNode-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+patch:
+  operationId: curriculumApi.patchNode
+  tags: [curriculum]
+  summary: Partially update a curriculum node
+  description: |
+    Update only the fields supplied in the request. Other fields are left as
+    they were.
+
+    This endpoint may be used by superusers, users with write access to the
+    Curriculum service, or users with full access to the LMS service.
+  requestBody:
+    $ref: ../components/requestBodies/curriculumNode-write.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNode-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+delete:
+  operationId: curriculumApi.deleteNode
+  tags: [curriculum]
+  summary: Delete a curriculum node
+  description: |
+    Soft-delete a curriculum node and all of its descendants.
+
+    This endpoint may be used by superusers, users with write access to the
+    Curriculum service, or users with full access to the LMS service.
+  responses:
+    '204':
+      description: The node and its descendants were deleted.
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml

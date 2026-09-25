@@ -1,0 +1,13 @@
+description: A list of Learning Moments for a cohort of students
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: ../schemas/learning-moment-payload-item.yaml
+          minItems: 0
+        metadata:
+          $ref: ../schemas/listMetadata.yaml

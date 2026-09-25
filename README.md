@@ -59,6 +59,14 @@ See:
 - [./openapi/components/README.md](/openapi/components/README.md) for a guide on
   adding components to the API, for reuse within multiple paths
 
+### Committing changes
+
+If the change is a new feature or will be available in a future major release make your changes against the `develop` 
+branch and create a pull request against `develop`.
+
+If the change is a bug fix or will be available in a future minor release make your changes against the `master` 
+branch and also create a pull request to merge the changes into the `develop` branch.
+
 ### Updating the API
 
 Create a new release whose version number matches the Schoolbox version number
@@ -75,7 +83,7 @@ https://github.com/alaress/schoolbox-api-docs/releases.
 
 #### Stable releases
 
-- tag against develop (for now: this may change to tag against master)
+- tag against `master`
 - do not include the beta number, e.g. 22.1.0
 - leave the pre-release checkbox unchecked
 

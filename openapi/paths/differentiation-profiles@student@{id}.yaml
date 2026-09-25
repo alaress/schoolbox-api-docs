@@ -1,0 +1,42 @@
+get:
+  operationId: getDifferentiationProfile
+  tags: [differentiation]
+  summary: Get a differentiation profile
+  description: |
+    Retrieve the differentiation profile for a specific student.
+  responses:
+    '200':
+      $ref: ../components/responses/differentiationProfile.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/id.yaml
+
+post:
+  operationId: createDifferentiationProfile
+  tags: [differentiation]
+  summary: Create a differentiation profile
+  description: |
+    Create a new differentiation profile.
+  requestBody:
+    $ref: ../components/requestBodies/differentiation.yaml
+  responses:
+    '201':
+      $ref: ../components/responses/differentiationProfile.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+put:
+  operationId: updateDifferentiationProfile
+  tags: [differentiation]
+  summary: Update a differentiation profile
+  description: |
+    Update an existing differentiation profile.
+  requestBody:
+    $ref: ../components/requestBodies/differentiation.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/differentiationProfile.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

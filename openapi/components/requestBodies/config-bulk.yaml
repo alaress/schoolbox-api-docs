@@ -1,0 +1,6 @@
+description: Bulk configuration update request
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/config-bulk-request.yaml

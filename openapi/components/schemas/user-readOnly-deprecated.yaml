@@ -12,13 +12,11 @@ properties:
     $ref: ./externalId.yaml
 
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
 
   firstname:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: |
       The user's first name.
 
@@ -28,8 +26,7 @@ properties:
       user's given name.
 
   lastname:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's surname.
 
 required:

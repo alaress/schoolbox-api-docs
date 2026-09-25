@@ -26,7 +26,8 @@ allOf:
       roles:
         type: array
         description: Array of role object stubs.
-        example: [{"id":123}, {"id":456}]
+        examples:
+          - [{"id":123}, {"id":456}]
         items:
           type: object
           properties:
@@ -35,7 +36,8 @@ allOf:
       campuses:
         type: array
         description: Array of campus object stubs.  Required when creating campus-level events.
-        example: [{"id":123}, {"id":456}]
+        examples:
+          - [{"id":123}, {"id":456}]
         items:
           type: object
           properties:
@@ -46,7 +48,8 @@ allOf:
         description:
           Array of folder object stubs.  These specify the groups that should see the event (for
           group-level events).  Required when creating group-level events.
-        example: [{"id":123}, {"id":456}]
+        examples:
+          - [{"id":123}, {"id":456}]
         items:
           type: object
           properties:
@@ -55,7 +58,8 @@ allOf:
       guests:
         type: array
         description: Array of user object stubs.
-        example: [{"id":123}, {"id":456}]
+        examples:
+          - [{"id":123}, {"id":456}]
         items:
           type: object
           properties:

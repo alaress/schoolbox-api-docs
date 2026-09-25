@@ -18,7 +18,7 @@
         font-src 'self' fonts.googleapis.com fonts.gstatic.com
       "
     >
-    <script type="module" src="https://unpkg.com/rapidoc@9.3.4/dist/rapidoc-min.js"></script>
+    <script type="module" src="https://unpkg.com/rapidoc@9.3.8/dist/rapidoc-min.js"></script>
     <script type="text/javascript" src="/scripts.js"></script>
   </head>
   <body>
@@ -27,6 +27,10 @@
           schema-style="table"
           show-header="false"
           schema-description-expanded="true"
+          render-style="focused"
+          show-curl-before-try="true"
+          primary-color="#0066B0"
+          show-method-in-nav-bar="as-colored-block"
   >
     <img slot="nav-logo" src="/logo.png" />
     <div slot="nav-logo" class="version-selector">

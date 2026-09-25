@@ -1,0 +1,31 @@
+get:
+  operationId: groupSearch
+  tags: [group]
+  summary: Search for groups
+  description: |
+    Returns a paginated, searchable list of all groups in the system.
+
+    This endpoint is only available to superusers.
+  parameters:
+    - name: q
+      in: query
+      description: |
+        Partial name match. Returns groups whose name contains the given string.
+      schema:
+        type: string
+    - name: type
+      in: query
+      description: |
+        Filter by group join type.
+      schema:
+        type: string
+        enum: [private, moderated, free]
+    - $ref: ../components/parameters/limit.yaml
+    - $ref: ../components/parameters/cursor.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/group/group-search-list.yaml
+    '400':
+      $ref: ../components/responses/problem.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

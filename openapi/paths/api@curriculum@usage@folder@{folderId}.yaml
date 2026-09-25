@@ -1,0 +1,39 @@
+get:
+  operationId: curriculumApiUsageFolder.getFolderUsage
+  tags: [curriculum]
+  summary: Get a folder's curriculum nodes
+  description: |
+    Get the curriculum nodes associated with a folder, as a flat list or as a
+    tree (see `returnFormat`).
+
+    This endpoint requires write access to the folder.
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+post:
+  operationId: curriculumApiUsageFolder.postFolderUsage
+  tags: [curriculum]
+  summary: Set a folder's curriculum nodes
+  description: |
+    Replace the curriculum nodes associated with a folder.
+
+    Returns the folder's new curriculum nodes, or a 404 if any node in the
+    request does not exist. Nothing is changed if a 404 is returned.
+
+    This endpoint requires write access to the folder.
+  requestBody:
+    $ref: ../components/requestBodies/curriculumFolderUsage-set.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumFolderUsage-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/curriculum-folderId.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-ancestors.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-descendants.yaml
+  - $ref: ../components/parameters/curriculumFolderUsage-returnFormat.yaml

@@ -16,7 +16,8 @@ content:
           description: The role type the user has in Schoolbox
           type: string
           enum: ['staff','student','parent','guest']
-          example: 'parent'
+          examples:
+            - 'parent'
         username:
           description: The user who logged into the device
           type: string

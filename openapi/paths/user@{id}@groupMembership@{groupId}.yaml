@@ -12,7 +12,7 @@ get:
 
 post:
   operationId: userGroupMembershipPost
-  tags: [ user ]
+  tags: [ group ]
   summary: Add user to a group
   description: |
     This will add a user as a member into a group. This membership must not already exist. You will need to provide all the settings for the membership. This endpoint is only available for superusers.
@@ -54,8 +54,8 @@ patch:
 
 delete:
   operationId: userGroupMembershipDelete
-  tags: [user]
-  summary: Remove this user from a group
+  tags: [group]
+  summary: Remove a user from a group
   description: |
     This will remove the relationship between a user and a group, it will also remove any settings related to that group membership. The endpoint is only available for superusers.
   responses:

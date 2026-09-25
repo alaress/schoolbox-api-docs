@@ -2,5 +2,5 @@ description: An assessment detail with a list of feedback items for the assessme
 content:
   application/json:
     schema:
-      $ref: ../schemas/assessment-item.yaml
+      $ref: ../schemas/assessment-detail.yaml
       

@@ -1,0 +1,32 @@
+title: Curriculum node (write)
+description: |
+  The writable fields of a curriculum node. Leading and trailing whitespace is
+  trimmed from string values.
+type: object
+properties:
+  name:
+    type: string
+    description: The name of the node.
+    examples: [Self-awareness]
+  code:
+    type: string
+    description: The node's curriculum code. Use an empty string for no code.
+    examples: [GCPSC-SEA]
+  reference:
+    type: [string, 'null']
+    description: A reference for the node, such as a URL to the source framework.
+  description:
+    type: string
+    description: A longer description of the node.
+  enabled:
+    type: boolean
+    description: Whether the node is enabled.
+  parent:
+    description: |
+      The parent node. Omit or set to `null` for a top-level node.
+    oneOf:
+      - $ref: ./curriculumNode-reference.yaml
+      - type: 'null'
+  order:
+    type: integer
+    description: The node's position among its siblings.

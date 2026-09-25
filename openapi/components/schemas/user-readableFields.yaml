@@ -40,24 +40,17 @@ properties:
       is not always the child's parent (e.g. they may be a foster parent
       or other relative), and a parent is not always the child's guardian
       (e.g. the family might have separated).
-    type: array
+    type: [array, 'null']
     uniqueItems: true
     items:
-      $ref: ./userLinked.yaml
-    nullable: true
-    example:
-      - id: 25
-        externalId: "25001"
-        title: ""
-        firstname: Janna
-        preferredName: null
-        givenName: Janna
-        lastname: Reed
-        fullName: Janna Reed
-        role:
-          id: 3
-          type: parent
-          name: Parent
+      $ref: ./userShort.yaml
+    examples:
+      - - id: 25
+          fullName: Janna Reed
+          yearLevel: [ ]
+          role:
+            id: 3
+            name: Parent
   
   students:
     description: |
@@ -69,36 +62,12 @@ properties:
       
       Generally, the guardian => student relation is symmetrical to the
       student => guardian relation.
-    type: array
+    type: [array, 'null']
     uniqueItems: true
     items:
-      $ref: ./userLinked.yaml
-    nullable: true
-    example:
-      - id: 4690
-        externalId: "4690"
-        title: ""
-        firstname: Sam
-        preferredName: null
-        givenName: Sam
-        lastname: Reed
-        fullName: Sam Reed
-        role:
-          id: 13
-          type: student
-          name: Secondary Student
-      - id: 4999
-        externalId: "4999"
-        title: ""
-        firstname: Jordan
-        preferredName: ""
-        givenName: Jordan
-        lastname: Reed
-        fullName: Jordan Reed
-        role:
-          id: 8
-          type: student
-          name: Primary Student
+      $ref: ./userShort.yaml
+    examples:
+      - [ ]
 
   impersonableUsers:
     description: |
@@ -109,21 +78,23 @@ properties:
     type: array
     uniqueItems: true
     items:
-      $ref: ./userLinked.yaml
-    nullable: false
-    example:
-      - id: 5001
-        externalId: "5001"
-        title: ""
-        firstname: Jamie
-        preferredName: null
-        givenName: Jamie
-        lastname: White
-        fullName: Jamie White
-        role:
-          id: 5
-          type: student
-          name: Junior Student
+      $ref: ./userShort.yaml
+    examples:
+      - - id: 69
+          externalId: 69
+          title: null
+          firstName: Eden
+          preferredName: Reed
+          givenName: Eden
+          lastName: Reed
+          fullName: Eden Reed
+          role:
+            id: 5
+            name: Junior Student
+            type: student
+          yearLevel:
+            id: 4
+            name: "3"
 
   email:
     type: string
@@ -143,9 +114,8 @@ properties:
         type: string
         format: uri-reference
       avatar:
-        type: string
+        type: [string, 'null']
         format: uri-reference
-        nullable: true
 
   yearLevel:
     $ref: ./yearLevel.yaml
@@ -156,9 +126,9 @@ properties:
     description: Is this user deleted?
   
   fullName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's formatted full name.
-    example: Ms Rebecca White
+    examples:
+      - Ms Rebecca White
     
 readOnly: true

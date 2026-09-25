@@ -1,0 +1,5 @@
+description: Bulk configuration update response
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/config-bulk-response.yaml

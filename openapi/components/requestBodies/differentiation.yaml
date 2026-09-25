@@ -1,0 +1,53 @@
+description: |
+    Differentiation profile object.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        adjustment_category:
+          type: [array, 'null']
+          description: Array of adjustment category ids
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                examples:
+                  - 1
+        adjustment_level:
+          type: [array, 'null']
+          description: Array of adjustment level ids
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+          examples:
+            - - id: 3
+              - id: 4
+        overview:
+          type: [string, 'null']
+          description: Overview of the differentiation profile (if applicable)
+          examples:
+            - null
+        interests_strengths:
+          type: [string, 'null']
+          description: Interests and strengths (if applicable)
+          examples:
+            - null
+        needs_challenges:
+          type: [string, 'null']
+          description: Needs and challenges (if applicable)
+          examples:
+            - null
+        strategies_adjustments:
+          type: [string, 'null']
+          description: Strategies and adjustments (if applicable)
+          examples:
+            - null
+        goals:
+          type: [string, 'null']
+          description: Goals for the student (if applicable)
+          examples:
+            - 'Goal 1: Improve reading comprehension.'

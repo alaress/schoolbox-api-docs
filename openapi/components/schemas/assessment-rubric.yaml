@@ -11,17 +11,20 @@ properties:
       properties:
         id:
           type: integer
-          example: 47
+          examples:
+            - 47
           description: The ID in the DB of this field. To help identify different rubric capabilities.
         name:
           type: string
-          example: Skills
+          examples:
+            - Skills
           description: The description of the capability.
         maxValue:
           description: |
             By default, the maximum points for the capability is the sum of the highest descriptor values available in each indicator within that capability.
           type: number
-          example: 0
+          examples:
+            - 0
         indicators:
           description: The key skills that you will be assessing in the assessment.
           type: array
@@ -30,16 +33,19 @@ properties:
             properties:
               id:
                 type: integer
-                example: 105
+                examples:
+                  - 105
                 description: The ID in the DB of this field. To help identify different rubric indicators.
               name:
                 type: string
-                example: |
-                  Communication
+                examples:
+                  - |
+                    Communication
                 description: The description of the indicator.
               maxValue:
                 type: number
-                example: 0
+                examples:
+                  - 0
                 description: |
                   By default, the maximum points for the indicator is the sum of the highest descriptor values available within the indicator.
               descriptors:
@@ -50,19 +56,23 @@ properties:
                   properties:
                     id:
                       type: integer
-                      example: 620
+                      examples:
+                        - 620
                       description: The ID in the DB of this field. To help identify different rubric descriptors.
                     description:
                       type: string
-                      example: |
-                        Developing in reading appropriate materials and writing on-topic.
+                      examples:
+                        - |
+                          Developing in reading appropriate materials and writing on-topic.
                       description: The description of the descriptor.
                     maxValue:
                       description: |
                         If you are using the mark range, this will be the upper point value available for that particular descriptor.
                       type: number
-                      example: 0
+                      examples:
+                        - 0
                     sequence:
                       description: The order the descriptors are ordered in.
                       type: integer
-                      example: 4
+                      examples:
+                        - 4
