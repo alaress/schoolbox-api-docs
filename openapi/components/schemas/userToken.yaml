@@ -24,6 +24,26 @@ properties:
         when setting up the token
     examples:
       - u82jddg5-ky61-z9w3-0098-334hxb27dhg0
+  type:
+    type: [string, 'null']
+    enum: [api, qrcode, apitest, null]
+    description: |
+      The kind of token:
+      - `api`: created for API access
+      - `qrcode`: created as a login code
+      - `apitest`: created for API testing
+    examples:
+      - api
+  scopes:
+    type: array
+    description: |
+      The scopes on this token, which limit the actions its bearer may
+      perform. See the `bearerAuth` security scheme for the available scopes.
+    items:
+      type: string
+    examples:
+      - - https://schoolbox.education/scope/calendar
+        - https://schoolbox.education/scope/user:readonly
   createdAt:
     oneOf:
       - type: string

@@ -368,8 +368,9 @@ paths:
     $ref: 'paths/differentiation-profiles@student@{id}.yaml'
 
 security:
-  # Authorization is handled by Schoolbox itself once a user is authenticated:
-  # therefore, no scopes are defined for any security scheme.
+  # Authorization is handled by Schoolbox itself once a user is authenticated.
+  # Bearer tokens may also carry scopes: operations list the scopes they
+  # accept in their own `security` requirement (see bearerAuth.yaml).
   - session: []
   - bearerAuth: []
 
