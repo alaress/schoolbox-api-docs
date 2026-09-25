@@ -1,0 +1,11 @@
+name: ancestors
+in: query
+description: |
+  The number of levels of ancestors to include in `parent`. With `0`, `parent`
+  contains only the parent's `id`.
+schema:
+  type: integer
+  format: int32
+  minimum: 0
+  maximum: 50
+  default: 0
