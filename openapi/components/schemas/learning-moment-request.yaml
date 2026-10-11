@@ -2,7 +2,8 @@ type: object
 properties:
   body:
     type: string
-    example: "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
+    examples:
+      - "<p>I learned to tie my shoelaces.  Let me explain in detail the steps...</p>"
     description: Body text of learning moment as HTML.
   evidence:
     type: array

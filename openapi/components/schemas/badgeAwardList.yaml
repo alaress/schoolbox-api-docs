@@ -4,7 +4,8 @@ properties:
   discriminator:
     type: string
     description: badgeAward - discriminator for Badge award object
-    example: badgeAward
+    examples:
+      - badgeAward
   object:
     $ref: ./badgeAwardItem.yaml
   date:
@@ -12,6 +13,7 @@ properties:
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-30T10:09:09+10:00
+    examples:
+      - 2022-08-30T10:09:09+10:00
 required:
   - discriminator

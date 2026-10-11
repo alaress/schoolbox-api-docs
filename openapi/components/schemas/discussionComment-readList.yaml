@@ -24,28 +24,22 @@ properties:
               $ref: ./externalId.yaml
             title:
               description: The user's title (Mr., Ms., etc.).
-              type: string
-              nullable: true
+              type: [string, 'null']
             firstname:
               description: The user's first name.
-              type: string
-              nullable: true
+              type: [string, 'null']
             fullName:
               description: The user's full name.
-              type: string
-              nullable: true
+              type: [string, 'null']
             givenName:
               description: The user's given name.
-              type: string
-              nullable: true
+              type: [string, 'null']
             lastname:
               description: The user's last name.
-              type: string
-              nullable: true
+              type: [string, 'null']
             preferredName:
               description: The user's preferred name.
-              type: string
-              nullable: true
+              type: [string, 'null']
             _links:
               type: object
               properties:
@@ -53,22 +47,18 @@ properties:
                   type: object
                   properties:
                     auth:
-                      type: string
-                      nullable: true
+                      type: [string, 'null']
                     href:
-                      type: string
+                      type: [string, 'null']
                       format: uri
-                      nullable: true
                 profile:
                   type: object
                   properties:
                     auth:
-                      type: string
-                      nullable: true
+                      type: [string, 'null']
                     href:
-                      type: string
+                      type: [string, 'null']
                       format: uri
-                      nullable: true
         content:
           type: string
         createdAt:

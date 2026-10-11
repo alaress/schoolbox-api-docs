@@ -12,17 +12,15 @@ properties:
     properties:
       current:
         title: Cursor
-        type: string
+        type: [string, 'null']
         description: |
           If set, a cursor to the current page of results.
           Seems redundant, but it does generate a cursor to a request
           made without one.
-        nullable: true
       next:
         title: Cursor
-        type: string
+        type: [string, 'null']
         description: If set, a cursor to the next page of results.
-        nullable: true
     required:
       - current
       - next

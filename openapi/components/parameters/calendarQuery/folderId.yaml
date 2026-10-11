@@ -6,6 +6,7 @@ description: |
 schema:
   type: integer
   minimum: 1
-  example: 42
+  examples:
+    - 42
 required: false
 

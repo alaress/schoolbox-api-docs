@@ -15,10 +15,12 @@ post:
             properties:
               success:
                 type: boolean
-                example: true
+                examples:
+                  - true
               message:
                 type: string
-                example: "OK"
+                examples:
+                  - "OK"
               id:
                 type: integer
     default:
@@ -33,7 +35,8 @@ post:
             responseId:
               type: integer
               description: The ID of the student submission this feedback relates to (optional)
-              example: 12345
+              examples:
+                - 12345
             mark:
               oneOf:
                 - type: number
@@ -46,16 +49,19 @@ post:
                 - Numeric values: 95, 87.5
                 - Percentage strings: "67 %", "85%"
                 - Fraction strings: "5/10", "18/20"
-              example: "A+"
+              examples:
+                - "A+"
             comment:
               type: string
               description: Feedback comment
-              example: "Excellent work! Your analysis was thorough and well-structured."
+              examples:
+                - "Excellent work! Your analysis was thorough and well-structured."
             publish:
               type: integer
               description: Whether to publish the feedback (1) or keep as draft (0)
               enum: [0, 1]
-              example: 1
+              examples:
+                - 1
   parameters:
     - name: assessmentId
       in: path
@@ -63,11 +69,13 @@ post:
       description: The ID of the assessment
       schema:
         type: integer
-        example: 123
+        examples:
+          - 123
     - name: studentId
       in: path
       required: true
       description: The ID of the student
       schema:
         type: integer
-        example: 456
+        examples:
+          - 456

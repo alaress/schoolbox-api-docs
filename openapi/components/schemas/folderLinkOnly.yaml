@@ -24,16 +24,12 @@ properties:
   _links:
     description: Object containing names as keys and URLs as values
     type: object
-example:
-  id: 83
-  name: 9A English
-  title: 9A English (9ENGA)
-  codes: [
-    9ENGA
-  ]
-  parent: {
-    id: 2
-  }
-  _links: {
-    view: \/homepage\/83
-  }
+examples:
+  - id: 83
+    name: 9A English
+    title: 9A English (9ENGA)
+    codes: [9ENGA]
+    parent:
+      id: 2
+    _links:
+      view: \/homepage\/83

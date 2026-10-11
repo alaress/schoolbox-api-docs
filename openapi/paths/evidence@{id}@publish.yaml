@@ -1,6 +1,6 @@
 put:
   operationId: putEvidencePublish
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Publish a learning moment
   description: Update a learning moment and leave it in a 'published' state.
   requestBody:
@@ -22,7 +22,8 @@ put:
               - type: object
                 properties:
                   currentState:
-                    example: "published"
+                    examples:
+                      - "published"
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

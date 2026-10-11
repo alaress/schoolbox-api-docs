@@ -43,7 +43,8 @@ content:
             and "Time Format" settings: ideally, this would just be a "datetime" format
             but the datetime input was developed before JSON was used for request bodies.
           type: string
-          example: 22/06/2021 11:28am
+          examples:
+            - 22/06/2021 11:28am
         expiresAt:
           description: |
             The datetime at which this article should be achieved.
@@ -52,10 +53,10 @@ content:
             and "Time Format" settings: ideally, this would just be a "datetime" format
             but the datetime input was developed before JSON was used for request bodies.
           type: string
-          example: 22/06/2021 11:28am
+          examples:
+            - 22/06/2021 11:28am
         attachment:
-          type: array
-          nullable: true
+          type: [array, 'null']
           description: |
             A single featured image to attach to this news item, supplied as a
             pointer to a file in Schoolbox. This parameter may be provided no
@@ -82,8 +83,7 @@ content:
             $ref: ../schemas/filePointer.yaml
           maxItems: 1
         attachedFiles:
-          type: array
-          nullable: true
+          type: [array, 'null']
           description: |
             Files to attach to this news item, supplied as pointers to a file in
             Schoolbox. This parameter may be provided multiple times to attach

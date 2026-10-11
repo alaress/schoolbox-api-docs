@@ -1,0 +1,9 @@
+name: folderId
+in: path
+description: |
+  The ID of the folder.
+required: true
+schema:
+  type: integer
+  format: int32
+  minimum: 1

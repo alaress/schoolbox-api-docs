@@ -1,0 +1,18 @@
+get:
+  operationId: curriculumApi.getTree
+  tags: [curriculum]
+  summary: Get the curriculum tree
+  description: |
+    Get every curriculum node, as a list of top-level nodes with their
+    descendants nested in `children` (up to 50 levels deep).
+
+    `_usageCounts` is not calculated, so it is `null` on every node. This
+    response can be large: to fetch part of the tree, use
+    `GET /api/curriculum/{id}` with the `descendants` parameter instead.
+
+    This endpoint may be used by any logged-in user.
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNode-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

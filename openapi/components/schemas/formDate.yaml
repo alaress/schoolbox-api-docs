@@ -4,4 +4,5 @@ description: |
 
   The format is dependent on the Schoolbox instance's "Numerical Date Format" settings.
 type: string
-example: 22/06/2021
+examples:
+  - 22/06/2021

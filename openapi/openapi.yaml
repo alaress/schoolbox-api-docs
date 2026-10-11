@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.2.1
 
 info:
   version:     $VERSION
@@ -78,7 +78,7 @@ tags:
     description: |
       Search and manage groups.
 
-  - name: Learning Moment
+  - name: learningMoment
     x-displayName: Learning Moment
     description: |
       Create and manage Learning Moments.
@@ -112,10 +112,25 @@ tags:
     description: |
       Create and manage users.
 
+  - name: userToken
+    x-displayName: User tokens
+    description: |
+      Create and manage user tokens, for authenticating at a later time.
+
   - name: differentiation
     x-displayName: Differentiation
     description: |
       Create and manage differentiation profiles.
+
+  - name: curriculum
+    x-displayName: Curriculum
+    description: |
+      Create and manage curriculum data.
+
+  - name: course
+    x-displayName: Course
+    description: |
+      Create and manage course data.
 
 servers:
   - url: https://{hostname}.{domain}
@@ -134,6 +149,9 @@ paths:
 
   /user/token/{id}:
     $ref: 'paths/user@token@{id}.yaml'
+
+  /user/token/manage/{jwtId}:
+    $ref: 'paths/user@token@manage@{jwtId}.yaml'
 
   /api/user/{id}:
     $ref: 'paths/user@{id}.yaml'
@@ -306,11 +324,27 @@ paths:
   /pastoral/record/{id}/update:
     $ref: 'paths/pastoral@record@update.yaml'
 
+  /api/curriculum:
+    $ref: 'paths/api@curriculum.yaml'
+
+  /api/curriculum/tree:
+    $ref: 'paths/api@curriculum@tree.yaml'
+
+  /api/curriculum/{id}:
+    $ref: 'paths/api@curriculum@{id}.yaml'
+
   /api/curriculum/usage/{id}:
     $ref: 'paths/api@curriculum@usage@{id}.yaml'
 
+  /api/curriculum/usage/{id}/folder/{folderId}:
+    $ref: 'paths/api@curriculum@usage@{id}@folder@{folderId}.yaml'
+
+  /api/curriculum/usage/folder/{folderId}:
+    $ref: 'paths/api@curriculum@usage@folder@{folderId}.yaml'
+
   /api/courses:
     $ref: 'paths/api@courses.yaml'
+
 
   /api/search:
     $ref: 'paths/api@search.yaml'
@@ -334,8 +368,9 @@ paths:
     $ref: 'paths/differentiation-profiles@student@{id}.yaml'
 
 security:
-  # Authorization is handled by Schoolbox itself once a user is authenticated:
-  # therefore, no scopes are defined for any security scheme.
+  # Authorization is handled by Schoolbox itself once a user is authenticated.
+  # Bearer tokens may also carry scopes: operations list the scopes they
+  # accept in their own `security` requirement (see bearerAuth.yaml).
   - session: []
   - bearerAuth: []
 

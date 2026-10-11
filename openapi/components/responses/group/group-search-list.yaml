@@ -12,36 +12,42 @@ content:
               id:
                 type: integer
                 description: The group's unique identifier.
-                example: 123
+                examples:
+                  - 123
               name:
                 type: string
                 description: The group's name.
-                example: First XI Basketball
+                examples:
+                  - First XI Basketball
               codes:
                 type: array
                 description: All codes associated with the group. May be empty.
                 items:
                   type: string
-                example: [BASK-01]
+                examples:
+                  - [BASK-01]
               type:
                 type: string
                 enum: [private, moderated, free]
                 description: The group's join type.
-                example: moderated
+                examples:
+                  - moderated
               url:
                 type: string
                 description: Relative URL to the group's homepage.
-                example: /groups/123
+                examples:
+                  - /groups/123
               memberCount:
                 type: integer
                 description: |
                   Number of active members. Excludes pending and denied users.
-                example: 15
+                examples:
+                  - 15
         next:
-          type: string
-          nullable: true
+          type: [string, 'null']
           description: |
             Opaque cursor for the next page of results.
             Pass this value as the `cursor` parameter on the next request.
             `null` when there are no further results.
-          example: eyJpZCI6MTIzfQ==
+          examples:
+            - eyJpZCI6MTIzfQ==

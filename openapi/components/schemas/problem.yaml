@@ -16,7 +16,8 @@ properties:
     format: int32
     minimum: 100
     maximum: 600
-    example: 503
+    examples:
+      - 503
     description: The HTTP status code.
   detail:
     type: string

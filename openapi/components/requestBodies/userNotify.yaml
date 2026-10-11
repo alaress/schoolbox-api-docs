@@ -14,8 +14,9 @@ content:
             May contain placeholder values, preceded with a `:` character
             (e.g. `:placeholderName`): these will be replaced with the
             corresponding value in `messageParams`.
-          example: |
-            Checkout the :version Release notes
+          examples:
+            - |
+              Checkout the :version Release notes
         messageParams:
           type: object
           additionalProperties:
@@ -24,8 +25,8 @@ content:
             A set of key-value pairs: each key should match a placeholder in
             `message`, and its corresponding value will replace that placeholder
             in the final message.
-          example:
-            version: '25.0'
+          examples:
+            - version: '25.0'
         from:
           type: object
           properties:
@@ -33,11 +34,13 @@ content:
               type: string
               description: |
                 User who initially created this message, if unset defaults to Unknown User.
-              example: Schoolbox Admin
+              examples:
+                - Schoolbox Admin
         href:
           type: string
           format: uri-reference
           description: |
             Url for when clicking the notification to redirect to, if unset, defaults to #
             can be both absolute or relative.
-          example: https://help.schoolbox.com.au/homepage/3343
+          examples:
+            - https://help.schoolbox.com.au/homepage/3343

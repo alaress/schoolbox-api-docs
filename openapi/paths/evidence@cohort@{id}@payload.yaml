@@ -1,6 +1,6 @@
 get:
   operationId: evidenceCohortPayload
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Get learning moments for a cohort
   description: |
     Get all learning moments for users in a cohort defined by a folderId.

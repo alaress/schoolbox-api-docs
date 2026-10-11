@@ -6,14 +6,13 @@ properties:
     $ref: ./id.yaml
 
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
-    example: Ms
+    examples:
+      - Ms
 
   firstName:
     type: string
-    nullable: false
     description: |
       The user's first name.
 
@@ -21,18 +20,18 @@ properties:
       and any other names, and in any case is not the definitive source of
       naming information; therefore in practice this will usually be the
       user's given name.
-    example: Rebecca
+    examples:
+      - Rebecca
 
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's preferred name.
   
   lastName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's surname.
-    example: White
+    examples:
+      - White
 
   externalId:
     $ref: ./externalId.yaml

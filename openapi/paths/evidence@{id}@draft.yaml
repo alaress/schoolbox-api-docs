@@ -1,6 +1,6 @@
 put:
   operationId: putEvidenceDraft
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Draft a learning moment
   description: Update a learning moment and leave it in a 'draft' state.
   requestBody:
@@ -22,7 +22,8 @@ put:
               - type: object
                 properties:
                   currentState:
-                    example: "draft"
+                    examples:
+                      - "draft"
     default:
       $ref: ../components/responses/problem.yaml
   parameters:

@@ -9,7 +9,8 @@ properties:
     description: |
       The user's username. This will be used as the user's identification
       when they attempt to log into the Schoolbox instance.
-    example: rwhite
+    examples:
+      - rwhite
 
   superuser:
     type: boolean
@@ -24,10 +25,10 @@ properties:
     default: true
 
   title:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's title (Mr., Ms., etc.).
-    example: Ms
+    examples:
+      - Ms
 
   firstName:
     type: string
@@ -38,17 +39,17 @@ properties:
       and any other names, and in any case is not the definitive source of
       naming information; therefore in practice this will usually be the
       user's given name.
-    example: Rebecca
+    examples:
+      - Rebecca
 
   lastName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's surname.
-    example: White
+    examples:
+      - White
 
   preferredName:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: The user's preferred name.
   
   isEmailDerived:
@@ -58,17 +59,16 @@ properties:
       and the host name of the Schoolbox instance?
 
   altEmail:
-    type: string
+    type: [string, 'null']
     format: email
-    nullable: true
     description: |
       The user's email address, if it is not derived from their username
       and hostname.
-    example: rwhite@example.com.au
+    examples:
+      - rwhite@example.com.au
 
   positionTitle:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: |
       The user's job or position title within the school which owns the
       Schoolbox instance.

@@ -1,0 +1,20 @@
+summary: List format
+value:
+  - id: 100
+    name: Self-awareness
+    code: GCPSC-SEA
+    description: ''
+    reference: null
+    enabled: true
+    breadcrumb: Traits > Self-awareness
+    uuid: 3f0c1b2a-8d4e-4c6f-9a1b-2e3d4c5b6a70
+    children: []
+  - id: 200
+    name: Self-discipline
+    code: GCPSC-SED
+    description: ''
+    reference: null
+    enabled: true
+    breadcrumb: Traits > Self-discipline
+    uuid: 7a9e2c41-5b3d-4f10-8c2e-1d0b9a8f7e61
+    children: []

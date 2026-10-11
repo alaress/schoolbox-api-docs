@@ -1,0 +1,7 @@
+description: A user token, with JWT
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: ../schemas/userToken-token.yaml
+        - $ref: ../schemas/userToken.yaml

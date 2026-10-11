@@ -57,13 +57,15 @@ schema:
           format: date-time
           description: |
             A date in YYYY-MM-DD format.
-          example: '2023-01-01'
+          examples:
+            - '2023-01-01'
         to:
           type: string
           format: date-time
           description: |
             A date in YYYY-MM-DD format.
-          example: '2023-12-31'
+          examples:
+            - '2023-12-31'
 
     creator:
       type: object

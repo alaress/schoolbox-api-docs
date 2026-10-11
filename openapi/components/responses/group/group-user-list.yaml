@@ -24,7 +24,8 @@ content:
                 integer
               description: |
                 Either the ?new value from the request URL, or 0 (if ?new does not exist).
-              example: 0
+              examples:
+                - 0
 
             access:
               description: |
@@ -38,12 +39,14 @@ content:
                 - private
                 - moderated
                 - free
-              example: private
+              examples:
+                - private
 
             isNotificationsEnabled:
               type: boolean
               description: Whether notifications are enabled for this group.
-              example: true
+              examples:
+                - true
 
             isForceFollow:
               description: |
@@ -53,7 +56,8 @@ content:
                 * `true`: users must subscribe to this group's events, and may not
                   unsubscribe
               type: boolean
-              example: true
+              examples:
+                - true
 
         members:
           type: array
@@ -71,16 +75,18 @@ content:
                 properties:
                   profile:
                     type: string
-                    example: /search/user/2
+                    examples:
+                      - /search/user/2
                   avatar:
                     type: string
-                    example: /portrait.php?id=2&size=square64
+                    examples:
+                      - /portrait.php?id=2&size=square64
 
               title:
-                type: string
-                nullable: true
+                type: [string, 'null']
                 description: The user's title (Mr., Ms., etc.).
-                example: Ms
+                examples:
+                  - Ms
 
               firstName:
                 type: string
@@ -91,40 +97,41 @@ content:
                   and any other names, and in any case is not the definitive source of
                   naming information; therefore in practice this will usually be the
                   user's given name.
-                example: Rebecca
+                examples:
+                  - Rebecca
 
               preferredName:
-                type: string
-                nullable: true
+                type: [string, 'null']
                 description: The user's preferred name.
 
               givenName:
                 type: string
-                nullable: false
                 description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
-                example: John
+                examples:
+                  - John
 
               lastName:
-                type: string
-                nullable: true
+                type: [string, 'null']
                 description: The user's surname.
-                example: White
+                examples:
+                  - White
 
               fullName:
                 type: string
                 description: |
                   The user's full name: usually, this is the title, first name and last
                   name joined together.
-                example: Mr John Smith
+                examples:
+                  - Mr John Smith
 
               role:
                 type: string
                 description: The name of the Role, may not be unique.
-                example: Staff
+                examples:
+                  - Staff
 
               roleType:
                 type: string
-                nullable: false
                 description: |
                   The type of this role. Different role types have different levels of
                   access to different parts of Schoolbox.
@@ -136,22 +143,26 @@ content:
 
               isStaff:
                 type: boolean
-                example: true
+                examples:
+                  - true
 
               campus:
                 type: string
                 description: Comma-separated list of campuses to which the user belongs.
-                example: Senior, Junior
+                examples:
+                  - Senior, Junior
 
               yearLevel:
                 type: string
                 description: Name of the year level to which the user belongs, or blank if not applicable.
-                example: Year 9
+                examples:
+                  - Year 9
 
               house:
                 type: string
                 description: Name of the school house to which the user belongs, or blank if not applicable.
-                example: Griffindor
+                examples:
+                  - Griffindor
 
               accessType:
                 description: The type of access the user has to the group - read, write, or admin.
@@ -160,4 +171,5 @@ content:
                   - read
                   - write
                   - admin
-                example: read
+                examples:
+                  - read

@@ -14,8 +14,7 @@ properties:
       * if not, the body is trimmed
     type: string
   featureImage:
-    type: object
-    nullable: true
+    type: [object, 'null']
     description: |
       Feature image of this article.
     properties:
@@ -36,8 +35,7 @@ properties:
             type: object
             properties:
               auth:
-                type: boolean
-                nullable: true
+                type: [boolean, 'null']
               href:
                 type: string
                 description: |

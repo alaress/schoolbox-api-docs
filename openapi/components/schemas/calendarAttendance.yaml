@@ -62,8 +62,7 @@ properties:
         description: |
           The maximum number of invitees to this event, or null if there is no
           maximum.
-        type: integer
-        nullable: true
+        type: [integer, 'null']
       num:
         description: |
           The current total number of invitees to this event.
@@ -74,8 +73,7 @@ properties:
       available:
         description: |
           The number of available invite slots for this event.
-        type: integer
-        nullable: true
+        type: [integer, 'null']
       pending:
         description: |
           The number of invitees for this event whose invitation is pending

@@ -12,12 +12,12 @@ properties:
     description: |
       The type of search result.
   date:
-    type: string
+    type: [string, 'null']
     format: date-time
     description: |
       The date of the search result.
-    example: 2022-01-30T21:00:00Z
-    nullable: true
+    examples:
+      - 2022-01-30T21:00:00Z
   url:
     type: string
     format: uri
@@ -30,24 +30,22 @@ properties:
 
       Intended to be used as the content of the main link to the search result.
   meta:
-    type: string
+    type: [string, 'null']
     description: |
       An optional brief line of context for the search result.
 
       Intended to be displayed directly underneath the title, in order to
       quickly describe the result.
-    nullable: true
   image:
-    type: string
+    type: [string, 'null']
     format: uri
-    nullable: true
     description: |
       A link to an image to display next to this search result.
 
       If not provided: this result's `type` should be used to determine an icon
       to display next to the result.
   description:
-    type: string
+    type: [string, 'null']
     description: |
       An optional further description of the search result.
 
@@ -56,13 +54,11 @@ properties:
 
       For example: for a news article, this may be a truncated version of the
       article, cut so that it contains a match on the search keyword.
-    nullable: true
   creator:
     allOf:
-      - type: object
+      - type: [object, 'null']
         description: |
           An optional creator of this search result.
-        nullable: true
       - $ref: ../../userAuthor.yaml
   context:
     type: array

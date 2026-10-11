@@ -7,36 +7,45 @@ properties:
   createThread:
     type: string
     format: uri
-    example: "/discussion/evidence/19/threads"
+    examples:
+      - "/discussion/evidence/19/threads"
   detail:
     type: string
     format: uri
-    example: "/learning/evidence/19"
+    examples:
+      - "/learning/evidence/19"
   modifyForm:
     type: string
     format: uri
-    example: "/learning/evidence/19/modify"
+    examples:
+      - "/learning/evidence/19/modify"
   put:
     type: string
     format: uri
-    example: "/learning/evidence/19"
+    examples:
+      - "/learning/evidence/19"
   draft:
     type: string
     format: uri
-    example: "/learning/evidence/19/draft"
+    examples:
+      - "/learning/evidence/19/draft"
   submit:
     type: string
     format: uri
-    example: "/learning/evidence/19/submit"
+    examples:
+      - "/learning/evidence/19/submit"
   publish:
     type: string
     format: uri
-    example: "/learning/evidence/19/publish"
+    examples:
+      - "/learning/evidence/19/publish"
   reject:
     type: string
     format: uri
-    example: "/learning/evidence/19/reject"
+    examples:
+      - "/learning/evidence/19/reject"
   delete:
     type: string
     format: uri
-    example: "/learning/evidence/19/delete"
+    examples:
+      - "/learning/evidence/19/delete"

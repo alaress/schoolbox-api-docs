@@ -6,21 +6,27 @@ content:
       properties:
         fileName:
           type: string
-          example: School-Events-PNG-2
+          examples:
+            - School-Events-PNG-2
         title:
           type: string
-          example: School Events
+          examples:
+            - School Events
         description:
           type: string
-          example: |
-            Banner image for 2022 school events
+          examples:
+            - |
+              Banner image for 2022 school events
         hidden:
           type: boolean
-          example: false
+          examples:
+            - false
         mimeType:
           type: string
-          example: image/png
+          examples:
+            - image/png
         filesize:
           type: integer
           description: file size in bytes
-          example: 117407
+          examples:
+            - 117407

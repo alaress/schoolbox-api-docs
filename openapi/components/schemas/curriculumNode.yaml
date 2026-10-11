@@ -1,0 +1,101 @@
+title: Curriculum node
+description: |
+  A node in a curriculum framework: a framework, strand, outcome or other
+  grouping. Nodes form a tree through `parent` and `children`.
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  name:
+    type: [string, 'null']
+    description: The name of the node.
+    examples: [Self-awareness]
+  code:
+    type: string
+    description: |
+      The node's curriculum code. An empty string if the node has no code.
+    examples: [GCPSC-SEA]
+  reference:
+    type: [string, 'null']
+    description: A reference for the node, such as a URL to the source framework.
+  description:
+    type: string
+    description: A longer description of the node.
+  enabled:
+    type: boolean
+    description: Whether the node is enabled.
+  parent:
+    description: |
+      The parent node, or `null` for a top-level node.
+
+      A full node (without its `children`) when the `ancestors` parameter
+      requests it; otherwise a stub containing only the parent's `id`.
+    oneOf:
+      - $ref: ./curriculumNode-reference.yaml
+      - $ref: ./curriculumNode.yaml
+      - type: 'null'
+  children:
+    type: [array, 'null']
+    description: |
+      The node's child nodes, down to the depth requested by the `descendants`
+      parameter. `null` when descendants were not requested.
+    items:
+      $ref: ./curriculumNode.yaml
+  order:
+    type: integer
+    description: The node's position among its siblings.
+  createdAt:
+    type: string
+    format: date-time
+    readOnly: true
+    description: When the node was created, as an RFC3339 string.
+  modifiedAt:
+    type: string
+    format: date-time
+    readOnly: true
+    description: When the node was last modified, as an RFC3339 string.
+  _usageCounts:
+    type: [object, 'null']
+    readOnly: true
+    description: |
+      How many items use this node, by type. `null` where counts were not
+      calculated (e.g. nodes deeper than the first level of `children`, or in
+      the tree endpoint).
+    properties:
+      course:
+        type: integer
+      unit:
+        type: integer
+      assessment:
+        type: integer
+      folder:
+        type: integer
+      badge:
+        type: integer
+  _links:
+    type: object
+    readOnly: true
+    description: |
+      Links to act on this node. Each link is `null` if the current user is
+      not permitted to perform that action.
+    properties:
+      read:
+        type: [string, 'null']
+        format: uri-reference
+        description: A link to read the node.
+      update:
+        type: [string, 'null']
+        format: uri-reference
+        description: A link to update the node.
+      delete:
+        type: [string, 'null']
+        format: uri-reference
+        description: A link to delete the node.
+      getUsage:
+        type: [string, 'null']
+        format: uri-reference
+        description: A link to read the node's usage.
+      getExport:
+        type: [string, 'null']
+        format: uri-reference
+        description: A link to export the node and its descendants.

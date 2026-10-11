@@ -6,21 +6,19 @@ content:
       properties:
         body:
           type: string
-          example:
-            <p>I can count forwards and backwards by 2s.</p>\n
+          examples:
+            - <p>I can count forwards and backwards by 2s.</p>\n
         file:
-          nullable: true
-          type: string
-          example: store:1f8f836cce05750ac98302c74d4081f99fdd443f
+          type: [string, 'null']
+          examples:
+            - store:1f8f836cce05750ac98302c74d4081f99fdd443f
           description: hash as returned by asyncUpload.php
         curriculumNodes:
-          nullable: true
-          type: array
+          type: [array, 'null']
           items:
             $ref: ../schemas/curriculumItem.yaml
         tags:
-          nullable: true
-          type: array
+          type: [array, 'null']
           items:
             type: object
             description: |
@@ -29,11 +27,13 @@ content:
               id:
                 type: integer
                 description: the DB identifier of the Learning Moment Tags
-                example: 1
+                examples:
+                  - 1
               name:
                 type: string
                 description: the name of the Learning Moment type, may not be unique
-                example: Class Work
+                examples:
+                  - Class Work
         type:
           type: string
           enum:
@@ -42,7 +42,8 @@ content:
             - upload
             - video
             - audio
-          example: upload
+          examples:
+            - upload
       required:
         - body
         - type

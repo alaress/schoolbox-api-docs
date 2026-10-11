@@ -14,41 +14,48 @@ properties:
         - unpopulated
         - expired
         - out-of-date
-    example: []
+    examples:
+      - []
   student:
     type: object
     description: The student associated with the differentiation profile
     properties:
       id:
         type: integer
-        example: 69
+        examples:
+          - 69
       fullName:
         type: string
-        example: "Eden Reed"
+        examples:
+          - "Eden Reed"
       givenName:
         type: string
-        example: "Eden"
+        examples:
+          - "Eden"
       lastName:
         type: string
-        example: "Reed"
+        examples:
+          - "Reed"
       yearLevel:
         type: object
         properties:
           id:
             type: integer
-            example: 4
+            examples:
+              - 4
           name:
             type: string
-            example: "3"
+            examples:
+              - "3"
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: "/search/user/69"
+            examples:
+              - "/search/user/69"
   adjustment_category:
-    type: array
-    nullable: true
+    type: [array, 'null']
     description: Array of adjustment categories (if applicable)
     items:
       type: object
@@ -57,14 +64,13 @@ properties:
           type: integer
         name:
           type: string
-    example:
-      - id: 1
-        name: "Physical"
-      - id: 2
-        name: "Cognitive"
+    examples:
+      - - id: 1
+          name: "Physical"
+        - id: 2
+          name: "Cognitive"
   adjustment_level:
-    type: array
-    nullable: true
+    type: [array, 'null']
     description: Array of adjustment levels (if applicable)
     items:
       type: object
@@ -73,69 +79,71 @@ properties:
           type: integer
         name:
           type: string
-    example:
-      - id: 1
-        name: "Extensive"
+    examples:
+      - - id: 1
+          name: "Extensive"
   overview:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Overview of the differentiation profile (if applicable)
-    example: null
+    examples:
+      - null
   interests_strengths:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Interests and strengths (if applicable)
-    example: null
+    examples:
+      - null
   needs_challenges:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Needs and challenges (if applicable)
-    example: null
+    examples:
+      - null
   strategies_adjustments:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Strategies and adjustments (if applicable)
-    example: null
+    examples:
+      - null
   goals:
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: Goals for the student (if applicable)
-    example: 'Goal 1: Improve reading comprehension.'
+    examples:
+      - 'Goal 1: Improve reading comprehension.'
   _routes:
     type: object
     description: Related routes for the differentiation profile
     properties:
       linkedRecords:
-        type: string
-        nullable: true
-        example: "/differentiation-profiles/linkedRecords/69"
+        type: [string, 'null']
+        examples:
+          - "/differentiation-profiles/linkedRecords/69"
       create:
-        type: string
-        nullable: true
-        example: "/differentiation-profiles/create/69"
+        type: [string, 'null']
+        examples:
+          - "/differentiation-profiles/create/69"
       edit:
-        type: string
-        nullable: true
-        example: "/differentiation-profiles/edit/69"
+        type: [string, 'null']
+        examples:
+          - "/differentiation-profiles/edit/69"
   created_at:
     $ref: ./dateTimeString.yaml
   created_by:
     type: string
     description: Who created the profile
-    example: "Mr John Smith"
+    examples:
+      - "Mr John Smith"
   updated_at:
     $ref: ./dateTimeString.yaml
   updated_by:
     type: string
     description: Who last updated the profile
-    example: "Mr John Smith"
+    examples:
+      - "Mr John Smith"
   deleted_at:
     title: Datetime
-    type: string
-    nullable: true
+    type: [string, 'null']
     description: When the profile was deleted (if applicable). The date as a RFC3339 string.
     format: date-time
-    example: null
+    examples:
+      - null
 
 required:
   - id

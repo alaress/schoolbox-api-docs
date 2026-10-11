@@ -1,0 +1,6 @@
+description: A curriculum node
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/curriculumNode-write.yaml

@@ -1,0 +1,18 @@
+description: |
+  The folder's curriculum nodes.
+
+  If `returnFormat` is `list` (the default), this is a flat list of the nodes
+  directly associated with the folder. If it is `tree`, this is a list of
+  top-level nodes, with the folder's nodes, their ancestors and their
+  descendants nested in `children`.
+content:
+  application/json:
+    schema:
+      type: array
+      items:
+        $ref: ../schemas/curriculumFolderNode.yaml
+    examples:
+      list:
+        $ref: ../examples/curriculumFolderUsage-list.yaml
+      tree:
+        $ref: ../examples/curriculumFolderUsage-tree.yaml

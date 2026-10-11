@@ -10,13 +10,15 @@ properties:
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-30T10:09:09+10:00
+    examples:
+      - 2022-08-30T10:09:09+10:00
   updatedAt:
     type: string
     format: date-time
     description: |
       The date as a RFC3339 string.
-    example: 2022-08-30T10:09:09+10:00
+    examples:
+      - 2022-08-30T10:09:09+10:00
   body:
     type: string
     description: |
@@ -29,13 +31,12 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
 
@@ -43,25 +44,29 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   recipient:
     type: object
     properties:
@@ -70,13 +75,12 @@ properties:
       externalId:
         $ref: ./externalId.yaml
       title:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's title (Mr., Ms., etc.).
-        example: Ms
+        examples:
+          - Ms
       firstName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: |
           The user's first name.
 
@@ -84,103 +88,112 @@ properties:
           and any other names, and in any case is not the definitive source of
           naming information; therefore in practice this will usually be the
           user's given name.
-        example: Rebecca
+        examples:
+          - Rebecca
 
       lastName:
-        type: string
-        nullable: true
+        type: [string, 'null']
         description: The user's surname.
-        example: White
+        examples:
+          - White
       _links:
         type: object
         properties:
           profile:
             type: string
-            example: /search/user/2
+            examples:
+              - /search/user/2
           avatar:
             type: string
-            example: /portrait.php?id=2&size=square64
+            examples:
+              - /portrait.php?id=2&size=square64
       isDeleted:
         type: boolean
-        example: false
+        examples:
+          - false
   discussionThread:
     $ref: ./discussionThread-read.yaml
   filename:
-    nullable: true
-    type: string
+    type: [string, 'null']
   storage:
-    nullable: true
-    type: object
+    type: [object, 'null']
     properties:
       hash:
-        nullable: true
-        type: string
-        example: 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+        type: [string, 'null']
+        examples:
+          - 966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
       mime:
-        nullable: true
-        type: string
-        example: image/jpeg
+        type: [string, 'null']
+        examples:
+          - image/jpeg
       type:
-        nullable: true
-        type: string
-        example: image
+        type: [string, 'null']
+        examples:
+          - image
       size:
-        nullable: true
-        type: integer
-        example: 3385989
+        type: [integer, 'null']
+        examples:
+          - 3385989
       _links:
-        nullable: true
-        type: object
+        type: [object, 'null']
         description: |
           Will contain one of the following depending on what file type is attached
         properties:
           icon:
             type: string
-            example: /static/images/mime/application-image-jpg.svg
+            examples:
+              - /static/images/mime/application-image-jpg.svg
           image:
             type: string
-            example: /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+            examples:
+              - /storage/image.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
           stream:
             type: string
           poster:
             type: string
           fetch:
             type: string
-            example: /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
+            examples:
+              - /storage/fetch.php?hash=966fb6fbd7bdf8c442fb421d816b1ff8a7d6a23c
   curriculumNodes:
-    nullable: true
-    type: array
+    type: [array, 'null']
     items:
       $ref: ./curriculumItem.yaml
   tags:
-    nullable: true
-    type: object
+    type: [object, 'null']
     description: |
       System configurable in your Admin Lists Learning Moment area
     properties:
       id:
         type: integer
         description: the DB identifier of the Learning Moment Tags
-        example: 1
+        examples:
+          - 1
       name:
         type: string
         description: the name of the Learning Moment type, may not be unique
-        example: Class Work
+        examples:
+          - Class Work
   _links:
     type: object
     properties:
       createThread:
         type: string
-        example: /discussion/evidence/7/threads
+        examples:
+          - /discussion/evidence/7/threads
       delete:
         type: string
-        example: /learning/evidence/7
+        examples:
+          - /learning/evidence/7
       detail:
         type: string
-        example: /learning/evidence/7
+        examples:
+          - /learning/evidence/7
       modifyForm:
         type: string
-        example: /learning/evidence/7/modify
+        examples:
+          - /learning/evidence/7/modify
       put:
         type: string
-        example: /learning/evidence/7
+        examples:
+          - /learning/evidence/7

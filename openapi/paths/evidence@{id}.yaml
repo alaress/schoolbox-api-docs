@@ -1,6 +1,6 @@
 put:
   operationId: putEvidence
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Update learning moment
   deprecated: true
   description: |

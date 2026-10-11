@@ -1,0 +1,100 @@
+get:
+  operationId: curriculumApi.searchNode
+  tags: [curriculum]
+  summary: Search curriculum nodes
+  description: |
+    Search curriculum nodes by code or name.
+
+    `query` may contain several keywords separated by commas. A node matches a
+    keyword if its code starts with the keyword, or its name contains the
+    keyword. Unless `includeWithoutCode` is set, name matches only include
+    nodes that have a code. Results from each keyword are merged, without
+    duplicates, and sorted by `order`, then by code (nodes with an order
+    of `0` or no code sort last).
+
+    `limit` and `offset` apply to each keyword separately, so a search with
+    several keywords may return more than `limit` nodes.
+
+    Soft-deleted nodes are never returned.
+
+    This endpoint may be used by any logged-in user.
+  parameters:
+    - name: query
+      in: query
+      description: |
+        Comma-separated keywords. If empty, all nodes match (subject to the
+        other filters).
+      schema:
+        type: string
+      example: GCPSC-SE,Self
+    - name: topLevelOnly
+      in: query
+      description: Only return nodes which have no parent.
+      schema:
+        type: boolean
+        default: false
+    - name: parentId
+      in: query
+      description: Only return descendants of this node.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+    - name: enabled
+      in: query
+      description: |
+        Only return nodes with this `enabled` value. If omitted, both enabled
+        and disabled nodes are returned.
+      schema:
+        type: boolean
+    - name: includeWithoutCode
+      in: query
+      description: Also match nodes without a code by name.
+      schema:
+        type: boolean
+        default: false
+    - name: limit
+      in: query
+      description: The maximum number of nodes to return for each keyword.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 1000
+        default: 10
+    - name: offset
+      in: query
+      description: The number of nodes to skip for each keyword.
+      schema:
+        type: integer
+        format: int32
+        minimum: 0
+        default: 0
+    - $ref: ../components/parameters/curriculumNode-ancestors.yaml
+    - $ref: ../components/parameters/curriculumNode-descendants.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNode-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+post:
+  operationId: curriculumApi.postNode
+  tags: [curriculum]
+  summary: Create a curriculum node
+  description: |
+    Create a curriculum node. It is created as a top-level node unless `parent`
+    is supplied. To create a child of an existing node, you can also use
+    `POST /api/curriculum/{id}`.
+
+    Returns the new node, without ancestors or descendants.
+
+    This endpoint may be used by superusers, users with write access to the
+    Curriculum service, or users with full access to the LMS service.
+  requestBody:
+    $ref: ../components/requestBodies/curriculumNode-write.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/curriculumNode-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

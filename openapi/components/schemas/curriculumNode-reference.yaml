@@ -1,0 +1,8 @@
+title: Curriculum node reference
+description: A reference to a curriculum node by its ID.
+type: object
+required:
+  - id
+properties:
+  id:
+    $ref: ./id.yaml

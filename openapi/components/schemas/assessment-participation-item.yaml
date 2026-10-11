@@ -19,7 +19,8 @@ properties:
         format: date-time
         description: |
           The date as a RFC3339 string.
-        example: 2022-01-30T21:00:00.000Z
+        examples:
+          - 2022-01-30T21:00:00.000Z
       files:
         type: array
         description: |
@@ -42,25 +43,29 @@ properties:
         $ref: ./id.yaml
       comment:
         type: string
-        example: |
-          Joffrey,
-          Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
-          Please consider this for your next essay.
+        examples:
+          - |
+            Joffrey,
+            Your introduction was very strong, but you did not use the previous feedback, which reminded you to add evidence.
+            Please consider this for your next essay.
         description: The teacher's feedback for the student.
       date:
         type: string
         format: date-time
         description: |
           The date as a RFC3339 string.
-        example: 2022-01-30T21:00:00.000Z
+        examples:
+          - 2022-01-30T21:00:00.000Z
       mark:
         type: string
-        example: A
+        examples:
+          - A
         description: A human readable mark.
       normalisedMark:
         type: number
         format: float
-        example: 36
+        examples:
+          - 36
         description: The mark in numeric form.
       rubric:
         allOf:

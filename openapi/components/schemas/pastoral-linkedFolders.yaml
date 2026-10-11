@@ -20,10 +20,10 @@ items:
     - id
     - name
     - codes
-example:
-  - id: 80
-    name: Year 9 English
-    codes: [9ENGA]
-  - id: 81
-    name: Debating
-    codes: []
+examples:
+  - - id: 80
+      name: Year 9 English
+      codes: [9ENGA]
+    - id: 81
+      name: Debating
+      codes: []

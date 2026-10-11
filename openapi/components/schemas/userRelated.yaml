@@ -1,0 +1,65 @@
+# Documents the guardian and student objects on a user (the `guardians` and
+# `students` fields), as returned by the API. These use lower-case
+# `firstname`/`lastname`, unlike userShort (used for `impersonableUsers`),
+# because clients already depend on this response shape: please don't change
+# the API, except to add fields.
+title: Related user
+description: |
+  A user related to another user, such as a parent, guardian or child.
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  externalId:
+    $ref: ./externalId.yaml
+  title:
+    type: [string, 'null']
+    description: The user's title (Mr., Ms., etc.).
+    examples:
+      - Mr
+  firstname:
+    type: string
+    description: |
+      The user's first name.
+
+      Schoolbox doesn't distinguish between a person's actual first name
+      and any other names, and in any case is not the definitive source of
+      naming information; therefore in practice this will usually be the
+      user's given name.
+    examples:
+      - Sam
+  preferredName:
+    type: [string, 'null']
+    description: The user's preferred name.
+  givenName:
+    type: string
+    description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
+    examples:
+      - Sam
+  lastname:
+    type: string
+    description: The user's surname.
+    examples:
+      - Reed
+  fullName:
+    type: string
+    description: The user's formatted full name.
+    examples:
+      - Sam Reed
+  role:
+    allOf:
+      - $ref: ./role.yaml
+      - type: object
+        properties:
+          student:
+            type: boolean
+            description: Whether the role's type is `student`.
+          staff:
+            type: boolean
+            description: Whether the role's type is `staff`.
+          parent:
+            type: boolean
+            description: Whether the role's type is `parent`.
+          guest:
+            type: boolean
+            description: Whether the role's type is `guest`.

@@ -21,8 +21,7 @@ oneOf:
         type: string
         format: uri
       auth:
-        type: boolean
-        nullable: true
+        type: [boolean, 'null']
         description: |
           Is the currently authenticated user authorized to view the resource
           pointed to by `href`?

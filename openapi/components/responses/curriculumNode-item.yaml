@@ -1,0 +1,30 @@
+description: A curriculum node
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/curriculumNode.yaml
+    example:
+      id: 100
+      name: Self-awareness
+      code: GCPSC-SEA
+      reference: null
+      description: ''
+      enabled: true
+      parent:
+        id: 1
+      children: null
+      order: 1
+      createdAt: '2024-03-18T14:46:22+11:00'
+      modifiedAt: '2024-03-18T14:46:22+11:00'
+      _usageCounts:
+        course: 2
+        unit: 5
+        assessment: 12
+        folder: 3
+        badge: 0
+      _links:
+        read: /api/curriculum/100
+        update: /api/curriculum/100
+        delete: /api/curriculum/100
+        getUsage: /api/curriculum/usage/100
+        getExport: /curriculum/export/100
