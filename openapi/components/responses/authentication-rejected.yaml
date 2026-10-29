@@ -1,0 +1,9 @@
+description: |
+  Could not authenticate user: the username or password was incorrect, or the
+  JWT was invalid, was rejected (e.g. it does not have the required scope) or
+  identifies an invalid user.
+content:
+  application/json:
+    schema:
+      type: string
+      description: A description of why authentication failed.
