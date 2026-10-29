@@ -2,6 +2,25 @@ get:
   operationId: getCommentsByThread
   tags: [discussion]
   summary: Get comments for a thread
+  description: |
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token, depending on `contextType`:
+    - `comms`:
+      - https://schoolbox.education/scope/news.comment
+      - https://schoolbox.education/scope/news.comment:readonly
+    - `evidence`:
+      - https://schoolbox.education/scope/learningMoment.comment
+      - https://schoolbox.education/scope/learningMoment.comment:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news.comment
+    - bearerAuth:
+        - https://schoolbox.education/scope/news.comment:readonly
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment.comment
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment.comment:readonly
   responses:
     '200':
       $ref: ../components/responses/discussionComment-list.yaml
@@ -12,6 +31,19 @@ post:
   operationId: createCommentInThread
   tags: [discussion]
   summary: Create a new comment
+  description: |
+    This endpoint requires the following scope when authorized using a bearer
+    token, depending on `contextType`:
+    - `comms`:
+      - https://schoolbox.education/scope/news.comment
+    - `evidence`:
+      - https://schoolbox.education/scope/learningMoment.comment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news.comment
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment.comment
   responses:
     '200':
       $ref: ../components/responses/discussionComment-item.yaml
