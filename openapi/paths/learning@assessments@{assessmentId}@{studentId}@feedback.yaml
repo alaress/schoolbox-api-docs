@@ -5,6 +5,14 @@ post:
   description: |
     Add marks and comments to an assessment. Can be draft or published based on the publish flag. 
     Use the responseId to indicate the feedback is in relation to a student submission, this field is optional.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/assessment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/assessment
   responses:
     '200':
       description: Successfully created feedback for the assessment.

@@ -7,6 +7,14 @@ post:
     If submitted by a user other than the student it will appear as submitted on behalf of. 
     When attaching files they should first be uploaded, using the file upload endpoint, then the reference can be used in this payload. 
     All fields are optional, but at least one field must be supplied.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/assessment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/assessment
   responses:
     '200':
       description: Successfully created submission for the assessment.
