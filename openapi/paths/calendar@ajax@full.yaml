@@ -7,6 +7,17 @@ get:
 
     This mirrors the data returned by the calendar ajax endpoint and is
     used to populate the calendar UI. Results include timetable, resource booking, school and individual events.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/calendar
+    - https://schoolbox.education/scope/calendar:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/calendar
+    - bearerAuth:
+        - https://schoolbox.education/scope/calendar:readonly
   parameters:
     - $ref: ../components/parameters/calendarQuery/start.yaml
     - $ref: ../components/parameters/calendarQuery/end.yaml
