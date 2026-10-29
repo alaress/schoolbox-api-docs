@@ -7,54 +7,31 @@ post:
 
     This file may then be referenced directly, or provided as an argument to
     another place which accepts file uploads.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/upload
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/upload
   responses:
-    default:
+    '401':
+      $ref: ../components/responses/fileUpload-result.yaml
       description: |
-        A description of a file upload.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: integer
-                description: |
-                  The HTTP response code, usually 200 for a successful upload.
-              hash:
-                type: string
-                description: |
-                  A pointer to the now uploaded file within Schoolbox, in the format
-                  `store:$hash`.
-
-                  `store` is the locator used to find the file: `$hash` is its
-                  location within the store.
-              message:
-                type: string
-                description: |
-                  A user-friendly message for what went wrong with the upload
-                  (if anything).
-              meta:
-                type: object
-                description: |
-                  File metadata.
-                properties:
-                  type:
-                    type: string
-                    description: |
-                      The mimetype of the uploaded file.
-                  size:
-                    type: integer
-                    description: |
-                      The uploaded file's size, in bytes.
-                  name:
-                    type: string
-                    description: |
-                      The uploaded file's name.
-                  file:
-                    $ref: ../components/schemas/file.yaml
-
-              success:
-                type: boolean
+        The request's bearer token was invalid, or the request was not
+        authenticated at all.
+    '403':
+      $ref: ../components/responses/fileUpload-result.yaml
+      description: |
+        The request was authorized with a bearer token which does not have the
+        required scope.
+    '500':
+      $ref: ../components/responses/fileUpload-result.yaml
+      description: |
+        An unexpected error occurred whilst authorizing the request.
+    default:
+      $ref: ../components/responses/fileUpload-result.yaml
   requestBody:
     content:
       multipart/form-data:

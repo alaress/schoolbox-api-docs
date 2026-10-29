@@ -13,6 +13,14 @@ post:
     The event is created before its resource bookings are attempted.
     Resource-booking failures are returned in `bookingErrors` and do not mean
     that event creation failed.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/calendar
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/calendar
   requestBody:
     description: |
       The event to create

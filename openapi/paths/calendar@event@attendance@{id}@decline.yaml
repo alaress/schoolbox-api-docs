@@ -5,6 +5,14 @@ post:
   description: |
     As the authenticated user, declines the invitation to attend the given
     event.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/calendar
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/calendar
   responses:
     '200':
       $ref: ../components/responses/calendarAttendance-item.yaml

@@ -4,6 +4,17 @@ get:
   summary: Get an event's attendees
   description: |
     This will return a list of people that have been invited or RSVP to an an event.  It will include the status of their invitation and if they have accepted the invitation.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/calendar
+    - https://schoolbox.education/scope/calendar:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/calendar
+    - bearerAuth:
+        - https://schoolbox.education/scope/calendar:readonly
   responses:
     '200':
       $ref: ../components/responses/calendarAttendance-item.yaml
