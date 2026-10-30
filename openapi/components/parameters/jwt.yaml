@@ -1,6 +1,10 @@
 name:        jwt
 in:          query
-description: A JWT generated via an oAuth request.
+description: |
+  A JWT generated via an oAuth request.
+
+  If this JWT was issued by this instance, it requires the
+  `https://schoolbox.education/scope/session` scope.
 required:    true
 schema:
   type: string
