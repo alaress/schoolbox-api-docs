@@ -36,25 +36,21 @@ content:
           enum: [ 0, 1 ]
           default: 0
         publishAt:
-          description: |
-            The datetime at which this article should be published.
-            
-            The format is dependent on the Schoolbox instance's "Numerical Date Format"
-            and "Time Format" settings: ideally, this would just be a "datetime" format
-            but the datetime input was developed before JSON was used for request bodies.
-          type: string
-          examples:
-            - 22/06/2021 11:28am
+          description: The datetime at which this article should be published.
+          anyOf:
+            - $ref: ../schemas/formDateTime.yaml
+            - type: string
+              format: date-time
+              examples:
+                - 2021-06-22T11:28:00+10:00
         expiresAt:
-          description: |
-            The datetime at which this article should be achieved.
-            
-            The format is dependent on the Schoolbox instance's "Numerical Date Format"
-            and "Time Format" settings: ideally, this would just be a "datetime" format
-            but the datetime input was developed before JSON was used for request bodies.
-          type: string
-          examples:
-            - 22/06/2021 11:28am
+          description: The datetime at which this article should be archived.
+          anyOf:
+            - $ref: ../schemas/formDateTime.yaml
+            - type: string
+              format: date-time
+              examples:
+                - 2021-06-22T11:28:00+10:00
         attachment:
           type: [array, 'null']
           description: |
