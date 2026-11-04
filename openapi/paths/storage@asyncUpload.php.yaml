@@ -26,10 +26,6 @@ post:
       description: |
         The request was authorized with a bearer token which does not have the
         required scope.
-    '500':
-      $ref: ../components/responses/fileUpload-result.yaml
-      description: |
-        An unexpected error occurred whilst authorizing the request.
     default:
       $ref: ../components/responses/fileUpload-result.yaml
   requestBody:
