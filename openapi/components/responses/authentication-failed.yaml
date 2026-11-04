@@ -1,5 +1,16 @@
-description: Not enough data provided or could not authenticate user.
+description: |
+  Authentication could not be attempted or did not succeed: the required
+  fields were not provided, or the user's account is disabled, could not be
+  found, or has an expired password.
 content:
-  text/plain:
+  application/json:
     schema:
-      type: string
+      oneOf:
+        - type: object
+          description: Returned when the required fields were not provided.
+          properties:
+            required:
+              type: string
+              description: Which fields must be provided.
+        - type: string
+          description: A description of why authentication failed.
