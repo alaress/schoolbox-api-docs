@@ -4,6 +4,17 @@ get:
   summary: Get an assessment
   description: |
     This will return all the information related to a specific assessment.  This will include the the assessment details and the results of all participants in that assessment.   The endpoint is only available to superusers.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/assessment
+    - https://schoolbox.education/scope/assessment:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/assessment
+    - bearerAuth:
+        - https://schoolbox.education/scope/assessment:readonly
   responses:
     '200':
       $ref: ../components/responses/assessment-item.yaml

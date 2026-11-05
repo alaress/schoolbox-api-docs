@@ -49,7 +49,7 @@ post:
               value:
                 required: "Either the \"username\" and \"password\" or the \"jwt\" POST fields must be set"
     '401':
-      $ref: ../components/responses/authentication-failed.yaml
+      $ref: ../components/responses/authentication-rejected.yaml
     default:
       $ref: ../components/responses/problem.yaml
 

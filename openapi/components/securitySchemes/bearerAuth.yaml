@@ -72,3 +72,7 @@ description: |
   | `https://schoolbox.education/scope/curriculum:readonly` | Read curriculum data |
   | `https://schoolbox.education/scope/course` | Read, create, update and delete courses |
   | `https://schoolbox.education/scope/course:readonly` | Read courses |
+
+  Note that tokens issued by this instance directly _before_ 26.2 will have no
+  scopes attached. These tokens will be accepted by all endpoints until 27.0,
+  after which they will be rejected.
