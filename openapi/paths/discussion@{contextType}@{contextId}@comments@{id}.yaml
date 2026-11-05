@@ -2,6 +2,19 @@ delete:
   operationId: deleteComment
   tags: [discussion]
   summary: Delete a comment
+  description: |
+    This endpoint requires the following scope when authorized using a bearer
+    token, depending on `contextType`:
+    - `comms`:
+      - https://schoolbox.education/scope/news.comment
+    - `evidence`:
+      - https://schoolbox.education/scope/learningMoment.comment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news.comment
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment.comment
   responses:
     '204':
       description: The resource was deleted successfully.
