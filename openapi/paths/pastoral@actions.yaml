@@ -1,0 +1,63 @@
+get:
+  operationId: pastoral.getActions
+  tags: [pastoral]
+  summary: List pastoral actions
+  description: |
+    Lists the follow-up actions available for a pastoral sub-type or type. Use their IDs as `actions[]`
+    when creating a pastoral record.
+
+    * With `subtypeId`, lists the sub-type's actions.
+    * Otherwise, with `typeId`, lists the type's actions.
+    * With neither, lists every action, none of them selected by default.
+
+    The list is empty when the type or sub-type has no actions. If neither the given sub-type nor type
+    exists, every action is listed, none of them selected by default.
+
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with a role of Staff role type with Access Pastoral Care permission
+    * Users with a role of Staff role type and Pastoral Moderator service permission
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+    - https://schoolbox.education/scope/pastoral:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral:readonly
+  parameters:
+    - name: typeId
+      in: query
+      description: The ID of a pastoral type.
+      schema:
+        $ref: ../components/schemas/id.yaml
+    - name: subtypeId
+      in: query
+      description: The ID of a pastoral sub-type. Takes precedence over `typeId`.
+      schema:
+        $ref: ../components/schemas/id.yaml
+  responses:
+    '200':
+      description: The pastoral actions
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/pastoralAction.yaml
+          examples:
+            actions:
+              value:
+                - id: 1
+                  name: Discussion with Parent/Guardian
+                  default: true
+                - id: 2
+                  name: Meeting with Academic Coordinator
+                  default: false
+    default:
+      $ref: ../components/responses/problem.yaml

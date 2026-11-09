@@ -1,0 +1,9 @@
+# Documents users translated by Pastoral/Translator/ModelToArray.php::translateUser() (Schoolbox codebase).
+title: Pastoral record user
+description: Short fields for a user, with their external ID.
+allOf:
+  - $ref: ./userAuthor.yaml
+  - type: object
+    properties:
+      externalId:
+        $ref: ./externalId.yaml

@@ -95,7 +95,8 @@ tags:
   - name: pastoral
     x-displayName: Pastoral
     description: |
-      Create and manage pastoral records.
+      Create, read and search pastoral records, and list the types, severities, tags and actions used to
+      create them.
 
   - name: search
     x-displayName: Search
@@ -323,6 +324,27 @@ paths:
 
   /pastoral/record/{id}/update:
     $ref: 'paths/pastoral@record@update.yaml'
+
+  /pastoral/student/{studentId}:
+    $ref: 'paths/pastoral@student@{studentId}.yaml'
+
+  /pastoral/student/{studentId}/record/{recordId}:
+    $ref: 'paths/pastoral@student@{studentId}@record@{recordId}.yaml'
+
+  /pastoral/search:
+    $ref: 'paths/pastoral@search.yaml'
+
+  /pastoral/type:
+    $ref: 'paths/pastoral@type.yaml'
+
+  /pastoral/severity:
+    $ref: 'paths/pastoral@severity.yaml'
+
+  /pastoral/tag:
+    $ref: 'paths/pastoral@tag.yaml'
+
+  /pastoral/actions:
+    $ref: 'paths/pastoral@actions.yaml'
 
   /api/curriculum:
     $ref: 'paths/api@curriculum.yaml'

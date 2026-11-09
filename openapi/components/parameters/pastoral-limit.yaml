@@ -1,0 +1,9 @@
+name: limit
+in: query
+description: |
+  The number of records per page. Only applies to JSON responses.
+schema:
+  type: integer
+  minimum: 1
+  maximum: 100
+  default: 20

@@ -1,0 +1,157 @@
+# Documents records translated by Pastoral/Translator/ModelToArray.php (Schoolbox codebase).
+title: Pastoral record fields
+description: The fields shared by pastoral records returned when they are created, updated or read.
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  externalId:
+    description: The ID of SIS data corresponding to this pastoral record, if External Pastoral Synchronisation is ON.
+    type: [string, 'null']
+  student:
+    $ref: ./pastoralUser.yaml
+  heading:
+    description: Heading of the pastoral record.
+    type: string
+  type:
+    description: Type of the pastoral record.
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      name:
+        type: string
+      colour:
+        description: The colour of the icon.
+        type: [string, 'null']
+      icon:
+        description: The name of the icon.
+        type: [string, 'null']
+      sentiment:
+        type: string
+        enum: [positive, neutral, negative]
+      sequence:
+        description: The order in which pastoral types are listed.
+        type: integer
+  subType:
+    description: Sub-type of the pastoral record, if the type has sub-types.
+    type: [object, 'null']
+    properties:
+      id:
+        $ref: ./id.yaml
+      name:
+        type: string
+      colour:
+        description: The colour of the icon.
+        type: [string, 'null']
+      icon:
+        description: The name of the icon.
+        type: [string, 'null']
+      sentiment:
+        type: string
+        enum: [positive, neutral, negative]
+      sequence:
+        description: The order in which the type's sub-types are listed.
+        type: integer
+  severity:
+    description: Severity of the pastoral record.
+    type: [object, 'null']
+    properties:
+      id:
+        $ref: ./id.yaml
+      name:
+        type: string
+      sequence:
+        description: The order in which severities are listed.
+        type: integer
+      color:
+        description: The colour of the severity's label.
+        type: [string, 'null']
+  occurredOn:
+    description: The date on which the event occurred, if set.
+    type: [string, 'null']
+    format: date-time
+  points:
+    description: Points of this pastoral record.
+    type: [number, 'null']
+  tags:
+    description: The record's tags.
+    type: array
+    items:
+      $ref: ./pastoralTag.yaml
+  bodyPublic:
+    description: General content of this pastoral record in HTML.
+    type: [string, 'null']
+  bodyPrivate:
+    description: Confidential content of this pastoral record in HTML.
+    type: [string, 'null']
+  attachmentsPublic:
+    description: Files attached to the general content.
+    type: array
+    items:
+      $ref: ./file.yaml
+  attachmentsPrivate:
+    description: Files attached to the confidential content.
+    type: array
+    items:
+      $ref: ./file.yaml
+  commentsPublic:
+    description: General comments, newest first.
+    type: array
+    items:
+      $ref: ./pastoralComment.yaml
+  commentsPrivate:
+    description: Confidential comments, newest first.
+    type: array
+    items:
+      $ref: ./pastoralComment.yaml
+  comments:
+    description: The same as `commentsPublic`.
+    deprecated: true
+    type: array
+    items:
+      $ref: ./pastoralComment.yaml
+  recordActions:
+    description: The record's follow-up actions.
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          description: The ID of the pastoral action.
+          $ref: ./id.yaml
+        name:
+          description: The name of the pastoral action.
+          type: string
+        completed:
+          description: Whether the action is completed.
+          type: boolean
+        updatedAt:
+          description: When the action was last changed.
+          $ref: ./dateTimeString.yaml
+        updatedBy:
+          description: Who last changed the action, if anyone has.
+          oneOf:
+            - $ref: ./pastoralUser.yaml
+            - type: 'null'
+  owner:
+    $ref: ./pastoralUser.yaml
+  createdBy:
+    $ref: ./pastoralUser.yaml
+  createdAt:
+    description: |
+      The date the event occurred, if set; otherwise the date the record was created.
+    $ref: ./dateTimeString.yaml
+  updatedBy:
+    $ref: ./pastoralUser.yaml
+  updatedAt:
+    description: When the record or its newest comment was last changed.
+    $ref: ./dateTimeString.yaml
+  _links:
+    type: object
+    properties:
+      read:
+        description: The URL of the record, if the user may read it.
+        type: [string, 'null']
+        format: uri-reference

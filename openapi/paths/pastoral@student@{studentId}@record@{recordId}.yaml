@@ -1,0 +1,44 @@
+get:
+  operationId: pastoral.getStudentRecord
+  tags: [pastoral]
+  summary: Get a pastoral record
+  description: |
+    Gets a pastoral record. Send `Accept: application/json` to receive the record as JSON; otherwise the
+    record page is returned as HTML.
+
+    The record shows the user no more than the record page would: see the record schema for details.
+    A record the user may not see is reported as not found (404).
+    Viewing the record is recorded in the pastoral audit log.
+
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with Pastoral Moderator service permission
+    * The record's author
+    * Users in the record's audience who are:
+      * Users with a role of Staff role type with Access Pastoral Care permission
+      * Parents of the student, when Allow Parent Pastoral Access is ON
+      * The student, when Allow Student Pastoral Access is ON
+
+    Superusers have no extra access to pastoral records.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+    - https://schoolbox.education/scope/pastoral:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral:readonly
+  responses:
+    '200':
+      $ref: ../components/responses/pastoralRecord-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/pastoral-studentId.yaml
+  - $ref: ../components/parameters/pastoral-recordId.yaml

@@ -1,0 +1,71 @@
+get:
+  operationId: pastoral.getStudent
+  tags: [pastoral]
+  summary: List a student's pastoral records
+  description: |
+    Lists the student's pastoral records that the user may see, newest first.
+    Send `Accept: application/json` to receive a page of records as JSON; otherwise the student's pastoral
+    page is returned as HTML.
+
+    Follow `metadata.cursor.next` with the `cursor` parameter until it is null to read every record.
+    `metadata.count` is the number of records matching the filters.
+
+    Each record shows the user no more than its record page would: see the record schema for details.
+    Viewing the list is recorded in the pastoral audit log.
+
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with Pastoral Moderator service permission
+    * Users with a role of Staff role type with Access Pastoral Care permission
+    * Parents of the student, when Allow Parent Pastoral Access is ON
+    * The student, when Allow Student Pastoral Access is ON
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+    - https://schoolbox.education/scope/pastoral:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral:readonly
+  parameters:
+    - name: type
+      in: query
+      description: Only list records of this pastoral type.
+      schema:
+        $ref: ../components/schemas/id.yaml
+    - name: subtype
+      in: query
+      description: Only list records of this pastoral sub-type.
+      schema:
+        $ref: ../components/schemas/id.yaml
+    - name: showArchived
+      in: query
+      description: Whether to include records that have expired.
+      schema:
+        type: boolean
+        default: false
+    - name: updatedSince
+      in: query
+      description: |
+        Only list records changed at or after this time, as an RFC3339 date-time. Adding a comment does not
+        change a record's own update time. Only applies to JSON responses.
+      schema:
+        type: string
+        format: date-time
+        examples:
+          - 2026-01-31T09:00:00+11:00
+    - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/pastoral-limit.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/pastoralRecord-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/pastoral-studentId.yaml

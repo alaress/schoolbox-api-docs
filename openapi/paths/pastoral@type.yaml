@@ -1,0 +1,70 @@
+get:
+  operationId: pastoral.getTypes
+  tags: [pastoral]
+  summary: List pastoral types
+  description: |
+    Lists the pastoral types, each with its sub-types, in sequence order. Use their IDs as `typeId` and
+    `subtypeId` when creating or updating a pastoral record.
+
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with a role of Staff role type with Access Pastoral Care permission
+    * Users with a role of Staff role type and Pastoral Moderator service permission
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+    - https://schoolbox.education/scope/pastoral:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral:readonly
+  responses:
+    '200':
+      description: The pastoral types
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/pastoralType.yaml
+          examples:
+            types:
+              value:
+                - id: 1
+                  name: Academic
+                  colour: null
+                  icon: null
+                  sentiment: neutral
+                  sequence: 1
+                  externalCode: null
+                  visibilityLocked: false
+                  defaultPoints: null
+                  defaultExpiry: null
+                  subTypes:
+                    - id: 22
+                      name: Academic Honesty
+                      colour: rgba(255, 53, 25, 1.000)
+                      icon: view
+                      sentiment: negative
+                      sequence: 1
+                      externalCode: null
+                      visibilityLocked: true
+                      defaultPoints: -5
+                      defaultExpiry: 12 months
+                    - id: 1
+                      name: Award/Achievement
+                      colour: null
+                      icon: null
+                      sentiment: positive
+                      sequence: 2
+                      externalCode: null
+                      visibilityLocked: false
+                      defaultPoints: 10
+                      defaultExpiry: null
+    default:
+      $ref: ../components/responses/problem.yaml

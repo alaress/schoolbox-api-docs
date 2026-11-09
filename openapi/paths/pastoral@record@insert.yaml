@@ -10,8 +10,16 @@ post:
     This endpoint is available for:
     * Users with Pastoral Moderator service permission
     * Users with a role of Staff role type with Access Pastoral Care permission
+
+    This endpoint requires the following scope when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
   responses:
-    '200':
+    '201':
       description: Successfully created a pastoral record
       content:
         application/json:

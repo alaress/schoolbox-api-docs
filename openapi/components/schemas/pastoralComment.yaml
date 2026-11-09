@@ -1,0 +1,42 @@
+# Documents comments translated by Pastoral/Comment/Translator/ModelToArray.php (Schoolbox codebase).
+title: Pastoral comment
+description: A comment on a pastoral record.
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  pastoral:
+    description: The record the comment belongs to.
+    type: object
+    properties:
+      id:
+        $ref: ./id.yaml
+      owner:
+        $ref: ./userAuthor.yaml
+      student:
+        $ref: ./userAuthor.yaml
+  owner:
+    $ref: ./userAuthor.yaml
+  body:
+    description: The comment in HTML.
+    type: string
+  externalCode:
+    description: The ID of the comment in an external pastoral system, if it was synchronised.
+    type: [string, 'null']
+  createdAt:
+    $ref: ./dateTimeString.yaml
+  updatedAt:
+    $ref: ./dateTimeString.yaml
+  isDeleted:
+    type: boolean
+  private:
+    description: Whether this is a confidential comment.
+    type: boolean
+  _links:
+    type: object
+    properties:
+      delete:
+        description: The URL to delete the comment, if the user may delete it.
+        type: [string, 'null']
+        format: uri-reference

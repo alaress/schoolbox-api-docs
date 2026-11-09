@@ -13,10 +13,18 @@ patch:
     This is accessible only when Pastoral module is enabled.
     #### Permission
     This endpoint is available for:
-    * Users with Pastoral Moderator service permission
-    * Users with a role of Staff role type with Access Pastoral Care permission
+    * Users with Pastoral Moderator service permission of Write or above
+    * The record's author, if they have a role of Staff role type with Access Pastoral Care permission
+
+    This endpoint requires the following scope when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
   responses:
-    '200':
+    '201':
       description: Successfully updated a pastoral record
       content:
         application/json:

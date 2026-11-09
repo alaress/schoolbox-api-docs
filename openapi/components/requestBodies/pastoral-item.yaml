@@ -51,6 +51,14 @@ content:
               examples:
                 - 2021-06-22
             - type: 'null'
+        expiresAt:
+          description: |
+            The date on which this pastoral record expires, in the format configured in your Admin area.
+            If omitted or empty, the record doesn't expire. The type's or sub-type's `defaultExpiry` is not
+            applied by the API: the record form calculates it, so calculate the date yourself to match.
+          anyOf:
+            - $ref: ../schemas/formDate.yaml
+            - type: 'null'
         typeId:
           description: The ID of a pastoral type to associate with this pastoral record.
           type: integer

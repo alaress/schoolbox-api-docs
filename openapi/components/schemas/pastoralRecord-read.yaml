@@ -1,0 +1,146 @@
+title: Pastoral record (read)
+description: |
+  A pastoral record, as read through the API. It shows a user no more than the record page shows them:
+
+  * `bodyPrivate` is null, and `attachmentsPrivate` and `commentsPrivate` are empty, unless the user can see
+    the record's confidential content: pastoral moderators, the record's author, and users given
+    General + Confidential access.
+  * Comments are only included for users who may comment on the record.
+  * `tags`, `recordActions` and `access` are only included for staff.
+  * `externalId` values are only included for staff.
+  * `severity` is only included when Allow specification of severity on pastoral records is ON, and
+    `points` only when pastoral points are enabled.
+readOnly: true
+allOf:
+  - $ref: ./pastoralRecord-base.yaml
+  - type: object
+    properties:
+      linkedFolders:
+        description: |
+          Classes and groups linked to this record. A link to the folder's homepage is only given when the
+          user can read the folder.
+        type: array
+        items:
+          allOf:
+            - $ref: ./pastoral-linkedFolder.yaml
+            - type: object
+              properties:
+                isDeleted:
+                  description: Whether the folder has been deleted.
+                  type: boolean
+                _links:
+                  type: object
+                  properties:
+                    homepage:
+                      description: The folder's homepage, if the user can read the folder.
+                      type: [string, 'null']
+                      format: uri-reference
+      isArchived:
+        description: Whether the record has expired.
+        type: boolean
+      expiresAt:
+        description: When the record expires, if it does.
+        type: [string, 'null']
+        format: date-time
+      access:
+        description: The record's visibility rules. Only included for staff.
+        type: array
+        items:
+          $ref: ./pastoralAccess.yaml
+    required: [isArchived, expiresAt]
+examples:
+  - id: 13
+    externalId: null
+    student:
+      id: 25
+      _links:
+        profile: /search/user/25
+        avatar: /portrait.php?id=25&size=square64
+      title: ''
+      firstName: Jana
+      preferredName: ''
+      pronoun: (she/her)
+      lastName: Reed
+      fullName: Jana Reed
+      isDeleted: false
+      externalId: '507'
+    heading: Parent Concern
+    linkedFolders:
+      - id: 80
+        name: 9A English
+        codes: [9ENGA]
+        isDeleted: false
+        _links:
+          homepage: /homepage/80
+    type:
+      id: 2
+      name: Wellbeing
+      colour: null
+      icon: null
+      sentiment: neutral
+      sequence: 2
+    subType:
+      id: 4
+      name: Parent Concern/Contact
+      colour: null
+      icon: null
+      sentiment: neutral
+      sequence: 10
+    severity:
+      id: 1
+      name: Low
+      sequence: 3
+      color: rgba(77, 199, 235, 1.000)
+    occurredOn: null
+    points: null
+    tags: []
+    bodyPublic: <p>Jana's mother called today to discuss an incident in class.</p>
+    bodyPrivate: <p>The other student involved has been spoken to.</p>
+    attachmentsPublic: []
+    attachmentsPrivate: []
+    commentsPublic: []
+    commentsPrivate: []
+    comments: []
+    recordActions: []
+    owner: &author
+      id: 2
+      _links:
+        profile: /search/user/2
+        avatar: /portrait.php?id=2&size=square64
+      title: Mr
+      firstName: Jack
+      preferredName: ''
+      pronoun: ''
+      lastName: Coles
+      fullName: Mr Jack Coles
+      isDeleted: false
+      externalId: '111'
+    createdBy: *author
+    createdAt: 2026-10-28T09:10:01+11:00
+    updatedBy: *author
+    updatedAt: 2026-10-28T09:10:01+11:00
+    _links:
+      read: /pastoral/student/25/record/13
+    access:
+      - id: 29
+        access: public
+        matchCampus: false
+        commentsAllowed: true
+        group: null
+        role:
+          id: 2
+          name: Academic Staff
+        roleType: null
+        user: null
+      - id: 30
+        access: private
+        matchCampus: false
+        commentsAllowed: true
+        group:
+          id: 1
+          name: Wellbeing Team
+        role: null
+        roleType: null
+        user: null
+    isArchived: false
+    expiresAt: null
