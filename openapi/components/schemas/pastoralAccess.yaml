@@ -1,0 +1,48 @@
+title: Pastoral record visibility grant
+description: |
+  One of a record's visibility rules, as listed in the Content Visibility section of the record page.
+  Exactly one of `group`, `role`, `roleType` and `user` is set.
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  access:
+    description: |
+      * `deny` - no access, overriding any other rule
+      * `public` - the general content
+      * `private` - the general and confidential content
+    type: string
+    enum: [deny, public, private]
+  matchCampus:
+    description: Whether the rule only applies to staff on the same campus as the student.
+    type: boolean
+  commentsAllowed:
+    description: Whether students or parents given access by the rule may comment.
+    type: boolean
+  group:
+    description: The pastoral group given access.
+    type: [object, 'null']
+    properties:
+      id:
+        $ref: ./id.yaml
+      name:
+        type: string
+  role:
+    description: The role given access.
+    type: [object, 'null']
+    properties:
+      id:
+        $ref: ./id.yaml
+      name:
+        type: string
+  roleType:
+    description: The role type given access, such as `student` for the record's student and `parent` for their parents.
+    type: [string, 'null']
+    enum: [staff, student, parent, null]
+  user:
+    description: The user given access.
+    oneOf:
+      - $ref: ./userAuthor.yaml
+      - type: 'null'
+required: [id, access, matchCampus, commentsAllowed, group, role, roleType, user]

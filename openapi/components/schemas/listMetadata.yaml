@@ -4,7 +4,7 @@ readOnly: true
 type: object
 properties:
   count:
-    type: integer
+    type: [integer, 'null']
     format: int32
     description: If provided, the number of items in the result set.
   cursor:

@@ -1,0 +1,9 @@
+description: A page of pastoral records
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/pastoralRecord-list.yaml
+  text/html:
+    schema:
+      type: string
+      description: The page, rendered into HTML on the server.
