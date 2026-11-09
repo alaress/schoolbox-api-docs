@@ -1,0 +1,18 @@
+title: Linked folder
+description: A class or group linked to a pastoral record.
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  name:
+    type: string
+    description: The folder name.
+  codes:
+    type: array
+    description: A list of class codes (if any) associated with this folder.
+    items:
+      type: string
+required:
+  - id
+  - name
+  - codes

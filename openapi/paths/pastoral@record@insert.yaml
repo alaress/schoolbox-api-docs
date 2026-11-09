@@ -19,7 +19,7 @@ post:
     - bearerAuth:
         - https://schoolbox.education/scope/pastoral
   responses:
-    '200':
+    '201':
       description: Successfully created a pastoral record
       content:
         application/json:
