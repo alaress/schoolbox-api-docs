@@ -1,0 +1,12 @@
+title: Pastoral tag
+description: A tag that can be added to pastoral records.
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  name:
+    type: string
+    examples:
+      - Playground
+required: [id, name]
