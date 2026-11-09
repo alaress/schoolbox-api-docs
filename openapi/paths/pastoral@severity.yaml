@@ -1,0 +1,48 @@
+get:
+  operationId: pastoral.getSeverities
+  tags: [pastoral]
+  summary: List pastoral severities
+  description: |
+    Lists the pastoral severities in sequence order. Use their IDs as `severityId` when creating or
+    updating a pastoral record. The list is empty when Allow specification of severity on pastoral records
+    is OFF.
+
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with a role of Staff role type with Access Pastoral Care permission
+    * Users with a role of Staff role type and Pastoral Moderator service permission
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+    - https://schoolbox.education/scope/pastoral:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral:readonly
+  responses:
+    '200':
+      description: The pastoral severities
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/pastoralSeverity.yaml
+          examples:
+            severities:
+              value:
+                - id: 5
+                  name: Positive
+                  colour: rgba(85, 212, 85, 1.000)
+                  sequence: 1
+                - id: 1
+                  name: Low
+                  colour: rgba(77, 199, 235, 1.000)
+                  sequence: 2
+    default:
+      $ref: ../components/responses/problem.yaml

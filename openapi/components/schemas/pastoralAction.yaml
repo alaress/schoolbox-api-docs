@@ -1,0 +1,15 @@
+title: Pastoral action
+description: A follow-up action that can be added to pastoral records.
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  name:
+    type: string
+    examples:
+      - Discussion with Parent/Guardian
+  default:
+    description: Whether the action is selected by default for the requested type or sub-type.
+    type: boolean
+required: [id, name, default]

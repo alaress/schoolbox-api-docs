@@ -1,0 +1,42 @@
+title: Pastoral sub-type
+description: A sub-type of a pastoral type.
+readOnly: true
+type: object
+properties:
+  id:
+    $ref: ./id.yaml
+  name:
+    type: string
+    examples:
+      - Award/Achievement
+  colour:
+    description: The colour of the icon.
+    type: [string, 'null']
+    examples:
+      - rgba(182, 74, 74, 1.000)
+  icon:
+    description: The name of the icon.
+    type: [string, 'null']
+    examples:
+      - achievement
+  sentiment:
+    type: string
+    enum: [positive, neutral, negative]
+  sequence:
+    description: The order in which types, or the sub-types of a type, are listed.
+    type: integer
+  externalCode:
+    description: The code that identifies this in an external pastoral system.
+    type: [string, 'null']
+  visibilityLocked:
+    description: Whether the default visibility of records of this type is locked, so that staff can't change it.
+    type: boolean
+  defaultPoints:
+    description: The points given to new records of this type, if any.
+    type: [number, 'null']
+  defaultExpiry:
+    description: |
+      How long after creation new records of this type expire, or null if they don't expire by default.
+    type: [string, 'null']
+    enum: [end of day, 1 day, 1 week, 2 weeks, 1 month, 3 months, 6 months, 12 months, 14 months, 24 months, calendar year, academic period, academic year, null]
+required: [id, name, colour, icon, sentiment, sequence, externalCode, visibilityLocked, defaultPoints, defaultExpiry]

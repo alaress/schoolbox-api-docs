@@ -1,0 +1,13 @@
+title: Pastoral type
+description: A pastoral type and its sub-types.
+readOnly: true
+allOf:
+  - $ref: ./pastoralSubType.yaml
+  - type: object
+    properties:
+      subTypes:
+        description: The type's sub-types, in sequence order. A record of a type with sub-types must have one of them.
+        type: array
+        items:
+          $ref: ./pastoralSubType.yaml
+    required: [subTypes]
