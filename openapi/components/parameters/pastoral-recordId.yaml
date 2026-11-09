@@ -1,0 +1,6 @@
+name: recordId
+in: path
+required: true
+description: The ID of the pastoral record.
+schema:
+  $ref: ../schemas/id.yaml

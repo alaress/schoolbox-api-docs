@@ -1,0 +1,12 @@
+title: Pastoral record list
+description: A page of pastoral records, newest first.
+readOnly: true
+type: object
+properties:
+  data:
+    type: array
+    items:
+      $ref: ./pastoralRecord-read.yaml
+  metadata:
+    $ref: ./listMetadata.yaml
+required: [data, metadata]

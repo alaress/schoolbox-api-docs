@@ -1,0 +1,50 @@
+get:
+  operationId: pastoral.getSearch
+  tags: [pastoral]
+  summary: Search pastoral records
+  description: |
+    Searches the heading, content and comments of the pastoral records that the user may see, matching any
+    of the keywords that are at least 2 characters long.
+    Send `Accept: application/json` to receive a page of matching records as JSON, newest first; otherwise
+    the search page, which also lists matching students, is returned as HTML.
+
+    Follow `metadata.cursor.next` with the `cursor` parameter until it is null to read every match. The last
+    page may be empty. `metadata.count` is always null, as counting every match would be
+    too expensive.
+
+    Each record shows the user no more than its record page would: see the record schema for details.
+    Searches that match a record are recorded in the pastoral audit log.
+
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with a role of Staff role type with Access Pastoral Care permission
+    * Users with a role of Staff role type and Pastoral Moderator service permission
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+    - https://schoolbox.education/scope/pastoral:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral:readonly
+  parameters:
+    - name: keyword
+      in: query
+      required: true
+      description: Space-separated keywords.
+      schema:
+        type: string
+        examples:
+          - detention
+    - $ref: ../components/parameters/cursor.yaml
+    - $ref: ../components/parameters/pastoral-limit.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/pastoralRecord-list.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

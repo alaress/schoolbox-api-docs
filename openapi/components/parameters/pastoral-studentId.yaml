@@ -1,0 +1,6 @@
+name: studentId
+in: path
+required: true
+description: The ID of the student.
+schema:
+  $ref: ../schemas/id.yaml
