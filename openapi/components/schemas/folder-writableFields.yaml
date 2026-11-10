@@ -4,8 +4,7 @@ description: |
 
   Codes and year levels can only be set by superusers and users with the CMS
   Moderator service permission at Full level: for other users they are
-  ignored. A folder with class codes can only be made to inherit permissions
-  by a superuser. The recursive settings are only applied for superusers.
+  ignored. The recursive settings are only applied for superusers.
 type: object
 properties:
   name:
@@ -17,6 +16,14 @@ properties:
     description: |
       Whether the folder inherits its permissions from its parent. A folder
       which inherits has no class codes or role permissions of its own.
+
+      **Warning:** setting `inherit` to `true` deletes the folder's role
+      permissions. Setting it back to `false` doesn't restore them: send
+      `rolePermissions` again.
+
+      A folder with class codes can't inherit permissions: the request is
+      refused with a 400 response. Remove the codes first, by sending an empty
+      `codes` list, then set `inherit`.
   templateId:
     type: [integer, 'null']
     format: int32
@@ -84,7 +91,13 @@ properties:
     type: boolean
     default: false
     writeOnly: true
-    description: Also apply `inherit` and `rolePermissions` to every subfolder. Superusers only.
+    description: |
+      Also apply `inherit` and `rolePermissions` to every subfolder. Superusers
+      only.
+
+      **Warning:** with `inherit` set to `true`, every subfolder inherits too,
+      which deletes the subfolders' own role permissions and class codes.
+      Subfolders with class codes are not checked first.
   recursiveYearLevels:
     type: boolean
     default: false
