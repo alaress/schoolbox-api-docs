@@ -1,0 +1,108 @@
+title: Folder
+description: |
+  A folder, as returned by the folder API.
+
+  `rolePermissions`, `createdBy` and `updatedBy` are only returned to users
+  who may modify the folder.
+type: object
+readOnly: true
+properties:
+  id:
+    type: integer
+    format: int32
+    minimum: 1
+  name:
+    type: string
+  title:
+    type: string
+    description: The name followed by the class codes, as shown on the homepage.
+    examples: [9A English (9ENGA)]
+  codes:
+    type: array
+    items:
+      type: string
+  curriculumNodes:
+    type: [array, 'null']
+    items:
+      $ref: ./curriculumNode.yaml
+  parent:
+    type: object
+    description: The parent folder, which is `0` for a top-level folder.
+    properties:
+      id:
+        type: integer
+        format: int32
+        minimum: 0
+    required: [id]
+  inherit:
+    type: boolean
+  templateId:
+    type: [integer, 'null']
+    description: The folder's homepage template, or `null` if it has no homepage.
+  colour:
+    type: [string, 'null']
+    examples: ['#1F6F5C']
+  coverImage:
+    type: [string, 'null']
+    examples: ['store:1f8f836cce05750ac98302c74d4081f99fdd443f']
+  yearLevels:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+  rolePermissions:
+    type: array
+    description: Left out when the folder inherits permissions.
+    items:
+      type: object
+      properties:
+        roleId:
+          type: integer
+        access:
+          type: string
+          enum: [none, read, write, admin]
+  isGroup:
+    type: boolean
+  createdAt:
+    type: [string, 'null']
+    format: date-time
+  createdBy:
+    type: [object, 'null']
+    properties:
+      id:
+        type: integer
+  updatedAt:
+    type: [string, 'null']
+    format: date-time
+  updatedBy:
+    type: [object, 'null']
+    properties:
+      id:
+        type: integer
+  children:
+    type: array
+    description: |
+      The direct subfolders the user may read, in the order they are shown.
+    items:
+      $ref: ./folder-reference.yaml
+  _links:
+    type: object
+    properties:
+      view:
+        type: string
+        description: The folder's homepage.
+        examples: [/homepage/80]
+      self:
+        type: string
+        examples: [/resource/folder/80]
+      members:
+        type: string
+        description: |
+          The group's members: see [Get all users belonging to a group](#operation/groupGetUsersInGroup).
+          Only present when `isGroup` is true.
+        examples: [/group/getData/80]
+required: [id, name, title, codes, parent, inherit, templateId, colour, coverImage, yearLevels, isGroup, children, _links]

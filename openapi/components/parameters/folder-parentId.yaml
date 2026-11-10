@@ -1,0 +1,9 @@
+name:        parentId
+in:          path
+description: |
+  The ID of the parent folder. Use `0` for a top-level folder.
+required:    true
+schema:
+  type: integer
+  format: int32
+  minimum: 0

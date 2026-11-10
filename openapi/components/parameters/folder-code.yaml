@@ -1,0 +1,12 @@
+name:        code
+in:          query
+description: |
+  A class code of the folder. One code per request.
+
+  An unprefixed code such as `ENG34` also matches campus-prefixed codes such
+  as `SEN/ENG34`, while a prefixed code matches only that code. Send the
+  campus-prefixed code when you know it.
+required:    true
+schema:
+  type: string
+  examples: [SEN/ENG34]
