@@ -1,0 +1,10 @@
+name:        id
+in:          path
+description: |
+  The ID of the folder. `0` is the root, above the top-level folders: it can
+  be read, but not changed.
+required:    true
+schema:
+  type: integer
+  format: int32
+  minimum: 0

@@ -1,0 +1,41 @@
+post:
+  operationId: folderCreate
+  tags: [folder]
+  summary: Create a folder
+  description: |
+    Creates a folder inside the parent folder. Send `Accept: application/json`
+    and a JSON body to receive the new folder as JSON; a form post is
+    redirected, as from the Create Folder page.
+
+    Use `templateId` to give the folder a homepage, `codes` to make it a class
+    page, and `createGroup` to make it a group.
+
+    #### Errors
+    * 400: the body is invalid, for example a missing `name`, an unknown
+      template, year level, curriculum node or role, a class code which is too
+      long or already used by another folder, or `createGroup` on a folder
+      which inherits permissions.
+    * 401: the user doesn't have write access to the parent folder.
+    * 403: the user's role may not own groups; or the token lacks the scope.
+    * 404: the parent folder doesn't exist.
+
+    #### Permission
+    This endpoint is available for users with write access to the parent
+    folder.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/folder
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder
+  parameters:
+    - $ref: ../components/parameters/folder-parentId.yaml
+  requestBody:
+    $ref: ../components/requestBodies/folder-write.yaml
+  responses:
+    '201':
+      $ref: ../components/responses/folder-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

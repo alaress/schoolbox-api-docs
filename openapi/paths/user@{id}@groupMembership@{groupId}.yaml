@@ -50,7 +50,7 @@ patch:
     default:
       $ref: ../components/responses/problem.yaml
   requestBody:
-    $ref: ../components/requestBodies/userGroupMembership-item.yaml
+    $ref: ../components/requestBodies/userGroupMembership-partial.yaml
 
 delete:
   operationId: userGroupMembershipDelete
