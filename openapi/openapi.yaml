@@ -73,6 +73,12 @@ tags:
     description: |
       Upload files.
 
+  - name: folder
+    x-displayName: Folders
+    description: |
+      Create, find and manage folders, including homepages, class pages and
+      group pages.
+
   - name: group
     x-displayName: Groups
     description: |
@@ -194,6 +200,21 @@ paths:
 
   /storage/asyncUpload.php:
     $ref: 'paths/storage@asyncUpload.php.yaml'
+
+  /resource/folder:
+    $ref: 'paths/resource@folder.yaml'
+
+  /resource/folder/{id}:
+    $ref: 'paths/resource@folder@{id}.yaml'
+
+  /resource/folder/{parentId}/create:
+    $ref: 'paths/resource@folder@{parentId}@create.yaml'
+
+  /resource/folder/{id}/update:
+    $ref: 'paths/resource@folder@{id}@update.yaml'
+
+  /resource/folder/{id}/move/{parentId}:
+    $ref: 'paths/resource@folder@{id}@move@{parentId}.yaml'
 
   /resources/file/{fileId}/ajax:
     $ref: 'paths/resource@file@{fileId}@ajax.yaml'

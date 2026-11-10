@@ -1,0 +1,66 @@
+post:
+  operationId: folderUpdate
+  tags: [folder]
+  summary: Update a folder
+  description: |
+    Replaces a folder's settings. Send `Accept: application/json` and a JSON
+    body to receive the folder as JSON; a form post is redirected, as from the
+    Modify Folder page.
+
+    To change only some settings, use [Partially update a folder](#operation/folderPatch).
+
+    #### Errors
+    * 400: the body is invalid, or the folder is the root: see
+      [Create a folder](#operation/folderCreate).
+    * 401: the user doesn't have write access to the folder.
+    * 403: the user's role may not own groups; or the token lacks the scope.
+    * 404: the folder doesn't exist.
+
+    #### Permission
+    This endpoint is available for users with write access to the folder.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/folder
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder
+  requestBody:
+    $ref: ../components/requestBodies/folder-write.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/folder-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+patch:
+  operationId: folderPatch
+  tags: [folder]
+  summary: Partially update a folder
+  description: |
+    Changes only the folder settings sent, and returns the folder.
+
+    #### Errors
+    As for [Update a folder](#operation/folderUpdate).
+
+    #### Permission
+    This endpoint is available for users with write access to the folder.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/folder
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder
+  requestBody:
+    $ref: ../components/requestBodies/folder-partial.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/folder-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/folder-id.yaml

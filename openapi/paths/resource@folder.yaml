@@ -1,0 +1,41 @@
+get:
+  operationId: folderGetByCode
+  tags: [folder]
+  summary: Find a folder by class code
+  description: |
+    Finds the folder with a class code, and returns the same folder as
+    [Get a folder](#operation/folderGet). Send `Accept: application/json` to
+    receive the folder as JSON; otherwise the request is redirected to the
+    folder's homepage.
+
+    To change a folder found by code, use its `id`: updates are always by ID.
+
+    #### Errors
+    * 400: `code` is missing.
+    * 404: no folder the user may read has the code.
+    * 409: more than one folder the user may read has the code. This happens
+      when an unprefixed code matches codes on several campuses: send the
+      campus-prefixed code instead.
+
+    #### Permission
+    This endpoint is available for users with read access to the folder.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/folder
+    - https://schoolbox.education/scope/folder:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder:readonly
+  parameters:
+    - $ref: ../components/parameters/folder-code.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/folder-item.yaml
+    '302':
+      $ref: ../components/responses/redirect.yaml
+    default:
+      $ref: ../components/responses/problem.yaml

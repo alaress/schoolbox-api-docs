@@ -1,0 +1,69 @@
+get:
+  operationId: folderGet
+  tags: [folder]
+  summary: Get a folder
+  description: |
+    Gets a folder, with its settings and the subfolders the user may read.
+    Send `Accept: application/json` to receive the folder as JSON; otherwise
+    the request is redirected to the folder's homepage.
+
+    To walk the folder tree, start at the root, folder `0`, which lists the
+    top-level folders, and follow each folder's `children`. Each folder's
+    `parent.id` leads back up the tree.
+
+    A folder the user may not read is reported as not found (404).
+
+    #### Permission
+    This endpoint is available for users with read access to the folder.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/folder
+    - https://schoolbox.education/scope/folder:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder:readonly
+  responses:
+    '200':
+      description: The folder, or the root for folder `0`
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: ../components/schemas/folder-read.yaml
+              - $ref: ../components/schemas/folder-root.yaml
+    '302':
+      $ref: ../components/responses/redirect.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+delete:
+  operationId: folderDelete
+  tags: [folder]
+  summary: Delete a folder
+  description: |
+    Deletes a folder and its subfolders.
+
+    #### Permission
+    This endpoint is available for users with write access to the folder. Only
+    superusers may delete a folder which has subfolders. The root can't be
+    deleted.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/folder
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder
+  responses:
+    '200':
+      $ref: ../components/responses/folder-result.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/folder-id.yaml
