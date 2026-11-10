@@ -1,5 +1,13 @@
-description: A group membership
+description: |
+  A group membership. Every setting is required: to change only some of them,
+  use [Partially update a user's group settings](#operation/userGroupMembershipPatch).
 content:
   application/json:
     schema:
-      $ref: ../schemas/userGroupMembership-writableFields.yaml
+      allOf:
+        - $ref: ../schemas/userGroupMembership-writableFields.yaml
+      required:
+        - membership
+        - enrolmentStatus
+        - isNotificationsOn
+        - isFavourite

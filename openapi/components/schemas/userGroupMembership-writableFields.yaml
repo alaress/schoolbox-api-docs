@@ -1,8 +1,4 @@
 title: Writable Group Membership Fields
-required:
-  - membership
-  - isNotificationsOn
-  -   isFavourite
 type: object
 properties:
   membership:
@@ -31,7 +27,6 @@ properties:
     enum:
       - enroled
       - pending
-    default: enroled
   isNotificationsOn:
     description: |
       Is this user subscribed to this group's events? If so, they will be

@@ -1,0 +1,7 @@
+description: |
+  The group membership settings to change. Settings which aren't sent are left
+  as they are.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/userGroupMembership-writableFields.yaml
