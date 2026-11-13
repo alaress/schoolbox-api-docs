@@ -3,7 +3,9 @@ post:
   tags: [user]
   summary: Create a user notification
   description: |
-    Send an instant notification to a selected user.  The endpoint is only available to superusers.
+    Send an instant notification to a selected user.
+    Only superusers may notify other users: non-superusers may notify only
+    themselves.
 
     This endpoint requires the following scope when authorized using a bearer
     token:
