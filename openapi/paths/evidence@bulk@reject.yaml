@@ -5,6 +5,14 @@ put:
   description: |
     Reject multiple learning moments (meaning refuse to publish them), and optionally supply a reason for the rejection.
     Note the rejection reason will appear in a comment in the discussion thread of each rejected learning moment.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/learningMoment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
   requestBody:
     content:
       application/json:

@@ -2,6 +2,17 @@ get:
   operationId: commsNews.getDetail
   tags: [news]
   summary: Get a news article
+  description: |
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/news
+    - https://schoolbox.education/scope/news:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
+    - bearerAuth:
+        - https://schoolbox.education/scope/news:readonly
   responses:
     '200':
       description: |
@@ -51,6 +62,14 @@ post:
 
     The article is not necessarily published yet: this simply saves the article
     so that the user may refine it before publishing.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/news
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
   parameters:
     - $ref: ../components/parameters/id.yaml
   responses:

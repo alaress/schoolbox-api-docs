@@ -2,7 +2,16 @@ post:
   operationId: postEvidencePublishMultiUser
   tags: [learningMoment]
   summary: Publish a learning moment for multiple users
-  description: Create a learning moment and leave it in a 'published' state for multiple users.
+  description: |
+    Create a learning moment and leave it in a 'published' state for multiple users.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/learningMoment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
   requestBody:
     description: |
       The content of the learning moment to save.
