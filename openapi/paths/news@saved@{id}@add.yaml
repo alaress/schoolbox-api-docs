@@ -8,6 +8,14 @@ post:
     This article will then be returned by the
     [Get list of saved articles](#get-/news/saved/)
     endpoint.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/news
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
   responses:
     '200':
       description: |

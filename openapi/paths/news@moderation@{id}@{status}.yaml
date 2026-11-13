@@ -4,6 +4,14 @@ post:
   summary: Change the publication status of a news article
   description: |
     Change the publication status of a news article.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/news
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
   parameters:
     - $ref: ../components/parameters/id.yaml
     - name: status
