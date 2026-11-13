@@ -4,6 +4,17 @@ get:
   summary: Get a users groups
   description: |
     This will provide a list of the groups a user is a member of.  It will include information about the group membership status and settings.  The endpoint is only available to superusers.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/group
+    - https://schoolbox.education/scope/group:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
+    - bearerAuth:
+        - https://schoolbox.education/scope/group:readonly
   responses:
     '200':
       $ref: ../components/responses/userGroupMembership-list.yaml
