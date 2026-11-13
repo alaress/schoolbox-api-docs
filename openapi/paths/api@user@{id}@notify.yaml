@@ -3,7 +3,15 @@ post:
   tags: [user]
   summary: Create a user notification
   description: |
-   Send an instant notification to a selected user.  The endpoint is only available to superusers.
+    Send an instant notification to a selected user.  The endpoint is only available to superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/user.notification
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user.notification
   responses:
     '200':
       description: The notification was sent.
