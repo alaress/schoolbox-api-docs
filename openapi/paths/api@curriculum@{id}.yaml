@@ -7,6 +7,17 @@ get:
     parents and children.
 
     This endpoint may be used by any logged-in user.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/curriculum
+    - https://schoolbox.education/scope/curriculum:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum:readonly
   parameters:
     - $ref: ../components/parameters/curriculumNode-ancestors.yaml
     - $ref: ../components/parameters/curriculumNode-descendants.yaml
@@ -27,6 +38,14 @@ post:
 
     This endpoint may be used by superusers, users with write access to the
     Curriculum service, or users with full access to the LMS service.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/curriculum
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
   requestBody:
     $ref: ../components/requestBodies/curriculumNode-write.yaml
   responses:
@@ -46,6 +65,14 @@ put:
 
     This endpoint may be used by superusers, users with write access to the
     Curriculum service, or users with full access to the LMS service.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/curriculum
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
   requestBody:
     $ref: ../components/requestBodies/curriculumNode-write.yaml
   responses:
@@ -64,6 +91,14 @@ patch:
 
     This endpoint may be used by superusers, users with write access to the
     Curriculum service, or users with full access to the LMS service.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/curriculum
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
   requestBody:
     $ref: ../components/requestBodies/curriculumNode-write.yaml
   responses:
@@ -81,6 +116,14 @@ delete:
 
     This endpoint may be used by superusers, users with write access to the
     Curriculum service, or users with full access to the LMS service.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/curriculum
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
   responses:
     '204':
       description: The node and its descendants were deleted.

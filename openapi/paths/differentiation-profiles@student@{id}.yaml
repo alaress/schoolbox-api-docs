@@ -4,6 +4,17 @@ get:
   summary: Get a differentiation profile
   description: |
     Retrieve the differentiation profile for a specific student.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/differentiation
+    - https://schoolbox.education/scope/differentiation:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/differentiation
+    - bearerAuth:
+        - https://schoolbox.education/scope/differentiation:readonly
   responses:
     '200':
       $ref: ../components/responses/differentiationProfile.yaml
@@ -19,6 +30,14 @@ post:
   summary: Create a differentiation profile
   description: |
     Create a new differentiation profile.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/differentiation
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/differentiation
   requestBody:
     $ref: ../components/requestBodies/differentiation.yaml
   responses:
@@ -33,6 +52,14 @@ put:
   summary: Update a differentiation profile
   description: |
     Update an existing differentiation profile.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/differentiation
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/differentiation
   requestBody:
     $ref: ../components/requestBodies/differentiation.yaml
   responses:

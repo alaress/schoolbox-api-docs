@@ -327,9 +327,6 @@ paths:
   /api/curriculum:
     $ref: 'paths/api@curriculum.yaml'
 
-  /api/curriculum/tree:
-    $ref: 'paths/api@curriculum@tree.yaml'
-
   /api/curriculum/{id}:
     $ref: 'paths/api@curriculum@{id}.yaml'
 

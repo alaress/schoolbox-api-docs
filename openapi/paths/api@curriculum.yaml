@@ -18,6 +18,17 @@ get:
     Soft-deleted nodes are never returned.
 
     This endpoint may be used by any logged-in user.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/curriculum
+    - https://schoolbox.education/scope/curriculum:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum:readonly
   parameters:
     - name: query
       in: query
@@ -91,6 +102,14 @@ post:
 
     This endpoint may be used by superusers, users with write access to the
     Curriculum service, or users with full access to the LMS service.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/curriculum
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
   requestBody:
     $ref: ../components/requestBodies/curriculumNode-write.yaml
   responses:
