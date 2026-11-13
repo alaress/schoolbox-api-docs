@@ -4,6 +4,17 @@ get:
   summary: Get learning moments for a cohort
   description: |
     Get all learning moments for users in a cohort defined by a folderId.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/learningMoment
+    - https://schoolbox.education/scope/learningMoment:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment:readonly
   responses:
     '200':
       $ref: ../components/responses/evidence-cohort-payload.yaml
