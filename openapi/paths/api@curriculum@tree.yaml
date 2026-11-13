@@ -11,6 +11,17 @@ get:
     `GET /api/curriculum/{id}` with the `descendants` parameter instead.
 
     This endpoint may be used by any logged-in user.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/curriculum
+    - https://schoolbox.education/scope/curriculum:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum
+    - bearerAuth:
+        - https://schoolbox.education/scope/curriculum:readonly
   responses:
     '200':
       $ref: ../components/responses/curriculumNode-list.yaml
