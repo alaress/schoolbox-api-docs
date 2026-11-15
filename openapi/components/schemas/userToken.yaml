@@ -20,8 +20,7 @@ properties:
       Will be passed as the `jti` (JWT ID) claim in the JWT, and used to:
       - track usage of the token
       - verify that it is not expired
-      - (in future) verify that the scopes in the JWT match what was allowed
-        when setting up the token
+      - verify that the scopes in the JWT are still allowed to the token
     examples:
       - u82jddg5-ky61-z9w3-0098-334hxb27dhg0
   type:

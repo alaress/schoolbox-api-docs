@@ -64,7 +64,7 @@ description: |
   | `https://schoolbox.education/scope/search` | Search for content |
   | `https://schoolbox.education/scope/user` | Read, create, update and delete users |
   | `https://schoolbox.education/scope/user:readonly` | Read users|
-  | `https://schoolbox.education/scope/user.token` | Read, create, update and delete user tokens |
+  | `https://schoolbox.education/scope/user.token` | Create, update and delete user tokens: new tokens may not have scopes beyond this token's, nor expire after it |
   | `https://schoolbox.education/scope/user.notification` | Send notifications |
   | `https://schoolbox.education/scope/differentiation` | Read, create, update and delete differentiation profiles |
   | `https://schoolbox.education/scope/differentiation:readonly` | Read differentiation profiles |

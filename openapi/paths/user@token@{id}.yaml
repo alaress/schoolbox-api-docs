@@ -13,8 +13,27 @@ post:
     request:
     | Scheme | Scopes |
     |---|---|
-    | `bearerAuth` | Any scopes which exist on the JWT, and are defined on this security scheme |
+    | `bearerAuth` | Any scope on the JWT which is still stored against its token, plus the read-only scope matching any read+write scope on it (e.g. `https://schoolbox.education/scope/assessment` also allows `https://schoolbox.education/scope/assessment:readonly`). If the JWT has the session scope, or no scope at all, then any scope defined on the `bearerAuth` security scheme |
     | `session` | Any scope defined on the `bearerAuth` security scheme |
+
+    The `bearerAuth` restriction applies whoever the JWT identifies, including
+    superusers: a request for a scope which may not be added is rejected with a
+    `403` response.
+
+    When authorized using a bearer token, the new token may also not expire
+    after the JWT: if no expiry is requested, the new token expires along with
+    the JWT, and requesting a later expiry is rejected with a `400` response.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/user.token
+    - https://schoolbox.education/scope/session
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user.token
+    - bearerAuth:
+        - https://schoolbox.education/scope/session
   requestBody:
     $ref: ../components/requestBodies/userToken-create.yaml
   responses:

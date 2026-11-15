@@ -7,6 +7,17 @@ put:
 
     Only the token's subject, or a superuser, may update a token: also, only the
     token's name may be updated.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/user.token
+    - https://schoolbox.education/scope/session
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user.token
+    - bearerAuth:
+        - https://schoolbox.education/scope/session
   requestBody:
     $ref: ../components/requestBodies/userToken-update.yaml
   responses:
@@ -31,6 +42,17 @@ delete:
     Delete an already-created authentication token.
 
     Only the token's subject, or a superuser, may delete a token.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/user.token
+    - https://schoolbox.education/scope/session
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user.token
+    - bearerAuth:
+        - https://schoolbox.education/scope/session
   responses:
     '204':
       description: The token was deleted successfully.
