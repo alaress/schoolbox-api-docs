@@ -4,6 +4,17 @@ get:
   summary: Get a user
   description: |
     Returns all the information about a specific user. The result from this API can be passed into the update user endpoint. This endpoint may only be used by the current user or superusers.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/user
+    - https://schoolbox.education/scope/user:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user
+    - bearerAuth:
+        - https://schoolbox.education/scope/user:readonly
   responses:
     '200':
       $ref: ../components/responses/user-item.yaml
@@ -16,6 +27,14 @@ put:
   summary: Update a user
   description: |
     This allows a user to be updated by passing in a user object. When using this endpoint you must provide the entire user, we recommend you get the user first via the "get a user" endpoint. This endpoint may only be used by superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/user
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user
   responses:
     '200':
       $ref: ../components/responses/user-item.yaml
@@ -30,6 +49,14 @@ patch:
   summary: Partially update a user
   description: |
     This allows you to update specific fields of a user without needing to provide all the fields. By providing a partial user object, only the fields provided will be updated. The remaining fields will be left as they were. This endpoint may only be used by superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/user
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user
   responses:
     '200':
       $ref: ../components/responses/user-item.yaml
@@ -44,6 +71,14 @@ delete:
   summary: Delete a user
   description: |
     This will soft-delete a user from the system.  A soft-deleted user will no longer be visible in the system, but the data will remain. This endpoint may only be used by superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/user
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user
   responses:
     '204':
       description: The resource was deleted successfully.

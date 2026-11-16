@@ -7,6 +7,16 @@ get:
     You may only set either **query** or **folder** at **_one time_**. If the limit query parameter is not provided, the 
     number of courses returned is defaulted to 100. This endpoint is only available to superusers and staff
 
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/course
+    - https://schoolbox.education/scope/course:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/course
+    - bearerAuth:
+        - https://schoolbox.education/scope/course:readonly
   responses:
     '200':
       $ref: ../components/responses/course-list.yaml

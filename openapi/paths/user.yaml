@@ -7,6 +7,16 @@ get:
     The number of users returned is 5 by default, if the limit query parameter is not provided.
     This endpoint is only available to superusers to avoid leaking information about users to other users.
 
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/user
+    - https://schoolbox.education/scope/user:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user
+    - bearerAuth:
+        - https://schoolbox.education/scope/user:readonly
   responses:
     '200':
       $ref: ../components/responses/user-list.yaml
@@ -121,6 +131,14 @@ post:
     "firstName": "Rebecca"
     }
     ```
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/user
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/user
   responses:
     '201':
       $ref: ../components/responses/user-item.yaml
