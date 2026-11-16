@@ -73,6 +73,16 @@ description: |
   | `https://schoolbox.education/scope/course` | Read, create, update and delete courses |
   | `https://schoolbox.education/scope/course:readonly` | Read courses |
 
+  A request made with a token which does not have any of the scopes that an
+  endpoint accepts will be rejected with a `403 Forbidden` response, whose
+  `WWW-Authenticate` header names the scopes which would have been accepted,
+  e.g.:
+  ```
+  WWW-Authenticate: Bearer error="insufficient_scope", scope="https://schoolbox.education/scope/calendar https://schoolbox.education/scope/calendar:readonly"
+  ```
+  The exception is `POST /storage/asyncUpload.php`, which instead responds with
+  its own JSON `403` response, without a `WWW-Authenticate` header.
+
   Note that tokens issued by this instance directly _before_ 26.2 will have no
   scopes attached. These tokens will be accepted by all endpoints until 27.0,
   after which they will be rejected.

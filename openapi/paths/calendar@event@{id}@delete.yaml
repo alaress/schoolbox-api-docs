@@ -6,6 +6,14 @@ post:
   summary: Delete a calendar event
   description: |
     Deletes a calendar event
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/calendar
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/calendar
   requestBody:
     content:
       application/json:
