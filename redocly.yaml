@@ -1,5 +1,4 @@
 # See https://docs.redoc.ly/cli/configuration/ for more information.
-organization: schoolbox
 extends:
   - recommended
 apis:
@@ -10,9 +9,8 @@ rules:
   info-license: off
   operation-4xx-response: off
   no-invalid-media-type-examples: off
-theme:
-  openapi:
-    theme:
-      colors:
-        primary:
-          main: "#32329f"
+openapi:
+  theme:
+    colors:
+      primary:
+        main: "#32329f"

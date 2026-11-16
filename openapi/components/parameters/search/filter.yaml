@@ -54,14 +54,14 @@ schema:
       properties:
         from:
           type: string
-          format: date-time
+          format: date
           description: |
             A date in YYYY-MM-DD format.
           examples:
             - '2023-01-01'
         to:
           type: string
-          format: date-time
+          format: date
           description: |
             A date in YYYY-MM-DD format.
           examples:

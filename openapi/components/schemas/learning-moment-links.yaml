@@ -6,46 +6,46 @@ description: |
 properties:
   createThread:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/discussion/evidence/19/threads"
   detail:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19"
   modifyForm:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19/modify"
   put:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19"
   draft:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19/draft"
   submit:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19/submit"
   publish:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19/publish"
   reject:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19/reject"
   delete:
     type: string
-    format: uri
+    format: uri-reference
     examples:
       - "/learning/evidence/19/delete"

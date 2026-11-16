@@ -3,8 +3,8 @@ type: object
 properties:
   discriminator:
     type: string
-    description: badgeAward - discriminator for Badge award object
-    examples:
+    description: Identifies this item as a badge award.
+    enum:
       - badgeAward
   object:
     $ref: ./badgeAwardItem.yaml

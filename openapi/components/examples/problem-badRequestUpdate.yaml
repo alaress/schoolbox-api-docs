@@ -1,5 +1,0 @@
-value:
-  type:   about:blank
-  title:  Bad Request
-  status: 400
-  detail: This resource may not have its created at time modified.

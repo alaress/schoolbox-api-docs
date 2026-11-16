@@ -23,8 +23,7 @@ properties:
       user:
         $ref: ./userShort.yaml
       status:
-        allOf:
-        - $ref: ./calendarAttendanceStatus.yaml
+        $ref: ./calendarAttendanceStatus.yaml
       canModify:
         description: |
           Can the authenticated user modify the event?

@@ -41,7 +41,7 @@ get:
           externalId:
             type: string
             examples:
-              - 501
+              - "501"
           username:
             type: string
             examples:
