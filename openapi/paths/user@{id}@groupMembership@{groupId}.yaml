@@ -4,6 +4,17 @@ get:
   summary: Get a users settings for a group
   description: |
     This will provide you with the current enrolment settings the user has for a specific group. This endpoint is only available for superusers.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/group
+    - https://schoolbox.education/scope/group:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
+    - bearerAuth:
+        - https://schoolbox.education/scope/group:readonly
   responses:
     '200':
       $ref: ../components/responses/userGroupMembership-item.yaml
@@ -16,6 +27,14 @@ post:
   summary: Add user to a group
   description: |
     This will add a user as a member into a group. This membership must not already exist. You will need to provide all the settings for the membership. This endpoint is only available for superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/group
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
   responses:
     '201':
       $ref: ../components/responses/userGroupMembership-item.yaml
@@ -30,6 +49,14 @@ put:
   summary: Update a user's settings for a group
   description: |
     This allows you to change the group access level, notification and favourite status of a group for a particular user. The group membership for the user must already exist. The endpoint is only available for superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/group
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
   responses:
     '200':
       $ref: ../components/responses/userGroupMembership-item.yaml
@@ -44,6 +71,14 @@ patch:
   summary: Partially update a user's group settings
   description: |
     This allows you to change only the group access level, notification and favourite status of a group for a particular user. You can use this endpoint to set one setting, leaving the other settings unchanged. The endpoint is only available for superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/group
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
   responses:
     '200':
       $ref: ../components/responses/userGroupMembership-item.yaml
@@ -58,6 +93,14 @@ delete:
   summary: Remove a user from a group
   description: |
     This will remove the relationship between a user and a group, it will also remove any settings related to that group membership. The endpoint is only available for superusers.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/group
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
   responses:
     '204':
       description: The resource was deleted successfully.

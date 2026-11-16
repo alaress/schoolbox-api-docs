@@ -21,6 +21,17 @@ get:
       * Requires View Student Grades role permission to see Due Work feedback
     * Students for their own
     * Parent for their own and their child's
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/learningMoment
+    - https://schoolbox.education/scope/learningMoment:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment:readonly
   responses:
     '200':
       $ref: ../components/responses/evidence-list.yaml

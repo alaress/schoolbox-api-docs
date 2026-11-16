@@ -6,9 +6,19 @@ get:
     Get the articles for the user (identified by the `$key` parameter) as a RSS
     document.
 
-    This endpoint doesn't use the standard security schemes: instead, it relies
-    upon the `$key` parameter remaining secret.
-  security: []
+    This endpoint doesn't require the standard security schemes: instead, it
+    relies upon the `$key` parameter remaining secret.
+
+    If a bearer token is supplied, however, it requires one of the following
+    scopes:
+    - https://schoolbox.education/scope/news
+    - https://schoolbox.education/scope/news:readonly
+  security:
+    - {}
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
+    - bearerAuth:
+        - https://schoolbox.education/scope/news:readonly
   responses:
     '200':
       description: |

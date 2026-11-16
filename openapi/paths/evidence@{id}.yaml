@@ -6,6 +6,14 @@ put:
   description: |
     Update a learning moment (Deprecated).
     Use one of the 'Draft/Publish/Submit a learning moment' PUT endpoints instead.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/learningMoment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
   responses:
     '200':
       description: Successfully updated a learning moment
@@ -26,6 +34,14 @@ delete:
   summary: Delete learning moment
   description: |
     Delete learning moment
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/learningMoment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
   responses:
     '204':
       description: Successfully deleted a learning moment.

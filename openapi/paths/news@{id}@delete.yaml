@@ -4,6 +4,14 @@ post:
   summary: Delete a news article
   description: |
     Delete an existing news article.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/news
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
   parameters:
     - $ref: ../components/parameters/id.yaml
   responses:

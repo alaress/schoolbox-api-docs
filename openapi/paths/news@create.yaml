@@ -8,6 +8,14 @@ post:
 
     The article is not necessarily published yet: this simply saves the article
     so that the user may refine it before publishing.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/news
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
   responses:
     '200':
       $ref: ../components/responses/news/save.yaml

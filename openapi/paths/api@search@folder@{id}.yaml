@@ -4,7 +4,14 @@ get:
   summary: Search for content within a folder
   description: |
     Search for content within a folder
-  security: []
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/search
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/search
   responses:
     '200':
       $ref: ../components/responses/search/pageSubResult-list.yaml

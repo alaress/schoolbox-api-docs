@@ -4,6 +4,17 @@ get:
   summary: Get all users belonging to a group
   description: |
     This will provide a list of the users that belong to the specified group.  This endpoint is only available to superusers.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/group
+    - https://schoolbox.education/scope/group:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
+    - bearerAuth:
+        - https://schoolbox.education/scope/group:readonly
   responses:
     '200':
       $ref: ../components/responses/group/group-user-list.yaml

@@ -6,6 +6,17 @@ get:
     Returns a paginated, searchable list of all groups in the system.
 
     This endpoint is only available to superusers.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/group
+    - https://schoolbox.education/scope/group:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
+    - bearerAuth:
+        - https://schoolbox.education/scope/group:readonly
   parameters:
     - name: q
       in: query

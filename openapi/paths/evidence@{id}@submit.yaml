@@ -2,7 +2,16 @@ put:
   operationId: putEvidenceSubmit
   tags: [learningMoment]
   summary: Submit a learning moment
-  description: Update a learning moment and leave it in a 'submitted' state.
+  description: |
+    Update a learning moment and leave it in a 'submitted' state.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/learningMoment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
   requestBody:
     description: |
       The learning moment to save.  Only fields to be updated need to be included in the request.

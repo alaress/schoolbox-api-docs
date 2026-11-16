@@ -4,6 +4,14 @@ post:
   summary: Remove an article from the saved for later list
   description: |
     Remove an article from the authenticated user's saved articles.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/news
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
   responses:
     '200':
       description: |

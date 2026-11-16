@@ -4,6 +4,17 @@ get:
   summary: Get articles written by the authenticated user
   description: |
     Get the list of articles written by the currently authenticated user.
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/news
+    - https://schoolbox.education/scope/news:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/news
+    - bearerAuth:
+        - https://schoolbox.education/scope/news:readonly
   responses:
     '200':
       description: |

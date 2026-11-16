@@ -2,7 +2,16 @@ put:
   operationId: putEvidenceBulkPublish
   tags: [learningMoment]
   summary: Publish multiple learning moments
-  description: Publish multiple learning moments and optionally delete any comments before publishing.
+  description: |
+    Publish multiple learning moments and optionally delete any comments before publishing.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/learningMoment
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/learningMoment
   requestBody:
     content:
       application/json:
