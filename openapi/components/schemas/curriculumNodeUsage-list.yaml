@@ -4,6 +4,8 @@ properties:
     type: array
     items:
       type: object
+      required:
+        - discriminator
       discriminator:
         propertyName: discriminator
         mapping:
