@@ -1,7 +1,8 @@
 name: limit
 in: query
 description: |
-  The number of records per page. Only applies to JSON responses.
+  The number of records per page. Only applies to JSON responses. A value that isn't a whole number from
+  1 to 100 is refused with a 400.
 schema:
   type: integer
   minimum: 1

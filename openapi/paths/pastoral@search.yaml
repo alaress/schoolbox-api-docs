@@ -10,7 +10,7 @@ get:
 
     Follow `metadata.cursor.next` with the `cursor` parameter until it is null to read every match. The last
     page may be empty. `metadata.count` is always null, as counting every match would be
-    too expensive.
+    too expensive. A malformed `cursor` or `limit` is refused with a 400.
 
     Each record shows the user no more than its record page would: see the record schema for details.
     Searches that match a record are recorded in the pastoral audit log.

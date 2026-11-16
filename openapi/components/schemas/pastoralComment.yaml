@@ -22,7 +22,9 @@ properties:
     description: The comment in HTML.
     type: string
   externalCode:
-    description: The ID of the comment in an external pastoral system, if it was synchronised.
+    description: |
+      The ID of the comment in an external pastoral system, if it was synchronised. Left out for students
+      and parents when the comment is read as part of a pastoral record.
     type: [string, 'null']
   createdAt:
     $ref: ./dateTimeString.yaml

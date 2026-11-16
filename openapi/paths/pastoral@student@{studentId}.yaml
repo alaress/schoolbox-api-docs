@@ -8,7 +8,8 @@ get:
     page is returned as HTML.
 
     Follow `metadata.cursor.next` with the `cursor` parameter until it is null to read every record.
-    `metadata.count` is the number of records matching the filters.
+    `metadata.count` is the number of records matching the filters. A malformed `cursor`, `limit` or
+    `updatedSince` is refused with a 400.
 
     Each record shows the user no more than its record page would: see the record schema for details.
     Viewing the list is recorded in the pastoral audit log.

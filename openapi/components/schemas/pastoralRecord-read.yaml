@@ -5,9 +5,10 @@ description: |
   * `bodyPrivate` is null, and `attachmentsPrivate` and `commentsPrivate` are empty, unless the user can see
     the record's confidential content: pastoral moderators, the record's author, and users given
     General + Confidential access.
-  * Comments are only included for users who may comment on the record.
+  * Comments are only included for users who may comment on the record. This depends on the user, not
+    the token: a token with only the `pastoral:readonly` scope sees the comments its user could post.
   * `tags`, `recordActions` and `access` are only included for staff.
-  * `externalId` values are only included for staff.
+  * `externalId` values, and each comment's `externalCode`, are only included for staff.
   * `severity` is only included when Allow specification of severity on pastoral records is ON, and
     `points` only when pastoral points are enabled.
 readOnly: true
