@@ -20,6 +20,10 @@ content:
 
             Will default to 6 months in the future, and may not be more than 12:
             otherwise, an error will be raised.
+
+            When the request is authorized using a bearer token, this may not
+            be later than that token's expiry, which is also the default if it
+            is sooner than 6 months.
         expiryInterval:
           type: integer
           minimum: 1
@@ -29,7 +33,8 @@ content:
             no longer usable.
 
             May be provided as an alternative to `expiry`, but is still
-            bound to a maximum of 12 months.
+            bound to a maximum of 12 months, and to the expiry of the bearer
+            token authorizing the request.
         scopes:
           type: array
           description: |
