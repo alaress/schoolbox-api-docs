@@ -1,0 +1,136 @@
+title: Writable folder fields
+description: |
+  The folder settings which can be written.
+
+  Codes and year levels can only be changed by superusers and users with the
+  CMS Moderator service permission at Full level. From other users, `codes`
+  or `yearLevelIds` with values different from the folder's own are refused
+  with a 403 response. The folder's current values are accepted, so a folder
+  which was read can be sent back, and when they aren't sent the folder keeps
+  them.
+
+  The recursive settings can only be used by superusers: from other users,
+  setting one to `true` is refused with a 403 response.
+type: object
+properties:
+  name:
+    type: string
+    minLength: 1
+    examples: [Year 7 Science]
+  inherit:
+    type: boolean
+    description: |
+      Whether the folder inherits its permissions from its parent. A folder
+      which inherits has no class codes or role permissions of its own.
+
+      * If the parent also inherits, the permissions come from the nearest
+        folder above which doesn't inherit.
+      * A top-level folder has no parent permissions to inherit: `true` is
+        refused with a 400 response.
+      * Subfolders keep their own `inherit` setting, unless
+        `recursivePermissions` is also sent.
+
+      **Warning:** setting `inherit` to `true` deletes the folder's role
+      permissions. Setting it back to `false` doesn't restore them: send
+      `rolePermissions` again.
+
+      A folder with class codes can't inherit permissions: the request is
+      refused with a 400 response. Remove the codes first, by sending an empty
+      `codes` list, then set `inherit`.
+  templateId:
+    type: [integer, 'null']
+    format: int32
+    minimum: 1
+    description: |
+      The homepage template to give the folder, or `null` for no homepage.
+
+      If it isn't sent, a new folder has no homepage and an existing folder
+      keeps its homepage.
+
+      **Warning:** sending `templateId` for an existing folder resets its
+      homepage to the template, replacing the page's content, even when the
+      template is the one it already has. Sending `null` removes the homepage.
+  colour:
+    type: [string, 'null']
+    pattern: '^#?[0-9A-Fa-f]{6}$'
+    examples: ['#1F6F5C']
+  coverImage:
+    type: [string, 'null']
+    description: |
+      The cover image, as a file reference such as `store:<hash>`: see
+      [Upload a file](#post-/storage/asyncUpload.php).
+    examples: ['store:1f8f836cce05750ac98302c74d4081f99fdd443f']
+  codes:
+    type: array
+    description: |
+      The folder's class codes.
+
+      A folder which inherits permissions can't have class codes: the request
+      is refused with a 400 response. Send `inherit` as `false` with the
+      `codes`, in the same request or an earlier one.
+    items:
+      type: string
+      maxLength: 64
+    examples: [[SEN/7SCI1]]
+  yearLevelIds:
+    type: array
+    items:
+      type: integer
+      format: int32
+      minimum: 1
+  curriculumNodeIds:
+    type: array
+    description: Curriculum nodes to tag the folder with. Disabled nodes are left out.
+    items:
+      type: integer
+      format: int32
+      minimum: 1
+  rolePermissions:
+    type: array
+    description: |
+      Access by role. Roles which aren't listed keep their current access; on
+      a new folder, they have no access. Ignored when the folder inherits
+      permissions.
+
+      **Note:** a user who isn't a superuser can create a folder which doesn't
+      inherit and gives their own role no access. They then can't open it.
+    items:
+      type: object
+      properties:
+        roleId:
+          type: integer
+          format: int32
+          minimum: 1
+        access:
+          type: string
+          enum: [none, read, write]
+      required: [roleId, access]
+  recursivePermissions:
+    type: boolean
+    default: false
+    writeOnly: true
+    description: |
+      Also apply `inherit` and `rolePermissions` to every subfolder. Superusers
+      only: refused with a 403 response for other users.
+
+      **Warning:** with `inherit` set to `true`, every subfolder inherits too,
+      which deletes the subfolders' own role permissions and class codes.
+      Subfolders with class codes are not checked first.
+  recursiveYearLevels:
+    type: boolean
+    default: false
+    writeOnly: true
+    description: |
+      Also apply `yearLevelIds` to every subfolder. Superusers only: refused
+      with a 403 response for other users.
+  createGroup:
+    type: boolean
+    default: false
+    writeOnly: true
+    description: |
+      Make the folder a group, with the user as its administrator. The folder
+      must not inherit permissions, and the user's role must be allowed to own
+      groups.
+
+      Add members with [Add user to a group](#post-/api/user/-id-/group/-groupId-),
+      using the folder's `id` as the `groupId`.

@@ -1,0 +1,10 @@
+description: |
+  The folder settings to change. Settings which aren't sent are left as they
+  are. Send `null` to clear a setting which allows it.
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/folder-writableFields.yaml
+    example:
+      name: Year 7 Biology

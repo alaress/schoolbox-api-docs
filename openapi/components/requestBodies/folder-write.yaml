@@ -1,0 +1,25 @@
+description: |
+  The folder's settings. These replace the folder's current settings: `name`
+  and `inherit` are required, and other settings which aren't sent are
+  cleared, except `templateId` and the access of roles not listed in
+  `rolePermissions`. Keys which can't be written, such as `id`, are ignored.
+required: true
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: ../schemas/folder-writableFields.yaml
+      required: [name, inherit]
+    example:
+      name: Year 7 Science
+      inherit: false
+      templateId: 12
+      colour: '#1F6F5C'
+      codes: [SEN/7SCI1]
+      yearLevelIds: [8]
+      rolePermissions:
+        - roleId: 2
+          access: write
+        - roleId: 3
+          access: read
+      createGroup: false

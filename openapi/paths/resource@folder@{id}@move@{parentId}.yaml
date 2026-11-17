@@ -1,0 +1,27 @@
+put:
+  operationId: folderMove
+  tags: [folder]
+  summary: Move a folder
+  description: |
+    Moves a folder, with its subfolders, into another parent folder.
+
+    #### Permission
+    This endpoint is available for users with write access to both the folder
+    and the new parent folder.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/folder
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/folder
+  responses:
+    '200':
+      $ref: ../components/responses/folder-result.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/folder-id.yaml
+  - $ref: ../components/parameters/folder-parentId.yaml

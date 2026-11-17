@@ -49,6 +49,8 @@ description: |
   | `https://schoolbox.education/scope/config` | Read and update configuration settings |
   | `https://schoolbox.education/scope/config:readonly` | Read configuration settings |
   | `https://schoolbox.education/scope/upload` | Upload files for later use |
+  | `https://schoolbox.education/scope/folder` | Read, create, update, move and delete folders |
+  | `https://schoolbox.education/scope/folder:readonly` | Read folders |
   | `https://schoolbox.education/scope/group` | Read, create, update and delete groups |
   | `https://schoolbox.education/scope/group:readonly` | Read groups |
   | `https://schoolbox.education/scope/learningMoment` | Read, create, update and delete learning moments |

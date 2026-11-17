@@ -1,0 +1,9 @@
+description: The change was made
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        result:
+          type: string
+          const: success

@@ -1,0 +1,5 @@
+description: The folder
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/folder-read.yaml

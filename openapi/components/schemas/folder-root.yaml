@@ -1,0 +1,27 @@
+title: Root folder
+description: |
+  The root, above the top-level folders. It isn't a real folder: it has no
+  settings, and can't be changed.
+type: object
+readOnly: true
+properties:
+  id:
+    type: integer
+    const: 0
+  name:
+    type: string
+    examples: [Top Level]
+  parent:
+    type: 'null'
+  children:
+    type: array
+    description: The top-level folders the user may read.
+    items:
+      $ref: ./folder-reference.yaml
+  _links:
+    type: object
+    properties:
+      self:
+        type: string
+        examples: [/resource/folder/0]
+required: [id, name, parent, children, _links]
