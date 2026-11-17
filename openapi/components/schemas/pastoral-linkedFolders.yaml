@@ -4,22 +4,7 @@ description: |
   Codes are the codes currently attached to that folder and may be empty for a group or archived folder.
 type: array
 items:
-  type: object
-  properties:
-    id:
-      $ref: ./id.yaml
-    name:
-      type: string
-      description: The folder name.
-    codes:
-      type: array
-      description: A list of class codes (if any) associated with this folder.
-      items:
-        type: string
-  required:
-    - id
-    - name
-    - codes
+  $ref: ./pastoral-linkedFolder.yaml
 examples:
   - - id: 80
       name: Year 9 English

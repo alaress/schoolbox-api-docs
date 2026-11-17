@@ -4,6 +4,9 @@ post:
   summary: Create a new pastoral record
   description: |
     Creates a new pastoral record. The record's author will be the currently authenticated user.
+
+    A `student_id` for a student the user may not see is reported as not found (404). Earlier versions
+    reported it as a bad request (400).
     #### Availability
     This is accessible only when Pastoral module is enabled.
     #### Permission
@@ -19,7 +22,7 @@ post:
     - bearerAuth:
         - https://schoolbox.education/scope/pastoral
   responses:
-    '200':
+    '201':
       description: Successfully created a pastoral record
       content:
         application/json:

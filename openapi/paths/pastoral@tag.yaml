@@ -1,0 +1,51 @@
+get:
+  operationId: pastoral.getTags
+  tags: [pastoral]
+  summary: Search pastoral tags
+  description: |
+    Lists the pastoral tags whose names contain `q`, in name order. Without `q`, lists up to 200 tags, most used first.
+    Use their IDs as `tags` when creating or updating a pastoral record.
+
+    #### Availability
+    This is accessible only when Pastoral module is enabled.
+    #### Permission
+    This endpoint is available for:
+    * Users with a role of Staff role type with Access Pastoral Care permission
+    * Users with a role of Staff role type and Pastoral Moderator service permission
+
+    This endpoint requires one of the following scopes when authorized using a
+    bearer token:
+    - https://schoolbox.education/scope/pastoral
+    - https://schoolbox.education/scope/pastoral:readonly
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral
+    - bearerAuth:
+        - https://schoolbox.education/scope/pastoral:readonly
+  parameters:
+    - name: q
+      in: query
+      description: Text to find in tag names.
+      schema:
+        type: string
+        examples:
+          - class
+  responses:
+    '200':
+      description: The matching pastoral tags
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/pastoralTag.yaml
+          examples:
+            tags:
+              value:
+                - id: 8
+                  name: Classroom
+                - id: 10
+                  name: Specialist Class
+    default:
+      $ref: ../components/responses/problem.yaml

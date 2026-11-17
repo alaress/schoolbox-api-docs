@@ -6,12 +6,10 @@ content:
       replaceLinks:
         summary: Replace the linked classes/groups
         value:
-          id: 77
           linkedFolderIds: [80, 81]
       clearLinks:
         summary: Remove all linked classes/groups
         value:
-          id: 77
           linkedFolderIds: []
     schema:
       type: object
@@ -40,7 +38,13 @@ content:
         occurredOn:
           description: The date on which this is occurred in the format configured in your Admin area. This also accepts RFC3339 format such as 2021-06-22T01:23:45+10:00
           type: [string, 'null']
-          format: date
+          examples:
+            - 2021-06-22T01:23:45+10:00
+        expiresAt:
+          description: |
+            The date on which this pastoral record expires, in the format configured in your Admin area.
+            This also accepts RFC3339 format such as 2021-06-22T01:23:45+10:00.
+          type: [string, 'null']
           examples:
             - 2021-06-22T01:23:45+10:00
         typeId:
@@ -130,5 +134,3 @@ content:
               * 1 - General
               * 2 - General + Confidential
           type: [array, 'null']
-      required:
-        - id

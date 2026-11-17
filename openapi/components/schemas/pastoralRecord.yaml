@@ -1,0 +1,82 @@
+# Documents records translated by Pastoral/Translator/ModelToArray.php (Schoolbox codebase).
+title: Pastoral record
+description: A pastoral record, as returned when it is created or updated.
+readOnly: true
+allOf:
+  - $ref: ./pastoralRecord-base.yaml
+  - type: object
+    properties:
+      linkedFolders:
+        $ref: ./pastoral-linkedFolders.yaml
+examples:
+  - id: 77
+    externalId: null
+    student:
+      id: 25
+      _links:
+        profile: /search/user/25
+        avatar: /portrait.php?id=25&size=square64
+      title: ''
+      firstName: Jana
+      preferredName: ''
+      pronoun: (she/her)
+      lastName: Reed
+      fullName: Jana Reed
+      isDeleted: false
+      externalId: '507'
+    heading: Academic Achievement Award - Semester 2
+    linkedFolders:
+      - id: 80
+        name: Year 9 English
+        codes: [9ENGA]
+    type:
+      id: 1
+      name: Academic
+      colour: null
+      icon: null
+      sentiment: neutral
+      sequence: 1
+    subType:
+      id: 1
+      name: Award/Achievement
+      colour: rgba(182, 74, 74, 1.000)
+      icon: achievement
+      sentiment: positive
+      sequence: 2
+    severity:
+      id: 5
+      name: Positive
+      sequence: 1
+      color: rgba(85, 212, 85, 1.000)
+    occurredOn: null
+    points: 10
+    tags:
+      - id: 8
+        name: Classroom
+    bodyPublic: <p>Jana received the Year 9 English award.</p>
+    bodyPrivate: null
+    attachmentsPublic: []
+    attachmentsPrivate: []
+    commentsPublic: []
+    commentsPrivate: []
+    comments: []
+    recordActions: []
+    owner: &author
+      id: 2
+      _links:
+        profile: /search/user/2
+        avatar: /portrait.php?id=2&size=square64
+      title: Mr
+      firstName: Jack
+      preferredName: ''
+      pronoun: ''
+      lastName: Coles
+      fullName: Mr Jack Coles
+      isDeleted: false
+      externalId: '111'
+    createdBy: *author
+    createdAt: 2026-11-02T07:47:05+11:00
+    updatedBy: *author
+    updatedAt: 2026-11-02T07:47:05+11:00
+    _links:
+      read: /pastoral/student/25/record/77
