@@ -3,8 +3,8 @@ type: object
 properties:
   discriminator:
     type: string
-    description: dueWorkFeedback - discriminator for Due Work Feedback object
-    examples:
+    description: Identifies this item as due work feedback.
+    enum:
       - dueWorkFeedback
   object:
     $ref: ./dueWorkFeedbackItem.yaml

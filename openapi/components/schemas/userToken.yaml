@@ -44,7 +44,7 @@ properties:
       - - https://schoolbox.education/scope/calendar
         - https://schoolbox.education/scope/user:readonly
   createdAt:
-    oneOf:
+    anyOf:
       - type: string
         format: date-time
         description: |
@@ -65,7 +65,7 @@ properties:
     examples:
       - 2025-11-11T14:45:00Z
   expiry:
-    oneOf:
+    anyOf:
       - type: string
         format: date-time
         description: |

@@ -6,7 +6,6 @@ properties:
   data:
     type: array
     items:
-      allOf:
-        - $ref: ./assessment-item.yaml
+      $ref: ./assessment-item.yaml
   metadata:
     $ref: ./listMetadata.yaml
