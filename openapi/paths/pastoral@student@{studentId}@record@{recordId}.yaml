@@ -15,7 +15,10 @@ get:
     #### Permission
     This endpoint is available for:
     * Users with Pastoral Moderator service permission
-    * The record's author
+    * The record's author, if they have a role of Staff role type with Access
+      Pastoral Care permission
+      (authorship of the record does not grant permission in perpetuity, as it
+      is possible for the Access Pastoral Care permission to be revoked)
     * Users in the record's audience who are:
       * Users with a role of Staff role type with Access Pastoral Care permission
       * Parents of the student, when Allow Parent Pastoral Access is ON
