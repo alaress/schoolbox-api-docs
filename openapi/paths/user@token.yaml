@@ -18,6 +18,9 @@ get:
     | `bearerAuth` | Any scope on the JWT which is still stored against its token, and is defined on the `bearerAuth` security scheme. If the JWT has no scope at all, the session scope `https://schoolbox.education/scope/session` |
     | `session` | The session scope `https://schoolbox.education/scope/session` |
 
+    If the JWT has scopes, but none of them may be inherited, the request is
+    rejected with a `403` response.
+
     When authorized using a bearer token, the new token expires along with the
     JWT, if that is sooner than the default expiry.
 
