@@ -13,7 +13,9 @@ post:
     * 400: the body is invalid, or the folder is the root: see
       [Create a folder](#operation/folderCreate).
     * 401: the user doesn't have write access to the folder.
-    * 403: the user's role may not own groups; or the token lacks the scope.
+    * 403: the user's role may not own groups; the user sent a setting they
+      may not change (`codes`, `yearLevelIds`, `recursivePermissions` or
+      `recursiveYearLevels`); or the token lacks the scope.
     * 404: the folder doesn't exist.
 
     #### Permission

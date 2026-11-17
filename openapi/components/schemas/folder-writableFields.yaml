@@ -2,9 +2,15 @@ title: Writable folder fields
 description: |
   The folder settings which can be written.
 
-  Codes and year levels can only be set by superusers and users with the CMS
-  Moderator service permission at Full level: for other users they are
-  ignored. The recursive settings are only applied for superusers.
+  Codes and year levels can only be changed by superusers and users with the
+  CMS Moderator service permission at Full level. From other users, `codes`
+  or `yearLevelIds` with values different from the folder's own are refused
+  with a 403 response. The folder's current values are accepted, so a folder
+  which was read can be sent back, and when they aren't sent the folder keeps
+  them.
+
+  The recursive settings can only be used by superusers: from other users,
+  setting one to `true` is refused with a 403 response.
 type: object
 properties:
   name:
@@ -93,7 +99,7 @@ properties:
     writeOnly: true
     description: |
       Also apply `inherit` and `rolePermissions` to every subfolder. Superusers
-      only.
+      only: refused with a 403 response for other users.
 
       **Warning:** with `inherit` set to `true`, every subfolder inherits too,
       which deletes the subfolders' own role permissions and class codes.
@@ -102,7 +108,9 @@ properties:
     type: boolean
     default: false
     writeOnly: true
-    description: Also apply `yearLevelIds` to every subfolder. Superusers only.
+    description: |
+      Also apply `yearLevelIds` to every subfolder. Superusers only: refused
+      with a 403 response for other users.
   createGroup:
     type: boolean
     default: false
