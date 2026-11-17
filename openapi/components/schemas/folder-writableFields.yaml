@@ -23,6 +23,12 @@ properties:
       Whether the folder inherits its permissions from its parent. A folder
       which inherits has no class codes or role permissions of its own.
 
+      * If the parent also inherits, the permissions come from the nearest
+        folder above which doesn't inherit.
+      * A top-level folder has no parent permissions to inherit: send `false`.
+      * Subfolders keep their own `inherit` setting, unless
+        `recursivePermissions` is also sent.
+
       **Warning:** setting `inherit` to `true` deletes the folder's role
       permissions. Setting it back to `false` doesn't restore them: send
       `rolePermissions` again.
@@ -55,7 +61,12 @@ properties:
     examples: ['store:1f8f836cce05750ac98302c74d4081f99fdd443f']
   codes:
     type: array
-    description: The folder's class codes. Ignored when the folder inherits permissions.
+    description: |
+      The folder's class codes.
+
+      A folder which inherits permissions can't have class codes: the request
+      is refused with a 400 response. Send `inherit` as `false` with the
+      `codes`, in the same request or an earlier one.
     items:
       type: string
       maxLength: 64
