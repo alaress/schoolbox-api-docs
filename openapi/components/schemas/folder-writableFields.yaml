@@ -57,7 +57,7 @@ properties:
     type: [string, 'null']
     description: |
       The cover image, as a file reference such as `store:<hash>`: see
-      [Upload a file](#operation/storageAsyncUpload).
+      [Upload a file](#post-/storage/asyncUpload.php).
     examples: ['store:1f8f836cce05750ac98302c74d4081f99fdd443f']
   codes:
     type: array
@@ -131,5 +131,5 @@ properties:
       must not inherit permissions, and the user's role must be allowed to own
       groups.
 
-      Add members with [Add user to a group](#operation/userGroupMembershipPost),
+      Add members with [Add user to a group](#post-/api/user/-id-/group/-groupId-),
       using the folder's `id` as the `groupId`.

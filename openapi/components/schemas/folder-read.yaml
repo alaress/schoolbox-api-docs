@@ -102,7 +102,7 @@ properties:
       members:
         type: string
         description: |
-          The group's members: see [Get all users belonging to a group](#operation/groupGetUsersInGroup).
+          The group's members: see [Get all users belonging to a group](#get-/group/getData/-id-).
           Only present when `isGroup` is true.
         examples: [/group/getData/80]
 required: [id, name, title, codes, parent, inherit, templateId, colour, coverImage, yearLevels, isGroup, children, _links]

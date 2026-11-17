@@ -4,7 +4,7 @@ get:
   summary: Find a folder by class code
   description: |
     Finds the folder with a class code, and returns the same folder as
-    [Get a folder](#operation/folderGet). Send `Accept: application/json` to
+    [Get a folder](#get-/resource/folder/-id-). Send `Accept: application/json` to
     receive the folder as JSON; otherwise the request is redirected to the
     folder's homepage.
 

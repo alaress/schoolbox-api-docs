@@ -7,11 +7,11 @@ post:
     body to receive the folder as JSON; a form post is redirected, as from the
     Modify Folder page.
 
-    To change only some settings, use [Partially update a folder](#operation/folderPatch).
+    To change only some settings, use [Partially update a folder](#patch-/resource/folder/-id-/update).
 
     #### Errors
     * 400: the body is invalid, or the folder is the root: see
-      [Create a folder](#operation/folderCreate).
+      [Create a folder](#post-/resource/folder/-parentId-/create).
     * 401: the user doesn't have write access to the folder.
     * 403: the user's role may not own groups; the user sent a setting they
       may not change (`codes`, `yearLevelIds`, `recursivePermissions` or
@@ -44,7 +44,7 @@ patch:
     Changes only the folder settings sent, and returns the folder.
 
     #### Errors
-    As for [Update a folder](#operation/folderUpdate).
+    As for [Update a folder](#post-/resource/folder/-id-/update).
 
     #### Permission
     This endpoint is available for users with write access to the folder.
