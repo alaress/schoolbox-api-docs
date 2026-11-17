@@ -25,7 +25,8 @@ properties:
 
       * If the parent also inherits, the permissions come from the nearest
         folder above which doesn't inherit.
-      * A top-level folder has no parent permissions to inherit: send `false`.
+      * A top-level folder has no parent permissions to inherit: `true` is
+        refused with a 400 response.
       * Subfolders keep their own `inherit` setting, unless
         `recursivePermissions` is also sent.
 

@@ -13,8 +13,9 @@ post:
     #### Errors
     * 400: the body is invalid, for example a missing `name`, an unknown
       template, year level, curriculum node or role, a class code which is too
-      long or already used by another folder, or `createGroup` on a folder
-      which inherits permissions.
+      long or already used by another folder, `createGroup` on a folder
+      which inherits permissions, or `inherit` set to `true` for a top-level
+      folder.
     * 401: the user doesn't have write access to the parent folder.
     * 403: the user's role may not own groups; the user sent a setting they
       may not change (`codes`, `yearLevelIds`, `recursivePermissions` or
