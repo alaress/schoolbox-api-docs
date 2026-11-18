@@ -1,0 +1,14 @@
+allOf:
+  - $ref: ./eventResponseFields.yaml
+  - type: object
+    properties:
+      bookingErrors:
+        type: array
+        description: |
+          Resource-booking errors encountered after the event was created.
+          A non-empty array means one or more requested bookings failed; it does
+          not mean that creation of the calendar event failed.
+        items:
+          type: string
+        example:
+          - You do not have permission to create bookings for resource 'Meeting Room 1'.
