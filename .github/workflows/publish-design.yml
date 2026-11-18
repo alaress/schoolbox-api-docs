@@ -22,8 +22,6 @@ jobs:
         with:
           ref: gh-pages
       - uses: actions/checkout@v3
-        with:
-          ref: develop
       - name: Push design to gh-pages branch
         id: publish-design
         run: |
@@ -35,9 +33,12 @@ jobs:
           mkdir .staging/
           cp -r ./* .staging/
 
-          # Copy hidden files too (excl. .git, .github)
-          cp .gitignore .staging/.gitignore
-          cp .redocly.yaml .staging/.redocly.yaml
+          # Copy hidden files too (excl. .git, .github). develop renamed
+          # .redocly.yaml to redocly.yaml (copied above with ./*), so only
+          # copy the hidden files that exist on the checked-out branch.
+          for f in .gitignore .redocly.yaml .redocly.lint-ignore.yaml; do
+            if [ -f "$f" ]; then cp "$f" ".staging/$f"; fi
+          done
 
           # remove specs themselves
           rm -rf .staging/docs/builds/
@@ -46,13 +47,17 @@ jobs:
           # move files from base commit to gh-pages
           git checkout -- .
           git checkout gh-pages
-          cp -r .staging/* .
-          cp .staging/.gitignore .gitignore
-          cp .staging/.redocly.yaml .redocly.yaml
+          cp -r .staging/. .
+
+          # Remove the legacy config if the design no longer has it, so
+          # Redocly can't pick up a stale .redocly.yaml on gh-pages
+          if [ ! -f .staging/.redocly.yaml ] && [ -f .redocly.yaml ]; then
+            git rm -q .redocly.yaml
+          fi
           rm -rf .staging/
 
           # Commit and push: if there are no changes, do nothing
-          git add . .gitignore .redocly.yaml
+          git add .
           CHANGES=`git diff --cached --shortstat`
           if [ -n "${CHANGES}" ]; then
             git commit -m "Build design for commit ${{ github.sha }}" .
