@@ -23,12 +23,12 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # Copy docs into gh-pages repo
-          # Also copy openapi/ and .redocly.yaml (for building docs)
+          # Also copy openapi/ and the Redocly config + lint ignores (for building docs)
           mkdir .staging/
-          cp -r docs/ openapi/ .redocly.yaml .staging
+          cp -r docs/ openapi/ redocly.yaml .redocly.lint-ignore.yaml .staging
           git checkout -- .
           git checkout gh-pages
-          cp -r .staging/* .
+          cp -r .staging/. .
           rm -rf .staging/
 
           # Build the docs (do not set beta specs as the most recently selected)
