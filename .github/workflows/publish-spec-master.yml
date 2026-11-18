@@ -13,6 +13,8 @@ jobs:
     if: github.repository == 'alaress/schoolbox-api-docs'
     runs-on: ubuntu-latest
     steps:
+      # Two checkouts: the release tag (spec + build tooling) into the
+      # workspace root, and gh-pages (published specs) into gh-pages/
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
         with:
