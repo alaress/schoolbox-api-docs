@@ -11,6 +11,9 @@ post:
     waiting list, are skipped. If the folder isn't a group yet and users are
     added, it becomes a private group with notifications enabled.
 
+    To set a user's notification or favourite settings for the group, use
+    [Add user to a group](#post-/api/user/-id-/group/-groupId-) instead.
+
     #### Permission
     This endpoint is available for superusers and users with full access to the
     group, which includes its admins.

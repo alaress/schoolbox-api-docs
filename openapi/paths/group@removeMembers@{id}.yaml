@@ -6,6 +6,9 @@ delete:
     Removes users from a group, or declines users on its waiting list, along
     with their settings for the group. Users who aren't members are ignored.
 
+    To remove one user as a superuser, you can also use
+    [Remove a user from a group](#delete-/api/user/-id-/group/-groupId-).
+
     #### Permission
     This endpoint is available for superusers and users with full access to the
     group, which includes its admins.
