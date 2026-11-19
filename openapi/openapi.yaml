@@ -404,6 +404,18 @@ paths:
   /group/getData/{id}:
     $ref: 'paths/group@getData@{id}.yaml'
 
+  /group/addMembers/{id}:
+    $ref: 'paths/group@addMembers@{id}.yaml'
+
+  /group/updateMembers/{id}:
+    $ref: 'paths/group@updateMembers@{id}.yaml'
+
+  /group/removeMembers/{id}:
+    $ref: 'paths/group@removeMembers@{id}.yaml'
+
+  /group/updateSettings/{id}:
+    $ref: 'paths/group@updateSettings@{id}.yaml'
+
   /differentiation-profiles/student/{id}:
     $ref: 'paths/differentiation-profiles@student@{id}.yaml'
 

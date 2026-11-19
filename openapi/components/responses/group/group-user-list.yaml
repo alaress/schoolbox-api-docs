@@ -13,163 +13,16 @@ content:
 
         groupName:
           type: string
-          description: The name of the group.
+          description: The name of the group, followed by its class codes if it has any.
 
         settings:
-          type: object
-          properties:
-
-            new:
-              type:
-                integer
-              description: |
-                Either the ?new value from the request URL, or 0 (if ?new does not exist).
-              examples:
-                - 0
-
-            access:
-              description: |
-                The level of access that users have to this group.
-
-                * `private`: membership is by invitation only
-                * `moderated`: users may apply for membership, but must be approved
-                * `free`: users may join and leave at any time
-              type: string
-              enum:
-                - private
-                - moderated
-                - free
-              examples:
-                - private
-
-            isNotificationsEnabled:
-              type: boolean
-              description: Whether notifications are enabled for this group.
-              examples:
-                - true
-
-            isForceFollow:
-              description: |
-                The level of subscription that is allowed to this group.
-
-                * `false`: users may subscribe to this group's events
-                * `true`: users must subscribe to this group's events, and may not
-                  unsubscribe
-              type: boolean
-              examples:
-                - true
+          $ref: ../../schemas/groupSettings-read.yaml
 
         members:
+          description: |
+            Everyone with access to the group, including users on the waiting
+            list. The list isn't paginated.
           type: array
           uniqueItems: true
           items:
-            title: User
-            type: object
-            properties:
-
-              id:
-                $ref: ../../schemas/id.yaml
-
-              _links:
-                type: object
-                properties:
-                  profile:
-                    type: string
-                    examples:
-                      - /search/user/2
-                  avatar:
-                    type: string
-                    examples:
-                      - /portrait.php?id=2&size=square64
-
-              title:
-                type: [string, 'null']
-                description: The user's title (Mr., Ms., etc.).
-                examples:
-                  - Ms
-
-              firstName:
-                type: string
-                description: |
-                  The user's first name.
-                  
-                  Schoolbox doesn't distinguish between a person's actual first name
-                  and any other names, and in any case is not the definitive source of
-                  naming information; therefore in practice this will usually be the
-                  user's given name.
-                examples:
-                  - Rebecca
-
-              preferredName:
-                type: [string, 'null']
-                description: The user's preferred name.
-
-              givenName:
-                type: string
-                description: The user's preferred name, if set. If preferred name is not set, returns the user's first name.
-                examples:
-                  - John
-
-              lastName:
-                type: [string, 'null']
-                description: The user's surname.
-                examples:
-                  - White
-
-              fullName:
-                type: string
-                description: |
-                  The user's full name: usually, this is the title, first name and last
-                  name joined together.
-                examples:
-                  - Mr John Smith
-
-              role:
-                type: string
-                description: The name of the Role, may not be unique.
-                examples:
-                  - Staff
-
-              roleType:
-                type: string
-                description: |
-                  The type of this role. Different role types have different levels of
-                  access to different parts of Schoolbox.
-                enum:
-                  - staff
-                  - student
-                  - parent
-                  - guest
-
-              isStaff:
-                type: boolean
-                examples:
-                  - true
-
-              campus:
-                type: string
-                description: Comma-separated list of campuses to which the user belongs.
-                examples:
-                  - Senior, Junior
-
-              yearLevel:
-                type: string
-                description: Name of the year level to which the user belongs, or blank if not applicable.
-                examples:
-                  - Year 9
-
-              house:
-                type: string
-                description: Name of the school house to which the user belongs, or blank if not applicable.
-                examples:
-                  - Griffindor
-
-              accessType:
-                description: The type of access the user has to the group - read, write, or admin.
-                type: string
-                enum:
-                  - read
-                  - write
-                  - admin
-                examples:
-                  - read
+            $ref: ../../schemas/groupMember.yaml

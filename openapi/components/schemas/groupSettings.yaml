@@ -1,0 +1,45 @@
+title: Group settings
+type: object
+properties:
+
+  access:
+    description: |
+      How users join the group.
+
+      * `private`: membership is by invitation only
+      * `moderated`: users may apply for membership, but must be approved
+      * `free`: users may join and leave at any time
+    type: string
+    enum:
+      - private
+      - moderated
+      - free
+    examples:
+      - private
+
+  isNotificationsEnabled:
+    type: boolean
+    description: Whether notifications are enabled for this group.
+    examples:
+      - true
+
+  isForceFollow:
+    description: |
+      Whether members must follow the group's events.
+
+      * `false`: members may choose whether to follow the group's events
+      * `true`: members must follow the group's events, and may not
+        unfollow them
+
+      Only takes effect when notifications are enabled.
+    type: boolean
+    examples:
+      - false
+
+  isPopulateParents:
+    description: |
+      Whether the parents of a student are added to the group when the
+      student is added. Existing members are not affected.
+    type: boolean
+    examples:
+      - false

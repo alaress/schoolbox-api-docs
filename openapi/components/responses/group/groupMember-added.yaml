@@ -1,0 +1,13 @@
+description: The users added to the group
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        newMembers:
+          description: |
+            The users who were added. Users who already had access to the group,
+            including those on its waiting list, are left out.
+          type: array
+          items:
+            $ref: ../../schemas/groupMember.yaml

@@ -1,0 +1,29 @@
+delete:
+  operationId: groupRemoveMembers
+  tags: [group]
+  summary: Remove members from a group
+  description: |
+    Removes users from a group, or declines users on its waiting list, along
+    with their settings for the group. Users who aren't members are ignored.
+
+    #### Permission
+    This endpoint is available for superusers and users with full access to the
+    group, which includes its admins.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/group
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
+  requestBody:
+    $ref: ../components/requestBodies/groupMember-remove.yaml
+  responses:
+    '204':
+      description: The users were removed
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/group-id.yaml
