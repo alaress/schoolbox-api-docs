@@ -30,7 +30,7 @@ put:
 
 delete:
   operationId: deleteLearningMoment
-  tags: [Learning Moment]
+  tags: [learningMoment]
   summary: Delete learning moment
   description: |
     Delete learning moment
