@@ -1,0 +1,15 @@
+description: The users to remove from the group.
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      required: [members]
+      properties:
+        members:
+          description: The IDs of the users to remove.
+          type: array
+          items:
+            type: integer
+    example:
+      members: [2, 3]

@@ -1,0 +1,18 @@
+description: |
+  The group's new settings. Every setting is replaced: a setting which isn't
+  sent is turned off, and `access` becomes `private` if it isn't sent.
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      required: [settings]
+      properties:
+        settings:
+          $ref: ../schemas/groupSettings.yaml
+    example:
+      settings:
+        access: moderated
+        isNotificationsEnabled: true
+        isForceFollow: false
+        isPopulateParents: true

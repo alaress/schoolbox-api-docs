@@ -1,0 +1,8 @@
+description: The group's settings after the change
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        settings:
+          $ref: ../../schemas/groupSettings-read.yaml

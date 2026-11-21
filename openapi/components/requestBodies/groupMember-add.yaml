@@ -1,0 +1,42 @@
+description: The users to add to the group.
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      required: [members]
+      properties:
+        members:
+          description: |
+            The users to add. Each entry names a user, or a group or role whose
+            users are all added.
+          type: array
+          items:
+            type: object
+            required: [id, fromType]
+            properties:
+              id:
+                description: The ID of the user, group folder or role named by `fromType`.
+                type: integer
+              fromType:
+                description: |
+                  What `id` refers to.
+
+                  * `name`: a user
+                  * `group`: the folder of another group. Its members are added,
+                    but not users on its waiting list. An ID which isn't a
+                    group is skipped.
+                  * `role`: a role. Every user with that role is added.
+                type: string
+                enum:
+                  - name
+                  - group
+                  - role
+    example:
+      members:
+        - id: 2
+          fromType: name
+        - id: 14
+          fromType: group
+        - id: 5
+          fromType: role

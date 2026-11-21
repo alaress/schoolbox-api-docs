@@ -1,0 +1,25 @@
+description: The members to change, and the access to give each one.
+required: true
+content:
+  application/json:
+    schema:
+      type: object
+      required: [accessTypes]
+      properties:
+        accessTypes:
+          type: array
+          items:
+            type: object
+            required: [userId, accessType]
+            properties:
+              userId:
+                description: The ID of a member of the group.
+                type: integer
+              accessType:
+                $ref: ../schemas/groupMember-accessType.yaml
+    example:
+      accessTypes:
+        - userId: 2
+          accessType: write
+        - userId: 3
+          accessType: read

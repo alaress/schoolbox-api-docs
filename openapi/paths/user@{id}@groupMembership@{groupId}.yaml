@@ -28,6 +28,9 @@ post:
   description: |
     This will add a user as a member into a group. This membership must not already exist. You will need to provide all the settings for the membership. This endpoint is only available for superusers.
 
+    To add many users at once, or as a group admin, use
+    [Add members to a group](#post-/group/addMembers/-id-).
+
     This endpoint requires the following scope when authorized using a bearer
     token:
     - https://schoolbox.education/scope/group
@@ -93,6 +96,9 @@ delete:
   summary: Remove a user from a group
   description: |
     This will remove the relationship between a user and a group, it will also remove any settings related to that group membership. The endpoint is only available for superusers.
+
+    To remove many users at once, or as a group admin, use
+    [Remove members from a group](#delete-/group/removeMembers/-id-).
 
     This endpoint requires the following scope when authorized using a bearer
     token:

@@ -1,0 +1,17 @@
+description: |
+  The member's access to the group.
+
+  * `none`: the user has asked to join a moderated group and is on the
+    waiting list. Set `read` to approve them, or remove them to decline.
+  * `read`: a member
+  * `write`: a member who can edit the group's page
+  * `admin`: a member who can edit the group's page and manage the group,
+    including its members and settings
+type: string
+enum:
+  - none
+  - read
+  - write
+  - admin
+examples:
+  - read

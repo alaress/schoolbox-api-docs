@@ -1,0 +1,13 @@
+description: The members after the change
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        members:
+          description: |
+            Each requested user who is a member of the group, with their new
+            access. Users who aren't members are left out.
+          type: array
+          items:
+            $ref: ../../schemas/groupMember.yaml
