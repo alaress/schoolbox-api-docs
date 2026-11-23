@@ -36,17 +36,27 @@ content:
           type: string
           maxLength: 255
         occurredOn:
-          description: The date on which this is occurred in the format configured in your Admin area. This also accepts RFC3339 format such as 2021-06-22T01:23:45+10:00
-          type: [string, 'null']
-          examples:
-            - 2021-06-22T01:23:45+10:00
+          description: |
+            The date on which this occurred. A date-time is rejected.
+            Omitting this, or sending null or an empty string, leaves the date unchanged.
+          anyOf:
+            - $ref: ../schemas/formDate.yaml
+            - type: string
+              format: date
+              examples:
+                - 2021-06-22
+            - type: 'null'
         expiresAt:
           description: |
-            The date on which this pastoral record expires, in the format configured in your Admin area.
-            This also accepts RFC3339 format such as 2021-06-22T01:23:45+10:00.
-          type: [string, 'null']
-          examples:
-            - 2021-06-22T01:23:45+10:00
+            The date on which this pastoral record expires. A date-time is rejected.
+            Omitting this, or sending null or an empty string, leaves the date unchanged.
+          anyOf:
+            - $ref: ../schemas/formDate.yaml
+            - type: string
+              format: date
+              examples:
+                - 2021-06-22
+            - type: 'null'
         typeId:
           description: The ID of a pastoral type to associate with this pastoral record.
           type: integer
