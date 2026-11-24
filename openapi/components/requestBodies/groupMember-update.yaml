@@ -16,6 +16,9 @@ content:
                 description: The ID of a member of the group.
                 type: integer
               accessType:
+                description: |
+                  The access to give the member. Set `read` to approve a user
+                  on the waiting list, or `none` to move a member back to it.
                 $ref: ../schemas/groupMember-accessType.yaml
     example:
       accessTypes:
