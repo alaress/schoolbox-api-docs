@@ -3,7 +3,13 @@ get:
   tags: [group]
   summary: Get all users belonging to a group
   description: |
-    This will provide a list of the users that belong to the specified group.  This endpoint is only available to superusers.
+    Returns the group's settings and every user with access to it, including
+    users on the waiting list (`accessType` is `none`). If the folder isn't a
+    group, `members` is empty.
+
+    #### Permission
+    This endpoint is available for superusers and users with full access to the
+    group, which includes its admins.
 
     This endpoint requires one of the following scopes when authorized using a
     bearer token:
@@ -22,4 +28,4 @@ get:
       $ref: ../components/responses/problem.yaml
 
 parameters:
-  - $ref: ../components/parameters/id.yaml
+  - $ref: ../components/parameters/group-id.yaml

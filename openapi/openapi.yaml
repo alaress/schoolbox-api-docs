@@ -84,6 +84,20 @@ tags:
     description: |
       Search and manage groups.
 
+      #### Which endpoint should I use?
+      There are two ways to manage group members:
+
+      * **Per user**: the `/api/user/{id}/group/{groupId}` endpoints, from
+        [Add user to a group](#post-/api/user/-id-/group/-groupId-) onwards,
+        work on one user's membership of one group. Use them to set a user's
+        own notification and favourite settings for a group, or to list the
+        groups a user belongs to. They're available for superusers only.
+      * **Per group**: the `/group/.../{id}` endpoints, from
+        [Get all users belonging to a group](#get-/group/getData/-id-)
+        onwards, work on one group's members, many at a time. Use them to sync
+        a roster, to add a whole group or role at once, to change group
+        settings, or when the caller is a group admin rather than a superuser.
+
   - name: learningMoment
     x-displayName: Learning Moment
     description: |
@@ -403,6 +417,18 @@ paths:
 
   /group/getData/{id}:
     $ref: 'paths/group@getData@{id}.yaml'
+
+  /group/addMembers/{id}:
+    $ref: 'paths/group@addMembers@{id}.yaml'
+
+  /group/updateMembers/{id}:
+    $ref: 'paths/group@updateMembers@{id}.yaml'
+
+  /group/removeMembers/{id}:
+    $ref: 'paths/group@removeMembers@{id}.yaml'
+
+  /group/updateSettings/{id}:
+    $ref: 'paths/group@updateSettings@{id}.yaml'
 
   /differentiation-profiles/student/{id}:
     $ref: 'paths/differentiation-profiles@student@{id}.yaml'

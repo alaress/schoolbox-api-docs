@@ -1,0 +1,20 @@
+title: Group settings (read)
+readOnly: true
+type: object
+properties:
+
+  access:
+    description: How users join the group. Blank if the folder isn't a group.
+    anyOf:
+      - $ref: ./groupSettings.yaml#/properties/access
+      - type: string
+        const: ''
+
+  isNotificationsEnabled:
+    $ref: ./groupSettings.yaml#/properties/isNotificationsEnabled
+
+  isForceFollow:
+    $ref: ./groupSettings.yaml#/properties/isForceFollow
+
+  isPopulateParents:
+    $ref: ./groupSettings.yaml#/properties/isPopulateParents

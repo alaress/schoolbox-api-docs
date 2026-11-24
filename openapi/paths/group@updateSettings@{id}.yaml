@@ -1,0 +1,36 @@
+post:
+  operationId: groupUpdateSettings
+  tags: [group]
+  summary: Update group settings
+  description: |
+    Replaces a group's settings: how users join it, notifications, and whether
+    students' parents are added with them.
+
+    Every setting is replaced, so send them all. A setting which isn't sent is
+    turned off, and `access` becomes `private` if it isn't sent. To change one
+    setting, read the current settings with
+    [Get all users belonging to a group](#get-/group/getData/-id-) first.
+
+    If the folder isn't a group yet, it becomes one.
+
+    #### Permission
+    This endpoint is available for superusers and users with full access to the
+    group, which includes its admins.
+
+    This endpoint requires the following scope when authorized using a bearer
+    token:
+    - https://schoolbox.education/scope/group
+  security:
+    - session: []
+    - bearerAuth:
+        - https://schoolbox.education/scope/group
+  requestBody:
+    $ref: ../components/requestBodies/groupSettings-update.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/group/groupSettings-item.yaml
+    default:
+      $ref: ../components/responses/problem.yaml
+
+parameters:
+  - $ref: ../components/parameters/group-id.yaml
