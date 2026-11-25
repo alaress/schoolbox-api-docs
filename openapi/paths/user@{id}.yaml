@@ -3,7 +3,7 @@ get:
   tags: [user]
   summary: Get a user
   description: |
-    Returns all the information about a specific user. The result from this API can be passed into the update user endpoint. This endpoint may only be used by the current user or superusers.
+    Returns all the information about a specific user. Before using the result in a write request, remove isDisabled and isArchived, and choose either enabled or the timestamp fields. This endpoint may only be used by the current user or superusers.
 
     This endpoint requires one of the following scopes when authorized using a
     bearer token:
@@ -26,7 +26,7 @@ put:
   tags: [user]
   summary: Update a user
   description: |
-    This allows a user to be updated by passing in a user object. When using this endpoint you must provide the entire user, we recommend you get the user first via the "get a user" endpoint. This endpoint may only be used by superusers.
+    This allows a user to be updated by passing in a user object. When using this endpoint you must provide the entire user, we recommend you get the user first via the "get a user" endpoint. Remove isDisabled and isArchived, and choose either enabled or the timestamp fields before sending. Omitted deprovision timestamps preserve their existing values, including on PUT. This endpoint may only be used by superusers.
 
     This endpoint requires the following scope when authorized using a bearer
     token:

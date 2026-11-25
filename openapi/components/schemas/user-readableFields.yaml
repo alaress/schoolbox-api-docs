@@ -3,6 +3,14 @@ description: |
   User with fields that are relevant when reading a user's value.
 type: object
 properties:
+  isDisabled:
+    type: boolean
+    readOnly: true
+    description: True when disabledAt is set. Rejected in write requests; use disabledAt instead.
+  isArchived:
+    type: boolean
+    readOnly: true
+    description: True when archivedAt is set. Rejected in write requests; use archivedAt instead.
   id:
     $ref: ./id.yaml
   
