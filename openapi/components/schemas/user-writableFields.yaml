@@ -3,6 +3,18 @@ description: |
   Fields that are only relevant when writing a user's value.
 type: object
 properties:
+  enabled:
+    oneOf:
+      - type: boolean
+      - type: integer
+        enum: [0, 1]
+      - type: string
+        enum: ['0', '1']
+    description: |
+      Legacy compatibility field; still supported. Prefer disabledAt and archivedAt for new integrations.
+      True, 1 or "1" clears both timestamps. False, 0 or "0" disables and archives the user,
+      retaining existing dates and using the current time for new transitions.
+      Use enabled only for an intentional state change. Combining it with either timestamp, even null, is rejected.
   campus:
     type: array
     minItems: 1

@@ -19,16 +19,6 @@ properties:
       instance?
     default: false
 
-  enabled:
-    type: boolean
-    description: |
-      Legacy compatibility field; still supported. Prefer disabledAt and archivedAt for new integrations.
-      In responses, true means archivedAt is null, regardless of disabledAt. This is not a login eligibility flag:
-      disabled, archived or deleted users cannot log in.
-      In requests, true clears both timestamps; false disables and archives the user, retaining existing dates
-      and using the current time for new transitions. Boolean and numeric or form-encoded 0/1 values are accepted.
-      Do not combine enabled with either timestamp field, even when null; the request will be rejected.
-
   disabledAt:
     type: [string, 'null']
     format: date-time
