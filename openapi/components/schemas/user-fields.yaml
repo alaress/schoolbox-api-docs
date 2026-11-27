@@ -19,10 +19,30 @@ properties:
       instance?
     default: false
 
-  enabled:
-    type: boolean
-    description: Is this user able to log in to the Schoolbox instance?
-    default: true
+  disabledAt:
+    type: [string, 'null']
+    format: date-time
+    description: |
+      Disabled timestamp. A non-null value prevents login. Send null to clear this state.
+      Omission preserves the existing value, including on PUT; new users default to null.
+      Supply RFC3339 with seconds and an explicit timezone offset. Fractional seconds are accepted and
+      discarded; instants are converted to the school's timezone for storage. A supplied date replaces the existing date.
+    examples:
+      - '2026-10-20T14:30:00+11:00'
+      - null
+
+  archivedAt:
+    type: [string, 'null']
+    format: date-time
+    description: |
+      Archived timestamp. A non-null value prevents login and excludes the profile from normal searches
+      unless archived users are included by the search setting. Send null to clear this state.
+      Omission preserves the existing value, including on PUT; new users default to null.
+      Supply RFC3339 with seconds and an explicit timezone offset. Fractional seconds are accepted and
+      discarded; instants are converted to the school's timezone for storage. A supplied date replaces the existing date.
+    examples:
+      - '2026-10-20T14:30:00+11:00'
+      - null
 
   title:
     type: [string, 'null']

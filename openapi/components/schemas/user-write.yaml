@@ -1,3 +1,10 @@
+description: |
+  Deprovision fields are optional. Omitted disabledAt and archivedAt preserve existing state, including on PUT.
+  Explicit null clears a state; a supplied timestamp replaces its date. Use these fields independently,
+  or use legacy enabled to change both states. Combining enabled with either timestamp is rejected.
+  Do not send the read-only isDisabled or isArchived flags.
+  For example, {"disabledAt": "2026-10-20T14:30:00+11:00"} disables login without changing archive state;
+  {"disabledAt": null, "archivedAt": null} clears both restrictions.
 allOf:
   - $ref: ./user-writableFields.yaml
   - $ref: ./user-fields.yaml

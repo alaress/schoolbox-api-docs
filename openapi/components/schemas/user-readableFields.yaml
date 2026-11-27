@@ -3,6 +3,20 @@ description: |
   User with fields that are relevant when reading a user's value.
 type: object
 properties:
+  enabled:
+    type: boolean
+    description: |
+      Legacy compatibility field. True means archivedAt is null, regardless of disabledAt.
+      This is not a login eligibility flag: disabled, archived or deleted users cannot log in.
+      Remove enabled when copying a GET response into a write request; retain disabledAt and archivedAt.
+  isDisabled:
+    type: boolean
+    readOnly: true
+    description: True when disabledAt is set. Rejected in write requests; use disabledAt instead.
+  isArchived:
+    type: boolean
+    readOnly: true
+    description: True when archivedAt is set. Rejected in write requests; use archivedAt instead.
   id:
     $ref: ./id.yaml
   
